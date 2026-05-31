@@ -1,0 +1,64 @@
+# CHECKLIST — Diligencia
+
+---
+
+## P1 — Documentación core
+
+- [x] Template doc-base (7 archivos)
+- [x] Comando global /adaptar (Diligencia v1.0)
+- [x] ADAPTAR-COMANDOS.md v1.3
+- [x] DILIGENCIA.md — sello de metodología
+- [ ] GUIA_DE_USO.md — manual completo
+- [ ] GUIA_DE_ADAPTACION.md — proceso de migración
+- [ ] GUIA_DE_COMANDOS.md — referencia de comandos
+- [ ] ADR-001: Arquitectura de dos capas
+- [ ] ADR-002: Sistema de variables
+- [ ] ADR-003: Estructura estándar de archivos
+
+## P2 — Proyectos adaptados
+
+- [x] Némesis Detective
+- [x] MarketAI
+
+## P2 — Estandarización de comandos globales
+
+- [x] ESTANDAR-COMANDOS.md creado en doc/guias/ (incluye guarda + imperativo como requerimiento)
+- [x] rm.md — Formato + Validación + Anti-patrones
+- [x] next.md — Formato + Validación + Anti-patrones
+- [x] checklist.md — Formato + Validación + Anti-patrones
+- [x] estado.md — Formato + Validación + Anti-patrones
+- [x] updoc.md — Formato + Validación + Anti-patrones
+- [x] debug.md — Formato + Validación + Anti-patrones
+- [x] health.md — Formato + Validación + Anti-patrones
+- [x] +rmi.md — Formato + Validación + Anti-patrones
+- [x] +guia.md — Formato + Validación + Anti-patrones
+- [x] +pend.md — Formato + Validación + Anti-patrones
+- [x] qa.md — Formato + Validación + Anti-patrones
+- [x] upguia.md — Formato + Validación + Anti-patrones
+- [x] plan.md — Formato + Validación + Anti-patrones
+- [x] limpiar.md — Anti-patrones (procedural)
+- [x] commit.md — Anti-patrones (procedural)
+
+## P2 — Comandos fundamentales globales (v1.2)
+
+- [x] `+mec` — Crear documento desde template
+- [x] `upmec` — Actualizar documento existente
+- [x] `+rm` — Agregar ítem a $RM
+- [x] `backup` — Backup pre-edit genérico
+- [x] `backupall` — Zip completo del proyecto
+- [x] `foco` — Enfocar agente en área
+- [x] `news` — Leer y distribuir $NEWS_FILE
+- [x] `version` — Cerrar sesión: bump, updoc, commit
+- [x] `report` — Reporte consolidado (fusión claude+upclaude)
+- [x] `apply` — Aplicar handoff file a código
+- [x] `head` — Preparar edición de sección en archivo
+- [x] `notify` — Toggle de notificación remota
+- [x] `/adaptar` modificado: copia comandos globales a .opencode/commands/ del proyecto
+- [x] Nemesis cleanup: 12 archivos removidos, 3 archivados, AGENTS.md actualizado
+
+## P3 — Mejoras futuras
+
+- [ ] Script de validación de estructura
+- [ ] Plantillas por stack
+- [ ] Guía de referencia rápida
+- [ ] GUIA_DE_COMANDOS.md — referencia de 29 comandos fundamentales

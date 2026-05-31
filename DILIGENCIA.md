@@ -1,0 +1,39 @@
+# Diligencia v1.2 — Estructura estándar de documentación
+
+Sello de metodología para proyectos OpenCode.
+
+---
+
+## Qué es
+
+Diligencia es una convención de estructura de documentación para proyectos OpenCode.
+Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta, y cómo se organizan los comandos.
+
+## Convención
+
+| Tipo | Ubicación |
+|---|---|
+| Roadmap | `ROADMAP.md` (raíz) |
+| Checklist | `CHECKLIST.md` (raíz) |
+| Changelog | `CHANGELOG.md` (raíz) |
+| ADRs, sistema, bitácora | `doc/arch/` |
+| Guías de usuario | `doc/guias/` (incluye `ESTANDAR-COMANDOS.md`) |
+| Mecánicas del juego | `doc/mecanicas/` |
+| Variables de ruta | `AGENTS.md` → `Mapeo de rutas` |
+| Comandos locales | `.opencode/commands/` |
+| Comandos globales | `~/.config/opencode/commands/` |
+
+## Proyectos adaptados
+
+| Proyecto | Fecha | Estado |
+|---|---|---|
+| Némesis Detective | 2026-05-08 | ✅ |
+| MarketAI | 2026-05-08 | ✅ |
+
+## Historial
+
+| Versión | Fecha | Cambios |
+|---|---|---|
+| v1.2 | 2026-05-31 | 12 comandos Nemesis adaptados a globales (+mec, upmec, +rm, backup, backupall, foco, news, version, report, apply, head, notify) — 29 comandos fundamentales totales. /adaptar copia comandos al proyecto. |
+| v1.1 | 2026-05-31 | Estándar de comandos: guarda + imperativo + Formato/Validación/Anti-patrones obligatorias |
+| v1.0 | 2026-05-08 | Convención inicial: doc-base template, $variables en AGENTS.md, dos capas de comandos, /adaptar global |
