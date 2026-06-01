@@ -1,6 +1,6 @@
 # GUIA DE COMANDOS — Diligencia v1.3
 
-Referencia de los 33 comandos fundamentales del sistema Diligencia.
+Referencia de los 34 comandos fundamentales del sistema Diligencia.
 
 ---
 
@@ -51,6 +51,7 @@ Luego incluye secciones obligatorias según su tipo. Ver `doc/guias/ESTANDAR-COM
 | `/checklist` | Declarativo | Roadmap/Backlog | Revisa CHECKLIST + ROADMAP y reporta estado |
 | `/commit` | Procedural | Flujo de sesión | `git add -A` + commit con formato estándar |
 | `/deprecar` | Declarativo | Calidad | Depreca archivos, comandos o estructuras obsoletas sin borrar |
+| `/doctor` | Declarativo | Calidad | Cuidado integral: estructura, código, tracking, limpieza y deprecación |
 | `/debug` | Declarativo | Calidad | Análisis profundo de backend, frontend o base de datos |
 | `/diligencia-check` | Declarativo | Calidad | Valida estructura, variables, comandos y versión contra estándares Diligencia |
 | `/estado` | Declarativo | Roadmap/Backlog | Reporte rápido: commits recientes, pendientes, próximos pasos |
@@ -126,6 +127,7 @@ Verificación y limpieza de código y estructura.
 |---|---|
 | `/bug` | $BUGS, $CHECKLIST, AGENTS.md |
 | `/deprecar` | AGENTS.md, .opencode/commands/ |
+| `/doctor` | AGENTS.md, $BUGS, $INCIDENTS, $CHECKLIST, $RM, $CHANGELOG, directorios del proyecto |
 | `/incidente` | $INCIDENTS, $CHECKLIST, AGENTS.md |
 | `/diligencia-check` | AGENTS.md, ROADMAP.md, CHECKLIST.md, CHANGELOG.md, DILIGENCIA.md, .opencode/commands/ |
 | `/qa` | $CHECKLIST, $ROADMAP |
@@ -283,5 +285,6 @@ Ver `doc/guias/ESTANDAR-COMANDOS.md` para el template completo con todas las sec
 - `GUIA_DE_ADAPTACION.md` — migración de proyectos
 - `GUIA_DE_REVISION.md` — auditoría del sistema
 - `GUIA_DE_BUENAS_PRACTICAS.md` — hábitos y workflows diarios
+- `GUIA_ECOSISTEMAS.md` — mapa de ecosistemas y fronteras entre comandos
 - `MECANICA-DOCUMENTAL.md` — motor documental
 - `ESTANDAR-COMANDOS.md` — cómo escribir comandos

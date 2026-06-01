@@ -2,6 +2,40 @@
 
 ---
 
+## v1.7.2 — 2026-06-01
+
+### Added
+- `GUIA_ECOSISTEMAS.md` — mapa de 9 ecosistemas de comandos, cadenas de orquestación, reglas de frontera, matriz archivos×ecosistema, y árbol de decisión
+
+### Changed
+- `GUIA_DE_COMANDOS.md` §8: cross-ref a GUIA_ECOSISTEMAS.md
+- `/explica` scope: GUIA_ECOSISTEMAS.md agregado a docs de búsqueda
+- `ROADMAP.md` Next: GUIA_ECOSISTEMAS.md marcado como ✅ Hecho
+- `CHECKLIST.md`: +sección P2 con GUIA_ECOSISTEMAS.md ✅
+- `DILIGENCIA.md`: bump v1.7.1→v1.7.2
+
+## v1.7.1 — 2026-06-01
+
+### Added
+- Convención semver 3-partes (vX.Y.Z): /version, /diligencia-check y template DILIGENCIA.md actualizados para compatibilidad
+
+### Changed
+- `doc/arch/bugs.md`, `doc/arch/incidentes.md` creados desde template (faltaban en disco, detectados por /doctor)
+- `.opencode/commands/` creado (faltaba; Diligencia usa comandos globales)
+- DILIGENCIA.md: bump v1.6→v1.7.1, +entradas v1.7.0 y v1.7.1 en historial
+- `CHANGELOG.md`: v1.7 partido en v1.7.0 (/doctor) y v1.7.1 (correcciones + semver)
+
+## v1.7.0 — 2026-06-01
+
+### Added
+- Comando `/doctor` — cuidado integral del proyecto: unifica /diligencia-check, /health, /updoc (Fase C), /bug, /incidente, /limpiar y /deprecar en un solo flujo de 3 fases (diagnóstico, confirmación, correcciones)
+
+### Changed
+- Diligencia AGENTS.md: +1 comando (34 total), tablas de comandos actualizadas
+- `GUIA_DE_COMANDOS.md`: +1 entrada (34 comandos), + /doctor en Calidad
+- `GUIA_DE_BUENAS_PRACTICAS.md`: +/doctor en §2 árbol de decisión y §8 matriz
+- ROADMAP.md, CHECKLIST.md: /doctor agregado como P2 pendiente
+
 ## v1.6 — 2026-05-31
 
 ### Added

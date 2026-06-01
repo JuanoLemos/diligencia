@@ -1,4 +1,4 @@
-# GUIA DE BUENAS PRACTICAS — Diligencia v1.5
+# GUIA DE BUENAS PRACTICAS — Diligencia v1.6
 
 Hábitos y workflows para usar Diligencia de forma consistente entre sesiones, agentes y proyectos.
 
@@ -8,7 +8,7 @@ Hábitos y workflows para usar Diligencia de forma consistente entre sesiones, a
 
 | Fase | Acción |
 |---|---|
-| **Pre-sesión** | Leer `AGENTS.md`, revisar `$CHECKLIST` items abiertos, revisar `$RM` "Ahora" o "Siguiente" |
+| **Pre-sesión** | Leer `AGENTS.md`, revisar `$CHECKLIST` items abiertos, revisar `$RM` "Ahora" o "Siguiente". Si hay cambios grandes planeados: `/backup`. Periódicamente: `/diligencia-check` para detectar degradación estructural. |
 | **Durante** | Usar el comando adecuado para cada situación (ver §2) |
 | **Post-sesión** | Ejecutar `/updoc` → sincroniza RM/CHECKLIST. Ejecutar `/version` si hay cambios → bump, CHANGELOG, commit |
 
@@ -24,10 +24,15 @@ Regla: toda sesión que modifique archivos debe cerrar con `/updoc`. Si hay camb
 | Crash o error en runtime | `/incidente` | /bug (incidente es runtime, no defecto de código) |
 | Situación extraña, no sabés si es bug | `/qa` | /bug (esperar a confirmar antes de crear bug) |
 | Feature nueva | `/plan` → BUILD | /.direct (falta diseño si es >1 archivo) |
-| Duda sobre estado del proyecto | `/health` | /. (health diagnostica rápidamente) |
+| Diagnóstico integral del proyecto (estructura + código + tracking + limpieza) | `/doctor` | /health o /diligencia-check individual (doctor orquesta todo) |
+| Salud de estructura del proyecto | `/diligencia-check` | /health (health es solo código, no estructura) |
+| Salud de código (solo JS) | `/health` | /diligencia-check (no verifica sintaxis) |
+| Análisis profundo de sección | `/debug` | /. (debug da tabla estructurada con línea exacta) |
 | Sincronizar documentación | `/updoc` | editar RM/CHECKLIST a mano (updoc detecta gaps automático) |
 | Cerrar sesión | `/version` | commit directo (version ejecuta updoc + changelog + bump) |
 | Archivo obsoleto o duplicado | `/deprecar` | `rm` o `del` (deprecar no borra, mueve a .old/) |
+| Backup pre-edit | `/backup` | confiar en "no voy a romper nada" |
+| Limpiar temporales | `/limpiar` | borrar a mano (olvida patrones comunes) |
 
 ---
 
@@ -56,6 +61,8 @@ Señales de documentos enfermos:
 - `$CHECKLIST` con 20+ items abiertos sin prioridad → revisar si son viables o basura
 - `$CHANGELOG` sin entrada en la última semana → sesiones sin versionar
 
+Ejecutar `/diligencia-check` cada pocas sesiones — detecta estructura rota, variables huérfanas, comandos sin guarda.
+
 ---
 
 ## 5. Tracking sin grietas
@@ -83,6 +90,8 @@ No duplicar: si registraste un bug en `$BUGS`, no lo copies a `$CHECKLIST` manua
 
 La carpeta `.old/` preserva historia y evita pérdida accidental.
 
+Después de deprecar: ejecutar `/diligencia-check` (verifica que $variables no apunten a archivos deprecados) y `/updoc` (detecta el diff, clasifica el cambio).
+
 ---
 
 ## 7. Anti-patrones de usuario
@@ -93,3 +102,20 @@ La carpeta `.old/` preserva historia y evita pérdida accidental.
 - **Usar `/bug` para situaciones ambiguas**: si no estás seguro, usa `/qa`. Convertir a bug después si se confirma
 - **No versionar sesiones chicas**: hasta un fix de 1 línea merece su entrada en `$CHANGELOG` y su commit
 - **Acumular deuda documental**: "lo actualizo después" → nunca se actualiza
+- **Usar `/health` para validar estructura de proyecto adaptado**: `/health` es solo código (JS). Usar `/diligencia-check` para estructura Diligencia.
+
+---
+
+## 8. Cuidado por tipo de proyecto
+
+El comando adecuado varía según el stack del proyecto. Leer `$STACK` de HARNESS.md o detectar manualmente.
+
+| Proyecto | Estructura | Código | Higiene | Pre-cambio | Diagnóstico |
+|---|---|---|---|---|---|
+| **JS/TS** (Node, React, Next) | `/diligencia-check` | `/health` (node --check, paréntesis, rutas) | `/limpiar` | `/backup` | `/debug` |
+| **Python** (Django, Flask) | `/diligencia-check` | *(pendiente — /health solo JS)* | `/limpiar` | `/backup` | `/debug` |
+| **Go** | `/diligencia-check` | *(pendiente — /health solo JS)* | `/limpiar` | `/backup` | `/debug` |
+| **Documental** (Diligencia, guías) | `/diligencia-check` | *(no aplica)* | `/updoc` | `/deprecar` | `/updoc` |
+| **Cualquier proyecto** — diagnóstico integral | `/doctor` | `/doctor` | `/doctor` | `/doctor` | `/doctor` |
+
+Los checks de código para stacks no-JS están pendientes de implementar en `/health`. Mientras tanto, usar linters nativos (`python -m py_compile`, `go vet`) como paso manual.

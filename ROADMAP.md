@@ -22,10 +22,8 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 | Item | Prioridad | Estado |
 |---|---|---|
-| GUIA_DE_BUENAS_PRACTICAS.md — hábitos y workflows para el desarrollador | P2 | 🔴 Pendiente |
-| MECANICA-DOCUMENTAL.md — mapa del motor documental | P2 | 🔴 Pendiente |
-| Template `incidentes.md` en doc-base (externalizar, para /adaptar) | P2 | 🔴 Pendiente |
-| Template `sesion.md` en doc-base (journal de sesión multi-agente) | P3 | 🔴 Pendiente |
+| `/doctor` — cuidado integral del proyecto (estructura + código + tracking + limpieza + deprecación) | P2 | 🔴 Pendiente |
+| `GUIA_ECOSISTEMAS.md` — mapa de ecosistemas y fronteras | P1 | ✅ Hecho |
 | Plantillas por stack (Node, Python, Go) | P2 | 🔴 Pendiente |
 | GUIA_REFERENCIA_RAPIDA.md | P2 | 🔴 Pendiente |
 
@@ -44,6 +42,9 @@ Metodología de estructura estándar para proyectos OpenCode.
 | Documentación completa del sistema (ADRs + guías + estructura) | v1.0 |
 | ADRs de arquitectura (001-003) | v1.0 |
 | Guías de uso + adaptación | v1.0 |
+| GUIA_DE_BUENAS_PRACTICAS.md — hábitos y workflows para el desarrollador | v1.6 |
+| Template `incidentes.md` en doc-base (externalizado para /adaptar) | v1.6 |
+| Template `sesion.md` en doc-base (journal multi-agente) | v1.6 |
 | Template doc-base (7 archivos) | v1.0 |
 | Comando global /adaptar (Diligencia v1.0) | v1.0 |
 | Migración Némesis Detective | v1.0 |
@@ -58,6 +59,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | GUIA_DE_COMANDOS.md actualizado a v1.3: 30 comandos + /explica + arquitectura + categorías | v1.3 |
 | `diligencia-check` — validación automática de estructura (ADR-003, variables, comandos, versión) | v1.3 |
 | HARNESS.md integrado al estándar: template, ADR-003, /adaptar, diligencia-check | v1.3 |
+| MECANICA-DOCUMENTAL.md reestructurada con índice y 6 secciones (motor, tracking, QA, sesión, conservación, anti-patrones) | v1.6 |
 | Comando `/deprecar` para deprecar archivos/estructuras obsoletas | v1.4 |
 | Comando `/bug` — reportar bugs en $BUGS con template estándar | v1.5 |
 | Comando `/incidente` — registrar crashes runtime en $INCIDENTS | v1.5 |

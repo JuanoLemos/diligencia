@@ -35,6 +35,7 @@ Documentación de la metodología de estructura estándar para proyectos OpenCod
 | /deprecar | Deprecar archivos/comandos/estructuras obsoletas | Declarativo |
 | /debug | Análisis profundo | Declarativo |
 | /diligencia-check | Validar estructura Diligencia del proyecto | Declarativo |
+| /doctor | Cuidado integral: estructura + código + tracking + limpieza + deprecación | Declarativo |
 | /limpiar | Limpiar temporales | Procedural |
 | /estado | Reporte rápido del proyecto | Declarativo |
 | /explica | Explicar concepto breve y sencillo | Declarativo |
