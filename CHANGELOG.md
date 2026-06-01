@@ -2,6 +2,37 @@
 
 ---
 
+## [Unreleased]
+
+### Added
+### Changed
+### Deprecated
+### Removed
+### Fixed
+### Security
+
+## v1.8.0 — 2026-06-01
+
+### Added
+- CHANGELOG: formato Keep a Changelog con `[Unreleased]` y 6 categorías (Added, Changed, Deprecated, Removed, Fixed, Security)
+- ADR lifecycle states: Proposed → Accepted → Deprecated → Superseded con campos Supersedes/Superseded by en template y ADR-001/002/003
+- `/commit`: validación Conventional Commits (11 tipos, formato `tipo(scope): descripción`)
+- `/version`: soporte `[YANKED]` en CHANGELOG y migración automática desde `[Unreleased]`
+- `/updoc`: flag `--auto` para cambios no-destructivos sin preguntar
+- `/commit`: flag `--auto` para commitar sin confirmación (uso desde /version)
+- `/doctor`: autocierre de tracking en 3f — ✅/[x] en RM/CHECKLIST
+- `/explica`: sugerencias automáticas de caminos/dependencias; explicación por contexto de roadmap items
+- Plantillas stack: `templates/{node,python,go}/HARNESS.md` pre-configurados con test/lint/typecheck/build/dev por stack. `/adaptar` aplica overlay automático.
+- `GUIA_REFERENCIA_RAPIDA.md` — referencia rápida de 1 página con comandos, árbol de decisión, ciclo de sesión, variables, workflows, anti-patrones y ecosistemas
+
+### Changed
+- `/version`: paso 6 ejecuta `/updoc --auto`, paso 7 ejecuta `/commit --auto` con formato chore(release)
+- `/doctor`: 2 correcciones aplicadas — CHECKLIST +4 items tildeados, ROADMAP GUIA_ECOSISTEMAS movido a Completado
+- `/explica`: alcance expandido a GUIA_REFERENCIA_RAPIDA.md
+- `GUIA_DE_ADAPTACION.md`: documentado overlay de stack templates
+- `GUIA_DE_COMANDOS.md`: cross-ref agregada a GUIA_REFERENCIA_RAPIDA.md
+- `ROADMAP.md`, `CHECKLIST.md`: Plantillas stack, GUIA_REFERENCIA_RAPIDA marcados como ✅/[x]; tracking actualizado
+
 ## v1.7.2 — 2026-06-01
 
 ### Added

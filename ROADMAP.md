@@ -22,10 +22,8 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 | Item | Prioridad | Estado |
 |---|---|---|
-| `/doctor` — cuidado integral del proyecto (estructura + código + tracking + limpieza + deprecación) | P2 | 🔴 Pendiente |
-| `GUIA_ECOSISTEMAS.md` — mapa de ecosistemas y fronteras | P1 | ✅ Hecho |
-| Plantillas por stack (Node, Python, Go) | P2 | 🔴 Pendiente |
-| GUIA_REFERENCIA_RAPIDA.md | P2 | 🔴 Pendiente |
+| Plantillas por stack (Node, Python, Go) | P2 | ✅ Hecho |
+| GUIA_REFERENCIA_RAPIDA.md | P2 | ✅ Hecho |
 
 ## Futuro (Later)
 
@@ -63,3 +61,9 @@ Metodología de estructura estándar para proyectos OpenCode.
 | Comando `/deprecar` para deprecar archivos/estructuras obsoletas | v1.4 |
 | Comando `/bug` — reportar bugs en $BUGS con template estándar | v1.5 |
 | Comando `/incidente` — registrar crashes runtime en $INCIDENTS | v1.5 |
+| `GUIA_ECOSISTEMAS.md` — mapa de ecosistemas y fronteras entre comandos | v1.7.2 |
+| CHANGELOG adopta Keep a Changelog: `[Unreleased]` + 6 categorías (Added, Changed, Deprecated, Removed, Fixed, Security) | v1.7.2+ |
+| ADR lifecycle states (Proposed → Accepted → Deprecated → Superseded) con campos `Supersedes`/`Superseded by` | v1.7.2+ |
+| `/commit` — validación de formato Conventional Commits (tipo/scope obligatorios) | v1.7.2+ |
+| `/version` — soporte `[YANKED]` en CHANGELOG, migración automática de `[Unreleased]` | v1.7.2+ |
+| `/doctor` — cuidado integral del proyecto | v1.8.0 |

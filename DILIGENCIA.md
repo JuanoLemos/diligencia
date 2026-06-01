@@ -1,4 +1,4 @@
-# Diligencia v1.7.2 — Estructura estándar de documentación
+# Diligencia v1.8.0 — Estructura estándar de documentación
 
 Sello de metodología para proyectos OpenCode.
 
@@ -36,6 +36,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| v1.8.0 | 2026-06-01 | CHANGELOG Keep a Changelog, ADR lifecycle, /commit Conventional Commits, /version [YANKED]+migración, plantillas stack (Node/Python/Go), GUIA_REFERENCIA_RAPIDA.md, /explica mejorado, comandos --auto delegate desde /version. |
 | v1.7.2 | 2026-06-01 | GUIA_ECOSISTEMAS.md: mapa de 9 ecosistemas, cadenas de orquestación, reglas de frontera. Cross-refs actualizadas en GUIA_DE_COMANDOS.md, /explica, ROADMAP, CHECKLIST. |
 | v1.7.1 | 2026-06-01 | Adopción semver 3-partes (vX.Y.Z). /doctor ejecutado sobre Diligencia: bugs.md, incidentes.md, .opencode/commands/ creados en disco. /version, /diligencia-check, template DILIGENCIA.md actualizados para compatibilidad vX.Y.Z. |
 | v1.7.0 | 2026-06-01 | /doctor — comando unificado de cuidado integral (orquesta 6 sub-comandos en 3 fases). Tracking documental sincronizado (AGENTS, GUIA_COMANDOS, BUENAS_PRACTICAS, ROADMAP, CHECKLIST). |

@@ -1,7 +1,9 @@
 # ADR-NNN: [Título descriptivo]
 
 **Fecha:** YYYY-MM-DD
-**Status:** Proposed
+**Status:** [Proposed | Accepted | Deprecated | Superseded]
+**Supersedes:** <ADR-NNN o N/A>
+**Superseded by:** <ADR-NNN o N/A>
 
 ## Context
 
@@ -14,3 +16,6 @@
 ## Consequences
 
 [Qué resulta de esta decisión. Positivo, negativo, neutral. Riesgos aceptados.]
+
+---
+*Lifecycle: Proposed → Accepted → Deprecated → Superseded*

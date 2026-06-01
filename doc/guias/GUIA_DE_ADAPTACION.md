@@ -14,6 +14,8 @@ Proceso completo para migrar un proyecto existente a la estructura estándar Dil
 
 Usar `/adaptar` para disparar la detección y el flujo automáticamente.
 
+> **Stack templates**: Si existe `~/.config/opencode/templates/<stack>/HARNESS.md`, `/adaptar` lo aplica como overlay sobre el HARNESS.md genérico, pre-configurando test/lint/typecheck/build/dev para Node.js, Python o Go.
+
 ---
 
 ## 2. Las 6 fases de migración
@@ -97,7 +99,7 @@ Con `@sdd-reviewer`:
 - [ ] `doc/arch/` existe con ADRs/SISTEMA/bitácora
 - [ ] `doc/guias/` existe (renombrado de `doc/guia/` si aplica)
 - [ ] `.opencode/commands/` sin rutas hardcodeadas
-- [ ] `.opencode/HARNESS.md` creado desde template
+- [ ] `.opencode/HARNESS.md` creado desde template base + stack overlay (si aplica)
 - [ ] backup scripts apuntan a ubicaciones nuevas
 - [ ] scripts de guard apuntan a ubicaciones nuevas
 - [ ] `autoridad/` (o carpeta legacy) ya no existe

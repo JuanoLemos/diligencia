@@ -65,14 +65,18 @@
 - [x] MECANICA-DOCUMENTAL.md — mapa del motor documental
 - [x] Template `incidentes.md` en doc-base (externalizado para /adaptar)
 - [x] Template `sesion.md` en doc-base (journal multi-agente)
-- [ ] `/doctor` — cuidado integral del proyecto (estructura + código + tracking + limpieza)
+- [x] `/doctor` — cuidado integral del proyecto (estructura + código + tracking + limpieza)
 
 ## P2 — Próximos
 
 - [x] `GUIA_ECOSISTEMAS.md` — mapa de ecosistemas y fronteras
+- [x] CHANGELOG adopta Keep a Changelog: `[Unreleased]` + 6 categorías
+- [x] ADR lifecycle states (Proposed → Accepted → Deprecated → Superseded)
+- [x] `/commit` validación Conventional Commits (tipo/scope obligatorio)
+- [x] `/version` soporte `[YANKED]` + migración automática de `[Unreleased]`
 
 ## P3 — Mejoras futuras
 
 - [x] Script de validación de estructura
-- [ ] Plantillas por stack
-- [ ] Guía de referencia rápida
+- [x] Plantillas por stack
+- [x] Guía de referencia rápida
