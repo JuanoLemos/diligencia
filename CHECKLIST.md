@@ -8,12 +8,12 @@
 - [x] Comando global /adaptar (Diligencia v1.0)
 - [x] ADAPTAR-COMANDOS.md v1.3
 - [x] DILIGENCIA.md — sello de metodología
-- [ ] GUIA_DE_USO.md — manual completo
-- [ ] GUIA_DE_ADAPTACION.md — proceso de migración
-- [ ] GUIA_DE_COMANDOS.md — referencia de comandos
-- [ ] ADR-001: Arquitectura de dos capas
-- [ ] ADR-002: Sistema de variables
-- [ ] ADR-003: Estructura estándar de archivos
+- [x] GUIA_DE_USO.md — manual completo (v1.0)
+- [x] GUIA_DE_ADAPTACION.md — proceso de migración (v1.0)
+- [x] GUIA_DE_COMANDOS.md — referencia de comandos (v1.0)
+- [x] ADR-001: Arquitectura de dos capas (v1.0)
+- [x] ADR-002: Sistema de variables (v1.0)
+- [x] ADR-003: Estructura estándar de archivos (v1.0)
 
 ## P2 — Proyectos adaptados
 
@@ -61,4 +61,3 @@
 - [ ] Script de validación de estructura
 - [ ] Plantillas por stack
 - [ ] Guía de referencia rápida
-- [ ] GUIA_DE_COMANDOS.md — referencia de 29 comandos fundamentales

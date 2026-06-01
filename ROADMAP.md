@@ -16,11 +16,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 ## Ahora (Now)
 
-| Item | Prioridad | Estado |
-|---|---|---|
-| Documentación completa del sistema | P1 | 🟡 En progreso |
-| ADRs de arquitectura (001-003) | P1 | 🟡 En progreso |
-| Guías de uso + adaptación | P1 | 🟡 En progreso |
+*(nada en progreso actualmente)*
 
 ## Siguiente (Next)
 
@@ -31,7 +27,6 @@ Metodología de estructura estándar para proyectos OpenCode.
 | GUIA_DE_COMANDOS.md — referencia de 29 comandos fundamentales | P2 | 🔴 Pendiente |
 | Plantillas por stack (Node, Python, Go) | P2 | 🔴 Pendiente |
 | GUIA_REFERENCIA_RAPIDA.md | P2 | 🔴 Pendiente |
-| Estandarizar comandos globales (Guarda + Formato + Validación + Anti-patrones + Imperativo) | P2 | ✅ Completo |
 
 ## Futuro (Later)
 
@@ -45,6 +40,9 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 | Item | Instancia |
 |---|---|
+| Documentación completa del sistema (ADRs + guías + estructura) | v1.0 |
+| ADRs de arquitectura (001-003) | v1.0 |
+| Guías de uso + adaptación | v1.0 |
 | Template doc-base (7 archivos) | v1.0 |
 | Comando global /adaptar (Diligencia v1.0) | v1.0 |
 | Migración Némesis Detective | v1.0 |
@@ -52,3 +50,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | ADAPTAR-COMANDOS.md v1.3 | v1.0 |
 | Estandarización comandos globales (guarda + imperativo + Formato/Validación/Anti-patrones) | v1.1 |
 | 12 comandos Nemesis adaptados a globales (29 total) + /adaptar copia comandos | v1.2 |
+| ROADMAP stale data corregido (Ahora→Completado, duplicados Next) | v1.3 |
+| AGENTS.md actualizado: 29 comandos + variables faltantes | v1.3 |
+| /updoc mejorado: auditoría documental entre versiones | v1.3 |
+| CHECKLIST sincronizado (ADRs/guías tildados, duplicado P3 removido) | v1.3 |

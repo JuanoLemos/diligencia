@@ -16,18 +16,43 @@ Documentación de la metodología de estructura estándar para proyectos OpenCod
 | $ARCH | `doc/arch/` | ADRs y arquitectura |
 | $TEMPLATE_DIR | `~/.config/opencode/templates/doc-base/` | Template base |
 | $GLOBAL_COMMANDS | `~/.config/opencode/commands/` | Comandos globales |
+| $RM | `ROADMAP.md` | Alias de $ROADMAP |
+| $COMMANDS_DIR | `.opencode/commands/` | Comandos locales del proyecto |
+| $TESTING | *(no definido)* | Tests pendientes (proyectos con testing) |
 
-## Comandos globales heredados
+## Comandos globales heredados — 29 fundamentales
 
-| Comando | Descripción |
-|---|---|
-| /adaptar | Adaptar proyecto a estructura Diligencia |
-| /plan | Planificar en modo PLAN |
-| /commit | Git add + commit formateado |
-| /health | Verificar sintaxis y consistencia |
-| /debug | Análisis profundo |
-| /limpiar | Limpiar temporales |
-| ADAPTAR-COMANDOS.md | Referencia técnica completa |
+| Comando | Descripción | Tipo |
+|---|---|---|
+| /adaptar | Adaptar proyecto a estructura Diligencia | Declarativo |
+| /plan | Planificar en modo PLAN | Declarativo |
+| /commit | Git add + commit formateado | Procedural |
+| /health | Verificar sintaxis y consistencia | Declarativo |
+| /debug | Análisis profundo | Declarativo |
+| /limpiar | Limpiar temporales | Procedural |
+| /estado | Reporte rápido del proyecto | Declarativo |
+| /checklist | Revisar CHECKLIST + ROADMAP | Declarativo |
+| /rm | Revisar ROADMAP por área | Declarativo |
+| /next | Próximos 5 pasos según CHECKLIST | Declarativo |
+| /qa | Revisión cruzada de calidad | Declarativo |
+| /+rm | Agregar item al ROADMAP | Declarativo |
+| /+guia | Crear guía nueva en doc/guias | Declarativo |
+| /+pend | Agregar pendiente genérico | Declarativo |
+| /updoc | Actualizar documentación completa | Declarativo |
+| /upguia | Actualizar guía existente | Declarativo |
+| /+mec | Crear documento desde template | Declarativo |
+| /upmec | Actualizar documento existente | Declarativo |
+| /+rmi | Agregar ítem a $RM | Declarativo |
+| /backup | Backup pre-edit genérico | Procedural |
+| /backupall | Zip completo del proyecto | Procedural |
+| /foco | Enfocar agente en área específica | Declarativo |
+| /news | Leer y distribuir $NEWS_FILE | Declarativo |
+| /version | Cerrar sesión: bump + updoc + commit | Declarativo |
+| /report | Reporte consolidado | Declarativo |
+| /apply | Aplicar handoff file a código | Declarativo |
+| /head | Preparar edición de sección en archivo | Declarativo |
+| /notify | Toggle de notificación remota | Procedural |
+| ADAPTAR-COMANDOS.md | Referencia técnica completa (no es comando) | Referencia |
 
 ## Focus
 - Documentar la metodología

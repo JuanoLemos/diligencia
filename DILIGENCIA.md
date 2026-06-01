@@ -1,4 +1,4 @@
-# Diligencia v1.2 — Estructura estándar de documentación
+# Diligencia v1.3 — Estructura estándar de documentación
 
 Sello de metodología para proyectos OpenCode.
 
@@ -27,6 +27,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Proyecto | Fecha | Estado |
 |---|---|---|
+| Diligencia (autor) | 2026-05-31 | ✅ |
 | Némesis Detective | 2026-05-08 | ✅ |
 | MarketAI | 2026-05-08 | ✅ |
 
@@ -34,6 +35,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| v1.3 | 2026-05-31 | ROADMAP stale data corregido (Ahora→Completado). AGENTS.md actualizado a 29 comandos + variables faltantes. /updoc mejorado con auditoría documental entre versiones. CHECKLIST sincronizado. /adaptar con conciencia de versión. |
 | v1.2 | 2026-05-31 | 12 comandos Nemesis adaptados a globales (+mec, upmec, +rm, backup, backupall, foco, news, version, report, apply, head, notify) — 29 comandos fundamentales totales. /adaptar copia comandos al proyecto. |
 | v1.1 | 2026-05-31 | Estándar de comandos: guarda + imperativo + Formato/Validación/Anti-patrones obligatorias |
 | v1.0 | 2026-05-08 | Convención inicial: doc-base template, $variables en AGENTS.md, dos capas de comandos, /adaptar global |
