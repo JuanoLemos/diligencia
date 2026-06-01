@@ -21,6 +21,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 | Mecánicas del juego | `doc/mecanicas/` |
 | Variables de ruta | `AGENTS.md` → `Mapeo de rutas` |
 | Comandos locales | `.opencode/commands/` |
+| Harness | `.opencode/HARNESS.md` (test, lint, skills, stack) |
 | Comandos globales | `~/.config/opencode/commands/` |
 
 ## Proyectos adaptados

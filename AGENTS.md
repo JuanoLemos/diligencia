@@ -18,9 +18,10 @@ Documentación de la metodología de estructura estándar para proyectos OpenCod
 | $GLOBAL_COMMANDS | `~/.config/opencode/commands/` | Comandos globales |
 | $RM | `ROADMAP.md` | Alias de $ROADMAP |
 | $COMMANDS_DIR | `.opencode/commands/` | Comandos locales del proyecto |
-| $TESTING | *(no definido)* | Tests pendientes (proyectos con testing) |
+| $HARNESS | `.opencode/HARNESS.md` | Configuración de harness (test, lint, skills, stack) |
+| $TESTING | *(definido en HARNESS.md)* | Comando de test del proyecto |
 
-## Comandos globales heredados — 29 fundamentales
+## Comandos globales heredados — 30 fundamentales
 
 | Comando | Descripción | Tipo |
 |---|---|---|
@@ -29,8 +30,10 @@ Documentación de la metodología de estructura estándar para proyectos OpenCod
 | /commit | Git add + commit formateado | Procedural |
 | /health | Verificar sintaxis y consistencia | Declarativo |
 | /debug | Análisis profundo | Declarativo |
+| /diligencia-check | Validar estructura Diligencia del proyecto | Declarativo |
 | /limpiar | Limpiar temporales | Procedural |
 | /estado | Reporte rápido del proyecto | Declarativo |
+| /explica | Explicar concepto breve y sencillo | Declarativo |
 | /checklist | Revisar CHECKLIST + ROADMAP | Declarativo |
 | /rm | Revisar ROADMAP por área | Declarativo |
 | /next | Próximos 5 pasos según CHECKLIST | Declarativo |

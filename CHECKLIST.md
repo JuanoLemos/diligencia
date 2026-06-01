@@ -10,7 +10,7 @@
 - [x] DILIGENCIA.md — sello de metodología
 - [x] GUIA_DE_USO.md — manual completo (v1.0)
 - [x] GUIA_DE_ADAPTACION.md — proceso de migración (v1.0)
-- [x] GUIA_DE_COMANDOS.md — referencia de comandos (v1.0)
+- [x] GUIA_DE_COMANDOS.md — referencia de 30 comandos (v1.3)
 - [x] ADR-001: Arquitectura de dos capas (v1.0)
 - [x] ADR-002: Sistema de variables (v1.0)
 - [x] ADR-003: Estructura estándar de archivos (v1.0)
@@ -53,11 +53,14 @@
 - [x] `apply` — Aplicar handoff file a código
 - [x] `head` — Preparar edición de sección en archivo
 - [x] `notify` — Toggle de notificación remota
+- [x] `/explica` — explicación breve de conceptos
+- [x] `/diligencia-check` — validación automática de estructura
 - [x] `/adaptar` modificado: copia comandos globales a .opencode/commands/ del proyecto
 - [x] Nemesis cleanup: 12 archivos removidos, 3 archivados, AGENTS.md actualizado
+- [x] HARNESS.md integrado al estándar: template, ADR-003, diligencia-check, /adaptar
 
 ## P3 — Mejoras futuras
 
-- [ ] Script de validación de estructura
+- [x] Script de validación de estructura
 - [ ] Plantillas por stack
 - [ ] Guía de referencia rápida

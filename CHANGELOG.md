@@ -2,6 +2,23 @@
 
 ---
 
+## v1.4 — 2026-05-31
+
+### Added
+- Template `HARNESS.md` en `doc-base/` — config de harness (test, lint, skills, stack) para proyectos nuevos
+- Diligencia `.opencode/HARNESS.md` propio — harness autorreferencial de la metodología
+
+### Changed
+- ADR-003: árbol incorpora `.opencode/HARNESS.md`, regla 5 lo define como estándar
+- `/diligencia-check`: verifica existencia de `.opencode/HARNESS.md` (categoría A)
+- `/adaptar`: Flujo A copia HARNESS.md desde template; Flujo C verifica su existencia; tabla migración v1.2→v1.3 lo incluye
+- `AGENTS.md` (template y Diligencia): `$TESTING` → `*(definido en HARNESS.md)*`, + `$HARNESS`
+- `DILIGENCIA.md`: + fila Harness en tabla Convención
+- `GUIA_DE_ADAPTACION.md`: + ítem HARNESS.md en checklist post-migración
+
+### Documentation
+- `CHECKLIST.md`, `ROADMAP.md` actualizados con hitos de integración HARNESS
+
 ## v1.3 — 2026-05-31
 
 ### Fixed

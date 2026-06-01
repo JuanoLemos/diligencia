@@ -97,6 +97,7 @@ Con `@sdd-reviewer`:
 - [ ] `doc/arch/` existe con ADRs/SISTEMA/bitácora
 - [ ] `doc/guias/` existe (renombrado de `doc/guia/` si aplica)
 - [ ] `.opencode/commands/` sin rutas hardcodeadas
+- [ ] `.opencode/HARNESS.md` creado desde template
 - [ ] backup scripts apuntan a ubicaciones nuevas
 - [ ] scripts de guard apuntan a ubicaciones nuevas
 - [ ] `autoridad/` (o carpeta legacy) ya no existe
