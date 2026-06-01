@@ -2,6 +2,23 @@
 
 ---
 
+## v1.6 — 2026-05-31
+
+### Added
+- `doc/mecanicas/MECANICA-DOCUMENTAL.md` — mapa del motor documental (variables, flujo, sincronización, anti-patrones)
+- Template `incidentes.md` en `doc-base/` — template standalone para incidentes (simétrico a bugs.md)
+- Template `sesion.md` en `doc-base/` — journal de sesión multi-agente con decisiones y commits
+- `doc/guias/GUIA_DE_BUENAS_PRACTICAS.md` — hábitos y workflows del desarrollador (disciplina de sesión, árbol de decisión, delegación, docs vivos, tracking, deprecar, anti-patrones)
+
+### Changed
+- `/updoc`: Fase D añadida — integridad de referencias cruzadas (D1 guías huérfanas, D2 templates sin consumidor, D3 scope /explica, D4 variables huérfanas). Fase antigua D → Fase E.
+- `/incidente`: referencias a template `incidentes.md` en doc-base en lugar de template inline
+- `/adaptar`: Flujo A step 7 crea `doc/arch/incidentes.md` desde template
+- `/explica`: scope ampliado a MECANICA-DOCUMENTAL.md y GUIA_DE_BUENAS_PRACTICAS.md
+- `GUIA_DE_COMANDOS.md`: + sección 8 guías relacionadas (incluye BUENAS_PRACTICAS, MECANICA-DOCUMENTAL)
+- Diligencia AGENTS.md: 33→36 comandos fundamentales
+- ROADMAP.md, CHECKLIST.md: tracking de nuevos items
+
 ## v1.5 — 2026-05-31
 
 ### Added

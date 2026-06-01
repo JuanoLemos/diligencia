@@ -61,6 +61,10 @@
 - [x] `/deprecar` — deprecar archivos/estructuras obsoletas
 - [x] `/bug` — reportar bugs en $BUGS con template estándar
 - [x] `/incidente` — registrar crashes runtime en $INCIDENTS
+- [ ] GUIA_DE_BUENAS_PRACTICAS.md — hábitos y workflows para el desarrollador
+- [ ] MECANICA-DOCUMENTAL.md — mapa del motor documental
+- [ ] Template `incidentes.md` en doc-base (externalizado para /adaptar)
+- [ ] Template `sesion.md` en doc-base (journal multi-agente)
 
 ## P3 — Mejoras futuras
 

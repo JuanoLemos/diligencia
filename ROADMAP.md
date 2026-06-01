@@ -22,6 +22,10 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 | Item | Prioridad | Estado |
 |---|---|---|
+| GUIA_DE_BUENAS_PRACTICAS.md — hábitos y workflows para el desarrollador | P2 | 🔴 Pendiente |
+| MECANICA-DOCUMENTAL.md — mapa del motor documental | P2 | 🔴 Pendiente |
+| Template `incidentes.md` en doc-base (externalizar, para /adaptar) | P2 | 🔴 Pendiente |
+| Template `sesion.md` en doc-base (journal de sesión multi-agente) | P3 | 🔴 Pendiente |
 | Plantillas por stack (Node, Python, Go) | P2 | 🔴 Pendiente |
 | GUIA_REFERENCIA_RAPIDA.md | P2 | 🔴 Pendiente |
 

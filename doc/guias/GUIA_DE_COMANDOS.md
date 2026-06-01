@@ -274,3 +274,14 @@ Ver `doc/guias/ESTANDAR-COMANDOS.md` para el template completo con todas las sec
 ## 7. ADAPTAR-COMANDOS.md
 
 `ADAPTAR-COMANDOS.md` en `~/.config/opencode/commands/` es una referencia técnica que documenta la metodología completa: estructura de proyecto, sistema de variables, comandos globales, y detalle de cada uno. No es un comando ejecutable — es el manual completo en un archivo.
+
+---
+
+## 8. Guías relacionadas
+
+- `GUIA_DE_USO.md` — introducción y flujo de trabajo
+- `GUIA_DE_ADAPTACION.md` — migración de proyectos
+- `GUIA_DE_REVISION.md` — auditoría del sistema
+- `GUIA_DE_BUENAS_PRACTICAS.md` — hábitos y workflows diarios
+- `MECANICA-DOCUMENTAL.md` — motor documental
+- `ESTANDAR-COMANDOS.md` — cómo escribir comandos
