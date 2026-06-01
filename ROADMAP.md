@@ -22,8 +22,6 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 | Item | Prioridad | Estado |
 |---|---|---|
-| Comando `/deprecar` para deprecar archivos/estructuras obsoletas | P2 | 🔴 Pendiente |
-
 | Plantillas por stack (Node, Python, Go) | P2 | 🔴 Pendiente |
 | GUIA_REFERENCIA_RAPIDA.md | P2 | 🔴 Pendiente |
 
@@ -56,3 +54,6 @@ Metodología de estructura estándar para proyectos OpenCode.
 | GUIA_DE_COMANDOS.md actualizado a v1.3: 30 comandos + /explica + arquitectura + categorías | v1.3 |
 | `diligencia-check` — validación automática de estructura (ADR-003, variables, comandos, versión) | v1.3 |
 | HARNESS.md integrado al estándar: template, ADR-003, /adaptar, diligencia-check | v1.3 |
+| Comando `/deprecar` para deprecar archivos/estructuras obsoletas | v1.4 |
+| Comando `/bug` — reportar bugs en $BUGS con template estándar | v1.5 |
+| Comando `/incidente` — registrar crashes runtime en $INCIDENTS | v1.5 |

@@ -2,6 +2,25 @@
 
 ---
 
+## v1.5 — 2026-05-31
+
+### Added
+- Template `bugs.md` en `doc-base/` — bug tracker estándar con P1/P2/P3, resumen tabular e historial
+- Comando `/bug` — reportar bugs en `$BUGS` con ID auto-incremental, severidad y archivo
+- Comando `/incidente` — registrar crashes runtime en `$INCIDENTS` con stack trace y mitigación
+- AGENTS.md (template y Diligencia): `$BUGS` → `doc/arch/bugs.md`, `$INCIDENTS` → `doc/arch/incidentes.md`
+
+### Changed
+- `/diligencia-check`: categoría A verifica existencia de `doc/arch/bugs.md` y `doc/arch/incidentes.md`
+- `/adaptar`: migración v1.3→v1.4 incluye `$BUGS`, `$INCIDENTS`, y creación de `doc/arch/bugs.md`
+- `/explica`: scope ampliado a bugs.md e incidentes.md
+- Diligencia AGENTS.md: 31→33 comandos fundamentales
+- `GUIA_DE_COMANDOS.md`: 31→33 entradas (+ /bug, + /incidente)
+
+### Commands
+- `/bug` declarativo: 8 secciones, ID auto B-NN, template fallback, actualiza $CHECKLIST
+- `/incidente` declarativo: 8 secciones, ID auto I-NN, template fallback, stack trace opcional
+
 ## v1.4 — 2026-05-31
 
 ### Added

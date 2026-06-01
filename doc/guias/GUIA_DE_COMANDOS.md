@@ -1,6 +1,6 @@
 # GUIA DE COMANDOS — Diligencia v1.3
 
-Referencia de los 30 comandos fundamentales del sistema Diligencia.
+Referencia de los 33 comandos fundamentales del sistema Diligencia.
 
 ---
 
@@ -46,15 +46,18 @@ Luego incluye secciones obligatorias según su tipo. Ver `doc/guias/ESTANDAR-COM
 | `/adaptar` | Declarativo | Flujo de sesión | Adapta el proyecto actual a estructura Diligencia |
 | `/apply` | Declarativo | Contexto/Edición | Aplica handoff file a archivos de código |
 | `/backup` | Procedural | Backup/Seguridad | Backup pre-edit de archivos críticos ($ADR, $SISTEMA, etc.) |
+| `/bug` | Declarativo | Calidad | Reporta bug en $BUGS con severidad, archivo y descripción |
 | `/backupall` | Procedural | Backup/Seguridad | Zip completo del proyecto |
 | `/checklist` | Declarativo | Roadmap/Backlog | Revisa CHECKLIST + ROADMAP y reporta estado |
 | `/commit` | Procedural | Flujo de sesión | `git add -A` + commit con formato estándar |
+| `/deprecar` | Declarativo | Calidad | Depreca archivos, comandos o estructuras obsoletas sin borrar |
 | `/debug` | Declarativo | Calidad | Análisis profundo de backend, frontend o base de datos |
 | `/diligencia-check` | Declarativo | Calidad | Valida estructura, variables, comandos y versión contra estándares Diligencia |
 | `/estado` | Declarativo | Roadmap/Backlog | Reporte rápido: commits recientes, pendientes, próximos pasos |
 | `/explica` | Declarativo | Contexto/Edición | Explica concepto breve y sencillo buscando en docs Diligencia |
 | `/foco` | Declarativo | Contexto/Edición | Enfoca al agente en un área específica del proyecto |
 | `/head` | Declarativo | Contexto/Edición | Prepara la edición de una sección en un archivo |
+| `/incidente` | Declarativo | Calidad | Registra incidente runtime en $INCIDENTS con stack y severidad |
 | `/health` | Declarativo | Calidad | Verifica sintaxis de paréntesis, rutas y JS |
 | `/limpiar` | Procedural | Calidad | Busca y elimina archivos temporales (`*.log`, `*.tmp`, `*.bak.*`) |
 | `/news` | Declarativo | Comunicación | Lee y distribuye $NEWS_FILE al equipo |
@@ -121,6 +124,9 @@ Verificación y limpieza de código y estructura.
 
 | Comando | Variables que usa |
 |---|---|
+| `/bug` | $BUGS, $CHECKLIST, AGENTS.md |
+| `/deprecar` | AGENTS.md, .opencode/commands/ |
+| `/incidente` | $INCIDENTS, $CHECKLIST, AGENTS.md |
 | `/diligencia-check` | AGENTS.md, ROADMAP.md, CHECKLIST.md, CHANGELOG.md, DILIGENCIA.md, .opencode/commands/ |
 | `/qa` | $CHECKLIST, $ROADMAP |
 | `/health` | — (lee archivos del proyecto) |

@@ -19,9 +19,11 @@ Documentación de la metodología de estructura estándar para proyectos OpenCod
 | $RM | `ROADMAP.md` | Alias de $ROADMAP |
 | $COMMANDS_DIR | `.opencode/commands/` | Comandos locales del proyecto |
 | $HARNESS | `.opencode/HARNESS.md` | Configuración de harness (test, lint, skills, stack) |
+| $BUGS | `doc/arch/bugs.md` | Bug tracker (P1/P2/P3, severidad, estado) |
+| $INCIDENTS | `doc/arch/incidentes.md` | Incidentes runtime y crashes |
 | $TESTING | *(definido en HARNESS.md)* | Comando de test del proyecto |
 
-## Comandos globales heredados — 30 fundamentales
+## Comandos globales heredados — 33 fundamentales
 
 | Comando | Descripción | Tipo |
 |---|---|---|
@@ -29,6 +31,8 @@ Documentación de la metodología de estructura estándar para proyectos OpenCod
 | /plan | Planificar en modo PLAN | Declarativo |
 | /commit | Git add + commit formateado | Procedural |
 | /health | Verificar sintaxis y consistencia | Declarativo |
+| /bug | Reportar bug en el proyecto | Declarativo |
+| /deprecar | Deprecar archivos/comandos/estructuras obsoletas | Declarativo |
 | /debug | Análisis profundo | Declarativo |
 | /diligencia-check | Validar estructura Diligencia del proyecto | Declarativo |
 | /limpiar | Limpiar temporales | Procedural |
@@ -54,6 +58,7 @@ Documentación de la metodología de estructura estándar para proyectos OpenCod
 | /report | Reporte consolidado | Declarativo |
 | /apply | Aplicar handoff file a código | Declarativo |
 | /head | Preparar edición de sección en archivo | Declarativo |
+| /incidente | Registrar incidente o crash runtime | Declarativo |
 | /notify | Toggle de notificación remota | Procedural |
 | ADAPTAR-COMANDOS.md | Referencia técnica completa (no es comando) | Referencia |
 
