@@ -66,6 +66,10 @@
 - [x] Template `incidentes.md` en doc-base (externalizado para /adaptar)
 - [x] Template `sesion.md` en doc-base (journal multi-agente)
 - [x] `/doctor` — cuidado integral del proyecto (estructura + código + tracking + limpieza)
+- [x] `/reanudar` — recuperar sesión tras interrupción brusca
+- [x] Template DILIGENCIA.md y adaptar.md sincronizados a v1.10.0 (bug: reportaban v1.7.1 y v1.3)
+- [x] `/version`: si proyecto = Diligencia, actualiza template + adaptar.md al versionar
+- [x] `/updoc`: D5 — detección de staleness template vs proyecto
 
 ## P2 — Próximos
 

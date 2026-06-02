@@ -23,7 +23,7 @@ Documentación de la metodología de estructura estándar para proyectos OpenCod
 | $INCIDENTS | `doc/arch/incidentes.md` | Incidentes runtime y crashes |
 | $TESTING | *(definido en HARNESS.md)* | Comando de test del proyecto |
 
-## Comandos globales heredados — 33 fundamentales
+## Comandos globales heredados — 34 fundamentales
 
 | Comando | Descripción | Tipo |
 |---|---|---|
@@ -61,6 +61,7 @@ Documentación de la metodología de estructura estándar para proyectos OpenCod
 | /head | Preparar edición de sección en archivo | Declarativo |
 | /incidente | Registrar incidente o crash runtime | Declarativo |
 | /notify | Toggle de notificación remota | Procedural |
+| /reanudar | Recuperar sesión tras interrupción brusca | Declarativo |
 | ADAPTAR-COMANDOS.md | Referencia técnica completa (no es comando) | Referencia |
 
 ## Focus

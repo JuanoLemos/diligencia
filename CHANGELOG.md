@@ -11,6 +11,16 @@
 ### Fixed
 ### Security
 
+## v1.10.1 — 2026-06-01
+
+### Fixed
+- `/adaptar` reportaba versión incorrecta (v1.7.1) por template DILIGENCIA.md y /adaptar.md stalé. Sincronizados a v1.10.0.
+
+### Changed
+- `/version`: si proyecto = Diligencia, actualiza adaptar.md y template DILIGENCIA.md con la nueva versión
+- `/updoc`: D5 — detección de staleness entre template DILIGENCIA.md, /adaptar.md y proyecto
+- `/doctor` sobre Diligencia: 3 correcciones aplicadas — RM Completado + CHECKLIST + AGENTS.md actualizados con v1.10.0 y /reanudar
+
 ## v1.10.0 — 2026-06-01
 
 ### Changed

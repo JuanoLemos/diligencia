@@ -67,3 +67,9 @@ Metodología de estructura estándar para proyectos OpenCode.
 | Plantillas por stack (Node, Python, Go) | v1.8.0 |
 | GUIA_REFERENCIA_RAPIDA.md | v1.8.0 |
 | Integración con CI/CD — GitHub Actions workflow de validación de estructura (Category A/ADR-003) | v1.9.0 |
+| `/version` — autodetección post-/doctor: si `[Unreleased]` contiene `/doctor`, sugiere `patch` | v1.10.0 |
+| `/doctor` — circuito → `/version patch` tras correcciones en Fase 3 | v1.10.0 |
+| `/reanudar` — recuperar sesión tras interrupción brusca (pérdida de conexión, brutalstop) | v1.10.0 |
+| Template DILIGENCIA.md y adaptar.md sincronizados a v1.10.0 (bug: reportaban v1.7.1 y v1.3) | v1.10.1 |
+| `/version`: si proyecto = Diligencia, actualiza template + adaptar.md al versionar | v1.10.1 |
+| `/updoc`: D5 — detección de staleness template vs proyecto | v1.10.1 |

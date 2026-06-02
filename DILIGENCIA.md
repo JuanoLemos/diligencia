@@ -1,4 +1,4 @@
-# Diligencia v1.10.0 — Estructura estándar de documentación
+# Diligencia v1.10.1 — Estructura estándar de documentación
 
 Sello de metodología para proyectos OpenCode.
 
@@ -36,6 +36,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| v1.10.1 | 2026-06-01 | Bug fix: /adaptar reportaba v1.7.1 por template DILIGENCIA.md y adaptar.md stalé. /version ahora sincroniza template+adaptar al versionar Diligencia. /updoc D5 detecta staleness. |
 | v1.10.0 | 2026-06-01 | `/version`: autodetección post-/doctor sugiere patch. `/doctor`: circuito → `/version patch` tras correcciones. Nuevo `/reanudar`: recuperación de sesión tras interrupción brusca. |
 | v1.9.1 | 2026-06-01 | `/doctor` sobre Diligencia: items stale en ROADMAP.md movidos de Siguiente a Completado. CHANGELOG.md con entrada de /doctor. Gap D2 cerrado (diligencia-check.yml referenciado explícitamente en /adaptar). |
 | v1.9.0 | 2026-06-01 | Integración con CI/CD: GitHub Actions workflow de validación de estructura Diligencia (Category A/ADR-003). Copiado automáticamente por /adaptar vía doc-base. |
