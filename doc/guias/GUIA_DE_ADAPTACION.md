@@ -15,6 +15,7 @@ Proceso completo para migrar un proyecto existente a la estructura estándar Dil
 Usar `/adaptar` para disparar la detección y el flujo automáticamente.
 
 > **Stack templates**: Si existe `~/.config/opencode/templates/<stack>/HARNESS.md`, `/adaptar` lo aplica como overlay sobre el HARNESS.md genérico, pre-configurando test/lint/typecheck/build/dev para Node.js, Python o Go.
+> **CI/CD Integration**: El template doc-base incluye `.github/workflows/diligencia-check.yml`, un GitHub Actions workflow que valida la estructura Diligencia (Category A — ADR-003) en cada push y pull request. Si el proyecto usa GitHub Actions y copió el template con `/adaptar`, el check corre automáticamente.
 
 ---
 

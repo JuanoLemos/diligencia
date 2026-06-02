@@ -30,7 +30,6 @@ Metodología de estructura estándar para proyectos OpenCode.
 | Item | Prioridad | Estado |
 |---|---|---|
 | CLI tool independiente | P3 | 🔴 Pendiente |
-| Integración con CI/CD | P3 | 🔴 Pendiente |
 | Plugin marketplace | P3 | 🔴 Pendiente |
 
 ## Completado
@@ -67,3 +66,4 @@ Metodología de estructura estándar para proyectos OpenCode.
 | `/commit` — validación de formato Conventional Commits (tipo/scope obligatorios) | v1.7.2+ |
 | `/version` — soporte `[YANKED]` en CHANGELOG, migración automática de `[Unreleased]` | v1.7.2+ |
 | `/doctor` — cuidado integral del proyecto | v1.8.0 |
+| Integración con CI/CD — GitHub Actions workflow de validación de estructura (Category A/ADR-003) | v1.9.0 |

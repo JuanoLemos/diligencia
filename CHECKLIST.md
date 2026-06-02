@@ -80,3 +80,4 @@
 - [x] Script de validación de estructura
 - [x] Plantillas por stack
 - [x] Guía de referencia rápida
+- [x] Integración con CI/CD — GitHub Actions workflow de validación de estructura Diligencia (Category A)

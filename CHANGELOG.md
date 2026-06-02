@@ -11,6 +11,11 @@
 ### Fixed
 ### Security
 
+## v1.9.0 — 2026-06-01
+
+### Added
+- Integración con CI/CD: `.github/workflows/diligencia-check.yml` — GitHub Actions workflow que valida estructura Diligencia (Category A/ADR-003) en push y pull request. Copiado automáticamente por `/adaptar` vía doc-base.
+
 ## v1.8.0 — 2026-06-01
 
 ### Added
