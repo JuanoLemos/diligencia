@@ -11,6 +11,11 @@
 ### Fixed
 ### Security
 
+## v1.9.1 — 2026-06-01
+
+### Changed
+- `/doctor` sobre Diligencia: items stale "Plantillas por stack" y "GUIA_REFERENCIA_RAPIDA.md" movidos de Siguiente a Completado en ROADMAP.md
+
 ## v1.9.0 — 2026-06-01
 
 ### Added

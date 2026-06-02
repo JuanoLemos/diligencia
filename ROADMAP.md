@@ -2,7 +2,7 @@
 
 Metodología de estructura estándar para proyectos OpenCode.
 
-Última actualización: 2026-05-31
+Última actualización: 2026-06-01
 
 ---
 
@@ -22,8 +22,6 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 | Item | Prioridad | Estado |
 |---|---|---|
-| Plantillas por stack (Node, Python, Go) | P2 | ✅ Hecho |
-| GUIA_REFERENCIA_RAPIDA.md | P2 | ✅ Hecho |
 
 ## Futuro (Later)
 
@@ -66,4 +64,6 @@ Metodología de estructura estándar para proyectos OpenCode.
 | `/commit` — validación de formato Conventional Commits (tipo/scope obligatorios) | v1.7.2+ |
 | `/version` — soporte `[YANKED]` en CHANGELOG, migración automática de `[Unreleased]` | v1.7.2+ |
 | `/doctor` — cuidado integral del proyecto | v1.8.0 |
+| Plantillas por stack (Node, Python, Go) | v1.8.0 |
+| GUIA_REFERENCIA_RAPIDA.md | v1.8.0 |
 | Integración con CI/CD — GitHub Actions workflow de validación de estructura (Category A/ADR-003) | v1.9.0 |

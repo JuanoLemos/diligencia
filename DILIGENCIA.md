@@ -1,4 +1,4 @@
-# Diligencia v1.9.0 — Estructura estándar de documentación
+# Diligencia v1.9.1 — Estructura estándar de documentación
 
 Sello de metodología para proyectos OpenCode.
 
@@ -36,6 +36,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| v1.9.1 | 2026-06-01 | `/doctor` sobre Diligencia: items stale en ROADMAP.md movidos de Siguiente a Completado. CHANGELOG.md con entrada de /doctor. Gap D2 cerrado (diligencia-check.yml referenciado explícitamente en /adaptar). |
 | v1.9.0 | 2026-06-01 | Integración con CI/CD: GitHub Actions workflow de validación de estructura Diligencia (Category A/ADR-003). Copiado automáticamente por /adaptar vía doc-base. |
 | v1.8.0 | 2026-06-01 | CHANGELOG Keep a Changelog, ADR lifecycle, /commit Conventional Commits, /version [YANKED]+migración, plantillas stack (Node/Python/Go), GUIA_REFERENCIA_RAPIDA.md, /explica mejorado, comandos --auto delegate desde /version. |
 | v1.7.2 | 2026-06-01 | GUIA_ECOSISTEMAS.md: mapa de 9 ecosistemas, cadenas de orquestación, reglas de frontera. Cross-refs actualizadas en GUIA_DE_COMANDOS.md, /explica, ROADMAP, CHECKLIST. |
