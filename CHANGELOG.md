@@ -11,6 +11,13 @@
 ### Fixed
 ### Security
 
+## v1.10.0 — 2026-06-01
+
+### Changed
+- `/version`: autodetección post-/doctor — si `[Unreleased]` contiene `/doctor`, sugiere `patch` en lugar de `minor`
+- `/doctor`: circuito `/doctor` → `/version patch` — sugiere ejecutar `/version patch` tras correcciones
+- Nuevo comando `/reanudar`: recuperar sesión tras interrupción brusca (pérdida de conexión, brutalstop)
+
 ## v1.9.1 — 2026-06-01
 
 ### Changed
