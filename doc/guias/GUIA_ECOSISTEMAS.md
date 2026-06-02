@@ -1,4 +1,4 @@
-# GUIA DE ECOSISTEMAS — Diligencia v1.0
+# GUIA DE ECOSISTEMAS — Diligencia v1.10.1
 
 Mapa de los 9 ecosistemas de comandos: qué hacen, cuándo se ejecutan, qué archivos gestionan, y las reglas de frontera entre ellos.
 
@@ -21,8 +21,8 @@ Cada comando pertenece a un ecosistema primario. Algunos comandos (como `/deprec
 | # | Ecosistema | Propósito | Comandos | Cuándo se usa | Archivos que gestiona |
 |---|---|---|---|---|---|
 | 1 | **DOCTOR** | Cuidado integral del proyecto | `/doctor`, `/health`, `/diligencia-check`, `/bug`, `/incidente`, `/limpiar`, `/deprecar` | Revisión periódica, antes de commit, al adoptar un proyecto existente | `bugs.md`, `incidentes.md`, `.old/**`, `CHECKLIST.md` |
-| 2 | **VERSION** | Versionado y sincronización de documentación | `/version`, `/updoc` | Al cerrar una sesión, antes de commit, después de cambios en docs | `DILIGENCIA.md`, `CHANGELOG.md`, `ROADMAP.md`, `CHECKLIST.md` |
-| 3 | **ADAPTAR** | Inicialización y migración de proyectos | `/adaptar`, `@sdd-architect`, `@sdd-implement`, `@sdd-reviewer`, `@sdd-verify` | Proyecto nuevo, migración de proyecto existente | Estructura de proyecto, `DILIGENCIA.md`, `CHANGELOG.md`, `doc/`, `templates/doc-base/**` |
+| 2 | **VERSION** | Versionado, sincronización y recuperación de sesión | `/version`, `/updoc`, `/reanudar` | Al cerrar una sesión, tras interrupción brusca, antes de commit, después de cambios en docs | `DILIGENCIA.md`, `CHANGELOG.md`, `ROADMAP.md`, `CHECKLIST.md` |
+| 3 | **ADAPTAR** | Inicialización y migración de proyectos | `/adaptar`, `@sdd-architect`, `@sdd-implement`, `@sdd-reviewer`, `@sdd-verify` | Proyecto nuevo, migración de proyecto existente | Estructura de proyecto, `DILIGENCIA.md`, `CHANGELOG.md`, `doc/`, `.github/workflows/`, `templates/doc-base/**` |
 | 4 | **DESARROLLO** | Definición y consulta del lenguaje del sistema | `/crear-comando`, `/explica` | Al crear un comando nuevo, al preguntar por un concepto | `ESTANDAR-COMANDOS.md`, archivos de comandos, documentación indexada |
 | 5 | **CALIDAD** | Validación de código runtime | `/lint`, `/typecheck` | Después de editar código, en hooks de pre-commit, CI | Código fuente del proyecto (ningún archivo de Diligencia) |
 | 6 | **DOCUMENTACIÓN** | Autoría de mecánicas y guías | `/+mec`, `/+guia` | Al crear una mecánica nueva, al crear una guía nueva | `doc/mecanicas/`, `doc/guias/` |
@@ -50,19 +50,23 @@ Cada comando pertenece a un ecosistema primario. Algunos comandos (como `/deprec
     ├── /incidente        — crear/actualizar incidentes
     ├── /limpiar         — limpieza
     └── /deprecar        — mover a .old/
+    ↓
+    └── Sugiere `/version patch` para consolidar correcciones
 ```
 
 ### VERSION (secuencia de cierre de sesión)
 
 ```
 /version
+├── Auto-detecta: ¿viene de /doctor? → sugiere `patch` en vez de `minor`
 ├── Bump DILIGENCIA.md
+├── ¿Proyecto = Diligencia? → sync template + adaptar.md
 ├── Actualiza CHANGELOG.md
 └── Llama a /updoc
     ├── Fase A — sincronizar versiones
     ├── Fase B — detectar comandos nuevos
     ├── Fase C — actualizar tracking (RM, CHECKLIST)
-    ├── Fase D — validación cruzada entre docs
+    ├── D5 — detecta staleness template vs proyecto
     └── Fase E — archivar y cerrar
 ```
 
@@ -71,10 +75,10 @@ Cada comando pertenece a un ecosistema primario. Algunos comandos (como `/deprec
 ```
 /adaptar
 ├── Crea estructura de proyecto
-├── Copia templates doc-base
+├── Copia templates doc-base (incluye .github/workflows/diligencia-check.yml)
 ├── Adapta comandos globales
-└── Registra en AGENTS.md
-    └── Luego: @sdd-architect → @sdd-implement → @sdd-reviewer/@sdd-verify
+├── Registra en AGENTS.md
+└── Luego: @sdd-architect → @sdd-implement → @sdd-reviewer/@sdd-verify
 ```
 
 ---
@@ -116,6 +120,7 @@ Cada comando pertenece a un ecosistema primario. Algunos comandos (como `/deprec
 | `/explica` | DESARROLLO | CONTEXTO (lee variables y estado) |
 | `/health` | DOCTOR | CALIDAD (validación de stack) |
 | `/doctor` | DOCTOR | — (es el orquestador, no se mueve) |
+| `/reanudar` | VERSION | — (recuperación de sesión) |
 
 ---
 
@@ -126,6 +131,7 @@ Cada comando pertenece a un ecosistema primario. Algunos comandos (como `/deprec
 │
 ├── Revisar salud del proyecto    → DOCTOR  → `/doctor`
 ├── Cerrar una sesión             → VERSION → `/version`
+├── Recuperar sesión interrumpida → VERSION → `/reanudar`
 ├── Nuevo proyecto                → ADAPTAR → `/adaptar`
 ├── Crear un comando nuevo        → DESARROLLO → `/crear-comando`
 ├── Preguntar por un concepto     → DESARROLLO → `/explica`
@@ -154,6 +160,7 @@ Cada comando pertenece a un ecosistema primario. Algunos comandos (como `/deprec
 | `doc/mecanicas/*` | — | — | — | — | — | Crea | — | — | — |
 | `ESTANDAR-COMANDOS.md` | — | — | — | Lee/Actualiza | — | — | — | — | — |
 | `comandos/*.md` | — | — | — | Crea | — | — | — | — | — |
+| `.github/workflows/diligencia-check.yml` | — | — | Copia template | — | — | — | — | — | — |
 | `.old/**` | Indica mover | — | — | — | — | — | — | Escribe | — |
 | Código fuente proyecto | — | — | — | — | Valida | — | — | — | — |
 | Repositorio git | — | — | — | — | — | — | — | — | Escribe |

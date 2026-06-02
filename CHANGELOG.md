@@ -11,6 +11,11 @@
 ### Fixed
 ### Security
 
+## v1.10.2 — 2026-06-01
+
+### Fixed
+- Template DILIGENCIA.md (doc-base) y /adaptar.md sincronizados a v1.10.2 — estaban en v1.10.0 mientras proyecto en v1.10.1
+
 ## v1.10.1 — 2026-06-01
 
 ### Fixed

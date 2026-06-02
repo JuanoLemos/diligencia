@@ -1,4 +1,4 @@
-# GUIA DE REVISIÓN — Diligencia v1.0
+# GUIA DE REVISIÓN — Diligencia v1.10.1
 
 Plan paso a paso para auditar todos los motores/módulos del sistema Diligencia.
 
@@ -8,8 +8,8 @@ Plan paso a paso para auditar todos los motores/módulos del sistema Diligencia.
 
 | # | Qué verificar | Cómo | Afecta si falla |
 |---|---|---|---|
-| 1.1 | Existen los 7 archivos: AGENTS.md, ROADMAP.md, CHECKLIST.md, CHANGELOG.md, DILIGENCIA.md, .markdownlint.json, doc/arch/ | `ls` en `~\.config\opencode\templates\doc-base\` | `/adaptar` flujo A no puede copiar el template |
-| 1.2 | Template AGENTS.md tiene las 13 `$variables` estándar y 5 comandos globales + 6 locales | Leer AGENTS.md del template | Proyecto nuevo nace sin variables |
+| 1.1 | Existen los 14 archivos y directorios del template: .markdownlint.json, AGENTS.md, bugs.md, CHANGELOG.md, CHECKLIST.md, DILIGENCIA.md, HARNESS.md, incidentes.md, INDEX.md, ROADMAP.md, sesion.md, diligencia-check.yml, doc/arch/README.md, doc/arch/adr-template.md | `ls -Recurse` en `~\.config\opencode\templates\doc-base\` | `/adaptar` flujo A no puede copiar el template completo |
+| 1.2 | Template AGENTS.md tiene las 16 `$variables` estándar, 5 comandos globales + 6 locales | Leer AGENTS.md del template | Proyecto nuevo nace sin variables |
 | 1.3 | Template CHECKLIST.md no está vacío y tiene sección "Proyecto nuevo" | Leer CHECKLIST.md del template | Proyecto nuevo nace sin checklist inicial |
 
 ---
@@ -30,7 +30,7 @@ Plan paso a paso para auditar todos los motores/módulos del sistema Diligencia.
 
 | # | Qué verificar | Cómo | Afecta si falla |
 |---|---|---|---|
-| 3.1 | Existen 7 archivos en `~\.config\opencode\commands\` | `ls` | Proyecto sin comandos universales |
+| 3.1 | Existen 36 archivos en `~\.config\opencode\commands\` | `ls` | Proyecto sin comandos universales |
 | 3.2 | `commit.md`, `plan.md`, `debug.md`, `health.md`, `limpiar.md` son funcionales | Leer cada uno, verificar que no tienen rutas hardcodeadas ni dependencias de proyecto | Comandos rotos en cualquier proyecto |
 | 3.3 | `ADAPTAR-COMANDOS.md` es el stub de 6 líneas (ya reducido en v1.0) | Leer y medir | Si revierte a 321 líneas = duplicación |
 
@@ -82,6 +82,20 @@ Plan paso a paso para auditar todos los motores/módulos del sistema Diligencia.
 
 ---
 
+## Módulo 8: Nuevas funcionalidades post-v1.0
+
+| # | Qué verificar | Cómo | Afecta si falla |
+|---|---|---|---|
+| 8.1 | CI/CD: `diligencia-check.yml` existe en template doc-base y se copia en `/adaptar` | Buscar el archivo en template y en proyecto adaptado | Proyecto nuevo sin validación automática |
+| 8.2 | Stack templates: `templates/{node,python,go}/HARNESS.md` existen | `ls` en `~\.config\opencode\templates\` | Proyecto nuevo sin test/lint pre-configurados |
+| 8.3 | ADR lifecycle: los 3 ADRs tienen estado y campos Supersedes/Superseded by | Leer ADR-001/002/003 | Decisiones sin trazabilidad de evolución |
+| 8.4 | Comandos nuevos: /doctor, /bug, /incidente, /reanudar existen y son funcionales | Leer cada comando en `commands\` | Faltan herramientas de calidad y recuperación |
+| 8.5 | GUIA_ECOSISTEMAS.md y GUIA_REFERENCIA_RAPIDA.md existen y están referenciadas | Verificar existencia y cross-refs en GUIA_DE_COMANDOS.md §8 | Documentación de orquestación incompleta |
+| 8.6 | INDEX.md existe como catálogo de documentación | Verificar en raíz del proyecto | Docs informativos sin trazabilidad |
+| 8.7 | HARNESS.md del proyecto tiene test/lint definidos | Leer `.opencode/HARNESS.md` | No se pueden ejecutar tests ni lint automáticos |
+
+---
+
 ## Orden de revisión recomendado
 
 ```
@@ -96,13 +110,15 @@ Paso 7: Módulo 7 (consistencia)   ← cruzar todo
 
 ---
 
-## Hallazgos detectados (v1.0)
+## Hallazgos detectados (v1.10.1)
 
 | # | Hallazgo | Gravedad |
 |---|---|---|
 | H1 | **MarketAI no sigue la estructura estándar**: ROADMAP/CHECKLIST en `doc/documentos/`, CHANGELOG en `doc/`, sin `doc/arch/`, sin `DILIGENCIA.md` | 🔴 Alta |
 | H2 | **Némesis no tiene `DILIGENCIA.md`** | 🟡 Media |
 | H3 | **MarketAI no tiene `doc/mecanicas/`** — posiblemente no aplica (no es juego) | 🟢 Baja |
-| H4 | **Template doc-base**: falta verificar si CHECKLIST.md existe | 🟡 Media |
+| H4 | **Template doc-base**: expandido de 8 a 14 archivos desde v1.0 — verificar que `/adaptar` copia todos | 🟡 Media |
 | H5 | **MarketAI bitácora** en `doc/informes/bitacora.md` en vez de `doc/arch/bitacora.md` | 🟡 Media |
 | H6 | **MarketAI `$GUIAS_TEMPLATE`** apunta a `doc/guias/_template.md` que no existe | 🟡 Media |
+| H7 | **Stack templates**: `templates/{node,python,go}/HARNESS.md` creados en v1.8.0 — verificar que existen y son funcionales | 🟡 Media |
+| H8 | **CI/CD**: `diligencia-check.yml` no verificado en proyectos adaptados post-v1.9.0 | 🟢 Baja |

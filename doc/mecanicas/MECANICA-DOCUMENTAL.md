@@ -1,4 +1,4 @@
-# MECANICA-DOCUMENTAL — Motor documental de Diligencia
+# MECANICA-DOCUMENTAL — Motor documental de Diligencia v1.10.1
 
 Define cómo interactúan los archivos, variables y comandos del sistema Diligencia. Es referencia del motor; para hábitos de usuario, ver `GUIA_DE_BUENAS_PRACTICAS.md`.
 
@@ -45,12 +45,14 @@ Editar docs
     ├── B: Clasificación (CORE/ADR/GUIA/MECANICA/COMMAND/AGENTS/DILIGENCIA)
     ├── C: Gaps (RM↔CHECKLIST, ADRs, guías, mecánicas, comandos, AGENTS, DILIGENCIA)
     ├── D: Integridad cross-ref (guias huérfanas, templates sin consumidor,
-    │       scope /explica, variables huérfanas)
+    │       scope /explica, variables huérfanas, D5 template staleness)
     └── E: Consolidar y aplicar (tabla de gaps → confirmación → cambios)
     ↓
 /version (cierre)
     ├── Detecta versión actual (CHANGELOG.md o package.json)
+    ├── Si post-/doctor: auto-sugiere `patch` en vez de `minor`
     ├── Bump minor/patch/X.Y
+    ├── Si proyecto = Diligencia: sync template DILIGENCIA.md + adaptar.md
     ├── Entrada en CHANGELOG.md
     ├── /updoc final (sincroniza antes de commit)
     └── Commit versionado
@@ -133,8 +135,9 @@ Cuándo usar QA vs Bug vs Incidente:
 1. Leer `AGENTS.md` → conocer variables y comandos del proyecto
 2. Revisar `$CHECKLIST` → items abiertos, prioridades
 3. Revisar `$RM` "Ahora" y "Siguiente" → qué está activo
-4. Opcional: `/diligencia-check` si no se corrió hace varias sesiones
-5. Opcional: `/backup` si se planean cambios destructivos grandes
+4. Si hubo interrupción brusca en sesión anterior: `/reanudar` para recuperar contexto
+5. Opcional: `/diligencia-check` si no se corrió hace varias sesiones
+6. Opcional: `/backup` si se planean cambios destructivos grandes
 
 ### Durante
 
@@ -142,8 +145,9 @@ Usar el árbol de decisión de `GUIA_DE_BUENAS_PRACTICAS.md §2` para elegir com
 
 ### Post-sesión
 
-1. Ejecutar `/updoc` → sincroniza RM/CHECKLIST, detecta gaps cross-ref
-2. Si hay cambios versionables: `/version` → bump, CHANGELOG, commit
+1. Ejecutar `/updoc` → sincroniza RM/CHECKLIST, detecta gaps cross-ref (incluye D5 template staleness)
+2. Si hay cambios versionables: `/version` → bump, CHANGELOG, commit (post-/doctor auto-sugiere patch)
+3. Si hubo interrupción brusca en sesión anterior: `/reanudar` antes de continuar
 
 ### /backup — Respaldo pre-cambio
 
@@ -186,11 +190,12 @@ Siempre muestra lista antes de eliminar y pide confirmación.
 Comando: `~/.config/opencode/commands/diligencia-check.md`
 
 | Categoría | Verifica |
-|---|---|
+|---|---|---|
 | A — Estructura ADR-003 | Archivos raíz, `doc/arch/`, `doc/guias/`, `.opencode/`, HARNESS.md |
 | B — Variables AGENTS.md | Cada `$VARIABLE` resuelve a archivo real, core variables presentes, comandos sin rutas hardcodeadas |
 | C — Comandos (ESTANDAR-COMANDOS.md) | Guarda de ejecución, secciones obligatorias según tipo |
 | D — Versión | DILIGENCIA.md vs /adaptar |
+| E — CI/CD | `.github/workflows/diligencia-check.yml` presente (opcional) |
 
 ---
 

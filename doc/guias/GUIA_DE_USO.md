@@ -1,4 +1,4 @@
-# GUIA DE USO — Diligencia v1.0
+# GUIA DE USO — Diligencia v1.10.1
 
 Manual completo de la metodología de estructura estándar para proyectos OpenCode.
 
@@ -74,37 +74,56 @@ El comando detecta `AGENTS.md` sin `ROADMAP.md` en raíz → existente no adapta
 ```
 1. opencode -c (retomar sesión)
 2. Trabajar: comandos locales con $variables
-3. Al final de la sesión: /updoc
-4. → /commit
+3. Durante la sesión: /doctor para diagnóstico, /bug para bugs, /incidente para crashes
+4. Al final de la sesión: /updoc (auditoría de documentación informativa)
+5. → /version (cerrar versión, actualizar docs críticos)
+6. → /commit
+```
+
+### Recuperar sesión tras interrupción
+
+```
+1. opencode -c
+2. → Decís: /reanudar
+3. El comando detecta modo Plan (discusión) o Build (edición) desde git + SDD artifacts
+4. Continúa la sesión desde donde quedó
 ```
 
 ---
 
-## 4. Ciclo de actualización por instancia (`/updoc`)
+## 4. Auditoría y sincronización de documentación (`/updoc`)
 
-Cada vez que cerrás una sesión, `/updoc` sincroniza estos archivos:
+`/updoc` audita y sincroniza la **documentación informativa** (guías, mecánicas, ADRs, referencias) contra la versión de referencia de CHANGELOG. No toca docs críticos (CHANGELOG, DILIGENCIA, ROADMAP, CHECKLIST) — esos son dominio de `/version`.
 
-| Archivo | Qué hace |
+Opera en 8 fases (A→H):
+
+| Fase | Qué hace |
 |---|---|
-| `ROADMAP.md` | Marca items como DONE, mueve a Completed |
-| `CHECKLIST.md` | Sincroniza con DONE de ROADMAP, elimina duplicados |
-| `AGENTS.md` | Agrega nuevas mecánicas/guías/comandos detectados |
-| `doc/guias/COMANDOS.md` | Refleja comandos nuevos del proyecto |
-| `doc/testing/TESTING_PENDIENTE.md` | Tests nuevos/completados |
+| **A — Catálogo** | Lee INDEX.md; si no existe, escanea disco y ofrece crearlo |
+| **B — Referencia** | Obtiene versión de referencia desde CHANGELOG |
+| **C — Stale** | Compara labels de versión de cada doc contra referencia |
+| **D — Gaps** | Detecta gaps de contenido en docs stale o sin label |
+| **E — Plan** | Presenta tabla consolidada y pide confirmación |
+| **F — BUILD** | Aplica correcciones de contenido y bumps de label |
+| **G — Git-diff** | .md modificados no registrados en INDEX |
+| **H — Cross-ref** | D1-D5: guías huérfanas, templates, scope /explica, variables, template staleness |
 
-**Regla:** `ROADMAP.md` (y en general los RM) son fuente de verdad. `CHECKLIST.md` se deriva. `AGENTS.md` es el índice de todo.
+**Regla:** INDEX.md es el catálogo SSOT de toda la documentación informativa.
 
 ---
 
 ## 5. Reglas clave
 
 | Regla | Explicación |
-|---|---|
+|---|---|---|
 | **Solo $variables en comandos** | Ningún comando tiene rutas absolutas o relativas hardcodeadas |
 | **AGENTS.md es SSOT de rutas** | Cambiás una ruta una vez y todos los comandos la heredan |
-| **Root = 3 archivos** | `ROADMAP.md`, `CHECKLIST.md`, `CHANGELOG.md`. Siempre. |
-| **/updoc al cerrar sesión** | Si no sincronizás, la documentación se desvía |
+| **Root = 4 archivos** | `ROADMAP.md`, `CHECKLIST.md`, `CHANGELOG.md`, `DILIGENCIA.md`. Siempre. |
+| **INDEX.md es catálogo** | Toda la documentación informativa se registra en INDEX.md |
+| **/updoc + /version al cerrar sesión** | Primero /updoc (docs informativos), luego /version (docs críticos + bump) |
 | **Dos capas de comandos** | Los globales se heredan sin copiar. Los locales solo si son específicos del proyecto |
+| **/doctor para diagnóstico** | Unifica health, lint, bug/incidente tracking en un flujo |
+| **/reanudar tras interrupción** | Recupera sesión sin perder contexto — detecta Plan vs Build automáticamente |
 
 ---
 
@@ -125,13 +144,14 @@ C:\mis-tesoros> opencode -c
 
 opencode> /adaptar
   → detecta proyecto nuevo
-  → copia template
+  → copia template (14 archivos, incluye HARNESS.md y CI/CD)
   → "¿Nombre del proyecto?" "Mis Tesoros"  
   → "¿Stack?" "Python + Flask + SQLite"
   → "¿Áreas de roadmap?" "Técnico, UX"
   → AGENTS.md creado con $variables
   → ROADMAP.md creado con áreas Técnico + UX
-  → "Listo. Estructura Diligencia v1.0 creada."
+  → HARNESS.md overlay aplicado (stack Python)
+  → "Listo. Estructura Diligencia v1.10.1 creada."
 
 opencode> / +rm "CRUD de items" tx
   → agrega item al ROADMAP.md sección Técnico
@@ -139,9 +159,22 @@ opencode> / +rm "CRUD de items" tx
 opencode> [trabajar código...]
 
 opencode> /updoc
-  → sincroniza docs
-  → detecta items DONE
+  → audita documentación informativa (8 fases A→H)
+  → detecta INDEX.md, compara labels, busca gaps
+  → sugiere correcciones si aplica
 
-opencode> /commit
-  → "chore: CRUD de items"
+opencode> /version patch
+  → cierra versión: mueve [Unreleased] → v1.0.0
+  → actualiza CHANGELOG, DILIGENCIA, ROADMAP
+  → sincroniza template doc-base y /adaptar
+
+opencode> /commit --auto
+  → "chore(release): v1.0.0"
+
+# Sesión interrumpida (pérdida de conexión)
+
+C:\mis-tesoros> opencode -c
+opencode> /reanudar
+  → detecta working tree dirty + SDD artifacts → modo BUILD
+  → continúa desde el punto de interrupción
 ```

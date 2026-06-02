@@ -1,4 +1,4 @@
-# GUIA DE BUENAS PRACTICAS — Diligencia v1.6
+# GUIA DE BUENAS PRACTICAS — Diligencia v1.10.1
 
 Hábitos y workflows para usar Diligencia de forma consistente entre sesiones, agentes y proyectos.
 
@@ -8,9 +8,9 @@ Hábitos y workflows para usar Diligencia de forma consistente entre sesiones, a
 
 | Fase | Acción |
 |---|---|
-| **Pre-sesión** | Leer `AGENTS.md`, revisar `$CHECKLIST` items abiertos, revisar `$RM` "Ahora" o "Siguiente". Si hay cambios grandes planeados: `/backup`. Periódicamente: `/diligencia-check` para detectar degradación estructural. |
+| **Pre-sesión** | Leer `AGENTS.md`, revisar `$CHECKLIST` items abiertos, revisar `$RM` "Ahora" o "Siguiente". Si hubo interrupción brusca: `/reanudar` para recuperar contexto. Si hay cambios grandes planeados: `/backup`. Periódicamente: `/diligencia-check` para detectar degradación estructural. |
 | **Durante** | Usar el comando adecuado para cada situación (ver §2) |
-| **Post-sesión** | Ejecutar `/updoc` → sincroniza RM/CHECKLIST. Ejecutar `/version` si hay cambios → bump, CHANGELOG, commit |
+| **Post-sesión** | Ejecutar `/updoc` → sincroniza RM/CHECKLIST. Ejecutar `/version` si hay cambios → bump, CHANGELOG, commit. Si se ejecutó `/doctor` con correcciones, `/version` auto-sugiere `patch`. |
 
 Regla: toda sesión que modifique archivos debe cerrar con `/updoc`. Si hay cambios versionables, cerrar con `/version`.
 
@@ -25,6 +25,7 @@ Regla: toda sesión que modifique archivos debe cerrar con `/updoc`. Si hay camb
 | Situación extraña, no sabés si es bug | `/qa` | /bug (esperar a confirmar antes de crear bug) |
 | Feature nueva | `/plan` → BUILD | /.direct (falta diseño si es >1 archivo) |
 | Diagnóstico integral del proyecto (estructura + código + tracking + limpieza) | `/doctor` | /health o /diligencia-check individual (doctor orquesta todo) |
+| Sesión interrumpida / pérdida de conexión | `/reanudar` | empezar de cero (pierde contexto) |
 | Salud de estructura del proyecto | `/diligencia-check` | /health (health es solo código, no estructura) |
 | Salud de código (solo JS) | `/health` | /diligencia-check (no verifica sintaxis) |
 | Análisis profundo de sección | `/debug` | /. (debug da tabla estructurada con línea exacta) |
@@ -60,6 +61,7 @@ Señales de documentos enfermos:
 - Items en `$RM` "Ahora" con estado 🟡 desde hace 3 sesiones → mover a "Siguiente" o limpiar
 - `$CHECKLIST` con 20+ items abiertos sin prioridad → revisar si son viables o basura
 - `$CHANGELOG` sin entrada en la última semana → sesiones sin versionar
+- Template DILIGENCIA.md desactualizado vs proyecto → `/updoc` D5 lo detecta, corre con `/version patch`
 
 Ejecutar `/diligencia-check` cada pocas sesiones — detecta estructura rota, variables huérfanas, comandos sin guarda.
 

@@ -1,6 +1,6 @@
-# GUIA DE COMANDOS — Diligencia v1.3
+# GUIA DE COMANDOS — Diligencia v1.10.1
 
-Referencia de los 34 comandos fundamentales del sistema Diligencia.
+Referencia de los 35 comandos fundamentales del sistema Diligencia.
 
 ---
 
@@ -30,7 +30,7 @@ Luego incluye secciones obligatorias según su tipo. Ver `doc/guias/ESTANDAR-COM
 
 ### Distribución
 
-`/adaptar` copia los 30 archivos de comandos globales al directorio `.opencode/commands/` del proyecto destino si no existen. Los comandos locales del proyecto tienen prioridad sobre los globales.
+`/adaptar` copia los 35 archivos de comandos globales al directorio `.opencode/commands/` del proyecto destino si no existen. Los comandos locales del proyecto tienen prioridad sobre los globales.
 
 ---
 
@@ -43,7 +43,7 @@ Luego incluye secciones obligatorias según su tipo. Ver `doc/guias/ESTANDAR-COM
 | `/+pend` | Declarativo | Contexto/Edición | Agrega pendiente genérico al proyecto |
 | `/+rm` | Declarativo | Roadmap/Backlog | Agrega item al ROADMAP |
 | `/+rmi` | Declarativo | Roadmap/Backlog | Agrega ítem específico a $RM |
-| `/adaptar` | Declarativo | Flujo de sesión | Adapta el proyecto actual a estructura Diligencia |
+| `/adaptar` | Declarativo | Flujo de sesión | Adapta el proyecto actual a estructura Diligencia. Copia .github/workflows/ para CI/CD |
 | `/apply` | Declarativo | Contexto/Edición | Aplica handoff file a archivos de código |
 | `/backup` | Procedural | Backup/Seguridad | Backup pre-edit de archivos críticos ($ADR, $SISTEMA, etc.) |
 | `/bug` | Declarativo | Calidad | Reporta bug en $BUGS con severidad, archivo y descripción |
@@ -51,7 +51,7 @@ Luego incluye secciones obligatorias según su tipo. Ver `doc/guias/ESTANDAR-COM
 | `/checklist` | Declarativo | Roadmap/Backlog | Revisa CHECKLIST + ROADMAP y reporta estado |
 | `/commit` | Procedural | Flujo de sesión | `git add -A` + commit con formato estándar |
 | `/deprecar` | Declarativo | Calidad | Depreca archivos, comandos o estructuras obsoletas sin borrar |
-| `/doctor` | Declarativo | Calidad | Cuidado integral: estructura, código, tracking, limpieza y deprecación |
+| `/doctor` | Declarativo | Calidad | Cuidado integral: estructura, código, tracking, limpieza y deprecación. Circuito → sugiere /version patch tras correcciones |
 | `/debug` | Declarativo | Calidad | Análisis profundo de backend, frontend o base de datos |
 | `/diligencia-check` | Declarativo | Calidad | Valida estructura, variables, comandos y versión contra estándares Diligencia |
 | `/estado` | Declarativo | Roadmap/Backlog | Reporte rápido: commits recientes, pendientes, próximos pasos |
@@ -67,11 +67,12 @@ Luego incluye secciones obligatorias según su tipo. Ver `doc/guias/ESTANDAR-COM
 | `/plan` | Declarativo | Flujo de sesión | Planifica en modo PLAN (solo lectura), ejecuta BUILD tras aprobación |
 | `/qa` | Declarativo | Calidad | Revisión cruzada de calidad contra checklists |
 | `/report` | Declarativo | Flujo de sesión | Reporte consolidado del proyecto |
+| `/reanudar` | Declarativo | Flujo de sesión | Recupera sesión tras interrupción brusca |
 | `/rm` | Declarativo | Roadmap/Backlog | Revisa ROADMAP por área (técnica, UI, UX) |
-| `/updoc` | Declarativo | Documentación | Sincroniza documentación completa (CHECKLIST, ROADMAP, AGENTS) |
+| `/updoc` | Declarativo | Documentación | Sincroniza documentación completa (CHECKLIST, ROADMAP, AGENTS). D5 detecta staleness template vs proyecto |
 | `/upguia` | Declarativo | Documentación | Actualiza guía existente en `doc/guias/` |
 | `/upmec` | Declarativo | Documentación | Actualiza documento existente desde template |
-| `/version` | Declarativo | Flujo de sesión | Cierra sesión: bump de versión + /updoc + git commit |
+| `/version` | Declarativo | Flujo de sesión | Cierra sesión: bump de versión + /updoc + git commit. Post-/doctor: auto-sugiere patch |
 | `ADAPTAR-COMANDOS.md` | Referencia | — | Referencia técnica completa de la metodología (no es comando) |
 
 ---
@@ -86,6 +87,7 @@ Comandos que estructuran el ciclo de trabajo en OpenCode: planificar, adaptar, c
 | `/adaptar` | $ROADMAP, $CHECKLIST, $CHANGELOG, $GLOBAL_COMMANDS, $COMMANDS_DIR |
 | `/plan` | $CHECKLIST, $ROADMAP |
 | `/next` | $CHECKLIST, $ROADMAP |
+| `/reanudar` | — (restaura contexto de sesión) |
 | `/version` | $CHANGELOG (invoca /updoc + /commit) |
 | `/commit` | — (usa git directamente) |
 | `/report` | $CHECKLIST, $ROADMAP, $CHANGELOG |

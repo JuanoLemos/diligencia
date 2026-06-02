@@ -1,4 +1,4 @@
-# GUIA DE REFERENCIA RAPIDA — Diligencia v1.8.0
+# GUIA DE REFERENCIA RAPIDA — Diligencia v1.10.1
 
 Referencia rápida de 1 página. Para uso diario: comandos, decisión, flujo, variables.
 
@@ -13,13 +13,14 @@ Referencia rápida de 1 página. Para uso diario: comandos, decisión, flujo, va
 | `/adaptar` | Adaptar proyecto a Diligencia |
 | `/next` | Próximos 5 pasos del roadmap |
 | `/report` | Reporte consolidado |
-| `/version` | Bump + updoc + commit de cierre |
+| `/version` | Bump + updoc + commit de cierre. Post-/doctor: auto-sugiere patch |
+| `/reanudar` | Recuperar sesión tras interrupción brusca |
 | `/commit` | Commit con Conventional Commits |
 
 ### Calidad
 | Comando | Qué hace |
 |---|---|
-| `/doctor` | Chequeo integral (estructura + código + tracking + limpieza + deprecación) |
+| `/doctor` | Chequeo integral (estructura + código + tracking + limpieza + deprecación). Circuito → sugiere /version patch |
 | `/health` | Salud del código (stack-aware) |
 | `/diligencia-check` | Validar estructura completa |
 | `/debug` | Análisis profundo de sección |
@@ -75,6 +76,7 @@ Referencia rápida de 1 página. Para uso diario: comandos, decisión, flujo, va
 | Quiero... | Usa | En vez de... |
 |---|---|---|
 | Cerrar sesión | `/version` | git commit manual |
+| Recuperar sesión perdida | `/reanudar` | empezar de cero |
 | Sincronizar docs entre versiones | `/updoc` | editar docs directo |
 | Chequeo completo del proyecto | `/doctor` | /health + /diligencia-check por separado |
 | Reportar bug | `/bug` | `/incidente` (bugs ≠ crashes) |
@@ -93,18 +95,20 @@ Referencia rápida de 1 página. Para uso diario: comandos, decisión, flujo, va
 
 ```
 PRE                DURANTE              POST
-/foco  → /next     /plan → BUILD        /doctor → /updoc → /version
-/estado             /commit feat/fix      /commit chore(release)
+/reanudar          /plan → BUILD        /doctor → /updoc → /version
+/foco  → /next     /commit feat/fix      /commit chore(release)
+/estado
 ```
 
-1. `/foco <area>` — cargar contexto
-2. `/next` + `/estado` — saber dónde estás
-3. `/plan` — planificar cambios
+1. `/reanudar` — recuperar contexto si hubo interrupción
+2. `/foco <area>` — cargar contexto
+3. `/next` + `/estado` — saber dónde estás
+4. `/plan` — planificar cambios
 4. BUILD — implementar
 5. `/commit tipo:` — commitear cambios parciales
-6. `/doctor` — chequeo integral pre-cierre
-7. `/updoc` — sincronizar documentación
-8. `/version` — versionar y cerrar
+7. `/doctor` — chequeo integral pre-cierre (circuito → sugiere /version patch)
+8. `/updoc` — sincronizar documentación (D5 alerta template stale)
+9. `/version` — versionar y cerrar (post-/doctor auto-sugiere patch)
 
 ---
 
@@ -134,6 +138,7 @@ PRE                DURANTE              POST
 | Nuevo proyecto | `/adaptar` → *(configurar)* |
 | Feature nueva | `/plan` → BUILD → `/commit feat:` |
 | Bug fix | `/bug` → `/debug` → BUILD → `/commit fix:` |
+| Recuperación de sesión | `/reanudar` |
 | Cierre de sesión | `/doctor` → `/updoc` → `/version` |
 | Limpieza post-merge | `/doctor` → `/limpiar` |
 | Deprecar feature | `/deprecar` → `/version` |
@@ -160,7 +165,7 @@ PRE                DURANTE              POST
 | Ecosistema | Comandos |
 |---|---|
 | DOCTOR | /doctor, /health, /diligencia-check, /bug, /incidente, /limpiar, /deprecar |
-| VERSION | /version, /updoc |
+| VERSION | /version, /updoc, /reanudar |
 | ADAPTAR | /adaptar, @sdd-* |
 | DOCUMENTACION | /+mec, /+guia, /upmec, /upguia |
 | CONTEXTO | /foco, /head, /apply, /+pend, /explica |
@@ -171,7 +176,7 @@ PRE                DURANTE              POST
 ---
 
 ## Archivos relacionados
-- `GUIA_DE_COMANDOS.md` — referencia completa de 34 comandos
+- `GUIA_DE_COMANDOS.md` — referencia completa de 35 comandos
 - `GUIA_DE_BUENAS_PRACTICAS.md` — hábitos, árbol de decisión detallado, anti-patrones
 - `GUIA_ECOSISTEMAS.md` — mapa completo de 9 ecosistemas
 - `GUIA_DE_USO.md` — tutorial paso a paso
