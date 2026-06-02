@@ -75,9 +75,10 @@ El comando detecta `AGENTS.md` sin `ROADMAP.md` en raíz → existente no adapta
 1. opencode -c (retomar sesión)
 2. Trabajar: comandos locales con $variables
 3. Durante la sesión: /doctor para diagnóstico, /bug para bugs, /incidente para crashes
-4. Al final de la sesión: /updoc (auditoría de documentación informativa)
-5. → /version (cerrar versión, actualizar docs críticos)
-6. → /commit
+4. Al final: /updoc (PLAN — audit docs informativos, 8 fases A→H)
+5. → Si /updoc encuentra gaps: confirmar correcciones (BUILD)
+6. → Si /updoc D5 sugiere /version patch: ejecutar
+7. /version minor|patch (cierra versión: CHANGELOG, bump, commit auto)
 ```
 
 ### Recuperar sesión tras interrupción

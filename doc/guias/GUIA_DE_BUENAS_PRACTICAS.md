@@ -1,4 +1,4 @@
-# GUIA DE BUENAS PRACTICAS — Diligencia v1.10.1
+# GUIA DE BUENAS PRACTICAS — Diligencia v1.10.2
 
 Hábitos y workflows para usar Diligencia de forma consistente entre sesiones, agentes y proyectos.
 
@@ -10,9 +10,9 @@ Hábitos y workflows para usar Diligencia de forma consistente entre sesiones, a
 |---|---|
 | **Pre-sesión** | Leer `AGENTS.md`, revisar `$CHECKLIST` items abiertos, revisar `$RM` "Ahora" o "Siguiente". Si hubo interrupción brusca: `/reanudar` para recuperar contexto. Si hay cambios grandes planeados: `/backup`. Periódicamente: `/diligencia-check` para detectar degradación estructural. |
 | **Durante** | Usar el comando adecuado para cada situación (ver §2) |
-| **Post-sesión** | Ejecutar `/updoc` → sincroniza RM/CHECKLIST. Ejecutar `/version` si hay cambios → bump, CHANGELOG, commit. Si se ejecutó `/doctor` con correcciones, `/version` auto-sugiere `patch`. |
+| **Post-sesión** | 1. `/updoc` (PLAN: audit 8 fases, detecta gaps) → si hay gaps, confirmar BUILD (Fase F)<br>2. Si `/updoc` D5 detecta template stale → `/version patch`<br>3. `/version minor|patch` (cierra versión: bump, CHANGELOG, commit auto) |
 
-Regla: toda sesión que modifique archivos debe cerrar con `/updoc`. Si hay cambios versionables, cerrar con `/version`.
+Regla: toda sesión sigue **PLAN → BUILD**. `/updoc` primero (auditar), `/version` después (versionar). Si ejecutás `/version` sin `/updoc`, él mismo sugiere correr `/updoc` primero.
 
 ---
 
@@ -30,7 +30,7 @@ Regla: toda sesión que modifique archivos debe cerrar con `/updoc`. Si hay camb
 | Salud de código (solo JS) | `/health` | /diligencia-check (no verifica sintaxis) |
 | Análisis profundo de sección | `/debug` | /. (debug da tabla estructurada con línea exacta) |
 | Sincronizar documentación | `/updoc` | editar RM/CHECKLIST a mano (updoc detecta gaps automático) |
-| Cerrar sesión | `/version` | commit directo (version ejecuta updoc + changelog + bump) |
+| Cerrar sesión | 1. `/updoc` (auditar) → 2. `/version` (versionar) | commit directo (sin updoc faltan gaps, sin version falta CHANGELOG) |
 | Archivo obsoleto o duplicado | `/deprecar` | `rm` o `del` (deprecar no borra, mueve a .old/) |
 | Backup pre-edit | `/backup` | confiar en "no voy a romper nada" |
 | Limpiar temporales | `/limpiar` | borrar a mano (olvida patrones comunes) |
@@ -121,3 +121,41 @@ El comando adecuado varía según el stack del proyecto. Leer `$STACK` de HARNES
 | **Cualquier proyecto** — diagnóstico integral | `/doctor` | `/doctor` | `/doctor` | `/doctor` | `/doctor` |
 
 Los checks de código para stacks no-JS están pendientes de implementar en `/health`. Mientras tanto, usar linters nativos (`python -m py_compile`, `go vet`) como paso manual.
+
+---
+
+## 9. Circuito de trabajo
+
+Secuencia cíclica **PLAN → BUILD** vinculante, con handoff automático entre comandos.
+Cada paso requiere confirmación explícita del usuario.
+Mecánica completa: `doc/mecanicas/MECANICA-CIRCUITO.md`
+
+```
+   SESSIONWORK
+       │
+       ▼
+   /updoc PLAN → BUILD
+       │ (vinculante)
+       ▼
+   /version PLAN → BUILD
+       │ (vinculante)
+       ▼
+   /doctor PLAN → BUILD
+       │
+       ├── correcciones → /version patch PLAN → BUILD → SESSIONWORK
+       └── sin correcciones ──────────────────────→ SESSIONWORK
+```
+
+### Safe-path: /version sin /updoc previo
+
+```
+/version detecta: INDEX.md ausente o labels stale
+→ "⚠️ No se detectó /updoc reciente. ¿Ejecutar /updoc primero?"
+  ├─ Sí  → /updoc (auditar), luego /version
+  └─ No  → /version igual (gaps informativos sin corregir)
+```
+
+### Anti-patrones
+
+- **Ejecutar `/version` sin `/updoc` previo**: gaps documentales se acumulan
+- **Saltar `/doctor` antes de cerrar**: bugs no registrados y tracking desincronizado pasan desapercibidos

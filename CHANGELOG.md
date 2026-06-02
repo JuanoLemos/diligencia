@@ -11,6 +11,17 @@
 ### Fixed
 ### Security
 
+## v1.10.3 — 2026-06-02
+
+### Changed
+- MECANICA-CIRCUITO.md: definición del circuito cíclico vinculante PLAN→BUILD entre comandos
+- /updoc, /version, /doctor: sección "Próximo paso en el circuito" con handoff vinculante
+- GUIA_DE_BUENAS_PRACTICAS.md §9: diagrama de loop reemplaza diagrama lineal post-sesión
+- MECANICA-CIRCUITO.md registrado en INDEX.md
+
+### Fixed
+- DILIGENCIA.md header no actualizado en v1.10.2 (mostraba v1.10.1)
+
 ## v1.10.2 — 2026-06-01
 
 ### Fixed
