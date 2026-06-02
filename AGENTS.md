@@ -62,7 +62,6 @@ Documentación de la metodología de estructura estándar para proyectos OpenCod
 | /incidente | Registrar incidente o crash runtime | Declarativo |
 | /notify | Toggle de notificación remota | Procedural |
 | /reanudar | Recuperar sesión tras interrupción brusca | Declarativo |
-| ADAPTAR-COMANDOS.md | Referencia técnica completa (no es comando) | Referencia |
 
 ## Focus
 - Documentar la metodología

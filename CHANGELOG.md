@@ -11,6 +11,25 @@
 ### Fixed
 ### Security
 
+## [1.11.0] — 2026-06-02
+
+### Added
+- `/circuito` — orquestador de workflows vinculantes (updoc, doctor, version, completo). Reemplaza el handoff distribuido por "Próximo paso en el circuito".
+
+### Changed
+- `/updoc`, `/version`, `/doctor`: sección "Próximo paso en el circuito" removida — el orquestador `/circuito` es el único punto de encadenamiento
+- `/doctor` Fase 3f: ya no auto-ejecuta /version patch — sugiere `/circuito doctor`
+- MECANICA-CIRCUITO.md: migrate a /circuito como SSOT del chain, tabla de estados ref. workflows
+- GUIA_DE_BUENAS_PRACTICAS.md §9 + safe-path + anti-patrones: /circuito entry point
+- GUIA_REFERENCIA_RAPIDA.md: POST cycle, command table, chain table actualizados a /circuito
+- MECANICA-DOCUMENTAL.md §post-sesión: ref a /circuito version
+- GUIA_DE_COMANDOS.md: doctor row actualizado
+- /explica scope: ADR-001/002/003 agregados, ADAPTAR-COMANDOS.md removido (no existe en disco)
+- AGENTS.md: ADAPTAR-COMANDOS.md removido (archivo inexistente)
+
+### Fixed
+- D3 cross-ref gap: /explica scope desactualizado (ADAPTAR-COMANDOS.md referenciado pero inexistente; ADRs sin incluir)
+
 ## v1.10.3 — 2026-06-02
 
 ### Changed

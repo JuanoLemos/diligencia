@@ -1,4 +1,4 @@
-# GUIA DE BUENAS PRACTICAS — Diligencia v1.10.2
+# GUIA DE BUENAS PRACTICAS — Diligencia v1.10.3
 
 Hábitos y workflows para usar Diligencia de forma consistente entre sesiones, agentes y proyectos.
 
@@ -10,9 +10,9 @@ Hábitos y workflows para usar Diligencia de forma consistente entre sesiones, a
 |---|---|
 | **Pre-sesión** | Leer `AGENTS.md`, revisar `$CHECKLIST` items abiertos, revisar `$RM` "Ahora" o "Siguiente". Si hubo interrupción brusca: `/reanudar` para recuperar contexto. Si hay cambios grandes planeados: `/backup`. Periódicamente: `/diligencia-check` para detectar degradación estructural. |
 | **Durante** | Usar el comando adecuado para cada situación (ver §2) |
-| **Post-sesión** | 1. `/updoc` (PLAN: audit 8 fases, detecta gaps) → si hay gaps, confirmar BUILD (Fase F)<br>2. Si `/updoc` D5 detecta template stale → `/version patch`<br>3. `/version minor|patch` (cierra versión: bump, CHANGELOG, commit auto) |
+| **Post-sesión** | `/circuito updoc` (ejecuta /updoc PLAN→BUILD → /version minor BUILD* → sugiere /doctor) |
 
-Regla: toda sesión sigue **PLAN → BUILD**. `/updoc` primero (auditar), `/version` después (versionar). Si ejecutás `/version` sin `/updoc`, él mismo sugiere correr `/updoc` primero.
+Regla: toda sesión sigue **PLAN → BUILD**. Usar `/circuito updoc` para post-sesión completa. Si solo se necesita versionar sin auditoría: `/circuito version`.
 
 ---
 
@@ -126,36 +126,41 @@ Los checks de código para stacks no-JS están pendientes de implementar en `/he
 
 ## 9. Circuito de trabajo
 
-Secuencia cíclica **PLAN → BUILD** vinculante, con handoff automático entre comandos.
-Cada paso requiere confirmación explícita del usuario.
+Usar `/circuito` para ejecutar secuencias completas. Cada paso ejecuta su PLAN → BUILD; el orquestador controla el flujo.
 Mecánica completa: `doc/mecanicas/MECANICA-CIRCUITO.md`
 
 ```
    SESSIONWORK
        │
-       ▼
-   /updoc PLAN → BUILD
-       │ (vinculante)
-       ▼
-   /version PLAN → BUILD
-       │ (vinculante)
-       ▼
-   /doctor PLAN → BUILD
+       ├── /circuito updoc
+       │       │
+       │       ├── /updoc PLAN → BUILD
+       │       ├── /version minor BUILD*
+       │       └── sugiere /doctor
        │
-       ├── correcciones → /version patch PLAN → BUILD → SESSIONWORK
-       └── sin correcciones ──────────────────────→ SESSIONWORK
+       ├── /circuito doctor
+       │       │
+       │       ├── /doctor PLAN → BUILD
+       │       └── si correcciones → /version patch BUILD*
+       │
+       ├── /circuito version
+       │       │
+       │       ├── /version PLAN → BUILD
+       │       └── sugiere /doctor
+       │
+       └── /circuito completo (updoc + doctor opcional)
 ```
 
-### Safe-path: /version sin /updoc previo
+### Safe-path: /circuito version sin /circuito updoc previo
 
 ```
-/version detecta: INDEX.md ausente o labels stale
-→ "⚠️ No se detectó /updoc reciente. ¿Ejecutar /updoc primero?"
-  ├─ Sí  → /updoc (auditar), luego /version
-  └─ No  → /version igual (gaps informativos sin corregir)
+/circuito version detecta: INDEX.md ausente o labels stale
+→ "⚠️ No se detectó /updoc reciente. ¿Ejecutar /circuito updoc primero?"
+  ├─ Sí  → abortar /circuito version, ejecutar /circuito updoc
+  └─ No  → /circuito version igual (gaps informativos sin corregir)
 ```
 
 ### Anti-patrones
 
-- **Ejecutar `/version` sin `/updoc` previo**: gaps documentales se acumulan
+- **Ejecutar `/circuito version` cuando debía ser `/circuito updoc`**: gaps documentales se acumulan
 - **Saltar `/doctor` antes de cerrar**: bugs no registrados y tracking desincronizado pasan desapercibidos

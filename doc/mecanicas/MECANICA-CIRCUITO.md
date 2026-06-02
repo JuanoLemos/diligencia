@@ -1,6 +1,6 @@
-# MECANICA-CIRCUITO — Circuito de trabajo cíclico v1.0
+# MECANICA-CIRCUITO — Circuito de trabajo cíclico v1.10.3
 
-Define el flujo vinculante entre comandos del ecosistema. Cada comando, al completar su fase BUILD, debe sugerir el siguiente paso según las transiciones aquí definidas.
+Define los workflows multi-comando del ecosistema. El orquestador `/circuito` ejecuta los encadenamientos; los comandos individuales ya no contienen "Próximo paso" propio.
 Referencia de hábitos de usuario: `GUIA_DE_BUENAS_PRACTICAS.md §9`.
 
 ---
@@ -10,28 +10,50 @@ Referencia de hábitos de usuario: `GUIA_DE_BUENAS_PRACTICAS.md §9`.
 ```
    SESSIONWORK
        │
-       ▼
-   /updoc PLAN → BUILD
-       │ (vinculante: /version)
-       ▼
-   /version PLAN → BUILD
-       │ (vinculante: /doctor)
-       ▼
-   /doctor PLAN → BUILD
-       │
-       ├── correcciones → /version patch PLAN → BUILD → SESSIONWORK
-       └── sin correcciones ──────────────────────→ SESSIONWORK
+       ├── /circuito updoc ──────────────────────────┐
+       │                                             │
+       ▼                                             │
+   /updoc PLAN → BUILD                               │
+       │                                             │
+       ▼ (BUILD*)                                    │
+   /version minor BUILD                              │
+       │                                             │
+       ▼ (sugiere)                                   │
+   /doctor PLAN → BUILD                              │
+       │                                             │
+       ├── correcciones → /circuito doctor ──────────┘
+       │                      │
+       │                      ▼ (BUILD*)
+       │                  /version patch BUILD
+       │                      │
+       │                      ▼
+       └── sin correcciones ──→ SESSIONWORK
+
+   *BUILD*: PLAN omitido — datos heredados del paso anterior
 ```
 
 ## Estados y transiciones
 
-| N° | Estado | Entry | Acción | Exit | Próximo vinculante |
+| N° | Estado | Entry | Acción | Exit | Próximo paso (via /circuito) |
 |---|---|---|---|---|---|
-| 1 | SESSIONWORK | Circuito inicia o reinicia tras BUILD completo | Usuario edita archivos, agrega RM items, modifica código | Working tree dirty o usuario solicita cierre | `/updoc` |
-| 2 | `/updoc` | SESSIONWORK completo | Fases A→E→F: audita y sincroniza docs informativos | BUILD completo | `/version` (minor si no D5 stale, patch si D5 stale) |
-| 3 | `/version` | `/updoc` BUILD completo | Detecta bump, CHANGELOG, INDEX, adaptar + template Diligencia, commit | BUILD + commit + git status limpio | `/doctor` |
-| 4 | `/doctor` | `/version` BUILD completo | Fases 1→2→3: diagnóstico estructura, código, tracking, limpieza, deprecación | BUILD completo | `/version patch` si correcciones, SESSIONWORK si no |
-| 5 | `/version` (patch) | `/doctor` con correcciones | Bump patch forzado, CHANGELOG, INDEX, commit | BUILD + commit + git status limpio | SESSIONWORK (circuito completo) |
+| 1 | SESSIONWORK | Circuito inicia o reinicia | Usuario edita, agrega RM items, modifica código | Working tree dirty | `/circuito updoc` |
+| 2 | `/updoc` | SESSIONWORK completo | Fases A→E→F: audita y sincroniza docs | BUILD completo | `/version minor BUILD*` |
+| 3 | `/version` (minor) | `/updoc` BUILD | Steps 6→8: CHANGELOG, INDEX, commit | BUILD + commit clean | sugiere `/doctor` |
+| 4 | `/doctor` | `/version` BUILD | Fases 1→2→3: diagnóstico y correcciones | BUILD completo | `/circuito doctor` si correcciones, SESSIONWORK si no |
+| 5 | `/version` (patch) | `/doctor` correcciones | Steps 6→8 con bump patch, commit | BUILD + commit clean | SESSIONWORK |
+
+## Workflows del orquestador
+
+Los encadenamientos se definen en `~/.config/opencode/commands/circuito.md`:
+
+| Workflow | Secuencia |
+|---|---|
+| `updoc` | /updoc PLAN→BUILD → /version minor BUILD* → sugiere /doctor |
+| `doctor` | /doctor PLAN→BUILD → /version patch BUILD* (si correcciones) |
+| `version` | /version PLAN→BUILD → sugiere /doctor |
+| `completo` | workflow updoc → (opcional) workflow doctor |
+
+Ver `circuito.md` para la especificación completa de cada workflow.
 
 ## Contrato PLAN → BUILD
 
@@ -41,27 +63,31 @@ Cada paso del circuito cumple:
 2. **Mostrar plan al usuario**: tabla de hallazgos, cambios propuestos, impacto.
 3. **Usuario confirma explícitamente** (sí).
 4. **BUILD**: aplicar cambios. Modificar archivos solo aquí.
-5. **Output**: resumen de lo aplicado + **próximo paso vinculante**.
+5. **Output**: resumen de lo aplicado.
+
+**Excepción BUILD\*:** Cuando un paso ejecuta BUILD\* (vía /circuito), los pasos 1-3 (PLAN + confirmación) se omiten. El PLAN ya fue ejecutado por el comando anterior del workflow.
 
 ## Vinculante
 
-- "Vinculante" significa que el comando DEBE sugerir el siguiente paso al completar BUILD.
-- El usuario puede rechazar la sugerencia (rompiendo el circuito), pero el agente no puede omitirla.
-- Cada paso se ejecuta con su propio PLAN → BUILD — el agente nunca salta PLAN.
+- El encadenamiento vinculante lo controla `/circuito`, no los comandos individuales.
+- El orquestador DEBE ejecutar el siguiente paso del workflow al completar el paso actual.
+- El usuario puede rechazar una sugerencia (rompiendo el circuito), pero el orquestador no puede saltar el paso siguiente.
+- Los comandos individuales ejecutados standalone NO tienen encadenamiento — solo ejecutan su propio PLAN→BUILD.
 
 ## Variantes del ciclo
 
-| Escenario | Circuito |
+| Escenario | Comando |
 |---|---|
-| Sesión con muchas ediciones | sessionwork → /updoc → /version → /doctor → /version → sessionwork |
-| Múltiples RM items en sessionwork | sessionwork (con RM items) → /updoc → /version → /doctor → /version → sessionwork |
-| Ciclos doctor→version repetidos | sessionwork → /updoc → /version → /doctor → /version → /doctor → /version → sessionwork |
-| /updoc tras varios ciclos | sessionwork → /doctor → /version → /doctor → /version → /updoc → /version → sessionwork |
-| Sin cambios en working tree | No inicia circuito — salta directo a sessionwork o fin |
+| Post-sesión con cambios documentales | `/circuito updoc` |
+| Diagnóstico post-versionado | `/circuito doctor` |
+| Versionado rápido sin /updoc | `/circuito version` |
+| Ciclo completo desde sessionwork | `/circuito completo` |
+| Sin cambios en working tree | No inicia circuito — salta a sessionwork o fin |
 
 ## Archivos que referencian esta mecánica
 
-- `~/.config/opencode/commands/updoc.md` — sección "Próximo paso en el circuito"
-- `~/.config/opencode/commands/version.md` — sección "Próximo paso en el circuito"
-- `~/.config/opencode/commands/doctor.md` — sección "Próximo paso en el circuito"
+- `~/.config/opencode/commands/circuito.md` — orquestador (SSOT de encadenamiento)
+- `~/.config/opencode/commands/updoc.md`
+- `~/.config/opencode/commands/version.md`
+- `~/.config/opencode/commands/doctor.md`
 - `doc/guias/GUIA_DE_BUENAS_PRACTICAS.md` §9 — diagrama de referencia

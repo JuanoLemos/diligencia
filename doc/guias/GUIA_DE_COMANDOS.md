@@ -1,4 +1,4 @@
-# GUIA DE COMANDOS — Diligencia v1.10.1
+# GUIA DE COMANDOS — Diligencia v1.10.3
 
 Referencia de los 35 comandos fundamentales del sistema Diligencia.
 
@@ -36,6 +36,8 @@ Luego incluye secciones obligatorias según su tipo. Ver `doc/guias/ESTANDAR-COM
 
 ## 2. Referencia completa
 
+> **Circuito vinculante:** `/updoc`, `/version` y `/doctor` forman un ciclo cerrado definido en `doc/mecanicas/MECANICA-CIRCUITO.md`. Al completar BUILD, cada comando ejecuta automáticamente el siguiente sin PLAN separado — los datos del comando anterior son suficientes.
+
 | Comando | Tipo | Categoría | Descripción |
 |---|---|---|---|
 | `/+guia` | Declarativo | Documentación | Crea una guía nueva en `doc/guias/` desde template |
@@ -51,7 +53,7 @@ Luego incluye secciones obligatorias según su tipo. Ver `doc/guias/ESTANDAR-COM
 | `/checklist` | Declarativo | Roadmap/Backlog | Revisa CHECKLIST + ROADMAP y reporta estado |
 | `/commit` | Procedural | Flujo de sesión | `git add -A` + commit con formato estándar |
 | `/deprecar` | Declarativo | Calidad | Depreca archivos, comandos o estructuras obsoletas sin borrar |
-| `/doctor` | Declarativo | Calidad | Cuidado integral: estructura, código, tracking, limpieza y deprecación. Circuito → sugiere /version patch tras correcciones |
+| `/doctor` | Declarativo | Calidad | Cuidado integral: estructura, código, tracking, limpieza y deprecación. /circuito doctor para chain completo con /version patch |
 | `/debug` | Declarativo | Calidad | Análisis profundo de backend, frontend o base de datos |
 | `/diligencia-check` | Declarativo | Calidad | Valida estructura, variables, comandos y versión contra estándares Diligencia |
 | `/estado` | Declarativo | Roadmap/Backlog | Reporte rápido: commits recientes, pendientes, próximos pasos |
@@ -69,10 +71,10 @@ Luego incluye secciones obligatorias según su tipo. Ver `doc/guias/ESTANDAR-COM
 | `/report` | Declarativo | Flujo de sesión | Reporte consolidado del proyecto |
 | `/reanudar` | Declarativo | Flujo de sesión | Recupera sesión tras interrupción brusca |
 | `/rm` | Declarativo | Roadmap/Backlog | Revisa ROADMAP por área (técnica, UI, UX) |
-| `/updoc` | Declarativo | Documentación | Sincroniza documentación completa (CHECKLIST, ROADMAP, AGENTS). D5 detecta staleness template vs proyecto |
+| `/updoc` | Declarativo | Documentación | Sincroniza documentación completa (CHECKLIST, ROADMAP, AGENTS). D5 detecta template stale (minor). Auto-ejecuta /version BUILD al completar |
 | `/upguia` | Declarativo | Documentación | Actualiza guía existente en `doc/guias/` |
 | `/upmec` | Declarativo | Documentación | Actualiza documento existente desde template |
-| `/version` | Declarativo | Flujo de sesión | Cierra sesión: bump de versión + /updoc + git commit. Post-/doctor: auto-sugiere patch |
+| `/version` | Declarativo | Flujo de sesión | Cierra sesión: bump de versión + INDEX + git commit. Template solo en minor/major o --template. Post-/doctor: auto-sugiere patch |
 | `ADAPTAR-COMANDOS.md` | Referencia | — | Referencia técnica completa de la metodología (no es comando) |
 
 ---
@@ -290,4 +292,5 @@ Ver `doc/guias/ESTANDAR-COMANDOS.md` para el template completo con todas las sec
 - `GUIA_DE_BUENAS_PRACTICAS.md` — hábitos y workflows diarios
 - `GUIA_ECOSISTEMAS.md` — mapa de ecosistemas y fronteras entre comandos
 - `MECANICA-DOCUMENTAL.md` — motor documental
+- `MECANICA-CIRCUITO.md` — flujo vinculante entre comandos
 - `ESTANDAR-COMANDOS.md` — cómo escribir comandos

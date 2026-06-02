@@ -1,4 +1,4 @@
-# GUIA DE REFERENCIA RAPIDA — Diligencia v1.10.1
+# GUIA DE REFERENCIA RAPIDA — Diligencia v1.10.3
 
 Referencia rápida de 1 página. Para uso diario: comandos, decisión, flujo, variables.
 
@@ -13,14 +13,14 @@ Referencia rápida de 1 página. Para uso diario: comandos, decisión, flujo, va
 | `/adaptar` | Adaptar proyecto a Diligencia |
 | `/next` | Próximos 5 pasos del roadmap |
 | `/report` | Reporte consolidado |
-| `/version` | Bump + updoc + commit de cierre. Post-/doctor: auto-sugiere patch |
+| `/version` | Bump + doc sync + commit de cierre. Usar /circuito version para bump automático |
 | `/reanudar` | Recuperar sesión tras interrupción brusca |
 | `/commit` | Commit con Conventional Commits |
 
 ### Calidad
 | Comando | Qué hace |
 |---|---|
-| `/doctor` | Chequeo integral (estructura + código + tracking + limpieza + deprecación). Circuito → sugiere /version patch |
+| `/doctor` | Chequeo integral (estructura + código + tracking + limpieza + deprecación). /circuito doctor para chain completo |
 | `/health` | Salud del código (stack-aware) |
 | `/diligencia-check` | Validar estructura completa |
 | `/debug` | Análisis profundo de sección |
@@ -33,7 +33,7 @@ Referencia rápida de 1 página. Para uso diario: comandos, decisión, flujo, va
 ### Documentación
 | Comando | Qué hace |
 |---|---|
-| `/updoc` | Auditoría documental entre versiones |
+| `/updoc` | Auditoría documental entre versiones. /circuito updoc para chain completo (updoc→version→doctor) |
 | `/+mec` | Crear mecánica desde template |
 | `/upmec` | Actualizar mecánica |
 | `/+guia` | Crear guía desde template |
@@ -95,20 +95,20 @@ Referencia rápida de 1 página. Para uso diario: comandos, decisión, flujo, va
 
 ```
 PRE                DURANTE              POST
-/reanudar          /plan → BUILD        /doctor → /updoc → /version
-/foco  → /next     /commit feat/fix      /commit chore(release)
-/estado
+/reanudar          /plan → BUILD        /circuito updoc
+/foco  → /next     /commit feat/fix      /circuito doctor
+/estado                                  /circuito version (sin /updoc)
 ```
 
 1. `/reanudar` — recuperar contexto si hubo interrupción
 2. `/foco <area>` — cargar contexto
 3. `/next` + `/estado` — saber dónde estás
 4. `/plan` — planificar cambios
-4. BUILD — implementar
-5. `/commit tipo:` — commitear cambios parciales
-7. `/doctor` — chequeo integral pre-cierre (circuito → sugiere /version patch)
-8. `/updoc` — sincronizar documentación (D5 alerta template stale)
-9. `/version` — versionar y cerrar (post-/doctor auto-sugiere patch)
+5. BUILD — implementar
+6. `/commit tipo:` — commitear cambios parciales (opcional)
+7. `/circuito updoc` — auditoría + versionado + doctor en un solo workflow
+8. `/circuito doctor` — chequeo integral + /version patch si hay correcciones
+9. El POST usa el **orquestador `/circuito`** (`doc/mecanicas/MECANICA-CIRCUITO.md`) que ejecuta los comandos en secuencia con encadenamiento controlado
 
 ---
 
@@ -139,9 +139,9 @@ PRE                DURANTE              POST
 | Feature nueva | `/plan` → BUILD → `/commit feat:` |
 | Bug fix | `/bug` → `/debug` → BUILD → `/commit fix:` |
 | Recuperación de sesión | `/reanudar` |
-| Cierre de sesión | `/doctor` → `/updoc` → `/version` |
+| Cierre de sesión | `/circuito completo` (updoc→doctor→version) |
 | Limpieza post-merge | `/doctor` → `/limpiar` |
-| Deprecar feature | `/deprecar` → `/version` |
+| Deprecar feature | `/deprecar` → `/circuito version` |
 | Sincronizar docs | `/updoc` |
 
 ---

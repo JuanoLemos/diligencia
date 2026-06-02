@@ -22,6 +22,10 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 | Item | Prioridad | Estado |
 |---|---|---|
+| +Backup en /doctor | P2 | 🔴 Pendiente |
+| +up github | P2 | 🔴 Pendiente |
+| +guia usuario noob, usando primera vez AI | P2 | 🔴 Pendiente |
+| +ayuda en worktree para recomendar acciones de buenas practicas | P2 | 🔴 Pendiente |
 
 ## Futuro (Later)
 
