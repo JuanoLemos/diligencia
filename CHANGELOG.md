@@ -11,6 +11,11 @@
 ### Fixed
 ### Security
 
+## [1.12.1] — 2026-06-02
+
+### Fixed
+- DILIGENCIA.md: header sincronizado v1.10.3 → v1.12.0, historial con entradas v1.11.0 + v1.12.0 agregadas
+
 ## [1.12.0] — 2026-06-02
 
 ### Added
