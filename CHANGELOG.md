@@ -11,6 +11,21 @@
 ### Fixed
 ### Security
 
+## [1.12.0] — 2026-06-02
+
+### Added
+- `/salud` — comando BUILD\* para generar reporte de salud del proyecto (`doc/arch/status-salud.md`)
+- Template `status-salud.md` en doc-base (externalizado para /adaptar)
+- Meta-PLAN en `/circuito`: fase PRO con auditoría consolidada de todos los comandos + confirmación única previa a BUILD (FLASH)
+- `/circuito completo` con meta-orquestador: detección automática de agentes/skills según working tree (@sdd-reviewer, @sdd-architect, @sdd-verify, skill tdd-strict/sdd-workflow)
+
+### Changed
+- `/circuito` workflows reestructurados: todo workflow ahora ejecuta META-PLAN (PRO) → BUILD (FLASH)
+- MECANICA-CIRCUITO.md: diagrama con Meta-PLAN, tabla de 8 estados, secciones de agentes y contrato Meta-PLAN→BUILD
+- GUIA_DE_BUENAS_PRACTICAS.md §9: diagramas Meta-PLAN, reglas de modelo (PRO/FLASH), anti-patrones actualizados
+- ROADMAP.md: +5 ítems en Siguiente (status-salud, meta-orquestador, revisión agentes/skills, Meta-PLAN, informe-salud inter-proyecto)
+- AGENTS.md: +/salud en tabla de comandos (35 fundamentales)
+
 ## [1.11.0] — 2026-06-02
 
 ### Added

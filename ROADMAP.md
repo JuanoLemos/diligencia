@@ -26,6 +26,11 @@ Metodología de estructura estándar para proyectos OpenCode.
 | +up github | P2 | 🔴 Pendiente |
 | +guia usuario noob, usando primera vez AI | P2 | 🔴 Pendiente |
 | +ayuda en worktree para recomendar acciones de buenas practicas | P2 | 🔴 Pendiente |
+| +status-salud: reporte de salud del proyecto integrado en /circuito | P2 | 🔴 Pendiente |
+| +meta-orquestador: /circuito adaptado a agentes y skills con detección automática | P2 | 🔴 Pendiente |
+| +revisión de agentes y skills: compatibilidad con circuito, actualizar docs | P2 | 🔴 Pendiente |
+| +Meta-PLAN: fase PRO con confirmación única previa a BUILD (FLASH) | P2 | 🔴 Pendiente |
+| +informe-salud inter-proyecto basado en estructura Diligencia | P3 | 🔴 Pendiente |
 
 ## Futuro (Later)
 

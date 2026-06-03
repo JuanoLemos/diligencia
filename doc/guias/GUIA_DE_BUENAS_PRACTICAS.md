@@ -1,4 +1,4 @@
-# GUIA DE BUENAS PRACTICAS — Diligencia v1.10.3
+# GUIA DE BUENAS PRACTICAS — Diligencia v1.12.0
 
 Hábitos y workflows para usar Diligencia de forma consistente entre sesiones, agentes y proyectos.
 
@@ -126,30 +126,59 @@ Los checks de código para stacks no-JS están pendientes de implementar en `/he
 
 ## 9. Circuito de trabajo
 
-Usar `/circuito` para ejecutar secuencias completas. Cada paso ejecuta su PLAN → BUILD; el orquestador controla el flujo.
+Usar `/circuito` para ejecutar secuencias completas. Cada workflow se divide en **Meta-PLAN (PRO)** y **BUILD (FLASH)**.
 Mecánica completa: `doc/mecanicas/MECANICA-CIRCUITO.md`
+
+### Diagrama de workflows
 
 ```
    SESSIONWORK
        │
        ├── /circuito updoc
        │       │
-       │       ├── /updoc PLAN → BUILD
-       │       ├── /version minor BUILD*
-       │       └── sugiere /doctor
+       │       ├── META-PLAN (PRO)
+       │       │     /updoc PLAN → /doctor PLAN → /salud preview
+       │       │     UNA confirmación
+       │       │
+       │       └── BUILD (FLASH)
+       │             /updoc Fase F → /salud BUILD* → /version BUILD* → /doctor BUILD
        │
        ├── /circuito doctor
        │       │
-       │       ├── /doctor PLAN → BUILD
-       │       └── si correcciones → /version patch BUILD*
+       │       ├── META-PLAN (PRO)
+       │       │     /doctor Fases 1→2 → /salud preview
+       │       │     UNA confirmación
+       │       │
+       │       └── BUILD (FLASH)
+       │             /doctor Fase 3 → /salud BUILD* → /version patch BUILD*
        │
        ├── /circuito version
        │       │
-       │       ├── /version PLAN → BUILD
-       │       └── sugiere /doctor
+       │       ├── META-PLAN (PRO)
+       │       │     /version Steps 1→5
+       │       │     UNA confirmación
+       │       │
+       │       └── BUILD (FLASH)
+       │             /version Steps 6→8 → sugiere /doctor
        │
-       └── /circuito completo (updoc + doctor opcional)
+       └── /circuito completo
+               │
+               ├── META-PLAN (PRO)
+               │     Agentes/skills sugeridos → /updoc PLAN → /doctor PLAN → /salud preview
+               │     UNA confirmación
+               │
+               └── BUILD (FLASH)
+                     Agentes/skills → /updoc Fase F → /salud BUILD* → /version BUILD* → /doctor
 ```
+
+### Reglas del Meta-PLAN
+
+1. Meta-PLAN se ejecuta SIEMPRE en DeepSeek PRO (análisis profundo), sin importar el modo de invocación
+2. BUILD se ejecuta SIEMPRE en DeepSeek FLASH (ejecución rápida)
+3. Meta-PLAN ejecuta PLAN de TODOS los comandos del workflow antes de pedir confirmación
+4. BUILD* solo es válido cuando el Meta-PLAN ya auditó los datos necesarios
+5. El usuario confirma UNA SOLA VEZ (no paso a paso)
+6. Si el usuario rechaza el Meta-PLAN: workflow detenido, cero archivos modificados
 
 ### Safe-path: /circuito version sin /circuito updoc previo
 
@@ -160,7 +189,21 @@ Mecánica completa: `doc/mecanicas/MECANICA-CIRCUITO.md`
   └─ No  → /circuito version igual (gaps informativos sin corregir)
 ```
 
+### Agentes y skills en /circuito completo
+
+El workflow `completo` del meta-orquestador sugiere agentes según el estado del working tree:
+
+| Condición | Agente/Skill | Orden en BUILD |
+|---|---|---|
+| git diff >20 líneas código | `@sdd-reviewer` | 1ero (antes de versionar) |
+| Cambios de arquitectura | `@sdd-architect` | 1ero (antes de aplicar) |
+| Tests en proyecto | `skill("tdd-strict")` + `@sdd-verify` | 2do (después de revisar) |
+| ROADMARK con SDD items | `skill("sdd-workflow")` | Contexto (no ejecuta) |
+
 ### Anti-patrones
 
 - **Ejecutar `/circuito version` cuando debía ser `/circuito updoc`**: gaps documentales se acumulan
 - **Saltar `/doctor` antes de cerrar**: bugs no registrados y tracking desincronizado pasan desapercibidos
+- **Ejecutar Meta-PLAN en FLASH**: el análisis profundo requiere PRO para detectar gaps y stale correctamente
+- **Ejecutar BUILD en PRO**: desperdicio de tokens y latencia — BUILD solo ejecuta cambios ya planificados
+- **Confirmar paso a paso en vez de UNA SOLA VEZ**: el Meta-PLAN consolida todo, no necesita confirmaciones intermedias

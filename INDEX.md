@@ -14,8 +14,8 @@ Gestionados por /version. La versión se actualiza al cerrar sesión.
 |---|---|---|
 | ROADMAP.md | — | |
 | CHECKLIST.md | — | |
-| CHANGELOG.md | v1.11.0 | 2026-06-02 |
-| DILIGENCIA.md | v1.11.0 | 2026-06-02 |
+| CHANGELOG.md | v1.12.0 | 2026-06-02 |
+| DILIGENCIA.md | v1.12.0 | 2026-06-02 |
 
 ## Guías
 
@@ -26,7 +26,7 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 | GUIA_DE_COMANDOS.md | v1.10.3 | 2026-06-02 |
 | GUIA_DE_ADAPTACION.md | v1.10.3 | 2026-06-02 |
 | GUIA_REFERENCIA_RAPIDA.md | v1.10.3 | 2026-06-02 |
-| GUIA_DE_BUENAS_PRACTICAS.md | v1.10.3 | 2026-06-02 |
+| GUIA_DE_BUENAS_PRACTICAS.md | v1.12.0 | 2026-06-02 |
 | GUIA_ECOSISTEMAS.md | v1.10.3 | 2026-06-02 |
 | ESTANDAR-COMANDOS.md | v1.10.3 | 2026-06-02 |
 | GUIA_DE_REVISION.md | v1.10.3 | 2026-06-02 |
@@ -40,7 +40,7 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 | Archivo | Versión | Última actualización |
 |---|---|---|
 | MECANICA-DOCUMENTAL.md | v1.10.3 | 2026-06-02 |
-| MECANICA-CIRCUITO.md | v1.10.3 | 2026-06-02 |
+| MECANICA-CIRCUITO.md | v1.12.0 | 2026-06-02 |
 
 ## ADRs
 
