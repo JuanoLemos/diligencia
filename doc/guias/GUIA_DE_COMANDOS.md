@@ -1,6 +1,6 @@
-# GUIA DE COMANDOS — Diligencia v1.10.3
+# GUIA DE COMANDOS — Diligencia v1.13.0
 
-Referencia de los 35 comandos fundamentales del sistema Diligencia.
+Referencia de los 37 comandos fundamentales del sistema Diligencia.
 
 ---
 
@@ -51,6 +51,7 @@ Luego incluye secciones obligatorias según su tipo. Ver `doc/guias/ESTANDAR-COM
 | `/bug` | Declarativo | Calidad | Reporta bug en $BUGS con severidad, archivo y descripción |
 | `/backupall` | Procedural | Backup/Seguridad | Zip completo del proyecto |
 | `/checklist` | Declarativo | Roadmap/Backlog | Revisa CHECKLIST + ROADMAP y reporta estado |
+| `/circuito` | Declarativo | Flujo de sesión | Orquestador multi-comando: /circuito (updoc→version→doctor), /circuito version, /circuito doctor, /circuito updoc, /circuito completo |
 | `/commit` | Procedural | Flujo de sesión | `git add -A` + commit con formato estándar |
 | `/deprecar` | Declarativo | Calidad | Depreca archivos, comandos o estructuras obsoletas sin borrar |
 | `/doctor` | Declarativo | Calidad | Cuidado integral: estructura, código, tracking, limpieza y deprecación. /circuito doctor para chain completo con /version patch |
@@ -71,6 +72,7 @@ Luego incluye secciones obligatorias según su tipo. Ver `doc/guias/ESTANDAR-COM
 | `/report` | Declarativo | Flujo de sesión | Reporte consolidado del proyecto |
 | `/reanudar` | Declarativo | Flujo de sesión | Recupera sesión tras interrupción brusca |
 | `/rm` | Declarativo | Roadmap/Backlog | Revisa ROADMAP por área (técnica, UI, UX) |
+| `/salud` | Declarativo | Calidad | Diagnóstico de salud del doc-base: genera status-salud.md con indicadores de obsolescencia, cross-refs y gaps |
 | `/updoc` | Declarativo | Documentación | Sincroniza documentación completa (CHECKLIST, ROADMAP, AGENTS). D5 detecta template stale (minor). Auto-ejecuta /version BUILD al completar |
 | `/upguia` | Declarativo | Documentación | Actualiza guía existente en `doc/guias/` |
 | `/upmec` | Declarativo | Documentación | Actualiza documento existente desde template |
@@ -294,3 +296,6 @@ Ver `doc/guias/ESTANDAR-COMANDOS.md` para el template completo con todas las sec
 - `MECANICA-DOCUMENTAL.md` — motor documental
 - `MECANICA-CIRCUITO.md` — flujo vinculante entre comandos
 - `ESTANDAR-COMANDOS.md` — cómo escribir comandos
+- `doc/guias/identidad.md` — guía de identidad visual y de marca
+- `doc/mecanicas/MANDATO.md` — mandato del Director para el agente
+- `doc/arch/ADR_SUMMARY.md` — índice de ADRs registrados

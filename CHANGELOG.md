@@ -2,14 +2,22 @@
 
 ---
 
-## [Unreleased]
+## [1.13.0] — 2026-06-03
 
 ### Added
+- ADR_SUMMARY.md — índice con estadísticas de ADRs registrados
+- `doc/guias/identidad.md` — guía de identidad visual y de marca
+- `doc/mecanicas/MANDATO.md` — mandato del Director (L1-L3/Flash, memoria, auditoría, filosofía)
+- `~/.config/opencode/skills/rebirth-protocol/SKILL.md` — protocolo REBIRTH de 4 fases: diagnosis, recovery, consolidation, load-testing
+- CHECKLIST.md: dashboard de versiones en header
+- `doc/arch/status-salud.md` — reporte de salud generado por /salud BUILD
+
 ### Changed
-### Deprecated
-### Removed
-### Fixed
-### Security
+- adr-template.md: template enriquecido con tabla decisión/impacto, bullets ✅/⚠️, ejemplos concretos
+- GUIA_DE_COMANDOS.md: +/circuito y /salud en tabla, 35→37 comandos, §8 extendido con identidad.md, MANDATO.md, ADR_SUMMARY.md
+- GUIA_REFERENCIA_RAPIDA.md: bump 35→37 comandos
+- INDEX.md: +3 entries (ADR_SUMMARY, identidad, MANDATO)
+- DILIGENCIA.md: historial v1.13.0 agregado, doc/arch/README.md con referencia ADR_SUMMARY
 
 ## [1.12.1] — 2026-06-02
 

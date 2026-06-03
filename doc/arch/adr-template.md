@@ -1,21 +1,27 @@
 # ADR-NNN: [Título descriptivo]
 
-**Fecha:** YYYY-MM-DD
-**Status:** [Proposed | Accepted | Deprecated | Superseded]
-**Supersedes:** <ADR-NNN o N/A>
-**Superseded by:** <ADR-NNN o N/A>
+| Campo | Valor |
+|---|---|
+| **Decisión** | [Qué vamos a hacer. Voz activa.] |
+| **Estado** | [Proposed \| Accepted \| Deprecated \| Superseded] |
+| **Fecha** | YYYY-MM-DD |
+| **Supersedes** | [ADR-NNN o N/A] |
+| **Superseded by** | [ADR-NNN o N/A] |
+| **Impacto** | [Módulo(s) afectado(s)] |
 
-## Context
+## Contexto
 
 [Qué fuerzas están en juego. Restricciones técnicas, de negocio, sociales. Enunciado sin juicio de valor.]
 
-## Decision
+## Decisión
 
-[Qué vamos a hacer. Voz activa: «Usaremos PostgreSQL como almacenamiento primario».]
+[Detalle de la decisión tomada y alternativas consideradas.]
 
-## Consequences
+## Consecuencias
 
-[Qué resulta de esta decisión. Positivo, negativo, neutral. Riesgos aceptados.]
+- ✅ [Positivo 1]
+- ✅ [Positivo 2]
+- ⚠️ [Riesgo/negativo aceptado]
 
 ---
 *Lifecycle: Proposed → Accepted → Deprecated → Superseded*

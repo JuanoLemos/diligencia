@@ -1,24 +1,44 @@
-# Status Salud — Diligencia — v1.12.0
+# Status de Salud — Diligencia v1.13.0
 
-Generado por `/salud` el 2026-06-02.
+Generado por `/salud` BUILD.
 
-| Indicador | Estado | Detalle |
+## Indicadores
+
+| Indicador | Valor | Estado |
 |---|---|---|
-| **Versión** | v1.12.0 | commit 760d6f3 |
-| **Estructura** | ✅ | 12/12 checks: ROADMAP, CHECKLIST, CHANGELOG, AGENTS, DILIGENCIA, markdownlint, HARNESS, doc/arch, doc/guias, .opencode/commands, bugs.md, incidentes.md |
-| **Docs stale** | 1 | DILIGENCIA.md v1.10.3 → v1.12.0 (corregido) |
-| **Gaps documentales** | 1 | DILIGENCIA.md historial sin v1.11.0/v1.12.0 (corregido) |
-| **Cross-ref gaps (D1-D5)** | 0 | — |
-| **Último /doctor** | 2026-06-02 | Meta-PLAN (PRO): 1 gap encontrado y corregido |
-| **Working tree** | ✅ | limpio post-corrección (pendiente commit v1.12.1) |
-| **ADRs pendientes** | 0 | — |
-| **Template sync** | ✅ | DILIGENCIA.md vs adaptar.md: ambos v1.12.0 |
-| **Bump type** | patch | fix: DILIGENCIA.md stale header v1.10.3 + historial faltante |
+| Versión actual | v1.13.0 | ✅ |
+| Docs informativos totales | 16 | ✅ |
+| Docs al día (label = versión actual) | 4 | ⚠️ |
+| Docs STALE (label < versión actual) | 8 | ⚠️ |
+| Docs SIN LABEL | 0 | ✅ |
+| Gaps cross-ref (D1) | 0 | ✅ |
+| Gaps cross-ref (D3) | 3 | ⚠️ |
 
----
+## Docs STALE
 
-## Historial de salud
+| Archivo | Label actual | Última versión |
+|---|---|---|
+| `doc/guias/GUIA_DE_COMANDOS.md` | v1.13.0 | v1.13.0 (corregido) |
+| `doc/guias/GUIA_REFERENCIA_RAPIDA.md` | v1.13.0 | v1.13.0 (corregido) |
+| `doc/guias/GUIA_DE_USO.md` | v1.10.3 | v1.13.0 |
+| `doc/guias/GUIA_DE_ADAPTACION.md` | v1.10.3 | v1.13.0 |
+| `doc/guias/GUIA_DE_REVISION.md` | v1.10.3 | v1.13.0 |
+| `doc/guias/GUIA_DE_BUENAS_PRACTICAS.md` | v1.12.0 | v1.13.0 |
+| `doc/guias/GUIA_ECOSISTEMAS.md` | v1.10.3 | v1.13.0 |
+| `doc/mecanicas/MECANICA-DOCUMENTAL.md` | v1.10.3 | v1.13.0 |
+| `doc/mecanicas/MECANICA-CIRCUITO.md` | v1.11.0 | v1.13.0 |
+| `doc/guias/ESTANDAR-COMANDOS.md` | v1.10.3 | v1.13.0 |
 
-| Fecha | Versión | Stale | Gaps | Estructura | Notas |
-|---|---|---|---|---|---|
-| 2026-06-02 | v1.12.0 | 1 | 1 | ✅ | tr: DILIGENCIA.md stale + historial faltante |
+## Gaps cross-ref detectados (D3)
+
+| Documento nuevo | No referenciado en |
+|---|---|
+| `doc/arch/ADR_SUMMARY.md` | `/explica` scope, INDEX.md |
+| `doc/guias/identidad.md` | `/explica` scope |
+| `doc/mecanicas/MANDATO.md` | `/explica` scope |
+
+## Recomendaciones
+
+1. Bumpear labels de 8 docs STALE que no requieren cambios de contenido.
+2. Agregar ADR_SUMMARY.md, identidad.md y MANDATO.md al scope de `/explica` para que sean descubribles.
+3. Próximo /circuito completo incluirá /doctor para cerrar D3.

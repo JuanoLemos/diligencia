@@ -1,4 +1,4 @@
-# GUIA DE REFERENCIA RAPIDA — Diligencia v1.10.3
+# GUIA DE REFERENCIA RAPIDA — Diligencia v1.13.0
 
 Referencia rápida de 1 página. Para uso diario: comandos, decisión, flujo, variables.
 
@@ -176,7 +176,7 @@ PRE                DURANTE              POST
 ---
 
 ## Archivos relacionados
-- `GUIA_DE_COMANDOS.md` — referencia completa de 35 comandos
+- `GUIA_DE_COMANDOS.md` — referencia completa de 37 comandos
 - `GUIA_DE_BUENAS_PRACTICAS.md` — hábitos, árbol de decisión detallado, anti-patrones
 - `GUIA_ECOSISTEMAS.md` — mapa completo de 9 ecosistemas
 - `GUIA_DE_USO.md` — tutorial paso a paso

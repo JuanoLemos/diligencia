@@ -11,6 +11,7 @@ Decisiones arquitectónicas del proyecto Diligencia.
 | ADR-001 | Arquitectura de dos capas de comandos | ✅ Aceptado | Accepted |
 | ADR-002 | Sistema de variables para rutas | ✅ Aceptado | Accepted |
 | ADR-003 | Estructura estándar de archivos | ✅ Aceptado | Accepted |
+| ADR_SUMMARY | Resumen de todas las ADRs | — | — |
 
 ## Ciclo de vida
 
