@@ -1,4 +1,4 @@
-# GUIA DE BUENAS PRACTICAS — Diligencia v1.15.1
+# GUIA DE BUENAS PRACTICAS — Diligencia v1.15.2
 
 Hábitos y workflows para usar Diligencia de forma consistente entre sesiones, agentes y proyectos.
 
@@ -207,3 +207,18 @@ El workflow `completo` del meta-orquestador sugiere agentes según el estado del
 - **Ejecutar Meta-PLAN en FLASH**: el análisis profundo requiere PRO para detectar gaps y stale correctamente
 - **Ejecutar BUILD en PRO**: desperdicio de tokens y latencia — BUILD solo ejecuta cambios ya planificados
 - **Confirmar paso a paso en vez de UNA SOLA VEZ**: el Meta-PLAN consolida todo, no necesita confirmaciones intermedias
+
+---
+
+## 10. Idioma de respuestas
+
+Todas las respuestas del agente deben ser en español. Si el agente contesta en inglés, recordarle explícitamente que responda en español.
+
+| Regla | Detalle |
+|---|---|
+| **Idioma de trabajo** | Español para toda la sesión, sin excepción |
+| **Documentación** | Guías, comandos, mensajes, y comunicación deben estar en español |
+| **Corrección** | Si un agente responde en inglés, pausar y corregir: "Responde en español, por favor" |
+| **Herencia** | Nuevos proyectos adaptados con `/adaptar` heredan esta BP desde `AGENTS.md` |
+
+Esta BP aplica a todos los proyectos adaptados a Diligencia y se refuerza en las templates `AGENTS.md` y `HARNESS.md` que `/adaptar` copia.

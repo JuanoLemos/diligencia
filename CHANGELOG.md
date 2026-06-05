@@ -2,6 +2,16 @@
 
 ---
 
+## [1.15.3] — 2026-06-05
+
+### Added
+- Idioma español como Buena Práctica — reforzado en `/adaptar` (templates AGENTS.md, HARNESS.md), GUIA_DE_BUENAS_PRACTICAS §10, y opencode.jsonc instructions
+- Todas las respuestas del agente deben ser en español, con regla explícita de corrección si responde en inglés
+
+### Changed
+- Bump masivo de labels: 9 guías + 2 mecánicas v1.15.1 → v1.15.2
+- identidad.md y MANDATO.md: ahora con label de versión v1.15.2
+
 ## [1.15.2] — 2026-06-05
 
 ### Changed

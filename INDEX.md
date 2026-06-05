@@ -14,8 +14,8 @@ Gestionados por /version. La versión se actualiza al cerrar sesión.
 |---|---|---|
 | ROADMAP.md | — | |
 | CHECKLIST.md | — | |
-| CHANGELOG.md | v1.15.2 | 2026-06-05 |
-| DILIGENCIA.md | v1.15.2 | 2026-06-05 |
+| CHANGELOG.md | v1.15.3 | 2026-06-05 |
+| DILIGENCIA.md | v1.15.3 | 2026-06-05 |
 
 ## Guías
 
@@ -23,16 +23,16 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 
 | Archivo | Versión | Última actualización |
 |---|---|---|
-| GUIA_DE_COMANDOS.md | v1.15.1 | 2026-06-05 |
-| GUIA_DE_ADAPTACION.md | v1.15.1 | 2026-06-05 |
-| GUIA_REFERENCIA_RAPIDA.md | v1.15.1 | 2026-06-05 |
-| GUIA_DE_BUENAS_PRACTICAS.md | v1.15.1 | 2026-06-05 |
-| GUIA_ECOSISTEMAS.md | v1.15.1 | 2026-06-05 |
-| ESTANDAR-COMANDOS.md | v1.15.1 | 2026-06-05 |
-| GUIA_DE_REVISION.md | v1.15.1 | 2026-06-05 |
-| GUIA_DE_USO.md | v1.15.1 | 2026-06-05 |
-| _template.md | v1.15.1 | 2026-06-05 |
-| identidad.md | — | 2026-06-05 |
+| GUIA_DE_COMANDOS.md | v1.15.2 | 2026-06-05 |
+| GUIA_DE_ADAPTACION.md | v1.15.2 | 2026-06-05 |
+| GUIA_REFERENCIA_RAPIDA.md | v1.15.2 | 2026-06-05 |
+| GUIA_DE_BUENAS_PRACTICAS.md | v1.15.2 | 2026-06-05 |
+| GUIA_ECOSISTEMAS.md | v1.15.2 | 2026-06-05 |
+| ESTANDAR-COMANDOS.md | v1.15.2 | 2026-06-05 |
+| GUIA_DE_REVISION.md | v1.15.2 | 2026-06-05 |
+| GUIA_DE_USO.md | v1.15.2 | 2026-06-05 |
+| _template.md | v1.15.2 | 2026-06-05 |
+| identidad.md | v1.15.2 | 2026-06-05 |
 
 ## Mecánicas
 
@@ -40,9 +40,9 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 
 | Archivo | Versión | Última actualización |
 |---|---|---|
-| MECANICA-DOCUMENTAL.md | v1.15.1 | 2026-06-05 |
-| MECANICA-CBP.md | v1.15.1 | 2026-06-05 |
-| MANDATO.md | — | 2026-06-05 |
+| MECANICA-DOCUMENTAL.md | v1.15.2 | 2026-06-05 |
+| MECANICA-CBP.md | v1.15.2 | 2026-06-05 |
+| MANDATO.md | v1.15.2 | 2026-06-05 |
 
 ## ADRs
 

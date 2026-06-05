@@ -2,6 +2,10 @@
 
 Documentación de la metodología de estructura estándar para proyectos OpenCode.
 
+## Idioma
+
+Español — todas las respuestas del agente deben ser en español. Si el agente contesta en inglés, recordarle explícitamente que responda en español.
+
 ---
 
 ## Mapeo de rutas

@@ -1,4 +1,4 @@
-# GUIA DE ECOSISTEMAS — Diligencia v1.15.1
+# GUIA DE ECOSISTEMAS — Diligencia v1.15.2
 
 Mapa de los 9 ecosistemas de comandos: qué hacen, cuándo se ejecutan, qué archivos gestionan, y las reglas de frontera entre ellos.
 

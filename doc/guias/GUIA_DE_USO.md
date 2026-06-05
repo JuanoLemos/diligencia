@@ -1,4 +1,4 @@
-# GUIA DE USO — Diligencia v1.15.1
+# GUIA DE USO — Diligencia v1.15.2
 
 Manual completo de la metodología de estructura estándar para proyectos OpenCode.
 

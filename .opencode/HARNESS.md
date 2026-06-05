@@ -32,6 +32,7 @@ Archivo principal: `AGENTS.md`
 
 ## Convenciones
 
+- Idioma: español (todas las respuestas del agente deben ser en español)
 - Versiones: vX.Y semver
 - Prefijos: P1/P2/P3 (prioridad), ADR-NNN (arch)
 - Comandos: guarda + secciones estándar (ESTANDAR-COMANDOS.md)
