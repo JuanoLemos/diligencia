@@ -6,14 +6,14 @@
 
 | Versión | Estado | Descripción |
 |---|---|---|
-| v1.13.0 | 🟡 EN PROGRESO | ADR_SUMMARY, identidad, MANDATO, REBIRTH |
+| v1.15.0 | ✅ | Documental enforcement 3 capas + /adaptar migration table + version leaks |
 | v1.12.0 | ✅ | Meta-PLAN + BUILD en /circuito, /salud, meta-orquestador |
 | v1.11.0 | ✅ | /circuito vinculante, MECANICA-CIRCUITO.md |
 | v1.10.x | ✅ | Circuito cíclico, /reanudar, staleness fix |
 | v1.9.x | ✅ | CI/CD, /doctor sobre Diligencia |
 | v1.8.0 | ✅ | Keep a Changelog, ADR lifecycle, plantillas stack |
 
-**Completado:** 5/6 versiones (83%)
+**Completado:** 6/7 versiones (86%)
 
 ### Bloqueadores
 
@@ -21,7 +21,7 @@ Ninguno activo.
 
 ### Próximo milestone
 
-Cerrar v1.13.0 con /circuito updoc -> BUILD -> /version minor.
+Cerrar v1.15.1 con /circuito updoc -> BUILD -> /version patch.
 
 ---
 

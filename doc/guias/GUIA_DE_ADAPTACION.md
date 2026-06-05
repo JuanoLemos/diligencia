@@ -1,4 +1,4 @@
-# GUIA DE ADAPTACION — Diligencia v1.10.3
+# GUIA DE ADAPTACION — Diligencia v1.15.0
 
 Proceso completo para migrar un proyecto existente a la estructura estándar Diligencia.
 

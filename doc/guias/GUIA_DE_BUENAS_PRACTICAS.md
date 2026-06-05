@@ -1,4 +1,4 @@
-# GUIA DE BUENAS PRACTICAS — Diligencia v1.12.0
+# GUIA DE BUENAS PRACTICAS — Diligencia v1.15.0
 
 Hábitos y workflows para usar Diligencia de forma consistente entre sesiones, agentes y proyectos.
 

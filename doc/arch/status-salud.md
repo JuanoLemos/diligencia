@@ -1,44 +1,24 @@
-# Status de Salud — Diligencia v1.13.0
+# Status de Salud — Diligencia v1.15.1
 
-Generado por `/salud` BUILD.
+Generado por `/salud` el 2026-06-05.
 
-## Indicadores
-
-| Indicador | Valor | Estado |
+| Indicador | Estado | Detalle |
 |---|---|---|
-| Versión actual | v1.13.0 | ✅ |
-| Docs informativos totales | 16 | ✅ |
-| Docs al día (label = versión actual) | 4 | ⚠️ |
-| Docs STALE (label < versión actual) | 8 | ⚠️ |
-| Docs SIN LABEL | 0 | ✅ |
-| Gaps cross-ref (D1) | 0 | ✅ |
-| Gaps cross-ref (D3) | 3 | ⚠️ |
+| **Versión** | v1.15.1 | commit pending |
+| **Estructura** | ✅ | directorios core, archivos, variables OK |
+| **Docs stale** | 0 | todos corregidos vía /updoc Fase F |
+| **Gaps documentales** | 2 | GUIA_DE_ADAPTACION.md (step 11.5, Flujo C), CHANGELOG.md (v1.14.0 entry ausente) |
+| **Cross-ref gaps (D1-D5)** | 0 | D3 corregido: /explica scope expandido |
+| **Último /doctor** | 2026-06-05 | 4 correcciones: CHECKLIST, ROADMAP, /explica scope, tracking |
+| **Working tree** | ⚠️ sucio | cambios sin commit (BUILD en progreso) |
+| **ADRs pendientes** | 0 | todos aceptados |
+| **Template sync** | ✅ | DILIGENCIA.md v1.15.1 = adaptar.md v1.15.1 |
+| **Bump type** | patch | v1.15.0 → v1.15.1 |
 
-## Docs STALE
+---
 
-| Archivo | Label actual | Última versión |
-|---|---|---|
-| `doc/guias/GUIA_DE_COMANDOS.md` | v1.13.0 | v1.13.0 (corregido) |
-| `doc/guias/GUIA_REFERENCIA_RAPIDA.md` | v1.13.0 | v1.13.0 (corregido) |
-| `doc/guias/GUIA_DE_USO.md` | v1.10.3 | v1.13.0 |
-| `doc/guias/GUIA_DE_ADAPTACION.md` | v1.10.3 | v1.13.0 |
-| `doc/guias/GUIA_DE_REVISION.md` | v1.10.3 | v1.13.0 |
-| `doc/guias/GUIA_DE_BUENAS_PRACTICAS.md` | v1.12.0 | v1.13.0 |
-| `doc/guias/GUIA_ECOSISTEMAS.md` | v1.10.3 | v1.13.0 |
-| `doc/mecanicas/MECANICA-DOCUMENTAL.md` | v1.10.3 | v1.13.0 |
-| `doc/mecanicas/MECANICA-CIRCUITO.md` | v1.11.0 | v1.13.0 |
-| `doc/guias/ESTANDAR-COMANDOS.md` | v1.10.3 | v1.13.0 |
+## Historial de salud
 
-## Gaps cross-ref detectados (D3)
-
-| Documento nuevo | No referenciado en |
-|---|---|
-| `doc/arch/ADR_SUMMARY.md` | `/explica` scope, INDEX.md |
-| `doc/guias/identidad.md` | `/explica` scope |
-| `doc/mecanicas/MANDATO.md` | `/explica` scope |
-
-## Recomendaciones
-
-1. Bumpear labels de 8 docs STALE que no requieren cambios de contenido.
-2. Agregar ADR_SUMMARY.md, identidad.md y MANDATO.md al scope de `/explica` para que sean descubribles.
-3. Próximo /circuito completo incluirá /doctor para cerrar D3.
+| Fecha | Versión | Stale | Gaps | Estructura | Notas |
+|---|---|---|---|---|---|
+| 2026-06-05 | v1.15.1 | 0 | 2 | ✅ | Sync documental completo + CBP corrections |

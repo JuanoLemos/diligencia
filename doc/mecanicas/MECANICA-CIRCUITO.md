@@ -1,4 +1,4 @@
-# MECANICA-CIRCUITO — Circuito de trabajo cíclico v1.11.0
+# MECANICA-CIRCUITO — Circuito de trabajo cíclico v1.15.0
 
 Define los workflows multi-comando del ecosistema. El orquestador `/circuito` ejecuta los encadenamientos; los comandos individuales ya no contienen "Próximo paso" propio.
 Referencia de hábitos de usuario: `GUIA_DE_BUENAS_PRACTICAS.md §9`.

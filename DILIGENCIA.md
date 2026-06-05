@@ -1,4 +1,4 @@
-# Diligencia v1.15.0 — Estructura estándar de documentación
+# Diligencia v1.15.1 — Estructura estándar de documentación
 
 Sello de metodología para proyectos OpenCode.
 
@@ -36,6 +36,8 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| v1.15.1 | 2026-06-05 | Sync documental masivo: /updoc — 14 labels stale corregidos, INDEX sincronizado. /explica scope expandido (identidad, MANDATO, ADR_SUMMARY, status-salud). /doctor — tracking actualizado (CHECKLIST, ROADMAP). /salud regenerado. CBP corrections en /circuito commands. |
+| v1.15.0 | 2026-06-05 | Documental enforcement en 3 capas: check-docs.js, opencode.jsonc instructions (6 reglas /version), pre-commit hook template. /adaptar step 11.5 (cablea enforcement) + Flujo C paso 4 (sync upgrades). /version paso 8c mejorado. Templates sin versiones de metodología. |
 | v1.14.0 | 2026-06-05 | /version con PRE-FLIGHT integral (6 checks A-F). Micro-circuito pre-flight detecta alertas (staleness, salud, /explica scope, template, cross-refs, variables) y pregunta forzar/abortar antes del bump. Circuito /updoc → /version cerrado. |
 | v1.13.0 | 2026-06-03 | Nuevos documentos metodológicos: ADR_SUMMARY.md, identidad.md (guía), MANDATO.md (mandato Director). Skill rebirth-protocol para continuidad multi-sesión. adr-template.md enriquecido. CHECKLIST.md con dashboard de versiones. |
 | v1.12.0 | 2026-06-02 | Meta-PLAN (PRO) + BUILD (FLASH) en /circuito. /salud BUILD*. Meta-orquestador con agentes/skills. |

@@ -2,7 +2,7 @@
 
 Metodología de estructura estándar para proyectos OpenCode.
 
-Última actualización: 2026-06-01
+Última actualización: 2026-06-05
 
 ---
 

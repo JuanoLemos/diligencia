@@ -1,4 +1,4 @@
-# _template.md — Plantilla de guía v1.10.3
+# _template.md — Plantilla de guía v1.15.0
 
 Título de la guía.
 

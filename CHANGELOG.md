@@ -2,6 +2,20 @@
 
 ---
 
+## [1.15.1] — 2026-06-05
+
+### Fixed
+- `/updoc` sync masivo: 14 labels stale corregidos en guías, mecánicas y referencias
+- `INDEX.md`: versiones sincronizadas con headers de cada archivo
+- `doc/arch/status-salud.md`: regenerado con datos frescos (v1.15.1, 0 stale)
+- `/explica` scope expandido: +ADR_SUMMARY.md, identidad.md, MANDATO.md, status-salud.md
+
+### Changed
+- `CHECKLIST.md`: dashboard actualizado (v1.15.0 ✅, próximo milestone v1.15.1)
+- `ROADMAP.md`: última actualización → 2026-06-05
+- `DILIGENCIA.md`: historial v1.15.0 + v1.15.1 agregados
+- `/circuito` commands: CBP corrections — /version step 5 aborta con alertas, /salud BUILD* puro
+
 ## [1.15.0] — 2026-06-05
 
 ### Added
