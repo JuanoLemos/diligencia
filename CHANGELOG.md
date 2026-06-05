@@ -2,6 +2,14 @@
 
 ---
 
+## [1.14.0] — 2026-06-05
+
+### Changed
+- `/version`: +PRE-FLIGHT integral (6 checks A-F: staleness, salud, /explica scope, template sync, cross-refs, variables). Pre-flight se ejecuta antes de confirmar bump y alerta sobre inconsistencias documentales. Si hay alertas, pregunta forzar/abortar. Si aborta, sugiere comandos correctivos.
+
+### Fixed
+- `/version` ya no declara sesión cerrada si hay docs STALE — el pre-flight bloquea hasta que usuario decida forzar o corregir
+
 ## [1.13.0] — 2026-06-03
 
 ### Added
