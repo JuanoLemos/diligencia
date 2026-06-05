@@ -2,6 +2,18 @@
 
 ---
 
+## [1.15.2] — 2026-06-05
+
+### Changed
+- `/circuito` renombrado a `/CBP` (Circuito de Buenas Prácticas) — archivo, cabeceras, y todas las referencias cruzadas
+- `doc/mecanicas/MECANICA-CIRCUITO.md` → `MECANICA-CBP.md` + referencias actualizadas en guías, INDEX y templates
+- `/CBP` sin argumentos: ahora ejecuta `completo` por defecto
+- Bump masivo de labels: 10 guías + 2 mecánicas v1.15.0 → v1.15.1 (sync post-rename)
+
+### Fixed
+- CHANGELOG.md: entrada faltante v1.14.0 reconstruida
+- GUIA_DE_ADAPTACION.md: step 11.5 (enforcement cableado) y Flujo C sync agregados
+
 ## [1.15.1] — 2026-06-05
 
 ### Fixed
@@ -16,23 +28,30 @@
 - `DILIGENCIA.md`: historial v1.15.0 + v1.15.1 agregados
 - `/CBP` commands: CBP corrections — /version step 5 aborta con alertas, /salud BUILD* puro
 
+## [1.14.0] — 2026-06-04
+
+### Fixed
+- Templates `identidad.md` y `MANDATO.md`: versiones de metodología removidas de headers (v1.14.0 leak → headers sin versión de Diligencia)
+- closefront-io: INDEX.md actualizado (críticos a v0.3.0, DILIGENCIA.md a v1.14.0)
+- closefront-io: `identidad.md` y `MANDATO.md` sincronizados desde template (sin versión de metodología)
+
+### Added
+- Enforcement documental en 3 capas: `opencode.jsonc` (runtime), `scripts/check-docs.js` (pre-commit), `/adaptar` (proyectos nuevos y upgrades)
+
 ## [1.15.0] — 2026-06-05
 
 ### Added
-- `scripts/check-docs.js` — validación automatizada de integridad documental: INDEX.md vs CHANGELOG, headers sincronizados, $VARIABLES resolubles
-- `.husky/pre-commit` template en doc-base con gancho `check-docs` para proyectos adaptados
+- `scripts/check-docs.js` — validación automatizada de integridad documental
+- `.husky/pre-commit` template en doc-base con gancho `check-docs`
 - `opencode.jsonc` instructions: 6 reglas para enforcement de `/version` en toda sesión
 - `/adaptar` Flujo A paso 11.5: cablea enforcement documental en proyectos nuevos
 - `/adaptar` Flujo C Fase 1 paso 4: enforcement de sync en upgrades
 
 ### Fixed
-- Templates `identidad.md` y `MANDATO.md`: versiones de metodología removidas de headers (v1.14.0 leak → headers sin versión de Diligencia)
 - `/version` paso 8c: sync mejorado (comparar contenido antes de copiar, preservar placeholders del proyecto destino)
-- closefront-io: INDEX.md actualizado (críticos a v0.3.0, DILIGENCIA.md a v1.14.0)
-- closefront-io: `identidad.md` y `MANDATO.md` sincronizados desde template (sin versión de metodología)
 
 ### Changed
-- Enforcement documental en 3 capas: `opencode.jsonc` (runtime), `scripts/check-docs.js` (pre-commit), `/adaptar` (proyectos nuevos y upgrades)
+- Enforcement documental consolidado como feature core del sistema
 
 ## [1.13.0] — 2026-06-03
 

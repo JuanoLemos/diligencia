@@ -1,4 +1,4 @@
-# ESTANDAR-COMANDOS.md — Estándar de comandos Diligencia v1.15.0
+# ESTANDAR-COMANDOS.md — Estándar de comandos Diligencia v1.15.1
 
 Define las secciones obligatorias que todo comando global debe incluir para producir output consistente entre agentes, modelos y sesiones.
 

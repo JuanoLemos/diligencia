@@ -1,4 +1,4 @@
-# GUIA DE ADAPTACION — Diligencia v1.15.0
+# GUIA DE ADAPTACION — Diligencia v1.15.1
 
 Proceso completo para migrar un proyecto existente a la estructura estándar Diligencia.
 
@@ -53,13 +53,19 @@ Para cada comando en `.opencode/commands/*.md`:
 
 Resultado esperado: cero rutas absolutas o relativas directas en comandos.
 
-### Fase 4 — Migración física
+### Fase 4 — Migración física (ampliada v1.15.0)
 
 Mover archivos según la tabla:
 - Roadmaps, tasklists, changelogs → raíz (`ROADMAP.md`, `CHECKLIST.md`, `CHANGELOG.md`)
 - ADRs, sistema, bitácora, estructura → `doc/arch/`
 - Guías → `doc/guias/` (renombrar `doc/guia/` si existe)
 - Mecánicas → `doc/mecanicas/` (usualmente ya existe)
+
+**11.5 — Cablear enforcement documental**:
+   a. AGREGAR bloque `instructions` en `opencode.jsonc` con las 6 reglas de enforcement de `/version`
+   b. INCLUIR `scripts/check-docs.js` si el proyecto usará validación automatizada
+   c. AGREGAR `.husky/pre-commit` con gancho `check-docs` desde template doc-base
+   d. VERIFICAR que `$HARNESS` en AGENTS.md apunte a `.opencode/HARNESS.md`
 
 Borrar directorios fuente vacíos.
 
