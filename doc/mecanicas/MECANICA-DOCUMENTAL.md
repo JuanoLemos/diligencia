@@ -146,7 +146,7 @@ Usar el árbol de decisión de `GUIA_DE_BUENAS_PRACTICAS.md §2` para elegir com
 ### Post-sesión
 
 1. Ejecutar `/updoc` → sincroniza RM/CHECKLIST, detecta gaps cross-ref (incluye D5 template staleness)
-2. Si hay cambios versionables: `/circuito version` → bump, CHANGELOG, commit (o `/circuito doctor` para chain completo con /version patch)
+2. Si hay cambios versionables: `/CBP version` → bump, CHANGELOG, commit (o `/CBP doctor` para chain completo con /version patch)
 3. Si hubo interrupción brusca en sesión anterior: `/reanudar` antes de continuar
 
 ### /backup — Respaldo pre-cambio

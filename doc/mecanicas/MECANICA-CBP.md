@@ -1,6 +1,6 @@
-# MECANICA-CIRCUITO — Circuito de trabajo cíclico v1.15.0
+# MECANICA-CBP — Circuito de trabajo cíclico v1.15.0
 
-Define los workflows multi-comando del ecosistema. El orquestador `/circuito` ejecuta los encadenamientos; los comandos individuales ya no contienen "Próximo paso" propio.
+Define los workflows multi-comando del ecosistema. El orquestador `/CBP` ejecuta los encadenamientos; los comandos individuales ya no contienen "Próximo paso" propio.
 Referencia de hábitos de usuario: `GUIA_DE_BUENAS_PRACTICAS.md §9`.
 
 ---
@@ -21,7 +21,7 @@ El Meta-PLAN corre siempre en PRO sin importar el modo de invocación. BUILD cor
 ```
 SESSIONWORK
     │
-    ├── /circuito updoc ────────────────────────────────────┐
+    ├── /CBP updoc ────────────────────────────────────┐
     │                                                       │
     ▼                                                       │
 META-PLAN (PRO)                                             │
@@ -44,26 +44,26 @@ BUILD                                                       │
                                                            │
 ┌────────────────────────────────────────────────────────────┘
 │
-├── /circuito doctor ───────────────────────────────────────┐
+├── /CBP doctor ───────────────────────────────────────┐
 │   META-PLAN (PRO) → BUILD (FLASH)                         │
 │   /doctor Fases 1→2 → /salud BUILD* → /version patch*     │
 │   (si correcciones)                                        │
 │                                                           │
-├── /circuito version ──────────────────────────────────────┤
+├── /CBP version ──────────────────────────────────────┤
 │   META-PLAN (PRO) → BUILD (FLASH)                         │
 │   /version Steps 1→5 → Steps 6→8 → sugiere /doctor        │
 │                                                           │
-└── /circuito completo ─────────────────────────────────────┘
+└── /CBP completo ─────────────────────────────────────┘
     META-PLAN (PRO) → BUILD (FLASH)
     Agentes/skills sugeridos → /updoc → /salud* → /version* → /doctor
 ```
 
 ## Estados y transiciones
 
-| N° | Estado | Entry | Acción | Exit | Próximo paso (via /circuito) |
+| N° | Estado | Entry | Acción | Exit | Próximo paso (via /CBP) |
 |---|---|---|---|---|---|
-| 1 | SESSIONWORK | Circuito inicia o reinicia | Usuario edita, agrega RM items, modifica código | Working tree dirty | `/circuito updoc` |
-| 2 | META-PLAN | `/circuito` invocado | Fase PRO: PLAN de todos los comandos del workflow, tabla consolidada, UNA confirmación | Confirmación aceptada | BUILD (FLASH) |
+| 1 | SESSIONWORK | Circuito inicia o reinicia | Usuario edita, agrega RM items, modifica código | Working tree dirty | `/CBP updoc` |
+| 2 | META-PLAN | `/CBP` invocado | Fase PRO: PLAN de todos los comandos del workflow, tabla consolidada, UNA confirmación | Confirmación aceptada | BUILD (FLASH) |
 | 3 | BUILD | META-PLAN confirmado | Fase FLASH: BUILD de todos los comandos (escritura) | BUILD completo | SESSIONWORK o sugiere siguiente paso |
 | 4 | `/updoc` PLAN (en META-PLAN) | SESSIONWORK completo | Fases A→E+H: audita INDEX, stale, gaps, cross-ref | Plan auditado | Continúa META-PLAN con /doctor PLAN |
 | 5 | `/doctor` PLAN (en META-PLAN) | `/updoc` PLAN completado | Fases 1→2: diagnóstico estructura, código, tracking, limpieza, deprecación | Diagnóstico completo | Continúa META-PLAN con /salud preview |
@@ -73,7 +73,7 @@ BUILD                                                       │
 
 ## Workflows del orquestador
 
-Los encadenamientos se definen en `~/.config/opencode/commands/circuito.md`:
+Los encadenamientos se definen en `~/.config/opencode/commands/CBP.md`:
 
 | Workflow | Secuencia |
 |---|---|
@@ -82,7 +82,7 @@ Los encadenamientos se definen en `~/.config/opencode/commands/circuito.md`:
 | `version` | META-PLAN (PRO): /version Steps 1→5 → BUILD (FLASH): /version Steps 6→8 → sugiere /doctor |
 | `completo` | META-PLAN (PRO): agentes/skills sugeridos + /updoc PLAN + /doctor PLAN → BUILD (FLASH): agentes + /updoc Fase F + /salud* + /version* + /doctor |
 
-Ver `circuito.md` para la especificación completa de cada workflow.
+Ver `CBP.md` para la especificación completa de cada workflow.
 
 ## Contrato Meta-PLAN → BUILD
 
@@ -110,7 +110,7 @@ Los agentes se ejecutan en BUILD antes de los comandos documentales. El usuario 
 
 ## Vinculante
 
-- El encadenamiento vinculante lo controla `/circuito`, no los comandos individuales.
+- El encadenamiento vinculante lo controla `/CBP`, no los comandos individuales.
 - El orquestador DEBE ejecutar Meta-PLAN primero, luego BUILD.
 - El usuario puede rechazar el Meta-PLAN (rompiendo el circuito), pero el orquestador no puede saltar Meta-PLAN.
 - Los agentes/skills sugeridos son opcionales — el usuario decide si incluirlos.
@@ -120,15 +120,15 @@ Los agentes se ejecutan en BUILD antes de los comandos documentales. El usuario 
 
 | Escenario | Comando |
 |---|---|
-| Post-sesión con cambios documentales | `/circuito updoc` |
-| Diagnóstico post-versionado | `/circuito doctor` |
-| Versionado rápido sin /updoc | `/circuito version` |
-| Ciclo completo con agentes + documentación | `/circuito completo` |
+| Post-sesión con cambios documentales | `/CBP updoc` |
+| Diagnóstico post-versionado | `/CBP doctor` |
+| Versionado rápido sin /updoc | `/CBP version` |
+| Ciclo completo con agentes + documentación | `/CBP completo` |
 | Sin cambios en working tree | No inicia circuito — salta a sessionwork o fin |
 
 ## Archivos que referencian esta mecánica
 
-- `~/.config/opencode/commands/circuito.md` — orquestador (SSOT de encadenamiento)
+- `~/.config/opencode/commands/CBP.md` — orquestador (SSOT de encadenamiento)
 - `~/.config/opencode/commands/updoc.md`
 - `~/.config/opencode/commands/version.md`
 - `~/.config/opencode/commands/doctor.md`

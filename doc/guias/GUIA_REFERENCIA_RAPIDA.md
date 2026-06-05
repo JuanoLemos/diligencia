@@ -13,14 +13,14 @@ Referencia rápida de 1 página. Para uso diario: comandos, decisión, flujo, va
 | `/adaptar` | Adaptar proyecto a Diligencia |
 | `/next` | Próximos 5 pasos del roadmap |
 | `/report` | Reporte consolidado |
-| `/version` | Bump + doc sync + commit de cierre. Usar /circuito version para bump automático |
+| `/version` | Bump + doc sync + commit de cierre. Usar /CBP version para bump automático |
 | `/reanudar` | Recuperar sesión tras interrupción brusca |
 | `/commit` | Commit con Conventional Commits |
 
 ### Calidad
 | Comando | Qué hace |
 |---|---|
-| `/doctor` | Chequeo integral (estructura + código + tracking + limpieza + deprecación). /circuito doctor para chain completo |
+| `/doctor` | Chequeo integral (estructura + código + tracking + limpieza + deprecación). /CBP doctor para chain completo |
 | `/health` | Salud del código (stack-aware) |
 | `/diligencia-check` | Validar estructura completa |
 | `/debug` | Análisis profundo de sección |
@@ -33,7 +33,7 @@ Referencia rápida de 1 página. Para uso diario: comandos, decisión, flujo, va
 ### Documentación
 | Comando | Qué hace |
 |---|---|
-| `/updoc` | Auditoría documental entre versiones. /circuito updoc para chain completo (updoc→version→doctor) |
+| `/updoc` | Auditoría documental entre versiones. /CBP updoc para chain completo (updoc→version→doctor) |
 | `/+mec` | Crear mecánica desde template |
 | `/upmec` | Actualizar mecánica |
 | `/+guia` | Crear guía desde template |
@@ -95,9 +95,9 @@ Referencia rápida de 1 página. Para uso diario: comandos, decisión, flujo, va
 
 ```
 PRE                DURANTE              POST
-/reanudar          /plan → BUILD        /circuito updoc
-/foco  → /next     /commit feat/fix      /circuito doctor
-/estado                                  /circuito version (sin /updoc)
+/reanudar          /plan → BUILD        /CBP updoc
+/foco  → /next     /commit feat/fix      /CBP doctor
+/estado                                  /CBP version (sin /updoc)
 ```
 
 1. `/reanudar` — recuperar contexto si hubo interrupción
@@ -106,9 +106,9 @@ PRE                DURANTE              POST
 4. `/plan` — planificar cambios
 5. BUILD — implementar
 6. `/commit tipo:` — commitear cambios parciales (opcional)
-7. `/circuito updoc` — auditoría + versionado + doctor en un solo workflow
-8. `/circuito doctor` — chequeo integral + /version patch si hay correcciones
-9. El POST usa el **orquestador `/circuito`** (`doc/mecanicas/MECANICA-CIRCUITO.md`) que ejecuta los comandos en secuencia con encadenamiento controlado
+7. `/CBP updoc` — auditoría + versionado + doctor en un solo workflow
+8. `/CBP doctor` — chequeo integral + /version patch si hay correcciones
+9. El POST usa el **orquestador `/CBP`** (`doc/mecanicas/MECANICA-CBP.md`) que ejecuta los comandos en secuencia con encadenamiento controlado
 
 ---
 
@@ -139,9 +139,9 @@ PRE                DURANTE              POST
 | Feature nueva | `/plan` → BUILD → `/commit feat:` |
 | Bug fix | `/bug` → `/debug` → BUILD → `/commit fix:` |
 | Recuperación de sesión | `/reanudar` |
-| Cierre de sesión | `/circuito completo` (updoc→doctor→version) |
+| Cierre de sesión | `/CBP completo` (updoc→doctor→version) |
 | Limpieza post-merge | `/doctor` → `/limpiar` |
-| Deprecar feature | `/deprecar` → `/circuito version` |
+| Deprecar feature | `/deprecar` → `/CBP version` |
 | Sincronizar docs | `/updoc` |
 
 ---

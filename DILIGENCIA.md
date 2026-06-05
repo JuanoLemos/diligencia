@@ -36,13 +36,13 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
-| v1.15.1 | 2026-06-05 | Sync documental masivo: /updoc — 14 labels stale corregidos, INDEX sincronizado. /explica scope expandido (identidad, MANDATO, ADR_SUMMARY, status-salud). /doctor — tracking actualizado (CHECKLIST, ROADMAP). /salud regenerado. CBP corrections en /circuito commands. |
+| v1.15.1 | 2026-06-05 | Sync documental masivo: /updoc — 14 labels stale corregidos, INDEX sincronizado. /explica scope expandido (identidad, MANDATO, ADR_SUMMARY, status-salud). /doctor — tracking actualizado (CHECKLIST, ROADMAP). /salud regenerado. CBP corrections en /CBP commands. |
 | v1.15.0 | 2026-06-05 | Documental enforcement en 3 capas: check-docs.js, opencode.jsonc instructions (6 reglas /version), pre-commit hook template. /adaptar step 11.5 (cablea enforcement) + Flujo C paso 4 (sync upgrades). /version paso 8c mejorado. Templates sin versiones de metodología. |
 | v1.14.0 | 2026-06-05 | /version con PRE-FLIGHT integral (6 checks A-F). Micro-circuito pre-flight detecta alertas (staleness, salud, /explica scope, template, cross-refs, variables) y pregunta forzar/abortar antes del bump. Circuito /updoc → /version cerrado. |
 | v1.13.0 | 2026-06-03 | Nuevos documentos metodológicos: ADR_SUMMARY.md, identidad.md (guía), MANDATO.md (mandato Director). Skill rebirth-protocol para continuidad multi-sesión. adr-template.md enriquecido. CHECKLIST.md con dashboard de versiones. |
-| v1.12.0 | 2026-06-02 | Meta-PLAN (PRO) + BUILD (FLASH) en /circuito. /salud BUILD*. Meta-orquestador con agentes/skills. |
-| v1.11.0 | 2026-06-02 | /circuito — orquestador de workflows vinculantes. "Próximo paso en el circuito" removido de comandos individuales. MECANICA-CIRCUITO.md en doc-base. |
-| v1.10.3 | 2026-06-02 | Circuito cíclico PLAN→BUILD vinculante entre comandos. /updoc, /version, /doctor: sección "Próximo paso en el circuito". MECANICA-CIRCUITO.md nueva mecánica. GUIA_DE_BUENAS_PRACTICAS.md §9 loop diagram. |
+| v1.12.0 | 2026-06-02 | Meta-PLAN (PRO) + BUILD (FLASH) en /CBP. /salud BUILD*. Meta-orquestador con agentes/skills. |
+| v1.11.0 | 2026-06-02 | /CBP — orquestador de workflows vinculantes. "Próximo paso en el circuito" removido de comandos individuales. MECANICA-CBP.md en doc-base. |
+| v1.10.3 | 2026-06-02 | Circuito cíclico PLAN→BUILD vinculante entre comandos. /updoc, /version, /doctor: sección "Próximo paso en el circuito". MECANICA-CBP.md nueva mecánica. GUIA_DE_BUENAS_PRACTICAS.md §9 loop diagram. |
 | v1.10.1 | 2026-06-01 | Bug fix: /adaptar reportaba v1.7.1 por template DILIGENCIA.md y adaptar.md stalé. /version ahora sincroniza template+adaptar al versionar Diligencia. /updoc D5 detecta staleness. |
 | v1.10.0 | 2026-06-01 | `/version`: autodetección post-/doctor sugiere patch. `/doctor`: circuito → `/version patch` tras correcciones. Nuevo `/reanudar`: recuperación de sesión tras interrupción brusca. |
 | v1.9.1 | 2026-06-01 | `/doctor` sobre Diligencia: items stale en ROADMAP.md movidos de Siguiente a Completado. CHANGELOG.md con entrada de /doctor. Gap D2 cerrado (diligencia-check.yml referenciado explícitamente en /adaptar). |

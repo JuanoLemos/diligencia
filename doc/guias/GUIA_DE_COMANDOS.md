@@ -36,7 +36,7 @@ Luego incluye secciones obligatorias según su tipo. Ver `doc/guias/ESTANDAR-COM
 
 ## 2. Referencia completa
 
-> **Circuito vinculante:** `/updoc`, `/version` y `/doctor` forman un ciclo cerrado definido en `doc/mecanicas/MECANICA-CIRCUITO.md`. Al completar BUILD, cada comando ejecuta automáticamente el siguiente sin PLAN separado — los datos del comando anterior son suficientes.
+> **Circuito vinculante:** `/updoc`, `/version` y `/doctor` forman un ciclo cerrado definido en `doc/mecanicas/MECANICA-CBP.md`. Al completar BUILD, cada comando ejecuta automáticamente el siguiente sin PLAN separado — los datos del comando anterior son suficientes.
 
 | Comando | Tipo | Categoría | Descripción |
 |---|---|---|---|
@@ -51,10 +51,10 @@ Luego incluye secciones obligatorias según su tipo. Ver `doc/guias/ESTANDAR-COM
 | `/bug` | Declarativo | Calidad | Reporta bug en $BUGS con severidad, archivo y descripción |
 | `/backupall` | Procedural | Backup/Seguridad | Zip completo del proyecto |
 | `/checklist` | Declarativo | Roadmap/Backlog | Revisa CHECKLIST + ROADMAP y reporta estado |
-| `/circuito` | Declarativo | Flujo de sesión | Orquestador multi-comando: /circuito (updoc→version→doctor), /circuito version, /circuito doctor, /circuito updoc, /circuito completo |
+| `/CBP` | Declarativo | Flujo de sesión | Orquestador multi-comando: /CBP (updoc→version→doctor), /CBP version, /CBP doctor, /CBP updoc, /CBP completo |
 | `/commit` | Procedural | Flujo de sesión | `git add -A` + commit con formato estándar |
 | `/deprecar` | Declarativo | Calidad | Depreca archivos, comandos o estructuras obsoletas sin borrar |
-| `/doctor` | Declarativo | Calidad | Cuidado integral: estructura, código, tracking, limpieza y deprecación. /circuito doctor para chain completo con /version patch |
+| `/doctor` | Declarativo | Calidad | Cuidado integral: estructura, código, tracking, limpieza y deprecación. /CBP doctor para chain completo con /version patch |
 | `/debug` | Declarativo | Calidad | Análisis profundo de backend, frontend o base de datos |
 | `/diligencia-check` | Declarativo | Calidad | Valida estructura, variables, comandos y versión contra estándares Diligencia |
 | `/estado` | Declarativo | Roadmap/Backlog | Reporte rápido: commits recientes, pendientes, próximos pasos |
@@ -294,7 +294,7 @@ Ver `doc/guias/ESTANDAR-COMANDOS.md` para el template completo con todas las sec
 - `GUIA_DE_BUENAS_PRACTICAS.md` — hábitos y workflows diarios
 - `GUIA_ECOSISTEMAS.md` — mapa de ecosistemas y fronteras entre comandos
 - `MECANICA-DOCUMENTAL.md` — motor documental
-- `MECANICA-CIRCUITO.md` — flujo vinculante entre comandos
+- `MECANICA-CBP.md` — flujo vinculante entre comandos
 - `ESTANDAR-COMANDOS.md` — cómo escribir comandos
 - `doc/guias/identidad.md` — guía de identidad visual y de marca
 - `doc/mecanicas/MANDATO.md` — mandato del Director para el agente

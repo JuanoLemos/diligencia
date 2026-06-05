@@ -7,8 +7,8 @@
 | Versión | Estado | Descripción |
 |---|---|---|
 | v1.15.0 | ✅ | Documental enforcement 3 capas + /adaptar migration table + version leaks |
-| v1.12.0 | ✅ | Meta-PLAN + BUILD en /circuito, /salud, meta-orquestador |
-| v1.11.0 | ✅ | /circuito vinculante, MECANICA-CIRCUITO.md |
+| v1.12.0 | ✅ | Meta-PLAN + BUILD en /CBP, /salud, meta-orquestador |
+| v1.11.0 | ✅ | /CBP vinculante, MECANICA-CBP.md |
 | v1.10.x | ✅ | Circuito cíclico, /reanudar, staleness fix |
 | v1.9.x | ✅ | CI/CD, /doctor sobre Diligencia |
 | v1.8.0 | ✅ | Keep a Changelog, ADR lifecycle, plantillas stack |
@@ -21,7 +21,7 @@ Ninguno activo.
 
 ### Próximo milestone
 
-Cerrar v1.15.1 con /circuito updoc -> BUILD -> /version patch.
+Cerrar v1.15.1 con /CBP updoc -> BUILD -> /version patch.
 
 ---
 

@@ -10,9 +10,9 @@ Hábitos y workflows para usar Diligencia de forma consistente entre sesiones, a
 |---|---|
 | **Pre-sesión** | Leer `AGENTS.md`, revisar `$CHECKLIST` items abiertos, revisar `$RM` "Ahora" o "Siguiente". Si hubo interrupción brusca: `/reanudar` para recuperar contexto. Si hay cambios grandes planeados: `/backup`. Periódicamente: `/diligencia-check` para detectar degradación estructural. |
 | **Durante** | Usar el comando adecuado para cada situación (ver §2) |
-| **Post-sesión** | `/circuito updoc` (ejecuta /updoc PLAN→BUILD → /version minor BUILD* → sugiere /doctor) |
+| **Post-sesión** | `/CBP updoc` (ejecuta /updoc PLAN→BUILD → /version minor BUILD* → sugiere /doctor) |
 
-Regla: toda sesión sigue **PLAN → BUILD**. Usar `/circuito updoc` para post-sesión completa. Si solo se necesita versionar sin auditoría: `/circuito version`.
+Regla: toda sesión sigue **PLAN → BUILD**. Usar `/CBP updoc` para post-sesión completa. Si solo se necesita versionar sin auditoría: `/CBP version`.
 
 ---
 
@@ -126,15 +126,15 @@ Los checks de código para stacks no-JS están pendientes de implementar en `/he
 
 ## 9. Circuito de trabajo
 
-Usar `/circuito` para ejecutar secuencias completas. Cada workflow se divide en **Meta-PLAN (PRO)** y **BUILD (FLASH)**.
-Mecánica completa: `doc/mecanicas/MECANICA-CIRCUITO.md`
+Usar `/CBP` para ejecutar secuencias completas. Cada workflow se divide en **Meta-PLAN (PRO)** y **BUILD (FLASH)**.
+Mecánica completa: `doc/mecanicas/MECANICA-CBP.md`
 
 ### Diagrama de workflows
 
 ```
    SESSIONWORK
        │
-       ├── /circuito updoc
+       ├── /CBP updoc
        │       │
        │       ├── META-PLAN (PRO)
        │       │     /updoc PLAN → /doctor PLAN → /salud preview
@@ -143,7 +143,7 @@ Mecánica completa: `doc/mecanicas/MECANICA-CIRCUITO.md`
        │       └── BUILD (FLASH)
        │             /updoc Fase F → /salud BUILD* → /version BUILD* → /doctor BUILD
        │
-       ├── /circuito doctor
+       ├── /CBP doctor
        │       │
        │       ├── META-PLAN (PRO)
        │       │     /doctor Fases 1→2 → /salud preview
@@ -152,7 +152,7 @@ Mecánica completa: `doc/mecanicas/MECANICA-CIRCUITO.md`
        │       └── BUILD (FLASH)
        │             /doctor Fase 3 → /salud BUILD* → /version patch BUILD*
        │
-       ├── /circuito version
+       ├── /CBP version
        │       │
        │       ├── META-PLAN (PRO)
        │       │     /version Steps 1→5
@@ -161,7 +161,7 @@ Mecánica completa: `doc/mecanicas/MECANICA-CIRCUITO.md`
        │       └── BUILD (FLASH)
        │             /version Steps 6→8 → sugiere /doctor
        │
-       └── /circuito completo
+       └── /CBP completo
                │
                ├── META-PLAN (PRO)
                │     Agentes/skills sugeridos → /updoc PLAN → /doctor PLAN → /salud preview
@@ -180,16 +180,16 @@ Mecánica completa: `doc/mecanicas/MECANICA-CIRCUITO.md`
 5. El usuario confirma UNA SOLA VEZ (no paso a paso)
 6. Si el usuario rechaza el Meta-PLAN: workflow detenido, cero archivos modificados
 
-### Safe-path: /circuito version sin /circuito updoc previo
+### Safe-path: /CBP version sin /CBP updoc previo
 
 ```
-/circuito version detecta: INDEX.md ausente o labels stale
-→ "⚠️ No se detectó /updoc reciente. ¿Ejecutar /circuito updoc primero?"
-  ├─ Sí  → abortar /circuito version, ejecutar /circuito updoc
-  └─ No  → /circuito version igual (gaps informativos sin corregir)
+/CBP version detecta: INDEX.md ausente o labels stale
+→ "⚠️ No se detectó /updoc reciente. ¿Ejecutar /CBP updoc primero?"
+  ├─ Sí  → abortar /CBP version, ejecutar /CBP updoc
+  └─ No  → /CBP version igual (gaps informativos sin corregir)
 ```
 
-### Agentes y skills en /circuito completo
+### Agentes y skills en /CBP completo
 
 El workflow `completo` del meta-orquestador sugiere agentes según el estado del working tree:
 
@@ -202,7 +202,7 @@ El workflow `completo` del meta-orquestador sugiere agentes según el estado del
 
 ### Anti-patrones
 
-- **Ejecutar `/circuito version` cuando debía ser `/circuito updoc`**: gaps documentales se acumulan
+- **Ejecutar `/CBP version` cuando debía ser `/CBP updoc`**: gaps documentales se acumulan
 - **Saltar `/doctor` antes de cerrar**: bugs no registrados y tracking desincronizado pasan desapercibidos
 - **Ejecutar Meta-PLAN en FLASH**: el análisis profundo requiere PRO para detectar gaps y stale correctamente
 - **Ejecutar BUILD en PRO**: desperdicio de tokens y latencia — BUILD solo ejecuta cambios ya planificados

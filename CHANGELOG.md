@@ -14,7 +14,7 @@
 - `CHECKLIST.md`: dashboard actualizado (v1.15.0 ✅, próximo milestone v1.15.1)
 - `ROADMAP.md`: última actualización → 2026-06-05
 - `DILIGENCIA.md`: historial v1.15.0 + v1.15.1 agregados
-- `/circuito` commands: CBP corrections — /version step 5 aborta con alertas, /salud BUILD* puro
+- `/CBP` commands: CBP corrections — /version step 5 aborta con alertas, /salud BUILD* puro
 
 ## [1.15.0] — 2026-06-05
 
@@ -46,7 +46,7 @@
 
 ### Changed
 - adr-template.md: template enriquecido con tabla decisión/impacto, bullets ✅/⚠️, ejemplos concretos
-- GUIA_DE_COMANDOS.md: +/circuito y /salud en tabla, 35→37 comandos, §8 extendido con identidad.md, MANDATO.md, ADR_SUMMARY.md
+- GUIA_DE_COMANDOS.md: +/CBP y /salud en tabla, 35→37 comandos, §8 extendido con identidad.md, MANDATO.md, ADR_SUMMARY.md
 - GUIA_REFERENCIA_RAPIDA.md: bump 35→37 comandos
 - INDEX.md: +3 entries (ADR_SUMMARY, identidad, MANDATO)
 - DILIGENCIA.md: historial v1.13.0 agregado, doc/arch/README.md con referencia ADR_SUMMARY
@@ -61,12 +61,12 @@
 ### Added
 - `/salud` — comando BUILD\* para generar reporte de salud del proyecto (`doc/arch/status-salud.md`)
 - Template `status-salud.md` en doc-base (externalizado para /adaptar)
-- Meta-PLAN en `/circuito`: fase PRO con auditoría consolidada de todos los comandos + confirmación única previa a BUILD (FLASH)
-- `/circuito completo` con meta-orquestador: detección automática de agentes/skills según working tree (@sdd-reviewer, @sdd-architect, @sdd-verify, skill tdd-strict/sdd-workflow)
+- Meta-PLAN en `/CBP`: fase PRO con auditoría consolidada de todos los comandos + confirmación única previa a BUILD (FLASH)
+- `/CBP completo` con meta-orquestador: detección automática de agentes/skills según working tree (@sdd-reviewer, @sdd-architect, @sdd-verify, skill tdd-strict/sdd-workflow)
 
 ### Changed
-- `/circuito` workflows reestructurados: todo workflow ahora ejecuta META-PLAN (PRO) → BUILD (FLASH)
-- MECANICA-CIRCUITO.md: diagrama con Meta-PLAN, tabla de 8 estados, secciones de agentes y contrato Meta-PLAN→BUILD
+- `/CBP` workflows reestructurados: todo workflow ahora ejecuta META-PLAN (PRO) → BUILD (FLASH)
+- MECANICA-CBP.md: diagrama con Meta-PLAN, tabla de 8 estados, secciones de agentes y contrato Meta-PLAN→BUILD
 - GUIA_DE_BUENAS_PRACTICAS.md §9: diagramas Meta-PLAN, reglas de modelo (PRO/FLASH), anti-patrones actualizados
 - ROADMAP.md: +5 ítems en Siguiente (status-salud, meta-orquestador, revisión agentes/skills, Meta-PLAN, informe-salud inter-proyecto)
 - AGENTS.md: +/salud en tabla de comandos (35 fundamentales)
@@ -74,15 +74,15 @@
 ## [1.11.0] — 2026-06-02
 
 ### Added
-- `/circuito` — orquestador de workflows vinculantes (updoc, doctor, version, completo). Reemplaza el handoff distribuido por "Próximo paso en el circuito".
+- `/CBP` — orquestador de workflows vinculantes (updoc, doctor, version, completo). Reemplaza el handoff distribuido por "Próximo paso en el circuito".
 
 ### Changed
-- `/updoc`, `/version`, `/doctor`: sección "Próximo paso en el circuito" removida — el orquestador `/circuito` es el único punto de encadenamiento
-- `/doctor` Fase 3f: ya no auto-ejecuta /version patch — sugiere `/circuito doctor`
-- MECANICA-CIRCUITO.md: migrate a /circuito como SSOT del chain, tabla de estados ref. workflows
-- GUIA_DE_BUENAS_PRACTICAS.md §9 + safe-path + anti-patrones: /circuito entry point
-- GUIA_REFERENCIA_RAPIDA.md: POST cycle, command table, chain table actualizados a /circuito
-- MECANICA-DOCUMENTAL.md §post-sesión: ref a /circuito version
+- `/updoc`, `/version`, `/doctor`: sección "Próximo paso en el circuito" removida — el orquestador `/CBP` es el único punto de encadenamiento
+- `/doctor` Fase 3f: ya no auto-ejecuta /version patch — sugiere `/CBP doctor`
+- MECANICA-CBP.md: migrate a /CBP como SSOT del chain, tabla de estados ref. workflows
+- GUIA_DE_BUENAS_PRACTICAS.md §9 + safe-path + anti-patrones: /CBP entry point
+- GUIA_REFERENCIA_RAPIDA.md: POST cycle, command table, chain table actualizados a /CBP
+- MECANICA-DOCUMENTAL.md §post-sesión: ref a /CBP version
 - GUIA_DE_COMANDOS.md: doctor row actualizado
 - /explica scope: ADR-001/002/003 agregados, ADAPTAR-COMANDOS.md removido (no existe en disco)
 - AGENTS.md: ADAPTAR-COMANDOS.md removido (archivo inexistente)
@@ -93,10 +93,10 @@
 ## v1.10.3 — 2026-06-02
 
 ### Changed
-- MECANICA-CIRCUITO.md: definición del circuito cíclico vinculante PLAN→BUILD entre comandos
+- MECANICA-CBP.md: definición del circuito cíclico vinculante PLAN→BUILD entre comandos
 - /updoc, /version, /doctor: sección "Próximo paso en el circuito" con handoff vinculante
 - GUIA_DE_BUENAS_PRACTICAS.md §9: diagrama de loop reemplaza diagrama lineal post-sesión
-- MECANICA-CIRCUITO.md registrado en INDEX.md
+- MECANICA-CBP.md registrado en INDEX.md
 
 ### Fixed
 - DILIGENCIA.md header no actualizado en v1.10.2 (mostraba v1.10.1)

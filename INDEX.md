@@ -41,7 +41,7 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 | Archivo | Versión | Última actualización |
 |---|---|---|
 | MECANICA-DOCUMENTAL.md | v1.15.0 | 2026-06-05 |
-| MECANICA-CIRCUITO.md | v1.15.0 | 2026-06-05 |
+| MECANICA-CBP.md | v1.15.0 | 2026-06-05 |
 | MANDATO.md | — | 2026-06-05 |
 
 ## ADRs
