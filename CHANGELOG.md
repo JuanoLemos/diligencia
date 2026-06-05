@@ -2,13 +2,23 @@
 
 ---
 
-## [1.14.0] — 2026-06-05
+## [1.15.0] — 2026-06-05
 
-### Changed
-- `/version`: +PRE-FLIGHT integral (6 checks A-F: staleness, salud, /explica scope, template sync, cross-refs, variables). Pre-flight se ejecuta antes de confirmar bump y alerta sobre inconsistencias documentales. Si hay alertas, pregunta forzar/abortar. Si aborta, sugiere comandos correctivos.
+### Added
+- `scripts/check-docs.js` — validación automatizada de integridad documental: INDEX.md vs CHANGELOG, headers sincronizados, $VARIABLES resolubles
+- `.husky/pre-commit` template en doc-base con gancho `check-docs` para proyectos adaptados
+- `opencode.jsonc` instructions: 6 reglas para enforcement de `/version` en toda sesión
+- `/adaptar` Flujo A paso 11.5: cablea enforcement documental en proyectos nuevos
+- `/adaptar` Flujo C Fase 1 paso 4: enforcement de sync en upgrades
 
 ### Fixed
-- `/version` ya no declara sesión cerrada si hay docs STALE — el pre-flight bloquea hasta que usuario decida forzar o corregir
+- Templates `identidad.md` y `MANDATO.md`: versiones de metodología removidas de headers (v1.14.0 leak → headers sin versión de Diligencia)
+- `/version` paso 8c: sync mejorado (comparar contenido antes de copiar, preservar placeholders del proyecto destino)
+- closefront-io: INDEX.md actualizado (críticos a v0.3.0, DILIGENCIA.md a v1.14.0)
+- closefront-io: `identidad.md` y `MANDATO.md` sincronizados desde template (sin versión de metodología)
+
+### Changed
+- Enforcement documental en 3 capas: `opencode.jsonc` (runtime), `scripts/check-docs.js` (pre-commit), `/adaptar` (proyectos nuevos y upgrades)
 
 ## [1.13.0] — 2026-06-03
 

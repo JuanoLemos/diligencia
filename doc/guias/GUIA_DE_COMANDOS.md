@@ -1,4 +1,4 @@
-# GUIA DE COMANDOS — Diligencia v1.13.0
+# GUIA DE COMANDOS — Diligencia v1.15.0
 
 Referencia de los 37 comandos fundamentales del sistema Diligencia.
 
