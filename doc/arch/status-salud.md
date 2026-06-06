@@ -4,7 +4,7 @@ Generado por `/salud` el 2026-06-05.
 
 | Indicador | Estado | Detalle |
 |---|---|---|
-| **Versión** | v1.16.1 | commit (pending) |
+| **Versión** | v1.16.1 | commit 65fc916 |
 | **Estructura** | ✅ OK | directorios core, archivos, variables |
 | **Docs stale** | 0 | — |
 | **Gaps documentales** | 0 | — |
