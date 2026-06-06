@@ -4,7 +4,7 @@ Generado por `/salud` el 2026-06-05.
 
 | Indicador | Estado | Detalle |
 |---|---|---|
-| **Versión** | v1.16.1 | commit 65fc916 |
+| **Versión** | v1.16.1 | commit e777341 |
 | **Estructura** | ✅ OK | directorios core, archivos, variables |
 | **Docs stale** | 0 | — |
 | **Gaps documentales** | 0 | — |
@@ -22,3 +22,4 @@ Generado por `/salud` el 2026-06-05.
 | Fecha | Versión | Stale | Gaps | Estructura | Notas |
 |---|---|---|---|---|---|
 | 2026-06-05 | v1.16.1 | 0 | 0 | ✅ OK | v1.16.0→v1.16.1 hygiene |
+| 2026-06-05 | v1.16.1 | 0 | 0 | ✅ OK | Roadmap grooming + README audiencia |
