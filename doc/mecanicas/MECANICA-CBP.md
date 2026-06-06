@@ -38,6 +38,7 @@ BUILD                                                       │
     ├── /updoc Fase F                                       │
     ├── /salud BUILD* (status-salud.md)                     │
     ├── /version BUILD* (CHANGELOG, INDEX, template, commit)│
+    ├── /pushgh BUILD* (git push)                           │
     └── /doctor Fase 3 (si correcciones)                    │
     │                                                       │
     └── SESSIONWORK                                         │
@@ -47,15 +48,16 @@ BUILD                                                       │
 ├── /CBP doctor ───────────────────────────────────────┐
 │   META-PLAN (PRO) → BUILD (FLASH)                         │
 │   /doctor Fases 1→2 → /salud BUILD* → /version patch*     │
-│   (si correcciones)                                        │
+│   → /pushgh BUILD* (si correcciones)                      │
 │                                                           │
 ├── /CBP version ──────────────────────────────────────┤
 │   META-PLAN (PRO) → BUILD (FLASH)                         │
-│   /version Steps 1→5 → Steps 6→8 → sugiere /doctor        │
+│   /version Steps 1→5 → Steps 6→8 → /pushgh BUILD*         │
+│   → sugiere /doctor                                        │
 │                                                           │
 └── /CBP completo ─────────────────────────────────────┘
     META-PLAN (PRO) → BUILD (FLASH)
-    Agentes/skills sugeridos → /updoc → /salud* → /version* → /doctor
+    Agentes/skills sugeridos → /updoc → /salud* → /version* → /pushgh* → /doctor
 ```
 
 ## Estados y transiciones
@@ -68,19 +70,20 @@ BUILD                                                       │
 | 4 | `/updoc` PLAN (en META-PLAN) | SESSIONWORK completo | Fases A→E+H: audita INDEX, stale, gaps, cross-ref | Plan auditado | Continúa META-PLAN con /doctor PLAN |
 | 5 | `/doctor` PLAN (en META-PLAN) | `/updoc` PLAN completado | Fases 1→2: diagnóstico estructura, código, tracking, limpieza, deprecación | Diagnóstico completo | Continúa META-PLAN con /salud preview |
 | 6 | `/salud` BUILD* | META-PLAN confirmado | Genera `doc/arch/status-salud.md`, actualiza INDEX | Reporte generado | `/version BUILD*` |
-| 7 | `/version` (minor/patch) BUILD* | META-PLAN confirmado | Steps 6→8: CHANGELOG, INDEX, template, commit | BUILD + commit clean | sugiere /doctor o SESSIONWORK |
-| 8 | `/doctor` BUILD | META-PLAN confirmado | Fase 3: aplicar correcciones (si hay) | Correcciones aplicadas | `/version patch BUILD*` si correcciones, SESSIONWORK si no |
+| 7 | `/version` (minor/patch) BUILD* | META-PLAN confirmado | Steps 6→8: CHANGELOG, INDEX, template, commit → /pushgh | BUILD + commit clean | pushgh BUILD* o SESSIONWORK |
+| 8 | `/pushgh` BUILD* | /version BUILD* completado | git push al remoto $REPO | Push completado | /doctor Fase 3 o SESSIONWORK |
+| 9 | `/doctor` BUILD | META-PLAN confirmado | Fase 3: aplicar correcciones (si hay) | Correcciones aplicadas | `/version patch BUILD*` + `/pushgh*` si correcciones, SESSIONWORK si no |
 
 ## Workflows del orquestador
 
 Los encadenamientos se definen en `~/.config/opencode/commands/CBP.md`:
 
 | Workflow | Secuencia |
-|---|---|
-| `updoc` | META-PLAN (PRO): /updoc PLAN + /doctor PLAN + /salud preview → BUILD (FLASH): /updoc Fase F + /salud* + /version* + /doctor BUILD |
-| `doctor` | META-PLAN (PRO): /doctor PLAN → BUILD (FLASH): /doctor Fase 3 + /salud* + /version patch* (si correcciones) |
-| `version` | META-PLAN (PRO): /version Steps 1→5 → BUILD (FLASH): /version Steps 6→8 → sugiere /doctor |
-| `completo` | META-PLAN (PRO): agentes/skills sugeridos + /updoc PLAN + /doctor PLAN → BUILD (FLASH): agentes + /updoc Fase F + /salud* + /version* + /doctor |
+|---|---|---|
+| `updoc` | META-PLAN (PRO): /updoc PLAN + /doctor PLAN + /salud preview → BUILD (FLASH): /updoc Fase F + /salud* + /version* + /pushgh* + /doctor BUILD |
+| `doctor` | META-PLAN (PRO): /doctor PLAN → BUILD (FLASH): /doctor Fase 3 + /salud* + /version patch* + /pushgh* (si correcciones) |
+| `version` | META-PLAN (PRO): /version Steps 1→5 → BUILD (FLASH): /version Steps 6→8 → /pushgh* → sugiere /doctor |
+| `completo` | META-PLAN (PRO): agentes/skills sugeridos + /updoc PLAN + /doctor PLAN → BUILD (FLASH): agentes + /updoc Fase F + /salud* + /version* + /pushgh* + /doctor |
 
 Ver `CBP.md` para la especificación completa de cada workflow.
 
@@ -124,6 +127,7 @@ Los agentes se ejecutan en BUILD antes de los comandos documentales. El usuario 
 | Diagnóstico post-versionado | `/CBP doctor` |
 | Versionado rápido sin /updoc | `/CBP version` |
 | Ciclo completo con agentes + documentación | `/CBP completo` |
+| Pushear después de versionar | `/pushgh` (invocado automáticamente por /CBP) |
 | Sin cambios en working tree | No inicia circuito — salta a sessionwork o fin |
 
 ## Archivos que referencian esta mecánica
@@ -133,4 +137,5 @@ Los agentes se ejecutan en BUILD antes de los comandos documentales. El usuario 
 - `~/.config/opencode/commands/version.md`
 - `~/.config/opencode/commands/doctor.md`
 - `~/.config/opencode/commands/salud.md`
+- `~/.config/opencode/commands/pushgh.md`
 - `doc/guias/GUIA_DE_BUENAS_PRACTICAS.md` §9 — diagrama de referencia

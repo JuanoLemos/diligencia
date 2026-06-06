@@ -28,7 +28,7 @@ Cada comando pertenece a un ecosistema primario. Algunos comandos (como `/deprec
 | 6 | **DOCUMENTACIÓN** | Autoría de mecánicas y guías | `/+mec`, `/+guia` | Al crear una mecánica nueva, al crear una guía nueva | `doc/mecanicas/`, `doc/guias/` |
 | 7 | **CONTEXTO** | Estado compartido entre sesiones | Variables: `$BUGS`, `$INCIDENTS`, `$CHECKLIST`. Comando: `/explica` | En cada inicio de sesión (vía AGENTS.md), al preguntar por el estado del proyecto | `AGENTS.md`, `doc/arch/bugs.md`, `doc/arch/incidentes.md`, `CHECKLIST.md`, `ROADMAP.md` |
 | 8 | **BACKUP** | Deprecación segura sin pérdida de historial | `/deprecar` | Al retirar un archivo, comando o template obsoleto | `.old/`, archivos movidos a `.old/` |
-| 9 | **COMUNICACIÓN** | Operaciones Git | `/commit`, `/push`, `/pr` | Después de cerrar una sesión con `/version`, al preparar un PR | Repositorio git, commits, PRs |
+| 9 | **COMUNICACIÓN** | Operaciones Git | `/commit`, `/push`, `/pr`, `/pushgh` | Después de cerrar una sesión con `/version`, al preparar un PR, push automático via /CBP | Repositorio git, commits, PRs |
 
 ---
 
@@ -121,6 +121,7 @@ Cada comando pertenece a un ecosistema primario. Algunos comandos (como `/deprec
 | `/health` | DOCTOR | CALIDAD (validación de stack) |
 | `/doctor` | DOCTOR | — (es el orquestador, no se mueve) |
 | `/reanudar` | VERSION | — (recuperación de sesión) |
+| `/pushgh` | COMUNICACIÓN | — (push git a $REPO) |
 
 ---
 
@@ -139,7 +140,7 @@ Cada comando pertenece a un ecosistema primario. Algunos comandos (como `/deprec
 ├── Crear una mecánica/guía       → DOCUMENTACIÓN → `/+mec` o `/+guia`
 ├── Revisar estado del proyecto   → CONTEXTO → abrir AGENTS.md o hacer `/explica $VARIABLE`
 ├── Retirar un archivo obsoleto   → BACKUP  → `/deprecar`
-└── Commitear y pushear           → COMUNICACIÓN → `/commit` o `/push`
+└── Commitear y pushear           → COMUNICACIÓN → `/commit`, `/push`, `/pushgh` (push automático via /CBP)
 ```
 
 ---

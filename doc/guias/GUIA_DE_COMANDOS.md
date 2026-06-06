@@ -1,6 +1,6 @@
 # GUIA DE COMANDOS — Diligencia v1.16.0
 
-Referencia de los 37 comandos fundamentales del sistema Diligencia.
+Referencia de los 38 comandos fundamentales del sistema Diligencia.
 
 ---
 
@@ -30,7 +30,7 @@ Luego incluye secciones obligatorias según su tipo. Ver `doc/guias/ESTANDAR-COM
 
 ### Distribución
 
-`/adaptar` copia los 35 archivos de comandos globales al directorio `.opencode/commands/` del proyecto destino si no existen. Los comandos locales del proyecto tienen prioridad sobre los globales.
+`/adaptar` copia los 36 archivos de comandos globales al directorio `.opencode/commands/` del proyecto destino si no existen. Los comandos locales del proyecto tienen prioridad sobre los globales.
 
 ---
 
@@ -68,6 +68,7 @@ Luego incluye secciones obligatorias según su tipo. Ver `doc/guias/ESTANDAR-COM
 | `/next` | Declarativo | Flujo de sesión | Calcula los próximos 5 pasos según CHECKLIST + dependencias |
 | `/notify` | Procedural | Comunicación | Toggle de notificación remota |
 | `/plan` | Declarativo | Flujo de sesión | Planifica en modo PLAN (solo lectura), ejecuta BUILD tras aprobación |
+| `/pushgh` | Procedural | Comunicación | Push a GitHub según $REPO (invocado por /CBP BUILD* automático) |
 | `/qa` | Declarativo | Calidad | Revisión cruzada de calidad contra checklists |
 | `/report` | Declarativo | Flujo de sesión | Reporte consolidado del proyecto |
 | `/reanudar` | Declarativo | Flujo de sesión | Recupera sesión tras interrupción brusca |
@@ -159,6 +160,7 @@ Coordinación entre sesiones o miembros del equipo.
 |---|---|
 | `/news` | $NEWS_FILE |
 | `/notify` | — |
+| `/pushgh` | $REPO |
 
 ---
 
@@ -181,6 +183,7 @@ Las variables se definen en `AGENTS.md` del proyecto (`Mapeo de rutas`). Son esp
 | `$COMMANDS_DIR` | `.opencode/commands/` |
 | `$RM` | `ROADMAP.md` (alias de $ROADMAP) |
 | `$TESTING` | *(no definido)* — tests pendientes (proyectos con testing) |
+| `$REPO` | URL del repositorio GitHub (`https://github.com/usuario/repo.git`) |
 
 ### Específicas de proyecto
 

@@ -140,8 +140,8 @@ Mecánica completa: `doc/mecanicas/MECANICA-CBP.md`
        │       │     /updoc PLAN → /doctor PLAN → /salud preview
        │       │     UNA confirmación
        │       │
-       │       └── BUILD (FLASH)
-       │             /updoc Fase F → /salud BUILD* → /version BUILD* → /doctor BUILD
+      │       └── BUILD (FLASH)
+      │             /updoc Fase F → /salud BUILD* → /version BUILD* → /pushgh BUILD* → /doctor BUILD
        │
        ├── /CBP doctor
        │       │
@@ -149,8 +149,8 @@ Mecánica completa: `doc/mecanicas/MECANICA-CBP.md`
        │       │     /doctor Fases 1→2 → /salud preview
        │       │     UNA confirmación
        │       │
-       │       └── BUILD (FLASH)
-       │             /doctor Fase 3 → /salud BUILD* → /version patch BUILD*
+      │       └── BUILD (FLASH)
+      │             /doctor Fase 3 → /salud BUILD* → /version patch BUILD* → /pushgh BUILD*
        │
        ├── /CBP version
        │       │
@@ -158,8 +158,8 @@ Mecánica completa: `doc/mecanicas/MECANICA-CBP.md`
        │       │     /version Steps 1→5
        │       │     UNA confirmación
        │       │
-       │       └── BUILD (FLASH)
-       │             /version Steps 6→8 → sugiere /doctor
+      │       └── BUILD (FLASH)
+      │             /version Steps 6→8 → /pushgh BUILD* → sugiere /doctor
        │
        └── /CBP completo
                │
@@ -167,8 +167,8 @@ Mecánica completa: `doc/mecanicas/MECANICA-CBP.md`
                │     Agentes/skills sugeridos → /updoc PLAN → /doctor PLAN → /salud preview
                │     UNA confirmación
                │
-               └── BUILD (FLASH)
-                     Agentes/skills → /updoc Fase F → /salud BUILD* → /version BUILD* → /doctor
+                └── BUILD (FLASH)
+                      Agentes/skills → /updoc Fase F → /salud BUILD* → /version BUILD* → /pushgh BUILD* → /doctor
 ```
 
 ### Reglas del Meta-PLAN

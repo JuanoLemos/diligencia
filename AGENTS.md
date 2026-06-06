@@ -26,14 +26,16 @@ Español — todas las respuestas del agente deben ser en español. Si el agente
 | $BUGS | `doc/arch/bugs.md` | Bug tracker (P1/P2/P3, severidad, estado) |
 | $INCIDENTS | `doc/arch/incidentes.md` | Incidentes runtime y crashes |
 | $TESTING | *(definido en HARNESS.md)* | Comando de test del proyecto |
+| $REPO | `https://github.com/JuanoLemos/diligencia.git` | Repositorio GitHub del proyecto |
 
-## Comandos globales heredados — 34 fundamentales
+## Comandos globales heredados — 37 fundamentales
 
 | Comando | Descripción | Tipo |
 |---|---|---|
 | /adaptar | Adaptar proyecto a estructura Diligencia | Declarativo |
 | /plan | Planificar en modo PLAN | Declarativo |
 | /commit | Git add + commit formateado | Procedural |
+| /pushgh | Push a GitHub según $REPO (via /CBP) | Procedural |
 | /health | Verificar sintaxis y consistencia | Declarativo |
 | /bug | Reportar bug en el proyecto | Declarativo |
 | /deprecar | Deprecar archivos/comandos/estructuras obsoletas | Declarativo |
