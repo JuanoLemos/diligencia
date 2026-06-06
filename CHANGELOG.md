@@ -2,7 +2,16 @@
 
 ---
 
-## [Unreleased]
+## [1.16.3] — 2026-06-06
+
+### Added
+- `doc/guias/GUIA_ONBOARDING.md` — primeros pasos para usuarios primerizos de IA + OpenCode
+- `/informe-salud` — comando de salud inter-proyecto: escanea $PROYECTOS y genera reporte consolidado con indicadores estructurales
+
+### Changed
+- Terminología provider-agnostic en `MECANICA-CBP.md`, `GUIA_DE_BUENAS_PRACTICAS.md`, `CBP.md`: `PRO`/`FLASH`/`DeepSeek` → `razonamiento`/`ejecución`/`modelo`
+- `GUIA_ONBOARDING.md`: API key genérica (no hardcodeada a DeepSeek)
+- 4 agentes SDD (~/.config/opencode/agents/): nota de adaptación para modelo configurable del proveedor
 
 ## [1.16.2] — 2026-06-05
 

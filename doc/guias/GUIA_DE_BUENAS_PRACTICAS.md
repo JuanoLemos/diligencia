@@ -1,4 +1,4 @@
-# GUIA DE BUENAS PRACTICAS — Diligencia v1.16.2
+# GUIA DE BUENAS PRACTICAS — Diligencia v1.16.3
 
 Hábitos y workflows para usar Diligencia de forma consistente entre sesiones, agentes y proyectos.
 
@@ -126,7 +126,7 @@ Los checks de código para stacks no-JS están pendientes de implementar en `/he
 
 ## 9. Circuito de trabajo
 
-Usar `/CBP` para ejecutar secuencias completas. Cada workflow se divide en **Meta-PLAN (PRO)** y **BUILD (FLASH)**.
+Usar `/CBP` para ejecutar secuencias completas. Cada workflow se divide en **Meta-PLAN (razonamiento)** y **BUILD (ejecuci�n)**.
 Mecánica completa: `doc/mecanicas/MECANICA-CBP.md`
 
 ### Diagrama de workflows
@@ -136,45 +136,45 @@ Mecánica completa: `doc/mecanicas/MECANICA-CBP.md`
        │
        ├── /CBP updoc
        │       │
-       │       ├── META-PLAN (PRO)
+       │       ├── META-PLAN (razonamiento)
        │       │     /updoc PLAN → /doctor PLAN → /salud preview
        │       │     UNA confirmación
        │       │
-      │       └── BUILD (FLASH)
+      │       └── BUILD (ejecuci�n)
       │             /updoc Fase F → /salud BUILD* → /version BUILD* → /pushgh BUILD* → /doctor BUILD
        │
        ├── /CBP doctor
        │       │
-       │       ├── META-PLAN (PRO)
+       │       ├── META-PLAN (razonamiento)
        │       │     /doctor Fases 1→2 → /salud preview
        │       │     UNA confirmación
        │       │
-      │       └── BUILD (FLASH)
+      │       └── BUILD (ejecuci�n)
       │             /doctor Fase 3 → /salud BUILD* → /version patch BUILD* → /pushgh BUILD*
        │
        ├── /CBP version
        │       │
-       │       ├── META-PLAN (PRO)
+       │       ├── META-PLAN (razonamiento)
        │       │     /version Steps 1→5
        │       │     UNA confirmación
        │       │
-      │       └── BUILD (FLASH)
+      │       └── BUILD (ejecuci�n)
       │             /version Steps 6→8 → /pushgh BUILD* → sugiere /doctor
        │
        └── /CBP completo
                │
-               ├── META-PLAN (PRO)
+               ├── META-PLAN (razonamiento)
                │     Agentes/skills sugeridos → /updoc PLAN → /doctor PLAN → /salud preview
                │     UNA confirmación
                │
-                └── BUILD (FLASH)
+                └── BUILD (ejecuci�n)
                       Agentes/skills → /updoc Fase F → /salud BUILD* → /version BUILD* → /pushgh BUILD* → /doctor
 ```
 
 ### Reglas del Meta-PLAN
 
-1. Meta-PLAN se ejecuta SIEMPRE en DeepSeek PRO (análisis profundo), sin importar el modo de invocación
-2. BUILD se ejecuta SIEMPRE en DeepSeek FLASH (ejecución rápida)
+1. Meta-PLAN se ejecuta SIEMPRE en modelo de razonamiento (análisis profundo), sin importar el modo de invocación
+2. BUILD se ejecuta SIEMPRE en modelo de ejecuci�n (ejecución rápida)
 3. Meta-PLAN ejecuta PLAN de TODOS los comandos del workflow antes de pedir confirmación
 4. BUILD* solo es válido cuando el Meta-PLAN ya auditó los datos necesarios
 5. El usuario confirma UNA SOLA VEZ (no paso a paso)
@@ -204,8 +204,8 @@ El workflow `completo` del meta-orquestador sugiere agentes según el estado del
 
 - **Ejecutar `/CBP version` cuando debía ser `/CBP updoc`**: gaps documentales se acumulan
 - **Saltar `/doctor` antes de cerrar**: bugs no registrados y tracking desincronizado pasan desapercibidos
-- **Ejecutar Meta-PLAN en FLASH**: el análisis profundo requiere PRO para detectar gaps y stale correctamente
-- **Ejecutar BUILD en PRO**: desperdicio de tokens y latencia — BUILD solo ejecuta cambios ya planificados
+- **Ejecutar Meta-PLAN en ejecuci�n**: el análisis profundo requiere razonamiento para detectar gaps y stale correctamente
+- **Ejecutar BUILD en razonamiento**: desperdicio de tokens y latencia — BUILD solo ejecuta cambios ya planificados
 - **Confirmar paso a paso en vez de UNA SOLA VEZ**: el Meta-PLAN consolida todo, no necesita confirmaciones intermedias
 
 ---

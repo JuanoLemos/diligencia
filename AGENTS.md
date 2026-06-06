@@ -29,8 +29,9 @@ Español — todas las respuestas del agente deben ser en español. Si el agente
 | $REPO | `https://github.com/JuanoLemos/diligencia.git` | Repositorio GitHub del proyecto |
 | $BACKUPS | `doc/arch/backups.md` | Log de backups del doctor |
 | $BACKUP_KEEP | `5` | Cantidad de backups a conservar (pruning automático) |
+| $PROYECTOS | *(configurar)* | Lista de rutas a proyectos Diligencia-adaptados (ej: "C:\proyectos\alfa","C:\proyectos\beta") |
 
-## Comandos globales heredados — 37 fundamentales
+## Comandos globales heredados — 38 fundamentales
 
 | Comando | Descripción | Tipo |
 |---|---|---|
@@ -71,6 +72,7 @@ Español — todas las respuestas del agente deben ser en español. Si el agente
 | /notify | Toggle de notificación remota | Procedural |
 | /reanudar | Recuperar sesión tras interrupción brusca | Declarativo |
 | /salud | Reporte de salud del proyecto (BUILD* via /CBP) | Declarativo |
+| /informe-salud | Reporte de salud inter-proyecto (escanea $PROYECTOS) | Declarativo |
 
 ## Focus
 - Documentar la metodología

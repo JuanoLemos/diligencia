@@ -22,11 +22,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 | Item | Prioridad | Estado |
 |---|---|---|
-| +guia usuario noob, usando primera vez AI | P2 | 🔴 Pendiente |
 | +ayuda en worktree para recomendar acciones de buenas practicas | P2 | 🔴 Pendiente |
-| +revisión de agentes y skills: compatibilidad con circuito, actualizar docs | P2 | 🔴 Pendiente |
-| +informe-salud inter-proyecto basado en estructura Diligencia | P3 | 🔴 Pendiente |
-
 ## Futuro (Later)
 
 | Item | Prioridad | Estado |
@@ -82,3 +78,6 @@ Metodología de estructura estándar para proyectos OpenCode.
 | Meta-orquestador: /CBP completo detecta agentes/skills según working tree | v1.12.0 |
 | Meta-PLAN (PRO) + BUILD (FLASH): fase PRO confirma único plan antes de BUILD | v1.12.0 |
 | +Backup en /doctor: backup preventivo + pruning configurable ($BACKUP_KEEP) + log en $BACKUPS | v1.16.2 |
+| +guia usuario noob, usando primera vez AI | v1.16.3 |
+| +revisión de agentes y skills: compatibilidad con circuito, actualizar docs | v1.16.3 |
+| +informe-salud inter-proyecto basado en estructura Diligencia | v1.16.3 |

@@ -102,6 +102,9 @@ Cerrar v1.15.1 con /CBP updoc -> BUILD -> /version patch.
 - [x] `/commit` validación Conventional Commits (tipo/scope obligatorio)
 - [x] `/version` soporte `[YANKED]` + migración automática de `[Unreleased]`
 - [x] +Backup en `/doctor`: backup preventivo + pruning configurable ($BACKUP_KEEP) + log $BACKUPS
+- [x] GUIA_ONBOARDING.md — primeros pasos para usuarios primerizos de AI + OpenCode
+- [x] Revisión provider-agnostic: terminología `PRO`/`FLASH`→`razonamiento`/`ejecución` + notas ADAPTAR en agentes
+- [x] /informe-salud — reporte consolidado de salud estructural inter-proyecto ($PROYECTOS)
 
 ## P3 — Mejoras futuras
 

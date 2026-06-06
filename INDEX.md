@@ -4,7 +4,7 @@ INSTRUCCIÓN: NO modificar este archivo sin entender el catálogo. CONTIENE el m
 
 Catálogo de documentación del proyecto. Mantenido por /version y /updoc.
 
-Última actualización global: 2026-06-05
+Última actualización global: 2026-06-06
 
 ## Docs críticos
 
@@ -14,8 +14,8 @@ Gestionados por /version. La versión se actualiza al cerrar sesión.
 |---|---|---|
 | ROADMAP.md | — | |
 | CHECKLIST.md | — | |
-| CHANGELOG.md | v1.16.2 | 2026-06-05 |
-| DILIGENCIA.md | v1.16.2 | 2026-06-05 |
+| CHANGELOG.md | v1.16.3 | 2026-06-06 |
+| DILIGENCIA.md | v1.16.3 | 2026-06-06 |
 
 ## Guías
 
@@ -33,6 +33,7 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 | GUIA_DE_REVISION.md | v1.16.2 | 2026-06-05 |
 | GUIA_DE_USO.md | v1.16.2 | 2026-06-05 |
 | _template.md | v1.16.2 | 2026-06-05 |
+| GUIA_ONBOARDING.md | v1.16.2 | 2026-06-05 |
 | identidad.md | v1.16.2 | 2026-06-05 |
 
 ## Mecánicas
@@ -64,5 +65,6 @@ Documentos de referencia rápida, estándares o plantillas.
 
 | Archivo | Versión | Última actualización |
 |---|---|---|
-| status-salud.md | v1.16.2 | 2026-06-05 |
+| status-salud.md | v1.16.2 | 2026-06-06 |
+
 

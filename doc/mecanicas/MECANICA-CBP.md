@@ -1,20 +1,20 @@
-# MECANICA-CBP — Circuito de trabajo cíclico v1.16.2
+# MECANICA-CBP — Circuito de trabajo cíclico v1.16.3
 
 Define los workflows multi-comando del ecosistema. El orquestador `/CBP` ejecuta los encadenamientos; los comandos individuales ya no contienen "Próximo paso" propio.
 Referencia de hábitos de usuario: `GUIA_DE_BUENAS_PRACTICAS.md §9`.
 
 ---
 
-## Meta-PLAN y modelo de separación PRO/FLASH
+## Meta-PLAN y modelo de separación razonamiento/ejecuci�n
 
 Cada workflow se divide en dos fases:
 
 | Fase | Modelo | Acción |
 |---|---|---|
-| **Meta-PLAN** | DeepSeek PRO | Ejecuta PLAN de todos los comandos (lectura + auditoría). NO modifica archivos. Muestra tabla consolidada con divisiones por comando. Pide UNA SOLA confirmación. |
-| **BUILD** | DeepSeek FLASH | Ejecuta BUILD de todos los comandos (escritura). BUILD* omite PLAN porque los datos se heredan del Meta-PLAN. |
+| **Meta-PLAN** | modelo de razonamiento | Ejecuta PLAN de todos los comandos (lectura + auditoría). NO modifica archivos. Muestra tabla consolidada con divisiones por comando. Pide UNA SOLA confirmación. |
+| **BUILD** | modelo de ejecuci�n | Ejecuta BUILD de todos los comandos (escritura). BUILD* omite PLAN porque los datos se heredan del Meta-PLAN. |
 
-El Meta-PLAN corre siempre en PRO sin importar el modo de invocación. BUILD corre siempre en FLASH.
+El Meta-PLAN corre siempre en razonamiento sin importar el modo de invocación. BUILD corre siempre en ejecuci�n.
 
 ## Diagrama del circuito
 
@@ -24,7 +24,7 @@ SESSIONWORK
     ├── /CBP updoc ────────────────────────────────────┐
     │                                                       │
     ▼                                                       │
-META-PLAN (PRO)                                             │
+META-PLAN (razonamiento)                                             │
     │                                                       │
     ├── /updoc Fases A→E+H (PLAN)                          │
     ├── /doctor Fases 1→2 (PLAN)                            │
@@ -32,7 +32,7 @@ META-PLAN (PRO)                                             │
     ├── Calcular bump type                                  │
     └── "¿Ejecutar BUILD?" (UNA confirmación)               │
     │                                                       │
-    ▼ (FLASH)                                               │
+    ▼ (ejecuci�n)                                               │
 BUILD                                                       │
     │                                                       │
     ├── /updoc Fase F                                       │
@@ -46,17 +46,17 @@ BUILD                                                       │
 ┌────────────────────────────────────────────────────────────┘
 │
 ├── /CBP doctor ───────────────────────────────────────┐
-│   META-PLAN (PRO) → BUILD (FLASH)                         │
+│   META-PLAN (razonamiento) → BUILD (ejecuci�n)                         │
 │   /doctor Fases 1→2 → /salud BUILD* → /version patch*     │
 │   → /pushgh BUILD* (si correcciones)                      │
 │                                                           │
 ├── /CBP version ──────────────────────────────────────┤
-│   META-PLAN (PRO) → BUILD (FLASH)                         │
+│   META-PLAN (razonamiento) → BUILD (ejecuci�n)                         │
 │   /version Steps 1→5 → Steps 6→8 → /pushgh BUILD*         │
 │   → sugiere /doctor                                        │
 │                                                           │
 └── /CBP completo ─────────────────────────────────────┘
-    META-PLAN (PRO) → BUILD (FLASH)
+    META-PLAN (razonamiento) → BUILD (ejecuci�n)
     Agentes/skills sugeridos → /updoc → /salud* → /version* → /pushgh* → /doctor
 ```
 
@@ -65,8 +65,8 @@ BUILD                                                       │
 | N° | Estado | Entry | Acción | Exit | Próximo paso (via /CBP) |
 |---|---|---|---|---|---|
 | 1 | SESSIONWORK | Circuito inicia o reinicia | Usuario edita, agrega RM items, modifica código | Working tree dirty | `/CBP updoc` |
-| 2 | META-PLAN | `/CBP` invocado | Fase PRO: PLAN de todos los comandos del workflow, tabla consolidada, UNA confirmación | Confirmación aceptada | BUILD (FLASH) |
-| 3 | BUILD | META-PLAN confirmado | Fase FLASH: BUILD de todos los comandos (escritura) | BUILD completo | SESSIONWORK o sugiere siguiente paso |
+| 2 | META-PLAN | `/CBP` invocado | Fase razonamiento: PLAN de todos los comandos del workflow, tabla consolidada, UNA confirmación | Confirmación aceptada | BUILD (ejecuci�n) |
+| 3 | BUILD | META-PLAN confirmado | Fase ejecuci�n: BUILD de todos los comandos (escritura) | BUILD completo | SESSIONWORK o sugiere siguiente paso |
 | 4 | `/updoc` PLAN (en META-PLAN) | SESSIONWORK completo | Fases A→E+H: audita INDEX, stale, gaps, cross-ref | Plan auditado | Continúa META-PLAN con /doctor PLAN |
 | 5 | `/doctor` PLAN (en META-PLAN) | `/updoc` PLAN completado | Fases 1→2: diagnóstico estructura, código, tracking, limpieza, deprecación | Diagnóstico completo | Continúa META-PLAN con /salud preview |
 | 6 | `/salud` BUILD* | META-PLAN confirmado | Genera `doc/arch/status-salud.md`, actualiza INDEX | Reporte generado | `/version BUILD*` |
@@ -80,10 +80,10 @@ Los encadenamientos se definen en `~/.config/opencode/commands/CBP.md`:
 
 | Workflow | Secuencia |
 |---|---|---|
-| `updoc` | META-PLAN (PRO): /updoc PLAN + /doctor PLAN + /salud preview → BUILD (FLASH): /updoc Fase F + /salud* + /version* + /pushgh* + /doctor BUILD |
-| `doctor` | META-PLAN (PRO): /doctor PLAN → BUILD (FLASH): /doctor Fase 3 + /salud* + /version patch* + /pushgh* (si correcciones) |
-| `version` | META-PLAN (PRO): /version Steps 1→5 → BUILD (FLASH): /version Steps 6→8 → /pushgh* → sugiere /doctor |
-| `completo` | META-PLAN (PRO): agentes/skills sugeridos + /updoc PLAN + /doctor PLAN → BUILD (FLASH): agentes + /updoc Fase F + /salud* + /version* + /pushgh* + /doctor |
+| `updoc` | META-PLAN (razonamiento): /updoc PLAN + /doctor PLAN + /salud preview → BUILD (ejecuci�n): /updoc Fase F + /salud* + /version* + /pushgh* + /doctor BUILD |
+| `doctor` | META-PLAN (razonamiento): /doctor PLAN → BUILD (ejecuci�n): /doctor Fase 3 + /salud* + /version patch* + /pushgh* (si correcciones) |
+| `version` | META-PLAN (razonamiento): /version Steps 1→5 → BUILD (ejecuci�n): /version Steps 6→8 → /pushgh* → sugiere /doctor |
+| `completo` | META-PLAN (razonamiento): agentes/skills sugeridos + /updoc PLAN + /doctor PLAN → BUILD (ejecuci�n): agentes + /updoc Fase F + /salud* + /version* + /pushgh* + /doctor |
 
 Ver `CBP.md` para la especificación completa de cada workflow.
 
@@ -91,10 +91,10 @@ Ver `CBP.md` para la especificación completa de cada workflow.
 
 Cada workflow del circuito cumple:
 
-1. **Meta-PLAN (PRO)**: leer, auditar, diagnosticar, calcular para TODOS los comandos del workflow. NO modificar archivos.
+1. **Meta-PLAN (razonamiento)**: leer, auditar, diagnosticar, calcular para TODOS los comandos del workflow. NO modificar archivos.
 2. **Mostrar plan al usuario**: tabla consolidada con divisiones por comando (updoc, version, salud, doctor), hallazgos, cambios propuestos, impacto.
 3. **Usuario confirma una sola vez** (sí).
-4. **BUILD (FLASH)**: aplicar cambios de todos los comandos. Modificar archivos solo aquí.
+4. **BUILD (ejecuci�n)**: aplicar cambios de todos los comandos. Modificar archivos solo aquí.
 5. **BUILD\***: pasos que omiten PLAN porque los datos ya fueron auditados en el Meta-PLAN.
 6. **Output**: resumen de lo aplicado por cada comando.
 

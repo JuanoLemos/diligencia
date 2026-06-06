@@ -1,4 +1,4 @@
-# GUIA DE COMANDOS — Diligencia v1.16.2
+# GUIA DE COMANDOS — Diligencia v1.16.3
 
 Referencia de los 38 comandos fundamentales del sistema Diligencia.
 
@@ -291,6 +291,7 @@ Ver `doc/guias/ESTANDAR-COMANDOS.md` para el template completo con todas las sec
 ## 8. Guías relacionadas
 
 - `GUIA_REFERENCIA_RAPIDA.md` — referencia rápida de 1 página con comandos, árbol de decisión y flujos
+- `GUIA_ONBOARDING.md` — primeros pasos para usuarios primerizos de IA
 - `GUIA_DE_USO.md` — introducción y flujo de trabajo
 - `GUIA_DE_ADAPTACION.md` — migración de proyectos
 - `GUIA_DE_REVISION.md` — auditoría del sistema
@@ -300,6 +301,7 @@ Ver `doc/guias/ESTANDAR-COMANDOS.md` para el template completo con todas las sec
 - `MECANICA-DOCUMENTAL.md` — motor documental
 - `MECANICA-CBP.md` — flujo vinculante entre comandos
 - `ESTANDAR-COMANDOS.md` — cómo escribir comandos
+- `doc/arch/informe-salud-proyectos.md` — reporte consolidado de salud estructural de proyectos adaptados
 - `doc/guias/identidad.md` — guía de identidad visual y de marca
 - `doc/mecanicas/MANDATO.md` — mandato del Director para el agente
 - `doc/arch/ADR_SUMMARY.md` — índice de ADRs registrados
