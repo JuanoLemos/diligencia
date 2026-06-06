@@ -22,6 +22,13 @@ Diligencia define dónde vive cada tipo de archivo, cómo se nombran las variabl
 /CBP version
 ```
 
+## ¿Para quién es Diligencia?
+
+Diligencia está diseñada para **operadores y orquestadores de agentes IA** que trabajan con OpenCode.
+No requiere que escribas código runtime — Diligencia organiza los artefactos que los agentes generan:
+documentación, decisiones de arquitectura, registros de sesión, comandos y tracking de proyecto.
+Si tu flujo es `/plan → edición → /CBP`, Diligencia es para vos.
+
 ## Estructura del repositorio
 
 ```
@@ -52,8 +59,8 @@ Diligencia define dónde vive cada tipo de archivo, cómo se nombran las variabl
 | **ADR-003** | Estructura estándar de documentación — árbol de archivos obligatorios y opcionales |
 | **Enforcement 3 capas** | Runtime (opencode.jsonc), pre-commit (check-docs.js), CI/CD (GitHub Actions) |
 | **/CBP** | Circuito de Buenas Prácticas — orquestador de workflows (updoc, doctor, version) |
-| **SDD** | Spec-Driven Development — flujo arquitecto→implement→verify→reviewer |
-| **TDD estricto** | RED→GREEN→TRIANGULATE→REFACTOR con evidencia requerida |
+| **SDD** | Spec-Driven Development — flujo de agentes: @sdd-architect → @sdd-implement → @sdd-verify → @sdd-reviewer |
+| **TDD estricto** | RED→GREEN→TRIANGULATE→REFACTOR — ciclo ejecutado por el agente (skill tdd-strict) |
 
 ## Proyectos adaptados
 

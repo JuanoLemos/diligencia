@@ -23,13 +23,9 @@ Metodología de estructura estándar para proyectos OpenCode.
 | Item | Prioridad | Estado |
 |---|---|---|
 | +Backup en /doctor | P2 | 🔴 Pendiente |
-| +up github | P2 | 🔴 Pendiente |
 | +guia usuario noob, usando primera vez AI | P2 | 🔴 Pendiente |
 | +ayuda en worktree para recomendar acciones de buenas practicas | P2 | 🔴 Pendiente |
-| +status-salud: reporte de salud del proyecto integrado en /CBP | P2 | 🔴 Pendiente |
-| +meta-orquestador: /CBP adaptado a agentes y skills con detección automática | P2 | 🔴 Pendiente |
 | +revisión de agentes y skills: compatibilidad con circuito, actualizar docs | P2 | 🔴 Pendiente |
-| +Meta-PLAN: fase PRO con confirmación única previa a BUILD (FLASH) | P2 | 🔴 Pendiente |
 | +informe-salud inter-proyecto basado en estructura Diligencia | P3 | 🔴 Pendiente |
 
 ## Futuro (Later)
@@ -82,3 +78,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | Template DILIGENCIA.md y adaptar.md sincronizados a v1.10.0 (bug: reportaban v1.7.1 y v1.3) | v1.10.1 |
 | `/version`: si proyecto = Diligencia, actualiza template + adaptar.md al versionar | v1.10.1 |
 | `/updoc`: D5 — detección de staleness template vs proyecto | v1.10.1 |
+| `/pushgh`: comando build-only para push a GitHub, integrado en /CBP | v1.16.0 |
+| `/salud BUILD*`: status-salud.md generado como reporte integrado en /CBP | v1.12.0 |
+| Meta-orquestador: /CBP completo detecta agentes/skills según working tree | v1.12.0 |
+| Meta-PLAN (PRO) + BUILD (FLASH): fase PRO confirma único plan antes de BUILD | v1.12.0 |
