@@ -24,6 +24,7 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 | Archivo | Versión | Última actualización |
 |---|---|---|
 | GUIA_DE_COMANDOS.md | v1.15.2 | 2026-06-05 |
+| GUIA_DE_CONTRIBUCION.md | v1.16.0 | 2026-06-05 |
 | GUIA_DE_ADAPTACION.md | v1.15.2 | 2026-06-05 |
 | GUIA_REFERENCIA_RAPIDA.md | v1.15.2 | 2026-06-05 |
 | GUIA_DE_BUENAS_PRACTICAS.md | v1.15.2 | 2026-06-05 |
@@ -42,6 +43,7 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 |---|---|---|
 | MECANICA-DOCUMENTAL.md | v1.15.2 | 2026-06-05 |
 | MECANICA-CBP.md | v1.15.2 | 2026-06-05 |
+| MECANICA-ENFORCEMENT.md | v1.16.0 | 2026-06-05 |
 | MANDATO.md | v1.15.2 | 2026-06-05 |
 
 ## ADRs

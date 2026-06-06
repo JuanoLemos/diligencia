@@ -2,6 +2,18 @@
 
 ---
 
+## [1.16.0] — 2026-06-05
+
+### Added
+- GitHub readiness: README.md, LICENSE (GPL-3.0), .gitignore, CONTRIBUTING.md, CODE_OF_CONDUCT.md
+- CI workflow en `.github/workflows/diligencia-check.yml` para validación estructural en push/PR
+- `doc/guias/GUIA_DE_CONTRIBUCION.md` — proceso formal para extender la metodología (guías, mecánicas, comandos, ADRs, templates)
+- `doc/mecanicas/MECANICA-ENFORCEMENT.md` — documentación unificada del sistema de enforcement en 3 capas (runtime, pre-commit, CI/CD)
+- INDEX.md actualizado con +1 guía y +1 mecánica
+
+### Changed
+- Bump v1.15.3 → v1.16.0: DILIGENCIA.md, template DILIGENCIA.md, adaptar.md
+
 ## [1.15.3] — 2026-06-05
 
 ### Added

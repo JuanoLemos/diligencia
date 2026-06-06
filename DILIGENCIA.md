@@ -1,4 +1,4 @@
-# Diligencia v1.15.3 — Estructura estándar de documentación
+# Diligencia v1.16.0 — Estructura estándar de documentación
 
 Sello de metodología para proyectos OpenCode.
 
@@ -36,6 +36,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| v1.16.0 | 2026-06-05 | GitHub readiness: README.md, LICENSE (GPL-3.0), .gitignore, CONTRIBUTING.md, CODE_OF_CONDUCT.md. GUIA_DE_CONTRIBUCION.md (guía), MECANICA-ENFORCEMENT.md (mecánica). CI workflow en .github/workflows/. |
 | v1.15.3 | 2026-06-05 | Idioma español como Buena Práctica: templates AGENTS.md y HARNESS.md incluyen sección "Idioma". opencode.jsonc instructions: +"Siempre responde en español". GUIA_DE_BUENAS_PRACTICAS.md §10. |
 | v1.15.2 | 2026-06-05 | /circuito → /CBP rename + 12 stale labels bump + gaps resueltos (CHANGELOG v1.14.0, GUIA_DE_ADAPTACION step 11.5). /CBP default → completo. |
 | v1.15.1 | 2026-06-05 | Sync documental masivo: /updoc — 14 labels stale corregidos, INDEX sincronizado. /explica scope expandido (identidad, MANDATO, ADR_SUMMARY, status-salud). /doctor — tracking actualizado (CHECKLIST, ROADMAP). /salud regenerado. CBP corrections en /CBP commands. |
