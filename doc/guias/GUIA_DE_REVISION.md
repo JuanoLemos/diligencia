@@ -77,7 +77,7 @@ Plan paso a paso para auditar todos los motores/módulos del sistema Diligencia.
 | # | Qué verificar | Cómo |
 |---|---|---|
 | 7.1 | Las 13 variables del template AGENTS.md coinciden con las que usa `/adaptar` | Leer template AGENTS.md vs adaptar.md |
-| 7.2 | Las guías de Diligencia no referencian rutas viejas (`autoridad/`, `docs/viejos/`) | `grep` sobre `C:\xampp\htdocs\Diligencia\` |
+| 7.2 | Las guías de Diligencia no referencian rutas viejas (`autoridad/`, `docs/viejos/`) | `grep` sobre la raíz del proyecto |
 | 7.3 | `ADAPTAR-COMANDOS.md` (stub) no duplica contenido de las guías | Leer stub (debe ser ≤10 líneas) |
 
 ---
