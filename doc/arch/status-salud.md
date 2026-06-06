@@ -1,19 +1,19 @@
-# Status de Salud — Diligencia v1.16.0
+# Status Salud — Diligencia — v1.16.1
 
 Generado por `/salud` el 2026-06-05.
 
 | Indicador | Estado | Detalle |
 |---|---|---|
-| **Versión** | v1.16.0 | commit 4c41f50 |
-| **Estructura** | ✅ | directorios core, archivos, variables OK |
-| **Docs stale** | 0 | 13 labels bumped v1.15.2→v1.16.0 vía /updoc Fase F |
-| **Gaps documentales** | 0 | D1: GUIA_DE_COMANDOS.md §8 +GUIA_DE_CONTRIBUCION.md; D3: /explica scope expandido |
-| **Cross-ref gaps (D1-D5)** | 0 | OK |
-| **Último /doctor** | 2026-06-05 | 0 issues detectados |
-| **Working tree** | ⚠️ sucio | cambios sin commit (BUILD en progreso) |
-| **ADRs pendientes** | 0 | todos aceptados |
-| **Template sync** | ✅ | DILIGENCIA.md v1.16.0 = adaptar.md v1.16.0 |
-| **Bump type** | minor | v1.15.3 → v1.16.0 |
+| **Versión** | v1.16.1 | commit (pending) |
+| **Estructura** | ✅ OK | directorios core, archivos, variables |
+| **Docs stale** | 0 | — |
+| **Gaps documentales** | 0 | — |
+| **Cross-ref gaps (D1-D5)** | 0 | — |
+| **Último /doctor** | 2026-06-05 | 👀 Sin novedades — proyecto sano |
+| **Working tree** | ✅ Clean | 3 commits post-v1.16.0 (higiene) |
+| **ADRs pendientes** | 0 | — |
+| **Template sync** | ✅ Sync | DILIGENCIA.md vs adaptar.md |
+| **Bump type** | patch | 3 hygiene fixes |
 
 ---
 
@@ -21,7 +21,4 @@ Generado por `/salud` el 2026-06-05.
 
 | Fecha | Versión | Stale | Gaps | Estructura | Notas |
 |---|---|---|---|---|---|
-| 2026-06-05 | v1.16.0 | 0 | 0 | ✅ | GitHub readiness — LICENSE, README, CONTRIBUTING, CODE_OF_CONDUCT, CI workflow, GUIA_DE_CONTRIBUCION, MECANICA-ENFORCEMENT |
-| 2026-06-05 | v1.15.3 | 0 | 0 | ✅ | Idioma español como BP — reforzado en /adaptar templates, instructions, GUIA_DE_BUENAS_PRACTICAS |
-| 2026-06-05 | v1.15.2 | 0 | 0 | ✅ | /circuito → /CBP rename + stale bump masivo + gaps resueltos |
-| 2026-06-05 | v1.15.1 | 0 | 2 | ✅ | Sync documental completo + CBP corrections |
+| 2026-06-05 | v1.16.1 | 0 | 0 | ✅ OK | v1.16.0→v1.16.1 hygiene |

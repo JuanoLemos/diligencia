@@ -2,6 +2,15 @@
 
 ---
 
+## [1.16.1] — 2026-06-05
+
+### Fixed
+- Sanitizar paths hardcodeados en ADR-002.md y GUIA_DE_REVISION.md (proyectos privados, rutas locales)
+- Redactar nombres de proyectos privados: Némesis→proyecto-alfa, MarketAI→proyecto-beta, closefront-io→proyecto-cliente
+
+### Changed
+- 'desarrollador' → 'orquestador' en CHANGELOG, CHECKLIST, ROADMAP, GUIA_ECOSISTEMAS
+
 ## [1.16.0] — 2026-06-05
 
 ### Added
