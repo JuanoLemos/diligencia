@@ -14,8 +14,8 @@ Gestionados por /version. La versión se actualiza al cerrar sesión.
 |---|---|---|
 | ROADMAP.md | — | |
 | CHECKLIST.md | — | |
-| CHANGELOG.md | v1.16.3 | 2026-06-06 |
-| DILIGENCIA.md | v1.16.3 | 2026-06-06 |
+| CHANGELOG.md | v1.16.4 | 2026-06-06 |
+| DILIGENCIA.md | v1.16.4 | 2026-06-06 |
 
 ## Guías
 
@@ -23,7 +23,7 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 
 | Archivo | Versión | Última actualización |
 |---|---|---|
-| GUIA_DE_COMANDOS.md | v1.16.2 | 2026-06-05 |
+| GUIA_DE_COMANDOS.md | v1.16.4 | 2026-06-06 |
 | GUIA_DE_CONTRIBUCION.md | v1.16.2 | 2026-06-05 |
 | GUIA_DE_ADAPTACION.md | v1.16.2 | 2026-06-05 |
 | GUIA_REFERENCIA_RAPIDA.md | v1.16.2 | 2026-06-05 |
@@ -34,6 +34,7 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 | GUIA_DE_USO.md | v1.16.2 | 2026-06-05 |
 | _template.md | v1.16.2 | 2026-06-05 |
 | GUIA_ONBOARDING.md | v1.16.2 | 2026-06-05 |
+| GUIA_DE_INFORMES.md | v1.16.4 | 2026-06-06 |
 | identidad.md | v1.16.2 | 2026-06-05 |
 
 ## Mecánicas
@@ -43,9 +44,11 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 | Archivo | Versión | Última actualización |
 |---|---|---|
 | MECANICA-DOCUMENTAL.md | v1.16.2 | 2026-06-05 |
-| MECANICA-CBP.md | v1.16.2 | 2026-06-05 |
+| MECANICA-CBP.md | v1.16.4 | 2026-06-06 |
 | MECANICA-ENFORCEMENT.md | v1.16.2 | 2026-06-05 |
 | MANDATO.md | v1.16.2 | 2026-06-05 |
+| _template.md | v1.16.4 | 2026-06-06 |
+| meta-escalabilidad.md | v1.16.4 | 2026-06-06 |
 
 ## ADRs
 

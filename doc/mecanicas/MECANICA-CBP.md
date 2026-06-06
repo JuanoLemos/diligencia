@@ -55,6 +55,14 @@ BUILD                                                       │
 │   /version Steps 1→5 → Steps 6→8 → /pushgh BUILD*         │
 │   → sugiere /doctor                                        │
 │                                                           │
+├── /CBP commit (sin despacho) ────────────────────────┘
+│   git add -A → commit → /pushgh
+│   Sin Meta-PLAN, sin doc sync, sin versión.
+│
+├── /CBP parcial (sin despacho) ──────────────────────┘
+│   /updoc Fases A→F → /version patch* → /pushgh*
+│   Sin Meta-PLAN profundo, sin /salud, sin /doctor.
+│
 └── /CBP completo ─────────────────────────────────────┘
     META-PLAN (razonamiento) → BUILD (ejecuci�n)
     Agentes/skills sugeridos → /updoc → /salud* → /version* → /pushgh* → /doctor
@@ -83,7 +91,9 @@ Los encadenamientos se definen en `~/.config/opencode/commands/CBP.md`:
 | `updoc` | META-PLAN (razonamiento): /updoc PLAN + /doctor PLAN + /salud preview → BUILD (ejecuci�n): /updoc Fase F + /salud* + /version* + /pushgh* + /doctor BUILD |
 | `doctor` | META-PLAN (razonamiento): /doctor PLAN → BUILD (ejecuci�n): /doctor Fase 3 + /salud* + /version patch* + /pushgh* (si correcciones) |
 | `version` | META-PLAN (razonamiento): /version Steps 1→5 → BUILD (ejecuci�n): /version Steps 6→8 → /pushgh* → sugiere /doctor |
-| `completo` | META-PLAN (razonamiento): agentes/skills sugeridos + /updoc PLAN + /doctor PLAN → BUILD (ejecuci�n): agentes + /updoc Fase F + /salud* + /version* + /pushgh* + /doctor |
+| `commit` | EJECUCI�N DIRECTA (sin Meta-PLAN): git add -A → commit → /pushgh |
+| `parcial` | EJECUCI�N SECUENCIAL (sin Meta-PLAN): /updoc A→F → /version patch* → /pushgh* |
+| `completo` / `full` | META-PLAN (razonamiento): **4 workers paralelos** (W1 docs + W2 diag + W3 ver + W4 agt) → sintetizar OLA 2-3 → tabla consolidada OLA 4 → BUILD (ejecuci�n): agentes + /updoc Fase F + /salud* + /version* + /pushgh* + /doctor |
 
 Ver `CBP.md` para la especificación completa de cada workflow.
 

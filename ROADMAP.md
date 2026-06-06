@@ -2,7 +2,7 @@
 
 Metodología de estructura estándar para proyectos OpenCode.
 
-Última actualización: 2026-06-05
+Última actualización: 2026-06-06
 
 ---
 
@@ -22,6 +22,9 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 | Item | Prioridad | Estado |
 |---|---|---|
+| +definir $NEWS_FILE en AGENTS.md (/news actualmente roto) | P2 | 🔴 Pendiente |
+| +asistente de configuración $PROYECTOS para /informe-salud | P2 | 🔴 Pendiente |
+| +dashboard unificado (merge /estado + /salud + /report) | P3 | 🔴 Pendiente |
 | +ayuda en worktree para recomendar acciones de buenas practicas | P2 | 🔴 Pendiente |
 ## Futuro (Later)
 
@@ -81,3 +84,6 @@ Metodología de estructura estándar para proyectos OpenCode.
 | +guia usuario noob, usando primera vez AI | v1.16.3 |
 | +revisión de agentes y skills: compatibilidad con circuito, actualizar docs | v1.16.3 |
 | +informe-salud inter-proyecto basado en estructura Diligencia | v1.16.3 |
+| +adaptación escalativa del /CBP (commit/parcial/full con detección automática) | v1.16.4 |
+| +paralelización del Meta-PLAN (Waves 1-4, 20 fases concurrentes) | v1.16.4 |
+| +GUIA_DE_INFORMES.md — ecosistema de reportes, post-update y workflow semanal | v1.16.4 |

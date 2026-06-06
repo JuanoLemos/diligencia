@@ -292,6 +292,7 @@ Ver `doc/guias/ESTANDAR-COMANDOS.md` para el template completo con todas las sec
 
 - `GUIA_REFERENCIA_RAPIDA.md` — referencia rápida de 1 página con comandos, árbol de decisión y flujos
 - `GUIA_ONBOARDING.md` — primeros pasos para usuarios primerizos de IA
+- `GUIA_DE_INFORMES.md` — ecosistema de reportes, salud, post-update y workflows semanales
 - `GUIA_DE_USO.md` — introducción y flujo de trabajo
 - `GUIA_DE_ADAPTACION.md` — migración de proyectos
 - `GUIA_DE_REVISION.md` — auditoría del sistema

@@ -17,6 +17,8 @@ Español — todas las respuestas del agente deben ser en español. Si el agente
 | $CHANGELOG | `CHANGELOG.md` | Historial de versiones |
 | $GUIAS | `doc/guias/` | Guías de uso |
 | $GUIAS_TEMPLATE | `doc/guias/_template.md` | Plantilla de guía |
+| $MECANICAS | `doc/mecanicas/` | Mecánicas del sistema |
+| $MECANICAS_TEMPLATE | `doc/mecanicas/_template.md` | Plantilla de mecánica |
 | $ARCH | `doc/arch/` | ADRs y arquitectura |
 | $TEMPLATE_DIR | `~/.config/opencode/templates/doc-base/` | Template base |
 | $GLOBAL_COMMANDS | `~/.config/opencode/commands/` | Comandos globales |
@@ -30,6 +32,7 @@ Español — todas las respuestas del agente deben ser en español. Si el agente
 | $BACKUPS | `doc/arch/backups.md` | Log de backups del doctor |
 | $BACKUP_KEEP | `5` | Cantidad de backups a conservar (pruning automático) |
 | $PROYECTOS | *(configurar)* | Lista de rutas a proyectos Diligencia-adaptados (ej: "C:\proyectos\alfa","C:\proyectos\beta") |
+| $NEWS_FILE | `design/report/news.txt` | Cambios entrantes a distribuir vía /news |
 
 ## Comandos globales heredados — 38 fundamentales
 

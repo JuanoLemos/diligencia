@@ -2,10 +2,29 @@
 
 ---
 
+## [1.16.4] — 2026-06-06
+
+### Added
+- `GUIA_DE_INFORMES.md` — ecosistema de reportes: mapa de 8 comandos, flujo post-update, workflow semanal, gaps conocidos
+- `META-ESCALABILIDAD.md` — mecánica de detección automática de camino en /CBP (commit/parcial/full)
+- `_template.md` — plantilla de mecánica en `doc/mecanicas/`
+- \$MECANICAS, \$MECANICAS_TEMPLATE, \$NEWS_FILE — variables agregadas a AGENTS.md
+
+### Changed
+- `CBP.md` — nuevo `## Despacho de entrada` con algoritmo de detección automática + 4 workers paralelos (docs/diag/ver/agt) en workflow `full`
+- `CBP.md` — nuevos workflows `commit` y `parcial` (adaptación escalativa)
+- `MECANICA-CBP.md` — diagrama + tabla de workflows actualizados con `commit`, `parcial`, y paralelismo
+- `GUIA_DE_COMANDOS.md` §8 — +referencia a `GUIA_DE_INFORMES.md`
+- `INDEX.md` — +GUIA_DE_INFORMES.md, +_template.md, +meta-escalabilidad.md
+- `ROADMAP.md` — 3 items P1/P2 movidos a Completado; 2 P2 nuevos (config $PROYECTOS, +ayuda en worktree)
+
+### Fixed
+- `$NEWS_FILE` definido en AGENTS.md (archivo `design/report/news.txt` aún no creado)
+
 ## [1.16.3] — 2026-06-06
 
 ### Added
-- `doc/guias/GUIA_ONBOARDING.md` — primeros pasos para usuarios primerizos de IA + OpenCode
+- `doc/guias/GUIA_ONBOARDING.md` — primeros pasos para usuarios primerizos de AI + OpenCode
 - `/informe-salud` — comando de salud inter-proyecto: escanea $PROYECTOS y genera reporte consolidado con indicadores estructurales
 
 ### Changed
