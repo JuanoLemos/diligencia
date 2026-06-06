@@ -1,4 +1,4 @@
-# GUIA DE COMANDOS — Diligencia v1.15.2
+# GUIA DE COMANDOS — Diligencia v1.16.0
 
 Referencia de los 37 comandos fundamentales del sistema Diligencia.
 
@@ -293,6 +293,7 @@ Ver `doc/guias/ESTANDAR-COMANDOS.md` para el template completo con todas las sec
 - `GUIA_DE_REVISION.md` — auditoría del sistema
 - `GUIA_DE_BUENAS_PRACTICAS.md` — hábitos y workflows diarios
 - `GUIA_ECOSISTEMAS.md` — mapa de ecosistemas y fronteras entre comandos
+- `GUIA_DE_CONTRIBUCION.md` — cómo extender la metodología Diligencia
 - `MECANICA-DOCUMENTAL.md` — motor documental
 - `MECANICA-CBP.md` — flujo vinculante entre comandos
 - `ESTANDAR-COMANDOS.md` — cómo escribir comandos

@@ -1,4 +1,4 @@
-# GUIA DE REVISIÓN — Diligencia v1.15.2
+# GUIA DE REVISIÓN — Diligencia v1.16.0
 
 Plan paso a paso para auditar todos los motores/módulos del sistema Diligencia.
 
