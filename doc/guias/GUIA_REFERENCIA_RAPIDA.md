@@ -1,4 +1,4 @@
-# GUIA DE REFERENCIA RAPIDA — Diligencia v1.16.0
+# GUIA DE REFERENCIA RAPIDA — Diligencia v1.16.2
 
 Referencia rápida de 1 página. Para uso diario: comandos, decisión, flujo, variables.
 

@@ -1,4 +1,4 @@
-# MECANICA-CBP — Circuito de trabajo cíclico v1.16.0
+# MECANICA-CBP — Circuito de trabajo cíclico v1.16.2
 
 Define los workflows multi-comando del ecosistema. El orquestador `/CBP` ejecuta los encadenamientos; los comandos individuales ya no contienen "Próximo paso" propio.
 Referencia de hábitos de usuario: `GUIA_DE_BUENAS_PRACTICAS.md §9`.

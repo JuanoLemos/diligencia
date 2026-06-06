@@ -27,6 +27,8 @@ Español — todas las respuestas del agente deben ser en español. Si el agente
 | $INCIDENTS | `doc/arch/incidentes.md` | Incidentes runtime y crashes |
 | $TESTING | *(definido en HARNESS.md)* | Comando de test del proyecto |
 | $REPO | `https://github.com/JuanoLemos/diligencia.git` | Repositorio GitHub del proyecto |
+| $BACKUPS | `doc/arch/backups.md` | Log de backups del doctor |
+| $BACKUP_KEEP | `5` | Cantidad de backups a conservar (pruning automático) |
 
 ## Comandos globales heredados — 37 fundamentales
 

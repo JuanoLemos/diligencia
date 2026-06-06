@@ -2,6 +2,20 @@
 
 ---
 
+## [Unreleased]
+
+## [1.16.2] — 2026-06-05
+
+### Added
+- `/doctor` — Backup preventivo (Fase 1f) + paso de backup pre-corrección entre Fase 2 y Fase 3
+- `$BACKUPS` → `doc/arch/backups.md`: log de backups con commit, versión, workflow y cantidad de archivos
+- `$BACKUP_KEEP` en AGENTS.md: cantidad de backups a conservar (default 5), pruning automático
+- Template `doc/arch/backups.md` en doc-base (externalizado para /adaptar)
+
+### Changed
+- `GUIA_ECOSISTEMAS.md`: /doctor ahora participa del ecosistema BACKUP (backup preventivo + log)
+- Labels de 15 guías/mecánicas bump v1.16.0→v1.16.2 (sync post-backup feature)
+
 ## [1.16.1] — 2026-06-05
 
 ### Fixed

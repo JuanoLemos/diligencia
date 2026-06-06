@@ -24,3 +24,12 @@ Cada ADR comienza como **Proposed**, se mueve a **Accepted** tras aprobación, p
 ## Template
 
 [adr-template.md](adr-template.md)
+
+## Documentos de archivo
+
+| Archivo | Descripción |
+|---|---|
+| [bugs.md](bugs.md) | Bug tracker (P1/P2/P3) |
+| [incidentes.md](incidentes.md) | Incidentes runtime |
+| [backups.md](backups.md) | Registro de backups del doctor |
+| [status-salud.md](status-salud.md) | Reporte de salud del proyecto |

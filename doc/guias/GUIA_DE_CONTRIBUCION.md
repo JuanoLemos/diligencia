@@ -1,4 +1,4 @@
-# GUIA DE CONTRIBUCION — Diligencia v1.16.0
+# GUIA DE CONTRIBUCION — Diligencia v1.16.2
 
 Cómo extender la metodología Diligencia: crear nuevas guías, mecánicas, comandos, ADRs y modificar templates.
 

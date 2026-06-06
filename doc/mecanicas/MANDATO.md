@@ -1,4 +1,4 @@
-# MANDATO.md — Mandato del Director — Diligencia v1.16.0
+# MANDATO.md — Mandato del Director — Diligencia v1.16.2
 
 **Rol:** Director del proyecto
 **Propósito:** Asignar recursos de forma eficiente, mantener contexto mínimo viable, y cerrar cada sesión con métricas de diligencia.

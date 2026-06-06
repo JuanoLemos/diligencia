@@ -1,4 +1,4 @@
-# Diligencia v1.16.1 — Estructura estándar de documentación
+# Diligencia v1.16.2 — Estructura estándar de documentación
 
 Sello de metodología para proyectos OpenCode.
 

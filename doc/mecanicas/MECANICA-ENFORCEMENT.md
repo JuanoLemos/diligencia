@@ -1,4 +1,4 @@
-# MECANICA-ENFORCEMENT — Enforcement documental de Diligencia v1.16.0
+# MECANICA-ENFORCEMENT — Enforcement documental de Diligencia v1.16.2
 
 Sistema de enforcement en 3 capas que garantiza la integridad documental en todos los proyectos adaptados. Centraliza lo que antes estaba disperso en ADR-003, GUIA_DE_ADAPTACION, /version, /adaptar, scripts y GitHub Actions.
 

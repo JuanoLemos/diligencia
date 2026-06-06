@@ -1,4 +1,4 @@
-# Guía de Identidad — Diligencia v1.16.0
+# Guía de Identidad — Diligencia v1.16.2
 
 Recomendaciones de identidad y estilo para proyectos que adoptan Diligencia.
 

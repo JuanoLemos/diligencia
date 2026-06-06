@@ -1,4 +1,4 @@
-# MECANICA-DOCUMENTAL — Motor documental de Diligencia v1.16.0
+# MECANICA-DOCUMENTAL — Motor documental de Diligencia v1.16.2
 
 Define cómo interactúan los archivos, variables y comandos del sistema Diligencia. Es referencia del motor; para hábitos de usuario, ver `GUIA_DE_BUENAS_PRACTICAS.md`.
 

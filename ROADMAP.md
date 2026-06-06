@@ -22,7 +22,6 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 | Item | Prioridad | Estado |
 |---|---|---|
-| +Backup en /doctor | P2 | 🔴 Pendiente |
 | +guia usuario noob, usando primera vez AI | P2 | 🔴 Pendiente |
 | +ayuda en worktree para recomendar acciones de buenas practicas | P2 | 🔴 Pendiente |
 | +revisión de agentes y skills: compatibilidad con circuito, actualizar docs | P2 | 🔴 Pendiente |
@@ -82,3 +81,4 @@ Metodología de estructura estándar para proyectos OpenCode.
 | `/salud BUILD*`: status-salud.md generado como reporte integrado en /CBP | v1.12.0 |
 | Meta-orquestador: /CBP completo detecta agentes/skills según working tree | v1.12.0 |
 | Meta-PLAN (PRO) + BUILD (FLASH): fase PRO confirma único plan antes de BUILD | v1.12.0 |
+| +Backup en /doctor: backup preventivo + pruning configurable ($BACKUP_KEEP) + log en $BACKUPS | v1.16.2 |

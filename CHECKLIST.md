@@ -101,6 +101,7 @@ Cerrar v1.15.1 con /CBP updoc -> BUILD -> /version patch.
 - [x] ADR lifecycle states (Proposed → Accepted → Deprecated → Superseded)
 - [x] `/commit` validación Conventional Commits (tipo/scope obligatorio)
 - [x] `/version` soporte `[YANKED]` + migración automática de `[Unreleased]`
+- [x] +Backup en `/doctor`: backup preventivo + pruning configurable ($BACKUP_KEEP) + log $BACKUPS
 
 ## P3 — Mejoras futuras
 
