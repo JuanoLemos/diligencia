@@ -46,7 +46,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | Documentación completa del sistema (ADRs + guías + estructura) | v1.0 |
 | ADRs de arquitectura (001-003) | v1.0 |
 | Guías de uso + adaptación | v1.0 |
-| GUIA_DE_BUENAS_PRACTICAS.md — hábitos y workflows para el desarrollador | v1.6 |
+| GUIA_DE_BUENAS_PRACTICAS.md — hábitos y workflows para el orquestador | v1.6 |
 | Template `incidentes.md` en doc-base (externalizado para /adaptar) | v1.6 |
 | Template `sesion.md` en doc-base (journal multi-agente) | v1.6 |
 | Template doc-base (7 archivos) | v1.0 |

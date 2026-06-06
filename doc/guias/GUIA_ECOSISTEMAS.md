@@ -97,7 +97,7 @@ Cada comando pertenece a un ecosistema primario. Algunos comandos (como `/deprec
 | `DILIGENCIA.md` | — | Sincroniza versión (Fase A) |
 | `CHANGELOG.md` | — | Verifica cobertura (Fase C) |
 
-**Principio**: `/updoc` solo procesa cambios del desarrollador (guías, mecánicas, ADRs, comandos). `/doctor` maneja su propio tracking en `bugs.md` e `incidentes.md`. Nunca conflictúan porque operan sobre dominios disjuntos de archivos.
+**Principio**: `/updoc` solo procesa cambios del orquestador (guías, mecánicas, ADRs, comandos). `/doctor` maneja su propio tracking en `bugs.md` e `incidentes.md`. Nunca conflictúan porque operan sobre dominios disjuntos de archivos.
 
 ### CALIDAD ↔ DOCTOR
 

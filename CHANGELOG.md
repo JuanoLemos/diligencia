@@ -236,7 +236,7 @@
 - `doc/mecanicas/MECANICA-DOCUMENTAL.md` — mapa del motor documental (variables, flujo, sincronización, anti-patrones)
 - Template `incidentes.md` en `doc-base/` — template standalone para incidentes (simétrico a bugs.md)
 - Template `sesion.md` en `doc-base/` — journal de sesión multi-agente con decisiones y commits
-- `doc/guias/GUIA_DE_BUENAS_PRACTICAS.md` — hábitos y workflows del desarrollador (disciplina de sesión, árbol de decisión, delegación, docs vivos, tracking, deprecar, anti-patrones)
+- `doc/guias/GUIA_DE_BUENAS_PRACTICAS.md` — hábitos y workflows del orquestador (disciplina de sesión, árbol de decisión, delegación, docs vivos, tracking, deprecar, anti-patrones)
 
 ### Changed
 - `/updoc`: Fase D añadida — integridad de referencias cruzadas (D1 guías huérfanas, D2 templates sin consumidor, D3 scope /explica, D4 variables huérfanas). Fase antigua D → Fase E.

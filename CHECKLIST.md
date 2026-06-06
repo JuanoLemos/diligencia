@@ -84,7 +84,7 @@ Cerrar v1.15.1 con /CBP updoc -> BUILD -> /version patch.
 - [x] `/deprecar` — deprecar archivos/estructuras obsoletas
 - [x] `/bug` — reportar bugs en $BUGS con template estándar
 - [x] `/incidente` — registrar crashes runtime en $INCIDENTS
-- [x] GUIA_DE_BUENAS_PRACTICAS.md — hábitos y workflows para el desarrollador
+- [x] GUIA_DE_BUENAS_PRACTICAS.md — hábitos y workflows para el orquestador
 - [x] MECANICA-DOCUMENTAL.md — mapa del motor documental
 - [x] Template `incidentes.md` en doc-base (externalizado para /adaptar)
 - [x] Template `sesion.md` en doc-base (journal multi-agente)
