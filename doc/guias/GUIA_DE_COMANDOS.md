@@ -187,7 +187,7 @@ Las variables se definen en `AGENTS.md` del proyecto (`Mapeo de rutas`). Son esp
 
 ### Específicas de proyecto
 
-Cada proyecto define variables adicionales en su `AGENTS.md` para rutas particulares. Ejemplo de Némesis: `$RM_TX`, `$RM_UI`, `$RM_UX`, `$ADR`, `$SISTEMA`, `$BACKEND_DIR`, `$FRONTEND_DIR`.
+Cada proyecto define variables adicionales en su `AGENTS.md` para rutas particulares. Ejemplo de proyecto-alfa: `$RM_TX`, `$RM_UI`, `$RM_UX`, `$ADR`, `$SISTEMA`, `$BACKEND_DIR`, `$FRONTEND_DIR`.
 
 ---
 

@@ -19,7 +19,7 @@ Diligencia v1.15.0 (bumped from v1.14.0)
 - **Flujo C** Fase 1 nuevo paso 4: enforcement de sync en upgrades (comparar versión local vs global, forzar sync si stale)
 - Migration table: v1.14.0 → v1.15.0 entry added
 
-### closefront-io Sync
+### proyecto-cliente Sync
 - INDEX.md actualizado (críticos v0.2.0→v0.3.0, DILIGENCIA.md v1.14.0)
 - identidad.md y MANDATO.md sincronizados desde template (sin versión de metodología)
 - check-docs.js creado, npm script agregado, pre-commit hook agregado

@@ -60,8 +60,8 @@ Diligencia define dónde vive cada tipo de archivo, cómo se nombran las variabl
 | Proyecto | Fecha | Estado |
 |---|---|---|
 | Diligencia (autor) | 2026-05-31 | ✅ |
-| Némesis Detective | 2026-05-08 | ✅ |
-| MarketAI | 2026-05-08 | ✅ |
+| proyecto-alfa Detective | 2026-05-08 | ✅ |
+| proyecto-beta | 2026-05-08 | ✅ |
 
 ## Licencia
 

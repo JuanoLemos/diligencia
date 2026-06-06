@@ -40,8 +40,8 @@ Cerrar v1.15.1 con /CBP updoc -> BUILD -> /version patch.
 
 ## P2 — Proyectos adaptados
 
-- [x] Némesis Detective
-- [x] MarketAI
+- [x] proyecto-alfa Detective
+- [x] proyecto-beta
 
 ## P2 — Estandarización de comandos globales
 
@@ -79,7 +79,7 @@ Cerrar v1.15.1 con /CBP updoc -> BUILD -> /version patch.
 - [x] `/explica` — explicación breve de conceptos
 - [x] `/diligencia-check` — validación automática de estructura
 - [x] `/adaptar` modificado: copia comandos globales a .opencode/commands/ del proyecto
-- [x] Nemesis cleanup: 12 archivos removidos, 3 archivados, AGENTS.md actualizado
+- [x] proyecto-alfa cleanup: 12 archivos removidos, 3 archivados, AGENTS.md actualizado
 - [x] HARNESS.md integrado al estándar: template, ADR-003, diligencia-check, /adaptar
 - [x] `/deprecar` — deprecar archivos/estructuras obsoletas
 - [x] `/bug` — reportar bugs en $BUGS con template estándar

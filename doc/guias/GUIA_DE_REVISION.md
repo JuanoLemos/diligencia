@@ -40,7 +40,7 @@ Plan paso a paso para auditar todos los motores/módulos del sistema Diligencia.
 
 | # | Qué verificar | Cómo | Afecta si falla |
 |---|---|---|---|
-| 4.1 | La convención de naming se cumple: `$` + MAYÚSCULAS + `_` | Revisar AGENTS.md de Némesis y MarketAI | Variables ilegibles o no detectables |
+| 4.1 | La convención de naming se cumple: `$` + MAYÚSCULAS + `_` | Revisar AGENTS.md de proyecto-alfa y proyecto-beta | Variables ilegibles o no detectables |
 | 4.2 | Cada `$variable` en AGENTS.md apunta a un archivo/directorio que existe | Para cada variable, verificar que la ruta existe en disco | Comandos que leen `$VARIABLE` fallan silenciosamente |
 | 4.3 | Ningún comando en `.opencode/commands/` tiene rutas hardcodeadas (cero paths absolutos/relativos) | `grep` sobre `*.md` buscando `C:\\`, `xampp`, `docs/` | Migración de ruta rompe N comandos |
 | 4.4 | La resolución de anclas (`$RM_TX` → `ROADMAP.md#tecnico`) funciona — los anchors existen en el archivo | Abrir ROADMAP.md y verificar que `#tecnico`, `#ui`, `#ux` existen como headings | `/rm tx` no encuentra la sección |
@@ -49,7 +49,7 @@ Plan paso a paso para auditar todos los motores/módulos del sistema Diligencia.
 
 ## Módulo 5: Estructura estándar (en cada proyecto adaptado)
 
-| # | Qué verificar | Némesis | MarketAI |
+| # | Qué verificar | proyecto-alfa | proyecto-beta |
 |---|---|---|---|
 | 5.1 | `ROADMAP.md` en raíz | ✅ OK | ❌ En `doc/documentos/` |
 | 5.2 | `CHECKLIST.md` en raíz | ✅ OK | ❌ En `doc/documentos/` |
@@ -103,7 +103,7 @@ Paso 1: Módulo 1 (template)       ← la base, sin esto nada funciona
 Paso 2: Módulo 4 (variables)      ← el corazón, define qué se resuelve
 Paso 3: Módulo 2 (/adaptar)       ← el ejecutor, lógica de 3 flujos
 Paso 4: Módulo 3 (comandos globales) ← heredados, deben ser limpios
-Paso 5: Módulo 5 (estructura)     ← verificar Némesis y MarketAI
+Paso 5: Módulo 5 (estructura)     ← verificar proyecto-alfa y proyecto-beta
 Paso 6: Módulo 6 (docs Diligencia) ← el proyecto documental
 Paso 7: Módulo 7 (consistencia)   ← cruzar todo
 ```
@@ -114,11 +114,11 @@ Paso 7: Módulo 7 (consistencia)   ← cruzar todo
 
 | # | Hallazgo | Gravedad |
 |---|---|---|
-| H1 | **MarketAI no sigue la estructura estándar**: ROADMAP/CHECKLIST en `doc/documentos/`, CHANGELOG en `doc/`, sin `doc/arch/`, sin `DILIGENCIA.md` | 🔴 Alta |
-| H2 | **Némesis no tiene `DILIGENCIA.md`** | 🟡 Media |
-| H3 | **MarketAI no tiene `doc/mecanicas/`** — posiblemente no aplica (no es juego) | 🟢 Baja |
+| H1 | **proyecto-beta no sigue la estructura estándar**: ROADMAP/CHECKLIST en `doc/documentos/`, CHANGELOG en `doc/`, sin `doc/arch/`, sin `DILIGENCIA.md` | 🔴 Alta |
+| H2 | **proyecto-alfa no tiene `DILIGENCIA.md`** | 🟡 Media |
+| H3 | **proyecto-beta no tiene `doc/mecanicas/`** — posiblemente no aplica (no es juego) | 🟢 Baja |
 | H4 | **Template doc-base**: expandido de 8 a 14 archivos desde v1.0 — verificar que `/adaptar` copia todos | 🟡 Media |
-| H5 | **MarketAI bitácora** en `doc/informes/bitacora.md` en vez de `doc/arch/bitacora.md` | 🟡 Media |
-| H6 | **MarketAI `$GUIAS_TEMPLATE`** apunta a `doc/guias/_template.md` que no existe | 🟡 Media |
+| H5 | **proyecto-beta bitácora** en `doc/informes/bitacora.md` en vez de `doc/arch/bitacora.md` | 🟡 Media |
+| H6 | **proyecto-beta `$GUIAS_TEMPLATE`** apunta a `doc/guias/_template.md` que no existe | 🟡 Media |
 | H7 | **Stack templates**: `templates/{node,python,go}/HARNESS.md` creados en v1.8.0 — verificar que existen y son funcionales | 🟡 Media |
 | H8 | **CI/CD**: `diligencia-check.yml` no verificado en proyectos adaptados post-v1.9.0 | 🟢 Baja |

@@ -29,8 +29,8 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 | Proyecto | Fecha | Estado |
 |---|---|---|
 | Diligencia (autor) | 2026-05-31 | ✅ |
-| Némesis Detective | 2026-05-08 | ✅ |
-| MarketAI | 2026-05-08 | ✅ |
+| proyecto-alfa Detective | 2026-05-08 | ✅ |
+| proyecto-beta | 2026-05-08 | ✅ |
 
 ## Historial
 
@@ -58,6 +58,6 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 | v1.5 | 2026-05-31 | Comandos /bug, /incidente. $BUGS, $INCIDENTS en AGENTS.md. Template bugs.md en doc-base. |
 | v1.4 | 2026-05-31 | Template HARNESS.md en doc-base. Diligencia .opencode/HARNESS.md propio. ADR-003 actualizado. |
 | v1.3 | 2026-05-31 | ROADMAP stale data corregido (Ahora→Completado). AGENTS.md actualizado a 29 comandos + variables faltantes. /updoc mejorado con auditoría documental entre versiones. CHECKLIST sincronizado. /adaptar con conciencia de versión. |
-| v1.2 | 2026-05-31 | 12 comandos Nemesis adaptados a globales (+mec, upmec, +rm, backup, backupall, foco, news, version, report, apply, head, notify) — 29 comandos fundamentales totales. /adaptar copia comandos al proyecto. |
+| v1.2 | 2026-05-31 | 12 comandos proyecto-alfa adaptados a globales (+mec, upmec, +rm, backup, backupall, foco, news, version, report, apply, head, notify) — 29 comandos fundamentales totales. /adaptar copia comandos al proyecto. |
 | v1.1 | 2026-05-31 | Estándar de comandos: guarda + imperativo + Formato/Validación/Anti-patrones obligatorias |
 | v1.0 | 2026-05-08 | Convención inicial: doc-base template, $variables en AGENTS.md, dos capas de comandos, /adaptar global |

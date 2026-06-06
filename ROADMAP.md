@@ -10,7 +10,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 - Metodología documental (sin código runtime)
 - Dependencias: OpenCode, `templates/doc-base/`, `ADAPTAR-COMANDOS.md`
-- Proyectos adaptados: Némesis Detective, MarketAI
+- Proyectos adaptados: proyecto-alfa Detective, proyecto-beta
 
 ---
 
@@ -51,11 +51,11 @@ Metodología de estructura estándar para proyectos OpenCode.
 | Template `sesion.md` en doc-base (journal multi-agente) | v1.6 |
 | Template doc-base (7 archivos) | v1.0 |
 | Comando global /adaptar (Diligencia v1.0) | v1.0 |
-| Migración Némesis Detective | v1.0 |
-| Migración MarketAI | v1.0 |
+| Migración proyecto-alfa Detective | v1.0 |
+| Migración proyecto-beta | v1.0 |
 | ADAPTAR-COMANDOS.md v1.3 | v1.0 |
 | Estandarización comandos globales (guarda + imperativo + Formato/Validación/Anti-patrones) | v1.1 |
-| 12 comandos Nemesis adaptados a globales (29 total) + /adaptar copia comandos | v1.2 |
+| 12 comandos proyecto-alfa adaptados a globales (29 total) + /adaptar copia comandos | v1.2 |
 | ROADMAP stale data corregido (Ahora→Completado, duplicados Next) | v1.3 |
 | AGENTS.md actualizado: 29 comandos + variables faltantes | v1.3 |
 | /updoc mejorado: auditoría documental entre versiones | v1.3 |
