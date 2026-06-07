@@ -37,6 +37,7 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 | GUIA_DE_INFORMES.md | v1.16.4 | 2026-06-06 |
 | GUIA_LEGAL.md | v1.16.5 | 2026-06-06 |
 | GUIA_MULTI_REPO.md | v1.16.5 | 2026-06-06 |
+| GUIA_UPDATE_DILIGENCIA.md | v1.0 | 2026-06-06 |
 | identidad.md | v1.16.2 | 2026-06-05 |
 
 ## Mecánicas

@@ -25,6 +25,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R02 | +asistente de configuración $PROYECTOS para /informe-salud | P2 | 🔴 Pendiente | — |
 | R03 | +ayuda en worktree para recomendar acciones de buenas practicas | P2 | 🔴 Pendiente | — |
 | R04 | +dashboard unificado (merge /estado + /salud + /report) | P3 | 🔴 Pendiente | — |
+| R07 | +themes opencode customs | P2 | 🔴 Pendiente | — |
 
 ## Futuro (Later)
 
