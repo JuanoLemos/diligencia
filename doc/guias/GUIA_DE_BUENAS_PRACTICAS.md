@@ -11,6 +11,7 @@ Hábitos y workflows para usar Diligencia de forma consistente entre sesiones, a
 | **Pre-sesión** | Leer `AGENTS.md`, revisar `$CHECKLIST` items abiertos, revisar `$RM` "Ahora" o "Siguiente". Si hubo interrupción brusca: `/reanudar` para recuperar contexto. Si hay cambios grandes planeados: `/backup`. Periódicamente: `/diligencia-check` para detectar degradación estructural. |
 | **Durante** | Usar el comando adecuado para cada situación (ver §2) |
 | **Post-sesión** | `/CBP updoc` (ejecuta /updoc PLAN→BUILD → /version minor BUILD* → sugiere /doctor) |
+| **Commit** | SOLO via `/commit`, `/CBP` o `/version`. El BUILD de `/plan` aplica cambios pero NO commitea. `/adaptar` prepara archivos pero NO commitea. El working tree queda dirty hasta que el usuario decida. |
 
 Regla: toda sesión sigue **PLAN → BUILD**. Usar `/CBP updoc` para post-sesión completa. Si solo se necesita versionar sin auditoría: `/CBP version`.
 
