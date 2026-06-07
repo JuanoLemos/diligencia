@@ -2,6 +2,15 @@
 
 ---
 
+## [1.16.6] — 2026-06-06
+
+### Added
+- `/adaptar` Fase 2.6 — verificación de calidad documental (MECANICA-CALIDAD): escanea todos los .md, migra ROADMAP de checklist a tabla, corrige headers/cross-refs/fechas no estándar
+- `/CBP` dispatch dinámico — reemplazo de texto plano por `question()` con opciones clicables y descripciones
+
+### Changed
+- Regla #16 del orquestador: si se editan comandos globales que introducen cambios metodológicos, se DEBE bump version y documentar en el proyecto
+
 ## [1.16.5] — 2026-06-06
 
 ### Added
