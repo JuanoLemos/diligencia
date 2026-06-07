@@ -22,7 +22,6 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 | ID | Item | Prioridad | Estado | Depende de |
 |----|------|-----------|--------|------------|
-| R04 | +dashboard unificado (merge /estado + /salud + /report) | P3 | 🔴 Pendiente | — |
 | R07 | +themes opencode customs | P2 | 🔴 Pendiente | — |
 
 ## Futuro (Later)
@@ -90,3 +89,4 @@ Metodología de estructura estándar para proyectos OpenCode.
 | +$NEWS_FILE creado en design/report/news.txt — /news desbloqueado | v1.16.5 |
 | +asistente de configuración $PROYECTOS para /informe-salud | v1.16.7 |
 | +ayuda en worktree /estado con recomendaciones proactivas | v1.16.7 |
+| +dashboard unificado — /estado absorbe /report (--full, --update) + salud + bloqueos | v1.16.7 |
