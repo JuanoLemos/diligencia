@@ -22,7 +22,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 | ID | Item | Prioridad | Estado | Depende de |
 |----|------|-----------|--------|------------|
-| R07 | +themes opencode customs | P2 | 🔴 Pendiente | — |
+
 
 ## Futuro (Later)
 
@@ -90,3 +90,4 @@ Metodología de estructura estándar para proyectos OpenCode.
 | +asistente de configuración $PROYECTOS para /informe-salud | v1.16.7 |
 | +ayuda en worktree /estado con recomendaciones proactivas | v1.16.7 |
 | +dashboard unificado — /estado absorbe /report (--full, --update) + salud + bloqueos | v1.16.7 |
+| +themes opencode customs — GUIA_THEMES.md + diligencia.json theme | v1.16.7 |

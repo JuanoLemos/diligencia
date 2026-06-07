@@ -34,6 +34,7 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 | GUIA_DE_USO.md | v1.16.2 | 2026-06-05 |
 | _template.md | v1.16.2 | 2026-06-05 |
 | GUIA_ONBOARDING.md | v1.16.2 | 2026-06-05 |
+| GUIA_THEMES.md | v1.0 | 2026-06-06 |
 | GUIA_DE_INFORMES.md | v1.16.4 | 2026-06-06 |
 | GUIA_LEGAL.md | v1.16.5 | 2026-06-06 |
 | GUIA_MULTI_REPO.md | v1.16.5 | 2026-06-06 |

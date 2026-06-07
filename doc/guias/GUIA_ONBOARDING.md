@@ -81,6 +81,10 @@ Cuando ya te sientas cómodo con lo básico:
 - `GUIA_DE_BUENAS_PRACTICAS.md` — hábitos para trabajar mejor entre sesiones
 - `GUIA_REFERENCIA_RAPIDA.md` — la chuleta de 1 página para usar todos los días
 
+## 8. Personalización visual
+
+Podés cambiar colores, temas y la apariencia de OpenCode. Ver `GUIA_THEMES.md`.
+
 ---
 
-*Última actualización: 2026-06-05*
+*Última actualización: 2026-06-06*
