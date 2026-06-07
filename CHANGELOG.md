@@ -2,6 +2,19 @@
 
 ---
 
+## [1.17.1] — 2026-06-06
+
+### Added
+- PENDING.md — archivo de registro de cambios globales pendientes de versionar
+
+### Changed
+- `/adaptar` Finalización: ya no commitea ni pushea. Solo stagea archivos Diligencia y sugiere `/CBP`
+- CBP Paso 0f: reemplazada comparación por timestamps por lectura de PENDING.md (robusto contra commits)
+
+### Fixed
+- Regla #17: solo `/commit`, `/CBP` y `/version` pueden ejecutar git commit (el resto solo aplica cambios)
+- GUIA_DE_BUENAS_PRACTICAS.md §1: fila "Commit" agregada en tabla de disciplina de sesión
+
 ## [1.17.0] — 2026-06-06
 
 ### Added
