@@ -2,6 +2,25 @@
 
 ---
 
+## [1.16.5] — 2026-06-06
+
+### Added
+- `GUIA_LEGAL.md` — buenas prácticas legales: elegir licencia, headers SPDX, NOTICE, SECURITY.md, dual-licensing, disclaimer
+- `GUIA_MULTI_REPO.md` — 4 patrones multi-repo: worktree testing (closefront), fork+upstream, submódulos, CI/CD deploy
+- `MECANICA-WORKTREE.md` — mecánica de worktree testing dual-local: setup, sync, disciplina, automatización vía tray
+- `MECANICA-CALIDAD.md` — estándares de calidad documental: ROADMAP con IDs/prioridades, estilo md, template conventions, autocheck
+- `templates/doc-base/NOTICE` — template NOTICE (copyright holders, third-party deps)
+- `templates/doc-base/SECURITY.md` — template de política de seguridad
+- `/legal` — comando para verificar y aplicar buenas prácticas legales (39 comandos fundamentales)
+- \$MECANICAS, \$MECANICAS_TEMPLATE, \$NEWS_FILE — variables agregadas a AGENTS.md
+
+### Changed
+- `templates/doc-base/ROADMAP.md` — reescrito a formato tabla estandarizada con IDs R01+, prioridad P1/P2/P3, dependencias
+- `templates/doc-base/CHECKLIST.md` — expandido con tareas categorizadas
+- `templates/doc-base/HARNESS.md` — +sección opcional `## Testing worktree`
+- `GUIA_DE_BUENAS_PRACTICAS.md` — +§11 Calidad documental
+- `AGENTS.md` — +`/legal`, contador 38→39
+
 ## [1.16.4] — 2026-06-06
 
 ### Added

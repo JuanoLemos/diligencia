@@ -87,3 +87,6 @@ Metodología de estructura estándar para proyectos OpenCode.
 | +adaptación escalativa del /CBP (commit/parcial/full con detección automática) | v1.16.4 |
 | +paralelización del Meta-PLAN (Waves 1-4, 20 fases concurrentes) | v1.16.4 |
 | +GUIA_DE_INFORMES.md — ecosistema de reportes, post-update y workflow semanal | v1.16.4 |
+| +GUIA_LEGAL.md + /legal command + NOTICE + SECURITY.md templates — Plan A legal | v1.16.5 |
+| +MECANICA-WORKTREE.md + GUIA_MULTI_REPO.md — Plan B multi-repo | v1.16.5 |
+| +MECANICA-CALIDAD.md + ROADMAP template estándar — Plan C calidad doc | v1.16.5 |

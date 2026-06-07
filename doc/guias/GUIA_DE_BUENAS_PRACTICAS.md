@@ -222,3 +222,7 @@ Todas las respuestas del agente deben ser en español. Si el agente contesta en 
 | **Herencia** | Nuevos proyectos adaptados con `/adaptar` heredan esta BP desde `AGENTS.md` |
 
 Esta BP aplica a todos los proyectos adaptados a Diligencia y se refuerza en las templates `AGENTS.md` y `HARNESS.md` que `/adaptar` copia.
+
+## 11. Calidad documental
+
+Para estándares de formato de ROADMAP, templates y documentos, ver `doc/mecanicas/MECANICA-CALIDAD.md`.

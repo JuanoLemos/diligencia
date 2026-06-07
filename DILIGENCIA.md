@@ -1,4 +1,4 @@
-# Diligencia v1.16.4 — Estructura estándar de documentación
+# Diligencia v1.16.5 — Estructura estándar de documentación
 
 Sello de metodología para proyectos OpenCode.
 
@@ -36,6 +36,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| v1.16.5 | 2026-06-06 | Plan legal: GUIA_LEGAL.md, NOTICE/SECURITY.md templates, /legal. Plan multi-repo: MECANICA-WORKTREE.md, GUIA_MULTI_REPO.md. Plan calidad: MECANICA-CALIDAD.md, ROADMAP template estándar. 39 comandos. |
 | v1.16.4 | 2026-06-06 | /CBP adaptación escalativa (commit/parcial/full + dispatch). Meta-PLAN paralelo 4 workers. GUIA_DE_INFORMES.md. $MECANICAS, $NEWS_FILE. |
 | v1.16.3 | 2026-06-06 | Provider-agnostic: PRO→razonamiento, FLASH→ejecución. GUIA_ONBOARDING.md (api key genérica). /informe-salud inter-proyecto. SDD agents nota ADAPTAR. |
 | v1.16.2 | 2026-06-05 | /doctor backup preventivo + backup log. $BACKUPS/$BACKUP_KEEP. Labels 15 guías bump. |

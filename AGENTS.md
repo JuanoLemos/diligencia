@@ -34,7 +34,7 @@ Español — todas las respuestas del agente deben ser en español. Si el agente
 | $PROYECTOS | *(configurar)* | Lista de rutas a proyectos Diligencia-adaptados (ej: "C:\proyectos\alfa","C:\proyectos\beta") |
 | $NEWS_FILE | `design/report/news.txt` | Cambios entrantes a distribuir vía /news |
 
-## Comandos globales heredados — 38 fundamentales
+## Comandos globales heredados — 39 fundamentales
 
 | Comando | Descripción | Tipo |
 |---|---|---|
@@ -48,6 +48,7 @@ Español — todas las respuestas del agente deben ser en español. Si el agente
 | /debug | Análisis profundo | Declarativo |
 | /diligencia-check | Validar estructura Diligencia del proyecto | Declarativo |
 | /doctor | Cuidado integral: estructura + código + tracking + limpieza + deprecación | Declarativo |
+| /legal | Verificar y aplicar buenas prácticas legales (LICENSE, NOTICE, SECURITY, SPDX) | Declarativo |
 | /limpiar | Limpiar temporales | Procedural |
 | /estado | Reporte rápido del proyecto | Declarativo |
 | /explica | Explicar concepto breve y sencillo | Declarativo |
