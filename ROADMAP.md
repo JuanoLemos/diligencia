@@ -20,18 +20,17 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 ## Siguiente (Next)
 
-| Item | Prioridad | Estado |
-|---|---|---|
-| +definir $NEWS_FILE en AGENTS.md (/news actualmente roto) | P2 | 🔴 Pendiente |
-| +asistente de configuración $PROYECTOS para /informe-salud | P2 | 🔴 Pendiente |
-| +dashboard unificado (merge /estado + /salud + /report) | P3 | 🔴 Pendiente |
-| +ayuda en worktree para recomendar acciones de buenas practicas | P2 | 🔴 Pendiente |
+| ID | Item | Prioridad | Estado | Depende de |
+|----|------|-----------|--------|------------|
+| R01 | +definir $NEWS_FILE — crear design/report/news.txt para desbloquear /news | P2 | 🔴 Pendiente | — |
+| R02 | +asistente de configuración $PROYECTOS para /informe-salud | P2 | 🔴 Pendiente | — |
+| R03 | +ayuda en worktree para recomendar acciones de buenas practicas | P2 | 🔴 Pendiente | — |
+| R04 | +dashboard unificado (merge /estado + /salud + /report) | P3 | 🔴 Pendiente | — |
+
 ## Futuro (Later)
 
-| Item | Prioridad | Estado |
-|---|---|---|
-| CLI tool independiente | P3 | 🔴 Pendiente |
-| Plugin marketplace | P3 | 🔴 Pendiente |
+| R05 | CLI tool independiente | P3 | 🔴 Pendiente | — |
+| R06 | Plugin marketplace | P3 | 🔴 Pendiente | — |
 
 ## Completado
 
