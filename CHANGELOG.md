@@ -2,6 +2,12 @@
 
 ---
 
+## [1.16.7] — 2026-06-06
+
+### Added
+- `/adaptar` Fase 0: auto-elimina adaptar.md local stale al detectar que el global es más nuevo (el usuario dice "sí" a usar global y el archivo stale se borra automático)
+- `/adaptar` Finalización: commit automático `chore: upgrade vX → vY` + push opcional a origin
+
 ## [1.16.6] — 2026-06-06
 
 ### Added
