@@ -22,7 +22,6 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 | ID | Item | Prioridad | Estado | Depende de |
 |----|------|-----------|--------|------------|
-| R01 | +definir $NEWS_FILE — crear design/report/news.txt para desbloquear /news | P2 | 🔴 Pendiente | — |
 | R02 | +asistente de configuración $PROYECTOS para /informe-salud | P2 | 🔴 Pendiente | — |
 | R03 | +ayuda en worktree para recomendar acciones de buenas practicas | P2 | 🔴 Pendiente | — |
 | R04 | +dashboard unificado (merge /estado + /salud + /report) | P3 | 🔴 Pendiente | — |
@@ -89,3 +88,4 @@ Metodología de estructura estándar para proyectos OpenCode.
 | +GUIA_LEGAL.md + /legal command + NOTICE + SECURITY.md templates — Plan A legal | v1.16.5 |
 | +MECANICA-WORKTREE.md + GUIA_MULTI_REPO.md — Plan B multi-repo | v1.16.5 |
 | +MECANICA-CALIDAD.md + ROADMAP template estándar — Plan C calidad doc | v1.16.5 |
+| +$NEWS_FILE creado en design/report/news.txt — /news desbloqueado | v1.16.5 |
