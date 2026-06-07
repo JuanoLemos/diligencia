@@ -22,7 +22,6 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 | ID | Item | Prioridad | Estado | Depende de |
 |----|------|-----------|--------|------------|
-| R03 | +ayuda en worktree para recomendar acciones de buenas practicas | P2 | 🔴 Pendiente | — |
 | R04 | +dashboard unificado (merge /estado + /salud + /report) | P3 | 🔴 Pendiente | — |
 | R07 | +themes opencode customs | P2 | 🔴 Pendiente | — |
 
@@ -90,3 +89,4 @@ Metodología de estructura estándar para proyectos OpenCode.
 | +MECANICA-CALIDAD.md + ROADMAP template estándar — Plan C calidad doc | v1.16.5 |
 | +$NEWS_FILE creado en design/report/news.txt — /news desbloqueado | v1.16.5 |
 | +asistente de configuración $PROYECTOS para /informe-salud | v1.16.7 |
+| +ayuda en worktree /estado con recomendaciones proactivas | v1.16.7 |
