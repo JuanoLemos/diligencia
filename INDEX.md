@@ -12,10 +12,10 @@ Gestionados por /version. La versión se actualiza al cerrar sesión.
 
 | Archivo | Versión | Última actualización |
 |---|---|---|
-| ROADMAP.md | v1.16.5 | 2026-06-06 |
-| CHECKLIST.md | — | |
-| CHANGELOG.md | v1.16.7 | 2026-06-06 |
-| DILIGENCIA.md | v1.16.7 | 2026-06-06 |
+| ROADMAP.md | v1.17.0 | 2026-06-06 |
+| CHECKLIST.md | v1.17.0 | 2026-06-06 |
+| CHANGELOG.md | v1.17.0 | 2026-06-06 |
+| DILIGENCIA.md | v1.17.0 | 2026-06-06 |
 
 ## Guías
 

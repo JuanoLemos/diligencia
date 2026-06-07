@@ -2,6 +2,25 @@
 
 ---
 
+## [1.17.0] — 2026-06-06
+
+### Added
+- `/informe-salud` — configuración automática de $PROYECTOS en primer uso (Paso 0, R02)
+- `/estado` — recomendaciones proactivas según working tree (8 condiciones, R03)
+- `/estado --full` — dashboard unificado: git log -15, salud, bloqueos (absorbe /report, R04)
+- `/estado --update [file]` — persistir reporte a archivo
+- `GUIA_THEMES.md` — personalización visual de OpenCode (themes built-in, custom JSON) (R07)
+- `templates/doc-base/.opencode/themes/diligencia.json` — theme profesional TokyoNight-based
+- CHECKLIST.md — grooming completo al estándar MECANICA-CALIDAD
+
+### Changed
+- `/report` deprecado → redirige a `/estado --full`
+- `GUIA_ONBOARDING.md` — +§8 Personalización visual
+- `CHECKLIST.md` — reescrito completo: dashboard actualizado, items históricos consolidados
+
+### Fixed
+- ROADMAP migrado a formato MECANICA-CALIDAD (R01-R07 completados)
+
 ## [1.16.7] — 2026-06-06
 
 ### Added

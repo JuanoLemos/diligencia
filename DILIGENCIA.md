@@ -1,4 +1,4 @@
-# Diligencia v1.16.7 — Estructura estándar de documentación
+# Diligencia v1.17.0 — Estructura estándar de documentación
 
 Sello de metodología para proyectos OpenCode.
 
@@ -36,7 +36,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
-| v1.16.7 | 2026-06-06 | Fase 0: auto-elimina adaptar.md local stale al usar global. Finalización con commit + push automático. |
+| v1.17.0 | 2026-06-06 | Cierre etapa ROADMAP: R01-R07 completos. GUIA_THEMES.md, diligencia.json theme. CHECKLIST grooming. /report deprecado → /estado --full. |
 | v1.16.6 | 2026-06-06 | Fase 2.6 calidad documental en /adaptar (escanea .md, migra ROADMAP a estándar). Dispatch dinámico (question() en CBP). Regla #16: disciplina de bump al editar globales. |
 | v1.16.5 | 2026-06-06 | Plan legal: GUIA_LEGAL.md, NOTICE/SECURITY.md templates, /legal. Plan multi-repo: MECANICA-WORKTREE.md, GUIA_MULTI_REPO.md. Plan calidad: MECANICA-CALIDAD.md, ROADMAP template estándar. 39 comandos. |
 | v1.16.4 | 2026-06-06 | /CBP adaptación escalativa (commit/parcial/full + dispatch). Meta-PLAN paralelo 4 workers. GUIA_DE_INFORMES.md. $MECANICAS, $NEWS_FILE. |

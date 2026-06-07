@@ -22,7 +22,9 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 | ID | Item | Prioridad | Estado | Depende de |
 |----|------|-----------|--------|------------|
-
+| R08 | +audit: sincronizar INDEX labels de todos los docs del proyecto | P2 | 🔴 Pendiente | — |
+| R09 | +grooming: revisar proyectos adaptados (proyecto-alfa, proyecto-beta) | P2 | 🔴 Pendiente | — |
+| R10 | +mejora: integrar recomendaciones de /estado en flujo /doctor | P3 | 🔴 Pendiente | R03 |
 
 ## Futuro (Later)
 

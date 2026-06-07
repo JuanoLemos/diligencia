@@ -6,109 +6,33 @@
 
 | Versión | Estado | Descripción |
 |---|---|---|
-| v1.15.0 | ✅ | Documental enforcement 3 capas + /adaptar migration table + version leaks |
-| v1.12.0 | ✅ | Meta-PLAN + BUILD en /CBP, /salud, meta-orquestador |
-| v1.11.0 | ✅ | /CBP vinculante, MECANICA-CBP.md |
-| v1.10.x | ✅ | Circuito cíclico, /reanudar, staleness fix |
-| v1.9.x | ✅ | CI/CD, /doctor sobre Diligencia |
-| v1.8.0 | ✅ | Keep a Changelog, ADR lifecycle, plantillas stack |
+| v1.17.0 | ✅ | Cierre etapa ROADMAP: adaptación escalativa CBP, Planes A+B+C (legal, multi-repo, calidad), R02-R07 completos. CHECKLIST groomeado. |
+| v1.16.5 | ✅ | Plan A legal (GUIA_LEGAL, NOTICE, SECURITY, /legal). Plan B multi-repo (MECANICA-WORKTREE, GUIA_MULTI_REPO). Plan C calidad (MECANICA-CALIDAD, ROADMAP template). |
+| v1.16.2 | ✅ | Backup en /doctor, logs, pruning. Labels guías bump. |
+| v1.16.0 | ✅ | GitHub readiness, CI/CD, CONTRIBUTING, CODE_OF_CONDUCT. |
+| v1.12.0 | ✅ | Meta-PLAN + BUILD en /CBP, /salud, meta-orquestador. |
+| v1.11.0 | ✅ | /CBP vinculante, MECANICA-CBP.md. |
+| v1.10.x | ✅ | Circuito cíclico, /reanudar, staleness fix. |
+| v1.9.x | ✅ | CI/CD, /doctor sobre Diligencia. |
+| v1.8.0 | ✅ | Keep a Changelog, ADR lifecycle, plantillas stack. |
 
-**Completado:** 6/7 versiones (86%)
+**Completado:** 9/9 versiones (100%)
 
-### Bloqueadores
+## Pendientes globales
 
-Ninguno activo.
+- [ ] R08 — Audit: sincronizar INDEX labels de todos los docs
+- [ ] R09 — Grooming: revisar proyectos adaptados (proyecto-alfa, proyecto-beta)
+- [ ] R10 — Mejora: integrar recomendaciones de /estado en /doctor
 
-### Próximo milestone
+## Completado
 
-Cerrar v1.15.1 con /CBP updoc -> BUILD -> /version patch.
-
----
-
-## P1 — Documentación core
-
-- [x] Template doc-base (7 archivos)
-- [x] Comando global /adaptar (Diligencia v1.0)
-- [x] ADAPTAR-COMANDOS.md v1.3
-- [x] DILIGENCIA.md — sello de metodología
-- [x] GUIA_DE_USO.md — manual completo (v1.0)
-- [x] GUIA_DE_ADAPTACION.md — proceso de migración (v1.0)
-- [x] GUIA_DE_COMANDOS.md — referencia de 33 comandos (v1.5)
-- [x] ADR-001: Arquitectura de dos capas (v1.0)
-- [x] ADR-002: Sistema de variables (v1.0)
-- [x] ADR-003: Estructura estándar de archivos (v1.0)
-
-## P2 — Proyectos adaptados
-
-- [x] proyecto-alfa Detective
-- [x] proyecto-beta
-
-## P2 — Estandarización de comandos globales
-
-- [x] ESTANDAR-COMANDOS.md creado en doc/guias/ (incluye guarda + imperativo como requerimiento)
-- [x] rm.md — Formato + Validación + Anti-patrones
-- [x] next.md — Formato + Validación + Anti-patrones
-- [x] checklist.md — Formato + Validación + Anti-patrones
-- [x] estado.md — Formato + Validación + Anti-patrones
-- [x] updoc.md — Formato + Validación + Anti-patrones
-- [x] debug.md — Formato + Validación + Anti-patrones
-- [x] health.md — Formato + Validación + Anti-patrones
-- [x] +rmi.md — Formato + Validación + Anti-patrones
-- [x] +guia.md — Formato + Validación + Anti-patrones
-- [x] +pend.md — Formato + Validación + Anti-patrones
-- [x] qa.md — Formato + Validación + Anti-patrones
-- [x] upguia.md — Formato + Validación + Anti-patrones
-- [x] plan.md — Formato + Validación + Anti-patrones
-- [x] limpiar.md — Anti-patrones (procedural)
-- [x] commit.md — Anti-patrones (procedural)
-
-## P2 — Comandos fundamentales globales (v1.2)
-
-- [x] `+mec` — Crear documento desde template
-- [x] `upmec` — Actualizar documento existente
-- [x] `+rm` — Agregar ítem a $RM
-- [x] `backup` — Backup pre-edit genérico
-- [x] `backupall` — Zip completo del proyecto
-- [x] `foco` — Enfocar agente en área
-- [x] `news` — Leer y distribuir $NEWS_FILE
-- [x] `version` — Cerrar sesión: bump, updoc, commit
-- [x] `report` — Reporte consolidado (fusión claude+upclaude)
-- [x] `apply` — Aplicar handoff file a código
-- [x] `head` — Preparar edición de sección en archivo
-- [x] `notify` — Toggle de notificación remota
-- [x] `/explica` — explicación breve de conceptos
-- [x] `/diligencia-check` — validación automática de estructura
-- [x] `/adaptar` modificado: copia comandos globales a .opencode/commands/ del proyecto
-- [x] proyecto-alfa cleanup: 12 archivos removidos, 3 archivados, AGENTS.md actualizado
-- [x] HARNESS.md integrado al estándar: template, ADR-003, diligencia-check, /adaptar
-- [x] `/deprecar` — deprecar archivos/estructuras obsoletas
-- [x] `/bug` — reportar bugs en $BUGS con template estándar
-- [x] `/incidente` — registrar crashes runtime en $INCIDENTS
-- [x] GUIA_DE_BUENAS_PRACTICAS.md — hábitos y workflows para el orquestador
-- [x] MECANICA-DOCUMENTAL.md — mapa del motor documental
-- [x] Template `incidentes.md` en doc-base (externalizado para /adaptar)
-- [x] Template `sesion.md` en doc-base (journal multi-agente)
-- [x] `/doctor` — cuidado integral del proyecto (estructura + código + tracking + limpieza)
-- [x] `/reanudar` — recuperar sesión tras interrupción brusca
-- [x] Template DILIGENCIA.md y adaptar.md sincronizados a v1.10.0 (bug: reportaban v1.7.1 y v1.3)
-- [x] `/version`: si proyecto = Diligencia, actualiza template + adaptar.md al versionar
-- [x] `/updoc`: D5 — detección de staleness template vs proyecto
-
-## P2 — Próximos
-
-- [x] `GUIA_ECOSISTEMAS.md` — mapa de ecosistemas y fronteras
-- [x] CHANGELOG adopta Keep a Changelog: `[Unreleased]` + 6 categorías
-- [x] ADR lifecycle states (Proposed → Accepted → Deprecated → Superseded)
-- [x] `/commit` validación Conventional Commits (tipo/scope obligatorio)
-- [x] `/version` soporte `[YANKED]` + migración automática de `[Unreleased]`
-- [x] +Backup en `/doctor`: backup preventivo + pruning configurable ($BACKUP_KEEP) + log $BACKUPS
-- [x] GUIA_ONBOARDING.md — primeros pasos para usuarios primerizos de AI + OpenCode
-- [x] Revisión provider-agnostic: terminología `PRO`/`FLASH`→`razonamiento`/`ejecución` + notas ADAPTAR en agentes
-- [x] /informe-salud — reporte consolidado de salud estructural inter-proyecto ($PROYECTOS)
-
-## P3 — Mejoras futuras
-
-- [x] Script de validación de estructura
-- [x] Plantillas por stack
-- [x] Guía de referencia rápida
-- [x] Integración con CI/CD — GitHub Actions workflow de validación de estructura Diligencia (Category A)
+- [x] v1.17.0 — Cierre etapa ROADMAP + CHECKLIST grooming
+- [x] v1.16.5 — Planes A+B+C completos
+- [x] v1.16.2 — Backup + log + pruning
+- [x] v1.16.0 — GitHub readiness
+- [x] v1.15.0 — Enforcement 3 capas
+- [x] v1.12.0 — Meta-PLAN + BUILD
+- [x] v1.11.0 — /CBP vinculante
+- [x] v1.10.x — Circuito cíclico
+- [x] v1.9.x — CI/CD + /doctor
+- [x] v1.8.0 — Keep a Changelog
