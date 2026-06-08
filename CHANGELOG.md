@@ -2,6 +2,17 @@
 
 ---
 
+## [1.17.2] — 2026-06-06
+
+### Added
+- `version.md`: reescrito a modelo git-log — CHANGELOG auto-generado desde commits Conventional Commits
+- `CBP.md` dispatch: detecta cambios staged + unstaged + **commiteados** (`git diff HEAD` + `git log <release>..HEAD`)
+- `CBP.md` Workers 1/3/4: `git diff --stat <last-version>` con fallback a `git log` (ya no fallan si hubo commits)
+
+### Fixed
+- `CBP.md` dispatch: ya no reporta "nada que procesar" si el usuario commiteó cambios pero no los versionó
+- `updoc.md` Fase G: fallback robusto para detectar .md sin tag de versión (`git log HEAD~20`)
+
 ## [1.17.1] — 2026-06-06
 
 ### Added
