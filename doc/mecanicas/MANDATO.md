@@ -1,63 +1,42 @@
-# MANDATO.md — Mandato del Director — Diligencia v1.16.2
+# MANDATO — Diligencia v1.17.2
 
-**Rol:** Director del proyecto
-**Propósito:** Asignar recursos de forma eficiente, mantener contexto mínimo viable, y cerrar cada sesión con métricas de diligencia.
-
----
-
-## 1. Gestión Estratégica de Recursos
-
-Asignar cada tarea al nivel de complejidad correcto. No usar razonamiento profundo donde baste una respuesta directa.
-
-| Nivel | Tipo de Consulta | Criterio |
-|---|---|---|
-| **L3** | Arquitectura, bugs críticos, diseño | Razonamiento profundo sobre velocidad |
-| **L2** | Implementación, refactor, producción | Precisión sintáctica |
-| **L1** | Mantenimiento, tareas rápidas | Costo mínimo |
-| **Flash** | Documentación, fixes menores | Velocidad sobre profundidad |
-
-*Nota: los modelos concretos dependen del stack y proveedor del proyecto.*
+Diligencia es una metodología de estructura documental para proyectos OpenCode.
+Un solo archivo define lo que todo proyecto hereda.
 
 ---
 
-## 2. Protocolo de Memoria Local
+## Los 5 mandatos
 
-Antes de cada acción, verificar si el contexto necesario ya está disponible en los archivos resumen del proyecto.
+Lo mínimo que Diligencia garantiza en cada proyecto adaptado vía `/adaptar`.
+Inmutable — no se negocia, no se desactiva.
 
-### Control de Vibración
-
-Si se detectan ediciones repetitivas sobre el mismo archivo en una misma sesión, detenerse y consolidar primero. Esto evita múltiples cache misses.
-
-### Uso de Resúmenes
-
-Preferir `ADR_SUMMARY.md` y documentos resumen sobre archivos históricos completos.
+| M# | Mandato | Verificado por |
+|----|---------|---------------|
+| M1 | AGENTS.md es el SSOT del proyecto (variables, comandos, contexto) | `/adaptar` Flujo A |
+| M2 | Estructura documental fija: `doc/guias/`, `doc/mecanicas/`, `doc/arch/`, INDEX.md, ROADMAP.md, CHANGELOG.md, CHECKLIST.md, DILIGENCIA.md | `/diligencia-check` |
+| M3 | Solo `/commit`, `/CBP` y `/version` pueden ejecutar git commit | Regla #17 |
+| M4 | Todo workflow sigue PLAN (razonamiento, solo lectura) → BUILD (ejecución, escritura) | `/CBP` |
+| M5 | Pre-flight de versión — `/CBP` verifica si el proyecto tiene una versión de Diligencia atrasada y ofrece `/adaptar` antes de cualquier otra acción | `/CBP` Paso 0d |
 
 ---
 
-## 3. Auditoría de Diligencia
+## Lo que NO es Diligencia
 
-Cerrar cada tarea o sesión con un reporte de eficiencia:
+| No es Diligencia | Decisión de cada proyecto |
+|---|---|
+| Stack tecnológico | Node, Python, Go... |
+| Modelo de IA | DeepSeek, OpenAI, Anthropic... |
+| Código fuente | src/, test/, config/ |
+| Negocio del proyecto | Reglas de juego, monetización, features |
+| CI/CD pipeline | GitHub Actions, scripts de deploy |
+| Testing framework | Jest, pytest, Mocha... |
+
+---
+
+## Cómo evoluciona
 
 ```
-📊 AUDITORÍA DE DILIGENCIA:
-- Estado de Instancia: [Nueva / En curso / Saturada]
-- Nivel de complejidad: [L1 / L2 / L3 / Flash]
-- Diligencia: [Recursos procesados vs. Recursos ahorrados por resúmenes]
-- Nota: [Ej: "Ahorro de 15k recursos mediante lectura selectiva"]
+Diligencia repo → mejora → bump de versión → /adaptar propaga → /CBP pre-flight avisa si hay staleness
 ```
 
----
-
-## 4. Filosofía
-
-### Mínima Entropía
-
-Si una solución requiere 10 archivos nuevos, buscar si se puede resolver con 2. Menos archivos = menos contexto futuro = mayor diligencia.
-
-### Proporcionalidad
-
-Usar el nivel de recurso adecuado para cada tarea. No sobre-ingeniería, no sub-estimar.
-
----
-
-*Este mandato es opcional. Cada proyecto puede adaptar los niveles y criterios según su contexto.*
+No hay otro canal. Los proyectos nunca están obligados a actualizar, pero `/CBP` les recuerda que hay novedades.
