@@ -118,18 +118,26 @@ Si dos themes tienen el mismo nombre, gana el de mayor prioridad.
 
 ---
 
-## 6. Theme Diligencia
+## 6. Diligencia themes
 
-Diligencia incluye un theme de ejemplo en `templates/doc-base/.opencode/themes/diligencia.json`.
+Diligencia incluye 5 themes en `templates/doc-base/.opencode/themes/`:
 
-Para usarlo en tu proyecto:
+| Nombre | Estilo | Fondo | Acento | Ideal para |
+|---|---|---|---|---|
+| `diligencia` | Oscuro original | Azul profundo (#1a1b26) | Teal + naranja | Uso diario |
+| `diligencia-claro` | Claro | Beige cálido (#faf8f5) | Azul + naranja | Lectura prolongada, salas iluminadas |
+| `diligencia-pastel` | Pastel | Lavanda suave (#f5f0ff) | Lila + coral | Ambiente relajado, vista cansada |
+| `diligencia-neon` | Neón | Casi negro (#0a0a0f) | Cian + rosa | Hackers, cyberpunk, contraste extremo |
+| `diligencia-oscuro` | Oscuro v2 | Negro carbón (#0f0f12) | Ámbar + azul | AMOLED, bajo consumo |
+
+Para usar uno en tu proyecto:
 
 ```bash
 mkdir -p .opencode/themes
-cp ~/.config/opencode/templates/doc-base/.opencode/themes/diligencia.json .opencode/themes/
+cp ~/.config/opencode/templates/doc-base/.opencode/themes/diligencia-claro.json .opencode/themes/
 ```
 
-O ejecutá `/theme` y seleccioná "diligencia" si el template fue copiado por `/adaptar`.
+O ejecutá `/theme` y seleccioná el nombre (aparecen en la lista si están en `~/.config/opencode/themes/`).
 
 ---
 
