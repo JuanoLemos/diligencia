@@ -228,3 +228,15 @@ Esta BP aplica a todos los proyectos adaptados a Diligencia y se refuerza en las
 ## 11. Calidad documental
 
 Para estándares de formato de ROADMAP, templates y documentos, ver `doc/mecanicas/MECANICA-CALIDAD.md`.
+
+## 12. UX/UI — Checklist de experiencia
+
+Cada feature implementada debe pasar por un control UX mínimo.
+
+| Momento | Acción |
+|---|---|
+| Durante `/plan` | Planear el comportamiento visual esperado (¿se ve? ¿hay feedback? ¿configurable?) |
+| Durante BUILD | Implementar siguiendo lo planeado |
+| Después de BUILD | Verificar UX post-BUILD en `doc/qa/UX-CHECKLIST.md` |
+
+El template del checklist se hereda vía `/adaptar` en `doc/qa/UX-CHECKLIST.md`.
