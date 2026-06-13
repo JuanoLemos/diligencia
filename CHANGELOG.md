@@ -2,6 +2,15 @@
 
 ---
 
+## [1.17.4] — 2026-06-06
+
+### Added
+- `/adaptar` Fase 2.5.5 — sincroniza themes de doc-base a `.opencode/themes/` del proyecto
+- 5 variantes Diligencia disponibles vía `/theme` en TUI
+
+### Changed
+- `GUIA_THEMES.md`: ruta `/theme` actualizada (los temas se eligen por proyecto, en la TUI)
+
 ## [1.17.3] — 2026-06-06
 
 ### Changed

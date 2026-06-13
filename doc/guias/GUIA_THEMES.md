@@ -137,7 +137,9 @@ mkdir -p .opencode/themes
 cp ~/.config/opencode/templates/doc-base/.opencode/themes/diligencia-claro.json .opencode/themes/
 ```
 
-O ejecutá `/theme` y seleccioná el nombre (aparecen en la lista si están en `~/.config/opencode/themes/`).
+O mejor: ejecutá `/theme` en la TUI de opencode. Los Diligencia aparecen automáticos si están en `.opencode/themes/`.
+
+Desde v1.17.4, `/adaptar` sincroniza los themes al proyecto y te avisa.
 
 ---
 
