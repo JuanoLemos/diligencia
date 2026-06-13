@@ -52,6 +52,7 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 | MECANICA-ENFORCEMENT.md | v1.16.2 | 2026-06-05 |
 | MECANICA-WORKTREE.md | v1.16.5 | 2026-06-06 |
 | MECANICA-CALIDAD.md | v1.16.5 | 2026-06-06 |
+| MECANICA-FLUJO.md | v1.0 | 2026-06-06 |
 | MANDATO.md | v1.17.2 | 2026-06-06 |
 | _template.md | v1.16.4 | 2026-06-06 |
 | meta-escalabilidad.md | v1.16.4 | 2026-06-06 |
