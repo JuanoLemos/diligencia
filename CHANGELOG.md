@@ -2,6 +2,18 @@
 
 ---
 
+## [1.17.5] — 2026-06-06
+
+### Added
+- Guarda BUILD anti-commiteo: banner en CBP.md (updoc, doctor, full) — "BUILD = aplicar cambios, NO commitear"
+- Fase 1 paso 5 en /adaptar — verifica que AGENTS.md tenga la sección "Disciplina BUILD" y la agrega si falta
+- Sección "Disciplina BUILD" en templates/doc-base/AGENTS.md (nuevos proyectos la heredan)
+- Sección "Disciplina BUILD" en AGENTS.md de Diligencia
+
+### Changed
+- Proyecto ajenos (Regla #19): ahora cualquier acción de git requiere confirmación explícita
+- Todo BUILD termina con "cambios aplicados, Ejecutá /CBP para commitear" (no más commits directos)
+
 ## [1.17.4] — 2026-06-06
 
 ### Added

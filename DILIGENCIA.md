@@ -1,4 +1,4 @@
-# Diligencia v1.17.4 — Estructura estándar de documentación
+# Diligencia v1.17.5 — Estructura estándar de documentación
 
 Sello de metodología para proyectos OpenCode.
 
@@ -36,6 +36,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| v1.17.5 | 2026-06-06 | Guarda BUILD anti-commiteo heredable. Banners, AGENTS, adaptar paso 5. |
 | v1.17.4 | 2026-06-06 | Fase 2.5.5 — themes sincronizados por /adaptar. GUIA_THEMES actualizada. |
 | v1.17.3 | 2026-06-06 | /explica: 3 capas (criollo + técnico + impacto). |
 | v1.16.6 | 2026-06-06 | Fase 2.6 calidad documental en /adaptar (escanea .md, migra ROADMAP a estándar). Dispatch dinámico (question() en CBP). Regla #16: disciplina de bump al editar globales. |
