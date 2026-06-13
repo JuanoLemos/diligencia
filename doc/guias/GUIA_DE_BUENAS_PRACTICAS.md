@@ -13,6 +13,7 @@ Hábitos y workflows para usar Diligencia de forma consistente entre sesiones, a
 | **Post-sesión** | `/CBP updoc` (ejecuta /updoc PLAN→BUILD → /version minor BUILD* → sugiere /doctor) |
 | **Commit** | SOLO via `/commit`, `/CBP` o `/version`. El BUILD de `/plan` aplica cambios pero NO commitea. `/adaptar` prepara archivos pero NO commitea. El working tree queda dirty hasta que el usuario decida. |
 | **BUILD con ambigüedad** | Si un BUILD detecta un estado no trivial (repo limpio pero PENDING no vacío, commits sin versionar, cambios colaterales), pausa, muestra opciones con impacto claro, y espera confirmación. Nada se asume. |
+| **Proyecto ajeno** | En cualquier proyecto que NO sea Diligencia, toda acción de git (commit, push, add) requiere confirmación explícita con el nombre del proyecto antes de ejecutarse. |
 
 Regla: toda sesión sigue **PLAN → BUILD**. Usar `/CBP updoc` para post-sesión completa. Si solo se necesita versionar sin auditoría: `/CBP version`.
 
