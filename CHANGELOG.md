@@ -2,6 +2,14 @@
 
 ---
 
+## [1.17.3] — 2026-06-06
+
+### Changed
+- `/explica` reescrito a formato 3 capas: En criollo (qué es, para qué sirve), Técnico (archivo, comando), Impacto (costo/beneficio)
+
+### Discipline fix
+- Toda BUILD que edite comandos globales debe registrar en PENDING.md — el circuito lo detecta vía Paso 0f
+
 ## [1.17.2] — 2026-06-06
 
 ### Added

@@ -1,4 +1,4 @@
-# Diligencia v1.17.2 — Estructura estándar de documentación
+# Diligencia v1.17.3 — Estructura estándar de documentación
 
 Sello de metodología para proyectos OpenCode.
 
@@ -36,7 +36,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
-| v1.17.2 | 2026-06-06 | CBP dispatch: worktree → git diff HEAD + git log <release>. Workers con tag. /version: modelo git-log. updoc Fase G fallback robusto. |
+| v1.17.3 | 2026-06-06 | /explica: 3 capas (criollo + técnico + impacto). |
 | v1.16.6 | 2026-06-06 | Fase 2.6 calidad documental en /adaptar (escanea .md, migra ROADMAP a estándar). Dispatch dinámico (question() en CBP). Regla #16: disciplina de bump al editar globales. |
 | v1.16.5 | 2026-06-06 | Plan legal: GUIA_LEGAL.md, NOTICE/SECURITY.md templates, /legal. Plan multi-repo: MECANICA-WORKTREE.md, GUIA_MULTI_REPO.md. Plan calidad: MECANICA-CALIDAD.md, ROADMAP template estándar. 39 comandos. |
 | v1.16.4 | 2026-06-06 | /CBP adaptación escalativa (commit/parcial/full + dispatch). Meta-PLAN paralelo 4 workers. GUIA_DE_INFORMES.md. $MECANICAS, $NEWS_FILE. |
