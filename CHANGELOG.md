@@ -2,6 +2,18 @@
 
 ---
 
+## [1.17.6] — 2026-06-06
+
+### Fixed
+- commit workflow: ahora invoca `/commit` en vez de `git add -A` + `git commit` inline (bypasseaba validación Conventional Commits)
+- parcial: ahora tiene Meta-PLAN ligero con confirmación entre PLAN y BUILD (antes ejecutaba BUILD* sin Meta-PLAN previo)
+- version: doble confirmación eliminada (Meta-PLAN muestra CHANGELOG y pregunta una vez)
+- Steps 6→8 → Steps 6→12 en todas las referencias de CBP.md (cubría pasos 9-12)
+- doctor.md: bucle autoreferencial `/CBP doctor → /CBP doctor` corregido
+
+### Added
+- MECANICA-FLUJO.md — documentación completa del circuito con 5 secciones, tabla de reglas 19×6 y gaps
+
 ## [1.17.5] — 2026-06-06
 
 ### Added
