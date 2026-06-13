@@ -82,3 +82,8 @@ Español — todas las respuestas del agente deben ser en español. Si el agente
 - Documentar la metodología
 - Mantener coherencia entre componentes
 - Evolucionar el estándar
+
+## Disciplina BUILD
+
+BUILD = aplicar cambios, NO commitear. Solo /commit, /CBP y /version ejecutan git commit.
+Al terminar cualquier BUILD en este proyecto, reportar cambios aplicados y sugerir /CBP.
