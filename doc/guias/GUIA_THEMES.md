@@ -126,6 +126,9 @@ Diligencia incluye 5 themes en `templates/doc-base/.opencode/themes/`:
 |---|---|---|---|---|
 | `diligencia` | Oscuro original | Azul profundo (#1a1b26) | Teal + naranja | Uso diario |
 | `diligencia-claro` | Claro | Beige cálido (#faf8f5) | Azul + naranja | Lectura prolongada, salas iluminadas |
+| `diligencia-naranja` | Naranja cálido | Blanco crema (#fffaf5) | Naranja + ámbar | Ambiente cálido, preferencia naranja |
+| `diligencia-verde` | Verde fresco | Blanco menta (#f7faf5) | Verde + menta | Ambiente natural, preferencia verde |
+| `diligencia-celeste` | Celeste hielo | Blanco hielo (#f7fafd) | Azul + cian | Preferencia azul cielo, lectura digital |
 | `diligencia-pastel` | Pastel | Lavanda suave (#f5f0ff) | Lila + coral | Ambiente relajado, vista cansada |
 | `diligencia-neon` | Neón | Casi negro (#0a0a0f) | Cian + rosa | Hackers, cyberpunk, contraste extremo |
 | `diligencia-oscuro` | Oscuro v2 | Negro carbón (#0f0f12) | Ámbar + azul | AMOLED, bajo consumo |
