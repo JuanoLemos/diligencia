@@ -24,3 +24,7 @@
 | **Causa** | *(pendiente)* |
 | **Mitigación** | *(pendiente)* |
 | **Estado** | Abierto |
+
+## Archivos relacionados
+- `doc/arch/bugs.md` — bug tracker
+- `doc/mecanicas/MECANICA-CALIDAD.md` — mecánica de calidad documental

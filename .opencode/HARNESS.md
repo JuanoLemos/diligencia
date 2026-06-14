@@ -51,3 +51,7 @@ Archivo principal: `AGENTS.md`
 - [x] HARNESS.md completado
 - [ ] TDD (sin test runner)
 - [x] Post-edit verification activa (AGENTS.md + HARNESS.md)
+
+## Archivos relacionados
+- `AGENTS.md` — variables de ruta y comandos
+- `doc/guias/ESTANDAR-COMANDOS.md` — estándar de formato de comandos

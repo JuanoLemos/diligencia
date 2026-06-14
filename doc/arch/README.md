@@ -33,3 +33,9 @@ Cada ADR comienza como **Proposed**, se mueve a **Accepted** tras aprobación, p
 | [incidentes.md](incidentes.md) | Incidentes runtime |
 | [backups.md](backups.md) | Registro de backups del doctor |
 | [status-salud.md](status-salud.md) | Reporte de salud del proyecto |
+
+## Archivos relacionados
+- `doc/arch/ADR-001.md` — decisión fundacional
+- `doc/arch/ADR-002.md` — decisiones de estructura
+- `doc/arch/ADR-003.md` — estructura estándar de documentación
+- `doc/arch/ADR_SUMMARY.md` — resumen de ADRs

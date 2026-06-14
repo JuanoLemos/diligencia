@@ -241,3 +241,7 @@ Cada feature implementada debe pasar por un control UX mínimo.
 | Después de BUILD | Verificar UX post-BUILD en `doc/qa/UX-CHECKLIST.md` |
 
 El template del checklist se hereda vía `/adaptar` en `doc/qa/UX-CHECKLIST.md`.
+
+## Archivos relacionados
+- `doc/guias/ESTANDAR-COMANDOS.md` — estándar de formato de comandos
+- `doc/mecanicas/MECANICA-DOCUMENTAL.md` — mecánica documental general

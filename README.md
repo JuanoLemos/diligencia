@@ -73,3 +73,8 @@ Si tu flujo es `/plan → edición → /CBP`, Diligencia es para vos.
 ## Licencia
 
 GPL-3.0 — ver [LICENSE](LICENSE).
+
+## Archivos relacionados
+- `DILIGENCIA.md` — sello de metodología
+- `CONTRIBUTING.md` — guía de contribución
+- `LICENSE` — licencia GPL-3.0

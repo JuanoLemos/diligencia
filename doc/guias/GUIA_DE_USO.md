@@ -179,3 +179,7 @@ opencode> /reanudar
   → detecta working tree dirty + SDD artifacts → modo BUILD
   → continúa desde el punto de interrupción
 ```
+
+## Archivos relacionados
+- `doc/guias/ESTANDAR-COMANDOS.md` — estándar de formato de comandos
+- `doc/mecanicas/MECANICA-DOCUMENTAL.md` — mecánica documental general

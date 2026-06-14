@@ -112,3 +112,7 @@ Con `@sdd-reviewer`:
 - [ ] backup scripts apuntan a ubicaciones nuevas
 - [ ] scripts de guard apuntan a ubicaciones nuevas
 - [ ] `autoridad/` (o carpeta legacy) ya no existe
+
+## Archivos relacionados
+- `doc/guias/ESTANDAR-COMANDOS.md` — estándar de formato de comandos
+- `doc/mecanicas/MECANICA-DOCUMENTAL.md` — mecánica documental general

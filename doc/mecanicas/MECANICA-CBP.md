@@ -149,3 +149,7 @@ Los agentes se ejecutan en BUILD antes de los comandos documentales. El usuario 
 - `~/.config/opencode/commands/salud.md`
 - `~/.config/opencode/commands/pushgh.md`
 - `doc/guias/GUIA_DE_BUENAS_PRACTICAS.md` §9 — diagrama de referencia
+
+## Archivos relacionados
+- `doc/mecanicas/MECANICA-DOCUMENTAL.md` — mecánica documental general
+- `doc/mecanicas/MECANICA-FLUJO.md` — documentación del circuito

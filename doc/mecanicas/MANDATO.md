@@ -40,3 +40,7 @@ Diligencia repo → mejora → bump de versión → /adaptar propaga → /CBP pr
 ```
 
 No hay otro canal. Los proyectos nunca están obligados a actualizar, pero `/CBP` les recuerda que hay novedades.
+
+## Archivos relacionados
+- `doc/guias/identidad.md` — identidad del proyecto
+- `doc/arch/ADR_SUMMARY.md` — resumen de ADRs

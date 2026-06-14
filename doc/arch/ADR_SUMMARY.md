@@ -43,3 +43,8 @@ Usar [adr-template.md](adr-template.md) para nuevas decisiones.
 
 - `doc/arch/adr-template.md` — template para nuevas ADRs
 - `DILIGENCIA.md` — convención de estructura del proyecto
+
+## Archivos relacionados
+- `doc/arch/ADR-001.md` — decisión fundacional
+- `doc/arch/ADR-002.md` — decisiones de estructura
+- `doc/arch/ADR-003.md` — estructura estándar de documentación

@@ -43,5 +43,9 @@
 | **Causa** | *(pendiente de análisis)* |
 | **Impacto** | *(pendiente de evaluación)* |
 | **Estado** | Abierto / Resuelto / Revertido |
+
+## Archivos relacionados
+- `doc/arch/incidentes.md` — registro de incidentes runtime
+- `doc/mecanicas/MECANICA-CALIDAD.md` — mecánica de calidad documental
 | **Fix** | *(descripción del fix o —)* |
 ```

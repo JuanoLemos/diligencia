@@ -1,4 +1,4 @@
-# Diligencia v1.17.6 — Estructura estándar de documentación
+# Diligencia v1.17.7 — Estructura estándar de documentación
 
 Sello de metodología para proyectos OpenCode.
 
@@ -36,6 +36,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| v1.17.7 | 2026-06-13 | Nuevos themes en templates (diligencia-naranja, diligencia-verde, diligencia-celeste). GUIA_THEMES actualizada. Sync global-local /adaptar Fase 0.5. |
 | v1.17.6 | 2026-06-06 | Part A fixes: commit usa /commit, parcial con Meta-PLAN, version confirmación única, Steps 6→12, doctor loop. |
 | v1.17.5 | 2026-06-06 | Guarda BUILD anti-commiteo heredable. Banners, AGENTS, adaptar paso 5. |
 | v1.17.4 | 2026-06-06 | Fase 2.5.5 — themes sincronizados por /adaptar. GUIA_THEMES actualizada. |
@@ -71,3 +72,9 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 | v1.2 | 2026-05-31 | 12 comandos proyecto-alfa adaptados a globales (+mec, upmec, +rm, backup, backupall, foco, news, version, report, apply, head, notify) — 29 comandos fundamentales totales. /adaptar copia comandos al proyecto. |
 | v1.1 | 2026-05-31 | Estándar de comandos: guarda + imperativo + Formato/Validación/Anti-patrones obligatorias |
 | v1.0 | 2026-05-08 | Convención inicial: doc-base template, $variables en AGENTS.md, dos capas de comandos, /adaptar global |
+
+## Archivos relacionados
+- `ROADMAP.md` — roadmap de la metodología
+- `CHECKLIST.md` — checklist de tareas
+- `CHANGELOG.md` — historial de versiones
+- `AGENTS.md` — variables de ruta y comandos

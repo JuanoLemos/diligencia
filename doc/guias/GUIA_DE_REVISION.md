@@ -122,3 +122,7 @@ Paso 7: Módulo 7 (consistencia)   ← cruzar todo
 | H6 | **proyecto-beta `$GUIAS_TEMPLATE`** apunta a `doc/guias/_template.md` que no existe | 🟡 Media |
 | H7 | **Stack templates**: `templates/{node,python,go}/HARNESS.md` creados en v1.8.0 — verificar que existen y son funcionales | 🟡 Media |
 | H8 | **CI/CD**: `diligencia-check.yml` no verificado en proyectos adaptados post-v1.9.0 | 🟢 Baja |
+
+## Archivos relacionados
+- `doc/guias/ESTANDAR-COMANDOS.md` — estándar de formato de comandos
+- `doc/mecanicas/MECANICA-CALIDAD.md` — mecánica de calidad documental

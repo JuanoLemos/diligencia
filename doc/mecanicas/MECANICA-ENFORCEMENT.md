@@ -211,3 +211,8 @@ Test-Path ".github/workflows/diligencia-check.yml"
 | Falta Capa 2 (hook) | `npx husky install && npx husky add .husky/pre-commit "node scripts/check-docs.js"` |
 | Falta Capa 3 | Copiar desde `template/doc-base/.github/workflows/diligencia-check.yml` |
 | Las 3 capas caídas | Ejecutar `/adaptar` Flujo C sobre el proyecto |
+
+## Archivos relacionados
+- `doc/mecanicas/MECANICA-DOCUMENTAL.md` — mecánica documental general
+- `doc/mecanicas/MECANICA-CALIDAD.md` — mecánica de calidad documental
+- `scripts/check-docs.js` — script de validación documental

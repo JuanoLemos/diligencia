@@ -44,3 +44,7 @@ Gracias por tu interés en contribuir. Este documento describe cómo participar.
 ## Código de conducta
 
 Este proyecto sigue un [Código de Conducta](CODE_OF_CONDUCT.md). Al participar, aceptas sus términos.
+
+## Archivos relacionados
+- `CODE_OF_CONDUCT.md` — código de conducta
+- `README.md` — introducción al proyecto

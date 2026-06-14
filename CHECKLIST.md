@@ -36,3 +36,7 @@
 - [x] v1.10.x — Circuito cíclico
 - [x] v1.9.x — CI/CD + /doctor
 - [x] v1.8.0 — Keep a Changelog
+
+## Archivos relacionados
+- `ROADMAP.md` — roadmap del proyecto
+- `CHANGELOG.md` — historial de versiones

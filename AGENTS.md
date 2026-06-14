@@ -87,3 +87,7 @@ Español — todas las respuestas del agente deben ser en español. Si el agente
 
 BUILD = aplicar cambios, NO commitear. Solo /commit, /CBP y /version ejecutan git commit.
 Al terminar cualquier BUILD en este proyecto, reportar cambios aplicados y sugerir /CBP.
+
+## Archivos relacionados
+- `.opencode/HARNESS.md` — configuración de harness, test y lint
+- `doc/guias/ESTANDAR-COMANDOS.md` — estándar de formato de comandos

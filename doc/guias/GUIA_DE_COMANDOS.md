@@ -306,3 +306,7 @@ Ver `doc/guias/ESTANDAR-COMANDOS.md` para el template completo con todas las sec
 - `doc/guias/identidad.md` — guía de identidad visual y de marca
 - `doc/mecanicas/MANDATO.md` — mandato del Director para el agente
 - `doc/arch/ADR_SUMMARY.md` — índice de ADRs registrados
+
+## Archivos relacionados
+- `doc/guias/ESTANDAR-COMANDOS.md` — estándar de formato de comandos
+- `AGENTS.md` — tabla de comandos fundamentales

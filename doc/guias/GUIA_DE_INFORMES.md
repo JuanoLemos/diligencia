@@ -148,3 +148,7 @@ Después de ejecutar `/version` + `/pushgh`:
 | `doc/arch/incidentes.md` | `/incidente` | Incidentes runtime |
 | `doc/arch/backups.md` | `/doctor` backup | Log de backups con pruning |
 | `doc/reporte-proyecto.md` | `/report --update` | Reporte consolidado persistente |
+
+## Archivos relacionados
+- `doc/mecanicas/MECANICA-DOCUMENTAL.md` — mecánica documental general
+- `doc/guias/ESTANDAR-COMANDOS.md` — estándar de formato de comandos

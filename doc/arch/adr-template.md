@@ -25,3 +25,9 @@
 
 ---
 *Lifecycle: Proposed → Accepted → Deprecated → Superseded*
+
+## Archivos relacionados
+- `doc/arch/ADR-001.md` — ADR ejemplo 1
+- `doc/arch/ADR-002.md` — ADR ejemplo 2
+- `doc/arch/ADR-003.md` — ADR ejemplo 3
+- `doc/arch/ADR_SUMMARY.md` — resumen de ADRs

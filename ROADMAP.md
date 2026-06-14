@@ -94,3 +94,8 @@ Metodología de estructura estándar para proyectos OpenCode.
 | +ayuda en worktree /estado con recomendaciones proactivas | v1.16.7 |
 | +dashboard unificado — /estado absorbe /report (--full, --update) + salud + bloqueos | v1.16.7 |
 | +themes opencode customs — GUIA_THEMES.md + diligencia.json theme | v1.16.7 |
+
+## Archivos relacionados
+- `CHECKLIST.md` — checklist de tareas
+- `CHANGELOG.md` — historial de versiones
+- `INDEX.md` — catálogo de documentación

@@ -2,6 +2,13 @@
 
 ---
 
+## [1.17.7] — 2026-06-13
+
+### Added
+- Nuevos themes en templates: diligencia-naranja, diligencia-verde, diligencia-celeste
+- GUIA_THEMES.md actualizada con muestra visual de los 3 nuevos themes
+- Sync global-local en /adaptar Fase 0.5: detección de comandos globales sin versionar + bump automático
+
 ## [1.17.6] — 2026-06-06
 
 ### Fixed
@@ -509,3 +516,8 @@
 ### Migrations
 - proyecto-alfa Detective: 35 variables, 21+ comandos refactorizados, 15 archivos migrados de `autoridad/` a estructura estándar
 - proyecto-beta: 32 variables, 10 comandos refactorizados, migración completa a estructura estándar
+
+## Archivos relacionados
+- `ROADMAP.md` — roadmap del proyecto
+- `CHECKLIST.md` — checklist de tareas
+- `DILIGENCIA.md` — sello de metodología

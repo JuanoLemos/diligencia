@@ -31,3 +31,7 @@ Este Código de Conducta aplica tanto en espacios del proyecto como en espacios 
 ---
 
 *Contributor Covenant v2.1 — [https://www.contributor-covenant.org](https://www.contributor-covenant.org)*
+
+## Archivos relacionados
+- `CONTRIBUTING.md` — guía de contribución
+- `LICENSE` — licencia del proyecto

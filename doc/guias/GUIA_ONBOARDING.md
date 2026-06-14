@@ -88,3 +88,7 @@ Podés cambiar colores, temas y la apariencia de OpenCode. Ver `GUIA_THEMES.md`.
 ---
 
 *Última actualización: 2026-06-06*
+
+## Archivos relacionados
+- `doc/guias/ESTANDAR-COMANDOS.md` — estándar de formato de comandos
+- `doc/guias/GUIA_DE_USO.md` — guía de uso general

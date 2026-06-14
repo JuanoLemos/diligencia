@@ -15,3 +15,7 @@ Generado por `/salud` el 2026-06-06.
 | **Template sync** | ✅ Sync | DILIGENCIA.md vs adaptar.md: OK |
 | **$NEWS_FILE** | ❌ No creado | design/report/news.txt no existe — /news roto |
 | **$PROYECTOS** | ❌ Sin configurar | /informe-salud no ejecutable |
+
+## Archivos relacionados
+- `AGENTS.md` — variable $HARNESS
+- `.opencode/HARNESS.md` — configuración de test/lint/skills

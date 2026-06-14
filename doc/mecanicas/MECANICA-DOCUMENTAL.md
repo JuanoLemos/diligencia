@@ -224,3 +224,8 @@ Comando: `~/.config/opencode/commands/diligencia-check.md`
 - NO borrar archivos obsoletos → usar `/deprecar` que mueve a `.old/` y marca en AGENTS.md.
 - NO deprecar el mismo target dos veces → `/deprecar` lo detecta y aborta.
 - NO limpiar sin confirmación → `/limpiar` siempre muestra lista antes de eliminar.
+
+## Archivos relacionados
+- `doc/mecanicas/MECANICA-CBP.md` — circuito de trabajo cíclico
+- `doc/mecanicas/MECANICA-CALIDAD.md` — mecánica de calidad documental
+- `doc/mecanicas/MECANICA-ENFORCEMENT.md` — enforcement documental

@@ -169,3 +169,7 @@ Cada comando pertenece a un ecosistema primario. Algunos comandos (como `/deprec
 ---
 
 *Última actualización: 2026-06-01*
+
+## Archivos relacionados
+- `doc/guias/ESTANDAR-COMANDOS.md` — estándar de formato de comandos
+- `doc/guias/GUIA_DE_COMANDOS.md` — catálogo de comandos

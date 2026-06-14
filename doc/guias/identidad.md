@@ -87,3 +87,7 @@ Todo documento nuevo puede comenzar con este header estándar:
 
 - `DILIGENCIA.md` — convención de estructura del proyecto
 - `CHECKLIST.md` — seguimiento de versiones y features
+
+## Archivos relacionados
+- `doc/mecanicas/MANDATO.md` — mandato del Director
+- `doc/arch/ADR_SUMMARY.md` — resumen de ADRs
