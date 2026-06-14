@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MECANICA-FLUJO — Dashboard</title>
+<style>
+:root {
+  --bg: #0f0f1a;
+  --bg2: #1a1a2e;
+  --bg3: #252542;
+  --fg: #e4e4f0;
+  --fg2: #a0a0c0;
+  --accent: #e8853d;
+  --accent2: #c96a2a;
+  --green: #2ecc71;
+  --red: #e74c3c;
+  --gray: #555577;
+  --border: #2a2a45;
+  --card-bg: #16162a;
+  --tag-bg: #2a2a48;
+}
+body {
+  margin: 0; padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg); color: var(--fg);
+  line-height: 1.6;
+}
+.light {
+  --bg: #f4f4f9; --bg2: #ffffff; --bg3: #e8e8f0;
+  --fg: #1a1a2e; --fg2: #555577; --fg3: #7777aa;
+  --border: #d0d0dd; --card-bg: #ffffff;
+  --tag-bg: #e8e8f0; --accent: #c96a2a;
+}
+
+.header { padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.header h1 { margin: 0; font-size: 1.6rem; }
+.header h1 span { color: var(--accent); }
+.header .meta { display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--fg2); }
+.header .meta span { display: flex; align-items: center; gap: 0.4rem; }
+.toggle-btn { background: var(--bg3); color: var(--fg); border: 1px solid var(--border); padding: 0.4rem 0.9rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem; transition: 0.2s; }
+.toggle-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 1.5rem 2rem; }
+h2 { font-size: 1.3rem; margin: 2rem 0 1rem; display: flex; align-items: center; gap: 0.6rem; }
+h2 .badge { font-size: 0.7rem; background: var(--tag-bg); padding: 0.15rem 0.5rem; border-radius: 4px; color: var(--fg2); font-weight: normal; }
+.section { margin-bottom: 2.5rem; }
+
+/* ── SVG diagram ── */
+.circuit-svg { width: 100%; height: auto; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 0.5rem; }
+.circuit-svg text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; user-select: none; }
+
+/* ── Cards ── */
+.cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.card-header { padding: 0.8rem 1rem; background: var(--bg2); border-bottom: 1px solid var(--border); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.card-header h3 { margin: 0; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+.card-header .arrow { transition: transform 0.2s; }
+.card-header .arrow.open { transform: rotate(180deg); }
+.card-body { padding: 0.8rem 1rem; display: none; }
+.card-body.open { display: block; }
+.card-body table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.card-body td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+.card-body td:first-child { color: var(--fg2); white-space: nowrap; width: 90px; }
+.rules-tag { display: inline-block; background: var(--tag-bg); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.72rem; color: var(--fg2); margin-right: 0.25rem; }
+
+/* ── Dependency tree ── */
+.dep-tree { display: flex; flex-direction: column; gap: 0.35rem; padding: 1rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; font-family: monospace; font-size: 0.85rem; }
+.dep-tree .line { display: flex; align-items: center; gap: 0.4rem; }
+.dep-tree .arrow { color: var(--accent); }
+.dep-tree .node { background: var(--bg3); padding: 0.15rem 0.5rem; border-radius: 4px; }
+.dep-tree .node.pre { color: #f39c12; }
+.dep-tree .node.cmd { color: var(--accent); }
+.dep-tree .node.sub { color: var(--green); }
+.dep-tree .comment { color: var(--fg2); font-size: 0.78rem; }
+
+/* ── Rules matrix ── */
+.matrix-wrapper { overflow-x: auto; }
+.matrix { width: 100%; border-collapse: collapse; font-size: 0.82rem; min-width: 700px; }
+.matrix th, .matrix td { padding: 0.4rem 0.5rem; border: 1px solid var(--border); text-align: center; }
+.matrix th { background: var(--bg3); font-weight: 600; position: sticky; top: 0; z-index: 2; }
+.matrix th:first-child { text-align: left; min-width: 120px; }
+.matrix td:first-child { text-align: left; color: var(--fg2); font-size: 0.78rem; }
+.matrix .ok { background: rgba(46,204,113,0.15); color: var(--green); font-weight: bold; }
+.matrix .no { background: rgba(231,76,60,0.12); color: var(--red); }
+.matrix .na { background: rgba(85,85,119,0.1); color: var(--gray); }
+.matrix tr:hover td { background: var(--bg3); }
+
+/* ── Gap tables ── */
+.gap-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-bottom: 1rem; }
+.gap-table th, .gap-table td { padding: 0.4rem 0.6rem; border: 1px solid var(--border); text-align: left; }
+.gap-table th { background: var(--bg3); font-weight: 600; }
+.gap-table .fixed { text-decoration: line-through; color: var(--fg2); }
+.prio-P1 { display: inline-block; background: #e74c3c; color: #fff; padding: 0.05rem 0.4rem; border-radius: 3px; font-size: 0.7rem; font-weight: bold; }
+.prio-P2 { display: inline-block; background: #f39c12; color: #1a1a2e; padding: 0.05rem 0.4rem; border-radius: 3px; font-size: 0.7rem; font-weight: bold; }
+.prio-P3 { display: inline-block; background: #555577; color: #fff; padding: 0.05rem 0.4rem; border-radius: 3px; font-size: 0.7rem; font-weight: bold; }
+.status-pend { color: #f39c12; }
+.status-done { color: var(--green); }
+.footer { text-align: center; padding: 2rem; color: var(--gray); font-size: 0.8rem; border-top: 1px solid var(--border); }
+
+/* ── Tabs ── */
+.tabs { display: flex; gap: 0; margin: 0 2rem; border-bottom: 1px solid var(--border); }
+.tab-btn { padding: 0.65rem 1.5rem; background: var(--bg2); border: 1px solid var(--border); border-bottom: none; cursor: pointer; font-size: 0.88rem; color: var(--fg2); border-radius: 8px 8px 0 0; transition: 0.2s; margin-bottom: -1px; }
+.tab-btn:hover { background: var(--bg3); color: var(--fg); }
+.tab-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.tab-btn .ico { margin-right: 0.4rem; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── Criollo section ── */
+.criollo { line-height: 1.7; }
+.criollo p { margin: 0.7rem 0; color: var(--fg); }
+.criollo .highlight { color: var(--accent); font-weight: 600; }
+.criollo .big-num { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--accent); color: #fff; border-radius: 50%; font-weight: bold; font-size: 0.9rem; margin-right: 0.6rem; flex-shrink: 0; }
+.criollo-step { display: flex; gap: 1rem; margin: 1.5rem 0; padding: 1rem 1.2rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; align-items: flex-start; }
+.criollo-step-body { flex: 1; }
+.criollo-step-body h3 { margin: 0 0 0.3rem; font-size: 1.05rem; }
+.criollo-step-body p { margin: 0; font-size: 0.92rem; color: var(--fg2); }
+.criollo-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+.criollo-table th, .criollo-table td { padding: 0.5rem 0.7rem; border: 1px solid var(--border); text-align: left; }
+.criollo-table th { background: var(--bg3); font-weight: 600; }
+.criollo-table .tag { display: inline-block; padding: 0.1rem 0.5rem; border-radius: 4px; font-size: 0.78rem; font-weight: 600; }
+.criollo-table .tag-green { background: rgba(46,204,113,0.2); color: var(--green); }
+.criollo-table .tag-blue { background: rgba(52,152,219,0.2); color: #3498db; }
+.criollo-table .tag-orange { background: rgba(232,133,61,0.2); color: var(--accent); }
+.criollo-table .tag-red { background: rgba(231,76,60,0.2); color: var(--red); }
+.criollo-table .tag-purple { background: rgba(155,89,182,0.2); color: #9b59b6; }
+.criollo-table .tag-yellow { background: rgba(241,196,15,0.2); color: #f1c40f; }
+.criollo-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; margin: 1rem 0; }
+.criollo-card h4 { margin: 0 0 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+.criollo-card p { margin: 0.4rem 0; font-size: 0.9rem; color: var(--fg2); }
+.criollo-card code { background: var(--tag-bg); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.85em; }
+
+/* ── Criollo SVG diagram ── */
+.criollo-svg-wrap { text-align: center; margin: 1.5rem 0; }
+.criollo-svg { width: 100%; max-width: 680px; height: auto; }
+
+@media (max-width: 900px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } .tabs { margin: 0 1rem; } }
+@media (max-width: 600px) { .cards-grid { grid-template-columns: 1fr; } .container { padding: 1rem; } .header { flex-direction: column; align-items: flex-start; } .tabs { margin: 0 0.5rem; flex-wrap: wrap; } .tab-btn { flex: 1; text-align: center; font-size: 0.8rem; padding: 0.5rem 0.8rem; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1><span>MECANICA-FLUJO</span> — Dashboard del Circuito CBP</h1>
+    <div class="meta">
+      <span>📄 v1.0</span>
+      <span>🔄 Complementa MECANICA-CBP.md</span>
+      <span>📅 2026-06-13</span>
+    </div>
+  </div>
+  <button class="toggle-btn" id="themeToggle">🌙 Tema oscuro</button>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="dashboard"><span class="ico">🗺️</span>Dashboard</button>
+  <button class="tab-btn" data-tab="criollo"><span class="ico">🗣️</span>Explicación en criollo</button>
+</div>
+
+<div class="tab-panel active" id="tab-dashboard">
+
+<div class="container">
+
+  <!-- ─── §1 Circuito ─── -->
+  <div class="section">
+    <h2>§1 — Diagrama del circuito completo <span class="badge">PRE-FLIGHT → DISPATCH → WORKFLOWS → BUILD</span></h2>
+    <svg class="circuit-svg" viewBox="0 0 1100 420" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#e8853d"/></marker>
+        <marker id="arrow-gray" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#555577"/></marker>
+        <filter id="shadow"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.3"/></filter>
+      </defs>
+
+      <!-- PRE-FLIGHT -->
+      <rect x="380" y="10" width="280" height="52" rx="8" fill="#252542" stroke="#f39c12" stroke-width="1.5" filter="url(#shadow)"/>
+      <text x="520" y="30" text-anchor="middle" fill="#f39c12" font-size="11" font-weight="bold">PRE-FLIGHT (paso 0, siempre)</text>
+      <text x="520" y="46" text-anchor="middle" fill="#a0a0c0" font-size="9">a: ver versión · b: versión global · c: DILIGENCIA · d: PENDING</text>
+      <line x1="520" y1="62" x2="520" y2="82" stroke="#e8853d" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+      <!-- DISPATCH diamond -->
+      <polygon points="520,82 600,122 520,162 440,122" fill="#1a1a2e" stroke="#e8853d" stroke-width="1.5" filter="url(#shadow)"/>
+      <text x="520" y="125" text-anchor="middle" fill="#e8853d" font-size="10" font-weight="bold">DISPATCH</text>
+
+      <!-- Branch left: sin argumento -->
+      <line x1="440" y1="122" x2="160" y2="122" stroke="#555577" stroke-width="1.5" marker-end="url(#arrow-gray)"/>
+      <text x="300" y="115" text-anchor="middle" fill="#555577" font-size="8">sin argumento (detección)</text>
+
+      <rect x="40" y="98" width="120" height="48" rx="6" fill="#1a1a2e" stroke="#555577" stroke-width="1"/>
+      <text x="100" y="120" text-anchor="middle" fill="#a0a0c0" font-size="9">solo código</text>
+      <text x="100" y="134" text-anchor="middle" fill="#e8853d" font-size="9">→ commit path</text>
+      <line x1="100" y1="146" x2="100" y2="228" stroke="#555577" stroke-width="1" marker-end="url(#arrow-gray)"/>
+
+      <rect x="180" y="98" width="130" height="48" rx="6" fill="#1a1a2e" stroke="#555577" stroke-width="1"/>
+      <text x="245" y="120" text-anchor="middle" fill="#a0a0c0" font-size="9">1-5 docs</text>
+      <text x="245" y="134" text-anchor="middle" fill="#e8853d" font-size="9">→ parcial path</text>
+      <line x1="210" y1="146" x2="210" y2="228" stroke="#555577" stroke-width="1" marker-end="url(#arrow-gray)"/>
+
+      <!-- Branch center: argumento explícito -->
+      <line x1="520" y1="162" x2="520" y2="190" stroke="#e8853d" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <text x="630" y="180" text-anchor="middle" fill="#e8853d" font-size="8">argumento explícito</text>
+
+      <!-- Branch right: PENDING -->
+      <line x1="600" y1="122" x2="900" y2="122" stroke="#555577" stroke-width="1.5" marker-end="url(#arrow-gray)"/>
+      <text x="750" y="115" text-anchor="middle" fill="#555577" font-size="8">PENDING detectado → offer bump</text>
+
+      <!-- WORKFLOW boxes -->
+      <rect x="40" y="230" width="130" height="52" rx="8" fill="#252542" stroke="#e8853d" stroke-width="1.5" filter="url(#shadow)"/>
+      <text x="105" y="253" text-anchor="middle" fill="#e8853d" font-size="11" font-weight="bold">commit</text>
+      <text x="105" y="269" text-anchor="middle" fill="#a0a0c0" font-size="9">(sin Meta-PLAN)</text>
+
+      <rect x="180" y="230" width="130" height="52" rx="8" fill="#252542" stroke="#e8853d" stroke-width="1.5" filter="url(#shadow)"/>
+      <text x="245" y="253" text-anchor="middle" fill="#e8853d" font-size="11" font-weight="bold">parcial</text>
+      <text x="245" y="269" text-anchor="middle" fill="#a0a0c0" font-size="9">(Meta-PLAN ligero)</text>
+
+      <rect x="440" y="195" width="160" height="52" rx="8" fill="#252542" stroke="#e8853d" stroke-width="1.5" filter="url(#shadow)"/>
+      <text x="520" y="217" text-anchor="middle" fill="#e8853d" font-size="11" font-weight="bold">full / completo</text>
+      <text x="520" y="233" text-anchor="middle" fill="#a0a0c0" font-size="9">(Meta-PLAN OLA 1-4 + 4 workers)</text>
+
+      <rect x="800" y="98" width="160" height="52" rx="8" fill="#252542" stroke="#e8853d" stroke-width="1.5" filter="url(#shadow)"/>
+      <text x="880" y="120" text-anchor="middle" fill="#e8853d" font-size="11" font-weight="bold">bump automático</text>
+      <text x="880" y="136" text-anchor="middle" fill="#a0a0c0" font-size="9">+ revertir al dispatch</text>
+
+      <!-- Connectors down to BUILD -->
+      <line x1="105" y1="282" x2="105" y2="310" stroke="#555577" stroke-width="1" marker-end="url(#arrow-gray)"/>
+      <line x1="245" y1="282" x2="245" y2="310" stroke="#555577" stroke-width="1" marker-end="url(#arrow-gray)"/>
+      <line x1="520" y1="247" x2="520" y2="310" stroke="#e8853d" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+      <!-- BUILD sub-comandos -->
+      <rect x="40" y="312" width="960" height="52" rx="8" fill="#1a1a2e" stroke="#2ecc71" stroke-width="1.5" filter="url(#shadow)"/>
+      <text x="520" y="331" text-anchor="middle" fill="#2ecc71" font-size="10" font-weight="bold">SUB-COMANDOS INVOCADOS EN BUILD</text>
+      <text x="520" y="350" text-anchor="middle" fill="#a0a0c0" font-size="9">/updoc (A→H)  ·  /doctor (1→3)  ·  /version (Steps 1→12)  ·  /salud (BUILD*)  ·  /pushgh  ·  /commit  ·  task explore (4 wks)</text>
+
+      <!-- Post-workflow -->
+      <line x1="520" y1="364" x2="520" y2="385" stroke="#555577" stroke-width="1" marker-end="url(#arrow-gray)"/>
+      <rect x="300" y="385" width="440" height="28" rx="6" fill="#252542" stroke="#a0a0c0" stroke-width="1"/>
+      <text x="520" y="403" text-anchor="middle" fill="#a0a0c0" font-size="9">POST-WORKFLOW: updoc→doctor · version→doctor · full→doctor · commit→push manual · parcial→nada</text>
+    </svg>
+  </div>
+
+  <!-- ─── §2 Fichas ─── -->
+  <div class="section">
+    <h2>§2 — Fichas de cada sub-workflow <span class="badge">6 workflows · 19 reglas</span></h2>
+    <div class="cards-grid" id="cardsGrid">
+      <div class="card">
+        <div class="card-header" onclick="toggleCard(this)">
+          <h3><span style="color:var(--accent)">🔄</span> updoc</h3>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="card-body">
+          <table>
+            <tr><td>Entry</td><td><code>/CBP updoc</code> (argumento explícito)</td></tr>
+            <tr><td>Meta-PLAN</td><td>OLA 1: 19 fases paralelas via task. OLA 2: stale + huérfanas + scope. OLA 3: gaps→plan + confirmación. OLA 4: tabla + pregunta.</td></tr>
+            <tr><td>BUILD</td><td>/updoc Fase F + /salud BUILD* + /version BUILD* Steps 6→12 + /pushgh BUILD* + /doctor Fase 3 (si issues)</td></tr>
+            <tr><td>Reglas</td><td><span class="rules-tag">#1</span><span class="rules-tag">#2</span><span class="rules-tag">#3</span><span class="rules-tag">#4</span><span class="rules-tag">#5</span><span class="rules-tag">#6</span><span class="rules-tag">#7</span><span class="rules-tag">#9-12</span><span class="rules-tag">#17</span><span class="rules-tag">#18</span><span class="rules-tag">#19</span></td></tr>
+            <tr><td>Post</td><td>WT limpio. Documentos actualizados. Sugiere /CBP doctor si correcciones.</td></tr>
+            <tr><td>Llama a</td><td>/updoc, /doctor, /salud, /version, /pushgh</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" onclick="toggleCard(this)">
+          <h3><span style="color:var(--green)">🩺</span> doctor</h3>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="card-body">
+          <table>
+            <tr><td>Entry</td><td><code>/CBP doctor</code> (argumento). Delegado desde updoc/version/full.</td></tr>
+            <tr><td>Meta-PLAN</td><td>LEER doctor.md, version.md, salud.md. /doctor Fases 1→2 (diagnóstico). Tabla única. Preguntar.</td></tr>
+            <tr><td>BUILD</td><td>/doctor Fase 3 (correcciones) + /salud BUILD* + /version patch BUILD* Steps 6→12 (si correcciones) + /pushgh BUILD*</td></tr>
+            <tr><td>Reglas</td><td><span class="rules-tag">#1</span><span class="rules-tag">#2</span><span class="rules-tag">#3</span><span class="rules-tag">#4</span><span class="rules-tag">#5</span><span class="rules-tag">#6</span><span class="rules-tag">#7</span><span class="rules-tag">#17</span><span class="rules-tag">#18</span><span class="rules-tag">#19</span></td></tr>
+            <tr><td>Post</td><td>WT limpio si hubo correcciones. Sugiere /CBP updoc o /CBP version.</td></tr>
+            <tr><td>Llama a</td><td>/doctor, /salud, /version, /pushgh</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" onclick="toggleCard(this)">
+          <h3><span style="color:#3498db">📦</span> version</h3>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="card-body">
+          <table>
+            <tr><td>Entry</td><td><code>/CBP version</code> (argumento explícito)</td></tr>
+            <tr><td>Meta-PLAN</td><td>LEER version.md. /version Steps 1→5 (detectar, colectar, clasificar, CHANGELOG auto, pre-flight). Safe-path: ¿updoc primero?</td></tr>
+            <tr><td>BUILD</td><td>/version Steps 6→12 (insertar CHANGELOG, commit + tag, push).</td></tr>
+            <tr><td>Reglas</td><td><span class="rules-tag">#1</span><span class="rules-tag">#4</span><span class="rules-tag">#5</span><span class="rules-tag">#6</span><span class="rules-tag">#7</span><span class="rules-tag">#17</span><span class="rules-tag">#18</span><span class="rules-tag">#19</span></td></tr>
+            <tr><td>Post</td><td>WT limpio. CHANGELOG, INDEX, DILIGENCIA actualizados. Tag creado. Sugiere /CBP doctor.</td></tr>
+            <tr><td>Llama a</td><td>/version, /pushgh</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" onclick="toggleCard(this)">
+          <h3><span style="color:#e74c3c">⚡</span> commit</h3>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="card-body">
+          <table>
+            <tr><td>Entry</td><td><code>/CBP commit</code> (argumento) o dispatch automático (solo código, 0 docs)</td></tr>
+            <tr><td>Meta-PLAN</td><td>No tiene. Ejecución directa.</td></tr>
+            <tr><td>BUILD</td><td>Invoca /commit (validación Conventional Commits + diff). Push directo <code>git push origin &lt;branch&gt;</code>.</td></tr>
+            <tr><td>Reglas</td><td><span class="rules-tag">#6</span><span class="rules-tag">#17</span><span class="rules-tag">#18</span><span class="rules-tag">#19</span></td></tr>
+            <tr><td>Post</td><td>WT limpio. Sin CHANGELOG ni INDEX actualizados.</td></tr>
+            <tr><td>Llama a</td><td>/commit, git push directo</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" onclick="toggleCard(this)">
+          <h3><span style="color:#9b59b6">🔷</span> parcial</h3>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="card-body">
+          <table>
+            <tr><td>Entry</td><td><code>/CBP parcial</code> (argumento) o dispatch automático (1-5 docs)</td></tr>
+            <tr><td>Meta-PLAN</td><td>Ligero: /updoc Fases A→E+H (solo auditoría) + /version Steps 1→5 (pre-flight) + tabla + una confirmación.</td></tr>
+            <tr><td>BUILD</td><td>/updoc Fase F (correcciones) + /version BUILD* Steps 6→12 + /pushgh BUILD*</td></tr>
+            <tr><td>Reglas</td><td><span class="rules-tag">#1</span><span class="rules-tag">#3</span><span class="rules-tag">#4</span><span class="rules-tag">#5</span><span class="rules-tag">#6</span><span class="rules-tag">#7</span><span class="rules-tag">#17</span><span class="rules-tag">#18</span><span class="rules-tag">#19</span></td></tr>
+            <tr><td>Post</td><td>WT limpio. CHANGELOG actualizado (patch). Sin /salud, sin /doctor.</td></tr>
+            <tr><td>Llama a</td><td>/updoc, /version, /pushgh</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" onclick="toggleCard(this)">
+          <h3><span style="color:#f1c40f">🌟</span> full / completo</h3>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="card-body">
+          <table>
+            <tr><td>Entry</td><td><code>/CBP full</code> (argumento) o dispatch automático (5+ docs, milestones)</td></tr>
+            <tr><td>Meta-PLAN</td><td>OLA 1: 4 workers via task (docs, diag, ver, agt). OLA 2: sintetizar. OLA 3: consolidar. OLA 4: tabla + pregunta.</td></tr>
+            <tr><td>BUILD</td><td>Agentes (si aceptados) + /updoc Fase F + /salud BUILD* + /version BUILD* Steps 6→12 + /pushgh BUILD* + /doctor Fase 3.</td></tr>
+            <tr><td>Reglas</td><td><span class="rules-tag">#1</span><span class="rules-tag">#2</span><span class="rules-tag">#3</span><span class="rules-tag">#4</span><span class="rules-tag">#5</span><span class="rules-tag">#6</span><span class="rules-tag">#7</span><span class="rules-tag">#8</span><span class="rules-tag">#9-12</span><span class="rules-tag">#15</span><span class="rules-tag">#17</span><span class="rules-tag">#18</span><span class="rules-tag">#19</span></td></tr>
+            <tr><td>Post</td><td>WT limpio. Todos los documentos sincronizados. Agentes ejecutados. Sugiere /CBP doctor si correcciones.</td></tr>
+            <tr><td>Llama a</td><td>task explore (4 wks), /updoc, /salud, /version, /pushgh, /doctor</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── §3 Dependencias ─── -->
+  <div class="section">
+    <h2>§3 — Dependencias inter-workflow <span class="badge">cadenas de invocación</span></h2>
+    <div class="dep-tree">
+      <div class="line"><span class="node pre">PRE-FLIGHT</span><span class="arrow">──</span>┬<span class="arrow">──</span><span class="node cmd">CBP commit</span><span class="arrow">→</span><span class="node sub">/commit</span><span class="arrow">→</span><span class="node sub">git push</span></div>
+      <div class="line"><span class="arrow" style="visibility:hidden">──</span><span class="arrow" style="visibility:hidden">──</span>├<span class="arrow">──</span><span class="node cmd">CBP parcial</span><span class="arrow">→</span><span class="node sub">/updoc</span><span class="arrow">→</span><span class="node sub">/version</span><span class="arrow">→</span><span class="node sub">/pushgh</span></div>
+      <div class="line"><span class="arrow" style="visibility:hidden">──</span><span class="arrow" style="visibility:hidden">──</span>├<span class="arrow">──</span><span class="node cmd">CBP updoc</span><span class="arrow">→</span><span class="node sub">/updoc + /doctor + /salud + /version + /pushgh</span></div>
+      <div class="line"><span class="arrow" style="visibility:hidden">──</span><span class="arrow" style="visibility:hidden">──</span>├<span class="arrow">──</span><span class="node cmd">CBP doctor</span><span class="arrow">→</span><span class="node sub">/doctor + /salud + /version + /pushgh</span></div>
+      <div class="line"><span class="arrow" style="visibility:hidden">──</span><span class="arrow" style="visibility:hidden">──</span>├<span class="arrow">──</span><span class="node cmd">CBP version</span><span class="arrow">→</span><span class="node sub">/version + /pushgh</span></div>
+      <div class="line"><span class="arrow" style="visibility:hidden">──</span><span class="arrow" style="visibility:hidden">──</span>└<span class="arrow">──</span><span class="node cmd">CBP full</span><span class="arrow">→</span><span class="node sub">task workers + /updoc + /salud + /version + /pushgh + /doctor</span></div>
+      <div class="line" style="margin-top:0.8rem;font-size:0.8rem"><span style="color:var(--fg2)">DELEGACIONES:</span></div>
+      <div class="line"><span class="comment">├─ /CBP version (safe-path) → pregunta ¿/CBP updoc primero? → si sí: aborta y ejecuta updoc</span></div>
+      <div class="line"><span class="comment">├─ /CBP updoc (step 3) → sugiere /CBP doctor (si correcciones sin aplicar)</span></div>
+      <div class="line"><span class="comment">├─ /CBP version (step 3) → sugiere /CBP doctor (diagnóstico post-versionado)</span></div>
+      <div class="line"><span class="comment">└─ /CBP full (step 3) → sugiere /CBP doctor (si correcciones sin aplicar)</span></div>
+    </div>
+  </div>
+
+  <!-- ─── §4 Matriz de reglas ─── -->
+  <div class="section">
+    <h2>§4 — Reglas del orquestador por workflow <span class="badge">19 reglas · 6 workflows</span></h2>
+    <div class="matrix-wrapper">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>Regla</th>
+            <th>updoc</th>
+            <th>doctor</th>
+            <th>version</th>
+            <th>commit</th>
+            <th>parcial</th>
+            <th>full</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1 — Cada paso lee su .md</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td><td class="no">❌ (usa /commit)</td><td class="ok">✅</td><td class="ok">✅</td></tr>
+          <tr><td>2 — BUILD* solo escritura</td><td class="ok">✅</td><td class="ok">✅</td><td class="na">n/a</td><td class="na">n/a</td><td class="ok">✅</td><td class="ok">✅</td></tr>
+          <tr><td>3 — BUILD* requiere Meta-PLAN</td><td class="ok">✅</td><td class="ok">✅</td><td class="na">n/a</td><td class="na">n/a</td><td class="ok">✅</td><td class="ok">✅</td></tr>
+          <tr><td>4 — Tabla con divisiones</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td><td class="no">❌</td><td class="ok">✅</td><td class="ok">✅</td></tr>
+          <tr><td>5 — --yes omite confirmación</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td><td class="no">❌</td><td class="ok">✅</td><td class="ok">✅</td></tr>
+          <tr><td>6 — Fail → DETENER</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td></tr>
+          <tr><td>7 — PLAN razonam./BUILD ejec.</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td><td class="no">❌</td><td class="ok">✅</td><td class="ok">✅</td></tr>
+          <tr><td>8 — Agentes opcionales</td><td class="na">n/a</td><td class="na">n/a</td><td class="na">n/a</td><td class="no">❌</td><td class="no">❌</td><td class="ok">✅</td></tr>
+          <tr><td>9-12 — Olas paralelas</td><td class="ok">✅</td><td class="no">❌</td><td class="no">❌</td><td class="no">❌</td><td class="no">❌</td><td class="ok">✅</td></tr>
+          <tr><td>13-14 — Detección adaptativa</td><td class="na">n/a</td><td class="na">n/a</td><td class="na">n/a</td><td class="na">n/a</td><td class="na">n/a</td><td class="na">n/a</td></tr>
+          <tr><td>15 — Pre-flight Diligencia</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td></tr>
+          <tr><td>16 — Bump al editar globales</td><td class="na">n/a</td><td class="na">n/a</td><td class="na">n/a</td><td class="na">n/a</td><td class="na">n/a</td><td class="na">n/a</td></tr>
+          <tr><td>17 — Solo 3 comandos commit</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td></tr>
+          <tr><td>18 — Ambigüedad → pausar</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td></tr>
+          <tr><td>19 — Proyecto ajeno → confirm</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td><td class="ok">✅</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ─── §5 Gaps ─── -->
+  <div class="section">
+    <h2>§5 — Gaps conocidos <span class="badge">9 resueltos · 8 pendientes</span></h2>
+
+    <h3 style="font-size:1rem;color:var(--green);margin-bottom:0.5rem">✅ Resueltos (v1.17.5)</h3>
+    <table class="gap-table">
+      <thead><tr><th>ID</th><th>Gap</th><th>Fix</th></tr></thead>
+      <tbody>
+        <tr><td>G12</td><td class="fixed">commit duplicaba git add -A + git commit inline</td><td class="fixed">Ahora invoca /commit</td></tr>
+        <tr><td>G13</td><td class="fixed">/pushgh BUILD* sin Meta-PLAN</td><td class="fixed">Push directo git push origin &lt;branch&gt;</td></tr>
+        <tr><td>G16</td><td class="fixed">parcial ejecutaba /version BUILD* sin Meta-PLAN</td><td class="fixed">Meta-PLAN ligero agregado</td></tr>
+        <tr><td>G18</td><td class="fixed">Sin confirmación entre PLAN y BUILD en parcial</td><td class="fixed">Confirmación única agregada</td></tr>
+        <tr><td>G10</td><td class="fixed">Doble confirmación en version</td><td class="fixed">Meta-PLAN muestra CHANGELOG y pregunta una vez</td></tr>
+        <tr><td>G11</td><td class="fixed">Steps 6→8 no cubría pasos reales del command 6→12</td><td class="fixed">Todas las referencias corregidas</td></tr>
+        <tr><td>G9</td><td class="fixed">Handoff version→updoc no especificado</td><td class="fixed">ABORT → updoc → reanudar version</td></tr>
+        <tr><td>G7</td><td class="fixed">Bucle autoreferencial /CBP doctor</td><td class="fixed">Terminado correctamente</td></tr>
+        <tr><td>G14</td><td class="fixed">Sin sugerencia de push manual</td><td class="fixed">Mensaje con comando explícito</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:1rem;color:#f39c12;margin-bottom:0.5rem">⏳ Pendientes</h3>
+    <table class="gap-table">
+      <thead><tr><th>ID</th><th>Gap</th><th>Prioridad</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr><td>G1</td><td>"20 fases" en OLA 1 de updoc pero son 19</td><td><span class="prio-P3">P3</span></td><td class="status-pend">⏳ Pendiente</td></tr>
+        <tr><td>G2</td><td>Nomenclatura V1-V4 inventada vs version.md</td><td><span class="prio-P2">P2</span></td><td class="status-pend">⏳ Pendiente</td></tr>
+        <tr><td>G4</td><td>/CBP AGT en updoc nunca se usa</td><td><span class="prio-P2">P2</span></td><td class="status-pend">⏳ Pendiente</td></tr>
+        <tr><td>G19</td><td>Workers full usan task("explore") no probado</td><td><span class="prio-P2">P2</span></td><td class="status-pend">⏳ Pendiente</td></tr>
+        <tr><td>G21</td><td>full vs completo inconsistencia nominal</td><td><span class="prio-P3">P3</span></td><td class="status-pend">⏳ Pendiente</td></tr>
+        <tr><td>G5</td><td>MECANICA-CBP.md sin /version ni /CBP AGT</td><td><span class="prio-P3">P3</span></td><td class="status-pend">⏳ Pendiente</td></tr>
+        <tr><td>G15</td><td>META-ESCALABILIDAD.md usa git status --porcelain vs git diff HEAD</td><td><span class="prio-P3">P3</span></td><td class="status-pend">⏳ Pendiente</td></tr>
+        <tr><td>G20</td><td>W4 necesita tag de release que W3 obtiene (son paralelos)</td><td><span class="prio-P3">P3</span></td><td class="status-pend">⏳ Pendiente</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>  <!-- container -->
+
+</div>  <!-- tab-panel dashboard -->
+
+<div class="tab-panel" id="tab-criollo">
+<div class="container criollo">
+
+  <h2>¿Qué es el CBP? <span class="badge">el circuito que cuida tu proyecto</span></h2>
+
+  <p>El <span class="highlight">Circuito de Buenas Prácticas (CBP)</span> es el sistema automático que se encarga de cerrar tu sesión de trabajo ordenadamente. Cuando terminás de programar, escribir documentación o arreglar bugs, ejecutás <code>/CBP</code> y el robot analiza qué hiciste, elige el camino correcto, sincroniza los archivos y te prepara el commit. Todo sin que tengas que acordarte de 15 pasos manuales.</p>
+
+  <p>Pensalo como <span class="highlight">"el que cierra la tienda"</span>: apaga las luces, barre el piso, deja todo listo para el día siguiente.</p>
+
+  <div class="criollo-svg-wrap">
+  <svg class="criollo-svg" viewBox="0 0 680 530" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="cr-arrow" markerWidth="12" markerHeight="8" refX="11" refY="4" orient="auto"><polygon points="0 0, 12 4, 0 8" fill="#e8853d"/></marker>
+      <filter id="cr-shadow"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.25"/></filter>
+    </defs>
+
+    <!-- 1. Vos trabajás -->
+    <rect x="180" y="5" width="320" height="58" rx="12" fill="#1a1a2e" stroke="#555577" stroke-width="1.5" filter="url(#cr-shadow)"/>
+    <text x="340" y="28" text-anchor="middle" fill="#e4e4f0" font-size="13" font-weight="bold">👩‍💻 Vos trabajás</text>
+    <text x="340" y="48" text-anchor="middle" fill="#a0a0c0" font-size="10">código, documentación, bugs, features…</text>
+    <line x1="340" y1="63" x2="340" y2="83" stroke="#e8853d" stroke-width="2" marker-end="url(#cr-arrow)"/>
+
+    <!-- 2. /CBP -->
+    <rect x="190" y="88" width="300" height="56" rx="12" fill="#252542" stroke="#e8853d" stroke-width="1.5" filter="url(#cr-shadow)"/>
+    <text x="340" y="111" text-anchor="middle" fill="#e8853d" font-size="13" font-weight="bold">⚙️  Ejecutás /CBP</text>
+    <text x="340" y="130" text-anchor="middle" fill="#a0a0c0" font-size="10">"terminé, quiero cerrar la sesión"</text>
+    <line x1="340" y1="144" x2="340" y2="164" stroke="#e8853d" stroke-width="2" marker-end="url(#cr-arrow)"/>
+
+    <!-- 3. Pre-flight + Dispatch -->
+    <rect x="140" y="169" width="400" height="68" rx="12" fill="#252542" stroke="#f39c12" stroke-width="1.5" filter="url(#cr-shadow)"/>
+    <text x="340" y="192" text-anchor="middle" fill="#f39c12" font-size="13" font-weight="bold">🔍  Pre-flight + Dispatch</text>
+    <text x="340" y="210" text-anchor="middle" fill="#a0a0c0" font-size="10">Revisa versión Diligencia, detecta cambios</text>
+    <text x="340" y="226" text-anchor="middle" fill="#a0a0c0" font-size="10">Elige camino: commit / parcial / full</text>
+    <line x1="340" y1="237" x2="340" y2="257" stroke="#e8853d" stroke-width="2" marker-end="url(#cr-arrow)"/>
+
+    <!-- 4. Meta-PLAN -->
+    <rect x="170" y="262" width="340" height="68" rx="12" fill="#252542" stroke="#3498db" stroke-width="1.5" filter="url(#cr-shadow)"/>
+    <text x="340" y="285" text-anchor="middle" fill="#3498db" font-size="13" font-weight="bold">🤖  Meta-PLAN — el robot piensa</text>
+    <text x="340" y="303" text-anchor="middle" fill="#a0a0c0" font-size="10">Lee docs, índices, detecta stale, arma</text>
+    <text x="340" y="319" text-anchor="middle" fill="#a0a0c0" font-size="10">resumen y te pregunta: ¿seguimos?</text>
+    <line x1="340" y1="330" x2="340" y2="350" stroke="#e8853d" stroke-width="2" marker-end="url(#cr-arrow)"/>
+
+    <!-- 5. BUILD -->
+    <rect x="170" y="355" width="340" height="68" rx="12" fill="#252542" stroke="#2ecc71" stroke-width="1.5" filter="url(#cr-shadow)"/>
+    <text x="340" y="378" text-anchor="middle" fill="#2ecc71" font-size="13" font-weight="bold">⚡  BUILD — aplica cambios</text>
+    <text x="340" y="396" text-anchor="middle" fill="#a0a0c0" font-size="10">Sincroniza, actualiza, versiona</text>
+    <text x="340" y="412" text-anchor="middle" fill="#a0a0c0" font-size="10">🔴  NO commitea solo</text>
+    <line x1="340" y1="423" x2="340" y2="443" stroke="#e8853d" stroke-width="2" marker-end="url(#cr-arrow)"/>
+
+    <!-- 6. Listo -->
+    <rect x="230" y="448" width="220" height="56" rx="28" fill="#1a1a2e" stroke="#2ecc71" stroke-width="2" filter="url(#cr-shadow)"/>
+    <text x="340" y="471" text-anchor="middle" fill="#2ecc71" font-size="14" font-weight="bold">✅  ¡Listo!</text>
+    <text x="340" y="490" text-anchor="middle" fill="#a0a0c0" font-size="10">Proyecto ordenado ✅</text>
+
+    <!-- Side labels -->
+    <text x="620" y="32" fill="#555577" font-size="9">⬅ sin cambios todavía</text>
+    <text x="620" y="150" fill="#555577" font-size="9">⬅ pasás el control al robot</text>
+    <text x="620" y="270" fill="#555577" font-size="9">⬅ solo lectura, nada se modifica</text>
+    <text x="620" y="392" fill="#555577" font-size="9">⬅ escritura, se aplica lo aprobado</text>
+    <text x="620" y="490" fill="#555577" font-size="9">⬅ todo en orden</text>
+  </svg>
+  </div>
+
+  <!-- ── Paso a paso ── -->
+
+  <h2 style="margin-top:2.5rem">¿Cómo funciona paso a paso?</h2>
+
+  <div class="criollo-step">
+    <span class="big-num">1</span>
+    <div class="criollo-step-body">
+      <h3>Pre-flight — el chequeo rápido 🔍</h3>
+      <p>Antes de hacer cualquier cosa, el sistema revisa que tu proyecto esté al día con la versión de Diligencia. Si hay una versión más nueva, te avisa y te pregunta si querés actualizar. También revisa si hay cambios globales sin documentar. Todo esto sin tocar un archivo.</p>
+    </div>
+  </div>
+
+  <div class="criollo-step">
+    <span class="big-num">2</span>
+    <div class="criollo-step-body">
+      <h3>Dispatch — ¿qué camino tomo? 🧭</h3>
+      <p>El sistema mira qué archivos modificaste y elige automáticamente entre tres caminos:</p>
+      <table class="criollo-table">
+        <thead><tr><th>Si solo tocaste...</th><th>Camino</th><th>Qué hace</th></tr></thead>
+        <tbody>
+          <tr><td>🧑‍💻 Código fuente (src/)</td><td><span class="tag tag-red">commit</span></td><td>Commitea rápido, sin tocar documentación. Ideal para bugs o features chicas.</td></tr>
+          <tr><td>📄 1 a 5 documentos</td><td><span class="tag tag-blue">parcial</span></td><td>Sincroniza los docs, actualiza versiones (patch) y commitea. Liviano.</td></tr>
+          <tr><td>📚 5+ documentos, guías nuevas, o hitos</td><td><span class="tag tag-orange">full</span></td><td>Análisis completo con agentes, sincroniza todo, puede generar reportes de salud.</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:0.5rem">También podés forzar un camino específico: <code>/CBP commit</code>, <code>/CBP parcial</code>, <code>/CBP full</code>, <code>/CBP doctor</code>, <code>/CBP version</code> o <code>/CBP updoc</code>.</p>
+    </div>
+  </div>
+
+  <div class="criollo-step">
+    <span class="big-num">3</span>
+    <div class="criollo-step-body">
+      <h3>Meta-PLAN — el robot piensa primero 🤖</h3>
+      <p>Antes de modificar cualquier archivo, el sistema <span class="highlight">lee todo</span>: el estado del proyecto, los archivos que cambiaron, las guías, los ADRs, el CHANGELOG. Arma un resumen completo y te lo muestra. En este punto <span class="highlight">no se modifica nada</span> — es solo una auditoría.</p>
+      <p>Después te pregunta: <em>"¿Ejecuto los cambios?"</em> y espera tu confirmación. Esto es clave: <span class="highlight">nada pasa sin que vos digas que sí</span>.</p>
+    </div>
+  </div>
+
+  <div class="criollo-step">
+    <span class="big-num">4</span>
+    <div class="criollo-step-body">
+      <h3>BUILD — la ejecución ⚡</h3>
+      <p>Una vez que aprobaste, el sistema aplica todos los cambios: sincroniza documentación, actualiza índices, genera reportes de salud, versiona, y commitea. Pero ojo: <span class="highlight">BUILD aplica cambios pero no commitea</span> (salvo que el workflow incluya /version o /commit).</p>
+      <p>La regla de oro: solo <code>/commit</code>, <code>/CBP</code> y <code>/version</code> pueden ejecutar <code>git commit</code>. Esto evita commits accidentales a mitad de un proceso.</p>
+    </div>
+  </div>
+
+  <div class="criollo-step">
+    <span class="big-num">5</span>
+    <div class="criollo-step-body">
+      <h3>Post-workflow — ¿algo más? 🔄</h3>
+      <p>Cuando termina, el sistema puede sugerir pasos adicionales:</p>
+      <ul style="color:var(--fg2);font-size:0.92rem;padding-left:1.2rem">
+        <li>Si ejecutaste <code>updoc</code> y había correcciones → sugiere <code>/CBP doctor</code></li>
+        <li>Si ejecutaste <code>version</code> → sugiere <code>/CBP doctor</code> (diagnóstico post-versionado)</li>
+        <li>Si ejecutaste <code>full</code> y quedaron correcciones → sugiere <code>/CBP doctor</code></li>
+        <li>Si ejecutaste <code>commit</code> sin <code>$REPO</code> definido → te dice cómo pushear manualmente</li>
+        <li>Si ejecutaste <code>parcial</code> → no sugiere nada, ya está todo en orden</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── Los 6 caminos en detalle ── -->
+
+  <h2 style="margin-top:2.5rem">Los 6 caminos del CBP</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem">
+
+    <div class="criollo-card">
+      <h4><span class="tag tag-red">⚡</span> commit</h4>
+      <p><strong>Cuándo usarlo:</strong> Solo tocaste código. Sin docs, sin guías, sin mecánicas.</p>
+      <p><strong>Qué hace:</strong> Pide el mensaje de commit, valida el formato, muestra el diff, commitea y pushea. No toca nada de documentación.</p>
+      <p><strong>Comando:</strong> <code>/CBP commit</code> o simplemente <code>/commit &lt;mensaje&gt;</code></p>
+    </div>
+
+    <div class="criollo-card">
+      <h4><span class="tag tag-blue">🔷</span> parcial</h4>
+      <p><strong>Cuándo usarlo:</strong> Tocaste entre 1 y 5 documentos. Cambios livianos.</p>
+      <p><strong>Qué hace:</strong> Auditoría rápida de docs, sincroniza índices, versiona (patch), commitea y pushea. Sin agentes, sin reportes de salud.</p>
+      <p><strong>Comando:</strong> <code>/CBP parcial</code></p>
+    </div>
+
+    <div class="criollo-card">
+      <h4><span class="tag tag-orange">🌟</span> full / completo</h4>
+      <p><strong>Cuándo usarlo:</strong> Tocaste 5+ docs, creaste guías nuevas, o estás cerrando un hito del proyecto.</p>
+      <p><strong>Qué hace:</strong> Análisis profundo con 4 workers en paralelo, ejecuta agentes si hace falta, sincroniza todo, genera reporte de salud, versiona y pushea.</p>
+      <p><strong>Comando:</strong> <code>/CBP full</code> o <code>/CBP completo</code></p>
+    </div>
+
+    <div class="criollo-card">
+      <h4><span class="tag tag-green">🔄</span> updoc</h4>
+      <p><strong>Cuándo usarlo:</strong> Querés sincronizar toda la documentación del proyecto al final de una sesión larga.</p>
+      <p><strong>Qué hace:</strong> Escanea todos los docs, detecta stale, actualiza índices, sincroniza guías y mecánicas, versiona, y sugiere doctor si quedaron correcciones.</p>
+      <p><strong>Comando:</strong> <code>/CBP updoc</code></p>
+    </div>
+
+    <div class="criollo-card">
+      <h4><span class="tag tag-yellow">🩺</span> doctor</h4>
+      <p><strong>Cuándo usarlo:</strong> Querés una revisión completa de salud del proyecto.</p>
+      <p><strong>Qué hace:</strong> Diagnóstico de estructura, código, gaps documentales, temporales, obsoletos, backups. Si encuentra problemas, los corrige y versiona.</p>
+      <p><strong>Comando:</strong> <code>/CBP doctor</code></p>
+    </div>
+
+    <div class="criollo-card">
+      <h4><span class="tag tag-purple">📦</span> version</h4>
+      <p><strong>Cuándo usarlo:</strong> Querés cerrar una versión sin sincronizar documentación (ya lo hiciste antes).</p>
+      <p><strong>Qué hace:</strong> Detecta la versión actual, calcula el bump, autogenera el CHANGELOG, hace pre-flight, y si está todo bien, commitea + taguea + pushea.</p>
+      <p><strong>Comando:</strong> <code>/CBP version</code></p>
+    </div>
+
+  </div>
+
+  <!-- ── Reglas clave ── -->
+
+  <h2 style="margin-top:2.5rem">Las reglas que siempre aplican</h2>
+
+  <div class="criollo-card">
+    <h4>🛑 Regla #17 — Solo 3 comandos commitean</h4>
+    <p><code>/commit</code>, <code>/CBP</code> y <code>/version</code> son los únicos que pueden ejecutar <code>git commit</code>. Ningún otro comando (ni siquiera BUILD) puede commitear. Los cambios se acumulan en el working tree y vos decidís cuándo sellarlos.</p>
+  </div>
+
+  <div class="criollo-card">
+    <h4>⚠️ Regla #18 — Si hay duda, pausa</h4>
+    <p>Si en cualquier momento el sistema encuentra un estado ambiguo (dos caminos posibles, algo inesperado), se detiene y te pregunta. Nunca asume. Vos tenés el control.</p>
+  </div>
+
+  <div class="criollo-card">
+    <h4>🌍 Regla #19 — Proyectos ajenos no se tocan sin permiso</h4>
+    <p>Si el proyecto NO es Diligencia, el sistema te pide confirmación antes de cualquier acción de git (add, commit, push, tag). Diligencia es la única excepción porque es auto-referencial.</p>
+  </div>
+
+  <div class="criollo-card">
+    <h4>📋 Regla #15 — Pre-flight siempre</h4>
+    <p>Antes de cualquier workflow, el sistema verifica que tu proyecto esté al día con Diligencia. Si no, te avisa y te da la opción de actualizar. Nunca vas a trabajar con una metodología atrasada sin saberlo.</p>
+  </div>
+
+  <h2 style="margin-top:2.5rem">En resumen</h2>
+
+  <div class="criollo-card" style="border-color:var(--accent)">
+    <p style="font-size:1rem;line-height:1.7"><span class="highlight">CBP</span> es el robot que cierra tu sesión de trabajo. Analiza lo que hiciste, elige el camino correcto, aplica los cambios necesarios, y te prepara todo para que solo tengas que decir "sí, mandale". No importa si tocaste una línea de código o reescribiste toda la documentación — <span class="highlight">CBP sabe qué hacer</span>.</p>
+    <p style="font-size:0.9rem;color:var(--fg2);margin-top:0.8rem">Flujo típico: trabajás → <code>/CBP</code> → el robot analiza → muestra resumen → vos decís que sí → todo queda listo → <code>/CBP commit</code> → a dormir.</p>
+  </div>
+
+</div>
+</div>  <!-- tab-panel criollo -->
+
+<div class="footer">
+  MECANICA-FLUJO v1.0 — Diligencia · Generado desde <code>doc/mecanicas/MECANICA-FLUJO.md</code>
+</div>
+
+<script>
+function toggleCard(header) {
+  const body = header.nextElementSibling;
+  const arrow = header.querySelector('.arrow');
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+document.getElementById('themeToggle').addEventListener('click', function() {
+  document.body.classList.toggle('light');
+  this.textContent = document.body.classList.contains('light') ? '☀️ Tema claro' : '🌙 Tema oscuro';
+});
+
+document.querySelectorAll('.tab-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.getAttribute('data-tab')).classList.add('active');
+  });
+});
+
+document.querySelectorAll('.card').forEach(function(c) { c.querySelector('.card-header').click(); });
+</script>
+
+</body>
+</html>
