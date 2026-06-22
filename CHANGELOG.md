@@ -2,12 +2,14 @@
 
 ---
 
-## [1.17.7] — 2026-06-13
+## [1.17.7] — 2026-06-06
 
 ### Added
-- Nuevos themes en templates: diligencia-naranja, diligencia-verde, diligencia-celeste
-- GUIA_THEMES.md actualizada con muestra visual de los 3 nuevos themes
-- Sync global-local en /adaptar Fase 0.5: detección de comandos globales sin versionar + bump automático
+- 3 themes (naranja, verde, celeste) en templates/doc-base/.opencode/themes/
+- Instrucción BUILD en opencode.jsonc: "nunca ejecutes git commit durante BUILD"
+
+### Changed
+- GUIA_THEMES.md: tabla actualizada con los 8 variants totales
 
 ## [1.17.6] — 2026-06-06
 

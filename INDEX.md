@@ -76,6 +76,7 @@ Documentos de referencia rápida, estándares o plantillas.
 | Archivo | Versión | Última actualización |
 |---|---|---|
 | status-salud.md | v1.16.5 | 2026-06-06 |
+| mutaciones-consolidadas.md | v1.0 | 2026-06-06 |
 
 ## Archivos relacionados
 - `ROADMAP.md` — roadmap del proyecto
