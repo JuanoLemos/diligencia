@@ -2,7 +2,7 @@
 
 Metodología de estructura estándar para proyectos OpenCode.
 
-Última actualización: 2026-06-06
+Última actualización: 2026-06-13
 
 ---
 
@@ -18,6 +18,15 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 *(nada en progreso actualmente)*
 
+## Ahora (Now)
+
+| ID | Item | Prioridad | Estado | Depende de |
+|----|------|-----------|--------|------------|
+| R12 | +audit: revisar todas las $variables de comandos vs AGENTS.md, deprecar rotos, definir faltantes | P1 | ✅ Completado | — |
+| R13 | +audit: deprecar comandos rotos definitivamente (/+pend, /+rmi, /news, /notify, /qa) | P1 | ✅ Completado | R12 |
+| R14 | +fix: corregir variables en /doctor, /health, /updoc, /deprecar ($STACK, $PROJECT_NAME, $AGENTS) | P1 | ✅ Completado | R12 |
+| R15 | +fix: revisar GUIA_DE_COMANDOS.md, GUIA_REFERENCIA_RAPIDA.md, GUIA_ECOSISTEMAS.md contra estado real | P1 | ✅ Completado | R12 |
+
 ## Siguiente (Next)
 
 | ID | Item | Prioridad | Estado | Depende de |
@@ -26,11 +35,14 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R09 | +grooming: revisar proyectos adaptados (proyecto-alfa, proyecto-beta) | P2 | 🔴 Pendiente | — |
 | R10 | +mejora: integrar recomendaciones de /estado en flujo /doctor | P3 | 🔴 Pendiente | R03 |
 | R11 | +UX/UI: template UX-CHECKLIST.md como buena práctica heredable | P2 | 🔴 Pendiente | — |
+| R16 | +room: mejora general de cobertura doc de comandos (diagramas, flows en criollo) | P3 | 🔴 Pendiente | R12,R13,R14,R15 |
 
 ## Futuro (Later)
 
+| ID | Item | Prioridad | Estado | Depende de |
+|----|------|-----------|--------|------------|
 | R05 | CLI tool independiente | P3 | 🔴 Pendiente | — |
-| R06 | Plugin marketplace | P3 | 🔴 Pendiente | — |
+| R06 | Plugin marketplace | P3 | 🔴 Pendiente| — |
 
 ## Completado
 
@@ -94,6 +106,9 @@ Metodología de estructura estándar para proyectos OpenCode.
 | +ayuda en worktree /estado con recomendaciones proactivas | v1.16.7 |
 | +dashboard unificado — /estado absorbe /report (--full, --update) + salud + bloqueos | v1.16.7 |
 | +themes opencode customs — GUIA_THEMES.md + diligencia.json theme | v1.16.7 |
+| +audit variables: $STACK, $PROJECT_NAME definidas; $NEWS_FILE removida; 5 comandos deprecados | v1.17.8 |
+| +deprecados: /+pend, /+rmi, /news, /notify, /qa movidos a .old/commands/ | v1.17.8 |
+| +fix: apply.md, deprecar.md corregidos; guias sincronizadas | v1.17.8 |
 
 ## Archivos relacionados
 - `CHECKLIST.md` — checklist de tareas

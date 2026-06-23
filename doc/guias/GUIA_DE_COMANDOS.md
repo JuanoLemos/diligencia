@@ -42,9 +42,7 @@ Luego incluye secciones obligatorias según su tipo. Ver `doc/guias/ESTANDAR-COM
 |---|---|---|---|
 | `/+guia` | Declarativo | Documentación | Crea una guía nueva en `doc/guias/` desde template |
 | `/+mec` | Declarativo | Documentación | Crea documento desde template en directorio destino |
-| `/+pend` | Declarativo | Contexto/Edición | Agrega pendiente genérico al proyecto |
 | `/+rm` | Declarativo | Roadmap/Backlog | Agrega item al ROADMAP |
-| `/+rmi` | Declarativo | Roadmap/Backlog | Agrega ítem específico a $RM |
 | `/adaptar` | Declarativo | Flujo de sesión | Adapta el proyecto actual a estructura Diligencia. Copia .github/workflows/ para CI/CD |
 | `/apply` | Declarativo | Contexto/Edición | Aplica handoff file a archivos de código |
 | `/backup` | Procedural | Backup/Seguridad | Backup pre-edit de archivos críticos ($ADR, $SISTEMA, etc.) |
@@ -64,12 +62,9 @@ Luego incluye secciones obligatorias según su tipo. Ver `doc/guias/ESTANDAR-COM
 | `/incidente` | Declarativo | Calidad | Registra incidente runtime en $INCIDENTS con stack y severidad |
 | `/health` | Declarativo | Calidad | Verifica sintaxis de paréntesis, rutas y JS |
 | `/limpiar` | Procedural | Calidad | Busca y elimina archivos temporales (`*.log`, `*.tmp`, `*.bak.*`) |
-| `/news` | Declarativo | Comunicación | Lee y distribuye $NEWS_FILE al equipo |
 | `/next` | Declarativo | Flujo de sesión | Calcula los próximos 5 pasos según CHECKLIST + dependencias |
-| `/notify` | Procedural | Comunicación | Toggle de notificación remota |
 | `/plan` | Declarativo | Flujo de sesión | Planifica en modo PLAN (solo lectura), ejecuta BUILD tras aprobación |
 | `/pushgh` | Procedural | Comunicación | Push a GitHub según $REPO (invocado por /CBP BUILD* automático) |
-| `/qa` | Declarativo | Calidad | Revisión cruzada de calidad contra checklists |
 | `/report` | Declarativo | Flujo de sesión | Reporte consolidado del proyecto |
 | `/reanudar` | Declarativo | Flujo de sesión | Recupera sesión tras interrupción brusca |
 | `/rm` | Declarativo | Roadmap/Backlog | Revisa ROADMAP por área (técnica, UI, UX) |
@@ -115,7 +110,6 @@ Lectura y manipulación del roadmap y checklist del proyecto.
 |---|---|
 | `/rm` | $RM, $RM_TX, $RM_UI, $RM_UX |
 | `/+rm` | $ROADMAP |
-| `/+rmi` | $RM |
 | `/checklist` | $CHECKLIST, $ROADMAP |
 | `/estado` | $CHECKLIST, $ROADMAP, $CHANGELOG |
 
@@ -137,7 +131,6 @@ Verificación y limpieza de código y estructura.
 | `/doctor` | AGENTS.md, $BUGS, $INCIDENTS, $CHECKLIST, $RM, $CHANGELOG, directorios del proyecto |
 | `/incidente` | $INCIDENTS, $CHECKLIST, AGENTS.md |
 | `/diligencia-check` | AGENTS.md, ROADMAP.md, CHECKLIST.md, CHANGELOG.md, DILIGENCIA.md, .opencode/commands/ |
-| `/qa` | $CHECKLIST, $ROADMAP |
 | `/health` | — (lee archivos del proyecto) |
 | `/debug` | $BACKEND_DIR, $FRONTEND_DIR |
 | `/limpiar` | — (busca patrones de archivos temporales) |
@@ -148,7 +141,6 @@ Herramientas para enfocar y manipular código durante una sesión.
 | Comando | Variables que usa |
 |---|---|
 | `/foco` | $CHECKLIST, $ROADMAP |
-| `/+pend` | (registro de pendientes) |
 | `/apply` | (handoff file) |
 | `/explica` | — (busca en documentación Diligencia) |
 | `/head` | (archivo destino) |
@@ -158,8 +150,6 @@ Coordinación entre sesiones o miembros del equipo.
 
 | Comando | Variables que usa |
 |---|---|
-| `/news` | $NEWS_FILE |
-| `/notify` | — |
 | `/pushgh` | $REPO |
 
 ---

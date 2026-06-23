@@ -13,7 +13,6 @@ Generado por `/salud` el 2026-06-06.
 | **Working tree** | ⚠️ Dirty | pre-commit: 4 modificados + 4 nuevos (Planes A+B+C) |
 | **ADRs pendientes** | 0 | — |
 | **Template sync** | ✅ Sync | DILIGENCIA.md vs adaptar.md: OK |
-| **$NEWS_FILE** | ❌ No creado | design/report/news.txt no existe — /news roto |
 | **$PROYECTOS** | ❌ Sin configurar | /informe-salud no ejecutable |
 
 ## Archivos relacionados

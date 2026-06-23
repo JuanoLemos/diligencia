@@ -14,7 +14,7 @@ Cada versión de Diligencia puede agregar:
 | **Comandos nuevos** | /legal, /informe-salud, /CBP escalativo |
 | **Reglas del orquestador** | Pre-flight de versión, paralelismo Meta-PLAN |
 | **Cambios en formato** | ROADMAP con IDs y prioridades, CHECKLIST expandido |
-| **Variables nuevas** | $MECANICAS_TEMPLATE, $NEWS_FILE, $BACKUPS |
+| **Variables nuevas** | $MECANICAS_TEMPLATE, $BACKUPS |
 | **Correcciones** | Labels stale, sync de estructura, enforcement |
 
 No actualizar puede dejar el proyecto con herramientas rotas, comandos ausentes o estructura inconsistente.
@@ -47,7 +47,6 @@ Después de ejecutar `/adaptar` (Flujo C), revisar:
 - [ ] `ROADMAP.md` — ¿cambió el formato? (MECANICA-CALIDAD)
 - [ ] Comandos nuevos en `.opencode/commands/` (sincronizados por /adaptar)
 - [ ] Templates nuevos en doc-base (NOTICE, SECURITY.md)
-- [ ] Variables viejas → nuevas (ej: `$NEWS` → `$NEWS_FILE`)
 - [ ] Si hay cambios en CBP.md (global) — afecta el orquestador de todos los proyectos
 - [ ] `HARNESS.md` — ¿nueva sección opcional (Testing worktree)?
 - [ ] Sin comandos stale (ver Flujo C Fase 2.5)

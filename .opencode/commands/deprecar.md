@@ -71,7 +71,7 @@ Marca como obsoleto un archivo, comando o estructura del proyecto, actualiza AGE
 
 ## Archivos que lee
 
-- $AGENTS (`AGENTS.md`)
+- `AGENTS.md`
 - `<target>` (para verificar existencia)
 - `.opencode/commands/` (si target es comando)
 - `~/.config/opencode/commands/` (si target es comando global)

@@ -23,9 +23,8 @@ Regla: toda sesión sigue **PLAN → BUILD**. Usar `/CBP updoc` para post-sesió
 
 | Situación | Comando | Alternativa incorrecta |
 |---|---|---|
-| Defecto en código/bug | `/bug` | /qa (qa es para situaciones ambiguas, no bugs confirmados) |
+| Defecto en código/bug | `/bug` | /incidente (bug es defecto de código, no crash runtime) |
 | Crash o error en runtime | `/incidente` | /bug (incidente es runtime, no defecto de código) |
-| Situación extraña, no sabés si es bug | `/qa` | /bug (esperar a confirmar antes de crear bug) |
 | Feature nueva | `/plan` → BUILD | /.direct (falta diseño si es >1 archivo) |
 | Diagnóstico integral del proyecto (estructura + código + tracking + limpieza) | `/doctor` | /health o /diligencia-check individual (doctor orquesta todo) |
 | Sesión interrumpida / pérdida de conexión | `/reanudar` | empezar de cero (pierde contexto) |
@@ -76,7 +75,6 @@ Ejecutar `/diligencia-check` cada pocas sesiones — detecta estructura rota, va
 |---|---|---|
 | Bug de código | `/bug` → `$BUGS` | `$CHECKLIST` |
 | Crash en producción | `/incidente` → `$INCIDENTS` | `$CHECKLIST` |
-| Situación a revisar | `/qa` → `$QA/<archivo>.md` | `$CHECKLIST` |
 | Tarea operativa | `/checklist` o `$CHECKLIST` directo | — |
 
 No duplicar: si registraste un bug en `$BUGS`, no lo copies a `$CHECKLIST` manualmente — `/bug` ya lo hace.
@@ -104,7 +102,7 @@ Después de deprecar: ejecutar `/diligencia-check` (verifica que $variables no a
 - **Saltar `/updoc`**: ahorra 2 minutos ahora, cuesta 20 más tarde en gaps documentales
 - **Hardcodear rutas**: "solo esta vez" → 3 sesiones después hay 5 rutas absolutas en comandos
 - **Modificar `$CHECKLIST` sin cambiar `$RM`**: la próxima `/updoc` va a detectar inconsistencia
-- **Usar `/bug` para situaciones ambiguas**: si no estás seguro, usa `/qa`. Convertir a bug después si se confirma
+- **Usar `/bug` para situaciones ambiguas**: investigá primero. Si se confirma el bug, usá `/bug`.
 - **No versionar sesiones chicas**: hasta un fix de 1 línea merece su entrada en `$CHANGELOG` y su commit
 - **Acumular deuda documental**: "lo actualizo después" → nunca se actualiza
 - **Usar `/health` para validar estructura de proyecto adaptado**: `/health` es solo código (JS). Usar `/diligencia-check` para estructura Diligencia.

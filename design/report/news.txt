@@ -1,4 +1,0 @@
-📭 News inbox vacío.
-
-Agregar items cuando haya cambios entrantes para distribuir a $RM.
-/read news.md para formato de secciones.

@@ -7,7 +7,7 @@ Lee un archivo de especificaciones (handoff) y aplica los cambios detallados a l
 ## Argumentos
 /apply [handoff-file]
 
-- Sin argumento: usa $NEWS_FILE (si está definido en AGENTS.md) o busca news.txt en raíz
+- Sin argumento: usa el handoff file por defecto (busca `handoff.md` en raíz o `.opencode/handoff/`)
 - Con argumento: ruta relativa al handoff file (ej: `design/demo/uxi-05.md`)
 
 ## Qué hace
@@ -44,7 +44,7 @@ Lee un archivo de especificaciones (handoff) y aplica los cambios detallados a l
 - NO borrar el handoff original — siempre renombrar a .applied
 
 ## Archivos que lee
-- Handoff file (argumento o $NEWS_FILE)
+- Handoff file (argumento o ruta por defecto)
 
 ## Archivos que modifica
 - Los archivos listados en el handoff (pregunta antes)

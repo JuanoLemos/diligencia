@@ -32,9 +32,10 @@ Español — todas las respuestas del agente deben ser en español. Si el agente
 | $BACKUPS | `doc/arch/backups.md` | Log de backups del doctor |
 | $BACKUP_KEEP | `5` | Cantidad de backups a conservar (pruning automático) |
 | $PROYECTOS | *(configurar)* | Lista de rutas a proyectos Diligencia-adaptados (ej: "C:\proyectos\alfa","C:\proyectos\beta") |
-| $NEWS_FILE | `design/report/news.txt` | Cambios entrantes a distribuir vía /news |
+| $STACK | *(definido en HARNESS.md)* | Stack tecnológico del proyecto (runtime) |
+| $PROJECT_NAME | *(del header DILIGENCIA.md)* | Nombre del proyecto para reportes |
 
-## Comandos globales heredados — 39 fundamentales
+## Comandos globales heredados — 34 fundamentales
 
 | Comando | Descripción | Tipo |
 |---|---|---|
@@ -55,25 +56,20 @@ Español — todas las respuestas del agente deben ser en español. Si el agente
 | /checklist | Revisar CHECKLIST + ROADMAP | Declarativo |
 | /rm | Revisar ROADMAP por área | Declarativo |
 | /next | Próximos 5 pasos según CHECKLIST | Declarativo |
-| /qa | Revisión cruzada de calidad | Declarativo |
 | /+rm | Agregar item al ROADMAP | Declarativo |
 | /+guia | Crear guía nueva en doc/guias | Declarativo |
-| /+pend | Agregar pendiente genérico | Declarativo |
 | /updoc | Actualizar documentación completa | Declarativo |
 | /upguia | Actualizar guía existente | Declarativo |
 | /+mec | Crear documento desde template | Declarativo |
 | /upmec | Actualizar documento existente | Declarativo |
-| /+rmi | Agregar ítem a $RM | Declarativo |
 | /backup | Backup pre-edit genérico | Procedural |
 | /backupall | Zip completo del proyecto | Procedural |
 | /foco | Enfocar agente en área específica | Declarativo |
-| /news | Leer y distribuir $NEWS_FILE | Declarativo |
 | /version | Cerrar sesión: bump + updoc + commit | Declarativo |
 | /report | Reporte consolidado | Declarativo |
 | /apply | Aplicar handoff file a código | Declarativo |
 | /head | Preparar edición de sección en archivo | Declarativo |
 | /incidente | Registrar incidente o crash runtime | Declarativo |
-| /notify | Toggle de notificación remota | Procedural |
 | /reanudar | Recuperar sesión tras interrupción brusca | Declarativo |
 | /salud | Reporte de salud del proyecto (BUILD* via /CBP) | Declarativo |
 | /informe-salud | Reporte de salud inter-proyecto (escanea $PROYECTOS) | Declarativo |
@@ -87,6 +83,16 @@ Español — todas las respuestas del agente deben ser en español. Si el agente
 
 BUILD = aplicar cambios, NO commitear. Solo /commit, /CBP y /version ejecutan git commit.
 Al terminar cualquier BUILD en este proyecto, reportar cambios aplicados y sugerir /CBP.
+
+## Deprecados
+
+| Item | Fecha | Reemplazo |
+|---|---|---|
+| `/+pend` | 2026-06-13 | Usar `/+rm` para registro directo en ROADMAP |
+| `/+rmi` | 2026-06-13 | Usar `/+rm` para agregar items al ROADMAP |
+| `/news` | 2026-06-13 | Sin reemplazo — feature nunca usado |
+| `/notify` | 2026-06-13 | Sin reemplazo — variable $NOTIFY_SCRIPT nunca definida |
+| `/qa` | 2026-06-13 | Sin reemplazo — variable $QA nunca definida |
 
 ## Archivos relacionados
 - `.opencode/HARNESS.md` — configuración de harness, test y lint

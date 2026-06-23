@@ -33,7 +33,6 @@ Ecosistema de reportes, salud y monitoreo del proyecto.
 │  /rm       → ROADMAP filtrado por área                         │
 │  /next     → Top 5 items accionables (con dependencias)        │
 │  /checklist→ Inconsistencias RM ↔ CHECKLIST                    │
-│  /news     → $NEWS_FILE → distribución a $RM                   │
 └─────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────┐
@@ -42,7 +41,6 @@ Ecosistema de reportes, salud y monitoreo del proyecto.
 │  /doctor     → 3 fases: diagnóstico + corrección + backup      │
 │  /bug        → Registrar bugs confirmados                      │
 │  /incidente  → Registrar crashes runtime                       │
-│  /qa         → Revisión de situaciones ambiguas                │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -93,18 +91,11 @@ Después de ejecutar `/version` + `/pushgh`:
 
 3. 🗺️ ACTUALIZAR ROADMAP
    Mover items de "Siguiente" a "Completado" si aplica
-   /+rm o /+rmi para items nuevos descubiertos durante la sesión
+   /+rm para items nuevos descubiertos durante la sesión
 
-4. 📢 NOTIFICAR (opcional)
-   /notify si hay cambios que comunicar al equipo
-   /news si hay cambios entrantes a distribuir
-
-5. 🩺 HIGIENE MENSUAL (no por sesión)
+4. 🩺 HIGIENE MENSUAL (no por sesión)
    /doctor → diagnóstico completo
    /informe-salud → revisión inter-proyecto
-
-6. 🔄 REVISAR $NEWS_FILE
-   design/report/news.txt → leer y distribuir items a $RM
 ```
 
 ### Qué NO hacer post-update
@@ -119,7 +110,6 @@ Después de ejecutar `/version` + `/pushgh`:
 
 | Gap | Estado | Impacto |
 |---|---|---|
-| `$NEWS_FILE` no definido en AGENTS.md — /news no puede funcionar | ❌ Sin resolver | /news fuera de servicio |
 | `$PROYECTOS` sin configurar — /informe-salud nunca ejecutado | ⚠️ Pendiente configurar | Sin informe inter-proyecto |
 | No hay analytics de tendencias (¿stale sube o baja?) | 🔜 Futuro P3 | Oportunidad de mejora |
 | No hay dashboard unificado (merge /estado + /salud + /report) | 🔜 Futuro P3 | Usabilidad |

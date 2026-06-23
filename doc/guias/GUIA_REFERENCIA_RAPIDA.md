@@ -24,11 +24,10 @@ Referencia rápida de 1 página. Para uso diario: comandos, decisión, flujo, va
 | `/health` | Salud del código (stack-aware) |
 | `/diligencia-check` | Validar estructura completa |
 | `/debug` | Análisis profundo de sección |
-| `/qa` | Situaciones a revisar |
+| `/deprecar` | Mover obsoleto a `.old/` |
 | `/bug` | Reportar bug en $BUGS |
 | `/incidente` | Registrar crash en $INCIDENTS |
 | `/limpiar` | Eliminar temporales |
-| `/deprecar` | Mover obsoleto a `.old/` |
 
 ### Documentación
 | Comando | Qué hace |
@@ -44,7 +43,6 @@ Referencia rápida de 1 página. Para uso diario: comandos, decisión, flujo, va
 |---|---|
 | `/rm` | Revisar roadmap |
 | `/+rm` | Agregar ítem al roadmap |
-| `/+rmi` | Editar ítem del roadmap |
 | `/estado` | Reporte rápido del proyecto |
 | `/checklist` | Cruce RM + checklist |
 
@@ -55,19 +53,12 @@ Referencia rápida de 1 página. Para uso diario: comandos, decisión, flujo, va
 | `/head` | Preparar edición de sección |
 | `/apply` | Aplicar handoff file a código |
 | `/explica` | Explicar concepto (1-3 líneas) |
-| `/+pend` | Agregar pendiente de revisión |
 
 ### Backup / Seguridad
 | Comando | Qué hace |
 |---|---|
 | `/backup` | Backup rápido |
 | `/backupall` | Zip completo |
-
-### Comunicación
-| Comando | Qué hace |
-|---|---|
-| `/news` | Distribuir $NEWS |
-| `/notify` | Toggle notificación remota |
 
 ---
 
@@ -168,10 +159,10 @@ PRE                DURANTE              POST
 | VERSION | /version, /updoc, /reanudar |
 | ADAPTAR | /adaptar, @sdd-* |
 | DOCUMENTACION | /+mec, /+guia, /upmec, /upguia |
-| CONTEXTO | /foco, /head, /apply, /+pend, /explica |
+| CONTEXTO | /foco, /head, /apply, /explica |
 | BACKUP | /backup, /backupall |
-| COMUNICACION | /commit, /news, /notify |
-| SEGUIMIENTO | /rm, /+rm, /+rmi, /checklist, /next, /estado |
+| COMUNICACION | /commit, /pushgh |
+| SEGUIMIENTO | /rm, /+rm, /checklist, /next, /estado |
 
 ---
 

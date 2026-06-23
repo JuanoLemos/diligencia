@@ -2,6 +2,30 @@
 
 ---
 
+## [Unreleased]
+
+### Deprecated
+- `/+pend` — variable $PEND nunca definida, comando roto desde inicio (usar `/+rm`)
+- `/+rmi` — variable $PEND nunca definida, comando roto desde inicio (usar `/+rm`)
+- `/news` — sistema de distribución de novedades nunca usado
+- `/notify` — variables $NOTIFY_SCRIPT/$NOTIFY_STATE nunca definidas
+- `/qa` — variable $QA nunca definida
+
+### Fixed
+- `AGENTS.md`: agregadas variables faltantes $STACK y $PROJECT_NAME al Mapeo de rutas
+- `AGENTS.md`: tabla de comandos corregida de 39 a 34 (5 deprecados removidos)
+- `apply.md`: eliminada referencia a $NEWS_FILE (deprecado)
+- `deprecar.md`: corregida referencia a $AGENTS (no existía como variable)
+- Comandos /doctor y /health ahora tienen $STACK definido
+- Comando /updoc ahora tiene $PROJECT_NAME definido
+
+### Changed
+- `doc/guias/GUIA_DE_COMANDOS.md`: limpiadas referencias a comandos deprecados
+- `doc/guias/GUIA_REFERENCIA_RAPIDA.md`: limpiadas referencias a comandos deprecados
+- `doc/guias/GUIA_DE_INFORMES.md`: removidas referencias a $NEWS_FILE y comandos deprecados
+- `doc/arch/status-salud.md`: removida línea de $NEWS_FILE
+- `ROADMAP.md`: agregados items R12-R16 de auditoría de variables y comandos
+
 ## [1.17.7] — 2026-06-06
 
 ### Added

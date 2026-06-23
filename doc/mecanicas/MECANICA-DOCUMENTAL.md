@@ -100,34 +100,6 @@ Ambos actualizan `$CHECKLIST` automáticamente al crearse.
 
 ---
 
-## 3. QA — Situaciones a revisar
-
-### /qa — Reporte de situación
-
-Comando: `~/.config/opencode/commands/qa.md`
-Datos: `$QA` → `doc/qa/` (archivos sueltos .md)
-
-| Campo | Descripción |
-|---|---|
-| Situación observada | Qué viste |
-| Comportamiento esperado | Qué debería pasar |
-| Comportamiento real | Qué pasó |
-| Pasos para reproducir | Cómo llegar al estado |
-
-Cuándo usar QA vs Bug vs Incidente:
-
-| Escenario | Herramienta | Razón |
-|---|---|---|
-| Defecto confirmado en código | `/bug` | Ya tenés certeza |
-| Crash en producción con stack | `/incidente` | Evento runtime, necesita mitigación |
-| No sabés si es bug, no hay stack | `/qa` | Ambigua: investigar primero, convertir a bug después |
-| Comportamiento extraño, sin error | `/qa` | Situación, no defecto confirmado |
-| Mejora o feature request | `/plan` | No es bug ni incidente |
-
-`/qa` crea un archivo en `$QA/` con nombre descriptivo y agrega entrada en `$CHECKLIST`.
-
----
-
 ## 4. Sesión — Apertura y cierre
 
 ### Pre-sesión

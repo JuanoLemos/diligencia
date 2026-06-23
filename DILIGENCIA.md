@@ -1,4 +1,4 @@
-# Diligencia v1.17.7 — Estructura estándar de documentación
+# Diligencia v1.17.8 — Estructura estándar de documentación
 
 Sello de metodología para proyectos OpenCode.
 
@@ -36,6 +36,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| v1.17.8 | 2026-06-23 | Auditoría completa de variables: $STACK y $PROJECT_NAME definidas, $NEWS_FILE removida. Deprecación de 5 comandos rotos (/+pend, /+rmi, /news, /notify, /qa). Guías sincronizadas. |
 | v1.17.7 | 2026-06-06 | 3 themes (naranja, verde, celeste) + GUIA_THEMES actualizada + instrucción BUILD en opencode.jsonc. |
 | v1.17.6 | 2026-06-06 | Part A fixes: commit usa /commit, parcial con Meta-PLAN, version confirmación única, Steps 6→12, doctor loop. |
 | v1.17.5 | 2026-06-06 | Guarda BUILD anti-commiteo heredable. Banners, AGENTS, adaptar paso 5. |
