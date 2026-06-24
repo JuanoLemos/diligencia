@@ -35,6 +35,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R25 | +openchamber hub: adaptación liviana (DILIGENCIA.md, INDEX.md, ROADMAP.md, AGENTS.md +$PROYECTOS) | P2 | 🔴 Pendiente | — |
 | R26 | +openchamber hub: integración con $PROYECTOS para multi-proyecto visual | P2 | 🔴 Pendiente | R25 |
 | R27 | +openchamber hub: dashboard visual de salud de proyectos (status-salud, diff, RM table) | P3 | 🔴 Pendiente | R26 |
+| R28 | +openchamber hub: upstream watch — monitorear repo original (btriapitsyn/openchamber) para mergear mejoras | P2 | 🔴 Pendiente | R25 |
 
 ## Futuro (Later)
 
