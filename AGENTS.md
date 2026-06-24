@@ -6,6 +6,8 @@ Documentación de la metodología de estructura estándar para proyectos OpenCod
 
 Español — todas las respuestas del agente deben ser en español. Si el agente contesta en inglés, recordarle explícitamente que responda en español.
 
+Emojis: permitidos y recomendados en todo tipo de comunicación y documentación. Diligencia es plural — usa emojis para mejorar la claridad visual y reducir la barrera de entrada para usuarios no expertos. ✅🔴🟡🟢📋🩺🔬📦⚠️
+
 ---
 
 ## Mapeo de rutas
