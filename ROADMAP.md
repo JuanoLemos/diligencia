@@ -39,6 +39,9 @@ Metodología de estructura estándar para proyectos OpenCode.
 |----|------|-----------|--------|------------|
 | R05 | CLI tool independiente | P3 | 🔴 Pendiente | — |
 | R06 | Plugin marketplace | P3 | 🔴 Pendiente| — |
+| R22 | +planloop + loop: circuito autónomo de ejecución de ROADMAP (planloop→loop→checkpoint) | P3 | 🔴 Pendiente | — |
+| R23 | +loop-watcher: app externa (PowerShell) para monitoreo de progreso y detección de crash | P3 | 🔴 Pendiente | R22 |
+| R24 | +loop auto-restart: recuperación automática tras crash/desconexión | P3 | 🔴 Pendiente | R22,R23 |
 
 ## Completado
 
