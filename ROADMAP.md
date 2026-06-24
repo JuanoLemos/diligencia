@@ -32,6 +32,9 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R19 | +contexto: MECANICA-CONTEXTO.md — modelo L0/L1/L2 para carga de documentación | P2 | 🟡 En progreso | — |
 | R20 | +graphify: MECANICA-GRAPHIFY.md + .graphifyignore template | P2 | 🟡 En progreso | — |
 | R21 | +memory: MECANICA-MEMORY.md — memoria persistente con claude-mem | P3 | 🟡 En progreso | — |
+| R25 | +openchamber hub: adaptación liviana (DILIGENCIA.md, INDEX.md, ROADMAP.md, AGENTS.md +$PROYECTOS) | P2 | 🔴 Pendiente | — |
+| R26 | +openchamber hub: integración con $PROYECTOS para multi-proyecto visual | P2 | 🔴 Pendiente | R25 |
+| R27 | +openchamber hub: dashboard visual de salud de proyectos (status-salud, diff, RM table) | P3 | 🔴 Pendiente | R26 |
 
 ## Futuro (Later)
 
