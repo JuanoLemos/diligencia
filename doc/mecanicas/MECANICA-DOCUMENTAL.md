@@ -200,4 +200,5 @@ Comando: `~/.config/opencode/commands/diligencia-check.md`
 ## Archivos relacionados
 - `doc/mecanicas/MECANICA-CBP.md` — circuito de trabajo cíclico
 - `doc/mecanicas/MECANICA-CALIDAD.md` — mecánica de calidad documental
+- `doc/mecanicas/MECANICA-CONTEXTO.md` — modelo L0/L1/L2 de contexto
 - `doc/mecanicas/MECANICA-ENFORCEMENT.md` — enforcement documental

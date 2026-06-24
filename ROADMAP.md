@@ -29,6 +29,9 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R16 | +room: mejora general de cobertura doc de comandos (diagramas, flows en criollo) | P3 | 🔴 Pendiente | R12,R13,R14,R15 |
 | R17 | +legal: migrar GPL-3.0 → AGPL-3.0 + MANIFIESTO.md | P1 | ✅ Completado | — |
 | R18 | +legal: SECURITY.md template mejorado (Scope, Out of Scope) | P1 | ✅ Completado | — |
+| R19 | +contexto: MECANICA-CONTEXTO.md — modelo L0/L1/L2 para carga de documentación | P2 | 🟡 En progreso | — |
+| R20 | +graphify: MECANICA-GRAPHIFY.md + .graphifyignore template | P2 | 🟡 En progreso | — |
+| R21 | +memory: MECANICA-MEMORY.md — memoria persistente con claude-mem | P3 | 🟡 En progreso | — |
 
 ## Futuro (Later)
 

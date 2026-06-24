@@ -240,6 +240,42 @@ Cada feature implementada debe pasar por un control UX mínimo.
 
 El template del checklist se hereda vía `/adaptar` en `doc/qa/UX-CHECKLIST.md`.
 
+## 13. Contexto por niveles (L0/L1/L2)
+
+La documentación de Diligencia se organiza en tres niveles de contexto:
+
+| Nivel | Qué es | ~Tokens | Dónde |
+|---|---|---|---|
+| L0 | Abstract (1 línea para decidir si leer) | ~100 | INDEX.md columna "Resumen" |
+| L1 | Overview (estructura y puntos clave) | ~2K | Índice y secciones del documento |
+| L2 | Contenido completo | Variable | Archivo .md individual |
+
+Al navegar el proyecto, comenzar por L0, profundizar a L1 si aplica, y solo leer L2 cuando sea necesario. Esto ahorra tokens y evita saturar el contexto.
+
+Ver `doc/mecanicas/MECANICA-CONTEXTO.md`.
+
+## 14. Grafo de conocimiento (graphify)
+
+Para visualizar las relaciones entre documentos de tu proyecto:
+
+```bash
+pipx install graphifyy  # o uv tool install graphifyy
+graphify install --platform opencode
+graphify .
+```
+
+Esto genera `graphify-out/graph.html`, una visual interactiva. Ver `doc/mecanicas/MECANICA-GRAPHIFY.md`.
+
+## 15. Memoria entre sesiones (claude-mem)
+
+Para mantener contexto automático entre sesiones (captura, compresión, reinyección):
+
+```bash
+npx claude-mem install --ide opencode
+```
+
+No reemplaza PENDING.md — lo complementa. Ver `doc/mecanicas/MECANICA-MEMORY.md`.
+
 ## Archivos relacionados
 - `doc/guias/ESTANDAR-COMANDOS.md` — estándar de formato de comandos
 - `doc/mecanicas/MECANICA-DOCUMENTAL.md` — mecánica documental general
