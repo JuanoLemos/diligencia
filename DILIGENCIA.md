@@ -1,4 +1,4 @@
-# Diligencia v1.18.0 — Estructura estándar de documentación
+# Diligencia v1.18.1 — Estructura estándar de documentación
 
 Sello de metodología para proyectos OpenCode.
 
@@ -36,6 +36,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| v1.18.1 | 2026-06-23 | Emojis liberados. ROADMAP R22-R28 (planloop, loop, OpenChamber hub, upstream watch). |
 | v1.18.0 | 2026-06-23 | Planes A+B+C: contexto L0/L1/L2, graphify, claude-mem, .graphifyignore, INDEX L0. |
 | v1.17.9 | 2026-06-23 | Licencia GPL-3.0 → AGPL-3.0. MANIFIESTO.md creado (6 principios). SECURITY.md template mejorado. |
 | v1.17.8 | 2026-06-23 | Auditoría completa de variables: $STACK y $PROJECT_NAME definidas, $NEWS_FILE removida. Deprecación de 5 comandos rotos (/+pend, /+rmi, /news, /notify, /qa). Guías sincronizadas. |
