@@ -4,6 +4,14 @@
 
 ## [Unreleased]
 
+### Changed
+- **LICENSE**: GPL-3.0 → AGPL-3.0 (copyleft más fuerte, cubre uso en red)
+- **MANIFIESTO.md** creado: contrato social con 6 principios para quien adapte o redistribuya
+- `README.md`: actualizada referencia de licencia y enlace a MANIFIESTO.md
+- `CONTRIBUTING.md`: actualizada referencia de licencia
+- `doc/guias/GUIA_LEGAL.md`: actualizada referencia de GPL → AGPL
+- Template `doc-base/LICENSE` actualizado a AGPL-3.0 (nuevos proyectos heredan AGPL)
+
 ### Deprecated
 - `/+pend` — variable $PEND nunca definida, comando roto desde inicio (usar `/+rm`)
 - `/+rmi` — variable $PEND nunca definida, comando roto desde inicio (usar `/+rm`)
@@ -18,8 +26,10 @@
 - `deprecar.md`: corregida referencia a $AGENTS (no existía como variable)
 - Comandos /doctor y /health ahora tienen $STACK definido
 - Comando /updoc ahora tiene $PROJECT_NAME definido
+- `SECURITY.md` template actualizado con mejoras de Scope, Out of Scope, subject line y PoC
+- `NOTICE` de Crocix-master: placeholders reemplazados por datos reales
 
-### Changed
+### Changed (doc sync)
 - `doc/guias/GUIA_DE_COMANDOS.md`: limpiadas referencias a comandos deprecados
 - `doc/guias/GUIA_REFERENCIA_RAPIDA.md`: limpiadas referencias a comandos deprecados
 - `doc/guias/GUIA_DE_INFORMES.md`: removidas referencias a $NEWS_FILE y comandos deprecados

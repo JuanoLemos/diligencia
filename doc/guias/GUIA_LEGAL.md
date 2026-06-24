@@ -7,14 +7,14 @@ Esto NO es asesoría legal — consultá con un abogado para decisiones específ
 
 ## 1. Elegir una licencia
 
-| Licencia | Compatible con GPL-3.0 | Cuándo usarla |
+| Licencia | Compatible con AGPL-3.0 | Cuándo usarla |
 |---|---|---|
-| GPL-3.0 | ✅ | Proyectos que exigen copyleft fuerte |
-| AGPL-3.0 | ✅ | Proyectos de red/servicio (closefront, SaaS) |
-| Apache-2.0 | ✅ | Empresas que necesitan patentes explícitas |
-| MIT | ✅ | Proyectos permisivos mínimos |
-| BSD-2/3 | ✅ | Simplicidad, atribución requerida |
-| Creative Commons | N/A | Assets, documentación (CC BY-SA 4.0) |
+| **AGPL-3.0** | — | **Recomendada para Diligencia y sus derivados.** Copyleft fuerte + protección de red (SaaS). |
+| GPL-3.0 | ✅ | Proyectos que exigen copyleft fuerte pero sin uso en red. |
+| Apache-2.0 | ✅ | Empresas que necesitan patentes explícitas. |
+| MIT | ✅ | Proyectos permisivos mínimos. |
+| BSD-2/3 | ✅ | Simplicidad, atribución requerida. |
+| Creative Commons | N/A | Assets, documentación (CC BY-SA 4.0). |
 
 ### Licencia dual
 
