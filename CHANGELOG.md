@@ -10,6 +10,20 @@
 - `README.md`: actualizada referencia de licencia y enlace a MANIFIESTO.md
 - `CONTRIBUTING.md`: actualizada referencia de licencia
 - `doc/guias/GUIA_LEGAL.md`: actualizada referencia de GPL → AGPL
+
+## [1.18.0] — 2026-06-23
+
+### Added
+- MECANICA-CONTEXTO.md — modelo L0/L1/L2 (abstract, overview, detalle)
+- MECANICA-GRAPHIFY.md — visualización de documentación como grafo
+- MECANICA-MEMORY.md — memoria persistente con claude-mem
+- templates/doc-base/.graphifyignore — ignorar node_modules, .opencode, .git
+- GUIA_DE_BUENAS_PRACTICAS.md §13 (L0/L1/L2), §14 (graphify), §15 (claude-mem)
+- ROADMAP R19, R20, R21
+
+### Changed
+- templates/doc-base/INDEX.md — +columna "Resumen (L0)" en todas las tablas
+- MECANICA-DOCUMENTAL.md — +referencia a MECANICA-CONTEXTO
 - Template `doc-base/LICENSE` actualizado a AGPL-3.0 (nuevos proyectos heredan AGPL)
 
 ### Deprecated
