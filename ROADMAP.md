@@ -38,7 +38,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R28 | +openchamber hub: upstream watch — monitorear repo original (btriapitsyn/openchamber) para mergear mejoras | P2 | 🔴 Pendiente | R25 |
 | R29 | +openchamber hub: skills de Diligencia (workflow, docs, health, commands, adaptation) para Skills Catalog | P2 | 🔴 Pendiente | R25 |
 | R30 | +openchamber hub: portear 8 temas Diligencia al formato de UI de OpenChamber | P2 | 🔴 Pendiente | R25 |
-| R34 | +skills Diligencia en repo público (workflow, docs, health, commands, adaptation) para Chamber Skills Catalog | P1 | 🔴 Pendiente | — |
+| R34 | +skills Diligencia en repo público (workflow, docs, health, commands, adaptation) para Chamber Skills Catalog | P1 | ✅ Completado | — |
 | R35 | +portear 8 temas Diligencia al formato Chamber UI (JSON ~180 props) | P1 | 🔴 Pendiente | — |
 | R36 | +dashboard Diligencia en Chamber React (cards por proyecto: versión, WT, salud, RM %) | P2 | 🔴 Pendiente | R34,R35 |
 | R37 | +README.md con badge BETA + link a issues en los 6 proyectos activos | P1 | 🔴 Pendiente | — |

@@ -77,6 +77,7 @@ Documentos de referencia rápida, estándares o plantillas.
 |---|---|---|
 | status-salud.md | v1.16.5 | 2026-06-06 |
 | mutaciones-consolidadas.md | v1.0 | 2026-06-06 |
+| skills/ (5 skills Chamber) | v1.18.1 | 2026-06-25 |
 
 ## Archivos relacionados
 - `ROADMAP.md` — roadmap del proyecto
