@@ -2,6 +2,21 @@
 
 ---
 
+## [1.19.0] — 2026-06-25
+
+### Added
+- R34 — 5 skills Diligencia (cbp, health, docs, workflow, commands) para Chamber Skills Catalog
+- Catalogo-proyectos.md — mapa completo de 7 proyectos adaptados
+- backup-all.ps1 — script de backup de todos los proyectos
+- ROADMAP R45-R47: /next --plan, audit Chamber, integración comandos UI
+- OldWorld agregado como candidato a adaptar
+
+### Changed
+- AGENTS.md — identidad definida (Diligencia ≠ Chamber, gobierno de proyectos)
+- R46 ✅ — audit Chamber completado (9 herramientas mapeadas)
+- Fases 2-4: 6/6 proyectos activos actualizados a v1.18.1
+- ROADMAP: R22-R47 items de planificación
+
 ## [Unreleased]
 
 ### Changed
