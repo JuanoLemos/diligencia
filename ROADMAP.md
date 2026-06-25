@@ -50,7 +50,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R43 | +auto-discovery de proyectos con DILIGENCIA.md desde Chamber | P3 | 🔴 Pendiente | R36 |
 | R44 | +scheduled health checks automáticos cada N horas vía Chamber | P3 | 🔴 Pendiente | R36 |
 | R45 | +/next --plan: evolución de diagnóstico a ejecución (clusteriza tareas sin bloqueos en lotes, ejecuta secuencial) | P1 | 🔴 Pendiente | — |
-| R46 | +audit Chamber: revisar todas las herramientas nativas (Terminal, DiffView, Skills Catalog, Team Mode, Background Agents, Scheduled Tasks, Git, File Browser) para optimizar comandos Diligencia | P2 | 🔴 Pendiente | R34,R35 |
+| R46 | +audit Chamber: revisar todas las herramientas nativas (Terminal, DiffView, Skills Catalog, Team Mode, Background Agents, Scheduled Tasks, Git, File Browser) para optimizar comandos Diligencia | P2 | ✅ Completado | R34,R35 |
 | R47 | +integrar comandos Diligencia con Chamber UI (botones /CBP, /doctor, /salud desde la interfaz visual, no solo terminal) | P2 | 🔴 Pendiente | R46 |
 
 ## Futuro (Later)
