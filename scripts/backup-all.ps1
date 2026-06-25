@@ -13,7 +13,8 @@ $projects = @(
     @{Name="buenobonitobarato";Path="C:\xampp\htdocs\buenobonitobarato";Git=$true},
     @{Name="nemesis";          Path="C:\xampp\htdocs\nemesis";          Git=$true},
     @{Name="+RM";              Path="C:\xampp\htdocs\+RM";              Git=$true},
-    @{Name="conquisitare";     Path="C:\xampp\htdocs\conquisitare";     Git=$true}
+    @{Name="conquisitare";     Path="C:\xampp\htdocs\conquisitare";     Git=$true},
+    @{Name="OldWorld";         Path="C:\Users\jlemo\OneDrive\Desktop\OldWorld"; Git=$false}
 )
 
 $index = @()

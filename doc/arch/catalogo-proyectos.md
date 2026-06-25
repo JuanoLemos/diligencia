@@ -23,14 +23,20 @@ Actualizado: 2026-06-23.
 | 7 | **closefront-io** | `C:\xampp\htdocs\closefront-io` | v1.17.4 | 🧊 Suspendido |
 | 8 | **closefront-test** | `C:\xampp\htdocs\closefront-test` | v1.17.2 | 🧊 Worktree testing |
 
+## Proyectos candidatos a adaptar
+
+| # | Proyecto | Ruta | Diligencia | Estado |
+|---|---|---|---|---|
+| 9 | **OldWorld** | `C:\Users\jlemo\OneDrive\Desktop\OldWorld` | ❌ sin adaptar | Sin DILIGENCIA.md, sin git. |
+
 ## Proyectos legacy / sin adaptar
 
 | # | Proyecto | Ruta | Detalle |
-|---|---|---|---|
-| 9 | **Diligencia.old** | `C:\xampp\htdocs\Diligencia.old` | Plataforma IA multi-proveedor. Sin git. Legacy v2.1. |
-| 10 | **dashboard** | `C:\xampp\htdocs\dashboard` | Sin adaptar |
-| 11 | **nscentral** | `C:\xampp\htdocs\nscentral` | Sin adaptar |
-| 12 | **JdlV** | `C:\xampp\htdocs\JdlV` | Sin adaptar |
+|---|---|---|---|---|
+| 10 | **Diligencia.old** | `C:\xampp\htdocs\Diligencia.old` | Plataforma IA multi-proveedor. Sin git. Legacy v2.1. |
+| 11 | **dashboard** | `C:\xampp\htdocs\dashboard` | Sin adaptar |
+| 12 | **nscentral** | `C:\xampp\htdocs\nscentral` | Sin adaptar |
+| 13 | **JdlV** | `C:\xampp\htdocs\JdlV` | Sin adaptar |
 
 ---
 
@@ -39,6 +45,7 @@ Actualizado: 2026-06-23.
 | Indicador | Valor |
 |---|---|
 | Proyectos activos | 6 |
+| Candidatos a adaptar | 1 (OldWorld) |
 | Al día (v1.18.x) | 2 |
 | Atrasados | 3 |
 | Congelados | 2 |
