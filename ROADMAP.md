@@ -36,6 +36,8 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R26 | +openchamber hub: integración con $PROYECTOS para multi-proyecto visual | P2 | 🔴 Pendiente | R25 |
 | R27 | +openchamber hub: dashboard visual de salud de proyectos (status-salud, diff, RM table) | P3 | 🔴 Pendiente | R26 |
 | R28 | +openchamber hub: upstream watch — monitorear repo original (btriapitsyn/openchamber) para mergear mejoras | P2 | 🔴 Pendiente | R25 |
+| R29 | +openchamber hub: skills de Diligencia (workflow, docs, health, commands, adaptation) para Skills Catalog | P2 | 🔴 Pendiente | R25 |
+| R30 | +openchamber hub: portear 8 temas Diligencia al formato de UI de OpenChamber | P2 | 🔴 Pendiente | R25 |
 
 ## Futuro (Later)
 
@@ -46,6 +48,9 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R22 | +planloop + loop: circuito autónomo de ejecución de ROADMAP (planloop→loop→checkpoint) | P3 | 🔴 Pendiente | — |
 | R23 | +loop-watcher: app externa (PowerShell) para monitoreo de progreso y detección de crash | P3 | 🔴 Pendiente | R22 |
 | R24 | +loop auto-restart: recuperación automática tras crash/desconexión | P3 | 🔴 Pendiente | R22,R23 |
+| R31 | +openchamber hub: base SQLite para snapshots históricos de salud (tendencias, alertas) | P3 | 🔴 Pendiente | R25 |
+| R32 | +openchamber hub: CLI standalone para /diligencia-check sin dependencia de agente IA | P3 | 🔴 Pendiente | R25 |
+| R33 | +openchamber hub: discovery automático de proyectos con DILIGENCIA.md en directorio padre | P3 | 🔴 Pendiente | R25,R26 |
 
 ## Completado
 
