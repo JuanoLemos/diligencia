@@ -13,7 +13,7 @@ Actualizado: 2026-06-23.
 | 2 | **MarketAI** | `C:\xampp\htdocs\MarketAI` | v1.18.1 | 1.3.0 | Trading multi-capa | DeepSeek V4 Flash | Clean | Al día. Monitorear. |
 | 3 | **buenobonitobarato** | `C:\xampp\htdocs\buenobonitobarato` | v1.18.0 | 0.1.0 | CLI Node.js | No | Clean | Casi al día. |
 | 4 | **Nemesis** | `C:\xampp\htdocs\nemesis` | v1.18.1 ✅ | 3.8.2 | Juego narrativo IA | DeepSeek Flash+Pro, Claude, Gemini | Clean | Al día. 2238 líneas ROADMAP, 30 ADRs. |
-| 5 | **+RM** | `C:\xampp\htdocs\+RM` | v1.17.9 ⚠️ | Sin versionar | Dashboard PHP | No | Clean | Commit reciente (dashboard + tray + scanner). Actualizar a v1.18.1. |
+| 5 | **+RM** | `C:\xampp\htdocs\+RM` | v1.18.1 ✅ | Sin versionar | Dashboard PHP | No | Clean | ✅ Al día. |
 | 6 | **conquisitare** | `C:\xampp\htdocs\conquisitare` | v1.18.1 ✅ | 0.7.0 | Juego conquista WebGL | No | Clean | Al día. |
 
 ## Proyectos congelados
@@ -46,8 +46,8 @@ Actualizado: 2026-06-23.
 |---|---|
 | Proyectos activos | 6 |
 | Candidatos a adaptar | 1 (OldWorld) |
-| Al día (v1.18.x) | 5 |
-| Atrasados | 1 (+RM) |
+| Al día (v1.18.x) | 6 |
+| Atrasados | 0 |
 | Congelados | 2 |
 | IA integrada | 2 (MarketAI, Nemesis) |
 | $REPO definido | 1 (Diligencia) |
