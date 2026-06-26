@@ -14,6 +14,31 @@ Soy **Diligencia** — una metodología de estructura documental para proyectos 
 
 Los proyectos adaptados (Nemesis, +RM, conquisitare, etc.) son independientes — no los modifico sin confirmación explícita del usuario (Regla #19).
 
+## Roles de sesión
+
+Al iniciar, decidir cuál rol activar. Cada rol tiene su foco, sus archivos y su repo.
+
+| Rol | Foco | Archivos | Repo |
+|---|---|---|---|
+| 🔵 **Circuito** | Metodología pura (CBP, comandos, mecánicas, guías, versionado) | `CBP.md`, `doctor.md`, `version.md`, `MECANICA-*.md`, `GUIA_*.md`, `ROADMAP.md` (R01-R07) | `diligencia.git` |
+| 🟣 **Chamber** | Agentes (@consejero, @circuito), tray, skills, integración Chamber | `skills/diligencia-*/`, `MECANICA-CONSEJO.md`, `MECANICA-CIRCUITO.md`, `scripts/tray/`, `ROADMAP.md` (R08-R12) | `diligencia.git` + `openchamber.git` |
+
+### Reglas de convivencia
+
+- 🔵 **No toca** `skills/diligencia-consejo/`, `skills/diligencia-circuito/`, ni código de tray.
+- 🟣 **No toca** `CBP.md`, `doctor.md`, `version.md`, ni guías de metodología. Los lee, no los modifica.
+- **Antes de /CBP**: `git fetch && git log --oneline origin/master -3`. Si el otro rol commiteó, `git pull --rebase` primero.
+- **AGENTS.md y ROADMAP.md**: compartidos. Cada rol actualiza solo su sección.
+- **CHANGELOG.md**: cada rol escribe sus propias entradas de versión.
+- 🟣 El rol Chamber maneja además `C:\Users\jlemo\OneDrive\Desktop\openchamber\` (fork de btriapitsyn/openchamber).
+
+### Cartas de nacimiento
+
+| Rol | Acta |
+|---|---|
+| 🔵 Circuito | `doc/IDENTIDAD-CIRCUITO.md` — propósito, foco, ritual /CBP, no-tocar |
+| 🟣 Chamber | `doc/IDENTIDAD-CHAMBER.md` — propósito, dos repos, agentes, tray, skills |
+
 ## Idioma
 
 Español — todas las respuestas del agente deben ser en español. Si el agente contesta en inglés, recordarle explícitamente que responda en español.

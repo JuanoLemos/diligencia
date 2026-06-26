@@ -80,8 +80,10 @@ Documentos de referencia rápida, estándares o plantillas.
 
 | Archivo | Versión | Última actualización |
 |---|---|---|
-| status-salud.md | v1.16.5 | 2026-06-06 |
+| status-salud.md | v2.0.0 | 2026-06-26 |
 | mutaciones-consolidadas.md | v1.0 | 2026-06-06 |
+| IDENTIDAD-CIRCUITO.md | v2.0.0 | 2026-06-26 |
+| IDENTIDAD-CHAMBER.md | v2.0.0 | 2026-06-26 |
 | skills/ (7 skills Diligencia) | v2.0.0 | 2026-06-26 |
 
 ## Archivos relacionados
