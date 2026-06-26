@@ -113,11 +113,13 @@ Cada workflow del circuito cumple:
 Solo aplica al workflow `completo`. El Meta-PLAN analiza el working tree y sugiere:
 
 | Condición | Agente/Skill sugerido | Orden en BUILD |
-|---|---|---|
+|---|---|---|---|
 | git diff >20 líneas de código | `@sdd-reviewer` | 1ero (revisar antes de versionar) |
 | Cambios de arquitectura detectados | `@sdd-architect` | 1ero (explorar antes de aplicar) |
 | Tests en el proyecto | `skill("tdd-strict")` + `@sdd-verify` | 2do (verificar después de revisar) |
 | ROADMAP.md con SDD items | `skill("sdd-workflow")` | — (cargar en contexto, no ejecuta) |
+| /doctor Fase 1g activa (proyecto con frontend/backend) | `@circuito` + `skill("diligencia-circuito")` | 1ero (escanear handlers/rutas/UX) |
+| Proyecto adaptado con $RM y $CHECKLIST | `@consejero` + `skill("diligencia-consejo")` | — (cargar en /plan, no en CBP) |
 
 Los agentes se ejecutan en BUILD antes de los comandos documentales. El usuario puede rechazar cada agente individualmente sin abortar el workflow.
 

@@ -49,12 +49,12 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | $STACK | *(definido en HARNESS.md)* | Stack tecnológico del proyecto (runtime) |
 | $PROJECT_NAME | *(del header DILIGENCIA.md)* | Nombre del proyecto para reportes |
 
-## Comandos globales heredados — 34 fundamentales
+## Comandos globales heredados — 36 fundamentales
 
 | Comando | Descripción | Tipo |
 |---|---|---|
 | /adaptar | Adaptar proyecto a estructura Diligencia | Declarativo |
-| /plan | Planificar en modo PLAN | Declarativo |
+| /plan | Planificar en modo PLAN (incluye consejero automático) | Declarativo |
 | /commit | Git add + commit formateado | Procedural |
 | /pushgh | Push a GitHub según $REPO (via /CBP) | Procedural |
 | /health | Verificar sintaxis y consistencia | Declarativo |
@@ -62,14 +62,16 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | /deprecar | Deprecar archivos/comandos/estructuras obsoletas | Declarativo |
 | /debug | Análisis profundo | Declarativo |
 | /diligencia-check | Validar estructura Diligencia del proyecto | Declarativo |
-| /doctor | Cuidado integral: estructura + código + tracking + limpieza + deprecación | Declarativo |
+| /doctor | Cuidado integral: estructura + código + tracking + circuito + limpieza + deprecación | Declarativo |
 | /legal | Verificar y aplicar buenas prácticas legales (LICENSE, NOTICE, SECURITY, SPDX) | Declarativo |
 | /limpiar | Limpiar temporales | Procedural |
 | /estado | Reporte rápido del proyecto | Declarativo |
-| /explica | Explicar concepto breve y sencillo | Declarativo |
-| /checklist | Revisar CHECKLIST + ROADMAP | Declarativo |
-| /rm | Revisar ROADMAP por área | Declarativo |
-| /next | Próximos 5 pasos según CHECKLIST | Declarativo |
+| /explica | Explicar concepto en 4 capas (criollo/técnico/impacto/implicancia) | Declarativo |
+| /checklist | Revisar CHECKLIST + ROADMAP + deuda detectada | Declarativo |
+| /rm | Revisar ROADMAP por área + análisis de trayectoria | Declarativo |
+| /next | Próximos 5 pasos según CHECKLIST + priorización estratégica | Declarativo |
+| /consejo | Consultar al consejero sobre dudas o ideas del proyecto | Declarativo |
+| /circuito | Revisar integridad lógica y UX (handlers, rutas, navegación) | Declarativo |
 | /+rm | Agregar item al ROADMAP | Declarativo |
 | /+guia | Crear guía nueva en doc/guias | Declarativo |
 | /updoc | Actualizar documentación completa | Declarativo |

@@ -4,7 +4,7 @@ INSTRUCCIÓN: NO modificar este archivo sin entender el catálogo. CONTIENE el m
 
 Catálogo de documentación del proyecto. Mantenido por /version y /updoc.
 
-Última actualización global: 2026-06-23
+Última actualización global: 2026-06-26
 
 ## Docs críticos
 
@@ -53,6 +53,11 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 | MECANICA-WORKTREE.md | v1.16.5 | 2026-06-06 |
 | MECANICA-CALIDAD.md | v1.16.5 | 2026-06-06 |
 | MECANICA-FLUJO.md | v1.0 | 2026-06-06 |
+| MECANICA-CONTEXTO.md | v1.0 | 2026-06-06 |
+| MECANICA-GRAPHIFY.md | v1.0 | 2026-06-06 |
+| MECANICA-MEMORY.md | v1.0 | 2026-06-06 |
+| MECANICA-CONSEJO.md | v1.0.0 | 2026-06-26 |
+| MECANICA-CIRCUITO.md | v1.0.0 | 2026-06-26 |
 | MANDATO.md | v1.17.2 | 2026-06-06 |
 | _template.md | v1.16.4 | 2026-06-06 |
 | meta-escalabilidad.md | v1.16.4 | 2026-06-06 |
@@ -77,7 +82,7 @@ Documentos de referencia rápida, estándares o plantillas.
 |---|---|---|
 | status-salud.md | v1.16.5 | 2026-06-06 |
 | mutaciones-consolidadas.md | v1.0 | 2026-06-06 |
-| skills/ (5 skills Chamber) | v1.18.1 | 2026-06-25 |
+| skills/ (7 skills Diligencia) | v2.0.0 | 2026-06-26 |
 
 ## Archivos relacionados
 - `ROADMAP.md` — roadmap del proyecto

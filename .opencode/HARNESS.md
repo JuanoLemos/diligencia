@@ -1,7 +1,7 @@
 # HARNESS.md — Diligencia
 
 Harness global: `~/.config/opencode/`
-Versión: 1.0.0 | Creado: 2026-05-31
+Versión: 2.0.0 | Creado: 2026-05-31
 
 ---
 
@@ -22,7 +22,13 @@ Archivo principal: `AGENTS.md`
 
 | Skill | Ruta |
 |---|---|
-| *(ninguna)* | |
+| diligencia-cbp | `skills/diligencia-cbp/SKILL.md` |
+| diligencia-health | `skills/diligencia-health/SKILL.md` |
+| diligencia-docs | `skills/diligencia-docs/SKILL.md` |
+| diligencia-workflow | `skills/diligencia-workflow/SKILL.md` |
+| diligencia-commands | `skills/diligencia-commands/SKILL.md` |
+| diligencia-consejo | `skills/diligencia-consejo/SKILL.md` |
+| diligencia-circuito | `skills/diligencia-circuito/SKILL.md` |
 
 ## Stack
 

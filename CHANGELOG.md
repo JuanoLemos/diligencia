@@ -2,6 +2,42 @@
 
 ---
 
+## [2.0.0] — 2026-06-26
+
+### Added
+- `@consejero` — agente de decisión que revisa trayectoria de proyecto con 6 preguntas (supuestos, dominio, roadmap, deuda, mandato, aprender). Read-only, no codea.
+- `@circuito` — agente de integridad lógica y UX con 8 checks (handlers vacíos, callejones, rutas huérfanas, fetch sin endpoint, estados no manejados, navegación rota, consistencia UX, feedback faltante). Read-only.
+- `/consejo` — comando standalone para consultar al consejero sobre dudas o ideas del proyecto
+- `/circuito [area]` — comando standalone para revisar integridad lógica y UX
+- `diligencia-consejo` skill — checklist del consejero cargable por `/plan`, `/next`, `/RM`, `/checklist`, `/explica`, `/consejo`
+- `diligencia-circuito` skill — checklist de 8 verificaciones cargable por `/circuito` y `/doctor` Fase 1g
+- `MECANICA-CONSEJO.md` — mecánica completa del consejero: flujo, 6 preguntas, integración con comandos, anti-patrones
+- `MECANICA-CIRCUITO.md` — mecánica completa de integridad lógica: 8 checks, flujo, integración con /doctor
+- `/doctor` Fase 1g (Circuito lógico) — diagnóstico automático de handlers, rutas, navegación, UX en cada /doctor
+- `/doctor` Fase 3g (Circuito) — registro de hallazgos de circuito como bugs P2/P3 en $BUGS + CHECKLIST
+
+### Changed
+- `/plan` — +paso Consejero pre-BUILD: carga skill, aplica 6 preguntas, agrega sección "Observaciones del Consejero"
+- `/next` — +sección "Priorización estratégica (Consejero)" con orden real, deuda y recomendación
+- `/RM` — +sección "Análisis de trayectoria (Consejero)" con fases salteadas e items stale
+- `/checklist` — +sección "Deuda detectada (Consejero)" con bugs, ADRs y fases incompletas
+- `/explica` — +4ª capa "Implicancia estratégica" para conectar conceptos con decisiones de proyecto
+- AGENTS.md: 34→36 comandos fundamentales (+/consejo, +/circuito). Tabla de comandos actualizada con descripciones extendidas.
+- HARNESS.md: skills locales de "ninguna" → 7 skills listadas. Versión 1.0.0→2.0.0.
+- INDEX.md: +3 mecánicas v1.18.0 (CONTEXTO, GRAPHIFY, MEMORY). +2 mecánicas v2.0.0 (CONSEJO, CIRCUITO). Skills count 5→7. 24 archivos catalogados.
+- MECANICA-CBP.md: tabla de agentes sugeridos actualizada con @consejero y @circuito.
+- **LICENSE**: GPL-3.0 → AGPL-3.0 (copyleft más fuerte, cubre uso en red)
+- **MANIFIESTO.md** creado: contrato social con 6 principios para quien adapte o redistribuya
+- `README.md`, `CONTRIBUTING.md`, `doc/guias/GUIA_LEGAL.md`: actualizadas referencias de licencia
+
+### Fixed
+- INDEX.md: 3 mecánicas de v1.18.0 nunca registradas (MECANICA-CONTEXTO, GRAPHIFY, MEMORY)
+- INDEX.md: 2 skills nuevas sin catalogar (diligencia-consejo, diligencia-circuito)
+- PENDING.md: limpiada entrada de política emojis (2026-06-23) — procesada en este bump
+
+### Removed
+- `MECANICA-CIRCUITO.md` legacy (renombrado a MECANICA-CBP.md en v1.15.2) — reemplazado por nueva mecánica de integridad lógica
+
 ## [1.19.0] — 2026-06-25
 
 ### Added
@@ -16,15 +52,6 @@
 - R46 ✅ — audit Chamber completado (9 herramientas mapeadas)
 - Fases 2-4: 6/6 proyectos activos actualizados a v1.18.1
 - ROADMAP: R22-R47 items de planificación
-
-## [Unreleased]
-
-### Changed
-- **LICENSE**: GPL-3.0 → AGPL-3.0 (copyleft más fuerte, cubre uso en red)
-- **MANIFIESTO.md** creado: contrato social con 6 principios para quien adapte o redistribuya
-- `README.md`: actualizada referencia de licencia y enlace a MANIFIESTO.md
-- `CONTRIBUTING.md`: actualizada referencia de licencia
-- `doc/guias/GUIA_LEGAL.md`: actualizada referencia de GPL → AGPL
 
 ## [1.18.0] — 2026-06-23
 
