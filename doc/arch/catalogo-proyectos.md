@@ -53,6 +53,12 @@ Actualizado: 2026-06-23.
 | $REPO definido | 1 (Diligencia) |
 | Working tree dirty | 0 |
 
+## Herramientas bajo tutela de Diligencia
+
+| # | Herramienta | Ruta | Git remote | Repo | Estado |
+|---|---|---|---|---|---|
+| 1 | **OpenChamber** | `C:\Users\jlemo\OneDrive\Desktop\openchamber` | ✅ origin + upstream | `JuanoLemos/openchamber` (fork de `btriapitsyn/openchamber`) | Bajo tutela — modificado con badges, tray, notificaciones, $PROYECTOS |
+
 ## Backups
 
 Ejecutar `scripts/backup-all.ps1` antes de cualquier actualización masiva.
