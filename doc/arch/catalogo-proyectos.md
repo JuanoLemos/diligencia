@@ -12,7 +12,7 @@ Actualizado: 2026-06-23.
 | 1 | **Diligencia** | `C:\xampp\htdocs\Diligencia` | v2.1.0 | 2.1.0 | Metodología documental | No | Clean | Referente. Único con $REPO. |
 | 2 | **MarketAI** | `C:\xampp\htdocs\MarketAI` | v1.18.1 | 1.3.0 | Trading multi-capa | DeepSeek V4 Flash | Clean | Al día. Monitorear. |
 | 3 | **buenobonitobarato** | `C:\xampp\htdocs\buenobonitobarato` | v1.18.0 | 0.1.0 | CLI Node.js | No | Clean | Casi al día. |
-| 4 | **Nemesis** | `C:\xampp\htdocs\nemesis` | v1.18.1 ✅ | 3.8.2 | Juego narrativo IA | DeepSeek Flash+Pro, Claude, Gemini | Clean | Al día. 2238 líneas ROADMAP, 30 ADRs. |
+| 4 | **Nemesis** | `C:\xampp\htdocs\nemesis` | v1.18.1 ✅ | 3.8.2 | Juego narrativo IA | DeepSeek Flash+Pro, Claude, Gemini | Clean | ✅ Al día. DILIGENCIA.md creado 2026-06-26. |
 | 5 | **+RM** | `C:\xampp\htdocs\+RM` | v1.18.1 ✅ | Sin versionar | Dashboard PHP | No | Clean | ✅ Al día. |
 | 6 | **conquisitare** | `C:\xampp\htdocs\conquisitare` | v1.18.1 ✅ | 0.7.0 | Juego conquista WebGL | No | Clean | Al día. |
 
