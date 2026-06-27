@@ -16,6 +16,8 @@ Actualizado: 2026-06-23.
 | 5 | **+RM** | `C:\xampp\htdocs\+RM` | v1.18.1 ✅ | Sin versionar | Dashboard PHP | No | Clean | ✅ Al día. |
 | 6 | **conquisitare** | `C:\xampp\htdocs\conquisitare` | v1.18.1 ✅ | 0.7.0 | Juego conquista WebGL | No | Clean | Al día. |
 
+| 7 | **OpenMontage** | `C:\Users\jlemo\OneDrive\Desktop\OpenMontage-main` | v1.20.0 | — | — | — | — | Recién adaptado. Pendiente upgrade a v2.2.0. |
+
 ## Proyectos congelados
 
 | # | Proyecto | Ruta | Diligencia | Estado |
@@ -44,8 +46,8 @@ Actualizado: 2026-06-23.
 
 | Indicador | Valor |
 |---|---|
-| Proyectos activos | 6 |
-| Candidatos a adaptar | 1 (OldWorld) |
+| Proyectos activos | 7 |
+| Candidatos a adaptar | 2 (OldWorld, Crucix) |
 | Al día (v1.18.x) | 4 |
 | Atrasados | 0 |
 | Congelados | 2 |
