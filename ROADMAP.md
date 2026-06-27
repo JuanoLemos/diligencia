@@ -56,6 +56,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R49 | +ux: panel interactivo de checklist en Chamber por proyecto — checkboxes, progreso %, lee $UX_CHECK. Cada proyecto adaptado hereda el panel vía /adaptar. | P2 | 🔴 Pendiente | R25,R26 |
 | R50 | +MiniMax: integrar procesamiento multimodal (video, imagen, voz) vía Token Plan Max — testing en OpenMontage | P1 | 🔴 Pendiente | R25,R26 |
 | R51 | +chamber: iconos personalizados por proyecto para visual en carpeta de OpenChamber — template SVG en doc-base, /adaptar lo copia | P2 | 🔴 Pendiente | R25 |
+| R52 | +estudio: proyectos con potencial hosteo de server para actuarlos en producción + mejor camino para administrar todo | P2 | 🔴 Pendiente | — |
 
 ## Futuro (Later)
 

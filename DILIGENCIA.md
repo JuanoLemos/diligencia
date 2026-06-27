@@ -1,4 +1,4 @@
-# Diligencia v2.2.1 — Estructura estándar de documentación
+# Diligencia v2.2.2 — Estructura estándar de documentación
 
 Sello de metodología para proyectos OpenCode.
 

@@ -2,6 +2,12 @@
 
 ---
 
+## [2.2.2] — 2026-06-26
+
+### Added
+- R47 — Diligencia Command Toolbar en Chamber (5 verbos, dropdown, sendCommand)
+- R52 — estudio de hosting + administración de proyectos en producción
+
 ## [2.2.1] — 2026-06-26
 
 ### Changed
