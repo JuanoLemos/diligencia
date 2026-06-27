@@ -6,16 +6,18 @@ Cada entrada registra una operación de `/propagar`.
 ---
 
 | Fecha | Proyecto | Desde | Hasta | Resultado |
+|---|---|---|---|---|
 | 2026-06-26 | +RM | v1.18.1 | v2.1.1 | 📝 Notificado |
 | 2026-06-26 | MarketAI | v1.18.1 | v2.1.1 | 📝 Notificado |
 | 2026-06-26 | conquisitare | v1.18.1 | v2.1.1 | 📝 Notificado |
 | 2026-06-26 | buenobonitobarato | v1.18.0 | v2.1.1 | 📝 Notificado |
 | 2026-06-26 | Nemesis | v1.18.1 | v2.1.1 | 📝 Notificado (+DILIGENCIA.md creado) |
-| 2026-06-26 | OpenMontage-main | v1.20.0 | v2.2.0 | ✅ Completado (+ /adaptar Flujo C aplicado) |
 | 2026-06-26 | Nemesis | v1.18.1 | v2.2.0 | 📝 Notificado (+ DILIGENCIA.md recreado) |
-|-------|----------|-------|-------|-----------|
-
-*(Sin propagaciones registradas aún. Ejecutá `/propagar` para poblar esta tabla.)*
+| 2026-06-26 | OpenMontage-main | v1.20.0 | v2.2.0 | ✅ Completado (+ /adaptar Flujo C) |
+| 2026-06-26 | openchamber | v1.18.1 | v2.2.0 | ✅ Completado (+ comandos, $PROPAGAR_LOG, $UX_CHECK) |
+| 2026-06-26 | Chamber R38 | — | v1.0.0 | ✅ GUIA_DILIGENCIA_CHAMBER + GUIA_CHAMBER |
+| 2026-06-26 | Chamber R37 | — | v2.2.0 | ✅ README badges BETA + license + version |
+| 2026-06-26 | Chamber R51 | — | v1.0.0 | 🟡 Icon template SVG doc-base + icono Diligencia |
 
 ## Archivos relacionados
 - `AGENTS.md` — variable `$PROPAGAR_LOG`

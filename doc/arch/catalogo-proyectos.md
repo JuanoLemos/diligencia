@@ -17,6 +17,7 @@ Actualizado: 2026-06-23.
 | 6 | **conquisitare** | `C:\xampp\htdocs\conquisitare` | v1.18.1 ✅ | 0.7.0 | Juego conquista WebGL | No | Clean | Al día. |
 
 | 7 | **OpenMontage** | `C:\Users\jlemo\OneDrive\Desktop\OpenMontage-main` | v1.20.0 | — | — | — | — | Recién adaptado. Pendiente upgrade a v2.2.0. |
+| 8 | **OpenChamber** | `C:\Users\jlemo\OneDrive\Desktop\openchamber` | v2.2.0 ✅ | — | Interfaz visual | Fork Diligencia | Clean | Under tutelage. Upgrade v1.18.1→v2.2.0 completado. |
 
 ## Proyectos congelados
 

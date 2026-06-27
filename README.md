@@ -1,5 +1,10 @@
 # Diligencia
 
+![Status](https://img.shields.io/badge/status-beta-ff69b4?style=flat-square)
+![License](https://img.shields.io/badge/license-AGPL--3.0-blue?style=flat-square)
+![Version](https://img.shields.io/badge/version-v2.2.0-8A2BE2?style=flat-square)
+[![Issues](https://img.shields.io/badge/issues-6%20proyectos-181717?style=flat-square)](https://github.com/JuanoLemos/diligencia/issues)
+
 Estructura estándar de documentación para proyectos OpenCode.
 
 Diligencia define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta, cómo se organizan los comandos y cómo mantener la documentación sincronizada con el código.

@@ -40,7 +40,9 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 | GUIA_MULTI_REPO.md | v1.16.5 | 2026-06-06 |
 | GUIA_UPDATE_DILIGENCIA.md | v1.0 | 2026-06-06 |
 | identidad.md | v1.16.2 | 2026-06-05 |
-| COMANDOS.md | v2.1.0 | 2026-06-26 |
+| COMANDOS.md | v2.2.0 | 2026-06-26 |
+| GUIA_DILIGENCIA_CHAMBER.md | v1.0.0 | 2026-06-26 |
+| GUIA_CHAMBER.md | v1.0.0 | 2026-06-26 |
 
 ## Mecánicas
 
