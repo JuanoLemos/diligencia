@@ -81,7 +81,15 @@ Versiona el proyecto con CHANGELOG auto-generado desde commits Conventional Comm
       ⚠️ "N proyectos adaptados usan versión anterior de Diligencia."
       MOSTRAR minitabla: Proyecto | Versión | Atraso
       Preguntar: "¿Ejecutar /propagar ahora? [sí/no]"
-      - Si sí → ejecutar /propagar
+       - Si sí → ejecutar /propagar
+
+9.5. UX CHECK (si hubo BUILD en esta sesión):
+   a. LEER `$UX_CHECK` de AGENTS.md
+      - Si no existe → "Saltando verificación UX."
+   b. Si `$UX_CHECK` tiene filas sin revisar:
+      ⚠️ "N features sin validar en $UX_CHECK. Probá y actualizá el archivo."
+   c. Si `$UX_CHECK` no tiene entradas de esta sesión:
+      "📝 ¿Registrar validación en $UX_CHECK?"
 
 10. ACTUALIZAR INDEX.md: versión CHANGELOG + DILIGENCIA, fechas
 

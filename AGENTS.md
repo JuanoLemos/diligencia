@@ -74,17 +74,18 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | $PROPAGAR_LOG | `doc/arch/propagaciones.md` | Log de propagaciones de Diligencia a proyectos |
 | $STACK | *(definido en HARNESS.md)* | Stack tecnológico del proyecto (runtime) |
 | $PROJECT_NAME | *(del header DILIGENCIA.md)* | Nombre del proyecto para reportes |
+| $UX_CHECK | `doc/arch/ux-check.md` | Checklist de validación manual post-implementación |
 
-## Comandos globales heredados — 39 fundamentales
+## Comandos globales heredados — 36 fundamentales
 
 | Comando | Descripción | Tipo |
 |---|---|---|
 | /adaptar | Adaptar proyecto a estructura Diligencia | Declarativo |
-| /plan | Planificar en modo PLAN (incluye consejero automático) | Declarativo |
+| /plan | Planificar tarea o grupo de tareas (ola) con sub-fases y conflictos | Declarativo |
 | /commit | Git add + commit formateado | Procedural |
 | /pushgh | Push a GitHub según $REPO (via /CBP) | Procedural |
 | /health | Verificar sintaxis y consistencia | Declarativo |
-| /bug | Reportar bug en el proyecto | Declarativo |
+| /reportar | Reportar bug o incidente en el tracker correspondiente | Declarativo |
 | /deprecar | Deprecar archivos/comandos/estructuras obsoletas | Declarativo |
 | /debug | Análisis profundo | Declarativo |
 | /diligencia-check | Validar estructura Diligencia del proyecto | Declarativo |
@@ -92,10 +93,9 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | /legal | Verificar y aplicar buenas prácticas legales (LICENSE, NOTICE, SECURITY, SPDX) | Declarativo |
 | /limpiar | Limpiar temporales | Procedural |
 | /estado | Reporte rápido del proyecto | Declarativo |
-| /explica | Explicar concepto en 4 capas (criollo/técnico/impacto/implicancia) | Declarativo |
-| /checklist | Revisar CHECKLIST + ROADMAP + deuda detectada | Declarativo |
-| /rm | Revisar ROADMAP por área + análisis de trayectoria | Declarativo |
-| /next | Próximos 5 pasos según CHECKLIST + priorización estratégica | Declarativo |
+| /explica | Explicar concepto en formato directo (→/📄/⚠️/🧭) | Declarativo |
+| /rm | Revisar ROADMAP: top 10 tareas con impacto y sub-fases | Declarativo |
+| /next | Plan de ejecución por olas: agrupa tareas sin dependencias cruzadas + sub-fases | Declarativo |
 | /consejo | Consultar al consejero sobre dudas o ideas del proyecto | Declarativo |
 | /circuito | Revisar integridad lógica y UX (handlers, rutas, navegación) | Declarativo |
 | /+rm | Agregar item al ROADMAP | Declarativo |
@@ -109,9 +109,7 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | /foco | Enfocar agente en área específica | Declarativo |
 | /version | Cerrar sesión: bump + updoc + commit | Declarativo |
 | /report | Reporte consolidado | Declarativo |
-| /apply | Aplicar handoff file a código | Declarativo |
 | /head | Preparar edición de sección en archivo | Declarativo |
-| /incidente | Registrar incidente o crash runtime | Declarativo |
 | /reanudar | Recuperar sesión tras interrupción brusca | Declarativo |
 | /salud | Reporte de salud del proyecto (BUILD* via /CBP) | Declarativo |
 | /informe-salud | Reporte de salud inter-proyecto (escanea $PROYECTOS) | Declarativo |
@@ -138,6 +136,10 @@ Al terminar cualquier BUILD en este proyecto, reportar cambios aplicados y suger
 | `/news` | 2026-06-13 | Sin reemplazo — feature nunca usado |
 | `/notify` | 2026-06-13 | Sin reemplazo — variable $NOTIFY_SCRIPT nunca definida |
 | `/qa` | 2026-06-13 | Sin reemplazo — variable $QA nunca definida |
+| `/apply` | 2026-06-26 | Sin reemplazo — redundante con herramientas de edición directa de OpenCode |
+| `/bug` | 2026-06-26 | Usar `/reportar --tipo bug` — unificado con /incidente |
+| `/incidente` | 2026-06-26 | Usar `/reportar --tipo incidente` — unificado con /bug |
+| `/checklist` | 2026-06-26 | Usar `/rm` (inconsistencias CHECKLIST↔RM) y `/next` (priorización) — funcionalidad redistribuida |
 
 ## Archivos relacionados
 - `.opencode/HARNESS.md` — configuración de harness, test y lint

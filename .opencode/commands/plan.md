@@ -2,51 +2,73 @@ INSTRUCCIÓN: PLANIFICAR la tarea del usuario. NO ejecutar cambios sin aprobaci�
 
 # /plan — Planificar y luego ejecutar con BUILD
 
-Planifica una tarea en modo PLAN (solo lectura + análisis), y una vez aprobado por el usuario, ejecuta la implementación con BUILD.
+Planifica una tarea o grupo de tareas (ola) en modo PLAN (solo lectura + análisis), y una vez aprobado, ejecuta con BUILD. Soporta planificación individual o por olas desde `/next`.
+
+## Argumentos
+
+`/plan "<descripción>" [--ola N] [--sub-fases]`
+
+- `<descripción>`: qué se va a hacer. Puede ser una tarea o un resumen del grupo.
+- `--ola N`: tomar las tareas de la Ola N del último `/next` y planificarlas juntas.
+- `--sub-fases`: desglosar cada tarea en 2-4 pasos ejecutables.
 
 ## Cuándo usarlo
 - Tareas complejas que requieren análisis antes de implementar
 - Cambios arquitectónicos que afectan múltiples archivos
-- Features que requieren decisión del usuario antes de codificar
+- Grupos de tareas de una misma ola (/next) que conviene planificar juntas
 
 ## Qué hace
+
+### Si es tarea individual (sin --ola)
 1. MANTENERSE en modo PLAN (solo lectura + análisis, NO editar archivos aún)
-2. Leer los archivos relevantes AHORA (según lo que pidió el usuario)
-3. Si el proyecto tiene $RM y $CHECKLIST (proyecto adaptado a Diligencia): cargar `skill("diligencia-consejo")` y aplicar las 6 preguntas del consejero. Leer ROADMAP.md, CHECKLIST.md, MANDATO.md, bugs.md, ADR_SUMMARY.md. Agregar sección "Observaciones del Consejero" al plan.
-4. ENTREGAR SOLO el plan detallado (NUNCA el contenido de este archivo):
-   - Archivos a modificar
-   - Líneas exactas de cambio
-   - Riesgos y mitigaciones
-   - Esfuerzo estimado
-   - Observaciones del Consejero (si aplica)
-5. PREGUNTAR explícitamente: "¿Apruebo para BUILD?"
-6. ESPERAR confirmación del usuario antes de ejecutar cambios
-7. Si el usuario rechaza, ajustar el plan según feedback
+2. Leer los archivos relevantes AHORA
+3. Si `--sub-fases`: desglosar la tarea en 2-4 pasos secuenciales
+4. Entregar plan con: archivos, líneas de cambio, riesgos, esfuerzo, sub-fases
+5. Si proyecto adaptado: cargar consejero + agregar observaciones
+
+### Si es grupo (--ola N)
+1. Leer los IDs de tareas de la Ola N (desde el contexto de `/next`)
+2. Para cada tarea del grupo: identificar archivos a modificar
+3. **Detectar conflictos**: ¿2+ tareas tocan el mismo archivo? → tabla de conflictos
+4. **Ordenar dentro de la ola**: si hay conflictos, secuenciar (no son paralelizables)
+5. Desglosar sub-fases por tarea (si `--sub-fases`)
+6. Entregar plan consolidado del grupo
 
 ## Formato de salida
 
-**Plan** — secciones:
-- **Archivos a modificar**: lista de rutas exactas
-- **Líneas de cambio**: descripción de qué agregar/quitar en cada archivo
-- **Riesgos**: impactos potenciales y mitigaciones
-- **Esfuerzo**: estimación (chica/mediana/grande)
-- **Observaciones del Consejero** (si proyecto adaptado): tabla con Tipo, Observación, Sugerencia — supuestos, dominio, roadmap, deuda, mandato, aprender
+### Tarea individual
 
-**Pregunta de aprobación**: "¿Apruebo para BUILD?" (no BUILD sin respuesta sí)
+**Plan — <tarea>**
+- **Archivos a modificar**: lista de rutas exactas
+- **Líneas de cambio**: qué agregar/quitar en cada archivo
+- **Sub-fases** (si --sub-fases): 1. Paso concreto, 2. Paso concreto, 3. Paso concreto
+- **Riesgos**: impactos potenciales y mitigaciones
+- **Esfuerzo**: chica / mediana / grande
+
+### Grupo (--ola N)
+
+**Plan — Ola N: <N tareas>**
+- **Tareas**: tabla ID | Tarea | Archivos | Sub-fases | Esfuerzo
+- **Conflictos detectados**: tabla Archivo | Tocado por | Conflicto | Resolución
+- **Orden sugerido** dentro de la ola (si hay conflictos que impiden paralelismo real)
+- **Riesgos compartidos**: impactos que aplican a todo el grupo
+- **Esfuerzo total**: suma de esfuerzos individuales
+
+### Ambos
+- **Observaciones del Consejero** (si proyecto adaptado): tabla Tipo | Observación | Sugerencia
+- **Pregunta de aprobación**: "¿Apruebo para BUILD?"
 
 ## Validación
 - El plan cubre todos los requisitos del usuario
 - Cada archivo listado tiene especificado qué cambio hacer
-- Riesgos y mitigaciones están presentes
-- Esfuerzo estimado está presente
-- No se ejecutó ningún cambio durante la fase PLAN
+- Conflictos entre tareas del grupo están identificados
+- Sub-fases son concretas y ejecutables (si --sub-fases)
+- Esfuerzo estimado está presente por tarea y total
 
 ## Anti-patrones
 - NO entrar en modo BUILD sin aprobación explícita del usuario
 - NO modificar archivos durante la fase PLAN
 - NO omitir la sección de riesgos
 - NO dar una estimación sin justificación
-- NO comenzar a implementar mientras el usuario está revisando el plan
-
-## Archivos que NO modifica
-- No modifica archivos hasta que el usuario apruebe el plan
+- NO ignorar conflictos entre tareas de una misma ola
+- NO asumir que todas las tareas de una ola son realmente paralelizables — verificar conflictos de archivos

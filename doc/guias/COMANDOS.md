@@ -2,7 +2,7 @@
 
 ## 🔄 Flujo (8)
 /adaptar       Adaptar proyecto
-/plan          Planificar (PLAN→BUILD)
+/plan          Planificar (ola + sub-fases)
 /commit        Commit formateado
 /pushgh        Push a GitHub
 /version       Cerrar sesión
@@ -10,15 +10,14 @@
 /report        Reporte consolidado
 /estado        Reporte rápido
 
-## 🩺 Calidad (10)
+## 🩺 Calidad (9)
 /doctor        Cuidado integral
 /salud         Reporte de salud
 /health        Sintaxis y consistencia
 /diligencia-check  Validar estructura
 /debug         Análisis profundo
 /deprecar      Deprecar obsoletos
-/bug           Reportar bug
-/incidente     Registrar crash
+/reportar      Reportar bug o incidente
 /limpiar       Limpiar temporales
 /legal         Buenas prácticas legales
 
@@ -29,16 +28,14 @@
 /+mec          Crear mecánica
 /upmec         Actualizar mecánica
 
-## 📋 Roadmap (4)
-/rm            Revisar roadmap
+## 📋 Roadmap (3)
+/rm            Top 10 tareas + impacto
 /+rm           Agregar item
-/checklist     Revisar checklist
-/next          Próximos 5 pasos
+/next          Plan por olas (waves)
 
-## 💡 Contexto (4)
+## 💡 Contexto (3)
 /foco          Enfocar área
 /head          Preparar edición
-/apply         Aplicar handoff
 /explica       Explicar concepto
 
 ## 💾 Backup (2)
