@@ -70,7 +70,7 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | $REPO | `https://github.com/JuanoLemos/diligencia.git` | Repositorio GitHub del proyecto |
 | $BACKUPS | `doc/arch/backups.md` | Log de backups del doctor |
 | $BACKUP_KEEP | `5` | Cantidad de backups a conservar (pruning automático) |
-| $PROYECTOS | *(configurar)* | Lista de rutas a proyectos Diligencia-adaptados (ej: "C:\proyectos\alfa","C:\proyectos\beta") |
+| $PROYECTOS | `"C:\xampp\htdocs\+RM","C:\xampp\htdocs\MarketAI","C:\xampp\htdocs\conquisitare","C:\xampp\htdocs\buenobonitobarato","C:\xampp\htdocs\nemesis"` | 5 proyectos activos adaptados a Diligencia |
 | $PROPAGAR_LOG | `doc/arch/propagaciones.md` | Log de propagaciones de Diligencia a proyectos |
 | $STACK | *(definido en HARNESS.md)* | Stack tecnológico del proyecto (runtime) |
 | $PROJECT_NAME | *(del header DILIGENCIA.md)* | Nombre del proyecto para reportes |

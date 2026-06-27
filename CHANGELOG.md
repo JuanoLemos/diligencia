@@ -2,6 +2,15 @@
 
 ---
 
+## [2.1.1] — 2026-06-26
+
+### Changed
+- `$PROYECTOS` configurado con 5 proyectos activos (+RM, MarketAI, conquisitare, buenobonitobarato, Nemesis)
+- `catalogo-proyectos.md`: versión Diligencia actualizada, métricas ajustadas
+- `COMANDOS.md` creado — tabla compacta por categorías para panel lateral de Chamber
+- `MECANICA-PROPAGACION.md` creada — documenta el flujo completo de propagación
+- `CHECKLIST.md`: Dashboard actualizado a v2.1.0
+
 ## [2.1.0] — 2026-06-26
 
 ### Added

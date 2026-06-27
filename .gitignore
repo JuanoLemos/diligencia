@@ -13,4 +13,7 @@ Thumbs.db
 
 # Environment
 .env
+
+# Diligencia backups
+.old/
 .env.local

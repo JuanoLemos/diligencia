@@ -14,8 +14,8 @@ Gestionados por /version. La versión se actualiza al cerrar sesión.
 |---|---|---|
 | ROADMAP.md | v2.1.0 | 2026-06-26 |
 | CHECKLIST.md | v2.1.0 | 2026-06-26 |
-| CHANGELOG.md | v2.1.0 | 2026-06-26 |
-| DILIGENCIA.md | v2.1.0 | 2026-06-26 |
+| CHANGELOG.md | v2.1.1 | 2026-06-26 |
+| DILIGENCIA.md | v2.1.1 | 2026-06-26 |
 
 ## Guías
 

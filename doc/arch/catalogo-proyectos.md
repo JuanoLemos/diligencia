@@ -1,4 +1,4 @@
-# Catálogo de Proyectos — Diligencia v1.18.1
+# Catálogo de Proyectos — Diligencia v2.1.0
 
 Mapa completo de proyectos adaptados a Diligencia en el ecosistema local.
 Actualizado: 2026-06-23.
@@ -9,7 +9,7 @@ Actualizado: 2026-06-23.
 
 | # | Proyecto | Ruta | Diligencia | Versión propia | Tipo | IA integrada | WT | Acción pendiente |
 |---|---|---|---|---|---|---|---|---|
-| 1 | **Diligencia** | `C:\xampp\htdocs\Diligencia` | v1.18.1 | 1.18.0 | Metodología documental | No | Clean | Referente. Único con $REPO. |
+| 1 | **Diligencia** | `C:\xampp\htdocs\Diligencia` | v2.1.0 | 2.1.0 | Metodología documental | No | Clean | Referente. Único con $REPO. |
 | 2 | **MarketAI** | `C:\xampp\htdocs\MarketAI` | v1.18.1 | 1.3.0 | Trading multi-capa | DeepSeek V4 Flash | Clean | Al día. Monitorear. |
 | 3 | **buenobonitobarato** | `C:\xampp\htdocs\buenobonitobarato` | v1.18.0 | 0.1.0 | CLI Node.js | No | Clean | Casi al día. |
 | 4 | **Nemesis** | `C:\xampp\htdocs\nemesis` | v1.18.1 ✅ | 3.8.2 | Juego narrativo IA | DeepSeek Flash+Pro, Claude, Gemini | Clean | Al día. 2238 líneas ROADMAP, 30 ADRs. |
@@ -46,7 +46,7 @@ Actualizado: 2026-06-23.
 |---|---|
 | Proyectos activos | 6 |
 | Candidatos a adaptar | 1 (OldWorld) |
-| Al día (v1.18.x) | 6 |
+| Al día (v1.18.x) | 4 |
 | Atrasados | 0 |
 | Congelados | 2 |
 | IA integrada | 2 (MarketAI, Nemesis) |
