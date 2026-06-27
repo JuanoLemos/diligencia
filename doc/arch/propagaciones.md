@@ -12,6 +12,7 @@ Cada entrada registra una operación de `/propagar`.
 | 2026-06-26 | buenobonitobarato | v1.18.0 | v2.1.1 | 📝 Notificado |
 | 2026-06-26 | Nemesis | v1.18.1 | v2.1.1 | 📝 Notificado (+DILIGENCIA.md creado) |
 | 2026-06-26 | OpenMontage-main | v1.20.0 | v2.2.0 | ✅ Completado (+ /adaptar Flujo C aplicado) |
+| 2026-06-26 | Nemesis | v1.18.1 | v2.2.0 | 📝 Notificado (+ DILIGENCIA.md recreado) |
 |-------|----------|-------|-------|-----------|
 
 *(Sin propagaciones registradas aún. Ejecutá `/propagar` para poblar esta tabla.)*
