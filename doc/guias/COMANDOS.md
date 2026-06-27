@@ -1,56 +1,42 @@
-# COMANDOS — Diligencia v2.1.0
+# COMANDOS — Diligencia v2.1.1
 
-## 🔄 Flujo (8)
-/adaptar       Adaptar proyecto
-/plan          Planificar (ola + sub-fases)
-/commit        Commit formateado
-/pushgh        Push a GitHub
-/version       Cerrar sesión
+## ✏️ CREAR (4)
+/adaptar       Adaptar proyecto a Diligencia
+/+rm           Agregar item al ROADMAP
+/doc           Crear/actualizar guía o mecánica
+/propagar      Propagar updates a proyectos
+
+## 📋 PLANIFICAR (8)
+/plan          Planificar tarea o grupo (--ola)
+/rm            Top 10 tareas por prioridad
+/next          Plan de ejecución por olas
+/consejo       Consultar al consejero
+/circuito      Revisar integridad lógica y UX
+/explica       Explicar concepto (→/📄/⚠️/🧭)
+/foco          Enfocar agente en área
+/head          Preparar edición de sección
+
+## ⚡ EJECUTAR (6)
+/commit        Commit formateado (--push)
+/version       Cerrar sesión: bump + doc sync
 /reanudar      Recuperar sesión
-/report        Reporte consolidado
-/estado        Reporte rápido
+/estado        Reporte rápido del proyecto
+/backup        Backup (--all zip completo)
+/updoc         Actualizar documentación
 
-## 🩺 Calidad (9)
-/doctor        Cuidado integral
-/salud         Reporte de salud
-/health        Sintaxis y consistencia
-/diligencia-check  Validar estructura
-/debug         Análisis profundo
-/deprecar      Deprecar obsoletos
+## 🔍 REVISAR (5)
+/informe-salud Salud de todos los proyectos
 /reportar      Reportar bug o incidente
-/limpiar       Limpiar temporales
-/legal         Buenas prácticas legales
+/mutacion      Absorber mutaciones externas
+/revision      Revisar mutaciones del proyecto
+/debug         Análisis profundo de código
 
-## 📄 Documentación (5)
-/updoc         Actualizar docs
-/+guia         Crear guía
-/upguia        Actualizar guía
-/+mec          Crear mecánica
-/upmec         Actualizar mecánica
-
-## 📋 Roadmap (3)
-/rm            Top 10 tareas + impacto
-/+rm           Agregar item
-/next          Plan por olas (waves)
-
-## 💡 Contexto (3)
-/foco          Enfocar área
-/head          Preparar edición
-/explica       Explicar concepto
-
-## 💾 Backup (2)
-/backup        Backup rápido
-/backupall     Zip completo
-
-## 🧠 Consejo (2)
-/consejo       Consultar consejero
-/circuito      Integridad lógica y UX
-
-## 📡 Multi-proyecto (4)
-/informe-salud Salud inter-proyecto
-/propagar      Propagar updates
-/mutacion      Absorber mutaciones
-/revision      Revisar mutaciones
+## 🛡️ CUIDAR (5)
+/doctor        Cuidado integral (8 fases)
+/health        Verificar sintaxis y consistencia
+/diligencia-check  Validar estructura Diligencia
+/deprecar      Mover obsoleto a .old/
+/limpiar       Eliminar temporales
 
 ## Archivos relacionados
 - `GUIA_REFERENCIA_RAPIDA.md` — guía con categorías y workflows

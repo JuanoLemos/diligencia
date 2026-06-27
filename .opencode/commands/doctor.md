@@ -78,6 +78,16 @@ EJECUTAR los 8 checks de integridad lógica y UX sobre el proyecto:
 ENTREGAR tabla de hallazgos con Archivo:Línea | Hallazgo | Severidad (P2/P3)
 INCLUIR en tabla consolidada de Fase 2.
 
+### 1h — Legal
+VERIFICAR presencia de documentos legales en la raíz:
+- `LICENSE` — si falta: sugerir copiar template
+- `NOTICE` — si falta: sugerir copiar template
+- `SECURITY.md` — si falta: sugerir copiar template
+- `LICENSING.md` — si falta y hubo cambios de licencia: sugerir crear
+Si existe `package.json` y no tiene `"license"`: sugerir agregar SPDX.
+MUESTREO: verificar headers SPDX en 5 archivos fuente.
+INCLUIR en tabla consolidada de Fase 2.
+
 ---
 
 ## Fase 2 — Confirmación
@@ -171,6 +181,21 @@ Por cada hallazgo de 1g con archivo:línea concreto:
 - AGREGAR entrada en `$CHECKLIST` como `[ ] <archivo>:<línea> — <hallazgo> (P2/P3 circuito)`
 Hallazgos sin archivo:línea concreto: SALTAR (no son bugs confirmados).
 
+### 3h — Salud
+- GENERAR `doc/arch/status-salud.md` con los datos recolectados en Fase 1:
+  | Indicador | Fuente |
+  |---|---|
+  | Versión | DILIGENCIA.md header |
+  | Estructura | Fase 1a |
+  | Docs stale | Fase 1c |
+  | Gaps documentales | Fase 1c |
+  | Último /doctor | Fecha actual |
+  | Working tree | git status actual |
+  | ADRs pendientes | Fase 1c |
+  | Template sync | Fase 1a (DILIGENCIA vs adaptar) |
+- ACTUALIZAR INDEX.md con entrada de `status-salud.md`
+- REPORTAR: "🩺 status-salud.md generado"
+
 ---
 
 ## Formato de salida
@@ -180,6 +205,7 @@ Hallazgos sin archivo:línea concreto: SALTAR (no son bugs confirmados).
 **✋ Fase 2 — Confirmación:** "¿Ejecutar correcciones? (s/n)"
 **💾 Backup pre-corrección:** backup #N creado en `.old/doctor-backups/`, pruning aplicado si > $BACKUP_KEEP
 **🔧 Fase 3 — Correcciones aplicadas:** tabla Archivo | Cambio | Estado
+🩺 **status-salud.md** generado automáticamente
 **Resumen:**
 - Si hubo correcciones → `✅ Alta médica — N correcciones aplicadas. Backup #N guardado.`
 - Si no hubo correcciones → `👀 Sin novedades — proyecto sano`
@@ -196,6 +222,7 @@ Hallazgos sin archivo:línea concreto: SALTAR (no son bugs confirmados).
 - Si Fase 2 responde "no": no se ejecuta backup ni Fase 3
 - Autocierre aplicado: /doctor marcado como ✅/[x] en RM/CHECKLIST si estaba pendiente
 - Circuito (1g/3g): hallazgos sin archivo:línea no se registran como bugs
+- Salud (3h): status-salud.md generado con datos de Fase 1, INDEX actualizado
 
 
 ## Archivos que lee
@@ -209,6 +236,7 @@ Hallazgos sin archivo:línea concreto: SALTAR (no son bugs confirmados).
 ## Archivos que modifica (solo si usuario confirma)
 - `$BACKUPS` (nueva entrada de backup)
 - `.old/doctor-backups/` (directorio de backups + pruning)
+- `doc/arch/status-salud.md` (generado en 3h)
 - `$BUGS` (nuevos bugs, incluyendo hallazgos de circuito 3g)
 - `$INCIDENTS` (nuevos incidentes, si aplica)
 - `$CHECKLIST` (nuevos items tildados, pendientes de circuito)

@@ -76,21 +76,19 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | $PROJECT_NAME | *(del header DILIGENCIA.md)* | Nombre del proyecto para reportes |
 | $UX_CHECK | `doc/arch/ux-check.md` | Checklist de validación manual post-implementación |
 
-## Comandos globales heredados — 36 fundamentales
+## Comandos globales heredados — 28 fundamentales
 
 | Comando | Descripción | Tipo |
 |---|---|---|
 | /adaptar | Adaptar proyecto a estructura Diligencia | Declarativo |
 | /plan | Planificar tarea o grupo de tareas (ola) con sub-fases y conflictos | Declarativo |
-| /commit | Git add + commit formateado | Procedural |
-| /pushgh | Push a GitHub según $REPO (via /CBP) | Procedural |
+| /commit | Git add + commit formateado (--push para commit+push) | Procedural |
 | /health | Verificar sintaxis y consistencia | Declarativo |
 | /reportar | Reportar bug o incidente en el tracker correspondiente | Declarativo |
 | /deprecar | Deprecar archivos/comandos/estructuras obsoletas | Declarativo |
 | /debug | Análisis profundo | Declarativo |
 | /diligencia-check | Validar estructura Diligencia del proyecto | Declarativo |
-| /doctor | Cuidado integral: estructura + código + tracking + circuito + limpieza + deprecación | Declarativo |
-| /legal | Verificar y aplicar buenas prácticas legales (LICENSE, NOTICE, SECURITY, SPDX) | Declarativo |
+| /doctor | Cuidado integral: estructura + código + tracking + circuito + limpieza + deprecación + legal | Declarativo |
 | /limpiar | Limpiar temporales | Procedural |
 | /estado | Reporte rápido del proyecto | Declarativo |
 | /explica | Explicar concepto en formato directo (→/📄/⚠️/🧭) | Declarativo |
@@ -99,19 +97,13 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | /consejo | Consultar al consejero sobre dudas o ideas del proyecto | Declarativo |
 | /circuito | Revisar integridad lógica y UX (handlers, rutas, navegación) | Declarativo |
 | /+rm | Agregar item al ROADMAP | Declarativo |
-| /+guia | Crear guía nueva en doc/guias | Declarativo |
 | /updoc | Actualizar documentación completa | Declarativo |
-| /upguia | Actualizar guía existente | Declarativo |
-| /+mec | Crear documento desde template | Declarativo |
-| /upmec | Actualizar documento existente | Declarativo |
-| /backup | Backup pre-edit genérico | Procedural |
-| /backupall | Zip completo del proyecto | Procedural |
+| /doc | Crear o actualizar guías y mecánicas desde template | Declarativo |
+| /backup | Backup de archivos o proyecto completo (--all) | Procedural |
 | /foco | Enfocar agente en área específica | Declarativo |
 | /version | Cerrar sesión: bump + updoc + commit | Declarativo |
-| /report | Reporte consolidado | Declarativo |
 | /head | Preparar edición de sección en archivo | Declarativo |
 | /reanudar | Recuperar sesión tras interrupción brusca | Declarativo |
-| /salud | Reporte de salud del proyecto (BUILD* via /CBP) | Declarativo |
 | /informe-salud | Reporte de salud inter-proyecto (escanea $PROYECTOS) | Declarativo |
 | /propagar | Propagar actualizaciones de Diligencia a proyectos adaptados | Declarativo |
 | /mutacion | Absorber mutaciones de un proyecto adaptado | Declarativo |
@@ -139,6 +131,15 @@ Al terminar cualquier BUILD en este proyecto, reportar cambios aplicados y suger
 | `/apply` | 2026-06-26 | Sin reemplazo — redundante con herramientas de edición directa de OpenCode |
 | `/bug` | 2026-06-26 | Usar `/reportar --tipo bug` — unificado con /incidente |
 | `/incidente` | 2026-06-26 | Usar `/reportar --tipo incidente` — unificado con /bug |
+| `/salud` | 2026-06-26 | Usar `/doctor` — genera status-salud.md automáticamente en Fase 3h |
+| `/pushgh` | 2026-06-26 | Usar `/commit --push` — integrado como flag |
+| `/report` | 2026-06-26 | Usar `/estado --full` — absorbido en Dashboard Unificado |
+| `/backupall` | 2026-06-26 | Usar `/backup --all` — integrado como flag |
+| `/legal` | 2026-06-26 | Usar `/doctor` — verifica licencias en Fase 1h |
+| `/+guia` | 2026-06-26 | Usar `/doc --tipo guia` |
+| `/upguia` | 2026-06-26 | Usar `/doc --tipo guia --actualizar` |
+| `/+mec` | 2026-06-26 | Usar `/doc --tipo mecanica` |
+| `/upmec` | 2026-06-26 | Usar `/doc --tipo mecanica --actualizar` |
 | `/checklist` | 2026-06-26 | Usar `/rm` (inconsistencias CHECKLIST↔RM) y `/next` (priorización) — funcionalidad redistribuida |
 
 ## Archivos relacionados

@@ -2,6 +2,41 @@
 
 ---
 
+## [2.2.0] — 2026-06-26
+
+### Added
+- `/doc` — unifica /+guia, /upguia, /+mec, /upmec en un solo comando (--tipo guia|mecanica, --crear|--actualizar)
+- `/commit --push` — push integrado en commit, elimina /pushgh
+- `/backup --all` — zip completo del proyecto, elimina /backupall
+- `$UX_CHECK` → `doc/arch/ux-check.md` — checklist de validación manual post-implementación
+- `/doctor` Fase 1h (legal) + Fase 3h (salud) — absorbe /legal y /salud
+- R49 — UX panel interactivo en Chamber por proyecto
+
+### Changed
+- `/rm`: top 10 tareas con impacto (Alto/Medio/Bajo) y sub-fases ejecutables
+- `/next`: plan por olas (waves), agrupa tareas sin dependencias cruzadas, usa @consejero
+- `/plan`: soporta `--ola N` (grupo de tareas) con detección de conflictos y sub-fases
+- `/explica`: nuevo template compacto (→/📄/⚠️/🧭), eliminado el label "En criollo"
+- `/doctor`: genera status-salud.md automáticamente en Fase 3h (hereda de /salud)
+- `/doctor`: verifica documentos legales en Fase 1h (hereda de /legal)
+- `/commit`: +paso 8 push post-commit (hereda de /pushgh)
+- `/backup`: +funcionalidad --all (hereda de /backupall)
+- `/version`: paso 9.5 UX CHECK — sugiere validar tras BUILD
+- `COMANDOS.md`: 8 grupos → 5 grupos por acción (✏️ CREAR / 📋 PLANIFICAR / ⚡ EJECUTAR / 🔍 REVISAR / 🛡️ CUIDAR)
+- `AGENTS.md`: 39→28 comandos, todos los deprecados reorganizados
+- `CBP.md`: /salud y /pushgh eliminados del circuito (absorbidos por /doctor y /commit)
+
+### Removed
+- `/apply` — redundante con herramientas de edición directa
+- `/bug`, `/incidente` → `/reportar`
+- `/checklist` → `/rm` + `/next`
+- `/salud` → `/doctor`
+- `/pushgh` → `/commit --push`
+- `/report` → `/estado --full`
+- `/backupall` → `/backup --all`
+- `/legal` → `/doctor`
+- `/+guia`, `/upguia`, `/+mec`, `/upmec` → `/doc`
+
 ## [2.1.1] — 2026-06-26
 
 ### Changed

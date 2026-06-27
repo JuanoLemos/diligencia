@@ -64,7 +64,7 @@ Cuando /CBP se invoca, EJECUTAR este algoritmo ANTES de cualquier otra acción:
           question: "Detecté [N] archivos: [X] docs, [Y] código.",
           options: [
             {label: "commit (Recomendado)", description: "git add + commit + push. Sin doc sync ni versión."},
-            {label: "parcial", description: "/updoc + /version patch + push. Sin agentes ni /salud."},
+            {label: "parcial", description: "/updoc + /version patch + push. Sin agentes."},
             {label: "full", description: "Meta-PLAN + BUILD + agentes/skills."},
             {label: "abortar", description: "Cancelar sin cambios."}
           ]
@@ -110,8 +110,8 @@ Reemplaza el comportamiento default `completo` con una decisión inteligente.
 
 | Señal de entrada | Camino | Qué ejecuta |
 |---|---|---|
-| Solo código fuente modificado, 0 docs tocados | **commit** | `git add -A` + `/commit` + `/pushgh`. Sin doc sync ni versión ni Meta-PLAN. |
-| 1-5 docs tocados, sin nuevas guías/mecánicas | **parcial** | `/updoc` Fases A→F + `/version` patch + `/pushgh`. Sin Meta-PLAN profundo, sin agentes, sin /salud, sin /doctor. |
+| Solo código fuente modificado, 0 docs tocados | **commit** | `git add -A` + `/commit --push`. Sin doc sync ni versión ni Meta-PLAN. |
+| 1-5 docs tocados, sin nuevas guías/mecánicas | **parcial** | `/updoc` Fases A→F + `/version` patch + `--push`. Sin Meta-PLAN profundo, sin agentes, sin /doctor. |
 | 5+ docs tocados, nuevas guías/mecánicas, milestones, o working tree sucio de múltiples sesiones | **full** | `/CBP completo` actual (Meta-PLAN + BUILD + agentes/skills). |
 
 ### Cómo detecta el camino
@@ -189,12 +189,12 @@ y produce su diagnóstico de vuelta al orquestador.
 
 - *(sin argumento)*: **detección automática** del camino óptimo (commit / parcial / full) según el working tree
 - `commit`: Solo commit + push. Sin doc sync, sin versión, sin Meta-PLAN.
-- `parcial`: /updoc Fases A→F + /version patch + /pushgh. Sin /salud, sin /doctor, sin agentes.
+- `parcial`: /updoc Fases A→F + /version patch + --push. Sin /doctor, sin agentes.
 - `full`: Ciclo completo con Meta-PLAN paralelo + BUILD (equivale a `completo`).
 - `completo`: Alias de `full` (legacy, compatibilidad).
-- `updoc`: Post-sesión completo — Meta-PLAN → BUILD (/updoc → /salud → /version → /pushgh → sugiere /doctor)
-- `doctor`: Diagnóstico integral — Meta-PLAN → BUILD (/doctor → /salud → /version si correcciones → /pushgh)
-- `version`: Versionado standalone — Meta-PLAN → BUILD (/version → /pushgh → sugiere /doctor)
+- `updoc`: Post-sesión completo — Meta-PLAN → BUILD (/updoc → /version --push → sugiere /doctor)
+- `doctor`: Diagnóstico integral — Meta-PLAN → BUILD (/doctor → /version --push si correcciones)
+- `version`: Versionado standalone — Meta-PLAN → BUILD (/version --push → sugiere /doctor)
 - `--yes`: omitir confirmación del Meta-PLAN
 
 > Sin argumento, `/CBP` detecta el camino óptimo. Los sub-comandos (`full`, `parcial`, `commit`, `updoc`, `doctor`, `version`) fuerzan un camino específico.
@@ -256,10 +256,6 @@ y produce su diagnóstico de vuelta al orquestador.
       ──────────
       [archivos a modificar, bump type]
       
-      🩺 /salud BUILD*
-      ──────────
-      [indicadores de salud: stale, gaps, estructura, WT, ADRs]
-      
       🔬 /doctor
       ──────────
       [issues encontrados, correcciones pendientes]
@@ -276,9 +272,7 @@ y produce su diagnóstico de vuelta al orquestador.
    ⚠️ BUILD = aplicar cambios, NO commitear. Solo /commit, /CBP y /version ejecutan git commit.
       Al terminar: reportar "✅ BUILD completo. Ejecutar /CBP para commitear."
    - /updoc Fase F (BUILD): aplicar correcciones de guías/mecánicas/ADRs, actualizar INDEX
-   - /salud BUILD*: generar `doc/arch/status-salud.md`, actualizar INDEX
-   - /version (BUILD*): Steps 6→12 — CHANGELOG + commit + tag
-   - /pushgh BUILD*: git push al remoto configurado en $REPO (solo si $REPO definido)
+   - /version (BUILD*): Steps 6→12 — CHANGELOG + commit + tag + --push
     - /doctor Fase 3 (BUILD): backup pre-corrección + aplicar correcciones si hay (solo si /doctor detectó issues en Meta-PLAN)
 
 3. **SUGERIR /doctor**
@@ -290,17 +284,16 @@ y produce su diagnóstico de vuelta al orquestador.
 ### `doctor` — Diagnóstico y corrección
 
 1. **META-PLAN (razonamiento)**
-   - LEER `doctor.md`, `version.md`, `salud.md` del disco
+   - LEER `doctor.md`, `version.md` del disco
    - EJECUTAR /doctor Fases 1→2 (PLAN: diagnóstico estructura, código, tracking, limpieza, deprecación)
-   - ARMAR tabla división única (solo /doctor + /salud)
+   - ARMAR tabla división única (solo /doctor)
    - PREGUNTAR: "¿Ejecutar correcciones?"
    - SI no confirma: DETENER workflow
 
 2. **BUILD (ejecuci�n)**
    ⚠️ BUILD = aplicar cambios, NO commitear. Solo /commit, /CBP y /version ejecutan git commit.
-   - /doctor Fase 3 (BUILD): backup pre-corrección + crear archivos, sincronizar tracking, deprecar, limpiar
-   - /salud BUILD*: generar `doc/arch/status-salud.md`, actualizar INDEX
-   - SI hubo correcciones: /version patch BUILD* — Steps 6→12 (CHANGELOG + commit + tag) → /pushgh BUILD*
+   - /doctor Fase 3 (BUILD): backup pre-corrección + crear archivos, sincronizar tracking, deprecar, limpiar, generar status-salud.md
+   - SI hubo correcciones: /version patch BUILD* — Steps 6→12 (CHANGELOG + commit + tag + --push)
    - SI no hubo correcciones: workflow terminado — volver a SESSIONWORK
 
 ---
@@ -318,8 +311,7 @@ y produce su diagnóstico de vuelta al orquestador.
    - SI no confirma: DETENER workflow
 
 2. **BUILD (ejecuci�n)**
-   - /version BUILD* Steps 6→12 (CHANGELOG + commit + tag. No preguntar — ya confirmado en Meta-PLAN)
-   - /pushgh BUILD*: git push al remoto configurado en $REPO (solo si $REPO definido)
+   - /version BUILD* Steps 6→12 (CHANGELOG + commit + tag + --push. No preguntar — ya confirmado en Meta-PLAN)
 
 3. **SUGERIR /doctor**
    - Preguntar: "¿Ejecutar diagnóstico post-versionado?"
@@ -357,11 +349,10 @@ Para sesiones donde se tocaron 1-5 docs sin nuevas guías/mecánicas.
 
 2. **BUILD (ejecución)**
    - /updoc Fase F (BUILD: aplicar correcciones de la auditoría PLAN)
-   - /version BUILD* Steps 6→12 (CHANGELOG + commit + tag + push)
-   - /pushgh BUILD* git push
+   - /version BUILD* Steps 6→12 (CHANGELOG + commit + tag + --push)
 
 3. **NO SUGERIR /doctor**
-   - Sin /salud, sin /doctor, sin agentes — el camino parcial es deliberadamente liviano
+   - Sin /doctor, sin agentes — el camino parcial es deliberadamente liviano
 
 ---
 
@@ -436,7 +427,6 @@ El meta-orquestador analiza el working tree y sugiere agentes/skills antes del B
    OLA 4 — ARMAR tabla consolidada:
    - Agentes/Skills sugeridos (W4)
    - /updoc findings (W1+W2)
-   - /salud: ¿ejecutar BUILD*?
     - /version bump y pre-flight (W3)
     - /doctor correcciones (W2)
     - Diligencia version: ✅ al día o ⚠️ stale (W3)
@@ -447,9 +437,7 @@ El meta-orquestador analiza el working tree y sugiere agentes/skills antes del B
    ⚠️ BUILD = aplicar cambios, NO commitear. Solo /commit, /CBP y /version ejecutan git commit.
    - Agentes aceptados: ejecutar en orden (reviewer → architect → verify)
    - /updoc Fase F (BUILD): aplicar correcciones documentales
-   - /salud BUILD*: generar status-salud.md
-   - /version BUILD*: Steps 6→12 (CHANGELOG + commit + tag)
-   - /pushgh BUILD*: git push al remoto configurado en $REPO (solo si $REPO definido)
+   - /version BUILD*: Steps 6→12 (CHANGELOG + commit + tag + --push)
     - /doctor Fase 3 (BUILD): backup pre-corrección + aplicar correcciones si hay
 
 3. **SUGERIR /CBP doctor** si /doctor detectó correcciones no aplicadas
@@ -502,6 +490,5 @@ El meta-orquestador analiza el working tree y sugiere agentes/skills antes del B
 - `~/.config/opencode/commands/updoc.md`
 - `~/.config/opencode/commands/version.md`
 - `~/.config/opencode/commands/doctor.md`
-- `~/.config/opencode/commands/salud.md`
 - `doc/mecanicas/MECANICA-CBP.md`
 - `doc/guias/GUIA_DE_BUENAS_PRACTICAS.md` §9
