@@ -71,10 +71,11 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | $BACKUPS | `doc/arch/backups.md` | Log de backups del doctor |
 | $BACKUP_KEEP | `5` | Cantidad de backups a conservar (pruning automático) |
 | $PROYECTOS | *(configurar)* | Lista de rutas a proyectos Diligencia-adaptados (ej: "C:\proyectos\alfa","C:\proyectos\beta") |
+| $PROPAGAR_LOG | `doc/arch/propagaciones.md` | Log de propagaciones de Diligencia a proyectos |
 | $STACK | *(definido en HARNESS.md)* | Stack tecnológico del proyecto (runtime) |
 | $PROJECT_NAME | *(del header DILIGENCIA.md)* | Nombre del proyecto para reportes |
 
-## Comandos globales heredados — 36 fundamentales
+## Comandos globales heredados — 39 fundamentales
 
 | Comando | Descripción | Tipo |
 |---|---|---|
@@ -114,6 +115,9 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | /reanudar | Recuperar sesión tras interrupción brusca | Declarativo |
 | /salud | Reporte de salud del proyecto (BUILD* via /CBP) | Declarativo |
 | /informe-salud | Reporte de salud inter-proyecto (escanea $PROYECTOS) | Declarativo |
+| /propagar | Propagar actualizaciones de Diligencia a proyectos adaptados | Declarativo |
+| /mutacion | Absorber mutaciones de un proyecto adaptado | Declarativo |
+| /revision | Revisar mutaciones del proyecto y generar reporte | Declarativo |
 
 ## Focus
 - Documentar la metodología

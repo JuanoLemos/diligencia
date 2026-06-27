@@ -2,6 +2,24 @@
 
 ---
 
+## [2.1.0] — 2026-06-26
+
+### Added
+- `/propagar` — comando PLAN→BUILD para propagar actualizaciones de Diligencia a proyectos adaptados detectando versiones atrasadas, escribiendo `UPDATE-AVAILABLE.md`, y ofreciendo `/adaptar` Flujo C por proyecto
+- `/version` paso 9 (post-bump) — detecta proyectos en `$PROYECTOS` con versión anterior y sugiere `/propagar`
+- `$PROPAGAR_LOG` → `doc/arch/propagaciones.md` — log de propagaciones
+- `/circuito`, `/consejo`, `/mutacion`, `/revision`, `deprecados.md`, `PENDING.md` — 6 archivos globales copiados a `.opencode/commands/`
+
+### Changed
+- `AGENTS.md` (2026-06-26): roles de sesión — Circuito + Chamber con cartas de nacimiento y reglas de convivencia
+- `AGENTS.md`: tabla de comandos 38→39 fundamentales (+`/propagar`, `/mutacion`, `/revision`)
+- `ROADMAP.md`: +R48 — mecanismo de propagación semiautomático (`/version` sugiere, `/propagar` ejecuta)
+- 6 comandos locales sincronizados con globales: checklist, doctor, explica, next, plan, rm
+
+### Fixed
+- Calidad documental: `PENDING.md`, `mutaciones-consolidadas.md` — headers con versión + cross-refs agregados
+- Calidad documental: `status-salud.md` — doble `—` en header corregido
+
 ## [2.0.0] — 2026-06-26
 
 ### Added

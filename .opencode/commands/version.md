@@ -71,18 +71,31 @@ Versiona el proyecto con CHANGELOG auto-generado desde commits Conventional Comm
    b. Actualizar DILIGENCIA.md template global
    c. Sincronizar templates doc-base
 
-9. ACTUALIZAR INDEX.md: versión CHANGELOG + DILIGENCIA, fechas
+9. POST-BUMP — Verificar proyectos adaptados (solo si proyecto = Diligencia):
+   a. LEER `$PROYECTOS` de AGENTS.md
+      - Si no está configurado → "Saltando verificación de proyectos adaptados."
+   b. POR CADA proyecto en $PROYECTOS:
+      - Leer su DILIGENCIA.md → extraer versión
+      - Comparar con la nueva versión de Diligencia
+   c. Si hay N proyectos atrasados:
+      ⚠️ "N proyectos adaptados usan versión anterior de Diligencia."
+      MOSTRAR minitabla: Proyecto | Versión | Atraso
+      Preguntar: "¿Ejecutar /propagar ahora? [sí/no]"
+      - Si sí → ejecutar /propagar
 
-10. `git add -A` → `git commit -m "chore(release): vX.Y.Z"` → `git tag vX.Y.Z`
+10. ACTUALIZAR INDEX.md: versión CHANGELOG + DILIGENCIA, fechas
 
-11. `git status --porcelain` → DEBE estar vacío. Si no: ERROR FATAL.
+11. `git add -A` → `git commit -m "chore(release): vX.Y.Z"` → `git tag vX.Y.Z`
 
-12. Reportar SOLO resumen.
+12. `git status --porcelain` → DEBE estar vacío. Si no: ERROR FATAL.
+
+13. Reportar SOLO resumen.
 
 ## Formato de salida
 🔖 vA.B.C → vX.Y.Z
 📄 CHANGELOG auto-generado: N items (N Added, N Fixed, N Changed)
 🔍 Pre-flight: A: <N STALE> | B: <OK/⚠️> | C: <N faltantes> | D: <OK/mismatch> | E: <OK/N sin ref> | F: <OK/N rotas>
+📡 Post-bump: N proyectos adaptados → M atrasados (sugiere /propagar)
 ✅ Commit: chore(release): vX.Y.Z + tag
 ⚠️ git status --porcelain limpio: Sí
 
@@ -91,6 +104,7 @@ Versiona el proyecto con CHANGELOG auto-generado desde commits Conventional Comm
 - Commits clasificados por tipo Conventional Commit
 - CHANGELOG generado con categorías Added/Fixed/Changed
 - Pre-flight protegido (6 checks)
+- Post-bump: proyectos atrasados detectados y /propagar sugerido (solo si proyecto = Diligencia)
 - INDEX.md actualizado con nueva versión
 - `git status --porcelain` vacío post-commit
 - Tag creado: `git tag vX.Y.Z`

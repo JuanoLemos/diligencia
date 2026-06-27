@@ -1,4 +1,4 @@
-# Status Salud — Diligencia — v2.0.0
+# Status Salud — Diligencia v2.0.0
 
 Generado por `/salud` el 2026-06-26.
 
