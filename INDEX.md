@@ -56,6 +56,7 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 | MECANICA-CONTEXTO.md | v1.0 | 2026-06-06 |
 | MECANICA-GRAPHIFY.md | v1.0 | 2026-06-06 |
 | MECANICA-MEMORY.md | v1.0 | 2026-06-06 |
+| MECANICA-PROPAGACION.md | v1.0.0 | 2026-06-26 |
 | MECANICA-CONSEJO.md | v1.0.0 | 2026-06-26 |
 | MECANICA-CIRCUITO.md | v1.0.0 | 2026-06-26 |
 | MANDATO.md | v1.17.2 | 2026-06-06 |
