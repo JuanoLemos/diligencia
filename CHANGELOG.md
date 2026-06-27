@@ -2,6 +2,17 @@
 
 ---
 
+## [2.2.1] — 2026-06-26
+
+### Changed
+- R48 ✅ — /propagar marcado como completado en ROADMAP
+- R38 — guías de Chamber creadas (GUIA_DILIGENCIA_CHAMBER + GUIA_CHAMBER)
+- R37 — badges BETA + license + version agregados a README
+- R51 — iconos SVG personalizados por proyecto (7 colores únicos)
+- openchamber: upgrade v1.18.1→v2.2.0 (comandos sync, $PROPAGAR_LOG, $UX_CHECK)
+- OpenMontage-main: integrado al ecosistema (6° proyecto en $PROYECTOS)
+- Nemesis: DILIGENCIA.md recreado
+
 ## [2.2.0] — 2026-06-26
 
 ### Added
