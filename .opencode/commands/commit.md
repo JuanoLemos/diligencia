@@ -20,6 +20,14 @@ Ejemplos válidos:
 - `/commit chore: bump deps --push`
 
 ## Qué hace
+
+0. VERIFICAR si hay cambios en WT:
+   - `git diff --stat HEAD` → si está vacío: ⚠️ "No hay cambios para commitear."
+   - Si hay commits pendientes (`git log <último release>..HEAD` no vacío): 
+     "Hay N commits sin versionar. Ejecutá `/version` para cerrar sesión con CHANGELOG + tag."
+   - Si no hay commits pendientes: "Sin cambios. Workflow terminado."
+   - SI AMBOS ESTÁN VACÍOS: DETENER.
+
 1. Valida que el mensaje siga el formato `tipo(scope): descripción` o `tipo: descripción`
 2. Si no es válido: mostrar error con lista de tipos permitidos y DETENER
 3. `git add -A`

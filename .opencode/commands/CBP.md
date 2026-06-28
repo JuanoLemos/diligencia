@@ -56,22 +56,38 @@ Cuando /CBP se invoca, EJECUTAR este algoritmo ANTES de cualquier otra acción:
       - WT: `git diff --stat HEAD` → código (`src/**`) vs doc (`doc/**`, `*.md`)
       - Commits: `git log --oneline <last>..HEAD` → feat/perf = código, docs = doc, resto = dividir por scope
    c. SUMAR WT + commits. Determinar camino según §Adaptación escalativa → Árbol de decisión.
-   c. Usar tool `question()` con opciones dinámicas:
-      ```
-      question({
-        questions: [{
-          header: "Camino sugerido: <commit|parcial|full>",
-          question: "Detecté [N] archivos: [X] docs, [Y] código.",
-          options: [
-            {label: "commit (Recomendado)", description: "git add + commit + push. Sin doc sync ni versión."},
-            {label: "parcial", description: "/updoc + /version patch + push. Sin agentes."},
-            {label: "full", description: "Meta-PLAN + BUILD + agentes/skills."},
-            {label: "version", description: "/version + --push. Sin Meta-PLAN. Ideal si WT limpio con commits pendientes."},
-            {label: "abortar", description: "Cancelar sin cambios."}
-          ]
-        }]
-      })
-      ```
+      Si WT == 0 y hay commits pendientes: camino = "version" (no mostrar "commit" como opción).
+   c. Usar tool `question()` con opciones dinámicas adaptadas al caso:
+      - Si WT == 0 y hay commits:
+        ```
+        question({
+          questions: [{
+            header: "Camino sugerido: version",
+            question: "WT limpio con [N] commits sin versionar. No hay nada que commitear.",
+            options: [
+              {label: "version (Recomendado)", description: "/version + --push. CHANGELOG + tag + cierre de sesión."},
+              {label: "full", description: "Meta-PLAN + BUILD + agentes/skills."},
+              {label: "abortar", description: "Cancelar sin cambios."}
+            ]
+          }]
+        })
+        ```
+      - Si no (caso normal):
+        ```
+        question({
+          questions: [{
+            header: "Camino sugerido: <commit|parcial|full>",
+            question: "Detecté [N] archivos: [X] docs, [Y] código.",
+            options: [
+              {label: "commit (Recomendado)", description: "git add + commit + push. Sin doc sync ni versión."},
+              {label: "parcial", description: "/updoc + /version patch + push. Sin agentes."},
+              {label: "full", description: "Meta-PLAN + BUILD + agentes/skills."},
+              {label: "version", description: "/version + --push. Sin Meta-PLAN."},
+              {label: "abortar", description: "Cancelar sin cambios."}
+            ]
+          }]
+        })
+        ```
       Nota: "(Recomendado)" solo en el label del camino sugerido automáticamente.
    d. Si usuario elige cualquier opción menos abortar → EJECUTAR workflow correspondiente.
    e. Si usuario elige abortar → DETENER. Sin cambios.

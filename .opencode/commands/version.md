@@ -129,5 +129,6 @@ Versiona el proyecto con CHANGELOG auto-generado desde commits Conventional Comm
 - NO clasificar chore(release): commits como Changed (son el punto de referencia)
 - NO sobrescribir CHANGELOG existente — la nueva entrada se INSERTA tras la última
 - NO saltarse el paso de revisión (paso 6) — el usuario debe aprobar el CHANGELOG
-- NO versionar si el pre-flight tiene alertas sin resolver
+- NO versionar si el pre-flight tiene alertas P1 sin resolver (estructura rota, variables huérfanas)
+- Las alertas P2/P3 son advertencias, no bloqueos — el usuario puede versionar igual
 - NO omitir la creación del tag
