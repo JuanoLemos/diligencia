@@ -2,7 +2,19 @@
 
 ---
 
-## [2.2.2] — 2026-06-26
+## [2.2.2] — 2026-06-26 — Stable Chamber baseline
+
+### Added
+- R47 — Diligencia Command Toolbar en Chamber (5 verbos, dropdown, sendCommand)
+- R52 — estudio de hosting + administración de proyectos en producción
+- M6 — Chamber pertenece a Diligencia (identidad + $CHAMBER variable)
+- Tray: menú con Rebuild UI + Reiniciar + Rebuild + Abrir Dev HMR (5173)
+
+### Fixed
+- DiligenciaCommandBar: getSessionModelSelection en vez de getLastUserChoice
+- DiligenciaCommandBar: toast.warning() en vez de toast() directo
+- Tray: Stop-Chamber + Start-Chamber restaurados a versiones estables
+- Tray: "Abrir Chamber" abre navegador (sin Brave PWA)
 
 ### Added
 - R47 — Diligencia Command Toolbar en Chamber (5 verbos, dropdown, sendCommand)
