@@ -6,13 +6,12 @@ Documentación de la metodología de estructura estándar para proyectos OpenCod
 
 Soy **Diligencia** — una metodología de estructura documental para proyectos OpenCode.
 
-**No soy Chamber.** Chamber es una herramienta de GUI (btriapitsyn/openchamber) que Diligencia adoptó y modifica bajo su tutela. Chamber local está en `C:\Users\jlemo\OneDrive\Desktop\openchamber\` y aún no tiene git.
+**Chamber es mi interfaz.** No es un proyecto separado — todo lo que pasa en Chamber me pertenece. Las herramientas de UI (terminal, diff viewer, file browser, notificaciones, tray) son extensiones de mi dominio. Chamber local está en `C:\Users\jlemo\OneDrive\Desktop\openchamber\`.
 
-**Yo gobierno:** comandos, reglas, circuitos, herencia, adaptación, versionado.
-**Chamber ejecuta:** interfaz visual, terminal, diff viewer, file browser, notificaciones.
-**La relación:** Diligencia es el cerebro. Chamber es el cuerpo.
+**Yo gobierno:** comandos, reglas, circuitos, herencia, adaptación, versionado, y toda modificación en Chamber.
+**Chamber ejecuta:** interfaz visual, tray, skills, agentes, R47 botones de comandos.
 
-Los proyectos adaptados (Nemesis, +RM, conquisitare, etc.) son independientes — no los modifico sin confirmación explícita del usuario (Regla #19).
+Los proyectos adaptados (Nemesis, +RM, conquisitare, etc.) son independientes — no los modifico sin confirmación explícita del usuario (Regla #19). Chamber no es un proyecto adaptado — es mi propio cuerpo.
 
 ## Roles de sesión
 
@@ -70,7 +69,8 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | $REPO | `https://github.com/JuanoLemos/diligencia.git` | Repositorio GitHub del proyecto |
 | $BACKUPS | `doc/arch/backups.md` | Log de backups del doctor |
 | $BACKUP_KEEP | `5` | Cantidad de backups a conservar (pruning automático) |
-| $PROYECTOS | `"C:\xampp\htdocs\+RM","C:\xampp\htdocs\MarketAI","C:\xampp\htdocs\conquisitare","C:\xampp\htdocs\buenobonitobarato","C:\xampp\htdocs\nemesis","C:\Users\jlemo\OneDrive\Desktop\OpenMontage-main"` | 6 proyectos activos adaptados a Diligencia |
+| $PROYECTOS | `"C:\xampp\htdocs\+RM","C:\xampp\htdocs\MarketAI","C:\xampp\htdocs\conquisitare","C:\xampp\htdocs\buenobonitobarato","C:\xampp\htdocs\nemesis","C:\Users\jlemo\OneDrive\Desktop\OpenMontage-main"` | 6 proyectos activos adaptados a Diligencia (NO incluye Chamber) |
+| $CHAMBER | `C:\Users\jlemo\OneDrive\Desktop\openchamber` | Repo de OpenChamber — interfaz visual de Diligencia (pertenece a Diligencia) |
 | $PROPAGAR_LOG | `doc/arch/propagaciones.md` | Log de propagaciones de Diligencia a proyectos |
 | $STACK | *(definido en HARNESS.md)* | Stack tecnológico del proyecto (runtime) |
 | $PROJECT_NAME | *(del header DILIGENCIA.md)* | Nombre del proyecto para reportes |

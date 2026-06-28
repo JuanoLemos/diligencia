@@ -5,7 +5,7 @@ Un solo archivo define lo que todo proyecto hereda.
 
 ---
 
-## Los 5 mandatos
+## Los 6 mandatos
 
 Lo mínimo que Diligencia garantiza en cada proyecto adaptado vía `/adaptar`.
 Inmutable — no se negocia, no se desactiva.
@@ -17,6 +17,7 @@ Inmutable — no se negocia, no se desactiva.
 | M3 | Solo `/commit`, `/CBP` y `/version` pueden ejecutar git commit | Regla #17 |
 | M4 | Todo workflow sigue PLAN (razonamiento, solo lectura) → BUILD (ejecución, escritura) | `/CBP` |
 | M5 | Pre-flight de versión — `/CBP` verifica si el proyecto tiene una versión de Diligencia atrasada y ofrece `/adaptar` antes de cualquier otra acción | `/CBP` Paso 0d |
+| M6 | **Chamber pertenece a Diligencia.** Todo código, UI, tray, skills y configuración en openchamber son dominio de Diligencia. Las modificaciones en Chamber se rigen por las mismas reglas que Diligencia: PLAN→BUILD, /commit, /CBP. | `AGENTS.md` §Identidad |
 
 ---
 
