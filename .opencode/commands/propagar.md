@@ -76,6 +76,9 @@ Sin argumentos: modo interactivo — muestra tabla y pregunta antes de cada acci
 
 5. PREGUNTAR: "¿Ejecutar /adaptar Flujo C en `<proyecto>`? [sí/no]"
    - Si sí → delegar a `@sdd-architect` (explorar estructura) + `@sdd-implement` (aplicar Flujo C de /adaptar)
+   - Después de `/adaptar` exitoso:
+     a. ELIMINAR `UPDATE-AVAILABLE.md` de la raíz del proyecto (ya no es necesario — proyecto actualizado)
+     b. REGISTRAR upgrade en el CHANGELOG.md del proyecto con entrada: "- Diligencia vA.B.C → vX.Y.Z: upgrade + comandos sincronizados"
    - Si no → SALTAR al siguiente
 
 6. REGISTRAR en `doc/arch/propagaciones.md`:
