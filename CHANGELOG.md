@@ -2,6 +2,15 @@
 
 ---
 
+## [2.2.3] — 2026-06-27
+
+### Changed
+- `/doctor` renombrado a `/salud` por conflicto con OpenCode nativo (archivos: CBP.md, salud.md, estado.md, informe-salud.md, updoc.md, AGENTS.md, COMANDOS.md)
+- M6 — Chamber pertenece a Diligencia: identidad actualizada, `$CHAMBER` variable registrada, mandato agregado
+- v2.2.2 documentado como Stable Chamber baseline (tray + toolbar funcionales)
+- ROADMAP: R25/R37/R38/R47/R51→✅ completados, R35→🗑️ deprecado
+- CHECKLIST Dashboard actualizado a v2.2.2 con 15/15 versiones
+
 ## [2.2.2] — 2026-06-26 — Stable Chamber baseline
 
 ### Added
