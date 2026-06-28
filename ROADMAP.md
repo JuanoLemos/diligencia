@@ -66,6 +66,9 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R54 | +consejero: agente que explora repos GitHub, docs y similares para proponer mejoras al proyecto actual basado en buenas prácticas externas | P2 | 🟡 En progreso | — |
 | R55 | +documentacion: agente @documentador que audita proactivamente fechas, versiones, ADRs, cross-refs y consistencia documental entre todos los .md del proyecto | P2 | ✅ Completado | — |
 | R56 | +consumo: revisión de eficiencia de agentes + skills + comandos. Metodología de buenas prácticas con conciencia de consumo. Ahorro de idas y vueltas, consolidación de tareas, delegación a subagentes. Revisión de repos GitHub. | P2 | 🔴 Pendiente | — |
+| R57 | +agentes: cada agente revisa repos externos para mejorarse y mantenerse actualizado (/consejo --explorar aplicado a sí mismos como buena práctica de evolución continua) | P2 | 🔴 Pendiente | — |
+| R58 | +chamber: multi-chat por proyecto con protocolo MAIN↔AGENTE. El chat MAIN orquesta y BUILDea. Los chats AGENTE exploran, auditan y reportan (read-only). Reglamento de commit: solo MAIN commitea, agentes no modifican archivos. | P1 | 🔴 Pendiente | — |
+| R59 | +orquestador: Gran Orquestador Diligencia — acceso a todos los MAIN de proyectos adaptados. Mejora UNICAMENTE estructura Diligencia propagada. | P1 | 🔴 Pendiente | R58 |
 
 ## Futuro (Later)
 
