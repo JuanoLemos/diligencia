@@ -57,6 +57,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R50 | +MiniMax: integrar procesamiento multimodal (video, imagen, voz) vía Token Plan Max — testing en OpenMontage | P1 | 🔴 Pendiente | R25,R26 |
 | R51 | +chamber: iconos personalizados por proyecto para visual en carpeta de OpenChamber — template SVG en doc-base, /adaptar lo copia | P2 | ✅ Completado | R25 |
 | R52 | +estudio: proyectos con potencial hosteo de server para actuarlos en producción + mejor camino para administrar todo | P2 | 🔴 Pendiente | — |
+| R53 | +tray: servidor de bandeja estandarizado en doc-base para que cada proyecto adaptado herede un tray server vía /adaptar | P2 | 🔴 Pendiente | — |
 
 ## Futuro (Later)
 
