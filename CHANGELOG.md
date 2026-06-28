@@ -2,6 +2,13 @@
 
 ---
 
+## [2.4.1] — 2026-06-28
+
+### Fixed
+- CBP dispatch: WT limpio + commits pendientes ya no ofrece "commit" como opción. Ahora sugiere "version" directo y solo muestra version/full/abortar en question()
+- /commit: paso 0 — detecta commits sin versionar y guía al usuario hacia /version
+- /version pre-flight: alertas P2/P3 son advertencias, no bloqueos. Solo P1 bloquea
+
 ## [2.4.0] — 2026-06-28
 
 ### Added
