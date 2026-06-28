@@ -76,7 +76,10 @@ Estado: Proposed → Accepted → Deprecated → Superseded.
 | ADR-001.md | Aceptado | |
 | ADR-002.md | Aceptado | |
 | ADR-003.md | Aceptado | |
-| ADR_SUMMARY.md | — | 2026-06-03 |
+| ADR-004.md | Aceptado | 2026-06-27 |
+| ADR-005.md | Aceptado | 2026-06-27 |
+| ADR-006.md | Aceptado | 2026-06-28 |
+| ADR_SUMMARY.md | — | 2026-06-28 |
 | README.md | — | |
 | ux-check.md | v2.1.1 | 2026-06-26 |
 
