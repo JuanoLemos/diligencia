@@ -4,7 +4,7 @@ INSTRUCCIÓN: NO modificar este archivo sin entender el catálogo. CONTIENE el m
 
 Catálogo de documentación del proyecto. Mantenido por /version y /updoc.
 
-Última actualización global: 2026-06-26
+Última actualización global: 2026-06-27
 
 ## Docs críticos
 
@@ -65,6 +65,7 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 | MANDATO.md | v1.17.2 | 2026-06-06 |
 | _template.md | v1.16.4 | 2026-06-06 |
 | meta-escalabilidad.md | v1.16.4 | 2026-06-06 |
+| PENDING.md | v1.0.0 | 2026-06-27 |
 
 ## ADRs
 
