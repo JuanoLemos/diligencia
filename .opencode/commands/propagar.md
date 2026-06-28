@@ -33,7 +33,10 @@ Sin argumentos: modo interactivo — muestra tabla y pregunta antes de cada acci
    b. Verificar existencia de `DILIGENCIA.md` → si no, marcar como "❌ No adaptado"
    c. Extraer versión Diligencia del proyecto del header
    d. Comparar con versión actual de Diligencia
-   e. Verificar `git -C <path> status --porcelain` (si no es repo git, marcar "⚠️ Sin git")
+   e. Verificar WT real: `git -C <path> status --porcelain -- ':!UPDATE-AVAILABLE.md'`
+      - Si solo `UPDATE-AVAILABLE.md` está dirty → WT considerado limpio para propagar
+      - Si hay otros cambios además de UPDATE-AVAILABLE.md → ⚠️ "WT dirty" → SALTAR
+      - Si no es repo git → marcar "⚠️ Sin git"
    f. Consultar `doc/arch/catalogo-proyectos.md` para detectar proyectos congelados (🧊)
 
 4. MOSTRAR tabla:
@@ -51,7 +54,7 @@ Sin argumentos: modo interactivo — muestra tabla y pregunta antes de cada acci
 
 1. EXCLUIR proyectos congelados (🧊 en catalogo-proyectos.md)
 
-2. Si working tree dirty → ⚠️ "WT dirty en `<proyecto>`. Commiteá antes de propagar." → SALTAR
+2. Si working tree dirty (excluyendo UPDATE-AVAILABLE.md) → ⚠️ "WT dirty en `<proyecto>`. Commiteá antes de propagar." → SALTAR
 
 3. ESCRIBIR `UPDATE-AVAILABLE.md` en raíz del proyecto:
    ```
