@@ -2,6 +2,16 @@
 
 ---
 
+## [2.4.2] — 2026-06-28
+
+### Fixed
+- /propagar: ignorar UPDATE-AVAILABLE.md en chequeo de WT para no bloquear /adaptar
+- /propagar + /adaptar: post-upgrade limpia UPDATE-AVAILABLE.md + registra en CHANGELOG del proyecto
+
+### Changed
+- 6 proyectos adaptados a v2.2.0 (+RM, MarketAI, conquisitare, buenobonitobarato, Nemesis, OpenMontage)
+- catálogo de proyectos actualizado con nuevas versiones
+
 ## [2.4.1] — 2026-06-28
 
 ### Fixed
