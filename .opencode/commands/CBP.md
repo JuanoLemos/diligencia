@@ -155,14 +155,14 @@ El Meta-PLAN ejecuta fases **read-only** que pueden lanzarse en paralelo.
 Las olas (waves) agrupan fases independientes:
 
 ```
-OLA 1 (20 fases paralelas — todas independientes)
+OLA 1 (21 fases paralelas — todas independientes)
   /updoc A (INDEX catalog)  |  /updoc B (CHANGELOG ref version)  |  /updoc G-read (git diff)
   /updoc H-D2 (templates)   |  /updoc H-D4 (variables orphans)  |  /updoc H-D5 (template stale)
   /salud 1a (estructura)   |  /salud 1b (código)              |  /salud 1c (gaps doc)
   /salud 1d (temporales)   |  /salud 1e (obsoletos)           |  /salud 1f (backup plan)
   /version V1 (detectar ver)|  /version V4b (salud existente)   |  /version V4c (explica scope)
   /version V4d (template)    |  /version V4e (§8 refs)           |  /version V4f (variables)
-  /CBP AGT (agentes/skills)
+  /CBP AGT (agentes/skills) |  /documentar (auditoría 20 checks)
 
 OLA 2 (después de Ola 1 — dependen de sus resultados)
   /updoc C (stale detection) → necesita A+B
@@ -411,7 +411,20 @@ El meta-orquestador analiza el working tree y sugiere agentes/skills antes del B
    4. ¿Se modificaron ADRs o archivos en doc/arch/ (cambios de arquitectura)?
    Devolver tabla:
    | Condición | Agente/Skill | Recomendado | Razón |
-   ...")
+    ...")
+    ```
+
+   Worker 5 — docs audit:
+   ```
+   task("explore", "Auditar documentación. NO modificar archivos.
+    Cargar skill('diligencia-docs'). Ejecutar 20 checks en 5 categorías:
+    1. ESTRUCTURA (AGENTS, COMANDOS, HARNESS, .markdownlint)
+    2. LEGAL (LICENSE, NOTICE, SECURITY, LICENSING)
+    3. DOCS INFORMATIVOS (headers, fechas, INDEX vs disco, ADRs)
+    4. TRACKING (ROADMAP, CHECKLIST, bugs, incidentes, backups)
+    5. COMANDOS (guarda, secciones, coincidencia AGENTS↔COMANDOS↔disco)
+    Devolver tabla de hallazgos con # | Categoría | Check | Hallazgo | Severidad (P1/P2/P3) | Acción sugerida.
+    Si hay P1: ⚠️ 'N hallazgos P1 — deben corregirse antes de versionar.'")
    ```
 
    OLA 2 — SINTETIZAR resultados de OLA 1 (en orden, secuencial):

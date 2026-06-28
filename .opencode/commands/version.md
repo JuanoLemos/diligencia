@@ -51,13 +51,14 @@ Versiona el proyecto con CHANGELOG auto-generado desde commits Conventional Comm
    ```
    Si `--notes` existe, agregarlo como última línea de la sección Added.
 
-5. PRE-FLIGHT (6 checks, igual que antes):
+5. PRE-FLIGHT (7 checks):
    a. Staleness documental — LEER INDEX.md → labels vs CHANGELOG
    b. Salud — status-salud.md existe? stale?
    c. Scope /explica — faltantes en doc/guias/mecanicas/arch
    d. Template sync (solo Diligencia)
    e. Cross-refs §8 (solo Diligencia)
    f. Variables resolubles
+   g. Documental — cargar `skill("diligencia-docs")`, ejecutar checks 1-4 (estructura). Si hay hallazgos P1: ⚠️ "N hallazgos P1 — corregir antes de versionar."
 
 6. MOSTRAR al usuario:
    - CHANGELOG auto-generado (para revisar/editar)
@@ -89,7 +90,13 @@ Versiona el proyecto con CHANGELOG auto-generado desde commits Conventional Comm
    b. Si `$UX_CHECK` tiene filas sin revisar:
       ⚠️ "N features sin validar en $UX_CHECK. Probá y actualizá el archivo."
    c. Si `$UX_CHECK` no tiene entradas de esta sesión:
-      "📝 ¿Registrar validación en $UX_CHECK?"
+       "📝 ¿Registrar validación en $UX_CHECK?"
+
+9.6. DOCUMENTAL (si hubo BUILD en esta sesión y el proyecto está adaptado):
+   a. CARGAR `skill("diligencia-docs")`
+   b. EJECUTAR checks de docs informativos (9-12): headers con versión, fechas ISO, INDEX vs disco, ADRs
+   c. Si hay docs con versión desactualizada: "📝 N docs necesitan bump de versión en INDEX.md."
+   d. Reportar solo si hay hallazgos: "📋 Documental: N docs stale | M headers sin versión"
 
 10. ACTUALIZAR INDEX.md: versión CHANGELOG + DILIGENCIA, fechas
 
@@ -104,6 +111,7 @@ Versiona el proyecto con CHANGELOG auto-generado desde commits Conventional Comm
 📄 CHANGELOG auto-generado: N items (N Added, N Fixed, N Changed)
 🔍 Pre-flight: A: <N STALE> | B: <OK/⚠️> | C: <N faltantes> | D: <OK/mismatch> | E: <OK/N sin ref> | F: <OK/N rotas>
 📡 Post-bump: N proyectos adaptados → M atrasados (sugiere /propagar)
+📋 Documental: N docs stale | M headers sin versión
 ✅ Commit: chore(release): vX.Y.Z + tag
 ⚠️ git status --porcelain limpio: Sí
 
@@ -111,7 +119,7 @@ Versiona el proyecto con CHANGELOG auto-generado desde commits Conventional Comm
 - Último release detectado por `git log --grep="chore(release):"`
 - Commits clasificados por tipo Conventional Commit
 - CHANGELOG generado con categorías Added/Fixed/Changed
-- Pre-flight protegido (6 checks)
+- Pre-flight protegido (7 checks)
 - Post-bump: proyectos atrasados detectados y /propagar sugerido (solo si proyecto = Diligencia)
 - INDEX.md actualizado con nueva versión
 - `git status --porcelain` vacío post-commit
