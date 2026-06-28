@@ -8,7 +8,7 @@ Hábitos y workflows para usar Diligencia de forma consistente entre sesiones, a
 
 | Fase | Acción |
 |---|---|
-| **Pre-sesión** | Leer `AGENTS.md`, revisar `$CHECKLIST` items abiertos, revisar `$RM` "Ahora" o "Siguiente". Si hubo interrupción brusca: `/reanudar` para recuperar contexto. Si hay cambios grandes planeados: `/backup`. Periódicamente: `/diligencia-check` para detectar degradación estructural. |
+| **Pre-sesión** | Leer `AGENTS.md`, revisar `$RM` "Ahora" o "Siguiente". Si hubo interrupción brusca: `/reanudar` para recuperar contexto. Si hay cambios grandes planeados: `/backup`. Periódicamente: `/diligencia-check` para detectar degradación estructural. |
 | **Durante** | Usar el comando adecuado para cada situación (ver §2) |
 | **Post-sesión** | `/CBP updoc` (ejecuta /updoc PLAN→BUILD → /version minor BUILD* → sugiere /doctor) |
 | **Commit** | SOLO via `/commit`, `/CBP` o `/version`. El BUILD de `/plan` aplica cambios pero NO commitea. `/adaptar` prepara archivos pero NO commitea. El working tree queda dirty hasta que el usuario decida. |
@@ -56,12 +56,11 @@ Nunca delegar una tarea grande (3+ archivos) a un solo agente sin pasar por SDD.
 
 - `/updoc` no es opcional: ejecutar al menos una vez por sesión que toque documentación
 - `$RM` debe reflejar el estado actual: mover items "Ahora" a "Completado" apenas terminan
-- `$CHECKLIST` es operativo: tildar items al completarlos, no al final de la semana
 - `$CHANGELOG` se actualiza con `/version`, no manualmente
 
 Señales de documentos enfermos:
 - Items en `$RM` "Ahora" con estado 🟡 desde hace 3 sesiones → mover a "Siguiente" o limpiar
-- `$CHECKLIST` con 20+ items abiertos sin prioridad → revisar si son viables o basura
+- `$RM` con 20+ items abiertos sin prioridad → revisar si son viables o basura
 - `$CHANGELOG` sin entrada en la última semana → sesiones sin versionar
 - Template DILIGENCIA.md desactualizado vs proyecto → `/updoc` D5 lo detecta, corre con `/version patch`
 
@@ -71,13 +70,13 @@ Ejecutar `/diligencia-check` cada pocas sesiones — detecta estructura rota, va
 
 ## 5. Tracking sin grietas
 
-| Esto | Va en | Y actualiza |
+| Esto | Va en | Cómo |
 |---|---|---|
-| Bug de código | `/bug` → `$BUGS` | `$CHECKLIST` |
-| Crash en producción | `/incidente` → `$INCIDENTS` | `$CHECKLIST` |
-| Tarea operativa | `/checklist` o `$CHECKLIST` directo | — |
+| Bug de código | `$BUGS` | `/reportar --tipo bug` |
+| Crash en runtime | `$INCIDENTS` | `/reportar --tipo incidente` |
+| Tarea o avance operativo | `$RM` | `/+rm` o editar "Ahora"/"Siguiente" |
 
-No duplicar: si registraste un bug en `$BUGS`, no lo copies a `$CHECKLIST` manualmente — `/bug` ya lo hace.
+No duplicar: si registraste un bug en `$BUGS`, no lo copies al `$RM` manualmente — `/reportar` ya lo registra donde corresponde.
 
 ---
 
@@ -101,8 +100,7 @@ Después de deprecar: ejecutar `/diligencia-check` (verifica que $variables no a
 
 - **Saltar `/updoc`**: ahorra 2 minutos ahora, cuesta 20 más tarde en gaps documentales
 - **Hardcodear rutas**: "solo esta vez" → 3 sesiones después hay 5 rutas absolutas en comandos
-- **Modificar `$CHECKLIST` sin cambiar `$RM`**: la próxima `/updoc` va a detectar inconsistencia
-- **Usar `/bug` para situaciones ambiguas**: investigá primero. Si se confirma el bug, usá `/bug`.
+- **Usar `/reportar` para situaciones ambiguas**: investigá primero. Si se confirma el bug, usá `/reportar --tipo bug`.
 - **No versionar sesiones chicas**: hasta un fix de 1 línea merece su entrada en `$CHANGELOG` y su commit
 - **Acumular deuda documental**: "lo actualizo después" → nunca se actualiza
 - **Usar `/health` para validar estructura de proyecto adaptado**: `/health` es solo código (JS). Usar `/diligencia-check` para estructura Diligencia.

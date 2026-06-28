@@ -23,7 +23,7 @@ Sistema de enforcement en 3 capas que garantiza la integridad documental en todo
 ```
                     ┌─────────────────────────────────────┐
                     │         CAPA 1: RUNTIME              │
-                    │  opencode.jsonc instructions (7 reglas)│
+                    │  opencode.jsonc instructions (6 reglas)│
                     │  Se inyectan en TODA sesión OpenCode  │
                     └──────────────┬──────────────────────┘
                                    │
@@ -68,11 +68,10 @@ Sistema de enforcement en 3 capas que garantiza la integridad documental en todo
 
 1. Usar `/updoc` antes de `/version` para sincronizar documentación
 2. Mantener CHANGELOG.md actualizado
-3. Mantener CHECKLIST.md actualizado
-4. Mantener ROADMAP.md actualizado
-5. Cumplir ADR-003 (estructura estándar)
-6. No hardcodear rutas — usar `$variables` de AGENTS.md
-7. Siempre responde en español
+3. Mantener ROADMAP.md actualizado
+4. Cumplir ADR-003 (estructura estándar)
+5. No hardcodear rutas — usar `$variables` de AGENTS.md
+6. Siempre responde en español
 
 ### Cómo verificar
 
@@ -132,7 +131,7 @@ Se ejecuta en:
 ### Qué valida
 
 Categoría A de ADR-003 — estructura de archivos obligatorios:
-- `ROADMAP.md`, `CHECKLIST.md`, `CHANGELOG.md`, `AGENTS.md`, `DILIGENCIA.md`
+- `ROADMAP.md`, `CHANGELOG.md`, `AGENTS.md`, `DILIGENCIA.md`
 - `.markdownlint.json`
 - `doc/arch/`, `doc/guias/`
 - `.opencode/`, `.opencode/HARNESS.md`
@@ -178,7 +177,7 @@ Diligencia es su propio primer cliente. Esto significa:
 
 | Capa | Estado | Notas |
 |---|---|---|
-| Capa 1 — Runtime | ✅ | opencode.jsonc con 7 instructions |
+| Capa 1 — Runtime | ✅ | opencode.jsonc con 6 instructions |
 | Capa 2 — Pre-commit | ⚠️ Sin Husky | check-docs.js existe pero no hay hook automático. Ejecutar manualmente antes de commit. |
 | Capa 3 — CI/CD | ✅ | `.github/workflows/diligencia-check.yml` presente |
 

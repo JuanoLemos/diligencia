@@ -4,6 +4,10 @@ INSTRUCCIÓN: EJECUTAR la consulta al agente. NO modificar archivos sin confirma
 
 Dispara un agente en modo investigatorio. Recibe la paloma (reporte), la registra en `doc/arch/palomas.md`, y la entrega al usuario. El agente nunca escribe archivos — solo reporta.
 
+**Se activa de dos formas:**
+1. Comando explícito: `/paloma @agente "<consulta>"`
+2. Invocación directa: `@agente` (mención en el chat MAIN sin el comando /paloma). El orquestador invoca al agente y registra la paloma igual que en la forma explícita.
+
 ## Argumentos
 
 `/paloma @agente "<consulta>"`
@@ -27,22 +31,24 @@ Ejemplos:
 5. RECIBIR la tabla de hallazgos (🕊️ paloma)
 6. REGISTRAR en `doc/arch/palomas.md`:
    ```
-   | Fecha | Agente | Consulta | Hallazgos | Veredicto |
+   | P### | Fecha | Agente | Consulta | Hallazgos | Veredicto | Estado |
    ```
+   - ID = `P` + número incremental (siguiente al último ID registrado, paso 3)
+   - Estado inicial = `Pendiente` (R6: MAIN decidirá si aplicar o ignorar)
    - Contar resultados: N hallazgos (M P1, K P2, J P3) o "N observaciones"
    - Veredicto = resumen de 1 frase
-7. ENTREGAR la paloma al usuario: tabla + resumen
+7. ENTREGAR la paloma al usuario: ID + tabla + resumen + estado
 
 ## Formato de salida
 
 ```
-🕊️ Paloma registrada
+🕊️ Paloma registrada — P###
 
 📋 @agente — [resumen de la consulta]
 
 [tabla de hallazgos]
 
-📊 Resumen: N hallazgos (M P1, K P2, J P3) | Registrado en palomas.md
+📊 Resumen: N hallazgos (M P1, K P2, J P3) | Registrado en palomas.md como P### (Pendiente)
 ```
 
 ## Validación

@@ -51,7 +51,6 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | Variable | Ruta | Descripción |
 |---|---|---|
 | $ROADMAP | `ROADMAP.md` | Roadmap de Diligencia |
-| $CHECKLIST | `CHECKLIST.md` | Checklist de tareas |
 | $CHANGELOG | `CHANGELOG.md` | Historial de versiones |
 | $GUIAS | `doc/guias/` | Guías de uso |
 | $GUIAS_TEMPLATE | `doc/guias/_template.md` | Plantilla de guía |
@@ -144,6 +143,7 @@ Al terminar cualquier BUILD en este proyecto, reportar cambios aplicados y suger
 | `/+mec` | 2026-06-26 | Usar `/doc --tipo mecanica` |
 | `/upmec` | 2026-06-26 | Usar `/doc --tipo mecanica --actualizar` |
 | `/checklist` | 2026-06-26 | Usar `/rm` (inconsistencias CHECKLIST↔RM) y `/next` (priorización) — funcionalidad redistribuida |
+| `CHECKLIST.md` (documento) | 2026-06-28 | Movido a `.old/` — tracking redistribuido en `/rm` y `/next`. Variable `$CHECKLIST` eliminada. |
 
 ## Modelo Paloma Mensajera (MAIN ↔ AGENTE)
 
