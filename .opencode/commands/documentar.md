@@ -2,7 +2,7 @@ INSTRUCCIÓN: EJECUTAR auditoría documental completa. NO modificar archivos sin
 
 # /documentar — Auditoría documental completa
 
-Carga `skill("diligencia-docs")` y ejecuta los 20 checks de auditoría documental. Absorbe la funcionalidad de `/legal` vía el flag `--legales`. Read-only — solo reporta, no modifica.
+Carga `skill("diligencia-docs")` y ejecuta los 24 checks de auditoría documental en 6 categorías. Absorbe la funcionalidad de `/legal` vía el flag `--legales`. Read-only — solo reporta, no modifica.
 
 ## Argumentos
 

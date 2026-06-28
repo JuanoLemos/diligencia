@@ -1,6 +1,6 @@
 # diligencia-docs — Auditoría documental completa
 
-20 checks en 5 categorías. Read-only. Cargable por `/documentar`, `/doctor` Fase 1i, y `/CBP` Ola 1.
+24 checks en 6 categorías. Read-only. Cargable por `/documentar`, `/salud` Fase 1i, y `/CBP` Ola 1.
 
 ---
 
@@ -51,9 +51,20 @@
 
 ---
 
+## 🎯 IDENTIDAD PÚBLICA (4 checks)
+
+| # | Check | Qué valida | Severidad |
+|---|-------|-----------|-----------|
+| 21 | README.md vigente | Versión en README coincide con DILIGENCIA.md. Badges actualizados. Descripción refleja el propósito real y el tipo de proyecto (Diligencia = plural/gratis, Nemesis = juego pago/comercial). | P2 |
+| 22 | Proyectos adaptados vigentes | `catalogo-proyectos.md` y `$PROYECTOS` solo listan proyectos activos (>90 días sin commit → sugerir marcar como 🧊 o remover). | P2 |
+| 23 | Identidad pública coherente | AGENTS.md §Identidad describe correctamente qué ES el proyecto (no qué NO es). La descripción en DILIGENCIA.md coincide con la del repo GitHub. | P1 |
+| 24 | Documentos comunitarios | `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md` existen en proyectos públicos. `LICENSE` es apropiada para el tipo de proyecto (AGPL-3.0 para libres, otra para comerciales). | P3 |
+
+---
+
 ## Archivos relacionados
 - `.opencode/commands/documentar.md` — comando de invocación
-- `.opencode/commands/doctor.md` — Fase 1i (carga esta skill)
+- `.opencode/commands/salud.md` — Fase 1i (carga esta skill)
 - `.opencode/commands/CBP.md` — Ola 1 worker
 - `AGENTS.md` — tabla de comandos y variables
 - `doc/guias/COMANDOS.md` — sidebar reference
