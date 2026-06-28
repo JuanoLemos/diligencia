@@ -88,7 +88,7 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | /deprecar | Deprecar archivos/comandos/estructuras obsoletas | Declarativo |
 | /debug | Análisis profundo | Declarativo |
 | /diligencia-check | Validar estructura Diligencia del proyecto | Declarativo |
-| /doctor | Cuidado integral: estructura + código + tracking + circuito + limpieza + deprecación + legal | Declarativo |
+| /salud | Cuidado integral: estructura + código + tracking + circuito + limpieza + legal | Declarativo |
 | /limpiar | Limpiar temporales | Procedural |
 | /estado | Reporte rápido del proyecto | Declarativo |
 | /explica | Explicar concepto en formato directo (→/📄/⚠️/🧭) | Declarativo |
@@ -131,11 +131,12 @@ Al terminar cualquier BUILD en este proyecto, reportar cambios aplicados y suger
 | `/apply` | 2026-06-26 | Sin reemplazo — redundante con herramientas de edición directa de OpenCode |
 | `/bug` | 2026-06-26 | Usar `/reportar --tipo bug` — unificado con /incidente |
 | `/incidente` | 2026-06-26 | Usar `/reportar --tipo incidente` — unificado con /bug |
-| `/salud` | 2026-06-26 | Usar `/doctor` — genera status-salud.md automáticamente en Fase 3h |
+| `/salud` | 2026-06-26 | Renombrado de `/doctor` por conflicto con OpenCode nativo. `/salud` es el reemplazo directo. |
+| `/doctor` | 2026-06-26 | Usar `/salud` — renombrado por conflicto con built-in de OpenCode |
 | `/pushgh` | 2026-06-26 | Usar `/commit --push` — integrado como flag |
 | `/report` | 2026-06-26 | Usar `/estado --full` — absorbido en Dashboard Unificado |
 | `/backupall` | 2026-06-26 | Usar `/backup --all` — integrado como flag |
-| `/legal` | 2026-06-26 | Usar `/doctor` — verifica licencias en Fase 1h |
+| `/legal` | 2026-06-26 | Usar `/salud` — verifica licencias en Fase 1h |
 | `/+guia` | 2026-06-26 | Usar `/doc --tipo guia` |
 | `/upguia` | 2026-06-26 | Usar `/doc --tipo guia --actualizar` |
 | `/+mec` | 2026-06-26 | Usar `/doc --tipo mecanica` |

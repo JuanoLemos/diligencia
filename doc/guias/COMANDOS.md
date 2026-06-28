@@ -32,7 +32,7 @@
 /debug         Análisis profundo de código
 
 ## 🛡️ CUIDAR (5)
-/doctor        Cuidado integral (8 fases)
+/salud         Cuidado integral (8 fases)
 /health        Verificar sintaxis y consistencia
 /diligencia-check  Validar estructura Diligencia
 /deprecar      Mover obsoleto a .old/

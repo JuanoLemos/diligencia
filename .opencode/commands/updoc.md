@@ -19,7 +19,7 @@ No modifica docs críticos (CHANGELOG.md, DILIGENCIA.md, ROADMAP.md, CHECKLIST.m
 1. LEER `INDEX.md` AHORA — extraer lista de docs por categoría (Guías, Mecánicas, ADRs, Referencias)
 2. Si INDEX.md NO existe:
    a. ESCANEAR filesystem: `doc/guias/*.md`, `doc/mecanicas/*.md`, `doc/arch/*.md`
-   b. EXCLUIR archivos del dominio de /doctor: `bugs.md`, `incidentes.md`, `adr-template.md`
+   b. EXCLUIR archivos del dominio de /salud: `bugs.md`, `incidentes.md`, `adr-template.md`
    c. CLASIFICAR por carpeta (guias → Guías, mecanicas → Mecánicas, arch → ADRs)
    d. DAR SALIDA: "INDEX.md no encontrado. Docs detectados: N guías, N mecánicas, N ADRs"
    e. PREGUNTAR: "¿Crear INDEX.md?"

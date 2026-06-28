@@ -21,7 +21,7 @@ Genera un reporte rápido del estado actual del proyecto con recomendaciones acc
    b. Comparar `DILIGENCIA.md` línea 1 con `~/.config/opencode/commands/adaptar.md` versión global → si stale, recomendar `/adaptar`
    c. Buscar archivos `.md` untracked → comparar con INDEX.md → faltantes → recomendar `/updoc`
    d. Leer $RM §Ahora → si vacío → recomendar `/+rm "título"`
-   e. Leer `doc/arch/status-salud.md` → si último /doctor > 7 días o no existe → recomendar `/doctor`
+   e. Leer `doc/arch/status-salud.md` → si último /salud > 7 días o no existe → recomendar `/salud`
    f. Verificar `NOTICE` y `SECURITY.md` → si falta → recomendar `/legal --apply`
    g. Verificar INDEX.md labels vs versiones reales → si stale → recomendar `/updoc`
    h. Leer `AGENTS.md` $PROYECTOS → si `*(configurar)*` → recomendar `/informe-salud`

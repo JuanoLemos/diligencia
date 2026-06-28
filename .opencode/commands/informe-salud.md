@@ -57,7 +57,7 @@ Antes del PLAN, verificar `$PROYECTOS`:
    | Stale | doc/arch/status-salud.md | Conteo de docs stale (o "N/D" si no existe) |
    | Gaps | doc/arch/status-salud.md | Conteo de gaps (o "N/D" si no existe) |
    | Working tree | git -C <path> status --porcelain | Conteo de archivos modificados; "Clean" si 0 |
-   | Último /doctor | doc/arch/status-salud.md | Fecha de último doctor (o "Nunca") |
+   | Último /salud | doc/arch/status-salud.md | Fecha de último doctor (o "Nunca") |
    | RM Ahora | ROADMAP.md | Items en sección "Ahora (Now)" sin check |
    | PEND | CHECKLIST.md | Items `[ ]` sin tildar |
    | [Unreleased] | CHANGELOG.md | Conteo de entradas bajo `## [Unreleased]` |

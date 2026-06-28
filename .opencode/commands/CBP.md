@@ -111,7 +111,7 @@ Reemplaza el comportamiento default `completo` con una decisión inteligente.
 | Señal de entrada | Camino | Qué ejecuta |
 |---|---|---|
 | Solo código fuente modificado, 0 docs tocados | **commit** | `git add -A` + `/commit --push`. Sin doc sync ni versión ni Meta-PLAN. |
-| 1-5 docs tocados, sin nuevas guías/mecánicas | **parcial** | `/updoc` Fases A→F + `/version` patch + `--push`. Sin Meta-PLAN profundo, sin agentes, sin /doctor. |
+| 1-5 docs tocados, sin nuevas guías/mecánicas | **parcial** | `/updoc` Fases A→F + `/version` patch + `--push`. Sin Meta-PLAN profundo, sin agentes, sin /salud. |
 | 5+ docs tocados, nuevas guías/mecánicas, milestones, o working tree sucio de múltiples sesiones | **full** | `/CBP completo` actual (Meta-PLAN + BUILD + agentes/skills). |
 
 ### Cómo detecta el camino
@@ -147,7 +147,7 @@ Reemplaza el comportamiento default `completo` con una decisión inteligente.
 | Cierro milestone/fase (v0.3→v0.4) | `full` |
 | Working tree sucio de 3+ sesiones acumuladas | `full` |
 | Creé/eliminé guías o mecánicas nuevas | `parcial` o `full` |
-| Quiero "ver cómo va el proyecto" | NO USAR /CBP — usar `/estado` o `/doctor` standalone |
+| Quiero "ver cómo va el proyecto" | NO USAR /CBP — usar `/estado` o `/salud` standalone |
 
 ## Meta-PLAN paralelo (ejecución en olas)
 
@@ -158,8 +158,8 @@ Las olas (waves) agrupan fases independientes:
 OLA 1 (20 fases paralelas — todas independientes)
   /updoc A (INDEX catalog)  |  /updoc B (CHANGELOG ref version)  |  /updoc G-read (git diff)
   /updoc H-D2 (templates)   |  /updoc H-D4 (variables orphans)  |  /updoc H-D5 (template stale)
-  /doctor 1a (estructura)   |  /doctor 1b (código)              |  /doctor 1c (gaps doc)
-  /doctor 1d (temporales)   |  /doctor 1e (obsoletos)           |  /doctor 1f (backup plan)
+  /salud 1a (estructura)   |  /salud 1b (código)              |  /salud 1c (gaps doc)
+  /salud 1d (temporales)   |  /salud 1e (obsoletos)           |  /salud 1f (backup plan)
   /version V1 (detectar ver)|  /version V4b (salud existente)   |  /version V4c (explica scope)
   /version V4d (template)    |  /version V4e (§8 refs)           |  /version V4f (variables)
   /CBP AGT (agentes/skills)
@@ -171,7 +171,7 @@ OLA 2 (después de Ola 1 — dependen de sus resultados)
 
 OLA 3 (después de Ola 2 — consolidación)
   /updoc D → E (gaps → plan)
-  /doctor Fase 2 (confirmación)
+  /salud Fase 2 (confirmación)
   /version V2→V5 (calcular, pre-flight)
 
 OLA 4 (después de Ola 3 — confirmación final)
@@ -189,12 +189,12 @@ y produce su diagnóstico de vuelta al orquestador.
 
 - *(sin argumento)*: **detección automática** del camino óptimo (commit / parcial / full) según el working tree
 - `commit`: Solo commit + push. Sin doc sync, sin versión, sin Meta-PLAN.
-- `parcial`: /updoc Fases A→F + /version patch + --push. Sin /doctor, sin agentes.
+- `parcial`: /updoc Fases A→F + /version patch + --push. Sin /salud, sin agentes.
 - `full`: Ciclo completo con Meta-PLAN paralelo + BUILD (equivale a `completo`).
 - `completo`: Alias de `full` (legacy, compatibilidad).
-- `updoc`: Post-sesión completo — Meta-PLAN → BUILD (/updoc → /version --push → sugiere /doctor)
-- `doctor`: Diagnóstico integral — Meta-PLAN → BUILD (/doctor → /version --push si correcciones)
-- `version`: Versionado standalone — Meta-PLAN → BUILD (/version --push → sugiere /doctor)
+- `updoc`: Post-sesión completo — Meta-PLAN → BUILD (/updoc → /version --push → sugiere /salud)
+- `doctor`: Diagnóstico integral — Meta-PLAN → BUILD (/salud → /version --push si correcciones)
+- `version`: Versionado standalone — Meta-PLAN → BUILD (/version --push → sugiere /salud)
 - `--yes`: omitir confirmación del Meta-PLAN
 
 > Sin argumento, `/CBP` detecta el camino óptimo. Los sub-comandos (`full`, `parcial`, `commit`, `updoc`, `doctor`, `version`) fuerzan un camino específico.
@@ -214,12 +214,12 @@ y produce su diagnóstico de vuelta al orquestador.
    - /updoc H-D2: templates sin consumidor
    - /updoc H-D4: variables huérfanas en comandos
    - /updoc H-D5: DILIGENCIA.md vs template staleness
-   - /doctor Fase 1a: estructura (AGENTS, RM, CHECKLIST, etc.)
-   - /doctor Fase 1b: código (syntax, path consistency)
-   - /doctor Fase 1c: gaps documentales (RM↔CHECKLIST, stale items)
-   - /doctor Fase 1d: temporales (archivos *.{log,tmp,bak})
-   - /doctor Fase 1e: obsoletos (archivos no core)
-   - /doctor Fase 1f: backup preventivo ($BACKUP_KEEP, pruning)
+   - /salud Fase 1a: estructura (AGENTS, RM, CHECKLIST, etc.)
+   - /salud Fase 1b: código (syntax, path consistency)
+   - /salud Fase 1c: gaps documentales (RM↔CHECKLIST, stale items)
+   - /salud Fase 1d: temporales (archivos *.{log,tmp,bak})
+   - /salud Fase 1e: obsoletos (archivos no core)
+   - /salud Fase 1f: backup preventivo ($BACKUP_KEEP, pruning)
    -/version V1: detectar versión actual
    - /version V4b: leer status-salud.md existente
    - /version V4c: scope de /explica
@@ -236,7 +236,7 @@ y produce su diagnóstico de vuelta al orquestador.
 
    OLA 3 — después de Ola 2:
    - /updoc Fase D → E: gaps → plan (needs C)
-   - /doctor Fase 2: tabla de confirmación (needs 1a-1f)
+   - /salud Fase 2: tabla de confirmación (needs 1a-1f)
    - /version V2→V5: calcular bump + pre-flight (needs V1 + V4b-f)
 
    OLA 4 — después de Ola 3:
@@ -256,7 +256,7 @@ y produce su diagnóstico de vuelta al orquestador.
       ──────────
       [archivos a modificar, bump type]
       
-      🔬 /doctor
+      🔬 /salud
       ──────────
       [issues encontrados, correcciones pendientes]
      
@@ -273,11 +273,11 @@ y produce su diagnóstico de vuelta al orquestador.
       Al terminar: reportar "✅ BUILD completo. Ejecutar /CBP para commitear."
    - /updoc Fase F (BUILD): aplicar correcciones de guías/mecánicas/ADRs, actualizar INDEX
    - /version (BUILD*): Steps 6→12 — CHANGELOG + commit + tag + --push
-    - /doctor Fase 3 (BUILD): backup pre-corrección + aplicar correcciones si hay (solo si /doctor detectó issues en Meta-PLAN)
+    - /salud Fase 3 (BUILD): backup pre-corrección + aplicar correcciones si hay (solo si /salud detectó issues en Meta-PLAN)
 
-3. **SUGERIR /doctor**
-   - Si /doctor ya se ejecutó en Meta-PLAN con 0 correcciones: workflow terminado — volver a SESSIONWORK
-   - Si /doctor detectó correcciones no aplicadas: preguntar "¿Ejecutar /CBP doctor para aplicar?"
+3. **SUGERIR /salud**
+   - Si /salud ya se ejecutó en Meta-PLAN con 0 correcciones: workflow terminado — volver a SESSIONWORK
+   - Si /salud detectó correcciones no aplicadas: preguntar "¿Ejecutar /CBP doctor para aplicar?"
 
 ---
 
@@ -285,14 +285,14 @@ y produce su diagnóstico de vuelta al orquestador.
 
 1. **META-PLAN (razonamiento)**
    - LEER `doctor.md`, `version.md` del disco
-   - EJECUTAR /doctor Fases 1→2 (PLAN: diagnóstico estructura, código, tracking, limpieza, deprecación)
-   - ARMAR tabla división única (solo /doctor)
+   - EJECUTAR /salud Fases 1→2 (PLAN: diagnóstico estructura, código, tracking, limpieza, deprecación)
+   - ARMAR tabla división única (solo /salud)
    - PREGUNTAR: "¿Ejecutar correcciones?"
    - SI no confirma: DETENER workflow
 
 2. **BUILD (ejecuci�n)**
    ⚠️ BUILD = aplicar cambios, NO commitear. Solo /commit, /CBP y /version ejecutan git commit.
-   - /doctor Fase 3 (BUILD): backup pre-corrección + crear archivos, sincronizar tracking, deprecar, limpiar, generar status-salud.md
+   - /salud Fase 3 (BUILD): backup pre-corrección + crear archivos, sincronizar tracking, deprecar, limpiar, generar status-salud.md
    - SI hubo correcciones: /version patch BUILD* — Steps 6→12 (CHANGELOG + commit + tag + --push)
    - SI no hubo correcciones: workflow terminado — volver a SESSIONWORK
 
@@ -313,7 +313,7 @@ y produce su diagnóstico de vuelta al orquestador.
 2. **BUILD (ejecuci�n)**
    - /version BUILD* Steps 6→12 (CHANGELOG + commit + tag + --push. No preguntar — ya confirmado en Meta-PLAN)
 
-3. **SUGERIR /doctor**
+3. **SUGERIR /salud**
    - Preguntar: "¿Ejecutar diagnóstico post-versionado?"
    - SI sí: EJECUTAR workflow `doctor` (completo con Meta-PLAN + BUILD)
    - SI no: workflow terminado — volver a SESSIONWORK
@@ -351,8 +351,8 @@ Para sesiones donde se tocaron 1-5 docs sin nuevas guías/mecánicas.
    - /updoc Fase F (BUILD: aplicar correcciones de la auditoría PLAN)
    - /version BUILD* Steps 6→12 (CHANGELOG + commit + tag + --push)
 
-3. **NO SUGERIR /doctor**
-   - Sin /doctor, sin agentes — el camino parcial es deliberadamente liviano
+3. **NO SUGERIR /salud**
+   - Sin /salud, sin agentes — el camino parcial es deliberadamente liviano
 
 ---
 
@@ -428,7 +428,7 @@ El meta-orquestador analiza el working tree y sugiere agentes/skills antes del B
    - Agentes/Skills sugeridos (W4)
    - /updoc findings (W1+W2)
     - /version bump y pre-flight (W3)
-    - /doctor correcciones (W2)
+    - /salud correcciones (W2)
     - Diligencia version: ✅ al día o ⚠️ stale (W3)
     - PREGUNTAR: "¿Ejecutar BUILD completo (incluyendo agentes sugeridos)?"
    - SI no confirma: DETENER workflow
@@ -438,9 +438,9 @@ El meta-orquestador analiza el working tree y sugiere agentes/skills antes del B
    - Agentes aceptados: ejecutar en orden (reviewer → architect → verify)
    - /updoc Fase F (BUILD): aplicar correcciones documentales
    - /version BUILD*: Steps 6→12 (CHANGELOG + commit + tag + --push)
-    - /doctor Fase 3 (BUILD): backup pre-corrección + aplicar correcciones si hay
+    - /salud Fase 3 (BUILD): backup pre-corrección + aplicar correcciones si hay
 
-3. **SUGERIR /CBP doctor** si /doctor detectó correcciones no aplicadas
+3. **SUGERIR /CBP doctor** si /salud detectó correcciones no aplicadas
 
 ---
 
@@ -489,6 +489,6 @@ El meta-orquestador analiza el working tree y sugiere agentes/skills antes del B
 
 - `~/.config/opencode/commands/updoc.md`
 - `~/.config/opencode/commands/version.md`
-- `~/.config/opencode/commands/doctor.md`
+- `~/.config/opencode/commands/salud.md`
 - `doc/mecanicas/MECANICA-CBP.md`
 - `doc/guias/GUIA_DE_BUENAS_PRACTICAS.md` §9
