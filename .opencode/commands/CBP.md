@@ -66,6 +66,7 @@ Cuando /CBP se invoca, EJECUTAR este algoritmo ANTES de cualquier otra acción:
             {label: "commit (Recomendado)", description: "git add + commit + push. Sin doc sync ni versión."},
             {label: "parcial", description: "/updoc + /version patch + push. Sin agentes."},
             {label: "full", description: "Meta-PLAN + BUILD + agentes/skills."},
+            {label: "version", description: "/version + --push. Sin Meta-PLAN. Ideal si WT limpio con commits pendientes."},
             {label: "abortar", description: "Cancelar sin cambios."}
           ]
         }]
@@ -121,11 +122,13 @@ Reemplaza el comportamiento default `completo` con una decisión inteligente.
    a. Solo código (src/) + 0 docs → "commit path"
    b. 1-5 docs, sin nuevas guías/mecánicas → "parcial path"
    c. 5+ docs, nuevas guías/mecánicas, milestones → "full path"
+   d. WT limpio (0 cambios) + commits pendientes desde último release → "version path"
 2. Verificar milestone flag (semver minor/major vs patch)
 3. Presentar camino sugerido al usuario:
    "🔍 Detecté [N] archivos modificados ([X] docs, [Y] código).
+     ➡️ WT limpio con N commits sin versionar: sugerido <version path>
     ➡️ Camino sugerido: <commit|parcial|full>
-    ¿Confirmas o quieres otro camino? [commit/parcial/full/abortar]"
+    ¿Confirmas o quieres otro camino? [commit/parcial/full/version/abortar]"
 4. Si usuario no especifica → aplicar camino sugerido
 ```
 
@@ -135,6 +138,7 @@ Reemplaza el comportamiento default `completo` con una decisión inteligente.
 |---|---|
 | `/CBP commit` | Camino commit directo, sin preguntar |
 | `/CBP parcial` | Camino parcial directo |
+| `/CBP version` | Camino version directo, sin Meta-PLAN |
 | `/CBP full` | Camino full (equivalente a `/CBP completo`) |
 
 ### Cuándo usar cada camino

@@ -2,6 +2,18 @@
 
 ---
 
+## [2.4.0] — 2026-06-28
+
+### Added
+- `@documentador` integrado al 100%: +Worker 5 en CBP full, +fase en Ola1, +check g pre-flight /version, +paso 9.6 post-bump
+- `@documentador` +4 checks IDENTIDAD PÚBLICA (24 checks, 6 categorías): README vigente, proyectos activos, identidad pública, docs comunitarios
+- `/consejo --explorar <url>` — explora repos GitHub y fuentes externas para proponer mejoras
+- CBP dispatch: ahora detecta WT limpio + commits pendientes y sugiere "version path"
+
+### Changed
+- CBP dispatch: opción "version" agregada al question() — `/CBP version` ahora es camino explícito
+- ROADMAP: R55→✅ (documentador), R54→🟡 (consejero explorer)
+
 ## [2.3.0] — 2026-06-28
 
 ### Added
