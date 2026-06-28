@@ -144,6 +144,21 @@ Al terminar cualquier BUILD en este proyecto, reportar cambios aplicados y suger
 | `/upmec` | 2026-06-26 | Usar `/doc --tipo mecanica --actualizar` |
 | `/checklist` | 2026-06-26 | Usar `/rm` (inconsistencias CHECKLIST↔RM) y `/next` (priorización) — funcionalidad redistribuida |
 
+## Modelo Paloma Mensajera (MAIN ↔ AGENTE)
+
+Los agentes (`@documentador`, `@consejero`, `@circuito`) operan en chats separados con permisos de solo lectura (`edit: deny`). Cuando investigan o auditan, entregan una **paloma** (reporte estructurado en tabla) al usuario. El usuario evalúa y decide si llevarla al chat **MAIN** para ejecutar cambios.
+
+| Regla | Descripción |
+|---|---|
+| R1 | Chat AGENTE es read-only (`edit: deny`) — nunca modifica archivos |
+| R2 | Uso exclusivo investigatorio: auditar, explorar, proponer |
+| R3 | La paloma es un reporte estructurado (tabla de hallazgos) |
+| R4 | El usuario transporta la paloma del AGENTE al MAIN |
+| R5 | Solo MAIN ejecuta BUILD: `/commit`, `/version`, `/CBP` |
+| R6 | El MAIN decide si usar la paloma o ignorarla |
+
+El **único agente con permiso de escritura** es `@sdd-implement`, y se invoca desde el chat MAIN para aplicar cambios aprobados.
+
 ## Archivos relacionados
 - `.opencode/HARNESS.md` — configuración de harness, test y lint
 - `doc/guias/ESTANDAR-COMANDOS.md` — estándar de formato de comandos
