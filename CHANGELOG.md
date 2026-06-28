@@ -2,6 +2,30 @@
 
 ---
 
+## [2.3.0] — 2026-06-28
+
+### Added
+- `@documentador` — skill `diligencia-docs` con 20 checks en 5 categorías (estructura, legal, docs, tracking, comandos)
+- `/documentar` — comando de auditoría documental con flags `--legales`, `--estructura`, `--docs`, `--tracking`, `--comandos`
+- `/documentar --legales` — absorbe `/legal` como subcomando (ahora deprecado)
+- `/salud` Fase 1i — auditoría documental vía @documentador (reemplaza Fase 1h legal)
+- ADR-004: M6 — Chamber pertenece a Diligencia
+- ADR-005: Fusión de comandos 39→28
+- ADR-006: /doctor→/salud por conflicto OpenCode
+- ROADMAP: R53 (tray template), R54 (consejero explorer), R55 (documentador)
+- R55: 🟡 @documentador en progreso
+
+### Changed
+- /rm y /next: recordatorio de validación UX ($UX_CHECK) antes de planificar
+- ROADMAP.md: header con v2.2.3, fecha 2026-06-28, stack con 6 proyectos reales, "Ahora" con items en progreso, Completado con v1.19→v2.2.3
+- ADR_SUMMARY.md: header con versión, +3 ADRs (004-006), estadísticas 6/6
+- INDEX.md: PENDING.md registrado, ADR-004/005/006 registrados, fecha global actualizada
+- AGENTS.md: 28→29 comandos fundamentales (+/documentar)
+- COMANDOS.md: CUIDAR 5→6
+
+### Removed
+- `/salud` deprecado → renombrado de vuelta (era el absorbido por /doctor, ahora es el nombre activo tras /doctor→/salud)
+
 ## [2.2.3] — 2026-06-27
 
 ### Changed
