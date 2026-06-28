@@ -1,22 +1,27 @@
-# ROADMAP — Diligencia
+# ROADMAP — Diligencia v2.2.3
 
 Metodología de estructura estándar para proyectos OpenCode.
 
-Última actualización: 2026-06-13
+Última actualización: 2026-06-28
 
 ---
 
 ## Stack
 
 - Metodología documental (sin código runtime)
-- Dependencias: OpenCode, `templates/doc-base/`, `ADAPTAR-COMANDOS.md`
-- Proyectos adaptados: proyecto-alfa Detective, proyecto-beta
+- Dependencias: OpenCode, `templates/doc-base/`, 28 comandos fundamentales
+- Proyectos adaptados: +RM, MarketAI, conquisitare, buenobonitobarato, Nemesis, OpenMontage-main
+- Interface: OpenChamber (pertenece a Diligencia — M6)
 
 ---
 
 ## Ahora (Now)
 
-*(nada en progreso actualmente)*
+| ID | Item | Prioridad | Estado |
+|---|---|---|
+| R19 | MECANICA-CONTEXTO.md — modelo L0/L1/L2 | P2 | 🟡 En progreso |
+| R20 | MECANICA-GRAPHIFY.md + .graphifyignore | P2 | 🟡 En progreso |
+| R21 | MECANICA-MEMORY.md — memoria persistente | P3 | 🟡 En progreso |
 
 ## Siguiente (Next)
 
@@ -59,6 +64,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R52 | +estudio: proyectos con potencial hosteo de server para actuarlos en producción + mejor camino para administrar todo | P2 | 🔴 Pendiente | — |
 | R53 | +tray: servidor de bandeja estandarizado en doc-base para que cada proyecto adaptado herede un tray server vía /adaptar | P2 | 🔴 Pendiente | — |
 | R54 | +consejero: agente que explora repos GitHub, docs y similares para proponer mejoras al proyecto actual basado en buenas prácticas externas | P2 | 🔴 Pendiente | — |
+| R55 | +documentacion: agente @documentador que audita proactivamente fechas, versiones, ADRs, cross-refs y consistencia documental entre todos los .md del proyecto | P2 | 🔴 Pendiente | — |
 
 ## Futuro (Later)
 
@@ -141,6 +147,14 @@ Metodología de estructura estándar para proyectos OpenCode.
 | +licencia: GPL-3.0 → AGPL-3.0 | v1.17.9 |
 | +manifiesto: MANIFIESTO.md con 6 principios | v1.17.9 |
 | +SECURITY.md template mejorado con Scope, Out of Scope, PoC | v1.17.9 |
+| +5 skills Diligencia para Chamber (cbp, health, docs, workflow, commands) + catálogo + audit Chamber | v1.19.0 |
+| +@consejero + @circuito — agentes de decisión e integridad lógica + AGPL-3.0 + MANIFIESTO.md | v2.0.0 |
+| +/propagar — comandos de propagación + MECANICA-PROPAGACION.md + /version post-bump | v2.1.0 |
+| +$PROYECTOS configurado (5 proyectos) + COMANDOS.md compacto por categorías | v2.1.1 |
+| +Fusionar 11 comandos (39→28) + /doc + /commit --push + COMANDOS.md 5 grupos por acción | v2.2.0 |
+| +R48 cerrar sesión Chamber + iconos SVG 7 proyectos + OpenMontage integrado | v2.2.1 |
+| +R47 Diligencia Command Toolbar + R52 estudio hosting + tray mejorado (Rebuild, HMR) | v2.2.2 |
+| +/doctor→/salud por conflicto OpenCode + M6 Chamber pertenece a Diligencia + Stable baseline | v2.2.3 |
 
 ## Archivos relacionados
 - `CHECKLIST.md` — checklist de tareas
