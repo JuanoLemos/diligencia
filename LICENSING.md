@@ -12,5 +12,5 @@ La licencia actual es **AGPL-3.0** (`LICENSE`).
 ## Archivos relacionados
 - `LICENSE` — texto completo de AGPL-3.0
 - `MANIFIESTO.md` — principios del proyecto (§6: no cerrar la metodología)
-- `NOTICE` — atribución de terceros
+- `NOTICE` — atribución de terceros (creado 2026-06-28, corregido por @documentador)
 - `doc/mecanicas/MECANICA-ENFORCEMENT.md` — enforcement documental

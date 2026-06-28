@@ -16,4 +16,7 @@ Thumbs.db
 
 # Diligencia backups
 .old/
+
+# Local agent registrations
+.agents/
 .env.local

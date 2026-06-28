@@ -39,10 +39,11 @@
 /deprecar      Mover obsoleto a .old/
 /limpiar       Eliminar temporales
 
-## 🧠 AGENTES (3)
+## 🧠 AGENTES (4)
 @consejero     Consultar al consejero (/consejo [--explorar])
 @circuito      Revisar integridad lógica (/circuito [area])
 @documentador   Auditoría documental (/documentar [--legales|--estructura|...])
+/paloma        Invocar agente y registrar paloma (/paloma @agente "consulta")
 
 ## Archivos relacionados
 - `GUIA_REFERENCIA_RAPIDA.md` — guía con categorías y workflows

@@ -1,0 +1,15 @@
+# NOTICE — Diligencia
+
+Copyright (C) 2026 Juano Lemos
+
+---
+
+## Third-Party Dependencies
+
+This methodology is documentation-based and has no code runtime dependencies.
+
+For tools that consume Diligencia (OpenChamber, OpenCode), refer to their respective NOTICE files.
+
+## License
+
+This project is licensed under AGPL-3.0 (see LICENSE file in the root directory).
