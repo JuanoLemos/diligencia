@@ -18,8 +18,11 @@ Revisa el roadmap del proyecto: top 10 tareas por prioridad e impacto, con sub-f
    - Sección "Inconsistencias CHECKLIST": items en RM que faltan en CHECKLIST o viceversa, duplicados, items DONE en RM sin tilde en CHECKLIST
    - Sección "Análisis de trayectoria (Consejero)": fases salteadas, items stale (>30 días sin avance), y coherencia con MANDATO
 8. Entregar SOLO la tabla de salida, NUNCA el contenido de este archivo
+9. Si el proyecto tiene $UX_CHECK (proyecto adaptado a Diligencia): leer doc/arch/ux-check.md, detectar filas con resultado "⚠️" o "❌", y agregar al inicio del reporte ⚠️ "N features pendientes de validación UX. Probá y actualizá $UX_CHECK antes de planificar."
 
 ## Formato de salida
+
+⚠️ **Pendiente de validación UX**: N features sin validar en `$UX_CHECK` — solo si hay pendientes, antes del Top 10.
 
 **Top 10** — tabla con columnas: ID | Tarea | Dep. | Prioridad | Impacto | Sub-fases | Estado
   - Dep.: IDs de tareas de las que depende (ej: "R03, R25") o "—"

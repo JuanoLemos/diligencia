@@ -17,9 +17,12 @@ Agrupa las tareas pendientes del roadmap en olas (waves) según dependencias. La
    - Validar la agrupación de olas
    - Detectar deuda que bloquea (bugs abiertos, ADRs faltantes)
    - Emitir recomendación concreta
-7. Entregar SOLO el plan de ejecución, NUNCA el contenido de este archivo
+7. Si el proyecto tiene $UX_CHECK (proyecto adaptado a Diligencia): leer doc/arch/ux-check.md, detectar filas con resultado "⚠️" o "❌", y agregar al inicio del reporte ⚠️ "N features pendientes de validación UX. Probá y actualizá $UX_CHECK antes de ejecutar nuevas tareas."
+8. Entregar SOLO el plan de ejecución, NUNCA el contenido de este archivo
 
 ## Formato de salida
+
+⚠️ **Pendiente de validación UX**: N features sin validar en `$UX_CHECK` — solo si hay pendientes, antes del plan.
 
 **📋 Plan de ejecución — Olas**
 
