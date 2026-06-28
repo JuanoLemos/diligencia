@@ -17,7 +17,12 @@ Cada entrada registra una operación de `/propagar`.
 | 2026-06-26 | openchamber | v1.18.1 | v2.2.0 | ✅ Completado (+ comandos, $PROPAGAR_LOG, $UX_CHECK) |
 | 2026-06-26 | Chamber R38 | — | v1.0.0 | ✅ GUIA_DILIGENCIA_CHAMBER + GUIA_CHAMBER |
 | 2026-06-26 | Chamber R37 | — | v2.2.0 | ✅ README badges BETA + license + version |
-| 2026-06-26 | Chamber R51 | — | v1.0.0 | 🟡 Icon template SVG doc-base + icono Diligencia |
+| 2026-06-28 | +RM | v1.18.1 | v2.3.0 | 📝 Notificado |
+| 2026-06-28 | MarketAI | v1.18.1 | v2.3.0 | 📝 Notificado |
+| 2026-06-28 | conquisitare | v1.18.1 | v2.3.0 | 📝 Notificado |
+| 2026-06-28 | buenobonitobarato | v1.18.0 | v2.3.0 | 📝 Notificado |
+| 2026-06-28 | Nemesis | v1.18.1 | v2.3.0 | 📝 Notificado |
+| 2026-06-28 | OpenMontage-main | v2.2.0 | v2.3.0 | 📝 Notificado |
 
 ## Archivos relacionados
 - `AGENTS.md` — variable `$PROPAGAR_LOG`
