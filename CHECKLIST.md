@@ -6,6 +6,9 @@
 
 | Versión | Estado | Descripción |
 |---|---|---|
+| v2.2.0 | ✅ | 11 fusiones de comandos (39→28) + /doc + /commit --push + COMANDOS.md 5 grupos por acción |
+| v2.2.1 | ✅ | R48+ cerrar sesión Chamber + iconos + OpenMontage integrado |
+| v2.2.2 | ✅ | R47 Diligencia Command Toolbar + R52 estudio hosting + tray mejorado |
 | v2.1.0 | ✅ | /propagar comando + MECANICA-PROPAGACION.md + /version post-bump + 6 comandos copiados + calidad doc corregida + CHECKLIST Dashboard actualizado |
 | v2.0.0 | ✅ | @consejero + @circuito agentes + skills (+2). /consejo y /circuito standalone. CHANGELOG + INDEX + HARNESS sync. GPL→AGPL-3.0 + MANIFIESTO.md. |
 | v1.19.0 | ✅ | 5 skills Chamber. Catalogo-proyectos + backup-all.ps1. 6/6 proyectos al día. Identidad Diligencia≠Chamber. |
@@ -19,7 +22,7 @@
 | v1.9.x | ✅ | CI/CD, /doctor sobre Diligencia. |
 | v1.8.0 | ✅ | Keep a Changelog, ADR lifecycle, plantillas stack. |
 
-**Completado:** 12/12 versiones (100%)
+**Completado:** 15/15 versiones (100%)
 
 ## Pendientes globales
 

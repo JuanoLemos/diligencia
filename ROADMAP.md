@@ -32,17 +32,17 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R19 | +contexto: MECANICA-CONTEXTO.md — modelo L0/L1/L2 para carga de documentación | P2 | 🟡 En progreso | — |
 | R20 | +graphify: MECANICA-GRAPHIFY.md + .graphifyignore template | P2 | 🟡 En progreso | — |
 | R21 | +memory: MECANICA-MEMORY.md — memoria persistente con claude-mem | P3 | 🟡 En progreso | — |
-| R25 | +openchamber hub: adaptación liviana (DILIGENCIA.md, INDEX.md, ROADMAP.md, AGENTS.md +$PROYECTOS) | P2 | 🔴 Pendiente | — |
+| R25 | +openchamber hub: adaptación liviana (DILIGENCIA.md, INDEX.md, ROADMAP.md, AGENTS.md +$PROYECTOS) | P2 | ✅ Completado | — |
 | R26 | +openchamber hub: integración con $PROYECTOS para multi-proyecto visual | P2 | 🔴 Pendiente | R25 |
 | R27 | +openchamber hub: dashboard visual de salud de proyectos (status-salud, diff, RM table) | P3 | 🔴 Pendiente | R26 |
 | R28 | +openchamber hub: upstream watch — monitorear repo original (btriapitsyn/openchamber) para mergear mejoras | P2 | 🔴 Pendiente | R25 |
 | R29 | +openchamber hub: skills de Diligencia (workflow, docs, health, commands, adaptation) para Skills Catalog | P2 | 🔴 Pendiente | R25 |
 | R30 | +openchamber hub: portear 8 temas Diligencia al formato de UI de OpenChamber | P2 | 🔴 Pendiente | R25 |
 | R34 | +skills Diligencia en repo público (workflow, docs, health, commands, adaptation) para Chamber Skills Catalog | P1 | ✅ Completado | — |
-| R35 | +portear 8 temas Diligencia al formato Chamber UI (JSON ~180 props) | P1 | 🔴 Pendiente | — |
+| R35 | +portear 8 temas Diligencia al formato Chamber UI (JSON ~180 props) | P1 | 🗑️ Deprecado | — (Chamber ya tiene 60+ temas dark/light) |
 | R36 | +dashboard Diligencia en Chamber React (cards por proyecto: versión, WT, salud, RM %) | P2 | 🔴 Pendiente | R34,R35 |
-| R37 | +README.md con badge BETA + link a issues en los 6 proyectos activos | P1 | 🔴 Pendiente | — |
-| R38 | +manuales: GUIA_DILIGENCIA_CHAMBER.md + GUIA_CHAMBER.md | P1 | 🔴 Pendiente | R34 |
+| R37 | +README.md con badge BETA + link a issues en los 6 proyectos activos | P1 | ✅ Completado | — |
+| R38 | +manuales: GUIA_DILIGENCIA_CHAMBER.md + GUIA_CHAMBER.md | P1 | ✅ Completado | R34 |
 | R39 | +upstream watch Chamber (btriapitsyn/openchamber) para detectar nuevas releases | P2 | 🔴 Pendiente | R25 |
 | R40 | +Chamber remoto vía Cloudflare Tunnel para acceso desde cualquier dispositivo | P2 | 🔴 Pendiente | — |
 | R41 | +/news multi-proyecto — distribuir novedades a todos los $PROYECTOS desde Chamber | P2 | 🔴 Pendiente | R34 |
@@ -51,11 +51,11 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R44 | +scheduled health checks automáticos cada N horas vía Chamber | P3 | 🔴 Pendiente | R36 |
 | R45 | +/next --plan: evolución de diagnóstico a ejecución (clusteriza tareas sin bloqueos en lotes, ejecuta secuencial) | P1 | 🔴 Pendiente | — |
 | R46 | +audit Chamber: revisar todas las herramientas nativas (Terminal, DiffView, Skills Catalog, Team Mode, Background Agents, Scheduled Tasks, Git, File Browser) para optimizar comandos Diligencia | P2 | ✅ Completado | R34,R35 |
-| R47 | +integrar comandos Diligencia con Chamber UI (botones /CBP, /doctor, /salud desde la interfaz visual, no solo terminal) | P2 | 🔴 Pendiente | R46 |
+| R47 | +integrar comandos Diligencia con Chamber UI (botones /CBP, /doctor, /salud desde la interfaz visual, no solo terminal) | P2 | ✅ Completado | R46 |
 | R48 | +propagar: comando para propagar updates de Diligencia a $PROYECTOS (semiautomático: /version sugiere, /propagar ejecuta) + UPDATE-AVAILABLE.md + $PROPAGAR_LOG → MECANICA-PROPAGACION.md | P2 | ✅ Completado | — |
 | R49 | +ux: panel interactivo de checklist en Chamber por proyecto — checkboxes, progreso %, lee $UX_CHECK. Cada proyecto adaptado hereda el panel vía /adaptar. | P2 | 🔴 Pendiente | R25,R26 |
 | R50 | +MiniMax: integrar procesamiento multimodal (video, imagen, voz) vía Token Plan Max — testing en OpenMontage | P1 | 🔴 Pendiente | R25,R26 |
-| R51 | +chamber: iconos personalizados por proyecto para visual en carpeta de OpenChamber — template SVG en doc-base, /adaptar lo copia | P2 | 🔴 Pendiente | R25 |
+| R51 | +chamber: iconos personalizados por proyecto para visual en carpeta de OpenChamber — template SVG en doc-base, /adaptar lo copia | P2 | ✅ Completado | R25 |
 | R52 | +estudio: proyectos con potencial hosteo de server para actuarlos en producción + mejor camino para administrar todo | P2 | 🔴 Pendiente | — |
 
 ## Futuro (Later)
