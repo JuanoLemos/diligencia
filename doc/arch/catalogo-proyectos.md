@@ -9,14 +9,13 @@ Actualizado: 2026-06-23.
 
 | # | Proyecto | Ruta | Diligencia | Versión propia | Tipo | IA integrada | WT | Acción pendiente |
 |---|---|---|---|---|---|---|---|---|
-| 1 | **Diligencia** | `C:\xampp\htdocs\Diligencia` | v2.1.0 | 2.1.0 | Metodología documental | No | Clean | Referente. Único con $REPO. |
-| 2 | **MarketAI** | `C:\xampp\htdocs\MarketAI` | v1.18.1 | 1.3.0 | Trading multi-capa | DeepSeek V4 Flash | Clean | Al día. Monitorear. |
-| 3 | **buenobonitobarato** | `C:\xampp\htdocs\buenobonitobarato` | v1.18.0 | 0.1.0 | CLI Node.js | No | Clean | Casi al día. |
-| 4 | **Nemesis** | `C:\xampp\htdocs\nemesis` | v1.18.1 ✅ | 3.8.2 | Juego narrativo IA | DeepSeek Flash+Pro, Claude, Gemini | Clean | ✅ Al día. DILIGENCIA.md creado 2026-06-26. |
-| 5 | **+RM** | `C:\xampp\htdocs\+RM` | v1.18.1 ✅ | Sin versionar | Dashboard PHP | No | Clean | ✅ Al día. |
-| 6 | **conquisitare** | `C:\xampp\htdocs\conquisitare` | v1.18.1 ✅ | 0.7.0 | Juego conquista WebGL | No | Clean | Al día. |
-
-| 7 | **OpenMontage** | `C:\Users\jlemo\OneDrive\Desktop\OpenMontage-main` | v1.20.0 | — | — | — | — | Recién adaptado. Pendiente upgrade a v2.2.0. |
+| 1 | **Diligencia** | `C:\xampp\htdocs\Diligencia` | v2.4.1 | 2.4.1 | Metodología documental | No | Clean | Referente. Único con $REPO. |
+| 2 | **MarketAI** | `C:\xampp\htdocs\MarketAI` | v2.2.0 ✅ | 1.3.0 | Trading multi-capa | DeepSeek V4 Flash | Clean | ✅ Upgrade v1.18.1→v2.2.0 completo. |
+| 3 | **buenobonitobarato** | `C:\xampp\htdocs\buenobonitobarato` | v2.2.0 ✅ | 0.1.0 | CLI Node.js | No | Clean | ✅ Upgrade v1.18.0→v2.2.0 completo. |
+| 4 | **Nemesis** | `C:\xampp\htdocs\nemesis` | v2.2.0 ✅ | 3.8.2 | Juego narrativo IA | DeepSeek Flash+Pro, Claude, Gemini | Clean | ✅ Upgrade v1.18.1→v2.2.0 completo. |
+| 5 | **+RM** | `C:\xampp\htdocs\+RM` | v2.2.0 ✅ | Sin versionar | Dashboard PHP | No | Clean | ✅ Upgrade v1.18.1→v2.2.0 completo. |
+| 6 | **conquisitare** | `C:\xampp\htdocs\conquisitare` | v2.2.0 ✅ | 0.7.0 | Juego conquista WebGL | No | Clean | ✅ Upgrade v1.18.1→v2.2.0 completo. |
+| 7 | **OpenMontage** | `C:\Users\jlemo\OneDrive\Desktop\OpenMontage-main` | v2.2.0 ✅ | — | — | — | — | ✅ Upgrade v1.20.0→v2.2.0 completo. |
 | 8 | **OpenChamber** | `C:\Users\jlemo\OneDrive\Desktop\openchamber` | v2.2.0 ✅ | — | Interfaz visual | Fork Diligencia | Clean | Under tutelage. Upgrade v1.18.1→v2.2.0 completado. |
 
 ## Proyectos congelados
