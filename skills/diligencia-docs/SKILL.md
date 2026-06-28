@@ -2,6 +2,8 @@
 
 24 checks en 6 categorías. Read-only. Cargable por `/documentar`, `/salud` Fase 1i, y `/CBP` Ola 1.
 
+> **Modo cocinado:** Cuando el agente opera en modo paloma, debe incluir el contenido propuesto (archivos completos o diffs) en la columna "Acción sugerida", listo para que el MAIN lo copie y aplique.
+
 ---
 
 ## 📁 ESTRUCTURA (4 checks)
