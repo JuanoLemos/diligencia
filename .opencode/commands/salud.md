@@ -78,14 +78,10 @@ EJECUTAR los 8 checks de integridad lógica y UX sobre el proyecto:
 ENTREGAR tabla de hallazgos con Archivo:Línea | Hallazgo | Severidad (P2/P3)
 INCLUIR en tabla consolidada de Fase 2.
 
-### 1h — Legal
-VERIFICAR presencia de documentos legales en la raíz:
-- `LICENSE` — si falta: sugerir copiar template
-- `NOTICE` — si falta: sugerir copiar template
-- `SECURITY.md` — si falta: sugerir copiar template
-- `LICENSING.md` — si falta y hubo cambios de licencia: sugerir crear
-Si existe `package.json` y no tiene `"license"`: sugerir agregar SPDX.
-MUESTREO: verificar headers SPDX en 5 archivos fuente.
+### 1i — Documentación (documentador)
+CARGAR `skill("diligencia-docs")`
+EJECUTAR los 20 checks de auditoría documental (estructura, legal, docs, tracking, comandos)
+Los checks legales reemplazan la antigua Fase 1h — ahora cubiertos por `/documentar --legales`
 INCLUIR en tabla consolidada de Fase 2.
 
 ---

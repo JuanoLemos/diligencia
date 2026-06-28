@@ -64,7 +64,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R52 | +estudio: proyectos con potencial hosteo de server para actuarlos en producción + mejor camino para administrar todo | P2 | 🔴 Pendiente | — |
 | R53 | +tray: servidor de bandeja estandarizado en doc-base para que cada proyecto adaptado herede un tray server vía /adaptar | P2 | 🔴 Pendiente | — |
 | R54 | +consejero: agente que explora repos GitHub, docs y similares para proponer mejoras al proyecto actual basado en buenas prácticas externas | P2 | 🔴 Pendiente | — |
-| R55 | +documentacion: agente @documentador que audita proactivamente fechas, versiones, ADRs, cross-refs y consistencia documental entre todos los .md del proyecto | P2 | 🔴 Pendiente | — |
+| R55 | +documentacion: agente @documentador que audita proactivamente fechas, versiones, ADRs, cross-refs y consistencia documental entre todos los .md del proyecto | P2 | 🟡 En progreso | — |
 
 ## Futuro (Later)
 

@@ -31,8 +31,9 @@
 /revision      Revisar mutaciones del proyecto
 /debug         Análisis profundo de código
 
-## 🛡️ CUIDAR (5)
+## 🛡️ CUIDAR (6)
 /salud         Cuidado integral (8 fases)
+/documentar    Auditoría documental (20 checks)
 /health        Verificar sintaxis y consistencia
 /diligencia-check  Validar estructura Diligencia
 /deprecar      Mover obsoleto a .old/
