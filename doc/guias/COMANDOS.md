@@ -39,6 +39,11 @@
 /deprecar      Mover obsoleto a .old/
 /limpiar       Eliminar temporales
 
+## 🧠 AGENTES (3)
+@consejero     Consultar al consejero (/consejo [--explorar])
+@circuito      Revisar integridad lógica (/circuito [area])
+@documentador   Auditoría documental (/documentar [--legales|--estructura|...])
+
 ## Archivos relacionados
 - `GUIA_REFERENCIA_RAPIDA.md` — guía con categorías y workflows
 - `GUIA_DE_COMANDOS.md` — referencia completa

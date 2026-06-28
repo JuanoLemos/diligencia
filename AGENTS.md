@@ -94,7 +94,7 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | /explica | Explicar concepto en formato directo (→/📄/⚠️/🧭) | Declarativo |
 | /rm | Revisar ROADMAP: top 10 tareas con impacto y sub-fases | Declarativo |
 | /next | Plan de ejecución por olas: agrupa tareas sin dependencias cruzadas + sub-fases | Declarativo |
-| /consejo | Consultar al consejero sobre dudas o ideas del proyecto | Declarativo |
+| /consejo | Consultar al consejero sobre dudas o ideas del proyecto (--explorar para fuentes externas) | Declarativo |
 | /circuito | Revisar integridad lógica y UX (handlers, rutas, navegación) | Declarativo |
 | /+rm | Agregar item al ROADMAP | Declarativo |
 | /updoc | Actualizar documentación completa | Declarativo |
