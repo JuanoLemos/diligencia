@@ -31,13 +31,14 @@ Ejemplos:
 5. RECIBIR la tabla de hallazgos (🕊️ paloma)
 6. REGISTRAR en `doc/arch/palomas.md`:
    ```
-   | P### | Fecha | Agente | Consulta | Hallazgos | Veredicto | Estado |
-   ```
-   - ID = `P` + número incremental (siguiente al último ID registrado, paso 3)
-   - Estado inicial = `Pendiente` (R6: MAIN decidirá si aplicar o ignorar)
-   - Contar resultados: N hallazgos (M P1, K P2, J P3) o "N observaciones"
-   - Veredicto = resumen de 1 frase
-7. ENTREGAR la paloma al usuario: ID + tabla + resumen + estado
+    | P### | Fecha | Agente | Consulta | Hallazgos | Veredicto | Estado | Acción MAIN |
+    ```
+    - ID = `P` + número incremental (siguiente al último ID registrado, paso 3)
+    - Estado inicial = `📬 Pendiente` (R6: MAIN decidirá si aplicar o ignorar)
+    - Acción MAIN = `—` (pendiente de evaluar)
+    - Contar resultados: N hallazgos (M P1, K P2, J P3) o "N observaciones"
+    - Veredicto = resumen de 1 frase
+ 7. ENTREGAR la paloma al usuario: ID + tabla + resumen + estado
 
 ## Formato de salida
 
