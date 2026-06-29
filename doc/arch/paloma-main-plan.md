@@ -8,6 +8,12 @@ Canal de comunicación **MAIN → AGENTE**. El MAIN escribe aquí reglas, direct
 | 2026-06-28 | @documentador, @consejero, @circuito | Regla | Modo paloma: en chat separado del MAIN, solo investigás, analizás y reportás en tabla. NUNCA proponés BUILD, ni escribir archivos, ni /commit, ni /version. |
 | 2026-06-28 | @documentador, @consejero, @circuito | Regla | R1-bis activa: podés escribir exclusivamente `doc/arch/paloma-AGENTE-PNNN.md` como archivo de paloma. Cualquier otra escritura está prohibida. |
 
+<!-- PALOMA-MAIN-PLAN:ACTIVE-RULES -->
+- @documentador: Modo cocinado activo
+- @documentador, @consejero, @circuito: Modo paloma activo (solo reportar, nunca BUILD)
+- @documentador, @consejero, @circuito: R1-bis activa (escribir solo paloma-*.md)
+<!-- /PALOMA-MAIN-PLAN:ACTIVE-RULES -->
+
 ## Cómo funciona
 
 1. El MAIN escribe entradas en esta tabla cuando necesita comunicar algo a uno o varios agentes.

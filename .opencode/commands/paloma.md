@@ -35,8 +35,13 @@ Ejemplos:
 ### Modo --news
 0. Si el argumento es `--news` (sin @agente):
    a. LEER `doc/arch/palomas.md` AHORA
-   b. FILTRAR palomas con estado `📬 Pendiente` o `🟡 En revisión`
-   c. LEER `doc/arch/paloma-main-plan.md` AHORA — extraer reglas o directivas activas del MAIN hacia los agentes
+   b. FILTRAR palomas con estado `📬 Pendiente` o `🟡 En revisión`:
+      - Usar `Select-String -Path "doc/arch/palomas.md" -Pattern "\| P\d+ \|"` para extraer todas las filas de la tabla
+      - Para cada fila, revisar si contiene "📬" o "🟡" en la columna Estado
+      - Si no hay matches: "✅ No hay palomas pendientes."
+   c. LEER `doc/arch/paloma-main-plan.md` AHORA:
+      - Buscar el bloque `<!-- PALOMA-MAIN-PLAN:ACTIVE-RULES -->` hasta `<!-- /PALOMA-MAIN-PLAN:ACTIVE-RULES -->`
+      - Extraer las reglas activas. Si el bloque no existe, reportar "📋 Sin reglas activas del MAIN."
    d. MOSTRAR tabla de palomas pendientes + reglas del MAIN
    e. Si no hay pendientes: ✅ "No hay palomas pendientes. Reglas MAIN→AGENTE al día."
    f. DETENER aquí (no invocar ningún agente)
