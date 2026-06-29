@@ -6,7 +6,7 @@
 [![Issues](https://img.shields.io/badge/issues-7%20proyectos-181717?style=flat-square)](https://github.com/JuanoLemos/diligencia/issues)
 
 Estructura estándar de documentación para proyectos OpenCode.
-Diligencia es una metodología **plural y gratuita** para mejorar la experiencia de desarrollo con agentes IA.
+Diligencia existe para que tu proyecto tenga memoria. Cada paso deja constancia, cada decisión se registra, cada sesión cierra en orden. Sin burocracia, sin herramientas complejas, sin depender de un solo proveedor de IA.
 
 Diligencia define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta, cómo se organizan los comandos y cómo mantener la documentación sincronizada con el código.
 
@@ -36,10 +36,22 @@ Diligencia define dónde vive cada tipo de archivo, cómo se nombran las variabl
 
 ## ¿Para quién es Diligencia?
 
-Diligencia está diseñada para **operadores y orquestadores de agentes IA** que trabajan con OpenCode.
+Diligencia está diseñada para **cualquier persona que quiera ordenar su proyecto con ayuda de IA**. Si usás OpenCode y querés dejar de perder tiempo buscando archivos o adivinando qué se hizo en la sesión anterior, Diligencia es para vos.
+
 No requiere que escribas código runtime — Diligencia organiza los artefactos que los agentes generan:
 documentación, decisiones de arquitectura, registros de sesión, comandos y tracking de proyecto.
 Si tu flujo es `/plan → edición → /CBP`, Diligencia es para vos.
+
+### Niveles de madurez
+
+Diligencia escala con tu proyecto. No necesitás usarlo todo desde el día uno.
+
+| Nivel | Cuándo | Qué usás | Tiempo |
+|---|---|---|---|
+| **L0 — Arranque** | Idea nueva, cero estructura | `/adaptar` | 5 min |
+| **L1 — Ritmo** | Ya codeás, querés orden | `/CBP updoc`, `/commit --push` | 2 min por sesión |
+| **L2 — Profesional** | Equipo, PRs, funcionalidades | Agentes SDD, palomas, ADRs | Según complejidad |
+| **L3 — Orquesta** | Múltiples proyectos activos | Gran Orquestador, `/propagar`, Chamber | Infraestructura propia |
 
 ## Estructura del repositorio
 

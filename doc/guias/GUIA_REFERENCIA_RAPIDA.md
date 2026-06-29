@@ -12,7 +12,7 @@ Referencia rápida de 1 página. Para uso diario: comandos, decisión, flujo, va
 | `/plan` | Planificar tarea (solo lectura) |
 | `/adaptar` | Adaptar proyecto a Diligencia |
 | `/next` | Próximos 5 pasos del roadmap |
-| `/report` | Reporte consolidado |
+| `/estado` | Reporte rápido del proyecto |
 | `/version` | Bump + doc sync + commit de cierre. Usar /CBP version para bump automático |
 | `/reanudar` | Recuperar sesión tras interrupción brusca |
 | `/commit` | Commit con Conventional Commits |
@@ -25,40 +25,40 @@ Referencia rápida de 1 página. Para uso diario: comandos, decisión, flujo, va
 | `/diligencia-check` | Validar estructura completa |
 | `/debug` | Análisis profundo de sección |
 | `/deprecar` | Mover obsoleto a `.old/` |
-| `/bug` | Reportar bug en $BUGS |
-| `/incidente` | Registrar crash en $INCIDENTS |
+| `/reportar --tipo bug` | Reportar bug en $BUGS |
+| `/reportar --tipo incidente` | Registrar crash en $INCIDENTS |
 | `/limpiar` | Eliminar temporales |
 
 ### Documentación
 | Comando | Qué hace |
 |---|---|
 | `/updoc` | Auditoría documental entre versiones. /CBP updoc para chain completo (updoc→version→doctor) |
-| `/+mec` | Crear mecánica desde template |
-| `/upmec` | Actualizar mecánica |
-| `/+guia` | Crear guía desde template |
-| `/upguia` | Actualizar guía |
+| `/doc --tipo mecanica` | Crear mecánica desde template |
+| `/doc --tipo mecanica --actualizar` | Actualizar mecánica |
+| `/doc --tipo guia` | Crear guía desde template |
+| `/doc --tipo guia --actualizar` | Actualizar guía |
 
 ### Roadmap / Backlog
 | Comando | Qué hace |
 |---|---|
 | `/rm` | Revisar roadmap |
 | `/+rm` | Agregar ítem al roadmap |
-| `/estado` | Reporte rápido del proyecto |
-| `/checklist` | Cruce RM + checklist |
+| `/estado --full` | Reporte completo del proyecto |
+| `/rm` | Revisar roadmap completo |
+| `/next` | Próximos pasos agrupados por olas |
 
 ### Contexto / Edición
 | Comando | Qué hace |
 |---|---|
 | `/foco` | Cargar contexto de área |
 | `/head` | Preparar edición de sección |
-| `/apply` | Aplicar handoff file a código |
 | `/explica` | Explicar concepto (1-3 líneas) |
 
 ### Backup / Seguridad
 | Comando | Qué hace |
 |---|---|
 | `/backup` | Backup rápido |
-| `/backupall` | Zip completo |
+| `/backup --all` | Backup completo del proyecto |
 
 ---
 
@@ -70,8 +70,8 @@ Referencia rápida de 1 página. Para uso diario: comandos, decisión, flujo, va
 | Recuperar sesión perdida | `/reanudar` | empezar de cero |
 | Sincronizar docs entre versiones | `/updoc` | editar docs directo |
 | Chequeo completo del proyecto | `/doctor` | /health + /diligencia-check por separado |
-| Reportar bug | `/bug` | `/incidente` (bugs ≠ crashes) |
-| Registrar crash | `/incidente` | `/bug` |
+| Reportar bug | `/reportar --tipo bug` | `/reportar --tipo incidente` (bugs ≠ crashes) |
+| Registrar crash | `/reportar --tipo incidente` | `/reportar --tipo bug` |
 | Deprecar archivo | `/deprecar` | `rm` / `del` |
 | Limpiar temporales | `/limpiar` | rm manual |
 | Agregar item a roadmap | `/+rm` | Editar ROADMAP.md directo |
@@ -128,7 +128,7 @@ PRE                DURANTE              POST
 |---|---|
 | Nuevo proyecto | `/adaptar` → *(configurar)* |
 | Feature nueva | `/plan` → BUILD → `/commit feat:` |
-| Bug fix | `/bug` → `/debug` → BUILD → `/commit fix:` |
+| Bug fix | `/reportar --tipo bug` → `/debug` → BUILD → `/commit fix:` |
 | Recuperación de sesión | `/reanudar` |
 | Cierre de sesión | `/CBP completo` (updoc→doctor→version) |
 | Limpieza post-merge | `/doctor` → `/limpiar` |
@@ -144,7 +144,7 @@ PRE                DURANTE              POST
 | Editar sin plan en cambios grandes | `/plan` → BUILD |
 | `git commit` manual | `/commit` con formato |
 | Borrar archivos con `rm` / `del` | `/deprecar` (a `.old/`) |
-| Usar `/bug` para crashes | `/incidente` para crashes |
+| Usar `/reportar --tipo bug` para crashes | `/reportar --tipo incidente` para crashes |
 | Sincronizar docs sin `/updoc` | `/updoc` antes de versionar |
 | Hardcodear rutas en comandos | `$variables` en AGENTS.md |
 | Cerrar sesión sin versionar | `/version` al final |
@@ -155,14 +155,14 @@ PRE                DURANTE              POST
 
 | Ecosistema | Comandos |
 |---|---|
-| DOCTOR | /doctor, /health, /diligencia-check, /bug, /incidente, /limpiar, /deprecar |
+| DOCTOR | /doctor, /health, /diligencia-check, /reportar, /limpiar, /deprecar |
 | VERSION | /version, /updoc, /reanudar |
 | ADAPTAR | /adaptar, @sdd-* |
-| DOCUMENTACION | /+mec, /+guia, /upmec, /upguia |
-| CONTEXTO | /foco, /head, /apply, /explica |
-| BACKUP | /backup, /backupall |
+| DOCUMENTACION | /doc --tipo mecanica, /doc --tipo guia |
+| CONTEXTO | /foco, /head, /explica |
+| BACKUP | /backup, /backup --all |
 | COMUNICACION | /commit, /pushgh |
-| SEGUIMIENTO | /rm, /+rm, /checklist, /next, /estado |
+| SEGUIMIENTO | /rm, /+rm, /next, /estado |
 
 ---
 
