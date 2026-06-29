@@ -11,8 +11,9 @@ Log de consultas a agentes (🕊️ palomas). Cada entrada registra una consulta
 ## Estados
 
 | Estado | Significado |
-|---|---|
-| 📬 Pendiente | Paloma recibida, MAIN no evaluó aún. Default al registrarse. |
+|---|---|---|
+| 📝 Plan | Paloma en planificación con el usuario (borrador). No está lista para MAIN. |
+| 📬 Pendiente | Paloma planificada y publicada. Lista para MAIN evaluar. |
 | 🟡 En revisión | MAIN está evaluando las sugerencias. |
 | ✅ Actuado | MAIN aplicó los cambios (total o parcial). |
 | 🗑️ Ignorado | MAIN decidió no aplicar. |

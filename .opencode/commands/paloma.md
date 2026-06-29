@@ -4,10 +4,11 @@ INSTRUCCIÓN: EJECUTAR la consulta al agente. NO modificar archivos sin confirma
 
 Dispara un agente en modo investigatorio. Recibe la paloma (reporte), la registra en `doc/arch/palomas.md`, y la entrega al usuario. El agente nunca escribe archivos — solo reporta.
 
-**Se activa de tres formas:**
+**Se activa de cuatro formas:**
 1. Comando explícito: `/paloma @agente "<consulta>"`
 2. Invocación directa: `@agente` (mención en el chat MAIN sin el comando /paloma). El orquestador invoca al agente y registra la paloma igual que en la forma explícita.
 3. Flag de novedades: `/paloma --news` (sin @agente) — consulta palomas pendientes y `paloma-main-plan.md` para el orquestador o agentecho separado.
+4. Flag de nueva planificación: `/paloma --new @agente "<consulta>"` — crea una **paloma-plan** (borrador planificado con el usuario). Registra como 📝 Plan. Se convierte en paloma final vía `--publish`.
 
 ## Argumentos
 
@@ -22,6 +23,20 @@ Dispara un agente en modo investigatorio. Recibe la paloma (reporte), la registr
 
 Sin @agente. Lee `doc/arch/palomas.md` y `doc/arch/paloma-main-plan.md` y muestra las palomas 📬 Pendientes y las reglas MAIN→AGENTE activas. Tanto el orquestador como los agentes pueden usarlo.
 
+### Modo nueva planificación
+`/paloma --new @agente "<consulta>" [--detalle]`
+
+Crea una **paloma-plan** (borrador planificado). El agente investiga, vos revisás, y cuando está OK se convierte en paloma final vía `--publish`.
+
+- `--new`: crea el archivo `doc/arch/paloma-plan-PNNN.md` con la tabla de hallazgos
+- `--detalle`: incluye contenido cocinado completo en el plan (vs resumen)
+- El estado inicial es `📝 Plan` — no está lista para MAIN hasta que se publique
+
+### Modo publicación
+`/paloma --publish PNNN`
+
+Convierte una `paloma-plan-PNNN.md` en paloma final `paloma-@AGENTE-PNNN.md`. Cambia el estado de `📝 Plan` a `📬 Pendiente` en `palomas.md`. La paloma queda lista para que MAIN evalúe y BUILDee.
+
 Ejemplos:
 - `/paloma @documentador "ejecutá /documentar --legales"`
 - `/paloma @consejero "revisá ROADMAP vs CHECKLIST"`
@@ -29,6 +44,9 @@ Ejemplos:
 - `/paloma @circuito "revisá handlers en src/"`
 - `/paloma @sdd-architect "analizá estructura del proyecto"`
 - `/paloma --news` — qué palomas están pendientes y qué reglas el MAIN comunicó
+- `/paloma --new @documentador "auditá estructura"` — crea paloma-plan-P004.md (📝 Plan)
+- `/paloma --new @documentador "auditá estructura y legal" --detalle` — plan con contenido cocinado completo
+- `/paloma --publish P004` — convierte el plan P004 en paloma final (📝→📬)
 
 ## Qué hace
 
@@ -55,18 +73,47 @@ Ejemplos:
 6. REGISTRAR en `doc/arch/palomas.md`:
    ```
     | P### | Fecha | Agente | Consulta | Hallazgos | Veredicto | Estado | Acción MAIN |
-    ```
-    - ID = `P` + número incremental (siguiente al último ID registrado, paso 3)
-    - Estado inicial = `📬 Pendiente` (R6: MAIN decidirá si aplicar o ignorar)
-    - Acción MAIN = `—` (pendiente de evaluar)
-    - Contar resultados: N hallazgos (M P1, K P2, J P3) o "N observaciones"
-     - Veredicto = resumen de 1 frase
-  6.5. GUARDAR el contenido completo de la paloma en `doc/arch/paloma-AGENTE-PNNN.md`:
-       - Nombre: `paloma-@AGENTE-P###.md` (ej: `paloma-@documentador-P003.md`)
-       - Contenido: la tabla de hallazgos COMPLETA + el resumen + el veredicto
-       - Usar: `Set-Content -Path "doc/arch/paloma-AGENTE-P###.md" -Value $contenido`
-       - Esto permite que el MAIN lea la paloma después, incluso si la tarea del agente expiró
+   ```
+   - ID = `P` + número incremental (siguiente al último ID registrado, paso 3)
+   - Estado inicial = `📬 Pendiente` (R6: MAIN decidirá si aplicar o ignorar)
+   - Acción MAIN = `—` (pendiente de evaluar)
+   - Contar resultados: N hallazgos (M P1, K P2, J P3) o "N observaciones"
+    - Veredicto = resumen de 1 frase
+ 6.5. GUARDAR el contenido completo de la paloma en `doc/arch/paloma-AGENTE-PNNN.md`:
+      - Nombre: `paloma-@AGENTE-P###.md` (ej: `paloma-@documentador-P003.md`)
+      - Contenido: la tabla de hallazgos COMPLETA + el resumen + el veredicto
+      - Usar: `Set-Content -Path "doc/arch/paloma-AGENTE-P###.md" -Value $contenido`
+      - Esto permite que el MAIN lea la paloma después, incluso si la tarea del agente expiró
  7. ENTREGAR la paloma al usuario: ID + tabla + resumen + estado
+
+### Modo --new (planificación)
+
+0. Si el argumento es `--new @agente "<consulta>"`:
+   a. IDENTIFICAR `@agente` y `"<consulta>"` del argumento
+   b. LEER `doc/arch/palomas.md` — detectar último ID de paloma
+   c. CARGAR skill correspondiente al agente:
+      - `@documentador` → `skill("diligencia-docs")`
+      - `@consejero` → `skill("diligencia-consejo")`
+      - `@circuito` → `skill("diligencia-circuito")`
+   d. EJECUTAR los checks correspondientes según la skill
+   e. GENERAR tabla de hallazgos con archivo, severidad, y acción sugerida
+   f. Si `--detalle`: incluir contenido cocinado completo (archivos propuestos, diffs)
+   g. ESCRIBIR `doc/arch/paloma-plan-PNNN.md`:
+      - Nombre: `paloma-plan-PNNN.md` (NOTA: no lleva @agente — es un plan, no una paloma final)
+      - Contenido: tabla completa + resumen + veredicto + (si --detalle) contenido cocinado
+   h. REGISTRAR en `doc/arch/palomas.md`:
+      - Estado inicial = `📝 Plan`
+      - Acción MAIN = `—`
+   i. ENTREGAR el plan al usuario: "🕊️ Paloma-plan PNNN creada. Revisala con `cat doc/arch/paloma-plan-PNNN.md`. Cuando esté OK, ejecutá `/paloma --publish PNNN` para convertirla en paloma final."
+
+### Modo --publish (convertir plan en paloma final)
+
+0. Si el argumento es `--publish PNNN`:
+   a. VALIDAR que existe `doc/arch/paloma-plan-PNNN.md`
+   b. LEER el archivo — extraer el agente y el contenido
+   c. RENOMBRAR: `paloma-plan-PNNN.md` → `paloma-@AGENTE-PNNN.md`
+   d. ACTUALIZAR `doc/arch/palomas.md`: cambiar estado de `📝 Plan` a `📬 Pendiente`
+   e. ENTREGAR: "✅ Plan PNNN publicado como paloma-@AGENTE-PNNN.md (📬 Pendiente). Lista para MAIN."
 
 ## Formato de salida
 
@@ -94,12 +141,35 @@ Ejemplos:
 ✅ No hay palomas pendientes. (si corresponde)
 ```
 
+### Modo nueva planificación (`--new`)
+```
+🕊️ Paloma-plan P004 creada
+
+📋 Plan de @documentador — [resumen de la consulta]
+
+[tabla de hallazgos]
+
+📊 Resumen: N hallazgos (M P1, K P2, J P3) | Estado: 📝 Plan
+📄 Archivo: doc/arch/paloma-plan-P004.md
+
+Para publicarla: /paloma --publish P004
+```
+
+### Modo publicación (`--publish`)
+```
+✅ Plan P004 publicado como paloma-@documentador-P004.md (📬 Pendiente)
+📄 archivos:
+   doc/arch/paloma-plan-P004.md → doc/arch/paloma-@documentador-P004.md
+
 ## Validación
 
 - El agente debe existir como archivo en `~/.config/opencode/agents/`
 - La consulta no debe estar vacía
 - `--explorar` válido solo para @consejero
 - `--news` excluyente con `@agente` (no pueden combinarse)
+- `--new` requiere `@agente` + `"<consulta>"`
+- `--publish` requiere un número PNNN válido (debe existir `paloma-plan-PNNN.md`)
+- `--new`, `--news` y `--publish` son excluyentes entre sí
 - Si `--news`: no invocar agentes, solo leer y mostrar
 - Cada paloma se registra en `palomas.md` con fecha y agente
 
