@@ -60,7 +60,12 @@ Ejemplos:
     - Estado inicial = `📬 Pendiente` (R6: MAIN decidirá si aplicar o ignorar)
     - Acción MAIN = `—` (pendiente de evaluar)
     - Contar resultados: N hallazgos (M P1, K P2, J P3) o "N observaciones"
-    - Veredicto = resumen de 1 frase
+     - Veredicto = resumen de 1 frase
+  6.5. GUARDAR el contenido completo de la paloma en `doc/arch/paloma-AGENTE-PNNN.md`:
+       - Nombre: `paloma-@AGENTE-P###.md` (ej: `paloma-@documentador-P003.md`)
+       - Contenido: la tabla de hallazgos COMPLETA + el resumen + el veredicto
+       - Usar: `Set-Content -Path "doc/arch/paloma-AGENTE-P###.md" -Value $contenido`
+       - Esto permite que el MAIN lea la paloma después, incluso si la tarea del agente expiró
  7. ENTREGAR la paloma al usuario: ID + tabla + resumen + estado
 
 ## Formato de salida
