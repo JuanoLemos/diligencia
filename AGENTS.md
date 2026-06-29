@@ -71,6 +71,7 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | $PROYECTOS | `"C:\xampp\htdocs\+RM","C:\xampp\htdocs\MarketAI","C:\xampp\htdocs\conquisitare","C:\xampp\htdocs\buenobonitobarato","C:\xampp\htdocs\nemesis","C:\Users\jlemo\OneDrive\Desktop\OpenMontage-main"` | 6 proyectos activos adaptados a Diligencia (NO incluye Chamber) |
 | $CHAMBER | `C:\Users\jlemo\OneDrive\Desktop\openchamber` | Repo de OpenChamber — interfaz visual de Diligencia (pertenece a Diligencia) |
 | $PROPAGAR_LOG | `doc/arch/propagaciones.md` | Log de propagaciones de Diligencia a proyectos |
+| $PALOMAS | `doc/arch/palomas.md` | Log central de palomas (AGENTE → MAIN) |
 | $STACK | *(definido en HARNESS.md)* | Stack tecnológico del proyecto (runtime) |
 | $PROJECT_NAME | *(del header DILIGENCIA.md)* | Nombre del proyecto para reportes |
 | $UX_CHECK | `doc/arch/ux-check.md` | Checklist de validación manual post-implementación |

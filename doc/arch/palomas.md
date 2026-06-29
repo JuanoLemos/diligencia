@@ -6,7 +6,8 @@ Log de consultas a agentes (🕊️ palomas). Cada entrada registra una consulta
 |---|---|---|---|---|---|---|---|
 | P001 | 2026-06-28 | @documentador | /documentar --legales | 3 (0 P1, 2 P2, 1 P3) | ⚠️ Faltan NOTICE y SECURITY.md | ✅ Actuado | NOTICE + SECURITY.md creados. LICENSING.md corregido. |
 | P002 | 2026-06-28 | @documentador | /documentar (completo) | 21 hallazgos | ⚠️ Varios docs stale | 🟡 En revisión | Pendiente de aplicar |
-| P003 | 2026-06-28 | @documentador | /paloma "manifiesto diligencia" — auditoría de identidad pública y preparación para MANIFIESTO.md | 15 (3 P1, 7 P2, 5 P3) | ⚠️ Falta etimología, tono contractual, no hay niveles L0-L3 ni concepto de compañeros | ✅ Actuado | MANIFIESTO.md refactorizado (etimología + tono compañero + 9 principios + niveles L0-L3). README.md actualizado (audiencia sin jerga, promesa emocional, tabla L0-L3). GUIA_REFERENCIA_RAPIDA.md limpiada de deprecados. GUIA_ONBOARDING.md renumerado. Badge en proyectos adaptados pendiente de confirmación. |
+| P003 | 2026-06-28 | @documentador | /paloma "manifiesto diligencia" — auditoría de... | 15 (3 P1, 7 P2, 5 P3) | ⚠️ Falta etimología, tono contractual | ✅ Actuado | MANIFIESTO + README + GUIA mejorados |
+| P004 | 2026-06-28 | @documentador | /documentar --estructura (plan validación) | 1 (0 P1, 1 P2, 0 P3) | ✅ $PALOMAS agregada | 📬 Pendiente | — |
 
 ## Estados
 
