@@ -150,8 +150,9 @@ Al terminar cualquier BUILD en este proyecto, reportar cambios aplicados y suger
 Los agentes (`@documentador`, `@consejero`, `@circuito`) operan en chats separados con permisos de solo lectura (`edit: deny`). Cuando investigan o auditan, entregan una **paloma** (reporte estructurado en tabla) al usuario. El usuario evalúa y decide si llevarla al chat **MAIN** para ejecutar cambios.
 
 | Regla | Descripción |
-|---|---|
-| R1 | Chat AGENTE es read-only (`edit: deny`) — nunca modifica archivos |
+|---|---|---|
+| R1 | Chat AGENTE es read-only (`edit: deny`) — nunca modifica archivos del proyecto |
+| R1-bis | EXCEPCIÓN: Los agentes pueden escribir exclusivamente `doc/arch/paloma-AGENTE-PNNN.md` (su paloma). Esa es la ÚNICA escritura permitida. Las palomas son el canal de reporte. |
 | R2 | Uso exclusivo investigatorio: auditar, explorar, proponer |
 | R3 | La paloma es un reporte estructurado (tabla de hallazgos) |
 | R4 | El usuario transporta la paloma del AGENTE al MAIN |
