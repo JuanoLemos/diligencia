@@ -162,6 +162,22 @@ Los agentes (`@documentador`, `@consejero`, `@circuito`) operan en chats separad
 
 El **único agente con permiso de escritura** es `@sdd-implement`, y se invoca desde el chat MAIN para aplicar cambios aprobados.
 
+## Prioridad MCP — codebase-memory-mcp
+
+Si `codebase-memory-mcp` está disponible como servidor MCP (instalado por el usuario), **los agentes deben usarlo antes de leer archivos individuales**. Este servidor indexa el codebase completo en un grafo de conocimiento, permitiendo consultas estructurales 120× más eficientes que explorar archivo por archivo.
+
+| Herramienta | Para qué |
+|---|---|
+| `search_graph` | Buscar funciones/clases por patrón de nombre |
+| `trace_path` | Trazar call chains (quién llama a qué) |
+| `get_architecture` | Overview estructural del proyecto |
+| `search_code` | Búsqueda textual en archivos indexados |
+| `manage_adr` | Gestionar Architecture Decision Records |
+| `detect_changes` | Mapear cambios no commiteados a símbolos afectados |
+| 3D UI | `http://localhost:9749` — grafo interactivo del proyecto |
+
+Regla: **Primero MCP, después grep.** Siempre que necesites entender estructura, llamá a `get_architecture` o `search_graph` antes de leer archivos con bash/grep.
+
 ## Archivos relacionados
 - `.opencode/HARNESS.md` — configuración de harness, test y lint
 - `doc/guias/ESTANDAR-COMANDOS.md` — estándar de formato de comandos

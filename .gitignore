@@ -19,4 +19,7 @@ Thumbs.db
 
 # Local agent registrations
 .agents/
+
+# MCP codebase-memory artifact (not needed for docs-only projects)
+.codebase-memory/
 .env.local

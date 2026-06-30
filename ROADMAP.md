@@ -66,7 +66,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R54 | +consejero: agente que explora repos GitHub, docs y similares para proponer mejoras al proyecto actual basado en buenas prácticas externas | P2 | 🟡 En progreso | — |
 | R55 | +documentacion: agente @documentador que audita proactivamente fechas, versiones, ADRs, cross-refs y consistencia documental entre todos los .md del proyecto | P2 | ✅ Completado | — |
 | R56 | +consumo: revisión de eficiencia de agentes + skills + comandos. Metodología de buenas prácticas con conciencia de consumo. Ahorro de idas y vueltas, consolidación de tareas, delegación a subagentes. Revisión de repos GitHub. | P2 | 🔴 Pendiente | — |
-| R57 | +agentes: cada agente revisa repos externos para mejorarse y mantenerse actualizado (/consejo --explorar aplicado a sí mismos como buena práctica de evolución continua) | P2 | 🔴 Pendiente | — |
+| R57 | +mcp: codebase-memory-mcp integrado en todos los $PROYECTOS (+ Diligencia). Indexado 120x más eficiente. Grafo 3D visual. Agentes usan search_graph + trace_path + get_architecture + manage_adr. 4 fases: (1) Diligencia interna, (2) Templates doc-base, (3) Propagar a 6 proyectos, (4) System prompts de agentes. | P1 | 🟡 En progreso | — |
 | R58 | +chamber: multi-chat por proyecto con protocolo MAIN↔AGENTE. El chat MAIN orquesta y BUILDea. Los chats AGENTE exploran, auditan y reportan (read-only). Reglamento de commit: solo MAIN commitea, agentes no modifican archivos. | P1 | 🔴 Pendiente | — |
 | R59 | +orquestador: Gran Orquestador Diligencia — acceso a todos los MAIN de proyectos adaptados. Mejora UNICAMENTE estructura Diligencia propagada. | P1 | 🔴 Pendiente | R58 |
 
