@@ -2,6 +2,32 @@
 
 ---
 
+## [2.5.0] — 2026-07-01
+
+### Added
+- codebase-memory-mcp adaptación completa — Fase1-4 + 7 proyectos indexados + MCP en system prompts
+- Ola 1 — template paloma-plan + $PALOMAS + publish P004 validado
+- /paloma --new (paloma-plan) + --publish + estado 📝 Plan + flujo completo
+- /paloma guarda archivo paloma-AGENTE-PNNN.md completo (persistencia)
+- circuito paloma completo — --news + R1-bis + paloma-main-plan.md
+- sistema de estado para palomas — 📬 Pendiente / 🟡 Revisión / ✅ Actuado / 🗑️ Ignorado
+- @documentador modo cocinado — paloma incluye contenido listo para aplicar
+- /paloma + NOTICE + SECURITY + palomas.md + @documentador local y global
+- @disenador — agente UI/UX con MiniMax M3 + image-01
+
+### Fixed
+- /paloma --news — bash allow + parsing + bloque parseable
+
+### Changed
+- P003 @documentador — manifiesto, identidad, niveles de madurez, README + paloma completa
+- refinar manifiesto, deprecar CHECKLIST y mejorar palomas
+- LICENSING.md — corregido→reportado por @documentador, aplicado desde MAIN
+- Modelo Paloma Mensajera — reglas MAIN↔AGENTE + paloma (reporte estructurado)
+- R57/R58/R59 — agente auto-mejora + multi-chat MAIN↔AGENTE + Gran Orquestador
+- README.md actualizado — v2.4.2, proyectos reales, 29 comandos, 6 agentes, AGPL-3.0
+- Benchmark MiniMax vs DeepSeek en doc/arch/benchmark-minimax-vs-deepseek.md
+- ROADMAP: R50-R67 actualizados con benchmark + @diseñador + multimodal por proyecto
+
 ## [2.4.2] — 2026-06-28
 
 ### Fixed

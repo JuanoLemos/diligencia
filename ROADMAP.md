@@ -59,7 +59,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R47 | +integrar comandos Diligencia con Chamber UI (botones /CBP, /doctor, /salud desde la interfaz visual, no solo terminal) | P2 | ✅ Completado | R46 |
 | R48 | +propagar: comando para propagar updates de Diligencia a $PROYECTOS (semiautomático: /version sugiere, /propagar ejecuta) + UPDATE-AVAILABLE.md + $PROPAGAR_LOG → MECANICA-PROPAGACION.md | P2 | ✅ Completado | — |
 | R49 | +ux: panel interactivo de checklist en Chamber por proyecto — checkboxes, progreso %, lee $UX_CHECK. Cada proyecto adaptado hereda el panel vía /adaptar. | P2 | 🔴 Pendiente | R25,R26 |
-| R50 | +MiniMax: integrar procesamiento multimodal (video, imagen, voz) vía Token Plan Max — testing en OpenMontage | P1 | 🔴 Pendiente | R25,R26 |
+| R50 | +MiniMax: integrar procesamiento multimodal (video, imagen, voz) vía Token Plan Max — testing en OpenMontage | P1 | 🟡 En progreso | R25,R26 |
 | R51 | +chamber: iconos personalizados por proyecto para visual en carpeta de OpenChamber — template SVG en doc-base, /adaptar lo copia | P2 | ✅ Completado | R25 |
 | R52 | +estudio: proyectos con potencial hosteo de server para actuarlos en producción + mejor camino para administrar todo | P2 | 🔴 Pendiente | — |
 | R53 | +tray: servidor de bandeja estandarizado en doc-base para que cada proyecto adaptado herede un tray server vía /adaptar | P2 | 🔴 Pendiente | — |
@@ -69,6 +69,14 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R57 | +mcp: codebase-memory-mcp integrado en todos los $PROYECTOS (+ Diligencia). Indexado 120x más eficiente. Grafo 3D visual. Agentes usan search_graph + trace_path + get_architecture + manage_adr. 4 fases: (1) Diligencia interna, (2) Templates doc-base, (3) Propagar a 6 proyectos, (4) System prompts de agentes. | P1 | 🟡 En progreso | — |
 | R58 | +chamber: multi-chat por proyecto con protocolo MAIN↔AGENTE. El chat MAIN orquesta y BUILDea. Los chats AGENTE exploran, auditan y reportan (read-only). Reglamento de commit: solo MAIN commitea, agentes no modifican archivos. | P1 | 🔴 Pendiente | — |
 | R59 | +orquestador: Gran Orquestador Diligencia — acceso a todos los MAIN de proyectos adaptados. Mejora UNICAMENTE estructura Diligencia propagada. | P1 | 🔴 Pendiente | R58 |
+| R60 | +chamber: botón en DiligenciaCommandBar que abre pestaña browser en ContextPanel con el grafo 3D de codebase-memory-mcp (localhost:9749) | P2 | 🔴 Pendiente | R57 |
+| R61 | +benchmark MiniMax vs DeepSeek: benchmark completo (4 escenarios) en `doc/arch/benchmark-minimax-vs-deepseek.md`. Resultado: DeepSeek 8.88 vs MiniMax 7.50. DeepSeek gana en código/razonamiento. MiniMax gana en multimodal y costo (Token Plan $50). Estrategia híbrida. | P1 | ✅ Completado | R50 |
+| R62 | +doctor-llm: agente @doctor que audita código de proveedores LLM en proyectos adaptados contra estándares Diligencia. Paciente inicial: MiniMaxProvider en Crucix-master (migrar M2.5→M3, agregar streaming, prompt caching, multimodal). | P2 | 🔴 Pendiente | R61 |
+| R63 | +multimodal Nemesis: integrar MiniMax TTS (speech-2.8) para narración por voz en Nemesis, y MiniMax M3 con 1M contexto para narrativas más largas. | P2 | 🔴 Pendiente | R61 |
+| R64 | +multimodal Crucix: actualizar MiniMaxProvider de M2.5 a M3 en Crucix-master, agregar streaming + prompt caching + multimodal input. | P2 | 🔴 Pendiente | R61,R62 |
+| R65 | +disenador: agente UI/UX con MiniMax M3 + image-01. Analiza frontends existentes, propone mejoras visuales, mockups, paletas y código de diseño. Primer paciente: Crucix-master (1782 líneas en 1 HTML). | P2 | ✅ Completado | R61 |
+| R66 | +multimodal conquisitare: integrar MiniMax Music-2.6 (música por fase de juego) + image-01 (texturas de terreno desde datos GIS, sprites de unidades). | P2 | 🔴 Pendiente | R61 |
+| R67 | +multimodal Nemesis assets: integrar MiniMax image-01 (retratos de personajes, escenas por época histórica, tablero de evidencias) + Music-2.6 (banda sonora por época: jazz noir, cuerdas victorianas, drones industriales). | P2 | 🔴 Pendiente | R63 |
 
 ## Futuro (Later)
 

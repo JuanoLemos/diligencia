@@ -4,7 +4,7 @@ INSTRUCCIÓN: NO modificar este archivo sin entender el catálogo. CONTIENE el m
 
 Catálogo de documentación del proyecto. Mantenido por /version y /updoc.
 
-Última actualización global: 2026-06-27
+Última actualización global: 2026-07-01
 
 ## Docs críticos
 
@@ -12,10 +12,9 @@ Gestionados por /version. La versión se actualiza al cerrar sesión.
 
 | Archivo | Versión | Última actualización |
 |---|---|---|
-| ROADMAP.md | v2.4.2 | 2026-06-28 |
-| CHECKLIST.md | v2.4.2 | 2026-06-28 |
-| CHANGELOG.md | v2.4.2 | 2026-06-28 |
-| DILIGENCIA.md | v2.4.2 | 2026-06-28 |
+| ROADMAP.md | v2.5.0 | 2026-07-01 |
+| CHANGELOG.md | v2.5.0 | 2026-07-01 |
+| DILIGENCIA.md | v2.5.0 | 2026-07-01 |
 
 ## Guías
 
