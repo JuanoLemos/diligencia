@@ -94,6 +94,8 @@ Documentos de referencia rápida, estándares o plantillas.
 | IDENTIDAD-CIRCUITO.md | v2.0.0 | 2026-06-26 |
 | IDENTIDAD-CHAMBER.md | v2.0.0 | 2026-06-26 |
 | skills/ (7 skills Diligencia) | v2.0.0 | 2026-06-26 |
+| palomas.md | v2.6.1 | 2026-07-01 |
+| paloma-template.md | v1.0 | 2026-07-01 |
 
 ## Archivos relacionados
 - `ROADMAP.md` — roadmap del proyecto

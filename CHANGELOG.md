@@ -2,6 +2,16 @@
 
 ---
 
+## [2.6.1] — 2026-07-01
+
+### Added
+- doc/arch/paloma-template.md — template estándar para palomas individuales (resumen ejecutivo, prioridad ordenada, cocinado P1 obligatorio, checklist)
+
+### Changed
+- `.opencode/commands/paloma.md`: +4 modos de acción (--aplicar, --revisar, --archivar, --reabrir)
+- `doc/arch/palomas.md`: +3 columnas de triage (Archivos afectados, Estimación, Urgencia)
+- INDEX.md: palomas.md + paloma-template.md agregados al catálogo
+
 ## [2.6.0] — 2026-07-01
 
 ### Added

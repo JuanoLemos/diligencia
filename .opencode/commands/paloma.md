@@ -4,11 +4,15 @@ INSTRUCCIÓN: EJECUTAR la consulta al agente. NO modificar archivos sin confirma
 
 Dispara un agente en modo investigatorio. Recibe la paloma (reporte), la registra en `doc/arch/palomas.md`, y la entrega al usuario. El agente nunca escribe archivos — solo reporta.
 
-**Se activa de cuatro formas:**
+**Se activa de ocho formas:**
 1. Comando explícito: `/paloma @agente "<consulta>"`
 2. Invocación directa: `@agente` (mención en el chat MAIN sin el comando /paloma). El orquestador invoca al agente y registra la paloma igual que en la forma explícita.
-3. Flag de novedades: `/paloma --news` (sin @agente) — consulta palomas pendientes y `paloma-main-plan.md` para el orquestador o agentecho separado.
+3. Flag de novedades: `/paloma --news` (sin @agente) — consulta palomas pendientes y `paloma-main-plan.md` para el orquestador o agente separado.
 4. Flag de nueva planificación: `/paloma --new @agente "<consulta>"` — crea una **paloma-plan** (borrador planificado con el usuario). Registra como 📝 Plan. Se convierte en paloma final vía `--publish`.
+5. Flag aplicar: `/paloma --aplicar PNNN "resumen"` — cambia estado de 📬 Pendiente o 🟡 En revisión a ✅ Actuado. Registra la acción en columna "Acción MAIN".
+6. Flag revisar: `/paloma --revisar PNNN` — cambia estado de 📬 Pendiente a 🟡 En revisión.
+7. Flag archivar: `/paloma --archivar PNNN` — cambia estado de 📬 Pendiente o 🟡 En revisión a 🗑️ Ignorado.
+8. Flag reabrir: `/paloma --reabrir PNNN` — cambia estado de ✅ Actuado o 🗑️ Ignorado a 📬 Pendiente.
 
 ## Argumentos
 
@@ -47,6 +51,10 @@ Ejemplos:
 - `/paloma --new @documentador "auditá estructura"` — crea paloma-plan-P004.md (📝 Plan)
 - `/paloma --new @documentador "auditá estructura y legal" --detalle` — plan con contenido cocinado completo
 - `/paloma --publish P004` — convierte el plan P004 en paloma final (📝→📬)
+- `/paloma --aplicar P004 "chamber: agregada variable $PALOMAS"` — marca como ✅ Actuado
+- `/paloma --revisar P002` — cambia estado a 🟡 En revisión
+- `/paloma --archivar P005 @consejero` — descarta paloma como 🗑️ Ignorado
+- `/paloma --reabrir P001` — vuelve a poner en 📬 Pendiente
 
 ## Qué hace
 
@@ -70,20 +78,30 @@ Ejemplos:
 3. LEER `doc/arch/palomas.md` AHORA — detectar último ID de paloma
 4. INVOCAR al agente via `task("<agente>", prompt)` donde prompt = la consulta
 5. RECIBIR la tabla de hallazgos (🕊️ paloma)
-6. REGISTRAR en `doc/arch/palomas.md`:
-   ```
-    | P### | Fecha | Agente | Consulta | Hallazgos | Veredicto | Estado | Acción MAIN |
-   ```
-   - ID = `P` + número incremental (siguiente al último ID registrado, paso 3)
-   - Estado inicial = `📬 Pendiente` (R6: MAIN decidirá si aplicar o ignorar)
-   - Acción MAIN = `—` (pendiente de evaluar)
-   - Contar resultados: N hallazgos (M P1, K P2, J P3) o "N observaciones"
+  6. REGISTRAR en `doc/arch/palomas.md`:
+    ```
+     | P### | Fecha | Agente | Consulta | Hallazgos | Archivos afectados | Estimación | Urgencia | Veredicto | Estado | Acción MAIN |
+    ```
+    - ID = `P` + número incremental (siguiente al último ID registrado, paso 3)
+    - Estado inicial = `📬 Pendiente` (R6: MAIN decidirá si aplicar o ignorar)
+    - Acción MAIN = `—` (pendiente de evaluar)
+    - Contar resultados: N hallazgos (M P1, K P2, J P3) o "N observaciones"
     - Veredicto = resumen de 1 frase
- 6.5. GUARDAR el contenido completo de la paloma en `doc/arch/paloma-AGENTE-PNNN.md`:
-      - Nombre: `paloma-@AGENTE-P###.md` (ej: `paloma-@documentador-P003.md`)
-      - Contenido: la tabla de hallazgos COMPLETA + el resumen + el veredicto
-      - Usar: `Set-Content -Path "doc/arch/paloma-AGENTE-P###.md" -Value $contenido`
-      - Esto permite que el MAIN lea la paloma después, incluso si la tarea del agente expiró
+    - Archivos afectados = lista de rutas de los archivos que se modificarían
+    - Estimación = ⚡ / 🔧 / 🏗️ según tiempo estimado total de aplicar la paloma
+    - Urgencia = 🚨 (antes de release) / ⏳ (este sprint) / 📅 (cuando haya tiempo)
+  6.5. GUARDAR el contenido completo de la paloma en `doc/arch/paloma-AGENTE-PNNN.md`:
+       - Nombre: `paloma-@AGENTE-P###.md` (ej: `paloma-@documentador-P003.md`)
+       - Usar `doc/arch/paloma-template.md` como referencia de estructura:
+         - Resumen ejecutivo obligatorio (1 párrafo)
+         - Prioridad de acción ordenada por dependencia
+         - Cocinado OBLIGATORIO para todo hallazgo P1
+         - Checklist de aplicación para palomas con 5+ hallazgos
+         - Riesgo de no actuar explícito
+         - Metadatos: versión del proyecto (desde DILIGENCIA.md línea 1)
+       - Contenido: la tabla de hallazgos COMPLETA + el resumen + el veredicto
+       - Usar: `Set-Content -Path "doc/arch/paloma-AGENTE-P###.md" -Value $contenido`
+       - Esto permite que el MAIN lea la paloma después, incluso si la tarea del agente expiró
  7. ENTREGAR la paloma al usuario: ID + tabla + resumen + estado
 
 ### Modo --new (planificación)
@@ -114,6 +132,40 @@ Ejemplos:
    c. RENOMBRAR: `paloma-plan-PNNN.md` → `paloma-@AGENTE-PNNN.md`
    d. ACTUALIZAR `doc/arch/palomas.md`: cambiar estado de `📝 Plan` a `📬 Pendiente`
    e. ENTREGAR: "✅ Plan PNNN publicado como paloma-@AGENTE-PNNN.md (📬 Pendiente). Lista para MAIN."
+
+### Modo --aplicar (marcar como actuado)
+
+0. Si el argumento es `--aplicar PNNN "resumen"`:
+   a. VALIDAR que `PNNN` existe en `doc/arch/palomas.md`
+   b. LEER `doc/arch/palomas.md` — localizar la línea `| PNNN |`
+   c. REEMPLAZAR el estado en la fila: si es `📬 Pendiente` o `🟡 En revisión`, cambiar a `✅ Actuado`
+   d. AGREGAR resumen en columna "Acción MAIN" (reemplazar `—` con el texto del argumento)
+   e. ENTREGAR: "✅ PNNN marcado como Actuado."
+
+### Modo --revisar (marcar en revisión)
+
+0. Si el argumento es `--revisar PNNN`:
+   a. VALIDAR que `PNNN` existe en `doc/arch/palomas.md`
+   b. LOCALIZAR la línea `| PNNN |`
+   c. REEMPLAZAR estado `📬 Pendiente` → `🟡 En revisión`
+   d. ENTREGAR: "🟡 PNNN en revisión."
+
+### Modo --archivar (descartar paloma)
+
+0. Si el argumento es `--archivar PNNN`:
+   a. VALIDAR que `PNNN` existe en `doc/arch/palomas.md`
+   b. LOCALIZAR la línea `| PNNN |`
+   c. REEMPLAZAR estado: `📬 Pendiente` o `🟡 En revisión` → `🗑️ Ignorado`
+   d. ENTREGAR: "🗑️ PNNN archivado."
+
+### Modo --reabrir (restaurar paloma archivada o actuada)
+
+0. Si el argumento es `--reabrir PNNN`:
+   a. VALIDAR que `PNNN` existe en `doc/arch/palomas.md`
+   b. LOCALIZAR la línea `| PNNN |`
+   c. REEMPLAZAR estado: `✅ Actuado` o `🗑️ Ignorado` → `📬 Pendiente`
+   d. LIMPIAR columna "Acción MAIN" (restaurar a `—`)
+   e. ENTREGAR: "📬 PNNN reabierto como Pendiente."
 
 ## Formato de salida
 
@@ -169,7 +221,9 @@ Para publicarla: /paloma --publish P004
 - `--news` excluyente con `@agente` (no pueden combinarse)
 - `--new` requiere `@agente` + `"<consulta>"`
 - `--publish` requiere un número PNNN válido (debe existir `paloma-plan-PNNN.md`)
-- `--new`, `--news` y `--publish` son excluyentes entre sí
+- `--aplicar` requiere PNNN + texto de resumen
+- `--revisar`, `--archivar`, `--reabrir` requieren PNNN
+- `--new`, `--news`, `--publish`, `--aplicar`, `--revisar`, `--archivar`, `--reabrir` son todos excluyentes entre sí
 - Si `--news`: no invocar agentes, solo leer y mostrar
 - Cada paloma se registra en `palomas.md` con fecha y agente
 
@@ -181,4 +235,4 @@ Para publicarla: /paloma --publish P004
 - NO inventar hallazgos donde el agente no encontró nada
 
 ## Archivos que modifica
-- `doc/arch/palomas.md` (nueva entrada de log)
+- `doc/arch/palomas.md` (nueva entrada de log o actualización de estado)
