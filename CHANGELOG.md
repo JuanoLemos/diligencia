@@ -2,6 +2,23 @@
 
 ---
 
+## [2.6.3] — 2026-07-01
+
+### Fixed
+- P2: PalomaPanel.tsx — `cols[7]` → `cols[10]` (columna Estado rota al agregar triage)
+- P3: paloma.md — agregados modos `--descartar` (📝→🗑️) y `--pendiente` (🟡→📬)
+- P3: palomas.md — separador tabla corregido (columna extra)
+- P3: AGENTS.md — agregada variable `$PALOMA_MAIN_PLAN`
+
+### Added
+- GUIA_HOSTING_VPS.md — guía completa de deploy VPS ($PROYECTOS + Chamber)
+- paloma-@documentador-P003.md — renombrado (faltaba @ en nombre)
+
+### Changed
+- INDEX.md: agregados bugs.md, incidentes.md, backups.md, propagaciones.md, paloma-main-plan.md
+- INDEX.md: removida referencia stale a CHECKLIST.md
+- GUIA_HOSTING_VPS.md: header con versión v1.0
+
 ## [2.6.2] — 2026-07-01
 
 ### Changed

@@ -1,4 +1,4 @@
-# Palomas — Diligencia v2.4.2
+﻿# Palomas — Diligencia v2.4.2
 
 Log de consultas a agentes (🕊️ palomas). Cada entrada registra una consulta, su resultado y qué hizo el MAIN. Las palomas individuales siguen `doc/arch/paloma-template.md`.
 
@@ -12,7 +12,7 @@ Log de consultas a agentes (🕊️ palomas). Cada entrada registra una consulta
 ## Estados
 
 | Estado | Significado | Símbolo |
-|---|---|---|---|
+|---|---|---|
 | 📝 Plan | Paloma en planificación (borrador). No lista para MAIN | 📝 |
 | 📬 Pendiente | Publicada. Lista para MAIN evaluar | 📬 |
 | 🟡 En revisión | MAIN está evaluando las sugerencias | 🟡 |

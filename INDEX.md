@@ -42,6 +42,7 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 | COMANDOS.md | v2.2.0 | 2026-06-26 |
 | GUIA_DILIGENCIA_CHAMBER.md | v1.0.0 | 2026-06-26 |
 | GUIA_CHAMBER.md | v1.0.0 | 2026-06-26 |
+| GUIA_HOSTING_VPS.md | v1.0 | 2026-07-01 |
 
 ## Mecánicas
 
@@ -96,10 +97,14 @@ Documentos de referencia rápida, estándares o plantillas.
 | skills/ (7 skills Diligencia) | v2.0.0 | 2026-06-26 |
 | palomas.md | v2.6.1 | 2026-07-01 |
 | paloma-template.md | v1.0 | 2026-07-01 |
+| bugs.md | v1.0 | 2026-07-01 |
+| incidentes.md | v1.0 | 2026-07-01 |
+| backups.md | v1.0 | 2026-07-01 |
+| propagaciones.md | v2.6.1 | 2026-07-01 |
+| paloma-main-plan.md | v1.0 | 2026-07-01 |
 
 ## Archivos relacionados
 - `ROADMAP.md` — roadmap del proyecto
-- `CHECKLIST.md` — checklist de tareas
 - `CHANGELOG.md` — historial de versiones
 - `DILIGENCIA.md` — sello de metodología
 

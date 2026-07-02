@@ -4,7 +4,7 @@ INSTRUCCIÓN: EJECUTAR la consulta al agente. NO modificar archivos sin confirma
 
 Dispara un agente en modo investigatorio. Recibe la paloma (reporte), la registra en `doc/arch/palomas.md`, y la entrega al usuario. El agente nunca escribe archivos — solo reporta.
 
-**Se activa de ocho formas:**
+**Se activa de diez formas:**
 1. Comando explícito: `/paloma @agente "<consulta>"`
 2. Invocación directa: `@agente` (mención en el chat MAIN sin el comando /paloma). El orquestador invoca al agente y registra la paloma igual que en la forma explícita.
 3. Flag de novedades: `/paloma --news` (sin @agente) — consulta palomas pendientes y `paloma-main-plan.md` para el orquestador o agente separado.
@@ -13,6 +13,8 @@ Dispara un agente en modo investigatorio. Recibe la paloma (reporte), la registr
 6. Flag revisar: `/paloma --revisar PNNN` — cambia estado de 📬 Pendiente a 🟡 En revisión.
 7. Flag archivar: `/paloma --archivar PNNN` — cambia estado de 📬 Pendiente o 🟡 En revisión a 🗑️ Ignorado.
 8. Flag reabrir: `/paloma --reabrir PNNN` — cambia estado de ✅ Actuado o 🗑️ Ignorado a 📬 Pendiente.
+9. Flag descartar: `/paloma --descartar PNNN` — cambia estado de 📝 Plan a 🗑️ Ignorado. Descarta una paloma-plan sin publicar.
+10. Flag pendiente: `/paloma --pendiente PNNN` — cambia estado de 🟡 En revisión a 📬 Pendiente. Revierte una revisión.
 
 ## Argumentos
 
@@ -55,6 +57,8 @@ Ejemplos:
 - `/paloma --revisar P002` — cambia estado a 🟡 En revisión
 - `/paloma --archivar P005 @consejero` — descarta paloma como 🗑️ Ignorado
 - `/paloma --reabrir P001` — vuelve a poner en 📬 Pendiente
+- `/paloma --descartar P005` — descarta una paloma-plan (📝→🗑️)
+- `/paloma --pendiente P002` — revierte revisión (🟡→📬)
 
 ## Qué hace
 
@@ -167,6 +171,22 @@ Ejemplos:
    d. LIMPIAR columna "Acción MAIN" (restaurar a `—`)
    e. ENTREGAR: "📬 PNNN reabierto como Pendiente."
 
+### Modo --descartar (descartar paloma-plan)
+
+0. Si el argumento es `--descartar PNNN`:
+   a. VALIDAR que `PNNN` existe en `doc/arch/palomas.md`
+   b. LOCALIZAR la línea `| PNNN |`
+   c. REEMPLAZAR estado `📝 Plan` → `🗑️ Ignorado`
+   d. ENTREGAR: "🗑️ PNNN descartado."
+
+### Modo --pendiente (revertir revisión)
+
+0. Si el argumento es `--pendiente PNNN`:
+   a. VALIDAR que `PNNN` existe en `doc/arch/palomas.md`
+   b. LOCALIZAR la línea `| PNNN |`
+   c. REEMPLAZAR estado `🟡 En revisión` → `📬 Pendiente`
+   d. ENTREGAR: "📬 PNNN vuelto a Pendiente."
+
 ## Formato de salida
 
 ### Modo consulta (`@agente`)
@@ -222,8 +242,8 @@ Para publicarla: /paloma --publish P004
 - `--new` requiere `@agente` + `"<consulta>"`
 - `--publish` requiere un número PNNN válido (debe existir `paloma-plan-PNNN.md`)
 - `--aplicar` requiere PNNN + texto de resumen
-- `--revisar`, `--archivar`, `--reabrir` requieren PNNN
-- `--new`, `--news`, `--publish`, `--aplicar`, `--revisar`, `--archivar`, `--reabrir` son todos excluyentes entre sí
+- `--revisar`, `--archivar`, `--reabrir`, `--descartar`, `--pendiente` requieren PNNN
+- `--new`, `--news`, `--publish`, `--aplicar`, `--revisar`, `--archivar`, `--reabrir`, `--descartar`, `--pendiente` son todos excluyentes entre sí
 - Si `--news`: no invocar agentes, solo leer y mostrar
 - Cada paloma se registra en `palomas.md` con fecha y agente
 
@@ -235,4 +255,6 @@ Para publicarla: /paloma --publish P004
 - NO inventar hallazgos donde el agente no encontró nada
 
 ## Archivos que modifica
-- `doc/arch/palomas.md` (nueva entrada de log o actualización de estado)
+- `doc/arch/palomas.md` — nueva entrada de log o actualización de estado
+- `doc/arch/paloma-AGENTE-PNNN.md` — creado en modo consulta (paso 6.5)
+- `doc/arch/paloma-plan-PNNN.md` — creado en modo --new; renombrado en --publish

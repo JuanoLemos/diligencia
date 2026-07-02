@@ -72,6 +72,7 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | $CHAMBER | `C:\Users\jlemo\OneDrive\Desktop\openchamber` | Repo de OpenChamber — interfaz visual de Diligencia (pertenece a Diligencia) |
 | $PROPAGAR_LOG | `doc/arch/propagaciones.md` | Log de propagaciones de Diligencia a proyectos |
 | $PALOMAS | `doc/arch/palomas.md` | Log central de palomas (AGENTE → MAIN) |
+| $PALOMA_MAIN_PLAN | `doc/arch/paloma-main-plan.md` | Reglas activas MAIN → AGENTE |
 | $STACK | *(definido en HARNESS.md)* | Stack tecnológico del proyecto (runtime) |
 | $PROJECT_NAME | *(del header DILIGENCIA.md)* | Nombre del proyecto para reportes |
 | $UX_CHECK | `doc/arch/ux-check.md` | Checklist de validación manual post-implementación |
