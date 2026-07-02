@@ -35,6 +35,10 @@ Cada entrada registra una operación de `/propagar`.
 | 2026-06-28 | buenobonitobarato | v1.18.0 | v2.2.0 | ✅ /adaptar Flujo C |
 | 2026-06-28 | Nemesis | v1.18.1 | v2.2.0 | ✅ /adaptar Flujo C |
 | 2026-06-28 | OpenMontage-main | v2.2.0 | v2.2.0 | ✅ /adaptar Flujo C (ya al día) |
+| 2026-07-01 | +RM | v2.2.0 | v2.6.1 | 📝 Notificado (UPDATE-AVAILABLE.md) |
+| 2026-07-01 | MarketAI | v2.2.0 | v2.6.1 | 📝 Notificado (UPDATE-AVAILABLE.md) |
+| 2026-07-01 | conquisitare | v2.2.0 | v2.6.1 | 📝 Notificado (UPDATE-AVAILABLE.md) |
+| 2026-07-01 | buenobonitobarato | v2.2.0 | v2.6.1 | 📝 Notificado (UPDATE-AVAILABLE.md) |
 
 ## Archivos relacionados
 - `AGENTS.md` — variable `$PROPAGAR_LOG`
