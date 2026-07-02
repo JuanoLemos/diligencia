@@ -12,9 +12,9 @@ Gestionados por /version. La versión se actualiza al cerrar sesión.
 
 | Archivo | Versión | Última actualización |
 |---|---|---|
-| ROADMAP.md | v2.5.0 | 2026-07-01 |
-| CHANGELOG.md | v2.5.0 | 2026-07-01 |
-| DILIGENCIA.md | v2.5.0 | 2026-07-01 |
+| ROADMAP.md | v2.6.0 | 2026-07-01 |
+| CHANGELOG.md | v2.6.0 | 2026-07-01 |
+| DILIGENCIA.md | v2.6.0 | 2026-07-01 |
 
 ## Guías
 
@@ -57,7 +57,8 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 | MECANICA-FLUJO.md | v1.0 | 2026-06-06 |
 | MECANICA-CONTEXTO.md | v1.0 | 2026-06-06 |
 | MECANICA-GRAPHIFY.md | v1.0 | 2026-06-06 |
-| MECANICA-MEMORY.md | v1.0 | 2026-06-06 |
+| MECANICA-LLM.md | v1.0 | 2026-07-01 |
+| MECANICA-MEMORY.md | v2.0 | 2026-07-01 |
 | MECANICA-PROPAGACION.md | v1.0.0 | 2026-06-26 |
 | MECANICA-CONSEJO.md | v1.0.0 | 2026-06-26 |
 | MECANICA-CIRCUITO.md | v1.0.0 | 2026-06-26 |

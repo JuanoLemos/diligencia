@@ -2,6 +2,18 @@
 
 ---
 
+## [2.6.0] — 2026-07-01
+
+### Added
+- MECANICA-LLM.md — patrón multi-proveedor LLM (factory, provider-agnostic, 12 providers catalogados, estrategia híbrida)
+- Chamber mechanic-aware: parser DILIGENCIA.md, store Zustand, comandos filtrados por mecánicas, PalomaPanel per-project
+- @disenador — agente UI/UX con MiniMax M3 + image-01 (auditoría Crucix: 15 hallazgos, 4 P1)
+
+### Changed
+- MECANICA-MEMORY.md v1.0 → v2.0: 3 subsistemas (claude-mem + MemoryManager + Delta), heredado de Crucix-master
+- ROADMAP: R21 completado (P2), R68 agregado (MECANICA-LLM)
+- INDEX.md: nuevas mecánicas listadas
+
 ## [2.5.0] — 2026-07-01
 
 ### Added

@@ -21,7 +21,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 |---|---|---|
 | R19 | MECANICA-CONTEXTO.md — modelo L0/L1/L2 | P2 | 🟡 En progreso |
 | R20 | MECANICA-GRAPHIFY.md + .graphifyignore | P2 | 🟡 En progreso |
-| R21 | MECANICA-MEMORY.md — memoria persistente | P3 | 🟡 En progreso |
+| R21 | MECANICA-MEMORY.md v2.0 — memoria persistente (3 subsistemas: claude-mem + MemoryManager + Delta). Patrones heredados de Crucix-master: hot/cold storage, atomic writes, alert cooldowns, delta tracking. | P2 | ✅ Completado |
 
 ## Siguiente (Next)
 
@@ -77,6 +77,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R65 | +disenador: agente UI/UX con MiniMax M3 + image-01. Analiza frontends existentes, propone mejoras visuales, mockups, paletas y código de diseño. Primer paciente: Crucix-master (1782 líneas en 1 HTML). | P2 | ✅ Completado | R61 |
 | R66 | +multimodal conquisitare: integrar MiniMax Music-2.6 (música por fase de juego) + image-01 (texturas de terreno desde datos GIS, sprites de unidades). | P2 | 🔴 Pendiente | R61 |
 | R67 | +multimodal Nemesis assets: integrar MiniMax image-01 (retratos de personajes, escenas por época histórica, tablero de evidencias) + Music-2.6 (banda sonora por época: jazz noir, cuerdas victorianas, drones industriales). | P2 | 🔴 Pendiente | R63 |
+| R68 | +mecanica-llm: MECANICA-LLM.md — patrón multi-proveedor LLM heredado de Crucix-master. Factory pattern, provider-agnostic, 12 providers catalogados, estrategia híbrida por tarea. | P2 | ✅ Completado | R61 |
 
 ## Futuro (Later)
 
