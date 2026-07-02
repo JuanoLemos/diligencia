@@ -1,21 +1,55 @@
-# Status Salud ‚Äî Diligencia v2.0.0
+# Status Salud ó Diligencia v2.6.3
 
-Generado por `/salud` el 2026-06-26.
+Generado por /salud el 2026-07-01.
 
-| Indicador | Estado | Detalle |
+---
+
+## Estructura
+
+| Componente | Estado | Detalle |
 |---|---|---|
-| **Versi√≥n** | v2.0.0 | commit (pendiente) |
-| **Estructura** | ‚úÖ OK | directorios core, archivos, variables |
-| **Docs stale** | 0 | INDEX sincronizado: 17 gu√≠as + 14 mec√°nicas + 7 skills + 5 ADRs |
-| **Gaps documentales** | 0 | 24 archivos catalogados en INDEX (corregido en este bump) |
-| **Cross-ref gaps (D1-D5)** | 0 | ‚Äî |
-| **√öltimo /doctor** | 2026-06-26 | /CBP full Meta-PLAN ejecutado |
-| **Working tree** | ‚ö†Ô∏è Dirty | pre-commit: 4 untracked + 8 modificados (v2.0.0 Diligencia<>Chamber) |
-| **ADRs pendientes** | 0 | ‚Äî |
-| **Agentes activos** | 6 | @sdd-architect, @sdd-implement, @sdd-reviewer, @sdd-verify, @consejero, @circuito |
-| **Template sync** | ‚úÖ Sync | DILIGENCIA.md vs adaptar.md: OK |
-| **$PROYECTOS** | *(sin configurar)* | /informe-salud no ejecutable |
+| DILIGENCIA.md | ? | v2.6.3 |
+| AGENTS.md | ? | 27 variables, 30 comandos |
+| ROADMAP.md | ? | v2.6.0, items activos |
+| CHANGELOG.md | ? | v2.6.3, historial completo |
+| INDEX.md | ? | v2.6.3, 21 guÌas, 17 mec·nicas |
+| .opencode/HARNESS.md | ? | v1.0.0 |
+| .markdownlint.json | ? | Config OK |
 
-## Archivos relacionados
-- `AGENTS.md` ‚Äî variable $HARNESS
-- `.opencode/HARNESS.md` ‚Äî configuraci√≥n de test/lint/skills
+## Docs
+
+| SecciÛn | Archivos | Estado |
+|---|---|---|
+| GuÌas | 21 archivos | ? Todos con header y cross-refs |
+| Mec·nicas | 17 archivos | ? 15 + paloma-template + LLM |
+| ADRs | 8 archivos | ? 6 ADRs + summary + template |
+| doc/arch/ | 22 archivos | ? Catalogados en INDEX.md |
+
+## Comandos
+
+| ¡rea | Total | Estado |
+|---|---|---|
+| Comandos globales | 30 | ? 30 con guarda de ejecuciÛn |
+| Deprecados archivados | 18 | ? En .old/commands/ |
+
+## Licencias
+
+| Archivo | Estado |
+|---|---|
+| LICENSE | ? AGPL-3.0 |
+| NOTICE | ? |
+| SECURITY.md | ? |
+| LICENSING.md | ? |
+
+## Palomas
+
+| ID | Estado | AcciÛn MAIN |
+|---|---|---|
+| P001 | ? Actuado | NOTICE + SECURITY.md creados |
+| P002 | ?? En revisiÛn | Pendiente de aplicar (21 hallazgos) |
+| P003 | ? Actuado | MANIFIESTO + README + GUIA mejorados |
+| P004 | ?? Pendiente | ó |
+
+## Propagaciones
+
+6/6 proyectos al dÌa con Diligencia v2.6.3.
