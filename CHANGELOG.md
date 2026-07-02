@@ -2,6 +2,12 @@
 
 ---
 
+## [2.6.2] — 2026-07-01
+
+### Changed
+- propagaciones: 6 proyectos actualizados a Diligencia v2.6.1 (+RM, MarketAI, conquisitare, buenobonitobarato, nemesis, OpenMontage-main)
+- OpenMontage: propagaciones.md local registrada
+
 ## [2.6.1] — 2026-07-01
 
 ### Added
