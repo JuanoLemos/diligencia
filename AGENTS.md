@@ -160,6 +160,7 @@ Los agentes (`@documentador`, `@consejero`, `@circuito`) operan en chats separad
 | R4 | El usuario transporta la paloma del AGENTE al MAIN |
 | R5 | Solo MAIN ejecuta BUILD: `/commit`, `/version`, `/CBP` |
 | R6 | El MAIN decide si usar la paloma o ignorarla |
+| R7 | El MAIN debe pasar las respuestas de los agentes textualmente al usuario, sin resumir ni filtrar. Si es muy extensa, mostrar completa y agregar un resumen al final, no al revés. |
 
 El **único agente con permiso de escritura** es `@sdd-implement`, y se invoca desde el chat MAIN para aplicar cambios aprobados.
 
