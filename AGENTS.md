@@ -111,6 +111,7 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | /revision | Revisar mutaciones del proyecto y generar reporte | Declarativo |
 | /documentar | Auditoría documental completa (24 checks, --legales para legal) | Declarativo |
 | /paloma | Consultar a un agente y registrar paloma en palomas.md | Declarativo |
+| /agentes-sync | Sincronizar agentes con mecánicas y guías del proyecto | Declarativo |
 
 ## Focus
 - Documentar la metodología
