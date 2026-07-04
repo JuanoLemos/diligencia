@@ -1,22 +1,22 @@
-# Catálogo de Proyectos — Diligencia v2.1.0
+# Catálogo de Proyectos — Diligencia v2.6.5
 
 Mapa completo de proyectos adaptados a Diligencia en el ecosistema local.
-Actualizado: 2026-06-23.
+Actualizado: 2026-07-04.
 
 ---
 
 ## Proyectos activos
 
-| # | Proyecto | Ruta | Diligencia | Versión propia | Tipo | IA integrada | WT | Acción pendiente |
-|---|---|---|---|---|---|---|---|---|
-| 1 | **Diligencia** | `C:\xampp\htdocs\Diligencia` | v2.4.1 | 2.4.1 | Metodología documental | No | Clean | Referente. Único con $REPO. |
-| 2 | **MarketAI** | `C:\xampp\htdocs\MarketAI` | v2.2.0 ✅ | 1.3.0 | Trading multi-capa | DeepSeek V4 Flash | Clean | ✅ Upgrade v1.18.1→v2.2.0 completo. |
-| 3 | **buenobonitobarato** | `C:\xampp\htdocs\buenobonitobarato` | v2.2.0 ✅ | 0.1.0 | CLI Node.js | No | Clean | ✅ Upgrade v1.18.0→v2.2.0 completo. |
-| 4 | **Nemesis** | `C:\xampp\htdocs\nemesis` | v2.2.0 ✅ | 3.8.2 | Juego narrativo IA | DeepSeek Flash+Pro, Claude, Gemini | Clean | ✅ Upgrade v1.18.1→v2.2.0 completo. |
-| 5 | **+RM** | `C:\xampp\htdocs\+RM` | v2.2.0 ✅ | Sin versionar | Dashboard PHP | No | Clean | ✅ Upgrade v1.18.1→v2.2.0 completo. |
-| 6 | **conquisitare** | `C:\xampp\htdocs\conquisitare` | v2.2.0 ✅ | 0.7.0 | Juego conquista WebGL | No | Clean | ✅ Upgrade v1.18.1→v2.2.0 completo. |
-| 7 | **OpenMontage** | `C:\Users\jlemo\OneDrive\Desktop\OpenMontage-main` | v2.2.0 ✅ | — | — | — | — | ✅ Upgrade v1.20.0→v2.2.0 completo. |
-| 8 | **OpenChamber** | `C:\Users\jlemo\OneDrive\Desktop\openchamber` | v2.2.0 ✅ | — | Interfaz visual | Fork Diligencia | Clean | Under tutelage. Upgrade v1.18.1→v2.2.0 completado. |
+| # | Proyecto | Ruta | Diligencia | Versión propia | Tipo | IA integrada | WT | Última revisión | Desviaciones |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | **Diligencia** | `C:\xampp\htdocs\Diligencia` | v2.6.5 | 2.6.5 | Metodología | DeepSeek+MiniMax | ✅ Limpio | 2026-07-04 | — |
+| 2 | **+RM** | `C:\xampp\htdocs\+RM` | v2.6.4 ✅ | Sin versionar | Dashboard PHP | No | ✅ Limpio | 2026-07-04 | — |
+| 3 | **MarketAI** | `C:\xampp\htdocs\MarketAI` | v2.6.4 ✅ | 1.3.0 | Trading multi-capa | DeepSeek V4 Flash | ✅ Limpio | 2026-07-04 | — |
+| 4 | **conquisitare** | `C:\xampp\htdocs\conquisitare` | v2.6.4 ✅ | 0.7.0 | Juego WebGL | No | ✅ Limpio | 2026-07-04 | — |
+| 5 | **buenobonitobarato** | `C:\xampp\htdocs\buenobonitobarato` | v2.6.4 ✅ | 0.1.0 | CLI Node.js | No | ✅ Limpio | 2026-07-04 | — |
+| 6 | **Nemesis** | `C:\xampp\htdocs\nemesis` | v2.6.4 ✅ | 3.8.4 | Juego narrativo IA | DeepSeek+ElevenLabs | ✅ Limpio | 2026-07-04 | — |
+| 7 | **OpenMontage** | `C:\Users\jlemo\OneDrive\Desktop\OpenMontage-main` | v2.6.3 ✅ | — | Producción video | Multi-proveedor | ⚠️ Sucio | 2026-07-04 | — |
+| 8 | **OpenChamber** | `C:\Users\jlemo\OneDrive\Desktop\openchamber` | v2.6.1 ✅ | — | Interfaz visual | Diligencia fork | — | 2026-07-04 | — |
 
 ## Proyectos congelados
 
