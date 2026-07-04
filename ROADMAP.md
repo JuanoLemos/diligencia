@@ -78,6 +78,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R66 | +multimodal conquisitare: integrar MiniMax Music-2.6 (música por fase de juego) + image-01 (texturas de terreno desde datos GIS, sprites de unidades). | P2 | 🔴 Pendiente | R61 |
 | R67 | +multimodal Nemesis assets: integrar MiniMax image-01 (retratos de personajes, escenas por época histórica, tablero de evidencias) + Music-2.6 (banda sonora por época: jazz noir, cuerdas victorianas, drones industriales). | P2 | 🔴 Pendiente | R63 |
 | R68 | +mecanica-llm: MECANICA-LLM.md — patrón multi-proveedor LLM heredado de Crucix-master. Factory pattern, provider-agnostic, 12 providers catalogados, estrategia híbrida por tarea. | P2 | ✅ Completado | R61 |
+| R69 | +status: dashboard de consumo de APIs en vivo — tokens DeepSeek/MiniMax/ElevenLabs usados por proyecto, costo mensual proyectado, alertas de umbral. Visible en Chamber. | P2 | 🔴 Pendiente | R61,R68 |
 
 ## Futuro (Later)
 
