@@ -2,6 +2,14 @@
 
 ---
 
+## [2.6.5] — 2026-07-04
+
+### Changed
+- propagaciones: 5 proyectos actualizados a Diligencia v2.6.4 (+RM, MarketAI, conquisitare, BBB, nemesis)
+- AGENTS.md: R7 — MAIN pasa respuestas de agentes textualmente
+- AGENTS.md: R8 — MAIN muestra decisiones/veredictos en chat
+- MECANICA-TASK-ROUTER.md: enrutador tarea → agente → modelo → API
+
 ## [2.6.4] — 2026-07-01
 
 ### Fixed
