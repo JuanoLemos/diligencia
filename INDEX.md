@@ -13,8 +13,8 @@ Gestionados por /version. La versión se actualiza al cerrar sesión.
 | Archivo | Versión | Última actualización |
 |---|---|---|
 | ROADMAP.md | v2.6.0 | 2026-07-01 |
-| CHANGELOG.md | v2.6.2 | 2026-07-01 |
-| DILIGENCIA.md | v2.6.2 | 2026-07-01 |
+| CHANGELOG.md | v2.6.4 | 2026-07-01 |
+| DILIGENCIA.md | v2.6.4 | 2026-07-01 |
 
 ## Guías
 

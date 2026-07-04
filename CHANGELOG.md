@@ -2,6 +2,16 @@
 
 ---
 
+## [2.6.4] — 2026-07-01
+
+### Fixed
+- CI/CD: remove CHECKLIST.md from diligencia-check.yml (file deprecado a .old/)
+- ADR-003: remove CHECKLIST.md from standard structure tree
+- Template doc-base: same fix for future projects
+
+### Changed
+- /salud post-v2.6.3: status-salud.md regenerated (v2.6.3)
+
 ## [2.6.3] — 2026-07-01
 
 ### Fixed
