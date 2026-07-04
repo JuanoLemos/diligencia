@@ -39,7 +39,7 @@
 /deprecar      Mover obsoleto a .old/
 /limpiar       Eliminar temporales
 
-## AGENTES (10 + 3 circuitos)
+## AGENTES (8 agentes + 2 comandos + 3 circuitos)
 
 ### Agentes de razonamiento (DeepSeek V4 Pro)
 @consejero         Decisiones de proyecto, trayectoria, dominio
@@ -66,6 +66,8 @@
                    --publish PNNN       publicar plan como paloma
                    --aplicar PNNN "motivo"  marcar como actuado
                    --revisar PNNN, --archivar PNNN, --reabrir PNNN
+                   --descartar PNNN    descartar paloma-plan sin publicar
+                   --pendiente PNNN    revertir revision
 /agentes-sync      Sincronizar agentes con mecanicas y guias
                    --dry-run           solo reporte sin modificar
                    --fase 1|2          solo agentes o solo $PROYECTOS
@@ -74,6 +76,7 @@
 SDD:             @sdd-architect -> @sdd-implement -> @sdd-verify -> @sdd-reviewer
 Paloma:          @agente -> /paloma --new -> --publish -> Pendiente -> Aplicado/Archivado
 Documental:      @documentador -> /documentar -> /agentes-sync
+Integridad:      @circuito -> /circuito [area] -> reporte de handlers/rutas/navegacion
 
 ## Archivos relacionados
 - `GUIA_REFERENCIA_RAPIDA.md` — guia con categorias y workflows

@@ -77,7 +77,7 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | $PROJECT_NAME | *(del header DILIGENCIA.md)* | Nombre del proyecto para reportes |
 | $UX_CHECK | `doc/arch/ux-check.md` | Checklist de validación manual post-implementación |
 
-## Comandos globales heredados — 30 fundamentales
+## Comandos globales heredados — 31 fundamentales
 
 | Comando | Descripción | Tipo |
 |---|---|---|

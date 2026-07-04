@@ -8,7 +8,7 @@ OpenChamber es la interfaz visual que ejecuta la metodología Diligencia. Propor
 
 El panel lateral de Chamber muestra el estado actual del proyecto. Desde ahí podés:
 
-- **Ver COMANDOS.md** — los 28 comandos agrupados por acción (CREAR/PLANIFICAR/EJECUTAR/REVISAR/CUIDAR)
+- **Ver COMANDOS.md** — los 31 comandos agrupados por acción (CREAR/PLANIFICAR/EJECUTAR/REVISAR/CUIDAR)
 - **Ver $UX_CHECK** — checklist de validación post-implementación
 - **Ver UPDATE-AVAILABLE.md** — notificaciones de nuevas versiones de Diligencia
 

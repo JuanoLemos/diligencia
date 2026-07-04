@@ -10,8 +10,8 @@
 
 | # | Check | Qué valida | Severidad |
 |---|-------|-----------|-----------|
-| 1 | AGENTS.md SSOT | Variables definidas resuelven a archivos existentes. Tabla de comandos lista los 28 activos. Deprecados registrados. | P1 |
-| 2 | COMANDOS.md sync | Cantidad de comandos coincide con AGENTS.md (28). Cada comando en AGENTS.md aparece en COMANDOS.md por grupo. | P2 |
+| 1 | AGENTS.md SSOT | Variables definidas resuelven a archivos existentes. Tabla de comandos lista los 31 activos. Deprecados registrados. | P1 |
+| 2 | COMANDOS.md sync | Cantidad de comandos coincide con AGENTS.md (31). Cada comando en AGENTS.md aparece en COMANDOS.md por grupo. | P2 |
 | 3 | HARNESS.md | `.opencode/HARNESS.md` existe con campos Stack, Test, Skills. | P2 |
 | 4 | .markdownlint.json | Archivo de configuración de linting markdown existe. | P3 |
 
