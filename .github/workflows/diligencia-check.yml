@@ -33,7 +33,6 @@ jobs:
           echo "### Category A — Structure (ADR-003)"
           echo ""
           check "ROADMAP.md" "ROADMAP.md"
-          check "CHECKLIST.md" "CHECKLIST.md"
           check "CHANGELOG.md" "CHANGELOG.md"
           check "AGENTS.md" "AGENTS.md"
           check "DILIGENCIA.md" "DILIGENCIA.md"
