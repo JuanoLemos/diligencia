@@ -2,6 +2,13 @@
 
 ---
 
+## [2.6.6] — 2026-07-04
+
+### Added
+- /agentes-sync Fase 1: sincroniza referencias de mecanicas/guias en agentes globales
+- /agentes-sync Fase 2: escanea $PROYECTOS por desviaciones estructurales no reportadas
+- catalogo-proyectos.md actualizado a v2.6.5 con datos reales y columnas de revision
+
 ## [2.6.5] — 2026-07-04
 
 ### Changed
