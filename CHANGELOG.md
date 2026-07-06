@@ -2,6 +2,20 @@
 
 ---
 
+## [2.6.8] — 2026-07-04
+
+### Changed
+- Modelo Agentes Autonomos: R1-R6 reescrito para editar/commit directo en proyecto asignado
+- 5 agentes especializados: permisos edit:allow + git
+- Palomas redefinidas: ahora auditoria cruzada + dashboard, no reporte primario
+
+### Removed
+- 4 agentes benchmark-* archivados a .old/
+- @design-system unificado en @disenador
+
+### Fixed
+- +R9: agentes recuerdan /CBP tras BUILD
+
 ## [2.6.7] — 2026-07-04
 
 ### Added
