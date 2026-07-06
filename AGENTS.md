@@ -148,23 +148,20 @@ Al terminar cualquier BUILD en este proyecto, reportar cambios aplicados y suger
 | `/checklist` | 2026-06-26 | Usar `/rm` (inconsistencias CHECKLIST↔RM) y `/next` (priorización) — funcionalidad redistribuida |
 | `CHECKLIST.md` (documento) | 2026-06-28 | Movido a `.old/` — tracking redistribuido en `/rm` y `/next`. Variable `$CHECKLIST` eliminada. |
 
-## Modelo Paloma Mensajera (MAIN ↔ AGENTE)
+## Modelo Agentes Autónomos (agente-chat → proyecto)
 
-Los agentes (`@documentador`, `@consejero`, `@circuito`) operan en chats separados con permisos de solo lectura (`edit: deny`). Cuando investigan o auditan, entregan una **paloma** (reporte estructurado en tabla) al usuario. El usuario evalúa y decide si llevarla al chat **MAIN** para ejecutar cambios.
+Los agentes especializados (`@narrador`, `@game-designer`, `@trader`, `@cartografo`, `@editor-video`, `@disenador`, etc.) operan en chats separados, cada uno asignado a un proyecto. Planean, BUILDean y versionan su proyecto sin pasar por MAIN. MAIN (Diligencia) solo gobierna la metodología — mecánicas nuevas, comandos, propagación.
 
 | Regla | Descripción |
-|---|---|---|
-| R1 | Chat AGENTE es read-only (`edit: deny`) — nunca modifica archivos del proyecto |
-| R1-bis | EXCEPCIÓN: Los agentes pueden escribir exclusivamente `doc/arch/paloma-AGENTE-PNNN.md` (su paloma). Esa es la ÚNICA escritura permitida. Las palomas son el canal de reporte. |
-| R2 | Uso exclusivo investigatorio: auditar, explorar, proponer |
-| R3 | La paloma es un reporte estructurado (tabla de hallazgos) |
-| R4 | El usuario transporta la paloma del AGENTE al MAIN |
-| R5 | Solo MAIN ejecuta BUILD: `/commit`, `/version`, `/CBP` |
-| R6 | El MAIN decide si usar la paloma o ignorarla |
+|---|---|
+| R1 | Chat AGENTE puede editar archivos del proyecto que tiene asignado. Un solo agente por proyecto a la vez. |
+| R2 | El agente puede ejecutar PLAN → BUILD → `/CBP commit` en su proyecto asignado. Sin necesidad de paloma. |
+| R3 | La paloma sigue existiendo como mecanismo de auditoría cruzada (cuando un agente revisa proyectos ajenos). |
+| R4 | Si un agente encuentra un bug o mejora en otro proyecto (no el suyo), reporta vía paloma. No edita fuera de su proyecto. |
+| R5 | Cada agente versiona su propio proyecto. No necesita pasar por MAIN para commitear. |
+| R6 | MAIN solo versióna cuando cambia la metodología Diligencia (comandos, mecánicas, templates). |
 | R7 | El MAIN debe pasar las respuestas de los agentes textualmente al usuario, sin resumir ni filtrar. Si es muy extensa, mostrar completa y agregar un resumen al final, no al revés. |
 | R8 | El MAIN debe escribir en el chat toda decisión, tabla, veredicto o resumen antes de pasar al siguiente paso. Si un análisis interno produce un resultado que el usuario necesita ver, va al chat. Un análisis interno que no produce output no cuenta. |
-
-El **único agente con permiso de escritura** es `@sdd-implement`, y se invoca desde el chat MAIN para aplicar cambios aprobados.
 
 ## Prioridad MCP — codebase-memory-mcp
 
