@@ -2,6 +2,23 @@
 
 ---
 
+## [2.6.7] — 2026-07-04
+
+### Added
+- +6 agentes especializados por dominio (R70): @narrador, @game-designer, @trader, @cartografo, @editor-video, @design-system
+- COMANDOS.md: seccion AGENTES completa con subcomandos y circuitos de calidad
+
+### Fixed
+- COMANDOS.md: flags faltantes --descartar y --pendiente agregados
+- AGENTS.md: 30 -> 31 comandos fundamentales
+- skills/diligencia-docs: conteo 28 -> 31 (evitaba falsos positivos en /documentar)
+- GUIA_CHAMBER.md: 28 -> 31 comandos
+
+### Changed
+- COMANDOS.md: tablas, emojis y jerarquia visual mejorada
+- MECANICA-TASK-ROUTER.md: +6 nuevas filas de ruteo
+- ROADMAP.md: R70 completado
+
 ## [2.6.6] — 2026-07-04
 
 ### Added
