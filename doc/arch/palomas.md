@@ -1,6 +1,6 @@
-﻿# Palomas — Diligencia v2.4.2
+﻿# Palomas — Diligencia v2.6.7
 
-Log de consultas a agentes (🕊️ palomas). Cada entrada registra una consulta, su resultado y qué hizo el MAIN. Las palomas individuales siguen `doc/arch/paloma-template.md`.
+Registro de auditorías cruzadas entre agentes (🕊️ palomas). Las palomas ya no son el canal principal de reporte — los agentes autónomos editan directo en su proyecto asignado. La paloma se usa para: (1) auditoría cruzada cuando un agente de otro proyecto reporta un bug, (2) dashboard visual en Chamber a través del PalomaPanel. Cada paloma individual sigue `doc/arch/paloma-template.md`.
 
 | ID | Fecha | Agente | Consulta | Hallazgos | Archivos afectados | Estimación | Urgencia | Veredicto | Estado | Acción MAIN |
 |---|---|---|---|---|---|---|---|---|---|---|---|
