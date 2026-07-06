@@ -22,7 +22,7 @@ El MAIN lee esta tabla al iniciar una tarea y delega automáticamente.
 | Trading / finanzas | `@trader` | DeepSeek V4 Pro | — | Estrategias, riesgo, brokers |
 | Mapas / datos geoespaciales | `@cartografo` | DeepSeek V4 Pro | — | GIS, terrain, chunks, conquisitare |
 | Producción de video | `@editor-video` | MiniMax M3 | MiniMax video + ElevenLabs TTS | Pipeline composición OpenMontage |
-| Sistemas de diseño (CSS) | `@design-system` | DeepSeek V4 Pro | — | Componentes, paletas, accesibilidad |
+| Sistemas de diseño (CSS) | `@disenador` | MiniMax M3 | MiniMax image-01 | Componentes, paletas, accesibilidad (unificado) |
 | Narración / voz | MAIN genera código | — | ElevenLabs TTS + Voice Clone | TTS en Nemesis, OpenMontage |
 | STT (voz a texto) | MAIN genera código | — | ElevenLabs Scribe v2 | Comandos por voz en Chamber |
 | SFX / efectos sonido | MAIN genera código | — | ElevenLabs SFX + MiniMax Music-2.6 | Efectos para conquisitare |

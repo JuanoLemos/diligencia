@@ -79,7 +79,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R67 | +multimodal Nemesis assets: integrar MiniMax image-01 (retratos de personajes, escenas por época histórica, tablero de evidencias) + Music-2.6 (banda sonora por época: jazz noir, cuerdas victorianas, drones industriales). | P2 | 🔴 Pendiente | R63 |
 | R68 | +mecanica-llm: MECANICA-LLM.md — patrón multi-proveedor LLM heredado de Crucix-master. Factory pattern, provider-agnostic, 12 providers catalogados, estrategia híbrida por tarea. | P2 | ✅ Completado | R61 |
 | R69 | +status: dashboard de consumo de APIs en vivo — tokens DeepSeek/MiniMax/ElevenLabs usados por proyecto, costo mensual proyectado, alertas de umbral. Visible en Chamber. | P2 | 🔴 Pendiente | R61,R68 |
-| R70 | +6 agentes especializados por dominio: @narrador (Nemesis), @game-designer (Nemesis+conquisitare), @trader (MarketAI), @cartografo (conquisitare), @editor-video (OpenMontage), @design-system (BBB). Registrados en COMANDOS.md y MECANICA-TASK-ROUTER.md. | P1 | ✅ Completado | — |
+| R70 | +6 agentes especializados por dominio y reestructuración del ecosistema de agentes. Creación: @narrador, @game-designer, @trader, @cartografo, @editor-video. Unificación: @design-system absorbido por @disenador. Eliminación: 4 benchmark-* archivados. Pendiente: dar cuerpo (~80+ líneas) a los 5 nuevos. | P1 | 🟡 En progreso | — |
 
 ## Futuro (Later)
 

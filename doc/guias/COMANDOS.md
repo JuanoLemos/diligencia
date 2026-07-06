@@ -96,7 +96,7 @@
 | `@trader` | Estrategias de trading, gestion de riesgo, brokers | DeepSeek V4 Pro | MarketAI |
 | `@cartografo` | Pipeline geoespacial, mapas reales, GIS | DeepSeek V4 Pro | conquisitare |
 | `@editor-video` | Pipeline de video, composicion avatar+voz+contenido | MiniMax M3 | OpenMontage |
-| `@design-system` | CSS generativo, componentes, paletas, accesibilidad | DeepSeek V4 Pro | BBB |
+| `@disenador` (también cubre design systems) | CSS generativo, componentes, paletas, accesibilidad | MiniMax M3 + image-01 | BBB (unificado) |
 
 ### Multimodal
 
