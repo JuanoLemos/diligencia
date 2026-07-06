@@ -87,6 +87,17 @@
 | `@sdd-verify` | Ejecuta tests (RED -> GREEN -> REFACTOR) | `npm test`, `pytest` |
 | `@circuito` | Integridad logica y UX | `/circuito [area]` |
 
+### Especializados por dominio
+
+| Agente | Rol | Modelo | Proyecto |
+|---|---|---|---|
+| `@narrador` | Prompt engineering narrativo, worldbuilding, system prompts | DeepSeek V4 Pro | Nemesis |
+| `@game-designer` | Mecanicas, balance, economia, curvas de dificultad | DeepSeek V4 Pro | Nemesis, conquisitare |
+| `@trader` | Estrategias de trading, gestion de riesgo, brokers | DeepSeek V4 Pro | MarketAI |
+| `@cartografo` | Pipeline geoespacial, mapas reales, GIS | DeepSeek V4 Pro | conquisitare |
+| `@editor-video` | Pipeline de video, composicion avatar+voz+contenido | MiniMax M3 | OpenMontage |
+| `@design-system` | CSS generativo, componentes, paletas, accesibilidad | DeepSeek V4 Pro | BBB |
+
 ### Multimodal
 
 | Agente | Rol | Modelo |

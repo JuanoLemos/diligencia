@@ -17,6 +17,12 @@ El MAIN lee esta tabla al iniciar una tarea y delega automáticamente.
 | Auditoría documental | `@documentador` | DeepSeek V4 Pro | — | 24 checks, versiones, cross-refs |
 | Decisión / consejo | `@consejero` | DeepSeek V4 Pro | — | Roadmap, dominio, trayectoria |
 | Integridad lógica | `@circuito` | DeepSeek V4 Flash | — | Handlers, rutas, UX, navegación |
+| Prompt narrativo / worldbuilding | `@narrador` | DeepSeek V4 Pro | ElevenLabs Text-to-Dialogue | System prompts, personajes, Nemesis |
+| Mecánicas de juego / balance | `@game-designer` | DeepSeek V4 Pro | — | Balance, economía, árbol tecnológico |
+| Trading / finanzas | `@trader` | DeepSeek V4 Pro | — | Estrategias, riesgo, brokers |
+| Mapas / datos geoespaciales | `@cartografo` | DeepSeek V4 Pro | — | GIS, terrain, chunks, conquisitare |
+| Producción de video | `@editor-video` | MiniMax M3 | MiniMax video + ElevenLabs TTS | Pipeline composición OpenMontage |
+| Sistemas de diseño (CSS) | `@design-system` | DeepSeek V4 Pro | — | Componentes, paletas, accesibilidad |
 | Narración / voz | MAIN genera código | — | ElevenLabs TTS + Voice Clone | TTS en Nemesis, OpenMontage |
 | STT (voz a texto) | MAIN genera código | — | ElevenLabs Scribe v2 | Comandos por voz en Chamber |
 | SFX / efectos sonido | MAIN genera código | — | ElevenLabs SFX + MiniMax Music-2.6 | Efectos para conquisitare |
