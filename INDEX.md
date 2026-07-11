@@ -60,6 +60,7 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 | MECANICA-GRAPHIFY.md | v1.0 | 2026-06-06 |
 | MECANICA-LLM.md | v1.0 | 2026-07-01 |
 | MECANICA-TASK-ROUTER.md | v1.0 | 2026-07-01 |
+| MECANICA-OLAS.md | v1.0 | 2026-07-04 |
 | MECANICA-MEMORY.md | v2.0 | 2026-07-01 |
 | MECANICA-PROPAGACION.md | v1.0.0 | 2026-06-26 |
 | MECANICA-CONSEJO.md | v1.0.0 | 2026-06-26 |

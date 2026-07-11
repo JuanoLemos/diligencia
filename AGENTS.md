@@ -77,7 +77,7 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | $PROJECT_NAME | *(del header DILIGENCIA.md)* | Nombre del proyecto para reportes |
 | $UX_CHECK | `doc/arch/ux-check.md` | Checklist de validación manual post-implementación |
 
-## Comandos globales heredados — 31 fundamentales
+## Comandos globales heredados — 32 fundamentales
 
 | Comando | Descripción | Tipo |
 |---|---|---|
@@ -111,7 +111,8 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | /revision | Revisar mutaciones del proyecto y generar reporte | Declarativo |
 | /documentar | Auditoría documental completa (24 checks, --legales para legal) | Declarativo |
 | /paloma | Consultar a un agente y registrar paloma en palomas.md | Declarativo |
-| /agentes-sync | Sincronizar agentes con mecánicas y guías del proyecto | Declarativo |
+| /agentes-sync | Sincronizar agentes con mecanicas y guias del proyecto | Declarativo |
+| /ola | Sistema de oleadas multi-proyecto (planear/ejecutar/estado) | Declarativo | Sincronizar agentes con mecánicas y guías del proyecto | Declarativo |
 
 ## Focus
 - Documentar la metodología
