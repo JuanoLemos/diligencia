@@ -2,6 +2,16 @@
 
 ---
 
+## [2.7.0] — 2026-07-04
+
+### Added
+- Sistema de oleadas (olas): MECANICA-OLAS.md con wave manifest, reglas OnFail (skip/retry/escalate/fallback). /ola planear/ejecutar/estado. doc/olas/_template.md. R45 completado.
+
+### Changed
+- R45 actualizado: /ola sistema de oleadas completado
+- COMANDOS.md: +/ola command reference
+- 32 comandos fundamentales (+1: /ola)
+
 ## [2.6.8] — 2026-07-04
 
 ### Changed
