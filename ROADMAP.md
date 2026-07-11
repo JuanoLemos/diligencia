@@ -54,7 +54,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R42 | +agentes SDD integrados con Chamber Team Mode (4 agentes en paralelo) | P2 | 🔴 Pendiente | R34 |
 | R43 | +auto-discovery de proyectos con DILIGENCIA.md desde Chamber | P3 | 🔴 Pendiente | R36 |
 | R44 | +scheduled health checks automáticos cada N horas vía Chamber | P3 | 🔴 Pendiente | R36 |
-| R45 | +/next --plan: evolución de diagnóstico a ejecución (clusteriza tareas sin bloqueos en lotes, ejecuta secuencial) | P1 | 🔴 Pendiente | — |
+| R45 | +/ola: sistema de oleadas multi-proyecto. MECANICA-OLAS.md con wave manifest, reglas OnFail (skip/retry/escalate/fallback), ejecucion paralela entre proyectos. /ola planear/ejecutar/estado. | P1 | ✅ Completado | R61,R68 |
 | R46 | +audit Chamber: revisar todas las herramientas nativas (Terminal, DiffView, Skills Catalog, Team Mode, Background Agents, Scheduled Tasks, Git, File Browser) para optimizar comandos Diligencia | P2 | ✅ Completado | R34,R35 |
 | R47 | +integrar comandos Diligencia con Chamber UI (botones /CBP, /doctor, /salud desde la interfaz visual, no solo terminal) | P2 | ✅ Completado | R46 |
 | R48 | +propagar: comando para propagar updates de Diligencia a $PROYECTOS (semiautomático: /version sugiere, /propagar ejecuta) + UPDATE-AVAILABLE.md + $PROPAGAR_LOG → MECANICA-PROPAGACION.md | P2 | ✅ Completado | — |
