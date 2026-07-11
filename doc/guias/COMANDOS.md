@@ -137,3 +137,5 @@ Integridad:  @circuito ──→ /circuito [area] ──→ reporte de handlers/
 - `GUIA_DE_COMANDOS.md` — referencia completa
 - `AGENTS.md` — tabla original de comandos
 - `MECANICA-TASK-ROUTER.md` — enrutador tarea → agente → modelo → API
+| /ola | Sistema de oleadas multi-proyecto
+           | planear <proyecto>, ejecutar <olas>, estado <olas> |
