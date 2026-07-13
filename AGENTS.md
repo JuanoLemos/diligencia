@@ -158,6 +158,7 @@ Los agentes especializados (`@narrador`, `@game-designer`, `@trader`, `@cartogra
 | R7 | El MAIN debe pasar las respuestas de los agentes textualmente al usuario, sin resumir ni filtrar. Si es muy extensa, mostrar completa y agregar un resumen al final, no al revés. |
 | R8 | El MAIN debe escribir en el chat toda decisión, tabla, veredicto o resumen antes de pasar al siguiente paso. Si un análisis interno produce un resultado que el usuario necesita ver, va al chat. Un análisis interno que no produce output no cuenta. |
 | R9 | Al terminar BUILD, el agente debe recordar al usuario ejecutar `/CBP` para commitear en el proyecto. |
+| R10 | `/adaptar` solo lo ejecuta el usuario. Ni MAIN ni agentes autonomos pueden ejecutarlo en ningun proyecto. |
 
 ## Prioridad MCP — codebase-memory-mcp
 
