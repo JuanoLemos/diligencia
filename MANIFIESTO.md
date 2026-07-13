@@ -34,7 +34,7 @@ Preservar /CBP como orquestador central del flujo de trabajo. Los workflows de c
 Conservar las 3 capas de validación documental: runtime (instrucciones de sesión), pre-commit (validación local) y CI/CD (integración continua). La calidad documental no es opcional. Su implementación concreta se documenta en `doc/mecanicas/MECANICA-ENFORCEMENT.md`.
 
 ## 4. Respetar la disciplina de ejecución
-BUILD aplica cambios pero NO commitea: solo `/commit`, `/CBP` y `/version` ejecutan git commit. Los agentes investigatorios son read-only y entregan **palomas** (reportes); solo el chat MAIN decide y ejecuta. Ninguna acción se asume sin confirmación.
+BUILD aplica cambios pero NO commitea: solo `/commit`, `/CBP` y `/version` ejecutan git commit. Los agentes investigatorios son read-only y entregan **reportes de agentes** (reportes); solo el chat MAIN decide y ejecuta. Ninguna acción se asume sin confirmación.
 
 ## 5. Trazar las decisiones
 Toda decisión arquitectónica se registra como ADR en `doc/arch/`. Las decisiones deben sobrevivir al olvido y al compaction: lo que no está trazado, no ocurrió.
@@ -42,7 +42,7 @@ Toda decisión arquitectónica se registra como ADR en `doc/arch/`. Las decision
 ## 6. Ser plural
 Esta metodología acepta adaptaciones de stack, idioma, proveedor de IA y flujo. No impone un solo modelo ni una sola forma de trabajar.
 
-Diligencia escala con tu proyecto, no al revés. Un dev solo con `/adaptar` (5 minutos) y un equipo de 10 con agentes SDD y palomas usan **la misma metodología en niveles distintos**. Nadie está obligado a usar todo desde el día uno.
+Diligencia escala con tu proyecto, no al revés. Un dev solo con `/adaptar` (5 minutos) y un equipo de 10 con agentes SDD y reportes de agentes usan **la misma metodología en niveles distintos**. Nadie está obligado a usar todo desde el día uno.
 
 ## 7. Documentar los cambios
 Versionar toda modificación con CHANGELOG actualizado y tags semánticos. La documentación debe reflejar el estado real del proyecto.
@@ -53,7 +53,7 @@ Todo derivado de Diligencia debe permanecer abierto bajo AGPL-3.0 o compatible. 
 ## 9. Respetar a los compañeros
 Los agentes (@consejero, @circuito, @sdd-architect, @sdd-implement, @sdd-reviewer, @sdd-verify, @documentador) son **compañeros de Diligencia**, no herramientas desechables. Su rol es asesorar, auditar y proponer — nunca decidir. El director (usuario) mantiene la última palabra.
 
-Los agentes investigatorios operan en modo read-only y entregan **palomas** (reportes estructurados). Solo el chat MAIN ejecuta cambios y commitea. Ningún agente modifica archivos sin pasar por el director.
+Los agentes investigatorios operan en modo read-only y entregan **reportes de agentes** (reportes estructurados). Solo el chat MAIN ejecuta cambios y commitea. Ningún agente modifica archivos sin pasar por el director.
 
 ---
 
@@ -65,7 +65,7 @@ Diligencia escala con tu proyecto. No necesitás usarlo todo desde el día uno.
 |---|---|---|---|
 | **L0 — Arranque** | Idea nueva, cero estructura | `/adaptar` | 5 min |
 | **L1 — Ritmo** | Ya codeás, querés orden | `/CBP updoc`, `/commit --push` | 2 min por sesión |
-| **L2 — Profesional** | Equipo, PRs, funcionalidades | Agentes SDD, palomas, ADRs | Según complejidad |
+| **L2 — Profesional** | Equipo, PRs, funcionalidades | Agentes SDD, reportes de agentes, ADRs | Según complejidad |
 | **L3 — Orquesta** | Múltiples proyectos activos | Gran Orquestador, `/propagar`, Chamber | Infraestructura propia |
 
 ---

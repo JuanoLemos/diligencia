@@ -62,7 +62,6 @@ Gestionadas por /updoc. La versión se actualiza tras sync exitoso.
 | MECANICA-TASK-ROUTER.md | v1.0 | 2026-07-01 |
 | MECANICA-OLAS.md | v1.0 | 2026-07-04 |
 | MECANICA-MEMORY.md | v2.0 | 2026-07-01 |
-| MECANICA-PROPAGACION.md | v1.0.0 | 2026-06-26 |
 | MECANICA-CONSEJO.md | v1.0.0 | 2026-06-26 |
 | MECANICA-CIRCUITO.md | v1.0.0 | 2026-06-26 |
 | MANDATO.md | v1.17.2 | 2026-06-06 |
@@ -97,13 +96,9 @@ Documentos de referencia rápida, estándares o plantillas.
 | IDENTIDAD-CIRCUITO.md | v2.0.0 | 2026-06-26 |
 | IDENTIDAD-CHAMBER.md | v2.0.0 | 2026-06-26 |
 | skills/ (7 skills Diligencia) | v2.0.0 | 2026-06-26 |
-| palomas.md | v2.6.1 | 2026-07-01 |
-| paloma-template.md | v1.0 | 2026-07-01 |
 | bugs.md | v1.0 | 2026-07-01 |
 | incidentes.md | v1.0 | 2026-07-01 |
 | backups.md | v1.0 | 2026-07-01 |
-| propagaciones.md | v2.6.1 | 2026-07-01 |
-| paloma-main-plan.md | v1.0 | 2026-07-01 |
 
 ## Archivos relacionados
 - `ROADMAP.md` — roadmap del proyecto

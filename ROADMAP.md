@@ -57,8 +57,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R45 | +/ola: sistema de oleadas multi-proyecto. MECANICA-OLAS.md con wave manifest, reglas OnFail (skip/retry/escalate/fallback), ejecucion paralela entre proyectos. /ola planear/ejecutar/estado. | P1 | ✅ Completado | R61,R68 |
 | R46 | +audit Chamber: revisar todas las herramientas nativas (Terminal, DiffView, Skills Catalog, Team Mode, Background Agents, Scheduled Tasks, Git, File Browser) para optimizar comandos Diligencia | P2 | ✅ Completado | R34,R35 |
 | R47 | +integrar comandos Diligencia con Chamber UI (botones /CBP, /doctor, /salud desde la interfaz visual, no solo terminal) | P2 | ✅ Completado | R46 |
-| R48 | +propagar: comando para propagar updates de Diligencia a $PROYECTOS (semiautomático: /version sugiere, /propagar ejecuta) + UPDATE-AVAILABLE.md + $PROPAGAR_LOG → MECANICA-PROPAGACION.md | P2 | ✅ Completado | — |
-| R49 | +ux: panel interactivo de checklist en Chamber por proyecto — checkboxes, progreso %, lee $UX_CHECK. Cada proyecto adaptado hereda el panel vía /adaptar. | P2 | 🔴 Pendiente | R25,R26 |
+| R48 | +propagar: comando de propagaci�n entre Diligencia y proyectos. | P2 | ??? Deprecado | � | R49 | +ux: panel interactivo de checklist en Chamber por proyecto — checkboxes, progreso %, lee $UX_CHECK. Cada proyecto adaptado hereda el panel vía /adaptar. | P2 | 🔴 Pendiente | R25,R26 |
 | R50 | +MiniMax: integrar procesamiento multimodal (video, imagen, voz) vía Token Plan Max — testing en OpenMontage | P1 | 🟡 En progreso | R25,R26 |
 | R51 | +chamber: iconos personalizados por proyecto para visual en carpeta de OpenChamber — template SVG en doc-base, /adaptar lo copia | P2 | ✅ Completado | R25 |
 | R52 | +estudio: proyectos con potencial hosteo de server para actuarlos en producción + mejor camino para administrar todo | P2 | 🔴 Pendiente | — |

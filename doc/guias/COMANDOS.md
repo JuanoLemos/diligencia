@@ -11,7 +11,6 @@
 | `/adaptar` | Adaptar proyecto a Diligencia |
 | `/+rm` | Agregar item al ROADMAP |
 | `/doc` | Crear/actualizar guia o mecanica |
-| `/propagar` | Propagar updates a proyectos |
 
 ---
 
@@ -108,8 +107,6 @@
 
 | Comando | Subcomandos |
 |---|---|
-| `/paloma` | `--news`, `--new @agente`, `--publish PNNN`, `--aplicar PNNN`, `--revisar PNNN`, `--archivar PNNN`, `--reabrir PNNN`, `--descartar PNNN`, `--pendiente PNNN` |
-| `/agentes-sync` | `--dry-run`, `--fase 1\|2` |
 
 ---
 
@@ -117,7 +114,6 @@
 
 ```
 SDD:         @sdd-architect ──→ @sdd-implement ──→ @sdd-verify ──→ @sdd-reviewer
-Paloma:      @agente ──→ /paloma --new ──→ --publish ──→ 📬 Pendiente ──→ ✅ Aplicado / 🗑️ Archivado
 Documental:  @documentador ──→ /documentar ──→ /agentes-sync
 Integridad:  @circuito ──→ /circuito [area] ──→ reporte de handlers/rutas/navegacion
 ```

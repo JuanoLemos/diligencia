@@ -70,9 +70,6 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | $BACKUP_KEEP | `5` | Cantidad de backups a conservar (pruning automático) |
 | $PROYECTOS | `"C:\xampp\htdocs\+RM","C:\xampp\htdocs\MarketAI","C:\xampp\htdocs\conquisitare","C:\xampp\htdocs\buenobonitobarato","C:\xampp\htdocs\nemesis","C:\Users\jlemo\OneDrive\Desktop\OpenMontage-main"` | 6 proyectos activos adaptados a Diligencia (NO incluye Chamber) |
 | $CHAMBER | `C:\Users\jlemo\OneDrive\Desktop\openchamber` | Repo de OpenChamber — interfaz visual de Diligencia (pertenece a Diligencia) |
-| $PROPAGAR_LOG | `doc/arch/propagaciones.md` | Log de propagaciones de Diligencia a proyectos |
-| $PALOMAS | `doc/arch/palomas.md` | Log central de palomas (AGENTE → MAIN) |
-| $PALOMA_MAIN_PLAN | `doc/arch/paloma-main-plan.md` | Reglas activas MAIN → AGENTE |
 | $STACK | *(definido en HARNESS.md)* | Stack tecnológico del proyecto (runtime) |
 | $PROJECT_NAME | *(del header DILIGENCIA.md)* | Nombre del proyecto para reportes |
 | $UX_CHECK | `doc/arch/ux-check.md` | Checklist de validación manual post-implementación |
@@ -106,12 +103,9 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | /head | Preparar edición de sección en archivo | Declarativo |
 | /reanudar | Recuperar sesión tras interrupción brusca | Declarativo |
 | /informe-salud | Reporte de salud inter-proyecto (escanea $PROYECTOS) | Declarativo |
-| /propagar | Propagar actualizaciones de Diligencia a proyectos adaptados | Declarativo |
 | /mutacion | Absorber mutaciones de un proyecto adaptado | Declarativo |
 | /revision | Revisar mutaciones del proyecto y generar reporte | Declarativo |
 | /documentar | Auditoría documental completa (24 checks, --legales para legal) | Declarativo |
-| /paloma | Consultar a un agente y registrar paloma en palomas.md | Declarativo |
-| /agentes-sync | Sincronizar agentes con mecanicas y guias del proyecto | Declarativo |
 | /ola | Sistema de oleadas multi-proyecto (planear/ejecutar/estado) | Declarativo | Sincronizar agentes con mecánicas y guías del proyecto | Declarativo |
 
 ## Focus
