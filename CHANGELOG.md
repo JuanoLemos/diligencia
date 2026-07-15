@@ -2,6 +2,12 @@
 
 ---
 
+## [2.7.5] — 2026-07-15
+
+### Changed
+- version.md: +reglas de breaking change, tabla de bump por tipo, anti-patrones
+- version.md restaurado desde global (archivo estaba corrupto por encoding)
+
 ## [2.7.4] — 2026-07-15
 
 ### Changed
