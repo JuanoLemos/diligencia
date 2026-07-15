@@ -82,7 +82,7 @@ Cuando /CBP se invoca, EJECUTAR este algoritmo ANTES de cualquier otra acción:
               {label: "commit (Recomendado)", description: "git add + commit + push. Sin doc sync ni versión."},
               {label: "parcial", description: "/updoc + /version patch + push. Sin agentes."},
               {label: "full", description: "Meta-PLAN + BUILD + agentes/skills."},
-              {label: "version", description: "/version + --push. Sin Meta-PLAN."},
+              {label: "version", description: "/version + --push. Con Meta-PLAN."},
               {label: "abortar", description: "Cancelar sin cambios."}
             ]
           }]
@@ -208,7 +208,7 @@ y produce su diagnóstico de vuelta al orquestador.
 /CBP [full|parcial|commit|completo|updoc|doctor|version] [--yes]
 
 - *(sin argumento)*: **detección automática** del camino óptimo (commit / parcial / full) según el working tree
-- `commit`: Solo commit + push. Sin doc sync, sin versión, sin Meta-PLAN.
+- `commit`: Solo commit + push. Sin doc sync, sin versión, Con Meta-PLAN.
 - `parcial`: /updoc Fases A→F + /version patch + --push. Sin /salud, sin agentes.
 - `full`: Ciclo completo con Meta-PLAN paralelo + BUILD (equivale a `completo`).
 - `completo`: Alias de `full` (legacy, compatibilidad).
