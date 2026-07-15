@@ -1,1 +1,132 @@
-INSTRUCCIÓN: EJECUTAR cierre de sesión. NO modificar archivos sin confirmación. NO mostrar este archivo como output.# /version — Cerrar sesión de desarrollo (git-log model)Versiona el proyecto con CHANGELOG auto-generado desde commits Conventional Commits.## Argumentos/version [minor|patch|X.Y.Z] [--notes "extra"] [--yank] [--template]- `minor` (default): vA.B.C → vA.(B+1).0- `patch`: vA.B.C → vA.B.(C+1)- `X.Y.Z`: versión explícita (3 partes)- `--notes`: descripción adicional al CHANGELOG auto-generado- `--yank`: marcar el release como [YANKED]- `--template`: forzar bump de templates incluso en patch## Qué hace1. DETECTAR última versión:   - `git log --oneline --grep="chore(release):" -1` → extraer versión de ese commit   - Si no hay: preguntar al usuario2. COLECTAR commits desde el último release:   - `git log --oneline <último-release>..HEAD` → todos los commits de la sesión   - Si no hay commits: ⚠️ "No hay commits nuevos desde el último release."     Preguntar: "¿Versionar igual? [sí/no]"3. CLASIFICAR commits por tipo Conventional Commit:   ```   feat: → Added (feature nueva para el usuario)   fix: → Fixed (corrección de bug)   refactor: → Changed (cambio interno sin impacto visible)   docs: → Changed (documentación)   perf: → Changed (mejora de rendimiento)   chore(release): → IGNORAR (es el punto de partida)   chore: → Changed (mantenimiento)   test: → Changed (tests)   ```   Para cada tipo, acumular los mensajes de commit (sin el prefijo tipo:).4. AUTO-GENERAR entrada CHANGELOG:   ```   ## [vX.Y.Z] — YYYY-MM-DD   ### Added   - feat commit message 1   - feat commit message 2   ### Fixed   - fix commit message 1   ```   Si `--notes` existe, agregarlo como última línea de la sección Added.5. PRE-FLIGHT (7 checks):   a. Staleness documental — LEER INDEX.md → labels vs CHANGELOG   b. Salud — status-salud.md existe? stale?   c. Scope /explica — faltantes en doc/guias/mecanicas/arch   d. Template sync (solo Diligencia)   e. Cross-refs §8 (solo Diligencia)   f. Variables resolubles   g. Documental — cargar `skill("diligencia-docs")`, ejecutar checks 1-4 (estructura). Si hay hallazgos P1: ⚠️ "N hallazgos P1 — corregir antes de versionar."6. MOSTRAR al usuario:   - CHANGELOG auto-generado (para revisar/editar)   - Resultado pre-flight   Preguntar: "¿Aceptar CHANGELOG y versionar? [sí/no]"7. INSERTAR entrada en CHANGELOG.md8. Si el proyecto es Diligencia Y (minor/major o --template):   a. Actualizar adaptar.md global (versión + migración)   b. Actualizar DILIGENCIA.md template global   c. Sincronizar templates doc-base (solo si proyecto = Diligencia):   a. LEER `$PROYECTOS` de AGENTS.md      - Si no está configurado → "Saltando verificación de proyectos adaptados."   b. POR CADA proyecto en $PROYECTOS:      - Leer su DILIGENCIA.md → extraer versión      - Comparar con la nueva versión de Diligencia   c. Si hay N proyectos atrasados:      ⚠️ "N proyectos adaptados usan versión anterior de Diligencia."      MOSTRAR minitabla: Proyecto | Versión | Atraso9.5. UX CHECK (si hubo BUILD en esta sesión):   a. LEER `$UX_CHECK` de AGENTS.md      - Si no existe → "Saltando verificación UX."   b. Si `$UX_CHECK` tiene filas sin revisar:      ⚠️ "N features sin validar en $UX_CHECK. Probá y actualizá el archivo."   c. Si `$UX_CHECK` no tiene entradas de esta sesión:       "📝 ¿Registrar validación en $UX_CHECK?"9.6. DOCUMENTAL (si hubo BUILD en esta sesión y el proyecto está adaptado):   a. CARGAR `skill("diligencia-docs")`   b. EJECUTAR checks de docs informativos (9-12): headers con versión, fechas ISO, INDEX vs disco, ADRs   c. Si hay docs con versión desactualizada: "📝 N docs necesitan bump de versión en INDEX.md."   d. Reportar solo si hay hallazgos: "📋 Documental: N docs stale | M headers sin versión"10. ACTUALIZAR INDEX.md: versión CHANGELOG + DILIGENCIA, fechas11. `git add -A` → `git commit -m "chore(release): vX.Y.Z"` → `git tag vX.Y.Z`12. `git status --porcelain` → DEBE estar vacío. Si no: ERROR FATAL.13. Reportar SOLO resumen.## Formato de salida🔖 vA.B.C → vX.Y.Z📄 CHANGELOG auto-generado: N items (N Added, N Fixed, N Changed)🔍 Pre-flight: A: <N STALE> | B: <OK/⚠️> | C: <N faltantes> | D: <OK/mismatch> | E: <OK/N sin ref> | F: <OK/N rotas>📋 Documental: N docs stale | M headers sin versión✅ Commit: chore(release): vX.Y.Z + tag⚠️ git status --porcelain limpio: Sí## Validación- Último release detectado por `git log --grep="chore(release):"`- Commits clasificados por tipo Conventional Commit- CHANGELOG generado con categorías Added/Fixed/Changed- Pre-flight protegido (7 checks)- INDEX.md actualizado con nueva versión- `git status --porcelain` vacío post-commit- Tag creado: `git tag vX.Y.Z`## Anti-patrones- NO clasificar chore(release): commits como Changed (son el punto de referencia)- NO sobrescribir CHANGELOG existente — la nueva entrada se INSERTA tras la última- NO saltarse el paso de revisión (paso 6) — el usuario debe aprobar el CHANGELOG- NO versionar si el pre-flight tiene alertas P1 sin resolver (estructura rota, variables huérfanas)- Las alertas P2/P3 son advertencias, no bloqueos — el usuario puede versionar igual- NO omitir la creación del tag
+INSTRUCCIÓN: EJECUTAR cierre de sesión. NO modificar archivos sin confirmación. NO mostrar este archivo como output.
+
+# /version — Cerrar sesión de desarrollo (git-log model)
+
+Versiona el proyecto con CHANGELOG auto-generado desde commits Conventional Commits.
+
+## Argumentos
+/version [minor|patch|X.Y.Z] [--notes "extra"] [--yank] [--template]
+
+- `minor` (default): vA.B.C → vA.(B+1).0
+- `patch`: vA.B.C → vA.B.(C+1)
+- `X.Y.Z`: versión explícita (3 partes)
+- `--notes`: descripción adicional al CHANGELOG auto-generado
+- `--yank`: marcar el release como [YANKED]
+- `--template`: forzar bump de templates incluso en patch
+
+## Qué hace
+
+1. DETECTAR última versión:
+   - `git log --oneline --grep="chore(release):" -1` → extraer versión de ese commit
+   - Si no hay: preguntar al usuario
+
+2. COLECTAR commits desde el último release:
+   - `git log --oneline <último-release>..HEAD` → todos los commits de la sesión
+   - Si no hay commits: ⚠️ "No hay commits nuevos desde el último release."
+     Preguntar: "¿Versionar igual? [sí/no]"
+
+3. CLASIFICAR commits por tipo Conventional Commit:
+   ```
+   feat: → Added (feature nueva para el usuario)
+   fix: → Fixed (corrección de bug)
+   refactor: → Changed (cambio interno sin impacto visible)
+   docs: → Changed (documentación)
+   perf: → Changed (mejora de rendimiento)
+   chore(release): → IGNORAR (es el punto de partida)
+   chore: → Changed (mantenimiento)
+   test: → Changed (tests)
+   ```
+   Para cada tipo, acumular los mensajes de commit (sin el prefijo tipo:).
+
+### Reglas de breaking change
+
+- `BREAKING CHANGE:` o `!` (ej: `feat!:` o `refactor!:`) -> Added con aviso BREAKING -> MAJOR bump
+- Es breaking SOLO si el usuario PIERDE funcionalidad que USABA activamente
+- Eliminar codigo, workflows o features NUNCA usados -> NO es breaking
+- Renombrar, mover o simplificar internamente -> NO es breaking
+
+### Regla de bump por tipo
+
+| Tipo | Bump | Excepcion |
+|---|---|---|
+| feat | minor | feat! -> major |
+| fix | patch | fix! -> major |
+| refactor | patch | refactor! -> major |
+| docs | patch | — |
+| chore | patch | — |
+| perf | patch | — |
+
+### Anti-patron de bump
+
+- "Es un cambio grande -> minor" -> el tamano NO define el bump
+- "Elimine codigo -> breaking" -> solo si el codigo eliminado era USADO por el usuario
+- "Suena a mejora -> minor" -> si el commit dice refactor:, es refactor, es patch
+
+4. AUTO-GENERAR entrada CHANGELOG:
+   ```
+   ## [vX.Y.Z] — YYYY-MM-DD
+
+   ### Added
+   - feat commit message 1
+   - feat commit message 2
+
+   ### Fixed
+   - fix commit message 1
+   ```
+   Si `--notes` existe, agregarlo como última línea de la sección Added.
+
+5. PRE-FLIGHT (6 checks, igual que antes):
+   a. Staleness documental — LEER INDEX.md → labels vs CHANGELOG
+   b. Salud — status-salud.md existe? stale?
+   c. Scope /explica — faltantes en doc/guias/mecanicas/arch
+   d. Template sync (solo Diligencia)
+   e. Cross-refs §8 (solo Diligencia)
+   f. Variables resolubles
+
+6. MOSTRAR al usuario:
+   - CHANGELOG auto-generado (para revisar/editar)
+   - Resultado pre-flight
+   Preguntar: "¿Aceptar CHANGELOG y versionar? [sí/no]"
+
+7. INSERTAR entrada en CHANGELOG.md
+
+8. Si el proyecto es Diligencia Y (minor/major o --template):
+   a. Actualizar adaptar.md global (versión + migración)
+   b. Actualizar DILIGENCIA.md template global
+   c. Sincronizar templates doc-base
+
+9. ACTUALIZAR INDEX.md: versión CHANGELOG + DILIGENCIA, fechas
+
+9.5. ACTUALIZAR DILIGENCIA.md: reemplazar versión en línea 1
+   - LEER DILIGENCIA.md — extraer línea 1
+   - REEMPLAZAR: `v\d+\.\d+\.\d+` → vX.Y.Z (la nueva versión)
+   - GUARDAR archivo
+
+10. `git add -A` → `git commit -m "chore(release): vX.Y.Z"` → `git tag vX.Y.Z`
+
+11. `git status --porcelain` → DEBE estar vacío. Si no: ERROR FATAL.
+
+12. Reportar SOLO resumen.
+
+## Formato de salida
+🔖 vA.B.C → vX.Y.Z
+📄 CHANGELOG auto-generado: N items (N Added, N Fixed, N Changed)
+🔍 Pre-flight: A: <N STALE> | B: <OK/⚠️> | C: <N faltantes> | D: <OK/mismatch> | E: <OK/N sin ref> | F: <OK/N rotas>
+✅ Commit: chore(release): vX.Y.Z + tag
+⚠️ git status --porcelain limpio: Sí
+
+## Validación
+- Último release detectado por `git log --grep="chore(release):"`
+- Commits clasificados por tipo Conventional Commit
+- CHANGELOG generado con categorías Added/Fixed/Changed
+- Pre-flight protegido (6 checks)
+- INDEX.md actualizado con nueva versión
+- `git status --porcelain` vacío post-commit
+- Tag creado: `git tag vX.Y.Z`
+
+## Anti-patrones
+- NO clasificar chore(release): commits como Changed (son el punto de referencia)
+- NO sobrescribir CHANGELOG existente — la nueva entrada se INSERTA tras la última
+- NO saltarse el paso de revisión (paso 6) — el usuario debe aprobar el CHANGELOG
+- NO versionar si el pre-flight tiene alertas sin resolver
+- NO omitir la creación del tag
