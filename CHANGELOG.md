@@ -2,6 +2,19 @@
 
 ---
 
+## [2.7.2] — 2026-07-15
+
+### Changed
+- R5/R9 corregidas: agentes pueden ejecutar /CBP en cualquier forma (commit, version, full)
+- R11/R12/R13 agregadas: disciplina multi-chat, backup pre-push, verificacion post-pull
+- adaptar.md global sincronizado a v2.7.1 (estaba en v2.6.6)
+- /ola copiado a ~/.config/opencode/commands/ — disponible globalmente para todos los proyectos
+
+### Fixed
+- @circuito actualizado a R1-R10 (reglas de paloma removidas)
+- @consejero y @documentador sincronizados via /subadaptar
+- COMANDOS.md: /ola correctamente insertado, circuitos actualizados
+
 ## [2.7.1] — 2026-07-04
 
 ### Removed
