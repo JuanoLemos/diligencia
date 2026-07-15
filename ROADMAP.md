@@ -57,7 +57,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R45 | +/ola: sistema de oleadas multi-proyecto. MECANICA-OLAS.md con wave manifest, reglas OnFail (skip/retry/escalate/fallback), ejecucion paralela entre proyectos. /ola planear/ejecutar/estado. | P1 | ✅ Completado | R61,R68 |
 | R46 | +audit Chamber: revisar todas las herramientas nativas (Terminal, DiffView, Skills Catalog, Team Mode, Background Agents, Scheduled Tasks, Git, File Browser) para optimizar comandos Diligencia | P2 | ✅ Completado | R34,R35 |
 | R47 | +integrar comandos Diligencia con Chamber UI (botones /CBP, /doctor, /salud desde la interfaz visual, no solo terminal) | P2 | ✅ Completado | R46 |
-| R48 | +propagar: comando de propagaci�n entre Diligencia y proyectos. | P2 | ??? Deprecado | � | R49 | +ux: panel interactivo de checklist en Chamber por proyecto — checkboxes, progreso %, lee $UX_CHECK. Cada proyecto adaptado hereda el panel vía /adaptar. | P2 | 🔴 Pendiente | R25,R26 |
+| R48 | +propagar: comando de propagaci�n entre Diligencia y proyectos. | P2 | ??? Deprecado | � | R49 | +ux: panel interactivo de checklist en Chamber por proyecto — checkboxes, progreso %, lee $UX_CHECK. Cada proyecto adaptado hereda el panel vía /adaptar. | P2 | 🔴 Pendiente | R25,R26 |
 | R50 | +MiniMax: integrar procesamiento multimodal (video, imagen, voz) vía Token Plan Max — testing en OpenMontage | P1 | 🟡 En progreso | R25,R26 |
 | R51 | +chamber: iconos personalizados por proyecto para visual en carpeta de OpenChamber — template SVG en doc-base, /adaptar lo copia | P2 | ✅ Completado | R25 |
 | R52 | +estudio: proyectos con potencial hosteo de server para actuarlos en producción + mejor camino para administrar todo | P2 | 🔴 Pendiente | — |
@@ -79,6 +79,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R68 | +mecanica-llm: MECANICA-LLM.md — patrón multi-proveedor LLM heredado de Crucix-master. Factory pattern, provider-agnostic, 12 providers catalogados, estrategia híbrida por tarea. | P2 | ✅ Completado | R61 |
 | R69 | +status: dashboard de consumo de APIs en vivo — tokens DeepSeek/MiniMax/ElevenLabs usados por proyecto, costo mensual proyectado, alertas de umbral. Visible en Chamber. | P2 | 🔴 Pendiente | R61,R68 |
 | R70 | +6 agentes especializados por dominio y reestructuración del ecosistema de agentes. Creación: @narrador, @game-designer, @trader, @cartografo, @editor-video. Unificación: @design-system absorbido por @disenador. Eliminación: 4 benchmark-* archivados. Pendiente: dar cuerpo (~80+ líneas) a los 5 nuevos. | P1 | 🟡 En progreso | — |
+| R71 | +red-local: conectar PC secundaria a la principal via SSH para desarrollo remoto. VS Code Remote SSH + Firewall + guia en GUIA_RED_LOCAL.md. Pendiente de probar conexion desde la PC secundaria. | P2 | 🟡 En progreso | R40 |
 
 ## Futuro (Later)
 
