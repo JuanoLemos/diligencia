@@ -1,4 +1,4 @@
-# ROADMAP — Diligencia v2.2.3
+# ROADMAP � Diligencia v2.7.2
 
 Metodología de estructura estándar para proyectos OpenCode.
 
@@ -9,7 +9,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 ## Stack
 
 - Metodología documental (sin código runtime)
-- Dependencias: OpenCode, `templates/doc-base/`, 28 comandos fundamentales
+- Dependencias: OpenCode, `templates/doc-base/`, 32 comandos fundamentales
 - Proyectos adaptados: +RM, MarketAI, conquisitare, buenobonitobarato, Nemesis, OpenMontage-main
 - Interface: OpenChamber (pertenece a Diligencia — M6)
 
@@ -57,7 +57,8 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R45 | +/ola: sistema de oleadas multi-proyecto. MECANICA-OLAS.md con wave manifest, reglas OnFail (skip/retry/escalate/fallback), ejecucion paralela entre proyectos. /ola planear/ejecutar/estado. | P1 | ✅ Completado | R61,R68 |
 | R46 | +audit Chamber: revisar todas las herramientas nativas (Terminal, DiffView, Skills Catalog, Team Mode, Background Agents, Scheduled Tasks, Git, File Browser) para optimizar comandos Diligencia | P2 | ✅ Completado | R34,R35 |
 | R47 | +integrar comandos Diligencia con Chamber UI (botones /CBP, /doctor, /salud desde la interfaz visual, no solo terminal) | P2 | ✅ Completado | R46 |
-| R48 | +propagar: comando de propagaci�n entre Diligencia y proyectos. | P2 | ??? Deprecado | � | R49 | +ux: panel interactivo de checklist en Chamber por proyecto — checkboxes, progreso %, lee $UX_CHECK. Cada proyecto adaptado hereda el panel vía /adaptar. | P2 | 🔴 Pendiente | R25,R26 |
+| | R48 | +propagar: comando de propagacion entre Diligencia y proyectos | P2 | ??? Deprecado |
+| R49 | +ux: panel interactivo de checklist en Chamber por proyecto | P2 | ?? Pendiente | R25,R26 |
 | R50 | +MiniMax: integrar procesamiento multimodal (video, imagen, voz) vía Token Plan Max — testing en OpenMontage | P1 | 🟡 En progreso | R25,R26 |
 | R51 | +chamber: iconos personalizados por proyecto para visual en carpeta de OpenChamber — template SVG en doc-base, /adaptar lo copia | P2 | ✅ Completado | R25 |
 | R52 | +estudio: proyectos con potencial hosteo de server para actuarlos en producción + mejor camino para administrar todo | P2 | 🔴 Pendiente | — |
@@ -167,11 +168,11 @@ Metodología de estructura estándar para proyectos OpenCode.
 | +/propagar — comandos de propagación + MECANICA-PROPAGACION.md + /version post-bump | v2.1.0 |
 | +$PROYECTOS configurado (5 proyectos) + COMANDOS.md compacto por categorías | v2.1.1 |
 | +Fusionar 11 comandos (39→28) + /doc + /commit --push + COMANDOS.md 5 grupos por acción | v2.2.0 |
-| +R48 cerrar sesión Chamber + iconos SVG 7 proyectos + OpenMontage integrado | v2.2.1 |
+| +| R48 | +propagar: comando de propagacion entre Diligencia y proyectos | P2 | ??? Deprecado |
+| R49 | +ux: panel interactivo de checklist en Chamber por proyecto | P2 | ?? Pendiente | R25,R26 |
 | +R47 Diligencia Command Toolbar + R52 estudio hosting + tray mejorado (Rebuild, HMR) | v2.2.2 |
 | +/doctor→/salud por conflicto OpenCode + M6 Chamber pertenece a Diligencia + Stable baseline | v2.2.3 |
 
 ## Archivos relacionados
-- `CHECKLIST.md` — checklist de tareas
 - `CHANGELOG.md` — historial de versiones
 - `INDEX.md` — catálogo de documentación

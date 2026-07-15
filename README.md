@@ -2,7 +2,7 @@
 
 ![Status](https://img.shields.io/badge/status-beta-ff69b4?style=flat-square)
 ![License](https://img.shields.io/badge/license-AGPL--3.0-blue?style=flat-square)
-![Version](https://img.shields.io/badge/version-v2.4.2-8A2BE2?style=flat-square)
+![Version](https://img.shields.io/badge/version-v2.7.2-8A2BE2?style=flat-square)
 [![Issues](https://img.shields.io/badge/issues-7%20proyectos-181717?style=flat-square)](https://github.com/JuanoLemos/diligencia/issues)
 
 Estructura estándar de documentación para proyectos OpenCode.
@@ -93,7 +93,7 @@ Diligencia escala con tu proyecto. No necesitás usarlo todo desde el día uno.
 
 | Proyecto | Versión Diligencia | Estado |
 |---|---|---|
-| Diligencia (metodología) | v2.4.2 | ✅ |
+| Diligencia (metodología) | v2.7.2 | ✅ |
 | +RM | v2.2.0 | ✅ |
 | MarketAI | v2.2.0 | ✅ |
 | conquisitare | v2.2.0 | ✅ |

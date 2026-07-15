@@ -13,7 +13,7 @@ Inmutable — no se negocia, no se desactiva.
 | M# | Mandato | Verificado por |
 |----|---------|---------------|
 | M1 | AGENTS.md es el SSOT del proyecto (variables, comandos, contexto) | `/adaptar` Flujo A |
-| M2 | Estructura documental fija: `doc/guias/`, `doc/mecanicas/`, `doc/arch/`, INDEX.md, ROADMAP.md, CHANGELOG.md, CHECKLIST.md, DILIGENCIA.md | `/diligencia-check` |
+| M2 | Estructura documental fija: `doc/guias/`, `doc/mecanicas/`, `doc/arch/`, INDEX.md, ROADMAP.md, CHANGELOG.md, ROADMAP.md, DILIGENCIA.md | `/diligencia-check` |
 | M3 | Solo `/commit`, `/CBP` y `/version` pueden ejecutar git commit | Regla #17 |
 | M4 | Todo workflow sigue PLAN (razonamiento, solo lectura) → BUILD (ejecución, escritura) | `/CBP` |
 | M5 | Pre-flight de versión — `/CBP` verifica si el proyecto tiene una versión de Diligencia atrasada y ofrece `/adaptar` antes de cualquier otra acción | `/CBP` Paso 0d |

@@ -81,6 +81,5 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 ## Archivos relacionados
 - `ROADMAP.md` — roadmap de la metodología
-- `CHECKLIST.md` — checklist de tareas
 - `CHANGELOG.md` — historial de versiones
 - `AGENTS.md` — variables de ruta y comandos

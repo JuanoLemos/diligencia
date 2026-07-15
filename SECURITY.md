@@ -22,7 +22,7 @@ Report via:
 ## Scope
 
 - Integrity of AGENTS.md variables and routing
-- Unauthorized modifications to ROADMAP.md, CHECKLIST.md, DILIGENCIA.md
+- Unauthorized modifications to ROADMAP.md, ROADMAP.md, DILIGENCIA.md
 - Broken cross-references in documentation that could mislead users
 - Exposure of project paths or internal structure through documentation
 
