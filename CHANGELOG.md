@@ -2,6 +2,15 @@
 
 ---
 
+## [2.7.3] — 2026-07-15
+
+### Fixed
+- INDEX.md regenerado completo (estaba corrupto con debris de GUIA_RED_LOCAL incrustado)
+- CHECKLIST.md limpiado de archivos clave (ROADMAP, DILIGENCIA, HARNESS, SECURITY, MANDATO)
+- ROADMAP.md: header v2.2.3 → v2.7.2, R48+R49 separados
+- README.md badge v2.4.2 → v2.7.2
+- AGENTS.md conteo 33→32
+
 ## [2.7.2] — 2026-07-15
 
 ### Changed
