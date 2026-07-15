@@ -153,12 +153,15 @@ Los agentes especializados (`@narrador`, `@game-designer`, `@trader`, `@cartogra
 | R2 | El agente puede ejecutar PLAN → BUILD → `/CBP commit` en su proyecto asignado. Sin necesidad de paloma. |
 | R3 | La paloma sigue existiendo como mecanismo de auditoría cruzada (cuando un agente revisa proyectos ajenos). |
 | R4 | Si un agente encuentra un bug o mejora en otro proyecto (no el suyo), reporta vía paloma. No edita fuera de su proyecto. |
-| R5 | Cada agente versiona su propio proyecto. No necesita pasar por MAIN para commitear. |
+| R5 | Cada agente puede ejecutar /CBP en cualquier forma (commit, version, full) según lo que corresponda al worktree de su sesión. No necesita MAIN para versionar. |
 | R6 | MAIN solo versióna cuando cambia la metodología Diligencia (comandos, mecánicas, templates). |
 | R7 | El MAIN debe pasar las respuestas de los agentes textualmente al usuario, sin resumir ni filtrar. Si es muy extensa, mostrar completa y agregar un resumen al final, no al revés. |
 | R8 | El MAIN debe escribir en el chat toda decisión, tabla, veredicto o resumen antes de pasar al siguiente paso. Si un análisis interno produce un resultado que el usuario necesita ver, va al chat. Un análisis interno que no produce output no cuenta. |
-| R9 | Al terminar BUILD, el agente debe recordar al usuario ejecutar `/CBP` para commitear en el proyecto. |
+| R9 | Al terminar BUILD, el agente ejecuta /CBP (commit o version) según el tipo de trabajo realizado. Si solo código, /CBP commit. Si tocó docs/metodología, /CBP version. |
 | R10 | `/adaptar` solo lo ejecuta el usuario. Ni MAIN ni agentes autonomos pueden ejecutarlo en ningun proyecto. |
+| R11 | Nunca abrir dos chats simultáneos sobre el mismo proyecto. Un solo agente por proyecto a la vez. Dos chats en el mismo proyecto pueden romper commits y generar conflictos de merge. |
+| R12 | Antes de ejecutar /CBP con push, el agente verifica que el working tree esté limpio (sin cambios de otras sesiones). Si hay dudas, sugiere /backup antes de commitear. |
+| R13 | Después de un git pull (o al iniciar sesión en un proyecto), el agente verifica que el working tree esté limpio y que no haya conflictos de merge pendientes. Si hay conflicto, pausa y reporta. |
 
 ## Prioridad MCP — codebase-memory-mcp
 
