@@ -11,8 +11,8 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 | Archivo | Version | Ultima actualizacion |
 |---|---|---|
 | ROADMAP.md | v2.7.2 | 2026-07-15 |
-| CHANGELOG.md | v2.7.2 | 2026-07-15 |
-| DILIGENCIA.md | v2.7.2 | 2026-07-15 |
+| CHANGELOG.md | v2.7.6 | 2026-07-15 |
+| DILIGENCIA.md | v2.7.6 | 2026-07-15 |
 
 ## Guias
 

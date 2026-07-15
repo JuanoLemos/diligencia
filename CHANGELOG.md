@@ -2,6 +2,16 @@
 
 ---
 
+## [2.7.6] — 2026-07-15
+
+### Added
+- 🟣 Chamber: tray server unificado cross-platform Windows/macOS/Linux (commit Chamber `7cd8513`)
+- 🟣 R08-R12 implementados: tooltip con datos vivos, submenú System (memoria/uptime/versión), auto-update check vía upstream/main cada 6h, one-click update desde el menú
+- 🟣 Template `tray-server.ps1` reescrito en doc-base + `tray.config.json` (R53) — PID real vía netstat, backoff, health check, log rotatorio
+
+### Fixed
+- 🟣 Chamber: crash nativo 0xC0000005 en Windows — el rebuild del menú contextual cada 15s leakeaba handles GDI (commit Chamber `80cfca2`). Nuevo `updateSystem()` solo-tooltip + memoización de `setContextMenu`
+
 ## [2.7.5] — 2026-07-15
 
 ### Changed
