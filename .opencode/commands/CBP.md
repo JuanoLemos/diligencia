@@ -29,6 +29,11 @@ Cuando /CBP se invoca, EJECUTAR este algoritmo ANTES de cualquier otra accion:
       - no -> continuar con advertencia registrada en contexto.
       - saltar -> no preguntar de nuevo en esta sesion.
    e. Si `version_proyecto == version_global` -> continuar sin interrupcion.
+   e2. Si `version_proyecto > version_global`:
+       "adaptar.md global esta en v{version_global} pero DILIGENCIA.md reporta v{version_proyecto}."
+       Preguntar: "Sincronizar adaptar.md con la version actual del proyecto? [si/no]"
+       - si -> ACTUALIZAR tabla Version en adaptar.md global a v{version_proyecto}
+       - no -> continuar con advertencia registrada.
    f. DETECTAR comandos globales pendientes de versionar (si DILIGENCIA.md existe):
       - LEER `~/.config/opencode/commands/PENDING.md` -> extraer todas las entradas en la tabla
       - Si PENDING.md no existe o esta vacio -> continuar sin interrupcion.

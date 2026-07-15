@@ -90,10 +90,10 @@ Versiona el proyecto con CHANGELOG auto-generado desde commits Conventional Comm
 
 7. INSERTAR entrada en CHANGELOG.md
 
-8. Si el proyecto es Diligencia Y (minor/major o --template):
-   a. Actualizar adaptar.md global (versión + migración)
-   b. Actualizar DILIGENCIA.md template global
-   c. Sincronizar templates doc-base
+8. Si el proyecto es Diligencia:
+   a. ACTUALIZAR versión en adaptar.md global (tabla Versión) — SIEMPRE
+   b. SI es minor/major o --template: agregar entrada en tabla Migración
+   c. SI es minor/major o --template: actualizar DILIGENCIA.md template global + templates doc-base
 
 9. ACTUALIZAR INDEX.md: versión CHANGELOG + DILIGENCIA, fechas
 
