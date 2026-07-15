@@ -1,4 +1,4 @@
-# COMANDOS — Diligencia v2.7.0
+# COMANDOS — Diligencia v2.7.1
 
 > Referencia rapida de comandos, agentes y circuitos de calidad.
 
