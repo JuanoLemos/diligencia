@@ -2,6 +2,27 @@
 
 ---
 
+## [2.7.1] — 2026-07-04
+
+### Removed
+- /propagar deprecado a .old/commands/
+- /paloma deprecado a .old/commands/ + arch/ + mecánicas
+- Chamber: DiligenciaCommandBar, PalomaPanel, commands.ts eliminados (paso a .deprecated)
+- Paloma circuit y referencias removidas de COMANDOS.md
+
+### Added
+- GUIA_RED_LOCAL.md — conexión SSH entre PCs Windows en red local
+- R71: conexión remota SSH registrada en ROADMAP
+
+### Fixed
+- COMANDOS.md: /ola insertado correctamente en tabla Invocación, circuitos corregidos
+- COMANDOS.md MarketAI: sincronizado v2.7.0
+- /adaptar Flujo C: nueva Fase 2.5.6 — sincronización de guías de referencia
+
+### Changed
+- R10: /adaptar solo lo ejecuta el usuario (regla para agentes autónomos)
+- AGENTS.md: comandos 31 → 32, Modelo Agentes Autónomos reescrito
+
 ## [2.7.0] — 2026-07-04
 
 ### Added
