@@ -2,6 +2,13 @@
 
 ---
 
+## [2.7.4] — 2026-07-15
+
+### Changed
+- CBP simplificado: dispatch reducido de 7 a 2 caminos (commit/version), -455 lineas
+- comandos standalone (/updoc, /salud, /documentar) sin cambios
+- Fix circuito audit: adaptar v2.7.3, CHECKLIST limpio, PENDING vacio, templates actualizados
+
 ## [2.7.3] — 2026-07-15
 
 ### Fixed
