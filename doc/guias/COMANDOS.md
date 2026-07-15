@@ -123,3 +123,5 @@
 - `AGENTS.md` — tabla original de comandos
 - `MECANICA-TASK-ROUTER.md` — enrutador tarea -> agente -> modelo -> API
 - `MECANICA-OLAS.md` — sistema de oleadas multi-proyecto
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales
+                           | --check, --aplicar |

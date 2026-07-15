@@ -74,40 +74,40 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | $PROJECT_NAME | *(del header DILIGENCIA.md)* | Nombre del proyecto para reportes |
 | $UX_CHECK | `doc/arch/ux-check.md` | Checklist de validación manual post-implementación |
 
-## Comandos globales heredados — 32 fundamentales
+## Comandos globales heredados — 33 fundamentales
 
 | Comando | Descripción | Tipo |
 |---|---|---|
-| /adaptar | Adaptar proyecto a estructura Diligencia | Declarativo |
-| /plan | Planificar tarea o grupo de tareas (ola) con sub-fases y conflictos | Declarativo |
-| /commit | Git add + commit formateado (--push para commit+push) | Procedural |
-| /health | Verificar sintaxis y consistencia | Declarativo |
-| /reportar | Reportar bug o incidente en el tracker correspondiente | Declarativo |
-| /deprecar | Deprecar archivos/comandos/estructuras obsoletas | Declarativo |
-| /debug | Análisis profundo | Declarativo |
-| /diligencia-check | Validar estructura Diligencia del proyecto | Declarativo |
-| /salud | Cuidado integral: estructura + código + tracking + circuito + limpieza + legal | Declarativo |
-| /limpiar | Limpiar temporales | Procedural |
-| /estado | Reporte rápido del proyecto | Declarativo |
-| /explica | Explicar concepto en formato directo (→/📄/⚠️/🧭) | Declarativo |
-| /rm | Revisar ROADMAP: top 10 tareas con impacto y sub-fases | Declarativo |
-| /next | Plan de ejecución por olas: agrupa tareas sin dependencias cruzadas + sub-fases | Declarativo |
-| /consejo | Consultar al consejero sobre dudas o ideas del proyecto (--explorar para fuentes externas) | Declarativo |
-| /circuito | Revisar integridad lógica y UX (handlers, rutas, navegación) | Declarativo |
-| /+rm | Agregar item al ROADMAP | Declarativo |
-| /updoc | Actualizar documentación completa | Declarativo |
-| /doc | Crear o actualizar guías y mecánicas desde template | Declarativo |
-| /backup | Backup de archivos o proyecto completo (--all) | Procedural |
-| /foco | Enfocar agente en área específica | Declarativo |
-| /version | Cerrar sesión: bump + updoc + commit | Declarativo |
-| /head | Preparar edición de sección en archivo | Declarativo |
-| /reanudar | Recuperar sesión tras interrupción brusca | Declarativo |
-| /informe-salud | Reporte de salud inter-proyecto (escanea $PROYECTOS) | Declarativo |
-| /mutacion | Absorber mutaciones de un proyecto adaptado | Declarativo |
-| /revision | Revisar mutaciones del proyecto y generar reporte | Declarativo |
-| /documentar | Auditoría documental completa (24 checks, --legales para legal) | Declarativo |
-| /ola | Sistema de oleadas multi-proyecto (planear/ejecutar/estado) | Declarativo | Sincronizar agentes con mecánicas y guías del proyecto | Declarativo |
-
+| /adaptar | Adaptar proyecto a estructura Diligencia | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /plan | Planificar tarea o grupo de tareas (ola) con sub-fases y conflictos | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /commit | Git add + commit formateado (--push para commit+push) | Procedural |
+| /health | Verificar sintaxis y consistencia | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /reportar | Reportar bug o incidente en el tracker correspondiente | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /deprecar | Deprecar archivos/comandos/estructuras obsoletas | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /debug | Análisis profundo | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /diligencia-check | Validar estructura Diligencia del proyecto | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /salud | Cuidado integral: estructura + código + tracking + circuito + limpieza + legal | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /limpiar | Limpiar temporales | Procedural |
+| /estado | Reporte rápido del proyecto | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /explica | Explicar concepto en formato directo (→/📄/⚠️/🧭) | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /rm | Revisar ROADMAP: top 10 tareas con impacto y sub-fases | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /next | Plan de ejecución por olas: agrupa tareas sin dependencias cruzadas + sub-fases | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /consejo | Consultar al consejero sobre dudas o ideas del proyecto (--explorar para fuentes externas) | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /circuito | Revisar integridad lógica y UX (handlers, rutas, navegación) | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /+rm | Agregar item al ROADMAP | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /updoc | Actualizar documentación completa | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /doc | Crear o actualizar guías y mecánicas desde template | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /backup | Backup de archivos o proyecto completo (--all) | Procedural |
+| /foco | Enfocar agente en área específica | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /version | Cerrar sesión: bump + updoc + commit | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /head | Preparar edición de sección en archivo | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /reanudar | Recuperar sesión tras interrupción brusca | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /informe-salud | Reporte de salud inter-proyecto (escanea $PROYECTOS) | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /mutacion | Absorber mutaciones de un proyecto adaptado | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /revision | Revisar mutaciones del proyecto y generar reporte | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /documentar | Auditoría documental completa (24 checks, --legales para legal) | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo || /ola | Sistema de oleadas multi-proyecto (planear/ejecutar/estado) | Declarativo
+| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales | Declarativo |
 ## Focus
 - Documentar la metodología
 - Mantener coherencia entre componentes
