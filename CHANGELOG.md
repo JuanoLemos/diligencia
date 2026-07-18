@@ -2,6 +2,15 @@
 
 ---
 
+## [2.7.7] — 2026-07-18
+
+### Added
+- GUIA_CHAMBER_INSTALABLE.md — build .exe, auto-update, merge upstream
+
+### Fixed
+- adaptar.md ahora siempre bump en /version (incluso patches)
+- CBP pre-flight detecta drift bidireccional (proyecto > global)
+
 ## [2.7.6] — 2026-07-15
 
 ### Added
