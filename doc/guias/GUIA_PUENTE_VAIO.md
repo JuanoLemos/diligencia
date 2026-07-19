@@ -1,5 +1,7 @@
 # GUIA_PUENTE_VAIO — Comunicacion PC principal <-> VAIO via git v1.0
 
+> ⚠️ DEPRECADO — Reemplazado por `GUIA_CONTROL_REMOTO.md`. Los archivos del puente se movieron a `.old/vaio-puente/`.
+
 > Sistema de puente mientras se configuran los tuneles definitivos.
 > La PC principal y la VAIO se comunican a traves de este repositorio en GitHub.
 

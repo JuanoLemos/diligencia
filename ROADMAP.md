@@ -1,4 +1,4 @@
-# ROADMAP � Diligencia v2.7.2
+# ROADMAP � Diligencia v2.7.2
 
 Metodología de estructura estándar para proyectos OpenCode.
 
@@ -49,7 +49,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R37 | +README.md con badge BETA + link a issues en los 6 proyectos activos | P1 | ✅ Completado | — |
 | R38 | +manuales: GUIA_DILIGENCIA_CHAMBER.md + GUIA_CHAMBER.md | P1 | ✅ Completado | R34 |
 | R39 | +upstream watch Chamber (btriapitsyn/openchamber) para detectar nuevas releases | P2 | 🔴 Pendiente | R25 |
-| R40 | +Chamber remoto vía Cloudflare Tunnel para acceso desde cualquier dispositivo | P2 | 🔴 Pendiente | — |
+| R40 | +Chamber remoto vía Cloudflare Tunnel para acceso desde cualquier dispositivo | P2 | ✅ Completado | — |
 | R41 | +/news multi-proyecto — distribuir novedades a todos los $PROYECTOS desde Chamber | P2 | 🔴 Pendiente | R34 |
 | R42 | +agentes SDD integrados con Chamber Team Mode (4 agentes en paralelo) | P2 | 🔴 Pendiente | R34 |
 | R43 | +auto-discovery de proyectos con DILIGENCIA.md desde Chamber | P3 | 🔴 Pendiente | R36 |
@@ -80,7 +80,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R68 | +mecanica-llm: MECANICA-LLM.md — patrón multi-proveedor LLM heredado de Crucix-master. Factory pattern, provider-agnostic, 12 providers catalogados, estrategia híbrida por tarea. | P2 | ✅ Completado | R61 |
 | R69 | +status: dashboard de consumo de APIs en vivo — tokens DeepSeek/MiniMax/ElevenLabs usados por proyecto, costo mensual proyectado, alertas de umbral. Visible en Chamber. | P2 | 🔴 Pendiente | R61,R68 |
 | R70 | +6 agentes especializados por dominio y reestructuración del ecosistema de agentes. Creación: @narrador, @game-designer, @trader, @cartografo, @editor-video. Unificación: @design-system absorbido por @disenador. Eliminación: 4 benchmark-* archivados. Pendiente: dar cuerpo (~80+ líneas) a los 5 nuevos. | P1 | 🟡 En progreso | — |
-| R71 | +red-local: conectar PC secundaria a la principal via SSH para desarrollo remoto. VS Code Remote SSH + Firewall + guia en GUIA_RED_LOCAL.md. Pendiente de probar conexion desde la PC secundaria. | P2 | 🟡 En progreso | R40 |
+| R71 | +red-local: conectar PC secundaria a la principal via SSH para desarrollo remoto. VS Code Remote SSH + Firewall + guia en GUIA_RED_LOCAL.md. VAIO conectada via VS Code Tunnels. | P2 | 🟡 En progreso | — |
 
 ## Futuro (Later)
 

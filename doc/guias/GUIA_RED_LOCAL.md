@@ -139,7 +139,7 @@ No. SSH funciona en cualquier Windows 10/11 sin Hyper-V, sin WSL, sin cambios de
 
 ### ¿Puedo acceder desde fuera de mi casa?
 
-No con este metodo. SSH esta limitado a la red local. Para acceso remoto desde cualquier lado, necesitas Cloudflare Tunnel (futura implementacion de R40) o configurar VPN.
+No con este metodo. SSH esta limitado a la red local. Para acceso remoto desde cualquier lado, usar VS Code Tunnels o Cloudflare Tunnel — ver `GUIA_CONTROL_REMOTO.md`.
 
 ### ¿Que pasa si la PC principal se apaga?
 
@@ -157,5 +157,6 @@ Si, si OpenCode esta instalado en la secundaria y configurado para usar la PC pr
 
 ## Archivos relacionados
 
+- `GUIA_CONTROL_REMOTO.md` — acceso remoto via VS Code Tunnels + Cloudflare Tunnel
 - `GUIA_HOSTING_VPS.md` — version para servidor en la nube
 - `ROADMAP.md` — R40 (Chamber remoto), R52 (estudio hosting)

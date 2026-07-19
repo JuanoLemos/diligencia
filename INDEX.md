@@ -1,8 +1,8 @@
-# INDEX — Diligencia v2.7.2
+# INDEX — Diligencia v2.7.7
 
 Catalogo de documentacion del proyecto. Mantenido por /version y /updoc.
 
-Ultima actualizacion global: 2026-07-15
+Ultima actualizacion global: 2026-07-18
 
 ## Docs criticos
 
@@ -10,8 +10,8 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 
 | Archivo | Version | Ultima actualizacion |
 |---|---|---|
-| ROADMAP.md | v2.7.2 | 2026-07-15 |
-| CHANGELOG.md | v2.7.6 | 2026-07-15 |
+| ROADMAP.md | v2.7.2 | 2026-07-18 |
+| CHANGELOG.md | v2.7.7 | 2026-07-18 |
 | DILIGENCIA.md | v2.7.6 | 2026-07-15 |
 
 ## Guias
@@ -40,6 +40,9 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 | GUIA_CHAMBER.md | v1.0.0 | 2026-06-26 |
 | GUIA_HOSTING_VPS.md | v1.0 | 2026-07-04 |
 | GUIA_RED_LOCAL.md | v1.0 | 2026-07-04 |
+| GUIA_VAIO_DNS.md | v1.0 | 2026-07-04 |
+| GUIA_PUENTE_VAIO.md | v1.0 | 2026-07-04 |
+| GUIA_CONTROL_REMOTO.md | v1.0 | 2026-07-18 |
 
 ## Mecanicas
 

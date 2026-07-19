@@ -1,8 +1,9 @@
-# VAIO — Puente de comunicacion via git
+# VAIO — Puente de comunicacion via git (temporal)
+
+> Sistema de puente mientras se completa la configuracion de tuneles.
+> Reemplazo definitivo: `GUIA_CONTROL_REMOTO.md`.
 
 La PC principal y la VAIO se comunican a traves de este repositorio en GitHub.
-
----
 
 ## Como funciona
 
@@ -16,9 +17,7 @@ La PC principal y la VAIO se comunican a traves de este repositorio en GitHub.
 7. PC principal: git pull -> lee resultado
 ```
 
----
-
-## Para VAIO — Instrucciones rapidas
+## Para VAIO
 
 ### Al iniciar
 ```powershell
@@ -36,15 +35,6 @@ git commit -m "VAIO: resultado [tarea]"
 git pull --rebase
 git push
 ```
-
-### Si git pide usuario/contraseña
-Configurar credenciales:
-```powershell
-git config user.name "VAIO-Server"
-git config user.email "vaio@diligencia.local"
-```
-
----
 
 ## Reglas
 

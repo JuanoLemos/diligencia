@@ -1,5 +1,7 @@
 # GUIA_VAIO_DNS — Reparar DNS para tuneles v1.0
 
+> ⚠️ DEPRECADO — Reemplazado por `GUIA_CONTROL_REMOTO.md` (sección DNS Troubleshooting)
+
 > Para ejecutar en la VAIO. Arregla el DNS para que cloudflared y los tuneles funcionen.
 > No toca ningun otro programa. Solo cambia la configuracion de DNS.
 

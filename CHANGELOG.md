@@ -2,6 +2,24 @@
 
 ---
 
+## [2.7.8] — 2026-07-18
+
+### Added
+- GUIA_CONTROL_REMOTO.md — acceso remoto unificado (VS Code Tunnels + Cloudflare Tunnel + DNS troubleshooting)
+
+### Changed
+- R40: Cloudflare Tunnel completado (VAIO conectada via VS Code Tunnels + cloudflared)
+- R71: dependencia R40 removida, VAIO ya conectada via túneles
+
+### Deprecated
+- GUIA_VAIO_DNS.md — absorbido por GUIA_CONTROL_REMOTO.md (sección DNS Troubleshooting)
+- GUIA_PUENTE_VAIO.md — absorbido por GUIA_CONTROL_REMOTO.md
+- doc/vaio/ — puente de tareas via git movido a .old/vaio-puente/
+
+### Fixed
+- Cross-reference roto: GUIA_CONTROL_REMOTO.md ahora existe (era referenciado pero no creado)
+- INDEX.md: entradas VAIO agregadas (GUIA_CONTROL_REMOTO, GUIA_VAIO_DNS, GUIA_PUENTE_VAIO)
+
 ## [2.7.7] — 2026-07-18
 
 ### Added
