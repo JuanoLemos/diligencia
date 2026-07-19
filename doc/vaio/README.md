@@ -1,44 +1,59 @@
-# VAIO — Puente de comunicacion via git (temporal)
+# VAIO — Puente de comunicacion via git (worker autónomo)
 
-> Sistema de puente mientras se completa la configuracion de tuneles.
-> Reemplazo definitivo: `GUIA_CONTROL_REMOTO.md`.
+> **Modo autónomo activo.** El VAIO Worker corre 24/7 sin intervención humana.
+> Loop: pull → detectar tareas → ejecutar → reportar → push → esperar 60s → repetir.
+> Reemplazo definitivo (túneles): `GUIA_CONTROL_REMOTO.md`.
 
-La PC principal y la VAIO se comunican a traves de este repositorio en GitHub.
+La PC principal y la VAIO se comunican a través de este repositorio en GitHub.
 
-## Como funciona
+## Cómo funciona (modo autónomo)
 
 ```
-1. PC principal (MAIN) escribe tareas en doc/vaio/tasks/
-2. git commit + push
-3. En la VAIO: git pull
-4. VAIO lee la tarea, ejecuta comandos
-5. VAIO escribe resultado en doc/vaio/results/
-6. git commit + push
-7. PC principal: git pull -> lee resultado
+PC principal (MAIN)              GitHub                    VAIO Worker (24/7)
+─────────────────                ──────                    ──────────────────
+crea tarea en                    ← repo →                  git pull (cada 60s)
+doc/vaio/tasks/tarea-NNN.md                                detecta tarea nueva
+git commit + push                                          ejecuta comandos
+                                                           escribe resultado en
+                                                           doc/vaio/results/
+                                                           git commit + push
+git pull                         ← repo →                  espera 60s → repetir
+lee resultado                                              
+
+Sin intervención humana en la VAIO.
 ```
 
-## Para VAIO
+## Para MAIN (PC principal)
 
-### Al iniciar
+### Crear tarea
+Escribir el archivo `.md` con los comandos en `doc/vaio/tasks/` → commit → push.
+
+El worker la detecta en el próximo ciclo (~60 segundos) y la ejecuta automáticamente.
+
+### Leer resultado
 ```powershell
-cd C:\xampp\htdocs\Diligencia
 git pull
-dir doc\vaio\tasks
+cat doc/vaio/results/resultado-NNN.md
 ```
-Si hay archivos nuevos: abrirlos, ejecutar los comandos que piden.
 
-### Al terminar
-```powershell
-cd C:\xampp\htdocs\Diligencia
-git add doc/vaio/results/
-git commit -m "VAIO: resultado [tarea]"
-git pull --rebase
-git push
+O consultar `doc/vaio/worker-log.md` para ver el historial de actividad.
+
+## Para VAIO Worker
+
+Leer `doc/vaio/worker-loop.md` — prompt completo del worker autónomo.
+
+### Ciclo de trabajo
+```
+LOOP:
+  git pull
+  detectar tareas sin resultado
+  ejecutar → commit resultado → push
+  sleep 60s
 ```
 
 ## Reglas
 
-- NO tocar archivos fuera de doc/vaio/
-- NO tocar MarketAI ni otros proyectos
-- SOLO ejecutar los comandos que pide la tarea
-- Si un comando falla, escribir el error en el resultado (no intentar arreglarlo)
+- Solo tocar `doc/vaio/` — no MarketAI ni otros proyectos
+- Solo ejecutar comandos de las tareas, no improvisar
+- Si un comando falla, reportar el error, no arreglarlo
+- Idempotente: si ya existe resultado-NNN.md, no re-ejecutar tarea-NNN.md

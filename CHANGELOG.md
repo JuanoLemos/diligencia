@@ -6,6 +6,9 @@
 
 ### Added
 - GUIA_CONTROL_REMOTO.md — acceso remoto unificado (VS Code Tunnels + Cloudflare Tunnel + DNS troubleshooting)
+- Regla R14: VAIO Worker — agente autónomo 24/7, loop perpetuo cada 60s, sin intervención humana
+- doc/vaio/worker-loop.md — prompt del worker autónomo
+- doc/vaio/tasks/tarea-006.md — activación del worker loop
 
 ### Changed
 - R40: Cloudflare Tunnel completado (VAIO conectada via VS Code Tunnels + cloudflared)
@@ -19,6 +22,7 @@
 ### Fixed
 - Cross-reference roto: GUIA_CONTROL_REMOTO.md ahora existe (era referenciado pero no creado)
 - INDEX.md: entradas VAIO agregadas (GUIA_CONTROL_REMOTO, GUIA_VAIO_DNS, GUIA_PUENTE_VAIO)
+- doc/vaio/README.md actualizado a modo worker autónomo (R14)
 
 ## [2.7.7] — 2026-07-18
 
