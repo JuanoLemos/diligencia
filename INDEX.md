@@ -59,6 +59,7 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 | MECANICA-LLM.md | v1.0 | 2026-07-01 |
 | MECANICA-MEMORY.md | v2.0 | 2026-07-01 |
 | MECANICA-TASK-ROUTER.md | v1.0 | 2026-07-01 |
+| MECANICA-VAIO-WORKER.md | v1.0 | 2026-07-18 |
 | MECANICA-OLAS.md | v1.0 | 2026-07-04 |
 | MANDATO.md | v1.17.2 | 2026-06-06 |
 | _template.md | v1.16.4 | 2026-06-06 |

@@ -9,6 +9,8 @@
 - Regla R14: VAIO Worker — agente autónomo 24/7, loop perpetuo cada 60s, sin intervención humana
 - doc/vaio/worker-loop.md — prompt del worker autónomo
 - doc/vaio/tasks/tarea-006.md — activación del worker loop
+- MECANICA-VAIO-WORKER.md — patrón documentado para cualquier proyecto adaptado
+- doc/vaio/ en doc-base (README, worker-loop.md, .gitkeep) — heredable vía /adaptar
 
 ### Changed
 - R40: Cloudflare Tunnel completado (VAIO conectada via VS Code Tunnels + cloudflared)
