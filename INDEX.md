@@ -1,4 +1,4 @@
-# INDEX — Diligencia v2.7.7
+# INDEX — Diligencia v2.7.8
 
 Catalogo de documentacion del proyecto. Mantenido por /version y /updoc.
 
@@ -11,7 +11,7 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 | Archivo | Version | Ultima actualizacion |
 |---|---|---|
 | ROADMAP.md | v2.7.2 | 2026-07-18 |
-| CHANGELOG.md | v2.7.7 | 2026-07-18 |
+| CHANGELOG.md | v2.7.8 | 2026-07-18 |
 | DILIGENCIA.md | v2.7.6 | 2026-07-15 |
 
 ## Guias
