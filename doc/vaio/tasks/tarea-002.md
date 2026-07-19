@@ -1,17 +1,43 @@
-# Tarea 002 — Iniciar Chamber + configurar tuneles
+# Tarea 002 — Reparar DNS + Iniciar Chamber + configurar tuneles
 
 > Ejecutar en la VAIO. No tocar MarketAI ni otros proyectos.
+>
+> **IMPORTANTE:** El paso 1 requiere PowerShell como ADMINISTRADOR.
+> Click derecho en Inicio → "Windows PowerShell (Administrador)" o "Terminal (Administrador)".
 
 ## Objetivo
 
-1. Ubicar Chamber.exe en la VAIO
-2. Iniciarlo
-3. Renombrar tunnel VS Code a "VAIO-Server"
-4. Activar cloudflared y capturar URL de trycloudflare
+1. Reparar DNS (requiere Admin — tarea 001 falló por falta de permisos)
+2. Ubicar Chamber.exe en la VAIO
+3. Iniciarlo
+4. Renombrar tunnel VS Code a "VAIO-Server"
+5. Activar cloudflared y capturar URL de trycloudflare
 
 ## Comandos (en orden)
 
-### 1. Ubicar Chamber.exe
+### 1. Reparar DNS ⚠️ REQUIERE ADMINISTRADOR
+
+```powershell
+# Ver interfaz activa
+Get-NetAdapter | Where-Object Status -eq "Up" | Format-Table Name
+
+# Cambiar DNS (reemplazar <NOMBRE> por el nombre real, ej: "Wi-Fi")
+Set-DnsClientServerAddress -InterfaceAlias "<NOMBRE>" -ServerAddresses ("1.1.1.1", "8.8.8.8")
+```
+
+Ejemplo:
+```powershell
+Set-DnsClientServerAddress -InterfaceAlias "Wi-Fi" -ServerAddresses ("1.1.1.1", "8.8.8.8")
+```
+
+Verificar:
+```powershell
+nslookup api.trycloudflare.com
+```
+
+Debe devolver una IP. Si sigue diciendo "Non-existent domain", DNS no se cambió.
+
+### 2. Ubicar Chamber.exe
 
 Buscar en rutas comunes primero:
 
@@ -43,7 +69,7 @@ Get-ChildItem -Path C:\ -Filter Chamber.exe -Recurse -ErrorAction SilentlyContin
 
 Anotar la ruta exacta donde está Chamber.exe.
 
-### 2. Iniciar Chamber
+### 3. Iniciar Chamber
 
 ```powershell
 Start-Process -FilePath "<RUTA_DE_CHAMBER.EXE>"
@@ -56,7 +82,7 @@ Ejemplo:
 Start-Process -FilePath "C:\Program Files\Chamber\Chamber.exe"
 ```
 
-### 3. Verificar que Chamber está corriendo
+### 4. Verificar que Chamber está corriendo
 
 Esperar 5 segundos y verificar:
 
@@ -67,7 +93,7 @@ netstat -ano | findstr :3000
 
 Si no muestra nada, Chamber no inició. Revisar si hay algún error o ventana de diálogo.
 
-### 4. Renombrar tunnel VS Code
+### 5. Renombrar tunnel VS Code
 
 ```powershell
 code tunnel rename VAIO-Server
@@ -78,7 +104,7 @@ Si falla con "already exists" o similar, verificar nombre actual:
 code tunnel --help
 ```
 
-### 5. Activar cloudflared
+### 6. Activar cloudflared
 
 ```powershell
 cloudflared tunnel --url http://localhost:3000
@@ -91,13 +117,14 @@ Anotar la URL que aparece, algo como:
 https://random-name.trycloudflare.com
 ```
 
-### 6. Escribir resultado
+### 7. Escribir resultado
 
 Crear `doc/vaio/results/resultado-002.md` con este formato:
 
 ```
 # Resultado 002
 
+DNS reparado: [SI/NO — servidor DNS actual]
 Ruta Chamber.exe: [pegar ruta]
 Chamber corriendo en :3000: [SI/NO]
 Tunnel VS Code renombrado: [SI/NO — nombre actual]
@@ -105,7 +132,7 @@ URL cloudflared: [pegar URL de trycloudflare]
 Errores: [pegar errores si los hubo]
 ```
 
-### 7. Commit + push
+### 8. Commit + push
 
 ```powershell
 cd C:\xampp\htdocs\Diligencia
