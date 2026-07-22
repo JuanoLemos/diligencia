@@ -1,55 +1,19 @@
-# Status Salud ó Diligencia v2.6.3
+Ôªø# status-salud.md
+**Version:** v3.0.1 | **Fecha:** 2026-07-21
 
-Generado por /salud el 2026-07-01.
+## Diagnostico post-version
 
----
-
-## Estructura
-
-| Componente | Estado | Detalle |
-|---|---|---|
-| DILIGENCIA.md | ? | v2.6.3 |
-| AGENTS.md | ? | 27 variables, 30 comandos |
-| ROADMAP.md | ? | v2.6.0, items activos |
-| CHANGELOG.md | ? | v2.6.3, historial completo |
-| INDEX.md | ? | v2.6.3, 21 guÌas, 17 mec·nicas |
-| .opencode/HARNESS.md | ? | v1.0.0 |
-| .markdownlint.json | ? | Config OK |
-
-## Docs
-
-| SecciÛn | Archivos | Estado |
-|---|---|---|
-| GuÌas | 21 archivos | ? Todos con header y cross-refs |
-| Mec·nicas | 17 archivos | ? 15 + paloma-template + LLM |
-| ADRs | 8 archivos | ? 6 ADRs + summary + template |
-| doc/arch/ | 22 archivos | ? Catalogados en INDEX.md |
-
-## Comandos
-
-| ¡rea | Total | Estado |
-|---|---|---|
-| Comandos globales | 30 | ? 30 con guarda de ejecuciÛn |
-| Deprecados archivados | 18 | ? En .old/commands/ |
-
-## Licencias
-
-| Archivo | Estado |
+| Check | Estado |
 |---|---|
-| LICENSE | ? AGPL-3.0 |
-| NOTICE | ? |
-| SECURITY.md | ? |
-| LICENSING.md | ? |
+| 1a ‚Äî Estructura (8/9) | ‚ö†Ô∏è .markdownlint.json faltante (opcional) |
+| 1b ‚Äî Codigo | ‚úÖ No aplica (docs) |
+| 1c ‚Äî Gaps | ‚úÖ ROADMAP items al dia |
+| 1d ‚Äî Temporales | ‚úÖ Sin archivos temporales |
+| 1e ‚Äî Deprecar | ‚úÖ Sin candidatos a deprecar |
+| 1f ‚Äî Backup | ‚úÖ 1 backup disponible |
+| 1g ‚Äî Circuito | ‚úÖ No aplica (metodologia) |
 
-## Palomas
-
-| ID | Estado | AcciÛn MAIN |
-|---|---|---|
-| P001 | ? Actuado | NOTICE + SECURITY.md creados |
-| P002 | ?? En revisiÛn | Pendiente de aplicar (21 hallazgos) |
-| P003 | ? Actuado | MANIFIESTO + README + GUIA mejorados |
-| P004 | ?? Pendiente | ó |
-
-## Propagaciones
-
-6/6 proyectos al dÌa con Diligencia v2.6.3.
+## Notas
+- /salud ejecutado post-/CBP version v3.0.1
+- Proyecto estable. Sin bloqueantes detectados.
+- CHECKLIST.md movido a .old/ ‚Äî normal
