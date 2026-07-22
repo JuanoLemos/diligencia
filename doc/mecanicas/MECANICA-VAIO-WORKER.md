@@ -143,9 +143,34 @@ Cuando los túneles directos (VS Code Remote + Cloudflare) están operativos, el
 
 ---
 
+## Herencia vía /adaptar
+
+Cualquier proyecto adaptado a Diligencia v3.0.0+ recibe automáticamente:
+
+| Archivo | Propósito |
+|---|---|
+| `doc/vaio/README.md` | Instrucciones del puente de comunicación |
+| `doc/vaio/worker-loop.md` | Prompt para worker autónomo 24/7 |
+| `doc/vaio/PRONT_VAIO.md` | Prompt de nacimiento para sesiones Chamber interactivas |
+| `doc/vaio/tasks/` | Tareas pendientes (creadas por MAIN) |
+| `doc/vaio/results/` | Resultados (creados por el worker) |
+| `doc/mecanicas/MECANICA-VAIO-WORKER.md` | Este documento (patrón) |
+
+El proyecto sabe que tiene un asistente en VAIO-Server. La comunicación usa el mismo protocolo git (tareas .md → resultados .md). El scaffold está listo — solo falta activar la sesión en la VAIO.
+
+### PRONT_VAIO vs worker-loop
+
+| Prompt | Modo | Cuándo usarlo |
+|---|---|---|
+| `PRONT_VAIO.md` | **Interactivo** — diálogo humano-agente | Sesiones Chamber donde el usuario habla con el asistente |
+| `worker-loop.md` | **Autónomo** — loop perpetuo | Sesiones OpenCode background que ejecutan tareas sin preguntar |
+
+---
+
 ## Archivos relacionados
 
-- `doc/vaio/worker-loop.md` — prompt del worker
+- `doc/vaio/PRONT_VAIO.md` — prompt de nacimiento para sesiones Chamber
+- `doc/vaio/worker-loop.md` — prompt del worker autónomo
 - `doc/vaio/README.md` — instrucciones del puente
 - `GUIA_CONTROL_REMOTO.md` — túneles directos (complemento)
-- `AGENTS.md` — Regla R14 (VAIO Worker)
+- `AGENTS.md` — Regla R14 (VAIO Worker) + sección Asistente VAIO

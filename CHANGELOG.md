@@ -8,7 +8,8 @@
 - GUIA_CONTROL_REMOTO.md — acceso remoto unificado (VS Code Tunnels + Cloudflare Tunnel + DNS troubleshooting)
 - Regla R14: VAIO Worker — agente autónomo 24/7, loop perpetuo cada 60s, sin intervención humana
 - MECANICA-VAIO-WORKER.md — patrón documentado reutilizable para cualquier proyecto adaptado
-- doc/vaio/ en doc-base (README, worker-loop.md, .gitkeep) — heredable vía /adaptar
+- PRONT_VAIO.md — prompt de nacimiento para sesiones Chamber interactivas en VAIO-Server
+- doc/vaio/ en doc-base (README, worker-loop.md, PRONT_VAIO.md, .gitkeep) — heredable vía /adaptar
 - Worker loop activado en VAIO — pull → detectar → ejecutar → reportar → push → sleep 60s
 - VS Code tunnel como servicio (`vaio-server`) — acceso via vscode.dev
 - Cloudflare Tunnel instalado como servicio — Chamber remoto via trycloudflare
