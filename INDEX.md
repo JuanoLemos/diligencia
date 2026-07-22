@@ -2,7 +2,7 @@
 
 Catalogo de documentacion del proyecto. Mantenido por /version y /updoc.
 
-Ultima actualizacion global: 2026-07-18
+Ultima actualizacion global: 2026-07-21
 
 ## Docs criticos
 
@@ -10,9 +10,9 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 
 | Archivo | Version | Ultima actualizacion |
 |---|---|---|
-| ROADMAP.md | v2.7.2 | 2026-07-18 |
-| CHANGELOG.md | v2.7.8 | 2026-07-18 |
-| DILIGENCIA.md | v3.0.0 | 2026-07-21 |
+| ROADMAP.md | v3.0.1 | 2026-07-21 |
+| CHANGELOG.md | v3.0.1 | 2026-07-21 |
+| DILIGENCIA.md | v3.0.1 | 2026-07-21 |
 
 ## Guias
 
@@ -40,8 +40,9 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 | GUIA_CHAMBER.md | v1.0.0 | 2026-06-26 |
 | GUIA_HOSTING_VPS.md | v1.0 | 2026-07-04 |
 | GUIA_RED_LOCAL.md | v1.0 | 2026-07-04 |
-| GUIA_VAIO_DNS.md | v1.0 ⚠️ | 2026-07-18 |
-| GUIA_PUENTE_VAIO.md | v1.0 ⚠️ | 2026-07-18 |
+| GUIA_CHAMBER_INSTALABLE.md | v1.0 | 2026-07-18 |
+| GUIA_VAIO_DNS.md | v1.0 ⚠️ DEPRECADO → GUIA_CONTROL_REMOTO.md | 2026-07-18 |
+| GUIA_PUENTE_VAIO.md | v1.0 ⚠️ DEPRECADO → GUIA_CONTROL_REMOTO.md | 2026-07-18 |
 | GUIA_CONTROL_REMOTO.md | v1.0 | 2026-07-18 |
 
 ## Mecanicas
@@ -61,6 +62,8 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 | MECANICA-TASK-ROUTER.md | v1.0 | 2026-07-01 |
 | MECANICA-VAIO-WORKER.md | v1.0 | 2026-07-18 |
 | MECANICA-OLAS.md | v1.0 | 2026-07-04 |
+| MECANICA-CONSEJO.md | v1.0 | 2026-07-01 |
+| MECANICA-CIRCUITO.md | v1.0 | 2026-07-01 |
 | MANDATO.md | v1.17.2 | 2026-06-06 |
 | _template.md | v1.16.4 | 2026-06-06 |
 | meta-escalabilidad.md | v1.16.4 | 2026-06-06 |
@@ -90,6 +93,10 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 | incidentes.md | v1.0 | 2026-07-01 |
 | backups.md | v1.0 | 2026-07-01 |
 | LICENSING.md | — | — |
+| PRONT_VAIO.md | v1.0 | 2026-07-21 |
+| PENDING.md | v1.0 | 2026-07-01 |
+| mutaciones-consolidadas.md | v1.0 | 2026-07-01 |
+| catalogo-proyectos.md | v2.6.5 | 2026-07-01 |
 
 ## Olas
 

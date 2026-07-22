@@ -79,4 +79,4 @@ Diligencia escala con tu proyecto. No necesitás usarlo todo desde el día uno.
 
 ---
 
-*Diligencia — v2.4.2*
+*Diligencia — v3.0.1*

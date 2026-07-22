@@ -9,10 +9,20 @@
 - doc-base: AGENTS.md con sección "Asistente VAIO" y variables $VAIO_TASKS/$VAIO_RESULTS/$VAIO_PRONT
 - doc-base: INDEX.md con PRONT_VAIO.md en Referencias
 - MECANICA-VAIO-WORKER.md: sección "Herencia vía /adaptar" + tabla PRONT vs worker-loop
-- /adaptar v3.0.0: Flujo A reemplaza <NOMBRE_DEL_PROYECTO> en doc/vaio/
+- /adaptar v3.0.1: Flujo A reemplaza <NOMBRE_DEL_PROYECTO> en doc/vaio/
 
 ### Fixed
 - doc-base/doc/vaio/README.md: referencia a PRONT_VAIO.md agregada
+- Auditoría documental: 27 hallazgos corregidos (9 P1, 9 P2, 9 P3)
+  - ROADMAP.md: header v2.7.2→v3.0.1, 15 ✅ items movidos de Next a Completado, R21 duplicado eliminado, sección corrupta limpiada
+  - AGENTS.md: tabla de comandos reconstruida, doctor.md→salud.md (2 refs), scripts/tray/ eliminado
+  - INDEX.md: versiones corregidas, fecha actualizada, 6 archivos faltantes agregados
+  - MANIFIESTO.md: footer v2.4.2→v3.0.1
+  - SECURITY.md: versiones soportadas v2.4.x→v3.0.x, ROADMAP duplicado corregido
+  - MECANICA-VAIO-WORKER.md: refs a PRONT_VAIO.md ahora existen
+  - doc/vaio/README.md: sección Archivos relacionados agregada
+  - GUIA_PUENTE_VAIO.md: nota de deprecación cruzada agregada
+  - HARNESS.md: ROADMAP duplicado→CHECKLIST
 
 ## [3.0.0] — 2026-07-21
 

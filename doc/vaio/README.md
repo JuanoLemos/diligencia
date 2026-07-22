@@ -57,3 +57,9 @@ LOOP:
 - Solo ejecutar comandos de las tareas, no improvisar
 - Si un comando falla, reportar el error, no arreglarlo
 - Idempotente: si ya existe resultado-NNN.md, no re-ejecutar tarea-NNN.md
+
+## Archivos relacionados
+- `doc/vaio/PRONT_VAIO.md` — prompt de nacimiento para sesiones Chamber interactivas
+- `doc/vaio/worker-loop.md` — prompt del sistema para el worker autónomo 24/7
+- `doc/vaio/worker-log.md` — log de actividad del worker
+- `GUIA_CONTROL_REMOTO.md` — acceso directo vía túneles (complemento)

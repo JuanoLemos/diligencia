@@ -4,9 +4,9 @@
 
 | Version | Supported |
 |---|---|
-| v2.4.x | ✅ Active development |
-| v2.3.x | ⚠️ Security fixes only |
-| < v2.3.0 | ❌ No longer supported |
+| v3.0.x | ✅ Active development |
+| v2.x | ⚠️ Security fixes only |
+| < v2.0 | ❌ No longer supported |
 
 ## Reporting a Vulnerability
 
@@ -22,7 +22,7 @@ Report via:
 ## Scope
 
 - Integrity of AGENTS.md variables and routing
-- Unauthorized modifications to ROADMAP.md, ROADMAP.md, DILIGENCIA.md
+- Unauthorized modifications to ROADMAP.md, CHANGELOG.md, DILIGENCIA.md
 - Broken cross-references in documentation that could mislead users
 - Exposure of project paths or internal structure through documentation
 

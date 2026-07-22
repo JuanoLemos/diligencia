@@ -47,7 +47,7 @@ Archivo principal: `AGENTS.md`
 
 - `AGENTS.md` (variables y comandos)
 - `ROADMAP.md` (plan)
-- `ROADMAP.md (tareas y planning)
+- `CHECKLIST.md` (tareas y planning)
 - `doc/arch/ADR-*.md` (decisiones arquitectónicas)
 - `doc/guias/ESTANDAR-COMANDOS.md` (estándar)
 
