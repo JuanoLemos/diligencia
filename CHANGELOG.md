@@ -2,6 +2,18 @@
 
 ---
 
+## [3.0.1] — 2026-07-21
+
+### Added
+- PRONT_VAIO.md — prompt de nacimiento universal para sesiones Chamber en VAIO-Server
+- doc-base: AGENTS.md con sección "Asistente VAIO" y variables $VAIO_TASKS/$VAIO_RESULTS/$VAIO_PRONT
+- doc-base: INDEX.md con PRONT_VAIO.md en Referencias
+- MECANICA-VAIO-WORKER.md: sección "Herencia vía /adaptar" + tabla PRONT vs worker-loop
+- /adaptar v3.0.0: Flujo A reemplaza <NOMBRE_DEL_PROYECTO> en doc/vaio/
+
+### Fixed
+- doc-base/doc/vaio/README.md: referencia a PRONT_VAIO.md agregada
+
 ## [3.0.0] — 2026-07-21
 
 ### Added
