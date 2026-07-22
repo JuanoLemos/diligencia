@@ -191,6 +191,17 @@ El sistema de puente via git (`doc/vaio/tasks/`) fue deprecado en favor de los t
 
 ---
 
+## URLs activas
+
+> Estas URLs pueden cambiar. La de cloudflared rota al reiniciar el túnel. El worker VAIO publica la URL actual en `doc/vaio/worker-log.md`.
+
+| Acceso | URL |
+|---|---|
+| Chamber (Cloudflare Tunnel) | `https://wichita-borough-diving-tribal.trycloudflare.com` |
+| VS Code Remote | `https://vscode.dev/tunnel/vaio-server/` |
+
+---
+
 ## Archivos relacionados
 
 - `GUIA_RED_LOCAL.md` — acceso SSH en red local (misma WiFi, no requiere túneles)

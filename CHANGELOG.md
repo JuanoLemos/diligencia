@@ -2,29 +2,31 @@
 
 ---
 
-## [2.7.8] — 2026-07-18
+## [3.0.0] — 2026-07-21
 
 ### Added
 - GUIA_CONTROL_REMOTO.md — acceso remoto unificado (VS Code Tunnels + Cloudflare Tunnel + DNS troubleshooting)
 - Regla R14: VAIO Worker — agente autónomo 24/7, loop perpetuo cada 60s, sin intervención humana
-- doc/vaio/worker-loop.md — prompt del worker autónomo
-- doc/vaio/tasks/tarea-006.md — activación del worker loop
-- MECANICA-VAIO-WORKER.md — patrón documentado para cualquier proyecto adaptado
+- MECANICA-VAIO-WORKER.md — patrón documentado reutilizable para cualquier proyecto adaptado
 - doc/vaio/ en doc-base (README, worker-loop.md, .gitkeep) — heredable vía /adaptar
+- Worker loop activado en VAIO — pull → detectar → ejecutar → reportar → push → sleep 60s
+- VS Code tunnel como servicio (`vaio-server`) — acceso via vscode.dev
+- Cloudflare Tunnel instalado como servicio — Chamber remoto via trycloudflare
 
 ### Changed
-- R40: Cloudflare Tunnel completado (VAIO conectada via VS Code Tunnels + cloudflared)
-- R71: dependencia R40 removida, VAIO ya conectada via túneles
+- R40: Cloudflare Tunnel completado — URL activa: `https://wichita-borough-diving-tribal.trycloudflare.com`
+- R71: dependencia R40 removida, VAIO conectada via VS Code tunnel: `https://vscode.dev/tunnel/vaio-server/`
+- DNS VAIO: reparado (IPv4 + IPv6 Cloudflare, bypass a `dev.opt`)
+- /adaptar v2.7.8 — nueva entrada de migración para doc/vaio/ worker loop (R14)
+
+### Fixed
+- VAIO: 3 instancias duplicadas del orchestrator MarketAI reparadas (lockfile anti-duplicado + orphan scan en tray_app.py)
+- Cross-reference roto: GUIA_CONTROL_REMOTO.md ahora existe (era referenciado pero no creado)
 
 ### Deprecated
 - GUIA_VAIO_DNS.md — absorbido por GUIA_CONTROL_REMOTO.md (sección DNS Troubleshooting)
 - GUIA_PUENTE_VAIO.md — absorbido por GUIA_CONTROL_REMOTO.md
-- doc/vaio/ — puente de tareas via git movido a .old/vaio-puente/
-
-### Fixed
-- Cross-reference roto: GUIA_CONTROL_REMOTO.md ahora existe (era referenciado pero no creado)
-- INDEX.md: entradas VAIO agregadas (GUIA_CONTROL_REMOTO, GUIA_VAIO_DNS, GUIA_PUENTE_VAIO)
-- doc/vaio/README.md actualizado a modo worker autónomo (R14)
+- doc/vaio/ puente original → .old/vaio-puente/
 
 ## [2.7.7] — 2026-07-18
 
