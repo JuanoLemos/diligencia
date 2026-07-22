@@ -11,13 +11,27 @@ Monitorear el repositorio Diligencia en busca de nuevas tareas en `doc/vaio/task
 ```
 LOOP INFINITO:
   1. git pull
-  2. Leer doc/vaio/tasks/ → detectar tareas nuevas
-  3. Si hay tarea nueva SIN resultado → ejecutarla
-  4. Escribir resultado en doc/vaio/results/
-  5. git add + commit + pull --rebase + push
-  6. Esperar 60 segundos
-  7. Volver a 1
+  2. Watchdog: verificar cloudflared vivo
+  3. Leer doc/vaio/tasks/ → detectar tareas nuevas
+  4. Si hay tarea nueva SIN resultado → ejecutarla
+  5. Escribir resultado en doc/vaio/results/
+  6. git add + commit + pull --rebase + push
+  7. Esperar 60 segundos
+  8. Volver a 1
 ```
+
+### Watchdog cloudflared
+
+Antes de procesar tareas, cada ciclo verifica que cloudflared esté vivo:
+
+```powershell
+$proc = Get-Process -Name "cloudflared*" -ErrorAction SilentlyContinue
+if (-not $proc) {
+    powershell -ExecutionPolicy Bypass -File "C:\xampp\htdocs\Diligencia\doc\vaio\startup-tunnel.ps1"
+}
+```
+
+Si cloudflared no responde, ejecuta `startup-tunnel.ps1` que lo reinicia y publica la nueva URL automáticamente.
 
 ## Cómo detectar tareas nuevas
 
