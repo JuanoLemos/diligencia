@@ -1,8 +1,7 @@
 # Diligencia Ola Chamber-First — Migración a funcionalidades nativas de Chamber v1.0
 
 > Planificada: 2026-07-23 | Agentes: @documentador, @consejero, @circuito
-> Objetivo: Reemplazar soluciones manuales por funcionalidades nativas de Chamber.
-> Precondición: Chamber corriendo desde source en VAIO (Node.js, no Bun).
+> Objetivo: Reemplazar soluciones manuales por funcionalidades nativas de Chamber en AMBAS máquinas.
 
 ---
 
@@ -10,14 +9,422 @@
 
 ```
 Antes:                              Después:
-┌──────────────────────┐            ┌──────────────────────┐
-│ startup-tunnel.ps1   │     ──→   │ Chamber Tunnel API   │
-│ vscode.dev + manual  │     ──→   │ Terminal WS integrado  │
-│ worker-log.md        │     ──→   │ SSE events + status   │
-│ codebase-mcp local   │     ──→   │ MCP server en Chamber │
-│ Skills locales .md   │     ──→   │ Skills vía catalog    │
-│ Chamber v1.13.2      │     ──→   │ Chamber v1.16.3       │
-└──────────────────────┘            └──────────────────────┘
+┌──────────────────────┐            ┌──────────────────────────┐
+│ startup-tunnel.ps1   │     ──→   │ Chamber Tunnel API        │
+│ vscode.dev + manual  │     ──→   │ Terminal WS integrado     │
+│ worker-log.md        │     ──→   │ SSE events + status API   │
+│ codebase-mcp local   │     ──→   │ MCP server en Chamber     │
+│ Skills locales .md   │     ──→   │ Skills vía catalog        │
+│ Chamber v1.13.2      │     ──→   │ Chamber v1.16.3           │
+│ runtime.js no-editable│    ──→   │ Source code editable       │
+└──────────────────────┘            └──────────────────────────┘
+```
+
+### Estado actual por máquina
+
+| Componente | PC Principal | VAIO |
+|---|---|---|
+| Chamber source | ✅ `C:\Users\jlemo\OneDrive\Desktop\openchamber\` | ⚠️ Clonado en `C:\Users\jlemo\openchamber\` (Bun roto sin AVX2) |
+| runtime.js | ✅ Editable (source) | ❌ No editable (empaquetado ASAR) |
+| Node.js | ✅ Instalado | ❌ Pendiente de instalar |
+| Scheduled tasks | ✅ 3 tasks activas | ✅ 3 tasks activas |
+| Fix 2 archivos | ❌ Pendiente de aplicar | ❌ Pendiente de aplicar |
+| Chamber corriendo | ✅ App instalada | ✅ App instalada (pero ASAR) |
+| Chamber desde source | ❌ No probado | ❌ Pendiente (Node.js) |
+
+---
+
+## Tabla maestra — qué va en cada máquina
+
+| Sub-ola | PC Principal | VAIO |
+|---|---|---|
+| **A0** Fix 2 archivos | ✅ Aplicar en source repo | ✅ Aplicar después de Node.js |
+| **A1** Node.js + npm | ❌ Ya tiene | ✅ Instalar Node.js, `npm install` |
+| **A2** Chamber desde source | ⬜ Evaluar si conviene | ✅ `node bin/cli.js serve --port 57123` |
+| **B1** Tunnel nativo | ❌ No necesita | ✅ Reemplazar startup-tunnel.ps1 |
+| **B2** Terminal WS | ✅ Usar para conectar a VAIO | ✅ Hostear servicio WS |
+| **B3** MCP | ✅ Probar aquí primero | ✅ Desplegar después |
+| **B4** Skills | ✅ Publicar desde acá | ❌ No publica |
+| **B5** Monitoreo | ✅ Consumir SSE desde acá | ✅ Emitir SSE + status API |
+| **B6** Upgrade v1.16.3 | ✅ Probar aquí primero | ✅ Aplicar después |
+
+---
+
+## Ola 0 — Base: Fix de 2 archivos (ambas máquinas)
+
+> **Precondición para TODO.** Sin este fix, `sessionId` no se persiste y el scheduled task siempre crea sesiones nuevas.
+> Aplica en PC Principal y VAIO.
+
+### Archivos a modificar
+
+| Archivo | Ruta relativa | Ruta en PC Principal | Ruta en VAIO |
+|---|---|---|---|
+| `runtime.js` | `packages/web/server/lib/scheduled-tasks/runtime.js` | `...\OneDrive\Desktop\openchamber\...` | `C:\Users\jlemo\openchamber\...` |
+| `project-config.js` | `packages/web/server/lib/projects/project-config.js` | `...\OneDrive\Desktop\openchamber\...` | `C:\Users\jlemo\openchamber\...` |
+
+### Fix 1 — runtime.js
+
+**Cambio:** Antes de crear sesión nueva, verificar si `task.execution.sessionId` existe.
+
+```javascript
+// ANTES:
+const sessionResponse = await client.session.create({
+  directory: projectPath,
+  title,
+});
+const sessionID = sessionResponse?.data?.id;
+
+// DESPUÉS:
+let sessionID;
+const reuseSessionId = task.execution?.sessionId;
+if (reuseSessionId) {
+  sessionID = reuseSessionId;
+} else {
+  const sessionResponse = await client.session.create({
+    directory: projectPath,
+    title,
+  });
+  sessionID = sessionResponse?.data?.id;
+}
+```
+
+### Fix 2 — project-config.js
+
+**Cambio:** `normalizeExecution()` debe incluir `sessionId` en el output. Sin esto, el campo se pierde al guardar.
+
+```javascript
+// ANTES (línea ~218):
+const variant = asNonEmptyString(value.variant);
+return {
+  prompt,
+  providerID,
+  modelID,
+  ...(variant ? { variant } : {}),
+  ...(agent ? { agent } : {}),
+};
+
+// DESPUÉS:
+const variant = asNonEmptyString(value.variant);
+const sessionId = value.sessionId || null;
+return {
+  prompt,
+  providerID,
+  modelID,
+  ...(variant ? { variant } : {}),
+  ...(agent ? { agent } : {}),
+  ...(sessionId ? { sessionId } : {}),
+};
+```
+
+### Herramienta de sincronización
+
+Los 2 archivos deben modificarse en AMBAS máquinas. Para mantener sincronía: git maneja el versionado. Ambos clones del repo openchamber deben tener el mismo fix. Al hacer `git pull` upstream, los archivos pueden quedar en conflicto — documentar el diff para reaplicar.
+
+| Máquina | Cuándo aplicar |
+|---|---|
+| PC Principal | AHORA — el source está listo |
+| VAIO | Después de A1 (Node.js + npm install) |
+
+---
+
+## Ola A — Recuperación VAIO (1 sesión, presencial)
+
+> Solo VAIO. La PC Principal ya tiene Node.js y source.
+
+### A1 — Instalar Node.js 22 LTS + dependencias
+
+| Campo | Valor |
+|---|---|
+| Máquina | VAIO |
+| Depende de | — |
+
+```powershell
+winget install OpenJS.NodeJS.LTS --accept-package-agreements
+node --version
+# Debe mostrar v22.x.x
+```
+
+```powershell
+cd C:\Users\jlemo\openchamber
+npm install
+```
+
+### A2 — Aplicar fix de 2 archivos en VAIO
+
+| Campo | Valor |
+|---|---|
+| Máquina | VAIO |
+| Depende de | A1 |
+
+```powershell
+$rt = "C:\Users\jlemo\openchamber\packages\web\server\lib\scheduled-tasks\runtime.js"
+$pc = "C:\Users\jlemo\openchamber\packages\web\server\lib\projects\project-config.js"
+
+# runtime.js
+$c = Get-Content $rt -Raw
+$c = $c -replace 'const sessionResponse = await client.session.create', 'let sessionID;
+    const reuseSessionId = task.execution?.sessionId;
+    if (reuseSessionId) { sessionID = reuseSessionId; } else {
+      const sessionResponse = await client.session.create'
+$c = $c -replace 'const sessionID = sessionResponse\?\.data\?\.id;', 'const sessionID = sessionResponse?.data?.id;
+    }'
+Set-Content $rt $c -Encoding UTF8
+
+# project-config.js
+$c = Get-Content $pc -Raw
+$c = $c -replace 'const variant = asNonEmptyString\(value\.variant\);', 'const variant = asNonEmptyString(value.variant);
+    const sessionId = value.sessionId || null;'
+$c = $c -replace '\.\.\.\(variant \? \{ variant \} : \{\}\)', '...(variant ? { variant } : {}),
+      ...(sessionId ? { sessionId } : {})'
+Set-Content $pc $c -Encoding UTF8
+
+"OK — 2 archivos modificados en VAIO"
+```
+
+### A3 — Iniciar Chamber desde source en VAIO
+
+| Campo | Valor |
+|---|---|
+| Máquina | VAIO |
+| Depende de | A2 |
+
+```powershell
+cd C:\Users\jlemo\openchamber
+Get-Process -Name "OpenChamber*" -ErrorAction SilentlyContinue | Stop-Process -Force
+node packages/web/bin/cli.js serve --port 57123
+```
+
+### A4 — Verificar
+
+| Campo | Valor |
+|---|---|
+| Máquina | VAIO |
+
+```powershell
+curl.exe -s http://localhost:57123/api/openchamber/scheduled-tasks/status
+curl.exe -s http://localhost:57123/api/projects/path_QzoveGFtcHAvaHRkb2NzL0RpbGlnZW5jaWE/scheduled-tasks | ConvertFrom-Json
+```
+
+---
+
+## Ola B — Migración Chamber-first (2-3 sesiones, desde ambas)
+
+> Cada tarea indica en qué máquina se ejecuta.
+
+---
+
+### B1 — R72: Tunnel nativo de Chamber
+
+| Máquina | VAIO |
+| Depende de | Ola A |
+| OnFail | retry:2 |
+| Archivos | `doc/vaio/startup-tunnel.ps1` (deprecar) |
+
+En vez de `startup-tunnel.ps1` manual, Chamber gestiona el túnel nativamente:
+
+```powershell
+# Iniciar tunnel via API
+curl.exe -s -X POST http://localhost:57123/api/openchamber/tunnel/start `
+  -H "Content-Type: application/json" `
+  -d '{"provider":"cloudflare","mode":"quick"}'
+
+# Obtener URL (desde VAIO o desde MAIN vía tunnel público)
+curl.exe -s http://localhost:57123/api/openchamber/tunnel/status | ConvertFrom-Json | Select-Object -ExpandProperty url
+```
+
+---
+
+### B2 — R73: Terminal Chamber
+
+| Máquina | VAIO (host) + PC Principal (cliente) |
+| Depende de | Ola A |
+| Archivos | `doc/guias/GUIA_CONTROL_REMOTO.md` |
+
+La PC Principal se conecta al terminal de la VAIO via WebSocket en vez de abrir vscode.dev:
+
+```powershell
+# Desde PC Principal: crear sesión terminal en VAIO
+$session = curl.exe -s -X POST "http://VAIO-URL/api/terminal/create" `
+  -H "Content-Type: application/json" `
+  -d '{"cwd":"C:\\xampp\\htdocs\\Diligencia","cols":80,"rows":24}'
+```
+
+Para uso interactivo: usar el terminal integrado de Chamber UI (icono `>_` en barra inferior).
+
+---
+
+### B3 — R75: MCP en Chamber
+
+| Máquina | PC Principal (probar) → VAIO (desplegar) |
+| Depende de | Ola A |
+| Archivos | `~/.config/opencode/config.json` |
+
+Registrar `codebase-memory-mcp` como servidor MCP local en Chamber:
+
+```powershell
+$body = @{
+    type = "local"
+    command = @("node", "path\to\codebase-memory-mcp\index.js")
+    environment = @{}
+    enabled = $true
+} | ConvertTo-Json
+
+curl.exe -s -X POST http://localhost:57123/api/config/mcp/codebase-memory `
+  -H "Content-Type: application/json" -d $body
+```
+
+Probar primero en PC Principal, luego en VAIO.
+
+---
+
+### B4 — R76: Skills publicadas
+
+| Máquina | PC Principal (publicar) |
+| Depende de | — |
+| Archivos | `~/.config/opencode/skills/` |
+
+Las skills locales de Diligencia se publican en el Skills Catalog de Chamber:
+
+```powershell
+Get-ChildItem "$env:USERPROFILE\.config\opencode\skills" -Directory | ForEach-Object {
+    $name = $_.Name
+    $body = @{
+        description = "Skill $name"
+        body = Get-Content "$($_.FullName)\SKILL.md" -Raw
+        scope = "user"
+    } | ConvertTo-Json
+    curl.exe -s -X POST "http://localhost:57123/api/config/skills/$name" `
+      -H "Content-Type: application/json" -d $body
+}
+```
+
+---
+
+### B5 — R74: Monitoreo centralizado
+
+| Máquina | VAIO (emite) + PC Principal (consume) |
+| Depende de | B1 |
+| Archivos | `doc/vaio/VAIO-SCHEDULED.md` |
+
+En vez de `worker-log.md` manual:
+
+```powershell
+# Desde PC Principal — estado de todas las tasks
+curl.exe -s http://localhost:57123/api/openchamber/scheduled-tasks/status
+
+# Desde PC Principal — último run de cada task
+curl.exe -s http://localhost:57123/api/projects/path_QzoveGFtcHAvaHRkb2NzL0RpbGlnZW5jaWE/scheduled-tasks
+
+# SSE events — stream de eventos en tiempo real
+curl.exe -s -N http://localhost:57123/api/openchamber/events
+```
+
+---
+
+### B6 — R77: Upgrade Chamber v1.16.3
+
+| Máquina | PC Principal (probar) → VAIO (aplicar) |
+| Depende de | B1, B3 |
+
+```bash
+# En PC Principal primero:
+cd C:\Users\jlemo\OneDrive\Desktop\openchamber
+git fetch upstream
+git merge upstream/main --no-edit
+npm install
+# Probar: node packages/web/bin/cli.js serve --port 57123
+
+# Si OK → repetir en VAIO:
+cd C:\Users\jlemo\openchamber
+git pull origin master
+git merge upstream/main --no-edit
+npm install
+```
+
+Post-upgrade: reaplicar el fix de 2 archivos si el merge los sobrescribe.
+
+---
+
+## Dependencias visuales
+
+```
+           PC Principal                    VAIO
+           ─────────────                   ──────
+           Fix 2 archivos                  Node.js + npm
+                │                              │
+                │                              ↓
+                ├────── Fix 2 archivos (VAIO) ←─┘
+                │                              │
+                │                              ↓
+                │                      Chamber desde source
+                │                              │
+                ├─────── B2 Terminal ──────────┤
+                │                              │
+                ├────── B1 Tunnel ─────────────┤
+                │                              │
+                ├──── B5 Monitoreo ────────────┤
+                │                              │
+                │     B3 MCP ──────────────────┤
+                │                              │
+                │     B6 Upgrade ──────────────┤
+                │                              │
+                B4 Skills (solo PC)
+```
+
+---
+
+## Archivos afectados (resumen por máquina)
+
+| Archivo | PC Principal | VAIO |
+|---|---|---|
+| `packages/.../runtime.js` | ✅ Editar | ✅ Editar |
+| `packages/.../project-config.js` | ✅ Editar | ✅ Editar |
+| `doc/vaio/startup-tunnel.ps1` | — | ⚠️ Deprecar |
+| `doc/vaio/cloudflared-url.md` | — | ⚠️ Reemplazar |
+| `doc/vaio/GUIA_RECUPERACION_VAIO.md` | — | ✅ Actualizar |
+| `doc/vaio/VAIO-SCHEDULED.md` | — | ✅ Actualizar |
+| `doc/guias/GUIA_CONTROL_REMOTO.md` | ✅ Actualizar | — |
+| `doc/mecanicas/MECANICA-CHAMBER-FIRST.md` | ✅ Seguimiento | ✅ Seguimiento |
+
+---
+
+## Riesgos
+
+| Riesgo | Mitigación |
+|---|---|
+| `git merge upstream` sobrescribe el fix de 2 archivos | Documentar el diff. Reaplicar post-upgrade. |
+| La VAIO y PC tienen clones diferentes del repo openchamber | Ambos deben apuntar al mismo upstream. |
+| v1.16.3 cambia APIs de scheduled tasks | Probar en PC Principal primero. |
+| Upgrade se vuelve no trivial si hay muchos cambios | Hacer upgrade incremental (v1.13.2 → v1.14 → ... → v1.16.3). |
+
+---
+
+## Pre-ejecución
+
+- [ ] Fix 2 archivos aplicado en PC Principal
+- [ ] Node.js instalado en VAIO
+- [ ] `npm install` exitoso en VAIO
+- [ ] Fix 2 archivos aplicado en VAIO
+- [ ] Chamber desde source corriendo en VAIO
+- [ ] Chamber desde source probado en PC Principal
+- [ ] 3 scheduled tasks activas en ambas
+
+## Post-ejecución
+
+- [ ] `startup-tunnel.ps1` deprecado
+- [ ] `worker-log.md` reemplazado por API status
+- [ ] `cloudflared-url.md` no se usa más (URL vía API)
+- [ ] Terminal WS funcionando (VAIO host, PC consume)
+- [ ] MCP configurado en ambas
+- [ ] Skills publicadas en Chamber Catalog
+- [ ] Chamber v1.16.3 en ambas
+- [ ] Fallos registrados en $BUGS
+- [ ] /CBP sugerido en Diligencia
+
+---
+
+> Generado por `/ola planear` con asistencia de @documentador, @consejero, @circuito.
+> Próximo paso: Aplicar fix de 2 archivos en PC Principal → luego avisar para VAIO.
 ```
 
 ---

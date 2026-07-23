@@ -104,6 +104,7 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 
 | Archivo | Version | Ultima actualizacion |
 |---|---|---|
+| doc/olas/OLA-CHAMBER-MIGRATION.md | v1.0 | 2026-07-23 |
 | doc/olas/_template.md | v1.0 | 2026-07-04 |
 | doc/olas/README.md | v1.0 | 2026-07-04 |
 
