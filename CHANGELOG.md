@@ -28,6 +28,10 @@
 - worker-loop.md: reemplazado por VAIO-SCHEDULED.md (Chamber scheduled tasks)
 - startup-tunnel.ps1: reemplazado por tunnel nativo de Chamber
 
+### Added
+- MECANICA-CHAMBER-FIRST.md — plan estratégico de migración a funcionalidades nativas de Chamber
+- ROADMAP: R72-R77 — 6 items para migración Chamber-first (túneles nativos, terminal integrado, monitoreo SSE, MCP, skills, upgrade)
+
 ## [3.0.1] — 2026-07-21
 
 ### Added

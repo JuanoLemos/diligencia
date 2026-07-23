@@ -64,6 +64,7 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 | MECANICA-OLAS.md | v1.0 | 2026-07-04 |
 | MECANICA-CONSEJO.md | v1.0 | 2026-07-01 |
 | MECANICA-CIRCUITO.md | v1.0 | 2026-07-01 |
+| MECANICA-CHAMBER-FIRST.md | v1.0 | 2026-07-23 |
 | MANDATO.md | v1.17.2 | 2026-06-06 |
 | _template.md | v1.16.4 | 2026-06-06 |
 | meta-escalabilidad.md | v1.16.4 | 2026-06-06 |

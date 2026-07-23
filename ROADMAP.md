@@ -62,6 +62,12 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R69 | +status: dashboard de consumo de APIs en vivo — tokens por proyecto, costo mensual. | P2 | 🔴 Pendiente | R61,R68 |
 | R70 | +6 agentes especializados por dominio. Creación: @narrador, @game-designer, @trader, @cartografo, @editor-video. | P1 | 🟡 En progreso | — |
 | R71 | +red-local: conectar PC secundaria a la principal via SSH para desarrollo remoto. VAIO conectada via VS Code Tunnels. | P2 | 🟡 En progreso | — |
+| R72 | +chamber-native-tunnel: reemplazar startup-tunnel.ps1 por tunnel nativo de Chamber (managed-remote Cloudflare). URL persistente, diagnóstico integrado, sin scripts externos. | P2 | 🔴 Pendiente | — |
+| R73 | +chamber-terminal: usar terminal integrado de Chamber (WebSocket) en vez de vscode.dev para comandos en VAIO. Todo en la misma UI. | P2 | 🔴 Pendiente | — |
+| R74 | +chamber-monitoring: centralizar monitoreo del worker vía SSE events de Chamber + Tray App. Reemplazar worker-log.md por API status. | P3 | 🔴 Pendiente | R72 |
+| R75 | +chamber-mcp: hostear codebase-memory-mcp en Chamber como servidor MCP local (scope proyecto). Acceso al grafo 3D desde cualquier lado. | P2 | 🔴 Pendiente | — |
+| R76 | +chamber-skills: publicar skills de Diligencia (tdd-strict, pr-review, sdd-workflow) en Chamber Skills Catalog. | P3 | 🔴 Pendiente | — |
+| R77 | +chamber-upgrade: actualizar Chamber v1.13.2 → v1.16.3 (permission auto-accept, remote instance sin OpenCode, SSH nativo). | P2 | 🔴 Pendiente | R72,R75 |
 
 ## Futuro (Later)
 
