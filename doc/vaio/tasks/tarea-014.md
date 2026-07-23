@@ -1,32 +1,61 @@
 # Tarea 014 — check-tareas reutiliza sesión única
 
-> Ejecutar en la VAIO. Modifica runtime.js de Chamber (requiere reinicio de Chamber).
+> Ejecutar en la VAIO. Modifica runtime.js de Chamber vía PowerShell.
+> No requiere edición manual.
 
 ## Objetivo
 
-1. Modificar `runtime.js` de Chamber para que acepte `sessionId` en el execution config
-2. Actualizar la scheduled task `check-tareas` para usar la sesión `ses_08860b1f7ffeGQftllZ2pt6OL0`
+1. Modificar `runtime.js` de Chamber por línea de comandos (PowerShell)
+2. Actualizar la scheduled task `check-tareas` para usar sesión única
 3. Reiniciar Chamber
 
 ---
 
-## Paso 1 — Modificar runtime.js de Chamber
+## Paso 1 — Ubicar y modificar runtime.js
 
-El `runtime.js` actual crea una sesión nueva en cada ejecución. Hay que agregar soporte para `sessionId`.
+```powershell
+# Buscar runtime.js en la instalación de Chamber
+$paths = @(
+    "$env:LOCALAPPDATA\Programs\@openchamberelectron\resources\packages\web\server\lib\scheduled-tasks\runtime.js",
+    "$env:LOCALAPPDATA\Programs\@openchamberelectron\app\packages\web\server\lib\scheduled-tasks\runtime.js",
+    "C:\Program Files\@openchamberelectron\resources\packages\web\server\lib\scheduled-tasks\runtime.js",
+    "C:\Program Files (x86)\@openchamberelectron\resources\packages\web\server\lib\scheduled-tasks\runtime.js"
+)
+$target = $null
+foreach ($p in $paths) {
+    $exp = [System.Environment]::ExpandEnvironmentVariables($p)
+    if (Test-Path $exp) { $target = $exp; break }
+}
+if (-not $target) {
+    # Buscar recursivamente como fallback
+    $target = Get-ChildItem -Path "C:\Programs" -Filter "runtime.js" -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.DirectoryName -like "*scheduled-tasks*" } | Select-Object -First 1 -ExpandProperty FullName
+}
+if (-not $target) {
+    $target = Get-ChildItem -Path "$env:LOCALAPPDATA\Programs" -Filter "runtime.js" -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.DirectoryName -like "*scheduled-tasks*" } | Select-Object -First 1 -ExpandProperty FullName
+}
 
-Abrir:
+Write-Host "PATH: $target"
 ```
-C:\Users\USUARIO\AppData\Local\Programs\@openchamberelectron\resources\packages\web\server\lib\scheduled-tasks\runtime.js
+
+Si no encuentra el archivo, buscarlo:
+```powershell
+Get-ChildItem -Path "C:\" -Filter "runtime.js" -Recurse -ErrorAction SilentlyContinue -Depth 8 | Where-Object { $_.DirectoryName -like "*scheduled-tasks*" } | Select-Object FullName
 ```
 
-Buscar:
-```javascript
-    const sessionResponse = await client.session.create({
-```
+---
 
-Reemplazar desde esa línea hasta `}` que cierra el bloque, por:
+## Paso 2 — Aplicar la modificación
 
-```javascript
+```powershell
+$content = Get-Content -Path $target -Raw
+
+# Reemplazar el bloque de creación de sesión con soporte para sessionId
+$oldBlock = '    const sessionResponse = await client.session.create\(\{\s+directory: projectPath,\s+title,\s+\}\);'
+$oldBlock += '[\s\S]*?    if \(!sessionID\) \{\s+throw new Error\(\'failed to create session\'\);\s+\}'
+
+# Más fácil: reemplazar la línea específica y el bloque que le sigue
+$pattern = '    const sessionResponse = await client.session.create\(\{[\s\S]*?\n    \}\);'
+$replacement = @'
     let sessionID;
     if (task.execution?.sessionId) {
       sessionID = task.execution.sessionId;
@@ -40,11 +69,33 @@ Reemplazar desde esa línea hasta `}` que cierra el bloque, por:
         throw new Error('failed to create session');
       }
     }
+'@
+
+if ($content -match $pattern) {
+    $content = $content -replace $pattern, $replacement
+    Set-Content -Path $target -Value $content -Encoding UTF8
+    Write-Host "MODIFICADO: runtime.js actualizado con soporte para sessionId"
+} else {
+    # Fallback: reemplazo más simple
+    $content = $content -replace 'const sessionResponse = await client.session.create', '// sessionID support
+    let sessionID;
+    if (task.execution?.sessionId) {
+      sessionID = task.execution.sessionId;
+    } else {
+      const sessionResponse = await client.session.create'
+    $content = $content -replace 'const sessionID = sessionResponse\?\.data\?\.id;', 'const sessionID = sessionResponse?.data?.id;
+    }'
+    Set-Content -Path $target -Value $content -Encoding UTF8
+    Write-Host "MODIFICADO (fallback): runtime.js actualizado"
+}
+
+# Verificar el cambio
+Select-String -Path $target -Pattern "sessionId" | Select-Object -First 5
 ```
 
 ---
 
-## Paso 2 — Actualizar la tarea check-tareas con sessionId
+## Paso 3 — Actualizar la scheduled task con sessionId
 
 ```powershell
 $update = @'
@@ -74,27 +125,40 @@ curl.exe -s -X PUT http://localhost:57123/api/projects/path_QzoveGFtcHAvaHRkb2Nz
 
 ---
 
-## Paso 3 — Reiniciar Chamber
+## Paso 4 — Reiniciar Chamber
 
 ```powershell
-# Matar procesos OpenChamber
+Write-Host "Reiniciando Chamber..."
 Get-Process -Name "OpenChamber*" -ErrorAction SilentlyContinue | Stop-Process -Force
+Start-Sleep -Seconds 5
 
-# Esperar y verificar que no está
-Start-Sleep -Seconds 3
-Get-Process -Name "OpenChamber*" -ErrorAction SilentlyContinue
+# Verificar que se detuvo
+if (Get-Process -Name "OpenChamber*" -ErrorAction SilentlyContinue) {
+    Write-Host "ERROR: Chamber no se detuvo"
+} else {
+    Write-Host "Chamber detenido. Se reinicia automáticamente (Startup folder)"
+}
+```
 
-# Iniciar Chamber
-Start-Process -FilePath "C:\Users\USUARIO\AppData\Local\Programs\@openchamberelectron\OpenChamber.exe"
+Si Chamber no se reinicia solo, iniciarlo:
+```powershell
+$chamber = @(
+    "$env:LOCALAPPDATA\Programs\@openchamberelectron\OpenChamber.exe",
+    "C:\Program Files\@openchamberelectron\OpenChamber.exe"
+)
+foreach ($c in $chamber) {
+    $exp = [System.Environment]::ExpandEnvironmentVariables($c)
+    if (Test-Path $exp) { Start-Process -FilePath $exp; break }
+}
+Start-Sleep -Seconds 15
 ```
 
 ---
 
-## Paso 4 — Verificar
+## Paso 5 — Verificar
 
 ```powershell
-Start-Sleep -Seconds 10
-curl.exe -s http://localhost:57123/api/projects/path_QzoveGFtcHAvaHRkb2NzL0RpbGlnZW5jaWE/scheduled-tasks | ConvertFrom-Json | ConvertTo-Json -Depth 5
+curl.exe -s http://localhost:57123/api/projects/path_QzoveGFtcHAvaHRkb2NzL0RpbGlnZW5jaWE/scheduled-tasks | ConvertFrom-Json | ConvertTo-Json -Depth 3
 ```
 
 Confirmar que `sessionId` aparece en el execution de check-tareas.
@@ -113,7 +177,7 @@ $ok = @"
 
 | Acción | Estado |
 |---|---|
-| runtime.js modificado | SI — soporte para sessionId |
+| runtime.js modificado | SI |
 | check-tareas actualizada | SI — sessionId agregado |
 | Chamber reiniciado | SI |
 
@@ -128,4 +192,3 @@ git commit -m "VAIO: resultado tarea 014 — check-tareas reutiliza sesion unica
 git pull --rebase
 git push
 ```
-
