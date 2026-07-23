@@ -2,6 +2,24 @@
 
 ---
 
+## [3.0.2] — 2026-07-22
+
+### Added
+- R15: monitoreo bidireccional git fetch entre MAIN y VAIO Worker
+- tarea-007: auto-publicación URL cloudflared + watchdog + startup-tunnel.ps1
+- tarea-008: diagnóstico URL cloudflared inaccesible desde afuera
+
+### Fixed
+- README.md badge v2.7.2 → v3.0.1
+- COMANDOS.md header v2.7.2 → v3.0.1
+- Auditoría documental: 27 hallazgos corregidos (P1-P3)
+
+### Changed
+- VAIO: resultado-008 — DNS dev.opt resuelto en PC Principal
+- VAIO: resultado-007 — auto-publicación URL + watchdog activo
+- VAIO: URL cloudflared se publica automáticamente en cloudflared-url.md
+- /salud post-v3.0.1 ejecutado
+
 ## [3.0.1] — 2026-07-21
 
 ### Added
