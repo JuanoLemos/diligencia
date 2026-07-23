@@ -10,7 +10,7 @@ Monitorear el repositorio Diligencia en busca de nuevas tareas en `doc/vaio/task
 
 ```
 LOOP INFINITO:
-  1. git pull
+  1. git fetch + git pull (solo si hay cambios remotos nuevos)
   2. Watchdog: verificar cloudflared vivo
   3. Leer doc/vaio/tasks/ → detectar tareas nuevas
   4. Si hay tarea nueva SIN resultado → ejecutarla

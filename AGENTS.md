@@ -163,6 +163,7 @@ Los agentes especializados (`@narrador`, `@game-designer`, `@trader`, `@cartogra
 | R12 | Antes de ejecutar /CBP con push, el agente verifica que el working tree esté limpio (sin cambios de otras sesiones). Si hay dudas, sugiere /backup antes de commitear. |
 | R13 | Después de un git pull (o al iniciar sesión en un proyecto), el agente verifica que el working tree esté limpio y que no haya conflictos de merge pendientes. Si hay conflicto, pausa y reporta. |
 | R14 | VAIO Worker: agente autónomo 24/7 en laptop servidor. Loop perpetuo (pull → detectar tareas en `doc/vaio/tasks/` → ejecutar → reportar en `doc/vaio/results/` → push → esperar 60s → repetir). No requiere confirmación para BUILD. Solo toca `doc/vaio/`. No modifica MarketAI ni otros proyectos. Operado via `doc/vaio/worker-loop.md`. |
+| R15 | Monitoreo bidireccional vía `git fetch`. MAIN verifica periódicamente si VAIO publicó resultados (commits con "VAIO:") y notifica al usuario sin interrumpir. VAIO Worker verifica cada 60s si hay tareas nuevas. `git fetch` es solo lectura — no modifica working tree. `git pull` solo cuando se confirma contenido nuevo. |
 
 ## Prioridad MCP — codebase-memory-mcp
 
