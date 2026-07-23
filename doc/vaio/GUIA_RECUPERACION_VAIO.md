@@ -52,38 +52,46 @@ Start-Process -FilePath "$env:LOCALAPPDATA\Programs\@openchamberelectron\OpenCha
 
 El sistema vuelve a funcionar como antes. Las scheduled tasks se reactivan automáticamente.
 
-### Opción B — Migrar a source code (si querés paridad con MAIN)
+### Opción B — Migrar a source con Node.js (recomendada si querés paridad con MAIN)
 
-**Tiempo estimado:** 15-20 min
+> ⚠️ La CPU de la VAIO no tiene AVX2 — Bun no funciona. Usamos Node.js.
+
+**Tiempo estimado:** 10-15 min
 
 ```powershell
-# 1. Instalar Bun
-powershell -c "irm https://bun.sh/install.ps1 | iex"
-bun --version
+# 0. El repo ya está clonado de la tarea-016
+cd C:\Users\USUARIO\openchamber
 
-# 2. Clonar openchamber
-cd C:\Users\USUARIO
-git clone https://github.com/openchamber/openchamber.git openchamber
-cd openchamber
+# 1. Instalar Node.js 22 LTS (si no está)
+node --version  # si falla, instalar:
+# winget install OpenJS.NodeJS.LTS
+# O descargar manual: https://nodejs.org/dist/v22.0.0/node-v22.0.0-x64.msi
 
-# 3. Dependencias
-bun install
+# 2. Dependencias con npm
+npm install
 
-# 4. Aplicar fix de runtime.js
+# 3. Aplicar fix de runtime.js + project-config.js
 $rt = "C:\Users\USUARIO\openchamber\packages\web\server\lib\scheduled-tasks\runtime.js"
 $content = Get-Content $rt -Raw
 $content = $content -replace 'const sessionResponse = await client.session.create', 'let sessionID;
-if (task.execution?.sessionId) {
-  sessionID = task.execution.sessionId;
-} else {
-  const sessionResponse = await client.session.create'
+    const reuseSessionId = task.execution?.sessionId;
+    if (reuseSessionId) { sessionID = reuseSessionId; } else {
+      const sessionResponse = await client.session.create'
 $content = $content -replace 'const sessionID = sessionResponse\?\.data\?\.id;', 'const sessionID = sessionResponse?.data?.id;
-  }'
+    }'
 Set-Content $rt $content -Encoding UTF8
-"FIX APLICADO"
 
-# 5. Iniciar Chamber desde source
-bun run dev --port 57123
+$pc = "C:\Users\USUARIO\openchamber\packages\web\server\lib\projects\project-config.js"
+$content = Get-Content $pc -Raw
+$content = $content -replace 'const variant = asNonEmptyString\(value\.variant\);', 'const variant = asNonEmptyString(value.variant);
+    const sessionId = value.sessionId || null;'
+$content = $content -replace '\.\.\.\(variant \? \{ variant \} : \{\}\)', '...(variant ? { variant } : {}),
+      ...(sessionId ? { sessionId } : {})'
+Set-Content $pc $content -Encoding UTF8
+"AMBOS FIXES APLICADOS"
+
+# 4. Iniciar Chamber desde source con Node.js (NO Bun)
+node packages/web/bin/cli.js serve --port 57123
 ```
 
 ---
