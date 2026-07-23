@@ -1,8 +1,9 @@
 # VAIO — Puente de comunicacion via git (worker autónomo)
 
-> **Modo autónomo activo.** El VAIO Worker corre 24/7 sin intervención humana.
-> Loop: pull → detectar tareas → ejecutar → reportar → push → esperar 60s → repetir.
-> Reemplazo definitivo (túneles): `GUIA_CONTROL_REMOTO.md`.
+> **Sistema de automatización:** `VAIO-SCHEDULED.md` (Chamber Scheduled Tasks — recomendado)
+> ⚠️ **Legado:** `worker-loop.md` (loop infinito en OpenCode — deprecado)
+
+La PC principal y la VAIO se comunican a través de este repositorio en GitHub.
 
 La PC principal y la VAIO se comunican a través de este repositorio en GitHub.
 
@@ -59,7 +60,6 @@ LOOP:
 - Idempotente: si ya existe resultado-NNN.md, no re-ejecutar tarea-NNN.md
 
 ## Archivos relacionados
+- `doc/vaio/VAIO-SCHEDULED.md` — sistema de automatización via Chamber Scheduled Tasks (recomendado)
+- `doc/vaio/worker-loop.md` — ⚠️ deprecado (reemplazado por Scheduled Tasks)
 - `doc/vaio/PRONT_VAIO.md` — prompt de nacimiento para sesiones Chamber interactivas
-- `doc/vaio/worker-loop.md` — prompt del sistema para el worker autónomo 24/7
-- `doc/vaio/worker-log.md` — log de actividad del worker
-- `GUIA_CONTROL_REMOTO.md` — acceso directo vía túneles (complemento)

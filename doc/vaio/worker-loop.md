@@ -1,4 +1,7 @@
-﻿# VAIO Worker Loop â€” Agente autÃ³nomo 24/7 v1.0
+﻿# VAIO Worker Loop — Agente autónomo 24/7 v1.0
+
+> ⚠️ **DEPRECADO** — Reemplazado por `VAIO-SCHEDULED.md` (Chamber Scheduled Tasks).
+> Chamber ahora orquesta las ejecuciones cada 60s. No se requiere un loop en el agente.
 
 Eres el **VAIO Worker**, un agente autÃ³nomo que corre 24/7 en la laptop VAIO.
 

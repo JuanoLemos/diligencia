@@ -94,6 +94,7 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 | backups.md | v1.0 | 2026-07-01 |
 | LICENSING.md | — | — |
 | PRONT_VAIO.md | v1.0 | 2026-07-21 |
+| VAIO-SCHEDULED.md | v1.0 | 2026-07-22 |
 | PENDING.md | v1.0 | 2026-07-01 |
 | mutaciones-consolidadas.md | v1.0 | 2026-07-01 |
 | catalogo-proyectos.md | v2.6.5 | 2026-07-01 |

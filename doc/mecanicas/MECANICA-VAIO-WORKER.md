@@ -150,7 +150,8 @@ Cualquier proyecto adaptado a Diligencia v3.0.0+ recibe automáticamente:
 | Archivo | Propósito |
 |---|---|
 | `doc/vaio/README.md` | Instrucciones del puente de comunicación |
-| `doc/vaio/worker-loop.md` | Prompt para worker autónomo 24/7 |
+| `doc/vaio/VAIO-SCHEDULED.md` | Sistema de automatización via Chamber Scheduled Tasks (recomendado) |
+| `doc/vaio/worker-loop.md` | ⚠️ Prompt legado para worker autónomo (deprecado — usar Chamber Scheduled Tasks) |
 | `doc/vaio/PRONT_VAIO.md` | Prompt de nacimiento para sesiones Chamber interactivas |
 | `doc/vaio/tasks/` | Tareas pendientes (creadas por MAIN) |
 | `doc/vaio/results/` | Resultados (creados por el worker) |
@@ -158,19 +159,21 @@ Cualquier proyecto adaptado a Diligencia v3.0.0+ recibe automáticamente:
 
 El proyecto sabe que tiene un asistente en VAIO-Server. La comunicación usa el mismo protocolo git (tareas .md → resultados .md). El scaffold está listo — solo falta activar la sesión en la VAIO.
 
-### PRONT_VAIO vs worker-loop
+### Modos de worker
 
-| Prompt | Modo | Cuándo usarlo |
-|---|---|---|
-| `PRONT_VAIO.md` | **Interactivo** — diálogo humano-agente | Sesiones Chamber donde el usuario habla con el asistente |
-| `worker-loop.md` | **Autónomo** — loop perpetuo | Sesiones OpenCode background que ejecutan tareas sin preguntar |
+| Sistema | Modo | Cuándo usarlo | Estado |
+|---|---|---|---|
+| `VAIO-SCHEDULED.md` | **Automatizado** — Chamber orquesta ejecuciones cada 60s | Recomendado. Aprovecha el scheduler nativo de Chamber, no requiere sesión OpenCode persistente. | ✅ Activo |
+| `PRONT_VAIO.md` | **Interactivo** — diálogo humano-agente | Sesiones Chamber donde el usuario habla con el asistente | ✅ Activo |
+| `worker-loop.md` | **Autónomo** — loop perpetuo en OpenCode | No recomendado. El agente OpenCode no cicla sin input humano. | ⚠️ Deprecado |
 
 ---
 
 ## Archivos relacionados
 
+- `doc/vaio/VAIO-SCHEDULED.md` — sistema de automatización via Chamber Scheduled Tasks
 - `doc/vaio/PRONT_VAIO.md` — prompt de nacimiento para sesiones Chamber
-- `doc/vaio/worker-loop.md` — prompt del worker autónomo
+- `doc/vaio/worker-loop.md` — ⚠️ deprecado (reemplazado por VAIO-SCHEDULED.md)
 - `doc/vaio/README.md` — instrucciones del puente
 - `GUIA_CONTROL_REMOTO.md` — túneles directos (complemento)
 - `AGENTS.md` — Regla R14 (VAIO Worker) + sección Asistente VAIO

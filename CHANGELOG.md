@@ -8,6 +8,8 @@
 - R15: monitoreo bidireccional git fetch entre MAIN y VAIO Worker
 - tarea-007: auto-publicación URL cloudflared + watchdog + startup-tunnel.ps1
 - tarea-008: diagnóstico URL cloudflared inaccesible desde afuera
+- VAIO-SCHEDULED.md — worker autónomo via Chamber Scheduled Tasks (reemplazo definitivo)
+- tarea-012 — configuración de scheduled tasks en Chamber (manual única vez)
 
 ### Fixed
 - README.md badge v2.7.2 → v3.0.1
@@ -19,6 +21,12 @@
 - VAIO: resultado-007 — auto-publicación URL + watchdog activo
 - VAIO: URL cloudflared se publica automáticamente en cloudflared-url.md
 - /salud post-v3.0.1 ejecutado
+- R14 actualizado: worker loop deprecado → orquestado por Chamber Scheduled Tasks
+- R15 actualizado: VAIO monitoreado vía git fetch + Chamber Scheduled Tasks
+
+### Deprecated
+- worker-loop.md: reemplazado por VAIO-SCHEDULED.md (Chamber scheduled tasks)
+- startup-tunnel.ps1: reemplazado por tunnel nativo de Chamber
 
 ## [3.0.1] — 2026-07-21
 

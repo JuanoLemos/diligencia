@@ -181,7 +181,8 @@ Configuraciones recomendadas para que la VAIO se recupere sola tras un reinicio:
 |---|---|
 | **VS Code Tunnel** | `code tunnel service install` (se instala como servicio de Windows) |
 | **Chamber.exe** | Acceso directo en `%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\` |
-| **cloudflared** | Script `.ps1` en Startup (ver sección Cloudflare Tunnel) |
+| **Worker autónomo** | Chamber Scheduled Tasks (nativo) — ver `doc/vaio/VAIO-SCHEDULED.md` |
+| **cloudflared** | Chamber gestiona el túnel nativamente — ver sección Cloudflare Tunnel más arriba |
 
 ---
 
