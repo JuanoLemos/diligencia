@@ -1,5 +1,5 @@
-﻿# Cloudflared Tunnel URL
+﻿# 🌐 Cloudflared Tunnel URL
 
-`https://close-proceeds-winter-cups.trycloudflare.com`
+**URL activa:** https://close-proceeds-winter-cups.trycloudflare.com
 
-> Actualizado: 2026-07-23
+> Actualizada: 2026-07-23
