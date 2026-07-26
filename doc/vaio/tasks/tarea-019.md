@@ -1,79 +1,40 @@
-# Tarea 019 — Unificar Chamber en puerto 57123
+# Tarea 019 — Activar tasks en Chamber source (puerto 57124)
 
-> **Tarea de consolidación.** Elimina la doble instancia de Chamber en VAIO.
-> Fuente (port 57124) debe reemplazar Electron (port 57123).
+> **NO matar procesos de Chamber.** El worker corre dentro de Chamber. Matarlo = matarse a sí mismo.
+> En vez de unificar puertos, usamos el source (57124) como principal y redirigimos cloudflared.
 
 ## Objetivo
 
 | # | Acción |
 |---|---|
-| 1 | Detener Electron EXE (OpenChamber*) |
-| 2 | Detener source en 57124 |
-| 3 | Iniciar source en 57123 |
-| 4 | Recrear check-tareas + publish-url en 57123 |
-| 5 | Fijar sessionId |
-| 6 | Actualizar cloudflared para apuntar a 57123 |
-| 7 | Verificar + reportar |
+| 1 | Verificar Chamber source en 57124 |
+| 2 | Recrear check-tareas + publish-url en 57124 |
+| 3 | Fijar sessionId |
+| 4 | Redirigir cloudflared → 57124 |
+| 5 | Verificar + reportar |
 
 ---
 
-## Paso 1 — Detener Electron EXE
+## Paso 1 — Verificar Chamber source en 57124
 
 ```powershell
-# Detener todas las instancias de OpenChamber.exe (Electron viejo)
-Get-Process -Name "OpenChamber*" -ErrorAction SilentlyContinue | Stop-Process -Force
-Start-Sleep -Seconds 3
-
-# Verificar
-$remaining = Get-Process -Name "OpenChamber*" -ErrorAction SilentlyContinue
-if ($remaining) { "ERROR: Electron sigue corriendo" } else { "Electron DETENIDO" }
-```
-
----
-
-## Paso 2 — Detener source en 57124
-
-```powershell
-# Buscar proceso node en 57124
-$portProc = netstat -ano | Select-String ":57124.*LISTENING"
-if ($portProc) {
-    $pid = ($portProc -split '\s+')[-1]
-    Stop-Process -Id $pid -Force -ErrorAction SilentlyContinue
-    Start-Sleep -Seconds 2
-    "Source en 57124 detenido"
-} else {
-    "57124 ya libre"
+$status = curl.exe -s http://localhost:57124/api/openchamber/tunnel/status 2>$null
+if ($status) { "Chamber source en 57124 OK" } else {
+    # Si no está corriendo, iniciarlo
+    cd C:\Users\USUARIO\openchamber
+    Start-Process -WindowStyle Hidden -FilePath "node.exe" -ArgumentList "packages/web/bin/cli.js serve --port 57124"
+    Start-Sleep -Seconds 15
+    curl.exe -s http://localhost:57124/api/openchamber/tunnel/status
 }
 ```
 
 ---
 
-## Paso 3 — Iniciar source en 57123
+## Paso 2 — Recrear scheduled tasks en 57124
 
 ```powershell
-cd C:\Users\USUARIO\openchamber
+$api = "http://localhost:57124/api/projects/path_QzoveGFtcHAvaHRkb2NzL0RpbGlnZW5jaWE/scheduled-tasks"
 
-# Verificar puerto 57123 libre
-$portCheck = netstat -ano | Select-String ":57123.*LISTENING"
-if ($portCheck) { "ERROR: 57123 ocupado" } else { "57123 libre" }
-
-# Iniciar
-Start-Process -WindowStyle Hidden -FilePath "node.exe" -ArgumentList "packages/web/bin/cli.js serve --port 57123"
-Start-Sleep -Seconds 15
-
-# Verificar
-curl.exe -s http://localhost:57123/api/openchamber/tunnel/status
-if ($LASTEXITCODE -eq 0) { "Chamber source en 57123 OK" } else { "ERROR" }
-```
-
----
-
-## Paso 4 — Recrear scheduled tasks en 57123
-
-```powershell
-$api = "http://localhost:57123/api/projects/path_QzoveGFtcHAvaHRkb2NzL0RpbGlnZW5jaWE/scheduled-tasks"
-
-# Función para crear task
 function New-VAIO-Task($name, $cron, $prompt) {
     $body = @{task=@{name=$name;enabled=$true;schedule=@{kind="cron";cron=$cron;timezone="UTC"};execution=@{providerID="deepseek";modelID="deepseek-v4-flash";prompt=$prompt}}} | ConvertTo-Json -Depth 10
     $body | Set-Content "$env:TEMP\vaio-$name.json" -Encoding UTF8
@@ -85,15 +46,15 @@ function New-VAIO-Task($name, $cron, $prompt) {
 New-VAIO-Task "VAIO: check-tareas" "* * * * *" "Actuá como el VAIO Worker de Diligencia.`n1. git pull en C:\xampp\htdocs\Diligencia`n2. Revisá doc/vaio/tasks/ para tareas sin resultado`n3. Si hay tarea: ejecutala, escribí resultado en doc/vaio/results/`n4. git add + commit -m 'VAIO: resultado tarea NNN' + push`n5. DONE"
 
 # 2. publish-url
-New-VAIO-Task "VAIO: publish-url" "0 * * * *" "Usá la API de Chamber para obtener la URL del túnel.`n1. curl.exe -s http://localhost:57123/api/openchamber/tunnel/status`n2. Extraé el campo 'url' del JSON`n3. Escribí la URL en doc/vaio/cloudflared-url.md`n4. git add + commit + push`n5. DONE"
+New-VAIO-Task "VAIO: publish-url" "0 * * * *" "Usá la API de Chamber para obtener la URL del túnel.`n1. curl.exe -s http://localhost:57124/api/openchamber/tunnel/status`n2. Extraé el campo 'url' del JSON`n3. Escribí la URL en doc/vaio/cloudflared-url.md`n4. git add + commit + push`n5. DONE"
 ```
 
 ---
 
-## Paso 5 — Fijar sessionId
+## Paso 3 — Fijar sessionId
 
 ```powershell
-$api = "http://localhost:57123/api/projects/path_QzoveGFtcHAvaHRkb2NzL0RpbGlnZW5jaWE/scheduled-tasks"
+$api = "http://localhost:57124/api/projects/path_QzoveGFtcHAvaHRkb2NzL0RpbGlnZW5jaWE/scheduled-tasks"
 
 # Esperar que check-tareas ejecute una vez
 Start-Sleep -Seconds 65
@@ -115,33 +76,29 @@ Write-Host "sessionId fijado"
 
 ---
 
-## Paso 6 — Actualizar cloudflared
+## Paso 4 — Redirigir cloudflared → 57124
 
 ```powershell
-# Detener cloudflared actual (apuntaba a 57123 del Electron)
+# Detener cloudflared actual (apunta al Electron en 57123)
 Get-Process -Name "cloudflared*" -ErrorAction SilentlyContinue | Stop-Process -Force
-Start-Sleep -Seconds 2
+Start-Sleep -Seconds 3
 
-# Iniciar cloudflared apuntando al Chamber unificado
-Start-Process -WindowStyle Hidden -FilePath "C:\Program Files (x86)\cloudflared\cloudflared.exe" -ArgumentList "tunnel --url http://localhost:57123 --no-autoupdate"
-Start-Sleep -Seconds 5
+# Iniciar cloudflared apuntando al Chamber source (57124)
+Start-Process -WindowStyle Hidden -FilePath "C:\Program Files (x86)\cloudflared\cloudflared.exe" -ArgumentList "tunnel --url http://localhost:57124 --no-autoupdate"
+Start-Sleep -Seconds 10
 
 # Verificar
 $cloudProc = Get-Process -Name "cloudflared*" -ErrorAction SilentlyContinue
-if ($cloudProc) { "cloudflared OK — PID $($cloudProc.Id)" } else { "ERROR: cloudflared no arrancó" }
+if ($cloudProc) { "cloudflared OK — PID $($cloudProc.Id) — apuntando a :57124" } else { "ERROR: cloudflared no arrancó" }
 ```
 
 ---
 
-## Paso 7 — Verificar y reportar
+## Paso 5 — Verificar y reportar
 
 ```powershell
-# Verificación rápida
-$chamberStatus = curl.exe -s http://localhost:57123/api/openchamber/tunnel/status | ConvertFrom-Json
-$tasksStatus = curl.exe -s http://localhost:57123/api/openchamber/scheduled-tasks/status | ConvertFrom-Json
-
 $ok = @"
-# Resultado 019 — Chamber unificado en 57123
+# Resultado 019 — Tasks activas en Chamber source (:57124)
 
 **Fecha:** $(Get-Date -Format "yyyy-MM-dd HH:mm:ss UTC")
 
@@ -149,25 +106,23 @@ $ok = @"
 
 | Check | Resultado |
 |---|---|
-| Electron EXE detenido | SI/NO |
-| Source en 57123 | SI/NO |
-| check-tareas activa | $($tasksStatus.hasEnabledScheduledTasks) |
-| publish-url activa | $($tasksStatus.hasEnabledScheduledTasks) |
+| Chamber source en 57124 | SI/NO |
+| check-tareas activa | SI/NO |
+| publish-url activa | SI/NO |
 | sessionId fijado | SI/NO |
-| cloudflared apuntando a 57123 | SI/NO |
-| Tunnel activo | $($chamberStatus.active) |
+| cloudflared → 57124 | SI/NO |
 
-## Unificación completada
+## Notas
 
-Una sola instancia de Chamber (source, v1.16.3) en puerto 57123.
-Solo 2 tasks: check-tareas (1 min) + publish-url (1 hora).
-cloudflared-watchdog deprecado definitivamente.
-Electron EXE no se usa más — reemplazado por node desde source.
+- Electron EXE (57123) sigue corriendo pero sin tasks. Se apaga cuando estés frente a la VAIO.
+- Chamber source (57124) es el principal con las 2 tasks activas.
+- cloudflared tunela al source (57124) para que Chamber remoto funcione.
+- Para unificar puertos, manualmente: cerrar Electron → iniciar source en 57123 → actualizar cloudflared → 57123.
 "@
 Set-Content -Path "doc\vaio\results\resultado-019.md" -Value $ok -Encoding UTF8
 
 git add doc/vaio/results/resultado-019.md
-git commit -m "VAIO: resultado tarea 019 — Chamber unificado en 57123"
+git commit -m "VAIO: resultado tarea 019 — tasks activas en source :57124"
 git pull --rebase
 git push
 ```
