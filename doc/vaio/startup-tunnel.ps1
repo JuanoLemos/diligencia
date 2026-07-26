@@ -1,4 +1,6 @@
-﻿# startup-tunnel.ps1 — Inicia cloudflared, captura URL, publica en el repo
+﻿# ⚠️ DEPRECADO — Reemplazado por Chamber Tunnel API (POST /api/openchamber/tunnel/start con mode: quick/managed-remote)
+# Ver doc/olas/OLA-CHAMBER-100.md para el nuevo flujo.
+# startup-tunnel.ps1 — Inicia cloudflared, captura URL, publica en el repo
 $projectRoot = "C:\xampp\htdocs\Diligencia"
 $urlFile = "$projectRoot\doc\vaio\cloudflared-url.md"
 $logFile = "$projectRoot\doc\vaio\tunnel-startup.log"

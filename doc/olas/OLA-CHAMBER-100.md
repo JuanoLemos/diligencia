@@ -1,207 +1,169 @@
-# Diligencia Ola Chamber-100 — Migración completa a funcionalidades nativas de Chamber v1.0
+# Diligencia Ola Chamber-100 — Migración a funcionalidades nativas de Chamber
 
-> Plan: 2026-07-25 | Máquinas: PC Principal + VAIO
-> Objetivo: Reemplazar todas las soluciones manuales por features nativas de Chamber. Sync ambas máquinas.
-
----
-
-## Estado actual vs objetivo
-
-| Sistema manual (nuestro) | Reemplazo Chamber | PC Principal | VAIO | Prioridad |
-|---|---|---|---|---|
-| `startup-tunnel.ps1` + cloudflared manual | Chamber Tunnel API (managed-remote) | ⚠️ cloudflared manual corriendo | ❌ | P1 |
-| `worker-log.md` + `git fetch` manual | Chamber SSE Events + status API | ❌ | ❌ | P1 |
-| vscode.dev aparte | Chamber Terminal WS | ❌ | ❌ | P2 |
-| VS Code tunnel `vaio-server` | Chamber Remote Instances (SSH) | ❌ | ❌ | P2 |
-| MCP en opencode.json | MCP en Chamber (UI + API) | ✅ PC Principal | ❌ | P2 |
-| Skills locales | Skills Catalog | ❌ | ❌ | P3 |
-| Scheduled tasks sesiones duplicadas | sessionId reutilizable | ⚠️ ASAR patched, tasks pausadas | ❌ Sin Chamber | P0 |
-| Chamber EXE (app.asar) | Chamber desde source (editable) | ⚠️ ASAR viejo, source con cambios sin commit | ❌ | P0 |
+> Plan v2.0 (refinado) | Ejecutado: 2026-07-26 | Sesión 1: PC Principal
+> Objetivo: Reemplazar soluciones manuales por funcionalidades nativas de Chamber en AMBAS máquinas.
 
 ---
 
-## Fase 0 — Fundación (ambas máquinas)
-
-> Estabilizar antes de migrar. Sin esto, nada funciona.
-
-### 0.1 — PC Principal: consolidar ASAR
-
-| Acción | Detalle |
-|---|---|
-| Commit source | `project-config.js` (sessionId fix) + `bun.lock` |
-| Rebuild | `bun run build` |
-| Rempaquetar ASAR | `npx @electron/asar pack` |
-| Verificar | EXE carga el nuevo ASAR con todos los fixes |
-
-### 0.2 — PC Principal: reactivar tasks con sessionId
-
-| Acción | Detalle |
-|---|---|
-| Fijar sessionId | `ses_06e8bc4ecffeGFhCWxckgZcaYW` en execution config |
-| Reactivar check-tareas | `enabled: true` — verificar que no crea sesiones nuevas |
-| Reactivar watchdog y publish-url | Solo después de confirmar check-tareas estable |
-
-### 0.3 — VAIO: Ola A (recuperación)
-
-| Acción | Detalle |
-|---|---|
-| Instalar Node.js 22 LTS | `winget install OpenJS.NodeJS.LTS` |
-| Clonar Chamber v1.16.3 | `git clone https://github.com/openchamber/openchamber.git` |
-| npm install | `npm install` (CPU sin AVX2) |
-| Aplicar fix sessionId | 2 archivos: `runtime.js` + `project-config.js` |
-| Iniciar | `node packages/web/bin/cli.js serve --port 57123` |
-| Recrear scheduled tasks | 3 tasks via curl |
-| Fijar sessionId | Igual proceso que 0.2 |
-
----
-
-## Fase 1 — Reemplazar manual por nativo
-
-> Migrar lo que construimos manualmente a lo que Chamber ya tiene.
-
-### 1.1 — Tunnel nativo (R72)
-
-**Reemplaza:** `startup-tunnel.ps1`, `cloudflared-url.md`, scheduled task cloudflared-watchdog
-
-| Máquina | Acción |
-|---|---|
-| PC Principal | Activar tunnel vía `POST /api/openchamber/tunnel/start` con `mode: "managed-remote"`. URL persistente (no trycloudflare). Obtener URL vía `GET /api/openchamber/tunnel/status`. Deprecar `startup-tunnel.ps1`. |
-| VAIO | Igual configuración. Chamber gestiona el túnel solo — no necesita watchdog. |
-
-**Beneficio:** URL permanente (no rotación cada reinicio), diagnóstico integrado, sin scripts externos.
-
-### 1.2 — Monitoreo SSE (R74)
-
-**Reemplaza:** `worker-log.md`, `git fetch` manual
-
-| Máquina | Acción |
-|---|---|
-| PC Principal | Suscribirse a `GET /api/openchamber/events` (SSE) para eventos de scheduled tasks. Status vía `GET /api/openchamber/scheduled-tasks/status`. Migrar `worker-log.md` a consulta de API. |
-| VAIO | Emitir eventos SSE para que MAIN los consuma. |
-
-**Beneficio:** Monitoreo en tiempo real, sin polling git.
-
-### 1.3 — Terminal integrado (R73)
-
-**Reemplaza:** vscode.dev para comandos en VAIO
-
-| Máquina | Acción |
-|---|---|
-| PC Principal | Probar terminal WS: `POST /api/terminal/create` + WebSocket `/api/terminal/ws`. Evaluar si reemplaza vscode.dev. |
-| VAIO | Hostear servicio WS. |
-
-**Beneficio:** Terminal + chat en la misma UI de Chamber.
-
----
-
-## Fase 2 — Extender capacidades
-
-> Features nuevas que Chamber tiene y no usamos.
-
-### 2.1 — Remote Instances (nuevo)
-
-**Reemplaza:** VS Code tunnel `vaio-server`
-
-| Máquina | Acción |
-|---|---|
-| PC Principal | Configurar VAIO como remote instance en Chamber. Acceso SSH nativo. |
-| VAIO | Activar OpenSSH. Configurar como instancia remota. |
-
-**Beneficio:** Conectar a VAIO desde Chamber directamente, sin abrir vscode.dev.
-
-### 2.2 — MCP en VAIO (R75)
-
-| Máquina | Acción |
-|---|---|
-| VAIO | `POST /api/config/mcp/codebase-memory` con path local al binario MCP (desde PC Principal). |
-
-**Beneficio:** Grafo de código de VAIO visible desde MAIN vía Chamber.
-
-### 2.3 — Skills públicas (R76)
-
-| Máquina | Acción |
-|---|---|
-| PC Principal | `POST /api/config/skills/tdd-strict`, `POST /api/config/skills/pr-review`, `POST /api/config/skills/sdd-workflow` |
-
-**Beneficio:** Skills instalables desde Chamber UI.
-
----
-
-## Fase 3 — Mantenimiento
-
-> Automatizar actualizaciones y monitoreo.
-
-### 3.1 — Auto-update
-
-| Máquina | Acción |
-|---|---|
-| Ambas | Configurar `git pull upstream/main` + rebuild automático. O usar `POST /api/openchamber/update-install`. |
-
-### 3.2 — Tray optimization
-
-| Máquina | Acción |
-|---|---|
-| Ambas | Configurar Tray App con monitoreo de scheduled tasks + tunnel status. |
-
----
-
-## Dependencias
+## Arquitectura objetivo
 
 ```
-Fase 0
-├─ 0.1 PC: ASAR consolidado ────────────────────────┐
-├─ 0.2 PC: Tasks reactivadas ───────────────────────┤
-└─ 0.3 VAIO: Node.js + Chamber source ──────────────┤
-                                                      │
-Fase 1                                                │
-├─ 1.1 Tunnel nativo ← 0.1 + 0.3 ───────────────────┤
-├─ 1.2 Monitoreo SSE ← 0.2 ─────────────────────────┤
-└─ 1.3 Terminal WS ← 0.1 + 0.3 ─────────────────────┤
-                                                      │
-Fase 2                                                │
-├─ 2.1 Remote Instances ← 0.3 ──────────────────────┤
-├─ 2.2 MCP en VAIO ← 0.3 ───────────────────────────┤
-└─ 2.3 Skills ← sin dependencias ────────────────────┤
-                                                      │
-Fase 3 ← todo lo anterior ───────────────────────────┘
+Antes:                              Después:
+┌──────────────────────┐            ┌──────────────────────────┐
+│ startup-tunnel.ps1   │     ──→   │ Chamber Tunnel API        │
+│ vscode.dev + manual  │     ──→   │ Terminal WS integrado     │
+│ worker-log.md        │     ──→   │ SSE events + status API   │
+│ codebase-mcp local   │     ──→   │ MCP server en Chamber     │
+│ Skills locales .md   │     ──→   │ Skills vía catalog        │
+│ Chamber v1.13.2      │     ──→   │ Chamber v1.16.3           │
+│ runtime.js no-editable│    ──→   │ Source code editable       │
+└──────────────────────┘            └──────────────────────────┘
 ```
 
----
+### Estado actual por máquina
 
-## Archivos afectados
-
-| Archivo | Dónde | Fase |
+| Componente | PC Principal | VAIO |
 |---|---|---|
-| `packages/web/server/lib/projects/project-config.js` | Chamber source | 0.1 |
-| `packages/web/server/lib/scheduled-tasks/runtime.js` | Chamber source | 0.1 |
-| `app.asar` | `@openchamberelectron\resources\` | 0.1 |
-| `doc/vaio/startup-tunnel.ps1` | Diligencia VAIO | 1.1 (deprecar) |
-| `doc/vaio/cloudflared-url.md` | Diligencia VAIO | 1.1 (deprecar) |
-| `doc/vaio/worker-log.md` | Diligencia VAIO | 1.2 (deprecar) |
-| `doc/vaio/VAIO-SCHEDULED.md` | Diligencia | 1.1-1.3 |
-| `doc/guias/GUIA_CONTROL_REMOTO.md` | Diligencia | 1.3, 2.1 |
-| `doc/mecanicas/MECANICA-CHAMBER-FIRST.md` | Diligencia | Seguimiento |
+| Chamber source | ✅ `C:\Users\jlemo\OneDrive\Desktop\openchamber\` | ⚠️ Clonado en `C:\Users\jlemo\openchamber\` (Bun roto sin AVX2) |
+| runtime.js | ✅ Editable (source) | ❌ No editable (empaquetado ASAR) |
+| Node.js | ✅ Instalado | ❌ Pendiente de instalar |
+| Scheduled tasks | ✅ 3 tasks activas | ✅ 3 tasks activas |
+| Fix 2 archivos | ❌ Aplicado en ASAR | ❌ Pendiente de aplicar |
+| Chamber corriendo | ✅ App instalada | ✅ App instalada (pero ASAR) |
+| Chamber desde source | ❌ No probado | ❌ Pendiente (Node.js) |
 
 ---
 
-## Checklist pre-ejecución
+## Tabla maestra — qué va en cada máquina
 
-- [ ] Fase 0.1 completada (ASAR consolidado en PC)
-- [ ] Fase 0.2 completada (tasks estables sin sesiones duplicadas)
-- [ ] Fase 0.3 completada (VAIO con Node.js + Chamber source)
-- [ ] Post-0: ambas máquinas tienen el mismo parche de sessionId
+| Sub-ola | PC Principal | VAIO |
+|---|---|---|
+| **S1** Sesión 1 (esta) | ✅ Tunnel quick mode, SSE, Terminal, Skills, Docs | — |
+| **A0** Fix 2 archivos | ✅ Aplicar en source repo | ✅ Aplicar después de Node.js |
+| **A1** Node.js + npm | ❌ Ya tiene | ✅ Instalar Node.js, `npm install` |
+| **A2** Chamber desde source | ⬜ Evaluar si conviene | ✅ `node bin/cli.js serve --port 57123` |
+| **B1** Tunnel nativo | ❌ No necesita | ✅ Reemplazar startup-tunnel.ps1 |
+| **B2** Terminal WS | ✅ Usar para conectar a VAIO | ✅ Hostear servicio WS |
+| **B3** MCP | ⏳ Probar aquí primero | ⏳ Desplegar después |
+| **B4** Skills | ✅ Publicado desde acá | ❌ No publica |
+| **B5** Monitoreo | ✅ Consumir SSE desde acá | ✅ Emitir SSE + status API |
+| **B6** Upgrade v1.16.3 | ⏳ Probar aquí primero | ⏳ Aplicar después |
 
-## Checklist post-ejecución
+---
 
-- [ ] Todas las tasks reactivadas y estables
-- [ ] Tunnel nativo funcionando (URL vía API, no archivo)
-- [ ] Terminal WS probado
-- [ ] Remote Instances configurado
-- [ ] MCP en ambas máquinas
-- [ ] Skills publicadas
+## Sesión 1 — PC Principal (COMPLETADO ✅)
+
+> Ejecutada el 2026-07-26. Resultados:
+
+| Bloque | Resultado |
+|---|---|
+| Verificar estado | ✅ Chamber responde, 3 tasks activas |
+| Ajustar publish-url | ✅ Usa `GET /api/openchamber/tunnel/status` |
+| Activar tunnel quick mode | ✅ Tunnel activo vía API |
+| Deprecar archivos | ✅ `startup-tunnel.ps1`, `worker-log.md`, watchdog desactivado |
+| Probar SSE | ✅ Eventos recibidos |
+| Probar Terminal API | ✅ Sesión creada |
+| Publicar skills (3) | ✅ tdd-strict, pr-review, sdd-workflow |
+| Actualizar documentación | ✅ 6 archivos actualizados |
+| Commit | ✅ `feat(ola): OLA-CHAMBER-100 Sesion 1` |
+
+---
+
+## Sesiones pendientes
+
+### Sesión 2 — VAIO: Recuperación + Estabilización
+
+> Ejecutar físicamente frente a la VAIO.
+
+| Tarea | Depende de | Esfuerzo |
+|---|---|---|
+| A1 — Instalar Node.js 22 LTS | — | 2 min |
+| A2 — `npm install` en openchamber | A1 | 5 min |
+| A3 — Aplicar fix de sessionId (2 archivos) | A2 | 3 min |
+| A4 — Iniciar Chamber desde source con Node.js | A3 | 2 min |
+| A5 — Verificar scheduled tasks | A4 | 2 min |
+
+### Sesión 3 — VAIO: Migración Chamber-first
+
+| Tarea | Depende de | Esfuerzo |
+|---|---|---|
+| B1 — Tunnel nativo de Chamber | Sesión 2 | 3 min |
+| B2 — Terminal Chamber (host) | Sesión 2 | 2 min |
+| B5 — Monitoreo SSE | B1 | 2 min |
+| B6 — Upgrade v1.16.3 | B1 | 10 min |
+
+### Sesión 4 — MCP (opcional)
+
+| Tarea | Depende de | Esfuerzo |
+|---|---|---|
+| B3 — Hostear codebase-memory-mcp en Chamber | Sesión 2 | 5 min |
+
+---
+
+## Dependencias visuales
+
+```
+Sesión 1: PC Principal (COMPLETADO)
+│
+Sesión 2: VAIO Recuperación
+├─ A1 Node.js ─→ A2 npm install ─→ A3 fix 2 archivos ─→ A4 iniciar Chamber ─→ A5 verificar
+│
+Sesión 3: VAIO Migración
+├─ B1 Tunnel ─→ B5 Monitoreo
+├─ B2 Terminal
+└─ B6 Upgrade (depende de B1)
+│
+Sesión 4: MCP (opcional)
+└─ B3 MCP
+```
+
+---
+
+## Riesgos
+
+| Riesgo | Probabilidad | Impacto | Mitigación |
+|---|---|---|---|
+| Node.js 22 no disponible para CPU de VAIO | Baja | Alto | Usar Winget o MSI manual |
+| `npm install` falla por `better-sqlite3` | Media | Medio | `--ignore-scripts` + `npm rebuild` |
+| Fix de 2 archivos se pierde con `git merge upstream` | Alta | Medio | Documentar diff. Reaplicar post-upgrade |
+| v1.16.3 cambia schema de scheduled tasks | Media | Medio | Probar en PC Principal primero |
+| CPU sin AVX2 impide Bun (YA CONFIRMADO) | 100% | Alto | Ya migrado a Node.js — superado |
+
+---
+
+## Pre-ejecución (próxima sesión)
+
+- [ ] Estar físicamente frente a la VAIO
+- [ ] Conexión a internet estable
+- [ ] Repo Diligencia actualizado (`git pull`)
+- [ ] Repo openchamber clonado en `C:\Users\jlemo\openchamber`
+
+## Post-ejecución (próxima sesión)
+
+- [ ] Chamber corriendo desde source via Node.js en VAIO
+- [ ] 3 scheduled tasks activas
+- [ ] Tunnel nativo funcionando
+- [ ] Terminal WS probado (VAIO host)
 - [ ] SSE monitoreo activo
 - [ ] /CBP sugerido en Diligencia
 
 ---
 
-> Generado por `/ola planear`. Fase 0.1 en ejecución.
+## Archivos afectados (global)
+
+| Archivo | Sesión | Acción |
+|---|---|---|
+| `doc/vaio/startup-tunnel.ps1` | 1, 3 | ✅ Deprecado |
+| `doc/vaio/cloudflared-url.md` | 1, 3 | ✅ Actualizado (Fuente: Chamber API) |
+| `doc/vaio/worker-log.md` | 1 | ✅ Deprecado |
+| `doc/vaio/GUIA_RECUPERACION_VAIO.md` | 1, 2 | ✅ Actualizado |
+| `doc/vaio/VAIO-SCHEDULED.md` | 1 | ✅ Actualizado |
+| `doc/guias/GUIA_CONTROL_REMOTO.md` | 1 | ✅ Actualizado |
+| `doc/mecanicas/MECANICA-CHAMBER-FIRST.md` | 1 | ✅ Actualizado |
+| `ROADMAP.md` | 1 | ✅ R72-R76 completados |
+| `doc/olas/OLA-CHAMBER-100.md` | 1 | ✅ Refinado v2.0 |
+
+---
+
+> Generado por `/ola planear`. Refinado en OLA-CHAMBER-100 Sesión 1.
+> Próximo paso: Sesión 2 — Recuperación VAIO (frente a la máquina).

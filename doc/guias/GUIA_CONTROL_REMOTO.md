@@ -8,7 +8,7 @@
 
 La VAIO es una laptop Windows que funciona como servidor 24/7 con:
 
-- Chamber.exe corriendo en `localhost:3000`
+- Chamber.exe corriendo en `localhost:57123`
 - MarketAI en `C:\xampp\htdocs\MarketAI`
 - Diligencia clonado en `C:\xampp\htdocs\Diligencia`
 - OpenCode v1.18.3 instalado
@@ -77,47 +77,41 @@ code tunnel service install
 
 ### Requisitos
 
-- `cloudflared` instalado en la VAIO
-- Chamber.exe corriendo en `localhost:3000`
+- Chamber corriendo en la máquina remota en `localhost:57123`
 - DNS funcional (ver Troubleshooting abajo)
 
 ### Verificar que Chamber está corriendo
 
 ```powershell
-netstat -ano | findstr :3000
+netstat -ano | findstr :57123
 ```
 
-Si no muestra nada, Chamber no está corriendo. Iniciarlo manualmente en la VAIO.
+Si no muestra nada, Chamber no está corriendo. Iniciarlo manualmente en la máquina remota.
 
 ### Activar el tunnel
 
-En la VAIO, PowerShell (no necesita Admin):
+Chamber gestiona el túnel nativamente. No se necesita `cloudflared` manual:
 
 ```powershell
-cloudflared tunnel --url http://localhost:3000
+# Iniciar tunnel quick mode (URL efímera)
+curl.exe -s -X POST http://localhost:57123/api/openchamber/tunnel/start `
+  -H "Content-Type: application/json" `
+  -d '{"provider":"cloudflare","mode":"quick"}'
+
+# Obtener URL activa
+curl.exe -s http://localhost:57123/api/openchamber/tunnel/status | ConvertFrom-Json | Select-Object url
 ```
 
-Salida esperada:
-
-```
-INF Requesting new quick Tunnel on trycloudflare.com...
-INF +------------------------------------------------------------+
-INF |  Your quick Tunnel has been created! Visit it at:          |
-INF |  https://random-name.trycloudflare.com                     |
-INF +------------------------------------------------------------+
-```
-
-Anotá la URL de `trycloudflare.com`. Abrila en cualquier navegador → debe mostrar Chamber.
-
-### Mantener el tunnel 24/7
-
-El comando anterior se cierra al cerrar la terminal. Para mantenerlo siempre activo, crear un script en Startup de Windows:
-
-**`%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\cloudflared.ps1`**:
-
+Para URL persistente, usar modo `managed-remote` (requiere cuenta Cloudflare Zero Trust):
 ```powershell
-Start-Process cloudflared -ArgumentList "tunnel --url http://localhost:3000" -WindowStyle Hidden
+curl.exe -s -X POST http://localhost:57123/api/openchamber/tunnel/start `
+  -H "Content-Type: application/json" `
+  -d '{"provider":"cloudflare","mode":"managed-remote"}'
 ```
+
+### Verificar el tunnel desde afuera
+
+Desde cualquier navegador, abrir la URL que devuelve `GET /api/openchamber/tunnel/status`. Debe mostrar la UI de Chamber.
 
 ### Troubleshooting
 
@@ -192,13 +186,61 @@ El sistema de puente via git (`doc/vaio/tasks/`) fue deprecado en favor de los t
 
 ---
 
+## Terminal Chamber (reemplazo de vscode.dev)
+
+Chamber tiene un terminal WebSocket integrado. Para comandos rápidos en la VAIO ya no hace falta abrir vscode.dev:
+
+### Desde la UI de Chamber
+
+1. Abrí Chamber en el navegador
+2. Buscá el ícono `>_` en la barra inferior o en el panel lateral
+3. Hacé clic → se abre el terminal integrado
+4. Ejecutá comandos directamente en la máquina remota
+
+### Desde API (uso programático)
+
+```powershell
+# Crear sesión terminal
+$session = curl.exe -s -X POST http://localhost:57123/api/terminal/create `
+  -H "Content-Type: application/json" `
+  -d '{"cwd":"C:\\xampp\\htdocs\\Diligencia","shell":"powershell"}' | ConvertFrom-Json
+
+# Conectar WebSocket a ws://localhost:57123/api/terminal/ws
+# Enviar bind: {"t":"b","s":"<sessionId>","v":2}
+# Enviar comandos como text frames
+```
+
+> **Recomendación:** Para uso interactivo, usar la UI de Chamber. Para automatización, usar la API.
+
+---
+
+## Monitoreo SSE
+
+Chamber emite eventos en tiempo real vía Server-Sent Events. Útil para monitorear el worker desde la PC Principal:
+
+```powershell
+# Streaming de eventos (probar 5 segundos)
+curl.exe -s -N --max-time 5 http://localhost:57123/api/openchamber/events
+
+# Estado consolidado de scheduled tasks
+curl.exe -s http://localhost:57123/api/openchamber/scheduled-tasks/status
+
+# Último run de cada tarea
+curl.exe -s http://localhost:57123/api/projects/path_QzoveGFtcHAvaHRkb2NzL0RpbGlnZW5jaWE/scheduled-tasks
+```
+
+Esto reemplaza el `worker-log.md` manual.
+
+---
+
 ## URLs activas
 
-> Estas URLs pueden cambiar. La de cloudflared rota al reiniciar el túnel. El worker VAIO publica la URL actual en `doc/vaio/worker-log.md`.
+> Estas URLs pueden cambiar. La URL del tunnel se obtiene dinámicamente vía `GET /api/openchamber/tunnel/status`.
+> El worker VAIO publica la URL actual en `doc/vaio/cloudflared-url.md`.
 
 | Acceso | URL |
 |---|---|
-| Chamber (Cloudflare Tunnel) | `https://wichita-borough-diving-tribal.trycloudflare.com` |
+| Chamber (Cloudflare Tunnel) | `{{CHAMBER_TUNNEL_URL}}` (obtener vía API) |
 | VS Code Remote | `https://vscode.dev/tunnel/vaio-server/` |
 
 ---
@@ -207,3 +249,5 @@ El sistema de puente via git (`doc/vaio/tasks/`) fue deprecado en favor de los t
 
 - `GUIA_RED_LOCAL.md` — acceso SSH en red local (misma WiFi, no requiere túneles)
 - `GUIA_CHAMBER_INSTALABLE.md` — build e instalación de Chamber.exe
+- `VAIO-SCHEDULED.md` — sistema de worker autónomo (scheduled tasks)
+- `OLA-CHAMBER-100.md` — migración a funcionalidades nativas de Chamber

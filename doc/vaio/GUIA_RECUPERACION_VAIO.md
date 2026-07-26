@@ -60,7 +60,7 @@ El sistema vuelve a funcionar como antes. Las scheduled tasks se reactivan autom
 
 ```powershell
 # 0. El repo ya está clonado de la tarea-016
-cd C:\Users\USUARIO\openchamber
+cd C:\Users\jlemo\openchamber
 
 # 1. Instalar Node.js 22 LTS (si no está)
 node --version  # si falla, instalar:
@@ -111,6 +111,39 @@ curl.exe -s http://localhost:57123/api/projects/path_QzoveGFtcHAvaHRkb2NzL0RpbGl
 
 ---
 
-## Fase 4 — Commit de recuperación
+---
+
+## Fase 4 — Actualización post-OLA-CHAMBER-100
+
+Si estás recuperando después de la migración OLA-CHAMBER-100:
+
+### Tunnel vía API (no más cloudflared manual)
+
+```powershell
+# Iniciar tunnel quick mode
+curl.exe -s -X POST http://localhost:57123/api/openchamber/tunnel/start `
+  -H "Content-Type: application/json" `
+  -d '{"provider":"cloudflare","mode":"quick"}'
+
+# Verificar URL
+curl.exe -s http://localhost:57123/api/openchamber/tunnel/status | ConvertFrom-Json | Select-Object url
+```
+
+### Verificar scheduled tasks
+
+```powershell
+# Deben haber 3 tasks (check-tareas activa, publish-url activa, cloudflared-watchdog desactivada)
+curl.exe -s http://localhost:57123/api/projects/path_QzoveGFtcHAvaHRkb2NzL0RpbGlnZW5jaWE/scheduled-tasks
+```
+
+### Probar SSE
+
+```powershell
+curl.exe -s -N --max-time 5 http://localhost:57123/api/openchamber/events
+```
+
+---
+
+## Fase 5 — Commit de recuperación
 
 Cuando todo funcione, avisame y desde acá creo una tarea de prueba para verificar que el worker responde.

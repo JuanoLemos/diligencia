@@ -2,7 +2,7 @@
 
 Metodología de estructura estándar para proyectos OpenCode.
 
-Última actualización: 2026-07-21
+Última actualización: 2026-07-26 | OLA-CHAMBER-100 Sesión 1 completada
 
 ---
 
@@ -62,12 +62,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R69 | +status: dashboard de consumo de APIs en vivo — tokens por proyecto, costo mensual. | P2 | 🔴 Pendiente | R61,R68 |
 | R70 | +6 agentes especializados por dominio. Creación: @narrador, @game-designer, @trader, @cartografo, @editor-video. | P1 | 🟡 En progreso | — |
 | R71 | +red-local: conectar PC secundaria a la principal via SSH para desarrollo remoto. VAIO conectada via VS Code Tunnels. | P2 | 🟡 En progreso | — |
-| R72 | +chamber-native-tunnel: reemplazar startup-tunnel.ps1 por tunnel nativo de Chamber (managed-remote Cloudflare). URL persistente, diagnóstico integrado, sin scripts externos. | P2 | 🔴 Pendiente | — |
-| R73 | +chamber-terminal: usar terminal integrado de Chamber (WebSocket) en vez de vscode.dev para comandos en VAIO. Todo en la misma UI. | P2 | 🔴 Pendiente | — |
-| R74 | +chamber-monitoring: centralizar monitoreo del worker vía SSE events de Chamber + Tray App. Reemplazar worker-log.md por API status. | P3 | 🔴 Pendiente | R72 |
-| R75 | +chamber-mcp: hostear codebase-memory-mcp en Chamber como servidor MCP local (scope proyecto). Acceso al grafo 3D desde cualquier lado. | P2 | 🔴 Pendiente | — |
-| R76 | +chamber-skills: publicar skills de Diligencia (tdd-strict, pr-review, sdd-workflow) en Chamber Skills Catalog. | P3 | 🔴 Pendiente | — |
-| R77 | +chamber-upgrade: actualizar Chamber v1.13.2 → v1.16.3 (permission auto-accept, remote instance sin OpenCode, SSH nativo). | P2 | 🔴 Pendiente | R72,R75 |
+| R77 | +chamber-upgrade: actualizar Chamber v1.13.2 → v1.16.3 (permission auto-accept, remote instance sin OpenCode, SSH nativo). | P2 | 🔴 Pendiente | — |
 
 ## Futuro (Later)
 
@@ -159,6 +154,11 @@ Metodología de estructura estándar para proyectos OpenCode.
 - R49: panel interactivo de checklist en Chamber por proyecto
 | +R47 Diligencia Command Toolbar + R52 estudio hosting + tray mejorado (Rebuild, HMR) | v2.2.2 |
 | +/doctor→/salud por conflicto OpenCode + M6 Chamber pertenece a Diligencia + Stable baseline | v2.2.3 |
+| R72 | +chamber-native-tunnel: tunnel quick mode activado vía Chamber API. startup-tunnel.ps1 deprecado. | OLA-CHAMBER-100 |
+| R73 | +chamber-terminal: terminal WebSocket probado vía API (`POST /api/terminal/create`). | OLA-CHAMBER-100 |
+| R74 | +chamber-monitoring: SSE events verificados (`GET /api/openchamber/events`). worker-log.md deprecado. | OLA-CHAMBER-100 |
+| R75 | +chamber-mcp: pendiente (depende de acceso a source de Chamber para MCP server). | ⏳ Pendiente |
+| R76 | +chamber-skills: 3 skills publicadas (tdd-strict, pr-review, sdd-workflow) en Skills Catalog. | OLA-CHAMBER-100 |
 
 ## Archivos relacionados
 - `CHANGELOG.md` — historial de versiones
