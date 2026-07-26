@@ -8,3 +8,13 @@
 [2026-07-23 18:52 UTC] Ciclo #3 — git pull OK. Tareas 002-017 con resultado. Sin tareas pendientes.
 [2026-07-23 19:45 UTC] Ciclo #4 — git pull OK. Sin tareas nuevas. Sin tareas pendientes.
 [2026-07-26 23:59 UTC] Ciclo #5 — git pull OK. Sin tareas nuevas. Sin tareas pendientes.
+[2026-07-26 19:45 UTC] TAREA 018 COMPLETADA — Ola A VAIO:
+  ✅ Node.js + npm install (56 modules)
+  ✅ Chamber v1.16.3 clonado en C:\Users\USUARIO\openchamber
+  ✅ Fixes sessionId: runtime.js + project-config.js (reutiliza sesion unica)
+  ✅ Chamber source corriendo en puerto 57124 (PID 11892, node)
+  ✅ check-tareas Electron DESACTIVADO (no mas sesiones nuevas)
+  ✅ 2 tasks creadas en source: check-tareas (1min) + publish-url (1h)
+  ✅ cloudflared-watchdog deprecado
+  ✅ start-chamber.ps1 creado para transicion
+  🔲 PENDIENTE (requiere MAIN): cerrar Electron manualmente, ejecutar start-chamber.ps1, reemplazar startup shortcut.
