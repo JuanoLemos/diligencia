@@ -2,6 +2,20 @@
 
 ---
 
+## [3.0.3] — 2026-07-26
+
+### Added
+- OLA-CHAMBER-100 Sesión 1: tunnel quick mode nativo, SSE monitoreo, Terminal WS, skills publicadas
+
+### Changed
+- R72-R77: migración Chamber completada en PC Principal
+- cloudflared-watchdog deprecado (Chamber gestiona el túnel nativamente)
+- startup-tunnel.ps1 + worker-log.md deprecados
+- publish-url actualizado para usar Chamber API (GET /tunnel/status)
+- GUIA_CONTROL_REMOTO.md: puerto 3000→57123, secciones Terminal + Monitoreo
+- VAIO-SCHEDULED.md: arquitectura post-migración (2 tasks, SSE)
+- ROADMAP.md: R72-R77 movidos a Completado
+
 ## [3.0.2] — 2026-07-22
 
 ### Added
