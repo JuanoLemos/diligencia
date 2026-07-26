@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| URL | https://whom-totals-headquarters-annie.trycloudflare.com |
-| Fuente | Chamber API |
-| Fecha | 2026-07-26 21:00 UTC |
+| URL | https://intake-traffic-kathy-subject.trycloudflare.com |
+| Fuente | metrics endpoint |
+| Fecha | 2026-07-26 22:00 UTC |
 
