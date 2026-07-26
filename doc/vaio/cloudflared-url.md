@@ -1,8 +1,9 @@
-﻿# cloudflared-url
+﻿# Cloudflared URL
 
-| Campo | Valor |
-|---|---|
-| URL | https://intake-traffic-kathy-subject.trycloudflare.com |
-| Fuente | metrics endpoint |
-| Fecha | 2026-07-26 22:00 UTC |
+```
+https://intake-traffic-kathy-subject.trycloudflare.com
+```
 
+> Actualizada: 2026-07-26
+> Tipo: Quick Tunnel
+> Local origin: `http://localhost:57123`
