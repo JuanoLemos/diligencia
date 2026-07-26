@@ -1,34 +1,28 @@
 # Resultado 019 — Tasks activas en Chamber source (:57124)
 
-**Fecha:** 2026-07-26 (VAIO Worker run)
+**Fecha:** 2026-07-26 (sesión VAIO manual)
 
-## Estado real del entorno
+## Estado
 
-| Check | Resultado | Detalle |
-|---|---|---|
-| Chamber source en 57124 | NO | Repo `openchamber` no existe en disco |
-| Chamber Electron en 57123 | SI | PID 10244 — responde a API |
-| check-tareas activa | NO | No hay source para crearla |
-| publish-url activa | NO | No hay source para crearla |
-| sessionId fijado | NO | No aplica |
-| cloudflared → 57124 | NO | cloudflared apunta a :57123 |
+| Check | Resultado |
+|---|---|
+| Chamber source en 57124 | **NO** ❌ — repo no presente en este sistema |
+| check-tareas activa | **NO** ❌ — no se pudo crear sin Chamber source |
+| publish-url activa | **NO** ❌ — no se pudo crear sin Chamber source |
+| sessionId fijado | **NO** ❌ — no aplica |
+| cloudflared → 57124 | **NO** ❌ — actualmente apunta a 57123 (Electron) |
 
 ## Diagnóstico
 
-- **Chamber Electron**: `C:\Users\USUARIO\AppData\Local\Programs\@openchamberelectron\OpenChamber.exe` — instalado como app, responde en `:57123`
-- **Repositorio source**: No existe en `C:\Users\jlemo\OneDrive\Desktop\openchamber` ni en ninguna otra ubicación bajo `C:\Users\jlemo\`
-- **cloudflared** (PID 2760): apunta a `http://localhost:57123`
-- **Las 2 cloudflared restantes** (PID 7820, 7968): sin command line visible, posiblemente procesos hijo o zombies
+| Hallazgo | Detalle |
+|---|---|
+| Chamber source | Repo `C:\Users\jlemo\openchamber` no existe. Tampoco en OneDrive/Desktop. |
+| cloudflared activo | PID 2760 corriendo, apuntando a `http://localhost:57123` (Electron) |
+| Puertos | 57123 (Electron, con cloudflared), 57124 (vacío — sin Chamber source) |
+| scheduled tasks previas | resultado-018 documentó su creación en source (:57124), pero el source no persiste en este entorno |
 
-## Conclusión
+## Notas
 
-La tarea 019 requiere el repositorio `openchamber` clonado en `C:\Users\jlemo\OneDrive\Desktop\openchamber\` para:
-1. Ejecutar `node packages/web/bin/cli.js serve --port 57124`
-2. Crear scheduled tasks vía API en ese puerto
-3. Redirigir cloudflared a ese puerto
-
-**Acción necesaria**: Clonar `btriapitsyn/openchamber` en `$CHAMBER` y re-ejecutar esta tarea.
-
-## cloudflared activo
-
-Mientras tanto, cloudflared sigue tunelando `:57123` correctamente. Chamber accesible vía tunnel URL actual.
+- Resultado-018 documentó la activación exitosa desde `C:\Users\USUARIO\openchamber`, pero ese path no existe en este equipo.
+- El repositorio Chamber debe estar presente para completar esta tarea: clonar `btriapitsyn/openchamber` en `$CHAMBER`, hacer `npm install`, y luego iniciar con `node packages/web/bin/cli.js serve --port 57124`.
+- Mientras tanto, cloudflared sigue tunelando al Electron (57123). Las scheduled tasks no están operativas sin el source.
