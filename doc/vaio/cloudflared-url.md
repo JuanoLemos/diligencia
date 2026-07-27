@@ -1,9 +1,7 @@
 ﻿# Cloudflared Tunnel URL
-
-Última consulta: Sun Jul 26 2026
+<!-- Actualizado automáticamente por script -->
 
 **URL:** null
 
-**Estado:** inactive
-
-**API:** http://localhost:57124/api/openchamber/tunnel/status
+**Activo:** false
+**Timestamp:** 2026-07-26T00:00:00Z
