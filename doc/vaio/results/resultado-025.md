@@ -1,6 +1,6 @@
 ﻿# Resultado 025 — Round-trip test
 
-**Fecha:** 2026-07-27 00:48:45 UTC
+**Fecha:** 2026-07-27 20:05:52 UTC
 **Máquina:** FELRENA
 
 ## Estado
@@ -9,9 +9,9 @@
 |---|---|
 | Comunicación MAIN→VAIO | ✅ tarea-025 recibida |
 | Comunicación VAIO→MAIN | ✅ resultado-025 generado |
-| Chamber source activo | ✅ v1.16.3 |
-| Scheduled tasks activas | ✅ NO |
+| Chamber source activo | NO |
+| Scheduled tasks activas | SI |
 
 ## Prueba completada
 
-2026-07-27 00:48:45 UTC
+2026-07-27 20:05:52 UTC
