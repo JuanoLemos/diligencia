@@ -1,9 +1,8 @@
-﻿# Chamber Tunnel URL — VAIO
+﻿# Chamber Tunnel URL — VAIO (FELRENA)
 
-**URL:** [pendiente — actualizado por publish-url de VAIO]
-**Actualizada:** [pendiente]
-**Fuente:** cloudflared stderr (VAIO publish-url task)
+**URL:** https://html-lawyer-upon-flame.trycloudflare.com
+**Actualizada:** 2026-07-27 17:56 UTC
+**Fuente:** cloudflared stderr (VAIO)
 **Local:** http://localhost:57124
 
-> Esta URL es para conectarse a Chamber en la VAIO (FELRENA).
-> Para la PC Principal, ver cloudflared-url-pc.md
+> Para conectarte a Chamber en la VAIO desde cualquier navegador.
