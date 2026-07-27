@@ -2,6 +2,19 @@
 
 ---
 
+## [3.1.1] — 2026-07-27
+
+### Added
+- check-status.ps1 + status-check task: monitoreo VAIO cada 2 min con git fetch
+
+### Fixed
+- PC Principal: sessionId estabilizado en check-tareas, publish-url, status-check
+- VAIO: sessionId estabilizado, tasks duplicadas eliminadas (10→2)
+- Chamber tray: Sessions y New Session removidos del menú contextual
+
+### Changed
+- ASAR repackeado con fixes de tray + sessionId
+
 ## [3.1.0] — 2026-07-27
 
 ### Added
