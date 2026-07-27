@@ -1,25 +1,20 @@
 ﻿# Resultado 024 — Verificación Chamber VAIO
 
-**Fecha:** 2026-07-26 23:37:39 UTC
+**Fecha:** 2026-07-26 23:37:50 UTC
 
 ## Puertos
 
-| Puerto | PID | Proceso | Responde | Tasks |
-|--------|-----|---------|----------|-------|
-| 57123 (Electron) | 23548 | OpenChamber | SI | 5 (check-tareas ✓, publish-url ✓, cloudflared-watchdog ✓) |
-| 57124 (Source) | 16344 | node | SI | 5 (check-tareas ✓, publish-url ✓, cloudflared-watchdog ✓) |
+| Puerto | Proceso | PID | Responde | Tasks |
+|---|---|---|---|---|
+| 57123 | OpenChamber (Electron) | 23548 | SI | 5 (duplicadas: check-tareas x2, publish-url x2) |
+| 57124 | node (Source) | 16344 | SI | 5 (duplicadas: check-tareas x2, publish-url x2) |
 
-## Diagnóstico
+## Observaciones
 
-Ambas instancias están activas y respondiendo. Ambas tienen las mismas 5 tasks (3 disabled + 2 enabled).
-
-## Acciones
-
-- Source reactivado: NO (ya estaba corriendo)
-- Tasks recreadas: NO (ya existen)
-- sessionId fijado: NO (excepto cloudflared-watchdog que ya tiene sesión heredada)
-
-## Notas
-
-- Hay una task duplicada "VAIO: publish-url" (una enabled, otra disabled) en ambas instancias — podría limpiarse la disabled.
-- cloudflared-watchdog conserva sessionId heredado de ejecución previa.
+- Ambas instancias de Chamber están activas y respondiendo.
+- La instancia Electron (57123) y Source (57124) tienen el mismo conjunto de tasks duplicadas.
+- **check-tareas** aparece habilitada una vez y deshabilitada otra en ambos puertos.
+- **publish-url** aparece habilitada una vez (sin sessionId) y deshabilitada otra.
+- **cloudflared-watchdog** aparece deshabilitada con sessionId viejo (ses_05fbc9...) en ambos.
+- No fue necesario reactivar Source (ya responde).
+- Queda pendiente: limpiar tasks duplicadas en ambas instancias.
