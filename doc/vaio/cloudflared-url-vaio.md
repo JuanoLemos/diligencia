@@ -1,8 +1,6 @@
 ﻿# Chamber Tunnel URL — VAIO (FELRENA)
 
-**URL:** https://html-lawyer-upon-flame.trycloudflare.com
-**Actualizada:** 2026-07-27 17:56 UTC
-**Fuente:** cloudflared stderr (VAIO)
+**URL:** https://nobody-thumbnails-florida-proceeding.trycloudflare.com
+**Actualizada:** 2026-07-27 18:25 UTC
+**Fuente:** cloudflared foreground (VAIO)
 **Local:** http://localhost:57124
-
-> Para conectarte a Chamber en la VAIO desde cualquier navegador.
