@@ -1,9 +1,9 @@
-﻿# Cloudflared URL
+# Cloudflared Tunnel URL
 
-```
-https://intake-traffic-kathy-subject.trycloudflare.com
-```
+**URL:** https://intake-traffic-kathy-subject.trycloudflare.com
 
-> Actualizada: 2026-07-26
-> Tipo: Quick Tunnel
-> Local origin: `http://localhost:57123`
+- **Fuente:** cloudflared metrics (127.0.0.1:20241/metrics)
+- **Estado API Chamber:** inactivo (`active: false`)
+- **Timestamp:** 2026-07-26
+
+> El tunnel está levantado pero Chamber reporta estado inactivo. La URL extraída de metrics es funcional.
