@@ -2,6 +2,23 @@
 
 ---
 
+## [3.1.0] — 2026-07-27
+
+### Added
+- OLA-CHAMBER-100 Sesión 1: tunnel quick mode nativo, SSE monitoreo, Terminal WS, skills publicadas
+- VAIO Ola A: Node.js + Chamber v1.16.3 desde source en ambas máquinas
+- SessionId reutilizable: sin sesiones nuevas por ciclo (ambas máquinas)
+
+### Changed
+- R72-R77 completado: migración Chamber-first consolidada
+- cloudflared-watchdog deprecado (Chamber gestiona túnel nativamente)
+- startup-tunnel.ps1 + worker-log.md + worker-loop.md deprecados
+- publish-url corregido: lee URL directa de cloudflared stderr
+- VAIO: Chamber source en \$env:USERPROFILE (path dinámico)
+- VAIO: tasks 10→2, sessionId estabilizado
+- GUIA_CONTROL_REMOTO, VAIO-SCHEDULED, MECANICA-CHAMBER-FIRST actualizados
+- ROADMAP R72-R77 en Completado
+
 ## [3.0.3] — 2026-07-26
 
 ### Added
