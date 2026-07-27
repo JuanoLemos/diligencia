@@ -1,7 +1,9 @@
-# Cloudflared URL
+﻿# Cloudflared Tunnel URL
 
-```
-https://intake-traffic-kathy-subject.trycloudflare.com
-```
+Última consulta: Sun Jul 26 2026
 
-> Actualizada: 2026-07-26
+**URL:** null
+
+**Estado:** inactive
+
+**API:** http://localhost:57124/api/openchamber/tunnel/status
