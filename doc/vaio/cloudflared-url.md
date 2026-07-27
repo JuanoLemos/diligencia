@@ -1,6 +1,6 @@
 ﻿# Cloudflared Tunnel URL
 
-**URL:** https://html-lawyer-upon-flame.trycloudflare.com
-**Actualizada:** 2026-07-26 22:08:13 UTC
-**Fuente:** cloudflared stderr (servicio)
-**Local:** http://localhost:57124
+**URL:** https://jewel-there-beyond-excessive.trycloudflare.com
+**Actualizada:** 2026-07-27 00:39 UTC
+**Fuente:** cloudflared stderr
+**Local:** http://localhost:57123
