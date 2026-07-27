@@ -1,6 +1,6 @@
 ﻿# 🌐 Cloudflared URL
 
-**URL:** inactivo
+**URL:** null
 **Última consulta:** 2026-07-26
 **Estado:** ⚪ inactive
 
