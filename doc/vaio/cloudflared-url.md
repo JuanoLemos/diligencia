@@ -1,7 +1,6 @@
-﻿# 🌐 Cloudflared URL
+﻿# Cloudflared Tunnel URL
 
-**URL:** null
-**Última consulta:** 2026-07-26
-**Estado:** ⚪ inactive
-
-API: http://localhost:57124/api/openchamber/tunnel/status
+**URL:** https://html-lawyer-upon-flame.trycloudflare.com
+**Actualizada:** 2026-07-26 22:06:53 UTC
+**Fuente:** cloudflared stderr
+**Local:** http://localhost:57124
