@@ -1,6 +1,9 @@
-﻿# Cloudflared Tunnel URL
+﻿# cloudflared-url
 
-**URL:** https://jewel-there-beyond-excessive.trycloudflare.com
-**Actualizada:** 2026-07-27 00:39 UTC
-**Fuente:** cloudflared stderr
-**Local:** http://localhost:57123
+| Campo | Valor |
+|---|---|
+| URL | https://script-jpeg-asia-while.trycloudflare.com |
+| Fecha | 2026-07-27 17:24 UTC |
+| Puerto | 57123 |
+| PID | 10068 |
+
