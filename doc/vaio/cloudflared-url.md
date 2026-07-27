@@ -1,9 +1,9 @@
-ï»¿# cloudflared-url
+# Cloudflared Tunnel URLs — Índice
 
-| Campo | Valor |
+> ?? Las URLs ahora están en archivos separados por máquina.
+> Usá el que corresponda.
+
+| Máquina | Archivo |
 |---|---|
-| URL | https://script-jpeg-asia-while.trycloudflare.com |
-| Fecha | 2026-07-27 17:24 UTC |
-| Puerto | 57123 |
-| PID | 10068 |
-
+| PC Principal | cloudflared-url-pc.md |
+| VAIO (FELRENA) | cloudflared-url-vaio.md |
