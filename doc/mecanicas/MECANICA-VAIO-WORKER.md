@@ -127,6 +127,47 @@ Cada worker opera en su propio repositorio. No comparten archivos, no comparten 
 
 ---
 
+## Triángulo de comunicación
+
+El sistema opera en tres capas:
+
+```
+Chamber (orquestador)    →    OpenCode (ejecutor)    →    GitHub (transporte)
+─────────────────────        ──────────────────        ──────────────────
+Scheduled Tasks              Crea sesiones (sessionId)  Repositorio del proyecto
+Envía prompts cada N min     Ejecuta comandos           tasks/ ↔ results/
+Monitorea via SSE            Lee/escribe archivos       git pull/push
+```
+
+**Flujo detallado:**
+
+```
+MAIN (PC principal)              GitHub                    Chamber VAIO
+──────────────────              ──────                    ────────────
+crea tarea-NNN.md                ← repo →                  Scheduled Task
+git push                                                   "check-tareas"
+                                                           (cada 1 min)
+                                                               │
+                                                               ▼
+                                                        OpenCode session
+                                                        (sessionId fijo,
+                                                         no se borra)
+                                                          │
+                                                          ├─ git pull
+                                                          ├─ detecta tarea
+                                                          ├─ ejecuta comandos
+                                                          ├─ escribe resultado
+                                                          └─ git push
+git pull ←────────────────────────────────────────────── repositorio
+lee resultado-NNN.md                                        │
+                                                        SSE events
+                                                        (MAIN monitorea)
+```
+
+**sessionId:** Cada proyecto tiene 1 sesión dedicada con permisos de build. Se fija en `execution.sessionId` via API PUT. No se borra. Es permanente. Compartida por todas las tasks del proyecto.
+
+---
+
 ## Deprecación del puente
 
 Cuando los túneles directos (VS Code Remote + Cloudflare) están operativos, el worker puede ser reemplazado por acceso directo. Sin embargo, el worker tiene ventajas:

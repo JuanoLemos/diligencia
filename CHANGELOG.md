@@ -7,11 +7,14 @@
 ### Added
 - CBP.md step 0.A: git pull --rebase antes de cualquier detección de cambios
 - tarea-035: VAIO scheduled tasks a modelo deepseek-v4-pro
+- VAIO-SCHEDULED.md v2.0 en doc-base: triángulo de comunicación, sessionId, multi-proyecto
+- MECANICA-VAIO-WORKER.md actualizado: sección "Triángulo de comunicación"
 
 ### Changed
-- CBP.md (global y local): step 0.A agregado al pre-flight
-- PC Principal: publish-url → deepseek-v4-pro
-- adaptar.md v3.2.1: sincronizado automáticamente desde v3.2.0
+- doc-base: PRONT_VAIO.md v2.0, worker-loop.md deprecado, README actualizado
+- doc-base AGENTS.md: R14 corregido, sección Asistente actualizada + $VAIO_SCHEDULED
+- Diligencia AGENTS.md: sección "Asistente VAIO-Server" + variables VAIO
+- adaptar.md v3.3.0: migración triángulo VAIO para proyectos adaptados
 
 ## [3.2.1] — 2026-07-28
 

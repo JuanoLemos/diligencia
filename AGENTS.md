@@ -162,8 +162,34 @@ Los agentes especializados (`@narrador`, `@game-designer`, `@trader`, `@cartogra
 | R11 | Nunca abrir dos chats simultáneos sobre el mismo proyecto. Un solo agente por proyecto a la vez. Dos chats en el mismo proyecto pueden romper commits y generar conflictos de merge. |
 | R12 | Antes de ejecutar /CBP con push, el agente verifica que el working tree esté limpio (sin cambios de otras sesiones). Si hay dudas, sugiere /backup antes de commitear. |
 | R13 | Después de un git pull (o al iniciar sesión en un proyecto), el agente verifica que el working tree esté limpio y que no haya conflictos de merge pendientes. Si hay conflicto, pausa y reporta. |
-| R14 | VAIO Worker: agente autónomo orquestado por Chamber Scheduled Tasks. Chamber ejecuta tareas programadas cada 60s (check-tareas, cloudflared-watchdog, publish-url). OpenCode ejecuta los prompts. No requiere loop en el agente. Operado via `doc/vaio/VAIO-SCHEDULED.md`. |
+| R14 | VAIO Worker: agente autónomo orquestado por Chamber Scheduled Tasks. Chamber ejecuta tareas programadas (check-tareas, publish-url). Una sesión dedicada con sessionId fijo. No requiere loop en el agente. Operado via `doc/vaio/VAIO-SCHEDULED.md`. |
 | R15 | Monitoreo bidireccional vía `git fetch`. **OBLIGATORIO antes de cada respuesta**: el MAIN ejecuta `git fetch` y si detecta commits con "VAIO:" o "MAIN:", notifica al usuario con los últimos 3 commits. No espera a que el usuario pida "revisá novedades". `git fetch` es solo lectura — no modifica working tree. |
+
+## Asistente VAIO-Server
+
+Este proyecto tiene un asistente en la laptop VAIO (servidor 24/7). La comunicación usa el triángulo Chamber → OpenCode → GitHub:
+
+1. **MAIN crea tarea** → escribe `doc/vaio/tasks/tarea-NNN.md` → git push
+2. **VAIO Chamber** → Scheduled Task check-tareas → OpenCode ejecuta → escribe resultado
+3. **MAIN lee resultado** → git pull → `doc/vaio/results/resultado-NNN.md`
+
+### Archivos clave
+
+| Archivo | Propósito |
+|---|---|
+| `doc/vaio/VAIO-SCHEDULED.md` | Sistema principal — Chamber Scheduled Tasks (recomendado) |
+| `doc/vaio/PRONT_VAIO.md` | Prompt de nacimiento para sesiones Chamber interactivas |
+| `doc/vaio/worker-loop.md` | ⚠️ DEPRECADO — reemplazado por VAIO-SCHEDULED.md |
+| `doc/vaio/README.md` | Instrucciones del puente de comunicación |
+
+### Variables
+
+| Variable | Ruta |
+|---|---|
+| `$VAIO_TASKS` | `doc/vaio/tasks/` |
+| `$VAIO_RESULTS` | `doc/vaio/results/` |
+| `$VAIO_PRONT` | `doc/vaio/PRONT_VAIO.md` |
+| `$VAIO_SCHEDULED` | `doc/vaio/VAIO-SCHEDULED.md` |
 
 ## Prioridad MCP — codebase-memory-mcp
 
