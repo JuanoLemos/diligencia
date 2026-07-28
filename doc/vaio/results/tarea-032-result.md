@@ -1,16 +1,21 @@
-﻿# Resultado VAIO — Tarea 032
+﻿# Resultado Tarea 032 — Restaurar prompts VAIO
 
-**Fecha:** 2026-07-28
 **Estado:** ✅ Completado
+**Fecha:** 2026-07-28
 
-## Acción
-Restaurar prompts en scheduled tasks de Chamber.
+## Acciones ejecutadas
 
-## Resultado
-- **VAIO: check-tareas** — prompt restaurado (285 chars)
-- **VAIO: publish-url** — prompt restaurado (183 chars)
-- Duplicados eliminados: 0
-- Tasks activas: 2/2
+1. Consulta API `/api/projects/.../scheduled-tasks` → 2 tareas encontradas
+2. Limpieza de duplicados: 0 eliminados (sin duplicados)
+3. Prompt `$realPrompt` (280 chars) restaurado en `VAIO: check-tareas`
+4. Prompt `$puPrompt` (180 chars) restaurado en `VAIO: publish-url`
+5. PUT request por cada tarea con `enabled=true`, `providerID=deepseek`, `modelID=deepseek-v4-flash`
 
-## Detalle
-Se restauraron los prompts reales en ambas tareas programadas vía API REST de Chamber (`PUT /api/projects/.../scheduled-tasks`).
+## Verificación final
+
+| Name | promptChars | enabled |
+|------|-------------|---------|
+| VAIO: check-tareas | 285 | True |
+| VAIO: publish-url | 183 | True |
+
+Ambos tasks activos y con prompts correctos.
