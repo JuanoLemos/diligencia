@@ -13,6 +13,7 @@ El SSOT del encadenamiento es este archivo + `MECANICA-CBP.md`.
 Cuando /CBP se invoca, EJECUTAR este algoritmo ANTES de cualquier otra accion:
 
 0. **PRE-FLIGHT: verificar version Diligencia**
+   0.A. `git pull --rebase` (traer últimos cambios remotos antes de detectar cambios locales)
    a. LEER `DILIGENCIA.md` linea 1 -> extraer `version_proyecto` (formato `vX.Y.Z`).
    b. LEER `~/.config/opencode/commands/adaptar.md` -> extraer `version_global` desde la tabla Version.
    c. Si `DILIGENCIA.md` NO existe:
