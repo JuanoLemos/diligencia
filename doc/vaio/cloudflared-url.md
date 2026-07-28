@@ -1,8 +1,9 @@
-﻿# URL Cloudflared Túnel
+﻿# cloudflared-url
 
-**Actualizado:** 2026-07-28 21:06 UTC
-**URL:** https://ferrari-circumstances-experienced-heaven.trycloudflare.com
-**Puerto local:** 57125
-**Túnel activo:** True
-**PID:** (nuevo cloudflared)
-**Startup auto-curativo:** Instalado
+| Campo | Valor |
+|---|---|
+| URL | https://laptop-pictures-households-nearby.trycloudflare.com |
+| Fecha | 2026-07-28 20:50 UTC |
+| Puerto | 57123 |
+| PID | 12632 |
+
