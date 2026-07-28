@@ -2,6 +2,31 @@
 
 ---
 
+## [3.2.0] — 2026-07-28
+
+### Added
+- /version Step 3.5: auto-detección de bump type (major/minor/patch) desde commits clasificados
+- /version Step 5.5: validación de bump contra contenido del CHANGELOG
+- CBP.md: pre-análisis de commits con triggers (feat: → camino full)
+- tarea-033: VAIO resuelve sesiones múltiples editando source Chamber
+- tarea-034: sesión dedicada de build en VAIO (check-tareas + publish-url comparten 1 sesión)
+
+### Fixed
+- CBP.md camino `parcial`: ya no hardcodea patch — usa auto-detección de /version Step 3.5
+- VAIO EPERM: write-temp→rename reemplazado por writeFile directo en project-config.js
+- VAIO BOM: JSON sin firma UTF-8 (Set-Content agrega BOM, Node.js lo rechaza)
+- VAIO prompts: restaurados (estaban fijados a "DONE" por el procedimiento de fix)
+- PC Principal: check-tareas eliminado (solo VAIO ejecuta tareas)
+- Chamber tray: Sessions y New Session removidos del menú contextual
+
+### Changed
+- R15 reforzado: git fetch obligatorio antes de cada respuesta, notificación inmediata
+- PC Principal: tarea única publish-url (monitoreo de URL de Chamber)
+
+### Deprecated
+- status-check task eliminado de PC Principal
+- cloudflared-watchdog eliminado definitivamente de ambas máquinas
+
 ## [3.1.1] — 2026-07-27
 
 ### Added
