@@ -6,6 +6,12 @@
 
 ### Added
 - check-status.ps1 + status-check task: monitoreo VAIO cada 2 min con git fetch
+- /version Step 3.5: auto-detección de bump type (major/minor/patch) desde commits clasificados
+- /version Step 5.5: validación de bump contra contenido del CHANGELOG
+
+### Fixed
+- CBP.md camino `parcial`: ya no hardcodea `patch` — usa auto-detección de /version Step 3.5
+- CBP.md: pre-análisis de commits antes del árbol de decisión (feat: → camino full)
 
 ### Fixed
 - PC Principal: sessionId estabilizado en check-tareas, publish-url, status-check
