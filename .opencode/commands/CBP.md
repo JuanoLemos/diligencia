@@ -28,12 +28,10 @@ Cuando /CBP se invoca, EJECUTAR este algoritmo ANTES de cualquier otra accion:
       - si -> EJECUTAR `/adaptar` Flujo C (upgrade) -> volver al paso 1.
       - no -> continuar con advertencia registrada en contexto.
       - saltar -> no preguntar de nuevo en esta sesion.
-   e. Si `version_proyecto == version_global` -> continuar sin interrupcion.
-   e2. Si `version_proyecto > version_global`:
-       "adaptar.md global esta en v{version_global} pero DILIGENCIA.md reporta v{version_proyecto}."
-       Preguntar: "Sincronizar adaptar.md con la version actual del proyecto? [si/no]"
-       - si -> ACTUALIZAR tabla Version en adaptar.md global a v{version_proyecto}
-       - no -> continuar con advertencia registrada.
+    e. Si `version_proyecto == version_global` -> continuar sin interrupcion.
+    e2. Si `version_proyecto > version_global`:
+        ⚠️ "adaptar.md global v{version_global} < proyecto v{version_proyecto} — se sincronizará durante BUILD."
+        MARCAR en contexto: `sync_adaptar = true` (aplicar en BUILD sin preguntar).
    f. DETECTAR comandos globales pendientes de versionar (si DILIGENCIA.md existe):
       - LEER `~/.config/opencode/commands/PENDING.md` -> extraer todas las entradas en la tabla
       - Si PENDING.md no existe o esta vacio -> continuar sin interrupcion.
@@ -63,18 +61,39 @@ Cuando /CBP se invoca, EJECUTAR este algoritmo ANTES de cualquier otra accion:
       - Solo codigo fuente (src/), 0 docs -> **commit**
       - Todo lo demas (docs, metodologia, commits pendientes, WT limpio con commits) -> **version**
    d. Si WT == 0 y hay commits pendientes:
-      ```
-      question({
-        questions: [{
-          header: "Camino sugerido: version",
-          question: "WT limpio con [N] commits sin versionar. No hay nada que commitear.",
-          options: [
-            {label: "version (Recomendado)", description: "/version + --push. CHANGELOG + tag + cierre de sesion."},
-            {label: "abortar", description: "Cancelar sin cambios."}
-          ]
-        }]
-      })
-      ```
+      a. CLASIFICAR commits y detectar bump type usando /version Steps 1→3.5 (silencioso):
+         - Colectar commits desde último release
+         - Clasificar por tipo: feat → Added, fix → Fixed, etc.
+         - Calcular bump: major (BREAKING CHANGE) / minor (feat:) / patch (solo fixes/docs)
+      b. MOSTRAR revisión consolidada (una sola vez, después de recopilar todo):
+         ```
+         ════════════════════════════════
+          /CBP — Revisión pre-versionado
+         ════════════════════════════════
+          📋 {N} commits desde v{last_version}
+          📄 CHANGELOG auto-generado: {N Added, N Fixed, N Changed}
+          🔍 Pre-flight: {resultado}
+          ⚠️  {advertencias: sync adaptar, PENDING, etc.}
+          🔖 Bump: {minor} — v{actual} → v{nueva}
+         ════════════════════════════════
+         ```
+      c. PREGUNTAR UNA SOLA VEZ:
+         ```
+         question({
+           questions: [{
+             header: "v{actual} → v{nueva} ({bump})",
+             question: "¿Versionar con este CHANGELOG?",
+             options: [
+               {label: "Versionar + push", description: "CHANGELOG + commit + tag + push"},
+               {label: "Solo versionar", description: "CHANGELOG + commit + tag local"},
+               {label: "Cancelar", description: "No versionar"}
+             ]
+           }]
+         })
+         ```
+      d. Si usuario elige cualquier opcion menos Cancelar -> EJECUTAR version workflow (BUILD).
+         - Si `sync_adaptar = true`: durante BUILD, ACTUALIZAR tabla Version en adaptar.md global.
+      e. Si usuario elige Cancelar -> DETENER. Sin cambios.
    e. Si no (caso normal con WT sucio):
       ```
       question({
@@ -135,19 +154,17 @@ BUILD (modelo de ejecucion)
 
 1. **META-PLAN (razonamiento)**
    - LEER `version.md` del disco
-   - EJECUTAR /version Steps 1->5 (PLAN: detectar version, calcular bump, confirmacion)
-   - ARMAR tabla (solo /version)
+   - EJECUTAR /version Steps 1→3.5 (PLAN: detectar versión, colectar commits, clasificar, calcular bump auto)
+   - EJECUTAR /version Steps 4→5 (PLAN: auto-generar CHANGELOG, pre-flight 6 checks)
    - MOSTRAR CHANGELOG auto-generado + resultado pre-flight
    - PREGUNTAR UNA SOLA VEZ: "Versionar con estos cambios? [si/no]"
    - SI no confirma: DETENER workflow
 
 2. **BUILD (ejecucion)**
-   - /version BUILD* Steps 6->12 (CHANGELOG + commit + tag + --push. No preguntar - ya confirmado en Meta-PLAN)
+   - /version BUILD* Steps 6→12 (CHANGELOG + commit + tag + --push. No preguntar - ya confirmado en Meta-PLAN)
 
-3. **SUGERIR /salud**
-   - Preguntar: "Ejecutar diagnostico post-versionado?"
-   - SI si: EJECUTAR `/salud` (diagnostico + status-salud.md)
-   - SI no: workflow terminado
+3. **POST (no bloqueante)**
+   - 💡 Ejecutá `/salud` para diagnóstico post-versionado cuando quieras.
 
 ---
 
