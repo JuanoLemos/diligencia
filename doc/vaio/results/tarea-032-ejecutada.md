@@ -1,16 +1,15 @@
 # Resultado Tarea 032 — Restaurar prompts VAIO
 
-**Estado:** ✅ Ejecutada
+**Fecha:** 2026-07-28
+**Estado:** ✅ Completado
 
-## Acciones realizadas
+## Acciones ejecutadas
 
-1. ✅ `git pull --rebase` — Already up to date.
-2. ✅ Buscadas tareas en `doc/vaio/tasks/` — 31 tareas encontradas. Leída y ejecutada tarea-032.
-3. ✅ Conectado a API local `localhost:57124`:
-   - Encontradas 2 tasks: `VAIO: check-tareas`, `VAIO: publish-url`
-   - Sin duplicados que eliminar
-   - Prompts restaurados: check-tareas (285 chars), publish-url (183 chars)
-   - Ambas habilitadas (`enabled: true`)
-4. ✅ Resultado escrito + commit + push
-
-**Timestamp:** 2026-07-28
+1. **Git pull --rebase** — Already up to date.
+2. **Buscar tareas** — 32 tasks encontradas en `doc/vaio/tasks/`.
+3. **Leer tarea-032** — Restaurar prompts reales en Chamber Scheduled Tasks.
+4. **Ejecutar script** — Conectado a API `localhost:57124`.
+   - Duplicados: 0 (ninguno eliminado)
+   - `VAIO: check-tareas` — prompt restaurado (285 chars)
+   - `VAIO: publish-url` — prompt restaurado (183 chars)
+5. **Verificación** — Ambos tasks enabled con prompts correctos.
