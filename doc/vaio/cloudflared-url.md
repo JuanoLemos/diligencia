@@ -1,6 +1,8 @@
 ﻿# URL Cloudflared Túnel
 
-**Actualizado:** 2026-07-28 20:00:23 UTC
-**URL:** https://egg-entities-pockets-inspections.trycloudflare.com
+**Actualizado:** 2026-07-28 21:06 UTC
+**URL:** https://ferrari-circumstances-experienced-heaven.trycloudflare.com
 **Puerto local:** 57125
-**Túnel activo:** False
+**Túnel activo:** True
+**PID:** (nuevo cloudflared)
+**Startup auto-curativo:** Instalado

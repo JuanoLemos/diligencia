@@ -40,7 +40,7 @@ if ($tasks.Count -eq 0) {
     Write-Host "     Sin tasks — creando..."
 
     # Prompt real de check-tareas
-    $checkPrompt = "Ejecutá secuencialmente sin interpretar.`n1. cd $DiligenciaDir && git pull --rebase`n2. Buscá tareas en doc/vaio/tasks/ sin resultado`n3. Si hay: leé la tarea, ejecutá los comandos, escribí resultado en doc/vaio/results/`n4. git add doc/vaio/results/ && git commit -m 'VAIO: resultado' && git push"
+    $checkPrompt = "Ejecutá secuencialmente sin interpretar.`n1. cd $DiligenciaDir; git pull --rebase`n2. Buscá tareas en doc/vaio/tasks/ sin resultado`n3. Si hay: leé la tarea, ejecutá los comandos, escribí resultado en doc/vaio/results/`n4. git add doc/vaio/results/; git commit -m 'VAIO: resultado'; git push"
 
     $body1 = @{task=@{name="VAIO: check-tareas";enabled=$true;schedule=@{kind="cron";cron="* * * * *";timezone="UTC"};execution=@{providerID="deepseek";modelID="deepseek-v4-pro";prompt=$checkPrompt}}} | ConvertTo-Json -Depth 10
     $body1 | Set-Content "$env:TEMP\start-check.json" -Encoding UTF8 -Force
