@@ -2,6 +2,14 @@
 
 ---
 
+## [3.2.1] — 2026-07-28
+
+### Fixed
+- consolidar preguntas de 4 a 1 — auto-sync, revision unica, sin post-salud
+
+### Changed
+- VAIO: sesión dedicada restaurada — Chamber dev server :57125 + cloudflared + sessionId fijado
+
 ## [3.2.0] — 2026-07-28
 
 ### Added
