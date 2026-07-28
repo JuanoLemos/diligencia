@@ -2,13 +2,16 @@
 
 **Estado:** ✅ Completado
 
-| Task | PromptChars | Enabled |
+## Acciones ejecutadas
+- Eliminados duplicados en scheduled tasks (0 encontrados)
+- Restaurado prompt real en `VAIO: check-tareas` (280 chars)
+- Restaurado prompt real en `VAIO: publish-url` (180 chars)
+
+## Verificación
+| name | promptChars | enabled |
 |---|---|---|
 | VAIO: check-tareas | 285 | True |
 | VAIO: publish-url | 183 | True |
 
-**Acciones:**
-- Duplicados eliminados: 0
-- Prompts restaurados en ambas tasks
-- RealPrompt: secuencia completa (280 chars)
-- PuPrompt: publish-url (180 chars)
+## Timestamp
+2026-07-28T$(Get-Date -Format HH:mm:ss)
