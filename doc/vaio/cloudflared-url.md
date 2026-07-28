@@ -1,9 +1,9 @@
-# Cloudflared Tunnel URLs — Índice
+ï»¿# cloudflared-url
 
-> ?? Las URLs ahora están en archivos separados por máquina.
-> Usá el que corresponda.
-
-| Máquina | Archivo |
+| Campo | Valor |
 |---|---|
-| PC Principal | cloudflared-url-pc.md |
-| VAIO (FELRENA) | cloudflared-url-vaio.md |
+| URL | https://graph-thick-motel-designs.trycloudflare.com |
+| Fecha | 2026-07-28 10:57 UTC |
+| Puerto | 57123 |
+| PID | 10620 |
+
