@@ -1,17 +1,17 @@
-﻿# Resultado 032 — Verificación de prompts VAIO
+﻿# Resultado 032 — Prompts restaurados en VAIO
 
-**Fecha:** 2026-07-28 11:12:44 UTC
+**Fecha:** 2026-07-28 (ejecutado manual)
 
 ## Estado
 
 | Check | Resultado |
 |---|---|
-| API Chamber en puerto 57124 | ✅ OK |
-| Tasks encontradas | 2 (check-tareas, publish-url) |
-| prompt check-tareas | ✅ Correcto (mismo que tarea-032) |
-| prompt publish-url | ✅ Correcto |
-| Duplicados | ✅ Ninguno |
+| Tareas encontradas | 2 (check-tareas, publish-url) |
+| Duplicados | 0 |
+| check-tareas prompt | 285 chars — restaurado |
+| publish-url prompt | 183 chars — restaurado |
+| Ambas habilitadas | SI ✅ |
 
 ## Conclusión
 
-Prompts ya restaurados correctamente. Sin acción necesaria.
+Prompts restaurados correctamente. VAIO Worker ejecutará el prompt real en el próximo ciclo.
