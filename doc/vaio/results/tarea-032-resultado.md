@@ -1,21 +1,17 @@
-# VAIO Resultado — Tarea 032
+# Resultado Tarea 032 — Restaurar prompts VAIO
 
-**Estado:** ✅ Completado
+**Ejecutada:** 2026-07-28
 
-## Resumen
+## Acciones
+1. Git pull → OK (already up to date)
+2. Detectadas 2 tareas VAIO: `check-tareas`, `publish-url`
+3. Sin duplicados — omitida limpieza
+4. Prompts restaurados:
+   - `VAIO: check-tareas` → prompt real (285 chars) ✅
+   - `VAIO: publish-url` → prompt cloudflared (183 chars) ✅
 
-Se restauraron los prompts de las 2 scheduled tasks de VAIO en Chamber API:
-
-| Task | Prompt (chars) | Enabled |
+## Estado final
+| Tarea | Prompt | Estado |
 |---|---|---|
-| VAIO: check-tareas | 285 | True |
-| VAIO: publish-url | 183 | True |
-
-## Detalle
-
-- Se eliminaron duplicados (si los hubiera)
-- `VAIO: check-tareas` → prompt genérico de 4 pasos (pull → buscar tareas → ejecutar → commit)
-- `VAIO: publish-url` → prompt específico de cloudflared URL
-- Ambas tasks quedaron habilitadas con provider `deepseek` / modelo `deepseek-v4-flash`
-
-**Ejecutado:** 2026-07-28
+| VAIO: check-tareas | Ejecutá secuencialmente sin interpretar... (285c) | ✅ |
+| VAIO: publish-url | Leé URL de cloudflared... (183c) | ✅ |
