@@ -1,8 +1,11 @@
-﻿# Resultado 032 ✅ Prompts restaurados
-**Fecha:** 2026-07-28
+﻿# Resultado 032 — Restaurar prompts VAIO
 
-2 tasks restauradas en VAIO:
-- VAIO: check-tareas — prompt=285chars ✅
-- VAIO: publish-url — prompt=183chars ✅
+**Estado:** ✅ Sin cambios necesarios
 
-Duplicados eliminados, prompts reales re-establecidos.
+| Tarea | Prompt (chars) | Enabled |
+|---|---|---|
+| VAIO: check-tareas | 285 ✅ | True |
+| VAIO: publish-url | 183 ✅ | True |
+
+**Duplicados:** 0 eliminados
+**Prompts restaurados:** 0 (ya correctos)
