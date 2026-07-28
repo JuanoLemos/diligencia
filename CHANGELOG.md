@@ -2,6 +2,17 @@
 
 ---
 
+## [3.3.0] — 2026-07-28
+
+### Added
+- CBP.md step 0.A: git pull --rebase antes de cualquier detección de cambios
+- tarea-035: VAIO scheduled tasks a modelo deepseek-v4-pro
+
+### Changed
+- CBP.md (global y local): step 0.A agregado al pre-flight
+- PC Principal: publish-url → deepseek-v4-pro
+- adaptar.md v3.2.1: sincronizado automáticamente desde v3.2.0
+
 ## [3.2.1] — 2026-07-28
 
 ### Fixed
