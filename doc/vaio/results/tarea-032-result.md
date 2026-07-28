@@ -1,13 +1,17 @@
 ﻿# Resultado VAIO — Tarea 032
 
-**Estado:** ✅ Completado
+**Ejecutada:** 2026-07-28
 
-**Acciones ejecutadas:**
-1. ✅ `git pull --rebase` — Already up to date
-2. ✅ Buscada tareas en `doc/vaio/tasks/` — encontrada tarea-032.md
-3. ✅ Ejecutados comandos de restauración de prompts VAIO vía API `localhost:57124`
-   - Sin duplicados (0 eliminados)
-   - Restaurado prompt de `VAIO: check-tareas` (280 chars) — prompt real
-   - Restaurado prompt de `VAIO: publish-url` (180 chars) — prompt cloudflared
-   - Verificación: ambos enabled=true, prompt correctos
-4. ✅ Resultado escrito
+## Acciones
+- Eliminados tasks duplicados en Chamber API
+- Restaurado prompt real en `VAIO: check-tareas` (280→285 chars)
+- Restaurado prompt real en `VAIO: publish-url` (180→183 chars)
+
+## Estado final
+| Task | Prompt (chars) | Enabled |
+|---|---|---|
+| VAIO: check-tareas | 285 | ✅ |
+| VAIO: publish-url | 183 | ✅ |
+
+## Tareas pendientes en `doc/vaio/tasks/`
+- tarea-002.md a tarea-031.md — sin ejecutar
