@@ -2,6 +2,22 @@
 
 ---
 
+## [3.4.0] — 2026-07-28
+
+### Added
+- VAIO-SCHEDULED.md v2.0 en doc-base: triángulo de comunicación Chamber→OpenCode→GitHub
+- doc-base: sessionId dedicado documentado, configuración multi-proyecto, curl exactos
+- MECANICA-VAIO-WORKER.md: sección "Triángulo de comunicación" con diagrama completo
+- Diligencia AGENTS.md: sección "Asistente VAIO-Server" + variables $VAIO_TASKS/$VAIO_RESULTS/$VAIO_PRONT/$VAIO_SCHEDULED
+- /adaptar v3.3.0: migración triángulo VAIO para proyectos adaptados
+
+### Changed
+- doc-base AGENTS.md: R14 sin watchdog, sección Asistente actualizada
+- doc-base PRONT_VAIO.md v1.0 → v2.0
+- doc-base worker-loop.md: header de deprecación
+- doc-base README.md: referencia a VAIO-SCHEDULED.md como método principal
+- Diligencia R14: eliminado cloudflared-watchdog
+
 ## [3.3.0] — 2026-07-28
 
 ### Added
