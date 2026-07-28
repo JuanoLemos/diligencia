@@ -1,17 +1,13 @@
-﻿# Resultado Tarea 032 — Restaurar prompts en VAIO
+﻿# Resultado VAIO — Tarea 032
 
 **Estado:** ✅ Completado
 
-## Acciones ejecutadas
-- Eliminados duplicados en scheduled tasks (0 encontrados)
-- Restaurado prompt real en `VAIO: check-tareas` (280 chars)
-- Restaurado prompt real en `VAIO: publish-url` (180 chars)
-
-## Verificación
-| name | promptChars | enabled |
-|---|---|---|
-| VAIO: check-tareas | 285 | True |
-| VAIO: publish-url | 183 | True |
-
-## Timestamp
-2026-07-28T$(Get-Date -Format HH:mm:ss)
+**Acciones ejecutadas:**
+1. ✅ `git pull --rebase` — Already up to date
+2. ✅ Buscada tareas en `doc/vaio/tasks/` — encontrada tarea-032.md
+3. ✅ Ejecutados comandos de restauración de prompts VAIO vía API `localhost:57124`
+   - Sin duplicados (0 eliminados)
+   - Restaurado prompt de `VAIO: check-tareas` (280 chars) — prompt real
+   - Restaurado prompt de `VAIO: publish-url` (180 chars) — prompt cloudflared
+   - Verificación: ambos enabled=true, prompt correctos
+4. ✅ Resultado escrito
