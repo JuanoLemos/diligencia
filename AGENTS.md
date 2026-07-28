@@ -163,7 +163,7 @@ Los agentes especializados (`@narrador`, `@game-designer`, `@trader`, `@cartogra
 | R12 | Antes de ejecutar /CBP con push, el agente verifica que el working tree esté limpio (sin cambios de otras sesiones). Si hay dudas, sugiere /backup antes de commitear. |
 | R13 | Después de un git pull (o al iniciar sesión en un proyecto), el agente verifica que el working tree esté limpio y que no haya conflictos de merge pendientes. Si hay conflicto, pausa y reporta. |
 | R14 | VAIO Worker: agente autónomo orquestado por Chamber Scheduled Tasks. Chamber ejecuta tareas programadas cada 60s (check-tareas, cloudflared-watchdog, publish-url). OpenCode ejecuta los prompts. No requiere loop en el agente. Operado via `doc/vaio/VAIO-SCHEDULED.md`. |
-| R15 | Monitoreo bidireccional vía `git fetch`. MAIN verifica periódicamente si VAIO publicó resultados (commits con "VAIO:") y notifica al usuario sin interrumpir. Chamber ejecuta scheduled tasks que procesan `doc/vaio/tasks/`. `git fetch` es solo lectura — no modifica working tree. |
+| R15 | Monitoreo bidireccional vía `git fetch`. **OBLIGATORIO antes de cada respuesta**: el MAIN ejecuta `git fetch` y si detecta commits con "VAIO:" o "MAIN:", notifica al usuario con los últimos 3 commits. No espera a que el usuario pida "revisá novedades". `git fetch` es solo lectura — no modifica working tree. |
 
 ## Prioridad MCP — codebase-memory-mcp
 
