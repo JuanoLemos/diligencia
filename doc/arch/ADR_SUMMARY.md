@@ -22,8 +22,8 @@
 | ADR-002 | Sistema de variables para rutas ($VARIABLE -> AGENTS.md) | ✅ Aceptado | 2026-05-08 | Navegación del proyecto |
 | ADR-003 | Estructura estándar de archivos (doc/guias/, doc/arch/, doc/mecanicas/) | ✅ Aceptado | 2026-05-31 | Toda la documentación |
 | ADR-004 | M6 — Chamber pertenece a Diligencia. Chamber no es un proyecto externo, es parte del dominio de Diligencia | ✅ Aceptado | 2026-06-27 | AGENTS.md, MANDATO.md, $CHAMBER variable |
-| ADR-005 | Fusión de comandos 39→28: /bug+/incidente→/reportar, /checklist→/rm+/next, /salud→/doctor, /pushgh→/commit --push, /report→/estado, /backupall→/backup, /legal→/doctor, +guia/upguia/+mec/upmec→/doc | ✅ Aceptado | 2026-06-27 | AGENTS.md, COMANDOS.md, CBP.md |
-| ADR-006 | /doctor renombrado a /salud por conflicto con comando nativo /doctor de OpenCode | ✅ Aceptado | 2026-06-28 | salud.md, CBP.md, AGENTS.md, COMANDOS.md |
+| ADR-005 | Fusión de comandos 39→28: /bug+/incidente→/reportar, /checklist→/rm+/next, /salud→/doctor, /pushgh→/commit --push, /report→/estado, /backupall→/backup, /legal→/doctor, +guia/upguia/+mec/upmec→/doc | ✅ Aceptado | 2026-06-27 | AGENTS.md, COMANDOS.md, .opencode/commands/CBP.md |
+| ADR-006 | /doctor renombrado a /salud por conflicto con comando nativo /doctor de OpenCode | ✅ Aceptado | 2026-06-28 | salud.md, .opencode/commands/CBP.md, AGENTS.md, COMANDOS.md |
 
 ---
 

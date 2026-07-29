@@ -1,4 +1,4 @@
-# COMANDOS — Diligencia v3.0.1
+# COMANDOS — Diligencia v3.7.0
 
 > Referencia rapida de comandos, agentes y circuitos de calidad.
 
@@ -11,6 +11,7 @@
 | `/adaptar` | Adaptar proyecto a Diligencia |
 | `/+rm` | Agregar item al ROADMAP |
 | `/doc` | Crear/actualizar guia o mecanica |
+| `/subadaptar` | Sincronizar agentes con reglas R1-R10 actuales |
 
 ---
 
@@ -123,5 +124,3 @@
 - `AGENTS.md` — tabla original de comandos
 - `MECANICA-TASK-ROUTER.md` — enrutador tarea -> agente -> modelo -> API
 - `MECANICA-OLAS.md` — sistema de oleadas multi-proyecto
-| /subadaptar | Sincronizar agentes con reglas R1-R10 actuales
-                           | --check, --aplicar |

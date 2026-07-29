@@ -4,7 +4,7 @@
 
 | Version | Supported |
 |---|---|
-| v3.0.x | ✅ Active development |
+| v3.7.x | ✅ Active development |
 | v2.x | ⚠️ Security fixes only |
 | < v2.0 | ❌ No longer supported |
 

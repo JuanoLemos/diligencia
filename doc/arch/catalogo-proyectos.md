@@ -1,7 +1,7 @@
-# Catálogo de Proyectos — Diligencia v2.6.5
+# Catálogo de Proyectos — Diligencia v3.7.0
 
 Mapa completo de proyectos adaptados a Diligencia en el ecosistema local.
-Actualizado: 2026-07-04.
+Actualizado: 2026-07-29.
 
 ---
 
@@ -9,7 +9,7 @@ Actualizado: 2026-07-04.
 
 | # | Proyecto | Ruta | Diligencia | Versión propia | Tipo | IA integrada | WT | Última revisión | Desviaciones |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | **Diligencia** | `C:\xampp\htdocs\Diligencia` | v2.6.5 | 2.6.5 | Metodología | DeepSeek+MiniMax | ✅ Limpio | 2026-07-04 | — |
+| 1 | **Diligencia** | `C:\xampp\htdocs\Diligencia` | v3.7.0 | 3.7.0 | Metodología | DeepSeek+MiniMax | ✅ Limpio | 2026-07-29 | — |
 | 2 | **+RM** | `C:\xampp\htdocs\+RM` | v2.6.4 ✅ | Sin versionar | Dashboard PHP | No | ✅ Limpio | 2026-07-04 | — |
 | 3 | **MarketAI** | `C:\xampp\htdocs\MarketAI` | v2.6.4 ✅ | 1.3.0 | Trading multi-capa | DeepSeek V4 Flash | ✅ Limpio | 2026-07-04 | — |
 | 4 | **conquisitare** | `C:\xampp\htdocs\conquisitare` | v2.6.4 ✅ | 0.7.0 | Juego WebGL | No | ✅ Limpio | 2026-07-04 | — |

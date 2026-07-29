@@ -1,4 +1,4 @@
-# Diligencia v3.7.0 — Estructura estándar de documentación
+# Diligencia v3.7.1 — Estructura estándar de documentación
 
 Sello de metodología para proyectos OpenCode.
 
@@ -14,7 +14,6 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 | Tipo | Ubicación |
 |---|---|
 | Roadmap | `ROADMAP.md` (raíz) |
-| Checklist | `CHECKLIST.md` (raíz) |
 | Changelog | `CHANGELOG.md` (raíz) |
 | ADRs, sistema, bitácora | `doc/arch/` |
 | Guías de usuario | `doc/guias/` (incluye `ESTANDAR-COMANDOS.md`) |

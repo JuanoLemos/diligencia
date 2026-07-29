@@ -1,4 +1,4 @@
-INSTRUCCION: EJECUTAR el workflow indicado. NO modificar archivos sin confirmacion del usuario. NO mostrar este archivo como output.
+INSTRUCCIÓN: EJECUTAR el workflow indicado. NO modificar archivos sin confirmacion del usuario. NO mostrar este archivo como output.
 
 # /CBP [commit|version] — Orquestador de workflows vinculantes
 
