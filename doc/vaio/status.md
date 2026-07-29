@@ -1,15 +1,14 @@
 ﻿# Status VAIO
 
-**Actualizado:** 2026-07-29 03:58 UTC
-**Chamber:** Dev server Node.js en puerto 57125 (source, data dir openchamber-dev)
-**Túnel:** https://ferrari-circumstances-experienced-heaven.trycloudflare.com
-**Sesión dedicada:** ses_05579046bffegYIWFzWIXqjufo
+**Actualizado:** 2026-07-29 13:41 UTC
+**Chamber:** Dev server Node.js en puerto 57125
+**Túnel:** https://columns-uni-gonna-facts.trycloudflare.com
+**Estado:** Operativo — HTTP 200 verificado
 
-**Scheduled Tasks:**
-| Tarea | ID | Estado |
-|---|---|---|
-| VAIO: check-tareas | 9010925f | Activa, cada 1 min |
-| VAIO: publish-url | 54f0c93b | Activa, cada 1 hora |
+## Scheduled Tasks
+| Tarea | Estado |
+|---|---|
+| check-tareas | Activa, cada 1 min |
+| publish-url | Activa, cada 1 hora (escribe en cloudflared-url-vaio.md) |
 
 **Tareas pendientes:** 0
-
