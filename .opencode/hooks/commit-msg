@@ -1,0 +1,4 @@
+#!/usr/bin/env pwsh
+# commit-msg hook — llama a validate-commit.ps1
+$script = Join-Path -Path $PSScriptRoot -ChildPath "..\..\scripts\validate-commit.ps1"
+& $script -CommitMsgFile $args[0]

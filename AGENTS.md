@@ -118,6 +118,10 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 BUILD = aplicar cambios, NO commitear. Solo /commit, /CBP y /version ejecutan git commit.
 Al terminar cualquier BUILD en este proyecto, reportar cambios aplicados y sugerir /CBP.
 
+> Nota: Este proyecto es Markdown puro (sin código runtime). Los pasos de post-edit verification
+> del harness global (verificar `const`/`let`/`function`/`class` duplicados) son irrelevantes
+> y pueden omitirse en este proyecto. Aplica solo la releitura de 15 líneas alrededor del sitio editado.
+
 ## Deprecados
 
 | Item | Fecha | Reemplazo |
@@ -154,7 +158,7 @@ Los agentes especializados (`@narrador`, `@game-designer`, `@trader`, `@cartogra
 | R3 | La paloma sigue existiendo como mecanismo de auditoría cruzada (cuando un agente revisa proyectos ajenos). |
 | R4 | Si un agente encuentra un bug o mejora en otro proyecto (no el suyo), reporta vía paloma. No edita fuera de su proyecto. |
 | R5 | Cada agente puede ejecutar /CBP en cualquier forma (commit, version, full) según lo que corresponda al worktree de su sesión. No necesita MAIN para versionar. |
-| R6 | MAIN solo versióna cuando cambia la metodología Diligencia (comandos, mecánicas, templates). |
+| R6 | /CBP version solo cuando hay cambio metodológico que afecta proyectos adaptados (comandos, mecánicas, templates, reglas de AGENTS.md). NO justifican bump: heartbeats, URLs de túnel, fixes de infraestructura, tareas VAIO, config de máquinas específicas. Infraestructura usa /CBP commit. |
 | R7 | El MAIN debe pasar las respuestas de los agentes textualmente al usuario, sin resumir ni filtrar. Si es muy extensa, mostrar completa y agregar un resumen al final, no al revés. |
 | R8 | El MAIN debe escribir en el chat toda decisión, tabla, veredicto o resumen antes de pasar al siguiente paso. Si un análisis interno produce un resultado que el usuario necesita ver, va al chat. Un análisis interno que no produce output no cuenta. |
 | R9 | Al terminar BUILD, el agente ejecuta /CBP (commit o version) según el tipo de trabajo realizado. Si solo código, /CBP commit. Si tocó docs/metodología, /CBP version. |
@@ -163,7 +167,9 @@ Los agentes especializados (`@narrador`, `@game-designer`, `@trader`, `@cartogra
 | R12 | Antes de ejecutar /CBP con push, el agente verifica que el working tree esté limpio (sin cambios de otras sesiones). Si hay dudas, sugiere /backup antes de commitear. |
 | R13 | Después de un git pull (o al iniciar sesión en un proyecto), el agente verifica que el working tree esté limpio y que no haya conflictos de merge pendientes. Si hay conflicto, pausa y reporta. |
 | R14 | VAIO Worker: agente autónomo orquestado por Chamber Scheduled Tasks. Chamber ejecuta tareas programadas (check-tareas, publish-url). Una sesión dedicada con sessionId fijo. No requiere loop en el agente. Operado via `doc/vaio/VAIO-SCHEDULED.md`. |
-| R15 | Monitoreo bidireccional vía `git fetch`. **OBLIGATORIO antes de cada respuesta**: el MAIN ejecuta `git fetch` y si detecta commits con "VAIO:" o "MAIN:", notifica al usuario con los últimos 3 commits. No espera a que el usuario pida "revisá novedades". `git fetch` es solo lectura — no modifica working tree. |
+| R15 | Monitoreo vía `git fetch` entre respuestas. Notificar SOLO si hay cambios significativos: tarea completada, fix aplicado, error crítico. Heartbeats, URLs de túnel, y cambios de infra no son notificables. Silencio = normalidad. |
+| R16 | Toda afirmación de verificación, revisión o confirmación DEBE incluir la evidencia que la respalda (archivo:línea, output de comando, resultado de herramienta). Sin evidencia disponible, el agente DEBE calificar como "no verificada" o "basada en conocimiento previo". Prohibido: "Verifiqué y está bien." Requerido: "Leí DILIGENCIA.md línea 1: v3.5.0. Coincide con CHANGELOG." |
+| R17 | El agente NO pedirá al usuario que realice acciones que él mismo puede ejecutar (lectura de archivos, búsqueda, comandos). Solo delegar: acceso físico, credenciales, decisiones irreversibles, confirmación explícita requerida por el flujo. En caso de duda, el agente ejecuta él mismo. |
 
 ## Asistente VAIO-Server
 

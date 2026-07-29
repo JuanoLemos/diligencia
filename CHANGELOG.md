@@ -2,6 +2,20 @@
 
 ---
 
+## [3.7.0] — 2026-07-29
+
+### Added
+- R16: evidencia obligatoria en toda afirmación (archivo:línea o comando verify:)
+- R17: no delegar al usuario lo que el agente puede ejecutar
+- `doc/verdades.md`: hechos verificados persistentes — no se pierden con compactación
+- `scripts/validate-commit.ps1`: validación advisory de commits contra R6 y R16
+- `.opencode/hooks/`: git hooks para validación automática
+
+### Changed
+- R6 reescrita: solo versionar cambios metodológicos que afectan proyectos adaptados. Infra usa /CBP commit
+- R15 reescrita: `git fetch` entre respuestas, notificar SOLO cambios significativos. Heartbeats/URLs no notificables
+- Post-edit verification: nota en AGENTS.md de que pasos de `const`/`let`/`function`/`class` son irrelevantes en proyectos Markdown puro
+
 ## [3.6.0] — 2026-07-28
 
 ### Changed
