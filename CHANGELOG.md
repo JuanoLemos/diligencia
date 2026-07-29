@@ -2,6 +2,19 @@
 
 ---
 
+## [3.7.1] — 2026-07-29
+
+### Fixed
+- Auditoría documental: 20 hallazgos corregidos — versiones stale en ROADMAP, README, COMANDOS, SECURITY, status-salud, catalogo-proyectos, INDEX, ADR_SUMMARY, HARNESS, verdades
+- CHECKLIST.md deprecado removido de DILIGENCIA.md, README.md, HARNESS.md
+- `$CHECKLIST` eliminado de comandos /estado y /next (variable ya deprecada)
+- `/CBP` y `/agentes-sync` agregados a tabla de comandos en AGENTS.md (32 comandos)
+- `/subadaptar` agregado a COMANDOS.md sección CREAR
+- Check 14 de skill `diligencia-docs` actualizado: CHECKLIST Dashboard → Dashboard Unificado
+- `doc/arch/propagaciones.md` creado (check 16 de auditoría)
+- Guarda `INSTRUCCION` → `INSTRUCCIÓN` en `.opencode/commands/CBP.md`
+- `GUIA_DE_COMANDOS.md`: contador 38 → 32 comandos
+
 ## [3.7.0] — 2026-07-29
 
 ### Added

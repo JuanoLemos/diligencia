@@ -2,7 +2,7 @@
 
 ![Status](https://img.shields.io/badge/status-beta-ff69b4?style=flat-square)
 ![License](https://img.shields.io/badge/license-AGPL--3.0-blue?style=flat-square)
-![Version](https://img.shields.io/badge/version-v3.0.1-8A2BE2?style=flat-square)
+![Version](https://img.shields.io/badge/version-v3.7.0-8A2BE2?style=flat-square)
 [![Issues](https://img.shields.io/badge/issues-7%20proyectos-181717?style=flat-square)](https://github.com/JuanoLemos/diligencia/issues)
 
 Estructura estándar de documentación para proyectos OpenCode.
@@ -59,7 +59,6 @@ Diligencia escala con tu proyecto. No necesitás usarlo todo desde el día uno.
 /
 ├── AGENTS.md              — Variables de ruta y comandos del proyecto
 ├── CHANGELOG.md           — Historial versionado (Keep a Changelog)
-├── CHECKLIST.md           — Tracking operativo de tareas
 ├── DILIGENCIA.md          — Sello de la metodología
 ├── INDEX.md               — Catálogo de documentación
 ├── ROADMAP.md             — Estrategia y próximos pasos
@@ -85,15 +84,15 @@ Diligencia escala con tu proyecto. No necesitás usarlo todo desde el día uno.
 | **/CBP** | Circuito de Buenas Prácticas — orquestador de workflows (salud, updoc, version) |
 | **SDD** | Spec-Driven Development — flujo de agentes: @sdd-architect → @sdd-implement → @sdd-verify → @sdd-reviewer |
 | **TDD estricto** | RED→GREEN→TRIANGULATE→REFACTOR — ejecutado por el agente (skill tdd-strict) |
-| **29 comandos** | 28 activos + 1 `documentar` — agrupados por acción (CREAR, PLANIFICAR, EJECUTAR, REVISAR, CUIDAR) |
+| **32 comandos** | 30 activos + 2 `documentar` y `agentes-sync` — agrupados por acción (CREAR, PLANIFICAR, EJECUTAR, REVISAR, CUIDAR) |
 | **6 agentes** | @consejero (decisión), @circuito (integridad), @documentador (auditoría), @sdd-* (SDD) |
-| **Skills** | 8 skills: diligencia-docs, diligencia-consejo, diligencia-circuito, cbp, health, docs, workflow, commands |
+| **Skills** | 7 skills: diligencia-docs, diligencia-consejo, diligencia-circuito, cbp, health, docs, workflow, commands |
 
 ## Proyectos adaptados
 
 | Proyecto | Versión Diligencia | Estado |
 |---|---|---|
-| Diligencia (metodología) | v3.0.1 | ✅ |
+| Diligencia (metodología) | v3.7.0 | ✅ |
 | +RM | v2.2.0 | ✅ |
 | MarketAI | v2.2.0 | ✅ |
 | conquisitare | v2.2.0 | ✅ |

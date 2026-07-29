@@ -38,7 +38,7 @@
 | # | Check | Qué valida | Severidad |
 |---|-------|-----------|-----------|
 | 13 | ROADMAP coherencia | Items en "Ahora" con 🟡/✅ coinciden con "Siguiente" y "Completado". Sin duplicados ni stale. | P2 |
-| 14 | CHECKLIST Dashboard | Última versión registrada en Dashboard coincide con DILIGENCIA.md. | P1 |
+| 14 | Dashboard Unificado | Última versión registrada en INDEX.md §Docs críticos coincide con DILIGENCIA.md. | P1 |
 | 15 | Trackers existentes | `$BUGS`, `$INCIDENTS`, `$BACKUPS` resuelven a archivos reales. | P2 |
 | 16 | Proyectos + propagaciones | `catalogo-proyectos.md` y `propagaciones.md` existen y tienen datos. | P3 |
 | 17 | status-salud.md | Existe y no tiene más de 7 días de desactualización. | P3 |

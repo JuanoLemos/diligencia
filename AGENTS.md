@@ -19,13 +19,13 @@ Al iniciar, decidir cuál rol activar. Cada rol tiene su foco, sus archivos y su
 
 | Rol | Foco | Archivos | Repo |
 |---|---|---|---|
-| 🔵 **Circuito** | Metodología pura (CBP, comandos, mecánicas, guías, versionado) | `CBP.md`, `salud.md`, `version.md`, `MECANICA-*.md`, `GUIA_*.md`, `ROADMAP.md` (R01-R07) | `diligencia.git` |
+| 🔵 **Circuito** | Metodología pura (CBP, comandos, mecánicas, guías, versionado) | `.opencode/commands/CBP.md`, `.opencode/commands/salud.md`, `.opencode/commands/version.md`, `MECANICA-*.md`, `GUIA_*.md`, `ROADMAP.md` (R01-R07) | `diligencia.git` |
 | 🟣 **Chamber** | Agentes (@consejero, @circuito), tray, skills, integración Chamber | `skills/diligencia-*/`, `MECANICA-CONSEJO.md`, `MECANICA-CIRCUITO.md`, `ROADMAP.md` (R08-R12) | `diligencia.git` + `openchamber.git` |
 
 ### Reglas de convivencia
 
 - 🔵 **No toca** `skills/diligencia-consejo/`, `skills/diligencia-circuito/`, ni código de tray.
-- 🟣 **No toca** `CBP.md`, `salud.md`, `version.md`, ni guías de metodología. Los lee, no los modifica.
+- 🟣 **No toca** `.opencode/commands/CBP.md`, `.opencode/commands/salud.md`, `.opencode/commands/version.md`, ni guías de metodología. Los lee, no los modifica.
 - **Antes de /CBP**: `git fetch && git log --oneline origin/master -3`. Si el otro rol commiteó, `git pull --rebase` primero.
 - **AGENTS.md y ROADMAP.md**: compartidos. Cada rol actualiza solo su sección.
 - **CHANGELOG.md**: cada rol escribe sus propias entradas de versión.
@@ -108,6 +108,8 @@ Emojis: permitidos y recomendados en todo tipo de comunicación y documentación
 | /revision | Revisar mutaciones del proyecto y generar reporte | Declarativo |
 | /documentar | Auditoría documental completa (24 checks, --legales para legal) | Declarativo |
 | /ola | Sistema de oleadas multi-proyecto (planear/ejecutar/estado) | Declarativo |
+| /CBP | Orquestador de workflows vinculantes (commit, version, updoc) | Procedural |
+| /agentes-sync | Sincronizar agentes + escanear $PROYECTOS | Declarativo |
 ## Focus
 - Documentar la metodología
 - Mantener coherencia entre componentes

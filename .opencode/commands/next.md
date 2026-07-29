@@ -1,11 +1,11 @@
-INSTRUCCIÓN: EJECUTAR las instrucciones de abajo sobre los archivos del proyecto ($RM, $CHECKLIST). NO mostrar este archivo como output. ENTREGAR solo el plan de ejecución.
+INSTRUCCIÓN: EJECUTAR las instrucciones de abajo sobre los archivos del proyecto ($RM). NO mostrar este archivo como output. ENTREGAR solo el plan de ejecución.
 
 # /next — Próximos pasos: plan de ejecución por olas
 
 Agrupa las tareas pendientes del roadmap en olas (waves) según dependencias. Las tareas de una misma ola pueden ejecutarse en paralelo. Usa el agente `@consejero` para validar agrupación y priorización.
 
 ## Qué hace
-1. Leer `$RM` (ROADMAP.md) y `$CHECKLIST` AHORA
+1. Leer `$RM` (ROADMAP.md) AHORA
 2. Construir grafo de dependencias entre items PENDIENTE
 3. Agrupar en olas (Waves):
    - **Ola 1**: tareas sin dependencias pendientes — ejecutables ya
@@ -27,10 +27,11 @@ Agrupa las tareas pendientes del roadmap en olas (waves) según dependencias. La
 **📋 Plan de ejecución — Olas**
 
 🌊 **Ola 1** — ejecutar en paralelo (sin dependencias entre sí)
-| ID | Tarea | Dep. | Prioridad | Impacto | CHECKLIST | Sub-fases |
+| ID | Tarea | Dep. | Prioridad | Impacto | Sub-fases |
+|---
 
 🌊 **Ola 2** — ejecutar tras Ola 1
-| ID | Tarea | Dep. | Prioridad | Impacto | CHECKLIST | Sub-fases |
+| ID | Tarea | Dep. | Prioridad | Impacto | Sub-fases |
 
 ... (más olas si aplica)
 

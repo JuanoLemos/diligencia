@@ -10,9 +10,9 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 
 | Archivo | Version | Ultima actualizacion |
 |---|---|---|
-| ROADMAP.md | v3.0.1 | 2026-07-21 |
-| CHANGELOG.md | v3.7.0 | 2026-07-29 |
-| DILIGENCIA.md | v3.7.0 | 2026-07-29 |
+| ROADMAP.md | v3.7.0 | 2026-07-29 |
+| CHANGELOG.md | v3.7.1 | 2026-07-29 |
+| DILIGENCIA.md | v3.7.1 | 2026-07-29 |
 
 ## Guias
 
@@ -35,7 +35,7 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 | GUIA_MULTI_REPO.md | v1.0 | 2026-06-06 |
 | GUIA_UPDATE_DILIGENCIA.md | v1.0 | 2026-06-06 |
 | identidad.md | v1.16.2 | 2026-06-05 |
-| COMANDOS.md | v3.0.1 | 2026-07-21 |
+| COMANDOS.md | v3.7.0 | 2026-07-29 |
 | GUIA_DILIGENCIA_CHAMBER.md | v1.0.0 | 2026-06-26 |
 | GUIA_CHAMBER.md | v1.0.0 | 2026-06-26 |
 | GUIA_HOSTING_VPS.md | v1.0 | 2026-07-04 |
@@ -89,16 +89,18 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 
 | Archivo | Version | Ultima actualizacion |
 |---|---|---|
-| status-salud.md | v2.6.3 | 2026-07-01 |
+| status-salud.md | v3.7.0 | 2026-07-29 |
 | bugs.md | v1.0 | 2026-07-01 |
 | incidentes.md | v1.0 | 2026-07-01 |
 | backups.md | v1.0 | 2026-07-01 |
+| verdades.md | v1.0 | 2026-07-29 |
 | LICENSING.md | — | — |
 | PRONT_VAIO.md | v1.0 | 2026-07-21 |
 | VAIO-SCHEDULED.md | v2.0 | 2026-07-28 |
 | PENDING.md | v1.0 | 2026-07-01 |
 | mutaciones-consolidadas.md | v1.0 | 2026-07-01 |
-| catalogo-proyectos.md | v2.6.5 | 2026-07-01 |
+| catalogo-proyectos.md | v3.7.0 | 2026-07-29 |
+| propagaciones.md | v1.0 | 2026-07-29 |
 
 ## Olas
 
