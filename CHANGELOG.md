@@ -17,6 +17,7 @@
 - doc-base worker-loop.md: header de deprecación
 - doc-base README.md: lenguaje plural multi-worker, referencia VAIO-SCHEDULED como principal
 - doc-base VAIO-SCHEDULED.md: start-chamber.ps1 documentado, sección auto-resolución
+- doc-base ADAPTAR-VAIO.md: guía de auto-configuración inicial para proyectos nuevos en VAIO
 - Diligencia R14: eliminado cloudflared-watchdog
 
 ## [3.3.0] — 2026-07-28
