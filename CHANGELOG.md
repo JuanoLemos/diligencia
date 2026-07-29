@@ -2,6 +2,21 @@
 
 ---
 
+## [3.5.0] — 2026-07-28
+
+### Added
+- ADAPTAR-VAIO.md: guía de auto-configuración inicial para proyectos nuevos en VAIO
+- doc-base: auto-resolución documentada — VAIO intenta arreglar errores antes de reportar
+- doc-base: reporte de hardware al iniciar sesión (hostname, CPU, RAM, OS)
+- doc-base: consideraciones de seguridad — no .env, no credenciales, no Admin sin permiso
+
+### Changed
+- doc-base PRONT_VAIO.md: +auto-resolución, +seguridad, +independencia multi-proyecto
+- doc-base README.md: lenguaje plural multi-worker, referencia a VAIO-SCHEDULED
+- doc-base VAIO-SCHEDULED.md: start-chamber.ps1 documentado, sección auto-resolución
+- doc-base AGENTS.md: +$VAIO_ADAPTAR, +start-chamber.ps1 en archivos clave
+- Diligencia AGENTS.md: sección "Asistente VAIO-Server" con variables $VAIO_TASKS/$VAIO_RESULTS/$VAIO_PRONT/$VAIO_SCHEDULED
+
 ## [3.4.0] — 2026-07-28
 
 ### Added
