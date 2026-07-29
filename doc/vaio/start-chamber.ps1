@@ -73,14 +73,17 @@ if ($tasks.Count -eq 0) {
     Write-Host "     $($tasks.Count) tasks existentes — sin cambios"
 }
 
-# === 5. Iniciar túnel ===
-Write-Host "[5] Iniciando tunnel quick mode..."
-$tunnel = curl.exe -s -X POST "$tunnelApi/start" -H "Content-Type: application/json" -d '{"provider":"cloudflare","mode":"quick"}'
-if ($tunnel -match '"url":') {
-    $url = ($tunnel | ConvertFrom-Json).url
-    Write-Host "     Tunnel URL: $url"
+# === 5. Iniciar watchdog túnel ===
+Write-Host "[5] Iniciando watchdog-tunnel (background)..."
+$watchdogPath = "$DiligenciaDir\doc\vaio\watchdog-tunnel.ps1"
+if (Test-Path $watchdogPath) {
+    # El watchdog monitorea cloudflared y publica URL cada 30s
+    # Corre en segundo plano sin ventana visible
+    Start-Process -WindowStyle Hidden -FilePath "powershell.exe" `
+        -ArgumentList "-ExecutionPolicy Bypass -File `"$watchdogPath`" -Port $Port -DiligenciaDir `"$DiligenciaDir`""
+    Write-Host "     watchdog-tunnel lanzado en background"
 } else {
-    Write-Host "     Tunnel ya activo o falló"
+    Write-Host "     ERROR: watchdog-tunnel.ps1 no encontrado en $watchdogPath"
 }
 
 Write-Host "[OK] Chamber listo en :$Port"
