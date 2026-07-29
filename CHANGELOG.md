@@ -13,9 +13,10 @@
 
 ### Changed
 - doc-base AGENTS.md: R14 sin watchdog, sección Asistente actualizada
-- doc-base PRONT_VAIO.md v1.0 → v2.0
+- doc-base PRONT_VAIO.md v1.0 → v2.0: reporte de hardware al iniciar, auto-resolución, seguridad
 - doc-base worker-loop.md: header de deprecación
-- doc-base README.md: referencia a VAIO-SCHEDULED.md como método principal
+- doc-base README.md: lenguaje plural multi-worker, referencia VAIO-SCHEDULED como principal
+- doc-base VAIO-SCHEDULED.md: start-chamber.ps1 documentado, sección auto-resolución
 - Diligencia R14: eliminado cloudflared-watchdog
 
 ## [3.3.0] — 2026-07-28
