@@ -1,9 +1,5 @@
-﻿# cloudflared-url
+﻿# URL Cloudflared Túnel
 
-| Campo | Valor |
-|---|---|
-| URL | https://laptop-pictures-households-nearby.trycloudflare.com |
-| Fecha | 2026-07-28 20:50 UTC |
-| Puerto | 57123 |
-| PID | 12632 |
-
+**Actualizado:** 2026-07-28 21:00:26 UTC
+**URL:** https://ferrari-circumstances-experienced-heaven.trycloudflare.com
+**Puerto local:** 57125
