@@ -1,15 +1,9 @@
 ﻿# Status VAIO
 
-**Actualizado:** 2026-07-29 00:02 UTC
-**Chamber:** Dev server Node.js en puerto 57125 (source, data dir openchamber-dev)
+**Actualizado:** 2026-07-29 00:03 UTC
+**Chamber:** Dev server Node.js puerto 57125
 **Túnel:** https://ferrari-circumstances-experienced-heaven.trycloudflare.com
-**Sesión dedicada:** ses_05579046bffegYIWFzWIXqjufo
-
-**Scheduled Tasks:**
-| Tarea | ID | Estado |
-|---|---|---|
-| VAIO: check-tareas | 9010925f | Activa, cada 1 min |
-| VAIO: publish-url | 54f0c93b | Activa, cada 1 hora |
+**Sesión:** ses_05579046bffegYIWFzWIXqjufo
 
 **Tareas pendientes:** 0
 
