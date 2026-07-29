@@ -2,6 +2,11 @@
 
 ---
 
+## [3.6.0] — 2026-07-28
+
+### Changed
+- PC Principal: publish-url eliminado — 0 scheduled tasks (toda automatización en VAIO)
+
 ## [3.5.0] — 2026-07-28
 
 ### Added
