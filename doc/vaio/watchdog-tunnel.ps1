@@ -2,7 +2,7 @@
 param(
     [int]$Port = 57125,
     [string]$DiligenciaDir = "C:\xampp\htdocs\Diligencia",
-    [int]$CheckIntervalSeconds = 30
+    [int]$CheckIntervalSeconds = 60
 )
 
 $logFile = "$env:TEMP\cf-watchdog-57125.log"
@@ -47,19 +47,33 @@ Write-Host "[watchdog] Iniciando monitoreo en :$Port cada ${CheckIntervalSeconds
 
 $lastUrl = ""
 $lastPublish = (Get-Date).AddHours(-1)
+$rateLimitUntil = (Get-Date).AddHours(-1)
 
 while ($true) {
     try {
         $url = Get-CurrentUrl
         $cf = Get-Process -Name "cloudflared*" -ErrorAction SilentlyContinue | Where-Object { $_.SessionId -eq 1 }
 
-        if (-not $cf -or -not $url) {
-            Write-Host "[watchdog] Tunnel caido - reiniciando..."
-            $oldcf = Get-Process -Name "cloudflared*" -ErrorAction SilentlyContinue | Where-Object { $_.SessionId -eq 1 }
-            if ($oldcf) { $oldcf | Stop-Process -Force -ErrorAction SilentlyContinue }
-            Start-Sleep -Seconds 2
-            $url = Start-Tunnel
-            if ($url) { Write-Host "[watchdog] Nuevo URL: $url" }
+        if (-not $cf) {
+            $now = Get-Date
+            if ($now -lt $rateLimitUntil) {
+                Write-Host "[watchdog] Rate-limited - esperando hasta $rateLimitUntil..."
+            } else {
+                Write-Host "[watchdog] cloudflared no corre - iniciando..."
+                Remove-Item $logFile -Force -ErrorAction SilentlyContinue
+                $url = Start-Tunnel
+                if ($url) { Write-Host "[watchdog] Nuevo URL: $url" }
+                else {
+                    $log = Get-Content $logFile -Tail 10 -ErrorAction SilentlyContinue | Out-String
+                    if ($log -match '429') {
+                        $rateLimitUntil = (Get-Date).AddMinutes(5)
+                        Write-Host "[watchdog] 429 detectado - backoff hasta $rateLimitUntil"
+                    }
+                }
+            }
+        }
+        elseif (-not $url -and $cf) {
+            Write-Host "[watchdog] cloudflared corriendo sin URL - esperando..."
         }
 
         if ($url -and $url -ne $lastUrl) {
