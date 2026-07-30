@@ -1,0 +1,29 @@
+{
+  "_policy_version": "R79.1",
+  "_policy_date": "2026-07-30",
+  "_incident": "USD 10/day burn rate",
+  "_default": "deepseek-v4-flash",
+  "_notes": [
+    "Politica aplicada por invoke-agent-task.ps1 cuando -Model no se especifica.",
+    "Para usar modelo pro, pasar -Model <name> -Force explicitamente.",
+    "Las tareas cron DEBEN usar flash (verificado por register-task.ps1).",
+    "Solo Diligencia, Nemesis y proyectos de arquitectura pueden usar pro bajo justificacion."
+  ],
+  "default": "deepseek-v4-flash",
+  "projects": {
+    "Diligencia": "deepseek-v4-flash",
+    "+RM": "deepseek-v4-flash",
+    "MarketAI": "deepseek-v4-flash",
+    "conquisitare": "deepseek-v4-flash",
+    "buenobonitobarato": "deepseek-v4-flash",
+    "Nemesis": "deepseek-v4-flash",
+    "OpenMontage": "deepseek-v4-flash"
+  },
+  "allowed_pro_projects": [],
+  "max_daily_cap_usd": 5.0,
+  "balance_floor_usd": 0.50,
+  "max_input_tokens": 50000,
+  "max_output_tokens": 8000,
+  "session_rotation_max_prompts": 5,
+  "session_idle_timeout_min": 30
+}
