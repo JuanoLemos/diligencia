@@ -10,8 +10,8 @@ el comando que la respalda.
 
 | Hecho | Valor | Verify |
 |---|---|---|
-| Versión Diligencia | v3.7.1 | `DILIGENCIA.md:1` |
-| Fecha | 2026-07-29 | `CHANGELOG.md:5` |
+| Versión Diligencia | v3.8.0 | `DILIGENCIA.md:1` |
+| Fecha | 2026-07-30 | `CHANGELOG.md:5` |
 | Repositorio | `https://github.com/JuanoLemos/diligencia.git` | `AGENTS.md` variable `$REPO` |
 | Rama por defecto | `master` | `git branch --show-current` |
 | Contenido | Metodología documental pura (Markdown, sin código runtime) | `HARNESS.md` — "stack: none (metodologia documental sin codigo runtime)" |
@@ -71,7 +71,7 @@ Verificadas con `git log --since="2026-07-20" --until="2026-07-29"`.
 
 | Hecho | Valor | Verify |
 |---|---|---|
-| Versión Diligencia | v3.7.1 | `DILIGENCIA.md:1` |
+| Versión Diligencia | v3.8.0 | `DILIGENCIA.md:1` |
 | R16 activa | Sí | `AGENTS.md:171` |
 | R17 activa | Sí | `AGENTS.md:172` |
 | R6 reescrita | Sí | `AGENTS.md:161` |

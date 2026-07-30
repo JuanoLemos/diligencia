@@ -2,6 +2,41 @@
 
 ---
 
+## [3.8.0] — 2026-07-30
+
+### Added
+- R78: Server Autónomo — control remoto de VAIO via `opencode serve` API
+- `MECANICA-SERVIDOR-AUTONOMO.md`: arquitectura de control directo (scripts, watchdog, protocolo)
+- `scripts/invoke-agent-task.ps1`: enviar tareas desde PC al servidor remoto
+- `scripts/watch-server.ps1`: dashboard y monitoreo en tiempo real
+- `scripts/vaio-services.ps1`: watchdog auto-restart en VAIO (servicios 24/7)
+- `scripts/install-services.ps1`: instalador de Windows Scheduled Task para VAIO
+- `doc/vaio/scripts/start-opencode-server.ps1`: lanzador de `opencode serve`
+- `doc/vaio/schemas/task.json`: schema estándar de tarea remota
+
+### Changed
+- VAIO: migración de control vía git triangle (tasks/results) a API directa via `opencode serve`
+- `doc/vaio/VAIO-SCHEDULED.md`: check-tareas deprecado, server-health como reemplazo
+- `doc/vaio/GUIA_RECUPERACION_VAIO.md`: Fase 6 — recuperación de `opencode serve`
+
+### Deprecated
+- `doc/vaio/tasks/`: las tareas ya no se envían via git push (reemplazado por API directa)
+- `doc/vaio/results/`: los resultados ya no se persisten via git pull (reemplazado por SSE)
+- `doc/vaio/heartbeat.md`: reemplazado por `GET /global/health`
+- `doc/vaio/cloudflared-url.md`: URL consultable bajo demanda
+- `doc/vaio/status.md`: reemplazado por health check
+- Scheduled Task `check-tareas`: reemplazada por `server-health`
+- Scheduled Task `publish-url`: reemplazada por health check on-demand
+
+### Fixed
+- `watch-server.ps1`: compatibilidad con PowerShell 5.1 (encoding y em-dashes)
+- `invoke-agent-task.ps1`: encoding de caracteres especiales
+- `invoke-agent-task.ps1`: providerID corregido (`opencode` → `deepseek` para serve standalone)
+- `invoke-agent-task.ps1`: formato de `parts` (agregado `type: "text"`)
+- VAIO: `DEEPSEEK_API_KEY` configurada a nivel User y Machine
+- VAIO: firewall abierto para puerto 4096 (Tailscale)
+- VAIO: `OPENCODE_SERVER_USERNAME` seteado en scope de proceso
+
 ## [3.7.1] — 2026-07-29
 
 ### Fixed
