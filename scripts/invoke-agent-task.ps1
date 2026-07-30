@@ -85,7 +85,7 @@ $sessionBody = @{
 } | ConvertTo-Json -Compress
 
 if ($DryRun) {
-    Write-Host "DRY RUN — Sesion: $sessionBody"
+    Write-Host "DRY RUN - Sesion: $sessionBody"
     exit 0
 }
 
