@@ -96,6 +96,37 @@ function Test-OpenCodeHealth {
     }
 }
 
+# ── Session health — abortar sesiones stuck ────────────────────
+function Clear-StuckSessions {
+    param([int]$MaxAgeSeconds = 300)
+    try {
+        $sessions = curl.exe -s http://localhost:4096/session -u "diligencia:diligencia-vaio-2026" 2>$null
+        if (-not $sessions) { return }
+        $list = $sessions | ConvertFrom-Json
+        if (-not $list -or $list.Count -eq 0) { return }
+
+        $now = [DateTimeOffset]::UtcNow.ToUnixTimeMilliseconds()
+        $aborted = 0
+        foreach ($s in $list) {
+            $ageMs = $now - $s.time.created
+            $ageSec = $ageMs / 1000
+            $isRunning = ($s.info.status -eq "running") -or (-not $s.info.status)
+
+            if ($isRunning -and $ageSec -gt $MaxAgeSeconds) {
+                Write-Log "ABORT session $($s.id): ${ageSec}s running (max ${MaxAgeSeconds}s). Title: $($s.title)"
+                curl.exe -s -X POST "http://localhost:4096/session/$($s.id)/abort" `
+                    -u "diligencia:diligencia-vaio-2026" -H "Content-Type: application/json" 2>$null | Out-Null
+                $aborted++
+            }
+        }
+        if ($aborted -gt 0) {
+            Write-Log "Session cleanup: $aborted sesiones abortadas por stuck."
+        }
+    } catch {
+        Write-Log "ERROR en session cleanup: $_"
+    }
+}
+
 # ── Arranque inicial ───────────────────────────────────────────
 Write-Log "Arranque inicial de servicios..."
 Start-OpenCodeServe | Out-Null
@@ -105,6 +136,9 @@ Start-VSCodeTunnel | Out-Null
 $restartsOC = 0
 $restartsVS = 0
 while ($true) {
+    # Session cleanup — abortar sesiones stuck >5min
+    Clear-StuckSessions -MaxAgeSeconds 300
+
     # opencode serve
     if (-not (Test-OpenCodeHealth)) {
         $restartsOC++

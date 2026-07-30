@@ -15,6 +15,8 @@ param(
 
     [switch]$Watch,
 
+    [switch]$Clean,
+
     [int]$PollInterval = 3
 )
 
@@ -142,6 +144,30 @@ if ($SessionId) {
     }
 }
 
+# ── Modo: Clean (abortar sesiones viejas o stuck) ──────────────
+if ($Clean) {
+    Write-Host "Limpiando sesiones en $Server ..."
+    $sessions = Get-Sessions
+    if (-not $sessions) { Write-Host "  No hay sesiones."; exit 0 }
+
+    $now = [DateTimeOffset]::UtcNow.ToUnixTimeMilliseconds()
+    $aborted = 0
+    foreach ($s in $sessions) {
+        $ageMs = $now - $s.time.created
+        $ageSec = [Math]::Round($ageMs / 1000)
+        $isRunning = ($s.info.status -eq "running") -or (-not $s.info.status)
+        if ($isRunning -and $ageSec -gt 300) {
+            Write-Host ("  Abortando {0} ({1}min) - {2}" -f $s.id, [Math]::Round($ageSec/60), $s.title)
+            try {
+                Invoke-RestMethod -Uri "$Server/session/$($s.id)/abort" -Method Post -Headers $headers
+                $aborted++
+            } catch { Write-Host ("    Error: {0}" -f $_.Exception.Message) }
+        }
+    }
+    Write-Host ("Hecho: {0} sesiones abortadas." -f $aborted)
+    exit 0
+}
+
 # ── Modo: Dashboard ──────────────────────────────────────────
 if (-not $Watch -and -not $SessionId) {
     Clear-Host
@@ -164,10 +190,21 @@ if (-not $Watch -and -not $SessionId) {
     Write-Host "--- Sesiones Activas ---"
     $sessions = Get-Sessions
     if ($sessions) {
+        $totalCost = 0
+        $totalTokensIn = 0
+        $totalTokensOut = 0
+        foreach ($s in $sessions) {
+            $totalCost += $s.cost
+            $totalTokensIn += $s.tokens.input
+            $totalTokensOut += $s.tokens.output
+        }
+        Write-Host ("Total tokens: {0} in / {1} out | Costo total: `${2:N2}" -f $totalTokensIn, $totalTokensOut, $totalCost)
+        Write-Host ""
         $sessions | Format-Table @(
             @{Label="ID"; Expression={$_.id.Substring(0,8)}},
             @{Label="Status"; Expression={$_.info.status}},
             @{Label="Modelo"; Expression={$_.info.modelID}},
+            @{Label="Costo"; Expression={$_.cost}},
             @{Label="Titulo"; Expression={$_.title}}
         ) -AutoSize
     } else {
@@ -176,7 +213,9 @@ if (-not $Watch -and -not $SessionId) {
 
     Write-Host ""
     Write-Host "Comandos:"
-    Write-Host "  .\invoke-agent-task.ps1 -Prompt '...' -Project 'Nemesis'"
+    Write-Host "  .\invoke-agent-task.ps1 -Prompt '...' -Project 'Nemesis'     # Enviar tarea (async)"
+    Write-Host "  .\invoke-agent-task.ps1 -Prompt '...' -Project 'Nemesis' -Sync  # Esperar resultado"
     Write-Host "  .\watch-server.ps1 -Watch               # Streaming en vivo"
     Write-Host "  .\watch-server.ps1 -SessionId <id>       # Una sesion"
+    Write-Host "  .\watch-server.ps1 -Clean                # Abortar sesiones >5min"
 }
