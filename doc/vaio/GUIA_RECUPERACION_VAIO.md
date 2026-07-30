@@ -147,3 +147,34 @@ curl.exe -s -N --max-time 5 http://localhost:57123/api/openchamber/events
 ## Fase 5 — Commit de recuperación
 
 Cuando todo funcione, avisame y desde acá creo una tarea de prueba para verificar que el worker responde.
+
+---
+
+## Fase 6 — Recuperar opencode serve (server autonomo R78)
+
+Si `opencode serve` no esta corriendo o no responde:
+
+### Verificar estado
+
+```powershell
+curl.exe -s http://localhost:4096/global/health
+# Debe devolver JSON con status "ok"
+```
+
+### Reiniciar
+
+```powershell
+cd C:\xampp\htdocs\Diligencia
+.\doc\vaio\scripts\start-opencode-server.ps1 -Port 4096 -Lan -Kill -Password "tu-password"
+```
+
+### Verificar desde PC
+
+```powershell
+# Configurar en PC:
+$env:DILIGENCIA_SERVER = "http://vaio-url-o-ip:4096"
+$env:OPENCODE_SERVER_PASSWORD = "tu-password"
+
+# Verificar:
+.\scripts\watch-server.ps1
+```

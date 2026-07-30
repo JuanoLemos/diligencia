@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Diligencia Agent Task",
+  "description": "Tarea para enviar al servidor opencode serve en VAIO desde Chamber PC.",
+  "type": "object",
+  "required": ["prompt", "project"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "ID unico de la tarea (UUID v4). Autogenerado si no se provee."
+    },
+    "prompt": {
+      "type": "string",
+      "description": "El prompt/instruccion para el agente de IA.",
+      "minLength": 1
+    },
+    "project": {
+      "type": "string",
+      "description": "Nombre o ruta del proyecto Diligencia objetivo.",
+      "enum": ["Diligencia", "+RM", "MarketAI", "conquisitare", "buenobonitobarato", "Nemesis", "OpenMontage"]
+    },
+    "cwd": {
+      "type": "string",
+      "description": "Working directory absoluto para la sesion del agente."
+    },
+    "model": {
+      "type": "object",
+      "properties": {
+        "providerID": {
+          "type": "string",
+          "default": "opencode"
+        },
+        "modelID": {
+          "type": "string",
+          "description": "Modelo a usar (deepseek-v4-pro, deepseek-v4-flash, etc.)",
+          "default": "deepseek-v4-pro"
+        }
+      }
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["alta", "media", "baja"],
+      "default": "media"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Tags para categorizar la tarea."
+    },
+    "webhook": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL opcional para notificar cuando la tarea termine."
+    }
+  }
+}
