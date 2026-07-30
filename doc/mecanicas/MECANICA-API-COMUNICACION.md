@@ -22,10 +22,12 @@ PC (MAIN)                           VAIO (servidor 24/7)
 
 ---
 
-## Bootstrap de contexto (CRITICO)
+## Bootstrap de contexto (LAZY, R79.1)
 
-Antes de procesar cualquier tarea, cada sesion DEBE recibir este preambulo.
-El script `invoke-agent-task.ps1` lo inyecta automaticamente en el primer prompt.
+Antes de procesar cualquier tarea, una sesion nueva PUEDE recibir este preambulo.
+**El script `invoke-agent-task.ps1` lo inyecta SOLO si el prompt contiene keywords vinculantes** (commit, push, cbp, version, build, agente, sesion, deploy, watchdog, sync, git, rm, adapta, revis, implement, investig, doc, patron, promp, archivo, linea, merge, branch, rotat, depend, contexto, model, api, salud) o si se pasa `-StrictBootstrap`.
+
+Prompts triviales (`git status`, `ls`, `lista archivos`) NO reciben bootstrap para ahorrar tokens input.
 
 ```
 [BOOTSTRAP DILIGENCIA]
@@ -38,6 +40,7 @@ Reglas vinculantes:
 - Reportar EXITO o ERROR al final con evidencia.
 - R16: citar archivo:linea en toda afirmacion.
 - Si encontrás un bug en otro proyecto, reportalo, no lo arregles.
+- [opcional] ALCANCE: solo pods leer/escribir archivos que matcheen: {glob,...}
 ```
 
 ---
@@ -70,12 +73,19 @@ Al rotar, el ultimo prompt pide un resumen de estado (1K tokens aprox) que se in
 |---|---|---|
 | `-Prompt` | `"Revisa el ROADMAP"` | La instruccion para el agente |
 | `-Project` | `"Nemesis"` | Proyecto objetivo (define CWD) |
-| `-Model` | `deepseek-v4-flash` | Modelo (default flash por costo) |
+| `-Model` | `deepseek-v4-flash` | Modelo (default flash por costo; cargado de model-policy.json) |
 | `-Persist` | (flag) | Usa sesion persistente por proyecto |
 | `-SessionId` | `"abc123"` | Sesion especifica (uso avanzado) |
 | `-Sync` | (flag) | Espera respuesta sincrona |
-| `-MaxPrompts` | 10 | Override del limite de rotacion |
+| `-MaxPrompts` | 5 | Override del limite de rotacion |
 | `-NoRotate` | (flag) | Desactiva rotacion (riesgo de costo!) |
+| `-StrictBootstrap` | (flag) | Fuerza bootstrap completo incluso si prompt es trivial |
+| `-Include` | `*.ps1,*.md` | Scope filter (alcance de archivos que el agente puede leer) |
+| `-MaxInputTokens` | 50000 | Cap de tokens input por sesion |
+| `-MaxOutputTokens` | 8000 | Cap de tokens output por sesion |
+| `-BalanceFloor` | 0.50 | Aborta si balance DeepSeek < floor (USD) |
+| `-MaxCost` | 1.00 | Aborta sesion si cost > MaxCost tras sync (USD) |
+| `-SkipPolicy` | (flag) | No cargar model-policy.json |
 
 ---
 
@@ -121,6 +131,19 @@ El watchdog `vaio-services.ps1` aborta sesiones que:
 - El agente recibe instruccion explicita de no salir del CWD.
 - La password de opencode serve se pasa por variable de entorno, no hardcodeada.
 - Los archivos `.agent-sessions/*.session` contienen solo IDs de sesion, no datos sensibles.
+
+---
+
+## Circuit breakers (R79.1 burn rate)
+
+| Capa | Umbral | Accion |
+|---|---|---|
+| Pre-flight balance | `BalanceFloor` USD (default 0.50) | Aborta invocacion si balance < floor |
+| Per-task cost | `MaxCost` USD (default 1.00) | Aborta sesion tras sync si cost > MaxCost |
+| Daily cap | `cost-tracker.ps1 -DailyCap` (default 5.00) | Mata todas las sesiones + alerta |
+| Model denylist | `pro|claude|sonnet|opus|gpt-4|gemini-pro` | `register-task.ps1` rechaza |
+| Cron denylist | `* * * * *` sin `-Force` | `register-task.ps1` rechaza |
+| Bootstrap lazy | Sin keywords | Omite bootstrap (~600 chars ahorrados) |
 
 ---
 
