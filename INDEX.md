@@ -1,8 +1,8 @@
-# INDEX — Diligencia v3.7.0
+# INDEX — Diligencia v3.9.0
 
 Catalogo de documentacion del proyecto. Mantenido por /version y /updoc.
 
-Ultima actualizacion global: 2026-07-29
+Ultima actualizacion global: 2026-07-30
 
 ## Docs criticos
 
@@ -10,9 +10,9 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 
 | Archivo | Version | Ultima actualizacion |
 |---|---|---|
-| ROADMAP.md | v3.7.0 | 2026-07-29 |
-| CHANGELOG.md | v3.8.0 | 2026-07-30 |
-| DILIGENCIA.md | v3.8.0 | 2026-07-30 |
+| ROADMAP.md | v3.9.0 | 2026-07-30 |
+| CHANGELOG.md | v3.9.0 | 2026-07-30 |
+| DILIGENCIA.md | v3.9.0 | 2026-07-30 |
 
 ## Guias
 
@@ -109,6 +109,21 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 | doc/olas/OLA-CHAMBER-MIGRATION.md | v1.0 | 2026-07-23 |
 | doc/olas/_template.md | v1.0 | 2026-07-04 |
 | doc/olas/README.md | v1.0 | 2026-07-04 |
+
+## Scripts runtime (R79.1 burn rate)
+
+| Archivo | Version | Proposito |
+|---|---|---|
+| scripts/invoke-agent-task.ps1 | v2.1 | Cliente de tareas API con bootstrap lazy + scope filter + MaxTokens + balance pre-flight + MaxCost |
+| scripts/vaio-services.ps1 | v1.2 | Watchdog de servicios VAIO (opencode serve + tunnel) con session cleanup + ensure-config |
+| scripts/register-task.ps1 | v1.0 | Registro idempotente de scheduled tasks con denylist (R79.1) |
+| scripts/check-tareas.ps1 | v1.0 | Verificacion de tareas VAIO pendientes sin LLM |
+| scripts/ensure-config.ps1 | v1.0 | Aplicador idempotente de plantilla Diligencia a opencode.jsonc |
+| scripts/cost-tracker.ps1 | v1.0 | R69 dashboard de costos + circuit breaker diario |
+| scripts/model-policy.json | v1.0 | Politica centralizada por proyecto |
+| scripts/opencode.template.jsonc | v1.0 | Fragmento de config para fusionar via ensure-config |
+| scripts/watch-server.ps1 | v1.1 | Dashboard de monitoreo (legacy, watch-server fallback) |
+| scripts/install-services.ps1 | v1.0 | Instalador Windows Task Scheduler para VAIO |
 
 ## Archivos relacionados
 - `ROADMAP.md` — roadmap del proyecto
