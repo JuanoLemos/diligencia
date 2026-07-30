@@ -1,4 +1,12 @@
-# watchdog-tunnel.ps1 — Monitoreo y auto-reparacion del tunel v1.0
+# watchdog-tunnel.ps1 — Monitoreo y auto-reparacion del tunel v2.0 (R79.1)
+# Reemplaza la task 'VAIO: publish-url' (cron '0 * * * *' + deepseek-v4-pro)
+# Toda la logica de publicacion de URL/heartbeat es PowerShell puro.
+# 0 tokens consumidos. Solucion burn rate USD 10/dia.
+# Repo: C:\xampp\htdocs\Diligencia\doc\vaio\watchdog-tunnel.ps1
+#
+# Lanzado automaticamente por start-chamber.ps1 en background.
+# Tarea historica 'VAIO: publish-url' queda DEPRECATED: usar este watchdog.
+
 param(
     [int]$Port = 57125,
     [string]$DiligenciaDir = "C:\xampp\htdocs\Diligencia",
