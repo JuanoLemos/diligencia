@@ -96,9 +96,9 @@ function Test-OpenCodeHealth {
     }
 }
 
-# ── Session health — abortar sesiones stuck ────────────────────
+# ── Session health — abortar sesiones stuck o idle ───────────
 function Clear-StuckSessions {
-    param([int]$MaxAgeSeconds = 300)
+    param([int]$MaxAgeSeconds = 300, [int]$IdleMaxMinutes = 30)
     try {
         $sessions = curl.exe -s http://localhost:4096/session -u "diligencia:diligencia-vaio-2026" 2>$null
         if (-not $sessions) { return }
@@ -110,6 +110,8 @@ function Clear-StuckSessions {
         foreach ($s in $list) {
             $ageMs = $now - $s.time.created
             $ageSec = $ageMs / 1000
+            $updatedMs = $now - $s.time.updated
+            $idleMin = $updatedMs / 60000
             $isRunning = ($s.info.status -eq "running") -or (-not $s.info.status)
 
             if ($isRunning -and $ageSec -gt $MaxAgeSeconds) {
@@ -117,10 +119,15 @@ function Clear-StuckSessions {
                 curl.exe -s -X POST "http://localhost:4096/session/$($s.id)/abort" `
                     -u "diligencia:diligencia-vaio-2026" -H "Content-Type: application/json" 2>$null | Out-Null
                 $aborted++
+            } elseif ($idleMin -gt $IdleMaxMinutes) {
+                Write-Log "ABORT session idle $($s.id): ${idleMin}min sin actualizar. Title: $($s.title)"
+                curl.exe -s -X POST "http://localhost:4096/session/$($s.id)/abort" `
+                    -u "diligencia:diligencia-vaio-2026" -H "Content-Type: application/json" 2>$null | Out-Null
+                $aborted++
             }
         }
         if ($aborted -gt 0) {
-            Write-Log "Session cleanup: $aborted sesiones abortadas por stuck."
+            Write-Log "Session cleanup: $aborted sesiones abortadas (stuck o idle)."
         }
     } catch {
         Write-Log "ERROR en session cleanup: $_"

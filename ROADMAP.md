@@ -2,7 +2,7 @@
 
 Metodología de estructura estándar para proyectos OpenCode.
 
-Última actualización: 2026-07-26 | OLA-CHAMBER-100 Sesión 1 completada
+Última actualización: 2026-07-30
 
 ---
 
@@ -21,7 +21,8 @@ Metodología de estructura estándar para proyectos OpenCode.
 |---|---|---|---|
 | R19 | MECANICA-CONTEXTO.md — modelo L0/L1/L2 | P2 | 🟡 En progreso |
 | R20 | MECANICA-GRAPHIFY.md + .graphifyignore | P2 | 🟡 En progreso |
-| R78 | +server-autonomo: control remoto de VAIO via opencode serve API (scripts + docs) | P1 | 🟡 En progreso |
+| R78 | +server-autonomo: control remoto de VAIO via opencode serve API (scripts + docs) | P1 | ✅ Completado (v3.8.0) |
+| R79 | +api-comunicacion: protocolo de tareas via API + sesiones persistentes con rotacion | P1 | 🟡 En progreso |
 
 ## Siguiente (Next)
 

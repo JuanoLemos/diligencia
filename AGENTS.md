@@ -168,27 +168,36 @@ Los agentes especializados (`@narrador`, `@game-designer`, `@trader`, `@cartogra
 | R11 | Nunca abrir dos chats simultáneos sobre el mismo proyecto. Un solo agente por proyecto a la vez. Dos chats en el mismo proyecto pueden romper commits y generar conflictos de merge. |
 | R12 | Antes de ejecutar /CBP con push, el agente verifica que el working tree esté limpio (sin cambios de otras sesiones). Si hay dudas, sugiere /backup antes de commitear. |
 | R13 | Después de un git pull (o al iniciar sesión en un proyecto), el agente verifica que el working tree esté limpio y que no haya conflictos de merge pendientes. Si hay conflicto, pausa y reporta. |
-| R14 | VAIO Worker: agente autónomo orquestado por Chamber Scheduled Tasks. Chamber ejecuta tareas programadas (check-tareas, publish-url). Una sesión dedicada con sessionId fijo. No requiere loop en el agente. Operado via `doc/vaio/VAIO-SCHEDULED.md`. |
-| R15 | Monitoreo vía `git fetch` entre respuestas. Notificar SOLO si hay cambios significativos: tarea completada, fix aplicado, error crítico. Heartbeats, URLs de túnel, y cambios de infra no son notificables. Silencio = normalidad. |
+| R14 | VAIO Server: servidor expone API via `opencode serve`. El watchdog `vaio-services.ps1` mantiene el servidor vivo 24/7. Chamber en la PC envia tareas bajo demanda via `invoke-agent-task.ps1`. No hay loops automaticos ni check-tareas. |
+| R15 | Monitoreo vía `GET /global/health` (health check en vivo) + SSE streaming desde `opencode serve`. El script `watch-server.ps1` muestra estado en tiempo real. En el PC, `git fetch` cada 1 minuto detecta resultados pusheados por VAIO. Notificar SOLO cambios significativos: tarea completada, fix aplicado, error crítico. Heartbeats, URLs de túnel, cambios de infra no son notificables. Silencio = normalidad. |
 | R16 | Toda afirmación de verificación, revisión o confirmación DEBE incluir la evidencia que la respalda (archivo:línea, output de comando, resultado de herramienta). Sin evidencia disponible, el agente DEBE calificar como "no verificada" o "basada en conocimiento previo". Prohibido: "Verifiqué y está bien." Requerido: "Leí DILIGENCIA.md línea 1: v3.5.0. Coincide con CHANGELOG." |
 | R17 | El agente NO pedirá al usuario que realice acciones que él mismo puede ejecutar (lectura de archivos, búsqueda, comandos). Solo delegar: acceso físico, credenciales, decisiones irreversibles, confirmación explícita requerida por el flujo. En caso de duda, el agente ejecuta él mismo. |
+| R18 | API Agent Discipline: los agentes operados via `opencode serve` API heredan las reglas R1-R17, disciplina BUILD, idioma español, y R16 (evidencia). El bootstrap inicial de cada sesión DEBE incluir estas reglas explícitamente. Las sesiones deben rotar cada 5 prompts o 50K tokens para prevenir acumulación infinita de contexto. El watchdog `vaio-services.ps1` aborta sesiones idle >30 min. |
 
 ## Asistente VAIO-Server
 
-Este proyecto tiene un asistente en la laptop VAIO (servidor 24/7). La comunicación usa el triángulo Chamber → OpenCode → GitHub:
+Este proyecto tiene un asistente en la laptop VAIO (servidor 24/7). El canal principal de comunicación es via API directa (`opencode serve`). El triángulo GitHub queda como fallback.
 
-1. **MAIN crea tarea** → escribe `doc/vaio/tasks/tarea-NNN.md` → git push
-2. **VAIO Chamber** → Scheduled Task check-tareas → OpenCode ejecuta → escribe resultado
-3. **MAIN lee resultado** → git pull → `doc/vaio/results/resultado-NNN.md`
+### Canales de comunicación
+
+| Canal | Estado | Propósito |
+|---|---|---|
+| **API directa** (principal) | ✅ Activo | `opencode serve :4096` via Tailscale. Tareas enviadas desde PC con `invoke-agent-task.ps1`. |
+| **Triángulo GitHub** (fallback) | 🔴 Deprecado | Tareas via `doc/vaio/tasks/tarea-NNN.md` + git push/pull. Solo si la API no está disponible. |
 
 ### Archivos clave
 
 | Archivo | Propósito |
 |---|---|
-| `doc/vaio/VAIO-SCHEDULED.md` | Sistema principal — Chamber Scheduled Tasks (recomendado) |
-| `doc/vaio/PRONT_VAIO.md` | Prompt de nacimiento para sesiones Chamber interactivas |
-| `doc/vaio/worker-loop.md` | ⚠️ DEPRECADO — reemplazado por VAIO-SCHEDULED.md |
-| `doc/vaio/README.md` | Instrucciones del puente de comunicación |
+| `doc/mecanicas/MECANICA-SERVIDOR-AUTONOMO.md` | Arquitectura del servidor y watchdog |
+| `doc/mecanicas/MECANICA-API-COMUNICACION.md` | Protocolo de comunicación via API |
+| `scripts/invoke-agent-task.ps1` | Cliente de tareas (envía prompts a opencode serve) |
+| `scripts/watch-server.ps1` | Dashboard y monitoreo en tiempo real |
+| `scripts/vaio-services.ps1` | Watchdog 24/7 (health checks, session cleanup) |
+| `scripts/server-config.ps1` | Config persistente de conexión |
+| `.agent-sessions/` | Sesiones persistentes por proyecto |
+| `doc/vaio/VAIO-SCHEDULED.md` | ⚠️ Sistema anterior (fallback) |
+| `doc/vaio/PRONT_VAIO.md` | Prompt para sesiones Chamber interactivas en VAIO |
 
 ### Variables
 

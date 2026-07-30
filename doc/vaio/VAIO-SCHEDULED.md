@@ -1,10 +1,9 @@
 # VAIO-SCHEDULED — Worker autónomo via Chamber Scheduled Tasks v3.0
 
-> ⚠️ **DEPRECADO como sistema principal (2026-07-29).**
-> El sistema de `check-tareas` (git polling de tasks/results) fue reemplazado por
-> `opencode serve` API directa. Ver `doc/mecanicas/MECANICA-SERVIDOR-AUTONOMO.md`.
->
-> Este documento queda como referencia de fallback y para la tarea `server-health`.
+> ⚠️ **FALLBACK (2026-07-30).**
+> El sistema principal ahora es `opencode serve` API directa (vía `invoke-agent-task.ps1`).
+> Chamber Scheduled Tasks son solo para health checks y watchdog.
+> Ver `doc/mecanicas/MECANICA-API-COMUNICACION.md` para el sistema activo.
 
 ---
 
