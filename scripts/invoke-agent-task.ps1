@@ -96,7 +96,7 @@ Write-Host "  Sesion ID: $sessionId"
 
 # ── Enviar prompt ───────────────────────────────────────────
 $messageBody = @{
-    parts = @(@{ text = $Prompt })
+    parts = @(@{ type = "text"; text = $Prompt })
     model = @{
         providerID = "opencode"
         modelID    = $Model
