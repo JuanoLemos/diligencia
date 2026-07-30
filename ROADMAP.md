@@ -65,12 +65,6 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R70 | +6 agentes especializados por dominio. Creación: @narrador, @game-designer, @trader, @cartografo, @editor-video. | P1 | 🟡 En progreso | — |
 | R71 | +red-local: conectar PC secundaria a la principal via SSH para desarrollo remoto. VAIO conectada via VS Code Tunnels. | P2 | 🟡 En progreso | — |
 | R77 | +chamber-upgrade: actualizar Chamber v1.13.2 → v1.16.3 (permission auto-accept, remote instance sin OpenCode, SSH nativo). | P2 | 🔴 Pendiente | — |
-| R79.1 | +burn-rate: disciplina de consumo VAIO tras incidente USD 10/dia. Ver AGENTS.md R79.1. | P0 | ✅ Completado (v3.9.0) | — |
-| R79.2 | +register-task: comando idempotente con denylist de modelos caros. Ver `scripts/register-task.ps1`. | P1 | ✅ Completado (v3.9.0) | — |
-| R79.3 | +ensure-config: aplicador idempotente de plantilla opencode. Self-healing post-upgrade. Ver `scripts/ensure-config.ps1`. | P1 | ✅ Completado (v3.9.0) | — |
-| R79.4 | +cost-tracker: R69 dashboard + circuit breaker diario. Ver `scripts/cost-tracker.ps1`. | P1 | ✅ Completado (v3.9.0) | — |
-| R79.5 | +model-policy: politica centralizada por proyecto (flash-only default). Ver `scripts/model-policy.json`. | P2 | ✅ Completado (v3.9.0) | — |
-| R79.6 | +bootstrap-lazy: bootstrap Diligencia solo cuando prompt lo requiere. Ver `invoke-agent-task.ps1`. | P1 | ✅ Completado (v3.9.0) | — |
 
 ## Futuro (Later)
 
@@ -110,6 +104,8 @@ Metodología de estructura estándar para proyectos OpenCode.
 | `diligencia-check` — validación automática de estructura (ADR-003, variables, comandos, versión) | v1.3 |
 | HARNESS.md integrado al estándar: template, ADR-003, /adaptar, diligencia-check | v1.3 |
 | MECANICA-DOCUMENTAL.md reestructurada con índice y 6 secciones (motor, tracking, QA, sesión, conservación, anti-patrones) | v1.6 |
+| Burn rate discipline (R79.1): auto-resurrector deprecado + register-task.ps1 con denylist + check-tareas pure-PowerShell + watchdog-tunnel sin LLM | v3.9.0 |
+| Burn rate context refactor (R79.2-R79.6): bootstrap lazy, scope filter, MaxTokens cap, contexto 1M→128K, ensure-config idempotente, R69 dashboard + circuit breaker, model-policy + MaxCost | v3.9.0 |
 | Comando `/deprecar` para deprecar archivos/estructuras obsoletas | v1.4 |
 | Comando `/bug` — reportar bugs en $BUGS con template estándar | v1.5 |
 | Comando `/incidente` — registrar crashes runtime en $INCIDENTS | v1.5 |

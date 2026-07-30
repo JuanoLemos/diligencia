@@ -2,6 +2,7 @@
 
 | # | Fecha | Commit | Version | Workflow | Archivos |
 | 1 | 2026-06-26 21:55 | 17e65d3 | v2.1.0 | standalone /doctor | 92 archivos |
+| 2 | 2026-07-30 18:41 | 3520a53 | v3.9.0 | standalone /salud | 106 archivos |
 
 ## Archivos relacionados
 - `doc/mecanicas/MECANICA-DOCUMENTAL.md` — mecánica documental general
