@@ -22,6 +22,7 @@ function Write-Log {
 # Variables de entorno — deben estar en el scope de este proceso
 $env:OPENCODE_SERVER_USERNAME = "diligencia"
 $env:OPENCODE_SERVER_PASSWORD = "diligencia-vaio-2026"
+# DEEPSEEK_API_KEY se toma del entorno (Machine/User), configurada por install-services.ps1
 
 # Asegurar que tambien esten a nivel usuario (para otros procesos)
 [Environment]::SetEnvironmentVariable("OPENCODE_SERVER_USERNAME", "diligencia", "User")

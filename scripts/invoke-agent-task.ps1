@@ -98,7 +98,7 @@ Write-Host "  Sesion ID: $sessionId"
 $messageBody = @{
     parts = @(@{ type = "text"; text = $Prompt })
     model = @{
-        providerID = "opencode"
+        providerID = "deepseek"
         modelID    = $Model
     }
 } | ConvertTo-Json -Compress -Depth 5
