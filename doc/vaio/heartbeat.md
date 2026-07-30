@@ -1,3 +1,4 @@
-﻿# heartbeat.md — DEPRECADO (2026-07-29)
+﻿# heartbeat
 
-Reemplazado por `GET http://localhost:4096/global/health` en opencode serve.
+VAIO activa - 2026-07-30 01:36 UTC
+Puerto: 57125
