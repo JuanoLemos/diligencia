@@ -1,5 +1,5 @@
 # vaio-services.ps1
-# Watchdog de servicios VAIO — opencode serve + VS Code tunnel.
+# Watchdog de servicios VAIO - opencode serve + VS Code tunnel.
 # Disenado para correr como Scheduled Task al inicio de Windows.
 # Invisible, logging a archivo, auto-restart si algo muere.
 
@@ -19,7 +19,7 @@ function Write-Log {
     $line | Out-File -FilePath $logFile -Append -Encoding UTF8
 }
 
-# Variables de entorno — deben estar en el scope de este proceso
+# Variables de entorno - deben estar en el scope de este proceso
 $env:OPENCODE_SERVER_USERNAME = "diligencia"
 $env:OPENCODE_SERVER_PASSWORD = "diligencia-vaio-2026"
 # DEEPSEEK_API_KEY se toma del entorno (Machine/User), configurada por install-services.ps1
@@ -30,7 +30,7 @@ $env:OPENCODE_SERVER_PASSWORD = "diligencia-vaio-2026"
 
 Write-Log "=== VAIO Services Watchdog iniciado ==="
 
-# ── Iniciar opencode serve ─────────────────────────────────────
+# -- Iniciar opencode serve -------------------------------------
 function Start-OpenCodeServe {
     $onPort = netstat -ano | Select-String ":4096" | Select-String "LISTENING"
     if ($onPort) { return $true }
@@ -56,7 +56,7 @@ function Start-OpenCodeServe {
     }
 }
 
-# ── Iniciar VS Code tunnel ─────────────────────────────────────
+# -- Iniciar VS Code tunnel -------------------------------------
 function Start-VSCodeTunnel {
     $existing = Get-Process -Name "code-tunnel" -ErrorAction SilentlyContinue
     if ($existing) { return $true }
@@ -85,7 +85,7 @@ function Start-VSCodeTunnel {
     }
 }
 
-# ── Health check opencode serve ─────────────────────────────────
+# -- Health check opencode serve ---------------------------------
 function Test-OpenCodeHealth {
     try {
         $response = curl.exe -s http://localhost:4096/global/health `
@@ -96,7 +96,7 @@ function Test-OpenCodeHealth {
     }
 }
 
-# ── Session health — abortar sesiones stuck o idle ───────────
+# -- Session health - abortar sesiones stuck o idle -----------
 function Clear-StuckSessions {
     param([int]$MaxAgeSeconds = 300, [int]$IdleMaxMinutes = 30)
     try {
@@ -134,22 +134,34 @@ function Clear-StuckSessions {
     }
 }
 
-# ── Arranque inicial ───────────────────────────────────────────
+# -- Arranque inicial -------------------------------------------
 Write-Log "Arranque inicial de servicios..."
+
+# Aplicar plantilla Diligencia (R79.1 burn rate fix) - idempotente
+$ensureConfig = Join-Path $PSScriptRoot "ensure-config.ps1"
+if (Test-Path $ensureConfig) {
+    try {
+        & $ensureConfig | Out-Null
+        Write-Log "ensure-config.ps1 aplicado (o sin drift)."
+    } catch {
+        Write-Log "WARN: ensure-config.ps1 fallo: $_"
+    }
+}
+
 Start-OpenCodeServe | Out-Null
 Start-VSCodeTunnel | Out-Null
 
-# ── Watchdog loop ──────────────────────────────────────────────
+# -- Watchdog loop ----------------------------------------------
 $restartsOC = 0
 $restartsVS = 0
 while ($true) {
-    # Session cleanup — abortar sesiones stuck >5min
+    # Session cleanup - abortar sesiones stuck >5min
     Clear-StuckSessions -MaxAgeSeconds 300
 
     # opencode serve
     if (-not (Test-OpenCodeHealth)) {
         $restartsOC++
-        Write-Log "ALERTA: opencode serve no responde — matando y relanzando (intento $restartsOC)..."
+        Write-Log "ALERTA: opencode serve no responde - matando y relanzando (intento $restartsOC)..."
         $onPort = netstat -ano | Select-String ":4096" | Select-String "LISTENING"
         if ($onPort) {
             $pidMatch = [regex]::Match($onPort, "(\d+)\s*$")
@@ -165,7 +177,7 @@ while ($true) {
     $vscRunning = Get-Process -Name "code-tunnel" -ErrorAction SilentlyContinue
     if (-not $vscRunning) {
         $restartsVS++
-        Write-Log "ALERTA: VS Code tunnel no detectado — relanzando (intento $restartsVS)..."
+        Write-Log "ALERTA: VS Code tunnel no detectado - relanzando (intento $restartsVS)..."
         Start-VSCodeTunnel | Out-Null
     }
 

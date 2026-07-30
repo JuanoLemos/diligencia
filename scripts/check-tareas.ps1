@@ -1,4 +1,4 @@
-# check-tareas.ps1 — Verificacion de tareas VAIO pendientes (PURE BASH, SIN LLM)
+# check-tareas.ps1 - Verificacion de tareas VAIO pendientes (PURE BASH, SIN LLM)
 # Reemplaza la task 'VAIO: check-tareas' (R79.1 burn rate fix).
 # Listaba tareas en doc/vaio/tasks/ sin resultado en doc/vaio/results/ usando LLM.
 # Ahora es PowerShell puro: 0 tokens consumidos.
@@ -27,7 +27,7 @@ $resultsDir = Join-Path $DiligenciaDir "doc\vaio\results"
 $trackerDir = Join-Path $DiligenciaDir "scripts\.task-tracker"
 $trackerFile = Join-Path $trackerDir "completed.json"
 
-# ── git sync opcional ──────────────────────────────────────────
+# -- git sync opcional ------------------------------------------
 if ($Sync) {
     Write-Host "[sync] git pull --rebase..." -ForegroundColor Cyan
     Push-Location $DiligenciaDir
@@ -43,7 +43,7 @@ if ($Sync) {
     }
 }
 
-# ── Verificar directorios ──────────────────────────────────────
+# -- Verificar directorios --------------------------------------
 if (-not (Test-Path $tasksDir)) {
     Write-Host "ERROR: Directorio de tasks no existe: $tasksDir" -ForegroundColor Red
     exit 1
@@ -52,7 +52,7 @@ if (-not (Test-Path $resultsDir)) {
     New-Item -ItemType Directory -Path $resultsDir -Force | Out-Null
 }
 
-# ── Cargar tracker (idempotencia) ──────────────────────────────
+# -- Cargar tracker (idempotencia) ------------------------------
 $completed = @()
 if (Test-Path $trackerFile) {
     try {
@@ -63,7 +63,7 @@ if (Test-Path $trackerFile) {
     }
 }
 
-# ── Cleanup viejo ──────────────────────────────────────────────
+# -- Cleanup viejo ----------------------------------------------
 if ($Cleanup) {
     $cutoff = (Get-Date).AddDays(-$DaysOld)
     $newCompleted = @()
@@ -84,7 +84,7 @@ if ($Cleanup) {
     Write-Host "Cleanup: $removed entradas removidas (> $DaysOld dias)." -ForegroundColor Yellow
 }
 
-# ── Escanear tasks y resultados ────────────────────────────────
+# -- Escanear tasks y resultados --------------------------------
 $taskFiles = Get-ChildItem -Path $tasksDir -Filter "tarea-*.md" -ErrorAction SilentlyContinue
 $resultFiles = Get-ChildItem -Path $resultsDir -Filter "resultado-*.md" -ErrorAction SilentlyContinue
 
@@ -111,7 +111,7 @@ foreach ($tf in $taskFiles) {
     }
 }
 
-# ── Marcar como hecho ──────────────────────────────────────────
+# -- Marcar como hecho ------------------------------------------
 if ($MarkDone) {
     if (-not (Test-Path $trackerDir)) {
         New-Item -ItemType Directory -Path $trackerDir -Force | Out-Null
@@ -128,7 +128,7 @@ if ($MarkDone) {
     exit 0
 }
 
-# ── Output ─────────────────────────────────────────────────────
+# -- Output -----------------------------------------------------
 if ($Json) {
     $output = @{
         checked_at = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
@@ -141,7 +141,7 @@ if ($Json) {
     exit 0
 }
 
-# ── Output humanizado ──────────────────────────────────────────
+# -- Output humanizado ------------------------------------------
 Write-Host ""
 Write-Host "=== Check-Tareas VAIO (R79.1 burn rate fix) ===" -ForegroundColor Cyan
 Write-Host "  Tasks:   $($taskFiles.Count)"

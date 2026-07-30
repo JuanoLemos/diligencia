@@ -1,6 +1,6 @@
-# start-chamber.ps1 — Arranque de Chamber para VAIO v2.0 (DEPRECATED AUTO-RESURRECTOR)
+# start-chamber.ps1 - Arranque de Chamber para VAIO v2.0 (DEPRECATED AUTO-RESURRECTOR)
 # Inicia Chamber, verifica scheduled tasks (READ-ONLY), inicia tunnel.
-# NO recrea tasks programadas — eso lo hace scripts/register-task.ps1 manualmente.
+# NO recrea tasks programadas - eso lo hace scripts/register-task.ps1 manualmente.
 # Solucion al incidente de burn rate USD 10/dia (R79.1, 2026-07-30).
 # Repo: C:\xampp\htdocs\Diligencia\doc\vaio\start-chamber.ps1
 
@@ -40,7 +40,7 @@ $tasks = curl.exe -s $api | ConvertFrom-Json | Select-Object -ExpandProperty tas
 if (-not $tasks -or $tasks.Count -eq 0) {
     Write-Host "     Sin tasks registradas."
     Write-Host "     Para crear tasks, usar: scripts/register-task.ps1 -Name '...' -Schedule '...' -Prompt '...'"
-    Write-Host "     (Este script ya NO recrea tasks automaticamente — solucion burn rate R79.1)"
+    Write-Host "     (Este script ya NO recrea tasks automaticamente - solucion burn rate R79.1)"
 } else {
     Write-Host "     $($tasks.Count) tasks existentes:"
     foreach ($t in $tasks) {
