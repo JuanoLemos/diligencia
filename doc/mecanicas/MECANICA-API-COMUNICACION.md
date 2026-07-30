@@ -141,8 +141,8 @@ El watchdog `vaio-services.ps1` aborta sesiones que:
 | Pre-flight balance | `BalanceFloor` USD (default 0.50) | Aborta invocacion si balance < floor |
 | Per-task cost | `MaxCost` USD (default 1.00) | Aborta sesion tras sync si cost > MaxCost |
 | Daily cap | `cost-tracker.ps1 -DailyCap` (default 5.00) | Mata todas las sesiones + alerta |
-| Model denylist | `pro|claude|sonnet|opus|gpt-4|gemini-pro` | `register-task.ps1` rechaza |
-| Cron denylist | `* * * * *` sin `-Force` | `register-task.ps1` rechaza |
+| Model denylist | `pro|claude|sonnet|opus|gpt-4|gemini-pro` | `invoke-agent-task.ps1` advierte en amarillo (R18) |
+| Balance floor | `BalanceFloor` USD (default 0.50) | `invoke-agent-task.ps1` aborta si balance < floor |
 | Bootstrap lazy | Sin keywords | Omite bootstrap (~600 chars ahorrados) |
 
 ---
