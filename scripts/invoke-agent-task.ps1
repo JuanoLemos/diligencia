@@ -37,7 +37,9 @@ param(
     [string[]]$Include,
     [int]$MaxInputTokens = 50000,
     [int]$MaxOutputTokens = 8000,
-    [double]$BalanceFloor = 0.50
+    [double]$BalanceFloor = 0.50,
+    [double]$MaxCost = 1.00,
+    [switch]$SkipPolicy
 )
 
 $ErrorActionPreference = "Stop"
@@ -49,6 +51,36 @@ if (-not $Server) { $Server = $env:DILIGENCIA_SERVER }
 if (-not $Password) { $Password = $env:OPENCODE_SERVER_PASSWORD }
 if (-not $Server) { Write-Host "ERROR: Define DILIGENCIA_SERVER o usa -Server <url>"; exit 1 }
 $Server = $Server.TrimEnd('/')
+
+# Cargar model policy (R79.1 governance) — solo si no se especifico -Model
+if (-not $SkipPolicy) {
+    $policyPath = Join-Path $PSScriptRoot "model-policy.json"
+    if (Test-Path $policyPath) {
+        try {
+            $policy = Get-Content $policyPath -Raw -Encoding UTF8 | ConvertFrom-Json
+            $projectPolicy = $policy.projects.$Project
+            if ($projectPolicy) {
+                # Solo aplicar si Model es el default; respeta override explicito
+                if ($Model -eq "deepseek-v4-flash" -and $projectPolicy -ne "deepseek-v4-flash") {
+                    Write-Host ("[policy] {0} -> {1} (default: {2})" -f $Project, $projectPolicy, $Model) -ForegroundColor DarkGray
+                    $Model = $projectPolicy
+                }
+            }
+            # Aplicar caps de policy si no fueron overriden
+            if ($MaxInputTokens -eq 50000 -and $policy.max_input_tokens) {
+                $MaxInputTokens = [int]$policy.max_input_tokens
+            }
+            if ($MaxOutputTokens -eq 8000 -and $policy.max_output_tokens) {
+                $MaxOutputTokens = [int]$policy.max_output_tokens
+            }
+            if ($BalanceFloor -eq 0.50 -and $policy.balance_floor_usd) {
+                $BalanceFloor = [double]$policy.balance_floor_usd
+            }
+        } catch {
+            Write-Host ("WARN: No se pudo cargar model-policy.json: $_") -ForegroundColor Yellow
+        }
+    }
+}
 
 # Mapeo proyecto -> ruta
 $projectPaths = @{
@@ -259,6 +291,17 @@ if ($Sync) {
         try {
             $info = Invoke-RestMethod -Uri "$Server/session/$sessionIdActual" -Headers $headers
             Write-Host ("Tokens: input={0} output={1} | Costo: ${2}" -f $info.tokens.input, $info.tokens.output, $info.cost)
+            # MaxCost enforcement (R79.1)
+            if ($MaxCost -gt 0 -and [double]$info.cost -gt $MaxCost) {
+                $costStr = $info.cost.ToString('N4')
+                $maxStr = $MaxCost.ToString('N4')
+                Write-Host ("ALERTA: Costo `$$costStr excede MaxCost `$$maxStr. Abortando sesion.") -ForegroundColor Red
+                try {
+                    Invoke-RestMethod -Uri "$Server/session/$sessionIdActual/abort" -Method Post -Headers $headers | Out-Null
+                    Write-Host "  Sesion abortada."
+                } catch {}
+                exit 1
+            }
         } catch {}
     } catch {
         Write-Host "ERROR: Tarea no respondio en $maxWaitSec seg. ABORTANDO..." -ForegroundColor Red
