@@ -2,6 +2,38 @@
 
 ---
 
+## [3.9.0] — 2026-07-30
+
+### Fixed
+- **CRITICO (R79.1):** burn rate USD 10/dia en VAIO causado por loop `check-tareas` + `publish-url` con `deepseek-v4-pro` cada minuto.
+- `doc/vaio/start-chamber.ps1`: auto-resurrector deprecado. Ya NO recrea tasks con modelo pro.
+- `doc/vaio/tasks/tarea-037.md`: marcada DEPRECATED (decision 1M contexto revertida).
+- `~/.config/opencode/opencode.jsonc`: revertido a `maxTokens: 128000` para deepseek-v4-pro via ensure-config.ps1.
+
+### Added
+- `scripts/register-task.ps1`: registro idempotente con denylist de modelos caros (pro, claude, sonnet, opus, gpt-4, gemini-pro) y denylist de cron=`* * * * *`.
+- `scripts/check-tareas.ps1`: reemplazo pure-PowerShell del LLM check-tareas (0 tokens consumidos).
+- `scripts/ensure-config.ps1`: aplicador idempotente de plantilla Diligencia. Self-healing tras upgrades.
+- `scripts/opencode.template.jsonc`: fragmento de config para fusionar (maxTokens 128K + flag _diligencia).
+- `scripts/cost-tracker.ps1`: R69 dashboard continuo con circuit breaker diario (default cap $5).
+- `scripts/model-policy.json`: politica centralizada por proyecto (default flash para todos).
+
+### Changed
+- `scripts/invoke-agent-task.ps1`:
+  - Bootstrap Diligencia ahora es LAZY (solo si prompt tiene keywords vinculantes o `-StrictBootstrap`).
+  - Nuevo param `-Include <glob[]>` para scope filter.
+  - Nuevos params `-MaxInputTokens`, `-MaxOutputTokens`, `-BalanceFloor`, `-MaxCost`, `-SkipPolicy`.
+  - Pre-flight balance check via DeepSeek `/user/balance` (aborta si < floor).
+  - MaxCost enforcement tras sync execution (aborta sesion si excede).
+- `scripts/vaio-services.ps1`: invoca `ensure-config.ps1` en startup.
+- `AGENTS.md`: R18 actualizado a bootstrap lazy. Nueva regla R79.1 burn rate discipline.
+
+### Deprecated
+- Auto-creacion de tasks en `start-chamber.ps1` (lineas 39-74 originales).
+- Scheduled tasks IA `VAIO: check-tareas` y `VAIO: publish-url` con `deepseek-v4-pro`.
+
+---
+
 ## [3.8.0] — 2026-07-30
 
 ### Added

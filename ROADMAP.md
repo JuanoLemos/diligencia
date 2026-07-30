@@ -1,4 +1,4 @@
-# ROADMAP — Diligencia v3.7.0
+# ROADMAP — Diligencia v3.9.0
 
 Metodología de estructura estándar para proyectos OpenCode.
 
@@ -22,7 +22,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R19 | MECANICA-CONTEXTO.md — modelo L0/L1/L2 | P2 | 🟡 En progreso |
 | R20 | MECANICA-GRAPHIFY.md + .graphifyignore | P2 | 🟡 En progreso |
 | R78 | +server-autonomo: control remoto de VAIO via opencode serve API (scripts + docs) | P1 | ✅ Completado (v3.8.0) |
-| R79 | +api-comunicacion: protocolo de tareas via API + sesiones persistentes con rotacion | P1 | 🟡 En progreso |
+| R79 | +api-comunicacion: protocolo de tareas via API + sesiones persistentes con rotacion | P1 | ✅ Completado (v3.9.0) |
 
 ## Siguiente (Next)
 
@@ -61,10 +61,16 @@ Metodología de estructura estándar para proyectos OpenCode.
 | R64 | +multimodal Crucix: actualizar MiniMaxProvider de M2.5 a M3 en Crucix-master. | P2 | 🔴 Pendiente | R61,R62 |
 | R66 | +multimodal conquisitare: integrar MiniMax Music-2.6 + image-01. | P2 | 🔴 Pendiente | R61 |
 | R67 | +multimodal Nemesis assets: integrar MiniMax image-01 + Music-2.6. | P2 | 🔴 Pendiente | R63 |
-| R69 | +status: dashboard de consumo de APIs en vivo — tokens por proyecto, costo mensual. | P2 | 🔴 Pendiente | R61,R68 |
+| R69 | +status: dashboard de consumo de APIs en vivo — tokens por proyecto, costo mensual. | P2 | ✅ Completado (v3.9.0) | R61,R68 |
 | R70 | +6 agentes especializados por dominio. Creación: @narrador, @game-designer, @trader, @cartografo, @editor-video. | P1 | 🟡 En progreso | — |
 | R71 | +red-local: conectar PC secundaria a la principal via SSH para desarrollo remoto. VAIO conectada via VS Code Tunnels. | P2 | 🟡 En progreso | — |
 | R77 | +chamber-upgrade: actualizar Chamber v1.13.2 → v1.16.3 (permission auto-accept, remote instance sin OpenCode, SSH nativo). | P2 | 🔴 Pendiente | — |
+| R79.1 | +burn-rate: disciplina de consumo VAIO tras incidente USD 10/dia. Ver AGENTS.md R79.1. | P0 | ✅ Completado (v3.9.0) | — |
+| R79.2 | +register-task: comando idempotente con denylist de modelos caros. Ver `scripts/register-task.ps1`. | P1 | ✅ Completado (v3.9.0) | — |
+| R79.3 | +ensure-config: aplicador idempotente de plantilla opencode. Self-healing post-upgrade. Ver `scripts/ensure-config.ps1`. | P1 | ✅ Completado (v3.9.0) | — |
+| R79.4 | +cost-tracker: R69 dashboard + circuit breaker diario. Ver `scripts/cost-tracker.ps1`. | P1 | ✅ Completado (v3.9.0) | — |
+| R79.5 | +model-policy: politica centralizada por proyecto (flash-only default). Ver `scripts/model-policy.json`. | P2 | ✅ Completado (v3.9.0) | — |
+| R79.6 | +bootstrap-lazy: bootstrap Diligencia solo cuando prompt lo requiere. Ver `invoke-agent-task.ps1`. | P1 | ✅ Completado (v3.9.0) | — |
 
 ## Futuro (Later)
 

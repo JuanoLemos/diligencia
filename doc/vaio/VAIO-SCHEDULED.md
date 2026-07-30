@@ -38,21 +38,21 @@ PC Personal ←──Tunnel──→ VAIO: Chamber :57123      ←── Fallbac
 
 ## Scheduled Tasks deprecadas
 
-### 2. check-tareas 🔴 DEPRECADA (2026-07-29)
+### 2. check-tareas 🔴 DEPRECADA (2026-07-29, REFORZADA 2026-07-30 R79.1)
 
 | Campo | Valor |
 |---|---|
 | Name | VAIO: check-tareas |
-| Estado | **disabled: true** — Reemplazada por API directa (`POST /session/:id/prompt_async`) |
-| Motivo | Las tareas ya no se envían via git push a archivos `.md`. Se usa HTTP directo a opencode serve. |
+| Estado | **ELIMINADA + auto-resurrector deshabilitado** — Reemplazada por `scripts/check-tareas.ps1` (pure PowerShell, 0 tokens) |
+| Motivo | Causo incidente de burn rate USD 10/dia (cron `* * * * *` con `deepseek-v4-pro`). R79.1 burn rate discipline. |
 
-### 3. publish-url 🔴 DEPRECADA (2026-07-29)
+### 3. publish-url 🔴 DEPRECADA (2026-07-29, REFORZADA 2026-07-30 R79.1)
 
 | Campo | Valor |
 |---|---|
 | Name | VAIO: publish-url |
-| Estado | **disabled: true** — Reemplazada por consulta bajo demanda |
-| Motivo | La URL del tunnel se obtiene via `GET /api/openchamber/tunnel/status` cuando se necesita. |
+| Estado | **ELIMINADA** — Reemplazada por `doc/vaio/watchdog-tunnel.ps1` (pure PowerShell, publica URL en cada cambio) |
+| Motivo | La URL del tunnel se publica via git auto-commit en watchdog cada 30s. Sin LLM. |
 
 ### 4. cloudflared-watchdog 🗑️ ELIMINADA (2026-07-26)
 
