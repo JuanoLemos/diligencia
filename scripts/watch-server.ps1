@@ -77,11 +77,10 @@ if ($Watch) {
     Write-Host "Usando polling cada ${PollInterval}s (SSE nativo requiere Node.js/Python)"
     Write-Host ""
 
-    $lastMessageCount = 0
     while ($true) {
         $health = Get-Health
         if (-not $health.online) {
-            Write-Host "[$(Get-Date -Format HH:mm:ss)] SERVER OFFLINE — reintentando..."
+            Write-Host ("[{0}] SERVER OFFLINE — reintentando..." -f (Get-Date -Format HH:mm:ss))
             Start-Sleep -Seconds 5
             continue
         }
@@ -90,21 +89,15 @@ if ($Watch) {
         if ($sessions) {
             $activeCount = ($sessions | Where-Object { $_.info.status -eq "running" }).Count
             $totalCount = $sessions.Count
-            Write-Host "[$(Get-Date -Format HH:mm:ss)] Sesiones: $totalCount total | $activeCount activas"
+            Write-Host ("[{0}] Sesiones: {1} total | {2} activas" -f (Get-Date -Format HH:mm:ss), $totalCount, $activeCount)
 
             foreach ($s in $sessions) {
                 $status = $s.info.status
-                $icon = switch ($status) {
-                    "running"  { "🟢" }
-                    "idle"     { "⚪" }
-                    "done"     { "✅" }
-                    "error"    { "🔴" }
-                    default    { "❓" }
-                }
-                Write-Host "  $icon [$status] $($s.title)"
+                $icon = $s.info.status
+                Write-Host ("  [{0}] {1}" -f $status, $s.title)
             }
         } else {
-            Write-Host "[$(Get-Date -Format HH:mm:ss)] Sin sesiones o error de conexion"
+            Write-Host ("[{0}] Sin sesiones o error de conexion" -f (Get-Date -Format HH:mm:ss))
         }
 
         Start-Sleep -Seconds $PollInterval
@@ -122,24 +115,25 @@ if ($SessionId) {
         if ($msgs) {
             $currentStatus = $msgs.info.status
             if ($currentStatus -ne $prevStatus) {
-                Write-Host "[$(Get-Date -Format HH:mm:ss)] Estado: $currentStatus"
+                Write-Host ("[{0}] Estado: {1}" -f (Get-Date -Format HH:mm:ss), $currentStatus)
                 $prevStatus = $currentStatus
             }
 
             if ($msgs.parts) {
                 foreach ($part in $msgs.parts) {
                     if ($part.text) {
-                        Write-Host "  $($part.text.Substring(0, [Math]::Min(120, $part.text.Length)))..."
+                        $truncated = $part.text.Substring(0, [Math]::Min(120, $part.text.Length))
+                        Write-Host ("  {0}..." -f $truncated)
                     }
                 }
             }
 
             if ($currentStatus -eq "done" -or $currentStatus -eq "error") {
                 Write-Host ""
-                Write-Host "Sesion terminada. Estado: $currentStatus"
+                Write-Host ("Sesion terminada. Estado: {0}" -f $currentStatus)
                 try {
                     $diff = Invoke-RestMethod -Uri "$Server/session/$SessionId/diff" -Headers $headers
-                    Write-Host "Archivos modificados: $($diff.files.Count)"
+                    Write-Host ("Archivos modificados: {0}" -f $diff.files.Count)
                 } catch {}
                 break
             }
