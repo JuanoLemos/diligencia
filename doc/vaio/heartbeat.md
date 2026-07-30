@@ -1,5 +1,3 @@
-﻿# heartbeat
+﻿# heartbeat.md — DEPRECADO (2026-07-29)
 
-VAIO activa - 2026-07-30 01:32 UTC
-URL: https://bishop-including-pad-entry.trycloudflare.com
-Puerto: 57125
+Reemplazado por `GET http://localhost:4096/global/health` en opencode serve.

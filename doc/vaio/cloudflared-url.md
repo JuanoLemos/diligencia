@@ -1,5 +1,4 @@
-﻿# URL Cloudflared Túnel
+﻿# cloudflared-url.md — DEPRECADO (2026-07-29)
 
-**Actualizado:** 2026-07-29 00:06:09 UTC
-**URL:** https://ferrari-circumstances-experienced-heaven.trycloudflare.com
-**Puerto local:** 57125
+La URL del tunnel se consulta bajo demanda via `GET /api/openchamber/tunnel/status`.
+Ya no se persiste en archivo.
