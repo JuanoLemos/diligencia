@@ -1,4 +1,4 @@
-# register-task.ps1 - Registro idempotente de scheduled tasks en Chamber
+﻿# register-task.ps1 - Registro idempotente de scheduled tasks en Chamber
 # Reemplaza la auto-creacion de tasks de start-chamber.ps1 (R79.1 burn rate fix).
 # BLOQUEA modelos caros (pro, claude, sonnet, opus, gpt-4) - solo modelos flash.
 # Repo: C:\xampp\htdocs\Diligencia\scripts\register-task.ps1

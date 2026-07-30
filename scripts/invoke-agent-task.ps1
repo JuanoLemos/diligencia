@@ -1,4 +1,4 @@
-# invoke-agent-task.ps1
+﻿# invoke-agent-task.ps1
 # Envia una tarea al servidor opencode serve en VAIO.
 # Con -Persist mantiene sesion reutilizable por proyecto (con rotacion automatica cada 5 prompts).
 # v2.1 (R79.1 burn rate fix): bootstrap lazy, scope filter, MaxTokens cap.
@@ -36,7 +36,8 @@ param(
     [int]$MaxPrompts = 5,
     [string[]]$Include,
     [int]$MaxInputTokens = 50000,
-    [int]$MaxOutputTokens = 8000
+    [int]$MaxOutputTokens = 8000,
+    [double]$BalanceFloor = 0.50
 )
 
 $ErrorActionPreference = "Stop"
@@ -117,6 +118,26 @@ try {
 # Aviso de costo para modelos caros
 if ($Model -match "pro|claude|sonnet") {
     Write-Host ("ATENCION: El modelo '{0}' es de alto costo." -f $Model) -ForegroundColor Yellow
+}
+
+# Pre-flight balance check (R79.1 burn rate circuit breaker)
+if ($env:DEEPSEEK_API_KEY -and $BalanceFloor -gt 0) {
+    try {
+        $hdrB = @{ "Authorization" = "Bearer $($env:DEEPSEEK_API_KEY)"; "Content-Type" = "application/json" }
+        $bal = Invoke-RestMethod -Uri "https://api.deepseek.com/user/balance" -Headers $hdrB -TimeoutSec 5
+        if ($bal.balance_infos -and $bal.balance_infos.Count -gt 0) {
+            $balance = [double]$bal.balance_infos[0].balance
+            $balStr = $balance.ToString('N4')
+            if ($balance -lt $BalanceFloor) {
+                Write-Host ("ERROR: Balance DeepSeek `$$balStr debajo del floor `$$BalanceFloor. Abortando.") -ForegroundColor Red
+                Write-Host "       Recarga credito o usa -BalanceFloor 0 para desactivar este check." -ForegroundColor Yellow
+                exit 1
+            }
+            Write-Host ("Balance OK: `$$balStr (floor `$$BalanceFloor)") -ForegroundColor DarkGray
+        }
+    } catch {
+        Write-Host ("WARN: No se pudo verificar balance DeepSeek: $_") -ForegroundColor Yellow
+    }
 }
 
 # -- Gestion de sesion (persistente o nueva) -------------------

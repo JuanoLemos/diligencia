@@ -1,4 +1,4 @@
-# vaio-services.ps1
+﻿# vaio-services.ps1
 # Watchdog de servicios VAIO - opencode serve + VS Code tunnel.
 # Disenado para correr como Scheduled Task al inicio de Windows.
 # Invisible, logging a archivo, auto-restart si algo muere.

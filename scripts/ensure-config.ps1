@@ -1,4 +1,4 @@
-# ensure-config.ps1 - Aplica plantilla Diligencia a ~/.config/opencode/opencode.jsonc
+﻿# ensure-config.ps1 - Aplica plantilla Diligencia a ~/.config/opencode/opencode.jsonc
 # Idempotente. Solucion R79.1 burn rate (R79.1, 2026-07-30):
 # previene que deepseek-v4-pro vuelva a contexto 1M tras upgrades.
 #

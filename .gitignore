@@ -23,3 +23,8 @@ Thumbs.db
 # MCP codebase-memory artifact (not needed for docs-only projects)
 .codebase-memory/
 .env.local
+
+# Runtime artifacts from cost-tracker (R79.1 burn rate dashboard)
+doc/vaio/cost-*.md
+doc/vaio/cost-alerts.md
+.agent-sessions/*.session

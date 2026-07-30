@@ -1,4 +1,4 @@
-# start-chamber.ps1 - Arranque de Chamber para VAIO v2.0 (DEPRECATED AUTO-RESURRECTOR)
+﻿# start-chamber.ps1 - Arranque de Chamber para VAIO v2.0 (DEPRECATED AUTO-RESURRECTOR)
 # Inicia Chamber, verifica scheduled tasks (READ-ONLY), inicia tunnel.
 # NO recrea tasks programadas - eso lo hace scripts/register-task.ps1 manualmente.
 # Solucion al incidente de burn rate USD 10/dia (R79.1, 2026-07-30).

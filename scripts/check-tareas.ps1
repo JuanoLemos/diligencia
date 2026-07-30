@@ -1,4 +1,4 @@
-# check-tareas.ps1 - Verificacion de tareas VAIO pendientes (PURE BASH, SIN LLM)
+﻿# check-tareas.ps1 - Verificacion de tareas VAIO pendientes (PURE BASH, SIN LLM)
 # Reemplaza la task 'VAIO: check-tareas' (R79.1 burn rate fix).
 # Listaba tareas en doc/vaio/tasks/ sin resultado en doc/vaio/results/ usando LLM.
 # Ahora es PowerShell puro: 0 tokens consumidos.
