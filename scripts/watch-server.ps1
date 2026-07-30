@@ -73,14 +73,14 @@ if ($Watch) {
     $sseHeaders = $headers.Clone()
     $sseHeaders["Accept"] = "text/event-stream"
 
-    # PowerShell no tiene cliente SSE nativo — usamos polling como fallback
+    # PowerShell no tiene cliente SSE nativo - usamos polling como fallback
     Write-Host "Usando polling cada ${PollInterval}s (SSE nativo requiere Node.js/Python)"
     Write-Host ""
 
     while ($true) {
         $health = Get-Health
         if (-not $health.online) {
-            Write-Host ("[{0}] SERVER OFFLINE — reintentando..." -f (Get-Date -Format HH:mm:ss))
+            Write-Host ("[{0}] SERVER OFFLINE - reintentando..." -f (Get-Date -Format HH:mm:ss))
             Start-Sleep -Seconds 5
             continue
         }
@@ -146,7 +146,7 @@ if ($SessionId) {
 if (-not $Watch -and -not $SessionId) {
     Clear-Host
     Write-Host "=============================================="
-    Write-Host "  Diligencia — Server Autonomo Dashboard"
+    Write-Host "  Diligencia - Server Autonomo Dashboard"
     Write-Host "=============================================="
     Write-Host ""
 
