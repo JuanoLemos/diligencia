@@ -4,7 +4,24 @@
 
 ## [Unreleased]
 
+### Removed
+- **Deprecacion selectiva v3.10.0** (migracion a stack Tailscale + ngrok + MiniMax):
+  - `doc/vaio/tasks/` (52 tasks historicas de triangularidad muerta)
+  - `doc/vaio/results/` (53 results historicos)
+  - `doc/vaio/start-chamber.ps1` (auto-resurrector Chamber)
+  - `doc/vaio/startup-tunnel.ps1` (Cloudflare quick tunnel manual)
+  - `doc/vaio/watchdog-tunnel.ps1` (reemplazado por ngrok nativo de Chamber)
+  - `scripts/register-task.ps1` (denylist Chamber tasks — no aplica sin Chamber tasks)
+  - `scripts/check-tareas.ps1` (depende de triangularidad muerta)
+  - Docs huerfanos: `worker-loop.md`, `worker-log.md`, `VAIO-SCHEDULED.md`,
+    `GUIA_RECUPERACION_VAIO.md`, `OLA-CHAMBER-100.md`,
+    `OLA-CHAMBER-MIGRATION.md`, `MECANICA-VAIO-WORKER.md`
+  - **Total movido a `.old/deprecated-2026-07-30/`: 128 archivos**
+
 ### Changed
+- `AGENTS.md` R79.1: reformulada referencia a scripts deprecados + mencion del nuevo stack.
+- `INDEX.md` seccion runtime actualizada: solo scripts vigentes (10 scripts).
+- `MECANICA-API-COMUNICACION.md`: circuit breakers actualizados — denylist movido de `register-task.ps1` a `invoke-agent-task.ps1` advertencia.
 - `/salud`: 6 correcciones aplicadas. ROADMAP.md: items R79.1-R79.6 movidos de "Ahora" a "Completado" (estaban stale con status "Completado (v3.9.0)" pero permanecian en seccion Ahora). status-salud.md actualizado a v3.9.0 con datos del diagnostico. Backup #2 creado.
 
 ## [3.9.0] — 2026-07-30

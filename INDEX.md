@@ -110,20 +110,21 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 | doc/olas/_template.md | v1.0 | 2026-07-04 |
 | doc/olas/README.md | v1.0 | 2026-07-04 |
 
-## Scripts runtime (R79.1 burn rate)
+## Scripts runtime (v3.10.0 — stack Tailscale + ngrok + MiniMax)
 
 | Archivo | Version | Proposito |
 |---|---|---|
 | scripts/invoke-agent-task.ps1 | v2.1 | Cliente de tareas API con bootstrap lazy + scope filter + MaxTokens + balance pre-flight + MaxCost |
-| scripts/vaio-services.ps1 | v1.2 | Watchdog de servicios VAIO (opencode serve + tunnel) con session cleanup + ensure-config |
-| scripts/register-task.ps1 | v1.0 | Registro idempotente de scheduled tasks con denylist (R79.1) |
-| scripts/check-tareas.ps1 | v1.0 | Verificacion de tareas VAIO pendientes sin LLM |
+| scripts/vaio-services.ps1 | v1.2 | Watchdog de opencode serve :4096 (mantiene vivo 24/7) |
 | scripts/ensure-config.ps1 | v1.0 | Aplicador idempotente de plantilla Diligencia a opencode.jsonc |
 | scripts/cost-tracker.ps1 | v1.0 | R69 dashboard de costos + circuit breaker diario |
-| scripts/model-policy.json | v1.0 | Politica centralizada por proyecto |
+| scripts/model-policy.json | v1.0 | Politica centralizada por proyecto (flash-only default) |
 | scripts/opencode.template.jsonc | v1.0 | Fragmento de config para fusionar via ensure-config |
-| scripts/watch-server.ps1 | v1.1 | Dashboard de monitoreo (legacy, watch-server fallback) |
+| scripts/diag-vaio.ps1 | v1.0 | Diagnostico read-only del estado VAIO (no LLM) |
 | scripts/install-services.ps1 | v1.0 | Instalador Windows Task Scheduler para VAIO |
+| scripts/watch-server.ps1 | v1.1 | Dashboard de monitoreo (legacy, watch-server fallback) |
+
+> **Deprecados v3.10.0** (migración a stack Tailscale + ngrok + MiniMax): `register-task.ps1`, `check-tareas.ps1`, `start-chamber.ps1`, `watchdog-tunnel.ps1`, `startup-tunnel.ps1`. Disponibles en `.old/deprecated-2026-07-30/`.
 
 ## Archivos relacionados
 - `ROADMAP.md` — roadmap del proyecto
