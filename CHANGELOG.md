@@ -2,6 +2,11 @@
 
 ---
 
+## [Unreleased]
+
+### Changed
+- `/salud`: 6 correcciones aplicadas. ROADMAP.md: items R79.1-R79.6 movidos de "Ahora" a "Completado" (estaban stale con status "Completado (v3.9.0)" pero permanecian en seccion Ahora). status-salud.md actualizado a v3.9.0 con datos del diagnostico. Backup #2 creado.
+
 ## [3.9.0] — 2026-07-30
 
 ### Fixed
