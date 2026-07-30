@@ -1,0 +1,29 @@
+# opencode.template.jsonc — Fragmento de config a inyectar via ensure-config.ps1
+# NO es el archivo completo — es un fragmento que ensure-config.ps1 fusiona con
+# ~/.config/opencode/opencode.jsonc preservando contenido existente.
+#
+# Politica Diligencia (R79.1 burn rate fix, 2026-07-30):
+# - deepseek-v4-pro: maxTokens 128000 (NO 1M — esa decision causo el incidente)
+# - deepseek-v4-flash: maxTokens 128000 (default API)
+# - diligencia-managed: true — flag para que ensure-config.ps1 sepa que es nuestro
+
+{
+  "provider": {
+    "deepseek": {
+      "options": {
+        "deepseek-v4-pro": {
+          "maxTokens": 128000
+        },
+        "deepseek-v4-flash": {
+          "maxTokens": 128000
+        }
+      }
+    }
+  },
+  "_diligencia": {
+    "managed": true,
+    "burn_rate_incident": "2026-07-30 USD10/day",
+    "policy_version": "R79.1",
+    "ensure_config_script": "scripts/ensure-config.ps1"
+  }
+}

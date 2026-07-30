@@ -1,11 +1,14 @@
 # invoke-agent-task.ps1
 # Envia una tarea al servidor opencode serve en VAIO.
 # Con -Persist mantiene sesion reutilizable por proyecto (con rotacion automatica cada 5 prompts).
-# El bootstrap de contexto Diligencia se inyecta automaticamente en cada sesion nueva.
+# v2.1 (R79.1 burn rate fix): bootstrap lazy, scope filter, MaxTokens cap.
+# El bootstrap de Diligencia se inyecta SOLO cuando el prompt lo necesita (keywords).
 # Uso:
 #   .\invoke-agent-task.ps1 -Prompt "git status" -Project "Nemesis"
 #   .\invoke-agent-task.ps1 -Prompt "fix bug" -Project "Nemesis" -Persist
 #   .\invoke-agent-task.ps1 -Prompt "revisa tests" -Project "+RM" -Sync
+#   .\invoke-agent-task.ps1 -Prompt "commit cambios" -StrictBootstrap
+#   .\invoke-agent-task.ps1 -Prompt "fix bug" -Project "+RM" -Include "*.ps1","*.md"
 
 param(
     [Parameter(Mandatory=$true)]
@@ -28,8 +31,12 @@ param(
     [switch]$Persist,
     [switch]$DryRun,
     [switch]$NoRotate,
+    [switch]$StrictBootstrap,
     [string]$SessionId,
-    [int]$MaxPrompts = 5
+    [int]$MaxPrompts = 5,
+    [string[]]$Include,
+    [int]$MaxInputTokens = 50000,
+    [int]$MaxOutputTokens = 8000
 )
 
 $ErrorActionPreference = "Stop"
@@ -62,9 +69,20 @@ $base64Auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("${usern
 $headers = @{ "Authorization" = "Basic $base64Auth"; "Content-Type" = "application/json" }
 $authParam = "-u `"${username}:${Password}`""
 
-# Bootstrap de contexto Diligencia (se inyecta en el primer prompt de cada sesion)
+# Bootstrap de contexto Diligencia (lazy: solo si el prompt lo requiere)
+$BOOTSTRAP_KEYWORDS = @(
+    "commit", "push", "cbp", "version", "build", "agente", "sesion",
+    "deploy", "watchdog", "sync", "git ", "rm ", "adapta", "revis",
+    "implement", "investig", "doc", "patron", "promp", "sesion",
+    "mensaje", "archivo", "linea", "commit", "merge", "branch",
+    "rotat", "depend", "contexto", "model", "api", "salud"
+)
+
 function Get-Bootstrap {
-    param([string]$ProjectName, [string]$Cwd)
+    param([string]$ProjectName, [string]$Cwd, [string[]]$IncludeGlobs)
+    $scope = if ($IncludeGlobs -and $IncludeGlobs.Count -gt 0) {
+        "`n- ALCANCE: solo pods leer/escribir archivos que matcheen: $($IncludeGlobs -join ', '). Si necesitas otro path, declarálo antes de leer."
+    } else { "" }
     return @"
 [BOOTSTRAP DILIGENCIA]
 Proyecto: $ProjectName. CWD: $Cwd.
@@ -73,9 +91,19 @@ Reglas vinculantes:
 - Solo /CBP y /version ejecutan git commit.
 - No modificar archivos fuera del CWD.
 - Responder SIEMPRE en espanol.
-- Reportar EXITO o ERROR al final, con evidencia (archivo:linea siempre que sea posible).
+- Reportar EXITO o ERROR al final, con evidencia (archivo:linea siempre que sea posible).$scope
 - Si encontrás un bug en otro proyecto, reportalo, no lo arregles.
 "@
+}
+
+function Test-BootstrapNeeded {
+    param([string]$PromptText, [switch]$Strict)
+    if ($Strict) { return $true }
+    $promptLower = $PromptText.ToLower()
+    foreach ($kw in $BOOTSTRAP_KEYWORDS) {
+        if ($promptLower -match [regex]::Escape($kw)) { return $true }
+    }
+    return $false
 }
 
 # Health check
@@ -91,7 +119,7 @@ if ($Model -match "pro|claude|sonnet") {
     Write-Host ("ATENCION: El modelo '{0}' es de alto costo." -f $Model) -ForegroundColor Yellow
 }
 
-# ── Gestion de sesion (persistente o nueva) ───────────────────
+# -- Gestion de sesion (persistente o nueva) -------------------
 $sessionDir = Join-Path $PSScriptRoot "..\.agent-sessions"
 $sessionFile = Join-Path $sessionDir ("{0}.session" -f $Project)
 $sessionIdActual = $SessionId
@@ -176,21 +204,28 @@ if (-not $sessionIdActual) {
     Write-Host ("  ID: {0}" -f $sessionIdActual)
 }
 
-# ── Construir prompt final ────────────────────────────────────
-$promptFinal = if ($needBootstrap) {
-    (Get-Bootstrap -ProjectName $Project -Cwd $cwd) + "`n`n---`n`n" + $Prompt
+# -- Construir prompt final ------------------------------------
+$needsBootstrap = ($needBootstrap -and (Test-BootstrapNeeded -PromptText $Prompt -Strict:$StrictBootstrap))
+$promptFinal = if ($needsBootstrap) {
+    (Get-Bootstrap -ProjectName $Project -Cwd $cwd -IncludeGlobs $Include) + "`n`n---`n`n" + $Prompt
 } else {
     $Prompt
+}
+
+# Log si el bootstrap fue omitido por lazy (util para debugging)
+if ($needBootstrap -and -not $needsBootstrap) {
+    Write-Host "[bootstrap lazy] Omitido - prompt no requiere reglas vinculantes." -ForegroundColor DarkGray
 }
 
 $messageBody = @{
     parts = @(@{ type = "text"; text = $promptFinal })
     model = @{ providerID = "deepseek"; modelID = $Model }
+    maxTokens = $MaxOutputTokens
 } | ConvertTo-Json -Compress -Depth 5
 
 Write-Host "Enviando prompt...`n"
 
-# ── Enviar ────────────────────────────────────────────────────
+# -- Enviar ----------------------------------------------------
 if ($Sync) {
     try {
         $result = Invoke-RestMethod -Uri "$Server/session/$sessionIdActual/message" `

@@ -1,6 +1,6 @@
-# register-task.ps1 — Registro idempotente de scheduled tasks en Chamber
+# register-task.ps1 - Registro idempotente de scheduled tasks en Chamber
 # Reemplaza la auto-creacion de tasks de start-chamber.ps1 (R79.1 burn rate fix).
-# BLOQUEA modelos caros (pro, claude, sonnet, opus, gpt-4) — solo modelos flash.
+# BLOQUEA modelos caros (pro, claude, sonnet, opus, gpt-4) - solo modelos flash.
 # Repo: C:\xampp\htdocs\Diligencia\scripts\register-task.ps1
 #
 # Uso:
@@ -51,7 +51,7 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-# ── Modelos prohibidos (burn rate) ─────────────────────────────
+# -- Modelos prohibidos (burn rate) -----------------------------
 $PROHIBITED_MODELS = @("pro", "claude", "sonnet", "opus", "gpt-4", "gemini-pro", "haiku")
 foreach ($prohibited in $PROHIBITED_MODELS) {
     if ($Model -match $prohibited) {
@@ -62,11 +62,11 @@ foreach ($prohibited in $PROHIBITED_MODELS) {
     }
 }
 
-# ── Project ID hardcoded (mismo que start-chamber.ps1) ─────────
+# -- Project ID hardcoded (mismo que start-chamber.ps1) ---------
 $projectId = "path_QzoveGFtcHAvaHRkb2NzL0RpbGlnZW5jaWE"
 $api = "http://localhost:$Port/api/projects/$projectId/scheduled-tasks"
 
-# ── Health check Chamber ───────────────────────────────────────
+# -- Health check Chamber ---------------------------------------
 try {
     $health = curl.exe -s "http://localhost:$Port/api/openchamber/tunnel/status" -m 3 2>$null
     if (-not $health -or $health -notmatch '"localPort"') {
@@ -77,7 +77,7 @@ try {
     exit 1
 }
 
-# ── Modo: List ─────────────────────────────────────────────────
+# -- Modo: List -------------------------------------------------
 if ($List) {
     Write-Host "=== Scheduled tasks registradas (puerto $Port) ==="
     $tasks = curl.exe -s $api | ConvertFrom-Json | Select-Object -ExpandProperty tasks
@@ -99,7 +99,7 @@ if ($List) {
     exit 0
 }
 
-# ── Modo: Delete ───────────────────────────────────────────────
+# -- Modo: Delete -----------------------------------------------
 if ($Delete) {
     Write-Host "=== Eliminando task '$Delete' ==="
     $tasks = curl.exe -s $api | ConvertFrom-Json | Select-Object -ExpandProperty tasks
@@ -115,12 +115,12 @@ if ($Delete) {
     exit 0
 }
 
-# ── Validaciones para create/update ────────────────────────────
+# -- Validaciones para create/update ----------------------------
 if (-not $Name) { Write-Host "ERROR: -Name requerido (o usa -List / -Delete <name>)."; exit 1 }
 if (-not $Schedule) { Write-Host "ERROR: -Schedule requerido (formato cron: '*/5 * * * *')."; exit 1 }
 if (-not $Prompt) { Write-Host "ERROR: -Prompt requerido."; exit 1 }
 
-# ── Validar frecuencia minima (anti-loop) ─────────────────────
+# -- Validar frecuencia minima (anti-loop) ---------------------
 $parts = $Schedule -split "\s+"
 if ($parts.Count -eq 5) {
     $minute = $parts[0]
@@ -131,7 +131,7 @@ if ($parts.Count -eq 5) {
     }
 }
 
-# ── Construir body ─────────────────────────────────────────────
+# -- Construir body ---------------------------------------------
 $body = @{
     task = @{
         name = $Name
@@ -149,7 +149,7 @@ $body = @{
     }
 } | ConvertTo-Json -Depth 10
 
-# ── Verificar si la task ya existe (idempotencia) ─────────────
+# -- Verificar si la task ya existe (idempotencia) -------------
 $tasks = curl.exe -s $api | ConvertFrom-Json | Select-Object -ExpandProperty tasks
 $existing = $tasks | Where-Object { $_.name -eq $Name }
 
@@ -178,17 +178,17 @@ if ($existing) {
     Write-Host "Task '$Name' no existe. Creando nueva..."
 }
 
-# ── WhatIf (dry-run) ───────────────────────────────────────────
+# -- WhatIf (dry-run) -------------------------------------------
 if ($WhatIf) {
     Write-Host ""
-    Write-Host "=== DRY RUN — NO EJECUTADO ===" -ForegroundColor Cyan
+    Write-Host "=== DRY RUN - NO EJECUTADO ===" -ForegroundColor Cyan
     Write-Host "PUT $api"
     Write-Host "Body:"
     Write-Host $body
     exit 0
 }
 
-# ── Ejecutar ──────────────────────────────────────────────────
+# -- Ejecutar --------------------------------------------------
 $jsonPath = "$env:TEMP\register-task-$($Name -replace '[^a-zA-Z0-9]', '-').json"
 $body | Set-Content $jsonPath -Encoding UTF8 -Force
 $result = curl.exe -s -X PUT $api -H "Content-Type: application/json" -d "@$jsonPath"
