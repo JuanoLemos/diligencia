@@ -14,7 +14,7 @@ param(
     [ValidateSet("Diligencia", "+RM", "MarketAI", "conquisitare", "buenobonitobarato", "Nemesis", "OpenMontage")]
     [string]$Project,
 
-    [string]$Server = $env:DILIGENCIA_SERVER,
+    [string]$Server,
 
     [string]$Model = "deepseek-v4-flash",
 
@@ -30,6 +30,13 @@ param(
 
 $ErrorActionPreference = "Stop"
 $maxWaitSec = 120
+
+# Cargar config persistente
+. "$PSScriptRoot\server-config.ps1"
+
+# Fallback a env vars si no se pasaron como parametro
+if (-not $Server) { $Server = $env:DILIGENCIA_SERVER }
+if (-not $Password) { $Password = $env:OPENCODE_SERVER_PASSWORD }
 
 if (-not $Server) {
     Write-Host "ERROR: Define DILIGENCIA_SERVER o usa -Server <url>"
