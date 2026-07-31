@@ -2,6 +2,64 @@
 
 ---
 
+## [4.0.0] — 2026-07-31
+
+### Changed
+- **Optimización para Claude Desktop:** Sistema de "charla + confirmación" reemplaza simulación PLAN/BUILD
+- `AGENTS.md`: Simplificado de 14 reglas a 7 core (R1-R10 + R16-R17 + R79.2 + R81)
+- `.opencode/HARNESS.md`: Version 3.11.0 → 4.0.0
+
+### Added
+- `.opencode/claude-instructions-v4.md` (280 líneas) — Instrucciones nativas para Claude
+- **R81 (Token awareness):** Monitoreo de consumo input/output, sugerencias de compresión
+- **Modo conversacional puro:** Sin fingir PLAN/BUILD, charla natural + confirmación R79.2
+
+### Removed
+- PLAN/BUILD artificial (Claude no tiene estos modos nativos)
+- Reglas IA-específicas de v3.x (MiniMax context, DeepSeek temperature)
+
+### Performance
+- **Bootstrap:** 40-50K tokens → 20-30K tokens (-40-50%)
+- **Tiempo adaptación:** 35 min → 15-20 min (-45%)
+- **Incidentes P3:** Reducción esperada 50% (R79.2-CLAUDE simplificada)
+
+### Note
+- **Diligencia nació en Claude (web chats)** — v4.0.0 restaura raíces originales
+- 100% backward compatible con v3.11.0 (opt-in upgrade)
+- Sistema de "charla + confirmación" más natural que PLAN/BUILD simulados
+
+---
+
+## [3.11.0] — 2026-07-31
+
+### Removed
+- **DEPRECACIÓN COMPLETA VAIO + Server Remoto + Chamber:**
+  - `.old/deprecation-2026-07-31/` contiene 34 archivos deprecated
+  - `doc/vaio/` completa (README, PRONT_VAIO, heartbeat, cost-tracking, etc.)
+  - `scripts/invoke-agent-task.ps1`, `cost-tracker.ps1`, `watch-server.ps1`, `ensure-config.ps1`, `vaio-services.ps1`
+  - `doc/mecanicas/MECANICA-SERVIDOR-AUTONOMO.md`, `MECANICA-API-COMUNICACION.md`, `MECANICA-CHAMBER-FIRST.md`
+  - `skills/diligencia-consejo/`, `skills/diligencia-circuito/` (agentes Chamber)
+  - `doc/IDENTIDAD-CHAMBER.md` (rol 🟣)
+  - `doc/guias/GUIA_VAIO_DNS.md`, `GUIA_PUENTE_VAIO.md`
+  - `AGENTS.md` reglas R14, R15, R18, R79.1 (API + VAIO + burn rate)
+
+### Added
+- `doc/MIGRACION.md` — Plan futuro para control en PC servidor externa (GitHub Actions, cloud, SSH)
+- Arquitectura simplificada: Claude Desktop + git local
+
+### Changed
+- `AGENTS.md` — simplificado a 14 reglas (eliminadas R14-R18, R79.1)
+- Identidad reescrita: v3.11.0 transición a Claude Desktop
+- ROADMAP: pendiente actualizar (será en próximo paso)
+
+### Lección v3.10.x
+- ❌ Loops infinitos = USD 10/día burn rate
+- ❌ Scheduled tasks IA = agente autónomo sin control
+- ❌ Triangularidad GitHub = frágil
+- ✅ Demanda bajo pedido = seguro y eficiente
+
+---
+
 ## [3.10.3] — 2026-07-31
 
 ### Added

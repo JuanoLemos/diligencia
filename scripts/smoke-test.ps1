@@ -8,49 +8,53 @@
 $ErrorActionPreference = "Continue"
 $failures = @()
 
-Write-Host "=== SMOKE TEST VAIO (v3.10.3) ===" -ForegroundColor Cyan
+Write-Host "=== SMOKE TEST VAIO (v3.10.3) via Tailscale ===" -ForegroundColor Cyan
 Write-Host "Timestamp: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
 Write-Host ""
 
-# 1. Procesos criticos
-Write-Host "1. Procesos criticos"
-$procs = Get-Process -Name "opencode", "OpenChamber", "ngrok" -ErrorAction SilentlyContinue
-if ($procs.Count -ge 2) {
-    $procs | Format-Table Name, Id, StartTime -AutoSize | Out-String | Write-Host
+# VAIO via Tailscale
+$vaio = "100.120.192.43"
+$auth = "Basic ZGlsaWdlbmNpYTpkaWxpZ2VuY2lhLXZhaW8tMjAyNg=="
+$headers = @{ Authorization = $auth }
+
+# 1. Tailscale (PC MAIN)
+Write-Host "1. Tailscale (PC MAIN)"
+$ts = tailscale status 2>&1 | Select-Object -First 1
+if ($ts -match "100\.125\.[0-9]+\.[0-9]+") {
+    Write-Host "  OK: PC MAIN tiene Tailscale IP 100.125.180.6" -ForegroundColor Green
 } else {
-    Write-Host "  FAIL: solo $($procs.Count) procesos criticos encontrados (esperado: 2-3)" -ForegroundColor Red
-    $failures += "procesos"
+    Write-Host "  FAIL: Tailscale en PC MAIN no levantado" -ForegroundColor Red
+    $failures += "tailscale_main"
 }
 
-# 2. Puertos
-Write-Host "2. Puertos escuchando"
-$ports = Get-NetTCPConnection -State Listen -ErrorAction SilentlyContinue | Where-Object { $_.LocalPort -in 4096,57123,4040 }
-if ($ports.Count -ge 2) {
-    $ports | Format-Table LocalPort, OwningProcess -AutoSize | Out-String | Write-Host
+# 2. VAIO alcanzable via Tailscale
+Write-Host "2. VAIO alcanzable (100.120.192.43)"
+if (Test-Connection -ComputerName $vaio -Count 1 -Quiet 2>$null) {
+    Write-Host "  OK: ping" -ForegroundColor Green
 } else {
-    Write-Host "  FAIL: solo $($ports.Count) puertos esperados (4096, 57123, 4040)" -ForegroundColor Red
-    $failures += "puertos"
+    Write-Host "  FAIL: no responde" -ForegroundColor Red
+    $failures += "vaio_ping"
 }
 
-# 3. Opencode health
-Write-Host "3. Opencode health"
+# 3. Opencode serve en VAIO
+Write-Host "3. Opencode serve en VAIO :4096"
 try {
-    $health = Invoke-RestMethod -Uri "http://localhost:4096/global/health" -Headers @{Authorization="Basic ZGlsaWdlbmNpYTpkaWxpZ2VuY2lhLXZhaW8tMjAyNg=="} -TimeoutSec 5
+    $health = Invoke-RestMethod -Uri ("http://" + $vaio + ":4096/global/health") -Headers $headers -TimeoutSec 5
     if ($health.healthy) {
-        Write-Host "  OK: $($health | ConvertTo-Json -Compress)" -ForegroundColor Green
+        Write-Host ("  OK: " + ($health | ConvertTo-Json -Compress)) -ForegroundColor Green
     } else {
         Write-Host "  FAIL: server no healthy" -ForegroundColor Red
         $failures += "opencode_health"
     }
 } catch {
-    Write-Host "  FAIL: $($_.Exception.Message)" -ForegroundColor Red
+    Write-Host ("  FAIL: " + $_.Exception.Message) -ForegroundColor Red
     $failures += "opencode_health"
 }
 
-# 4. ngrok tunnels
-Write-Host "4. ngrok tunnels"
+# 4. ngrok tunnels en VAIO
+Write-Host "4. ngrok tunnels en VAIO :4040"
 try {
-    $tunnels = Invoke-RestMethod -Uri "http://localhost:4040/api/tunnels" -TimeoutSec 5
+    $tunnels = Invoke-RestMethod -Uri ("http://" + $vaio + ":4040/api/tunnels") -TimeoutSec 5
     if ($tunnels.tunnels.Count -ge 1) {
         $tunnels.tunnels | Format-Table name, public_url, config.addr -AutoSize | Out-String | Write-Host
     } else {
@@ -58,21 +62,40 @@ try {
         $failures += "ngrok_tunnels"
     }
 } catch {
-    Write-Host "  FAIL: ngrok offline - $($_.Exception.Message)" -ForegroundColor Red
+    Write-Host ("  FAIL: " + $_.Exception.Message) -ForegroundColor Red
     $failures += "ngrok_api"
 }
 
-# 5. Tailscale
-Write-Host "5. Tailscale"
-$ts = tailscale status 2>&1 | Select-Object -First 1
-if ($ts -match "100\.\d+\.\d+\.\d+") {
-    Write-Host "  OK: $ts" -ForegroundColor Green
-} else {
-    Write-Host "  WARN: $ts" -ForegroundColor Yellow
+# 5. Chamber en VAIO
+Write-Host "5. Chamber en VAIO :57123"
+try {
+    $c = Invoke-RestMethod -Uri ("http://" + $vaio + ":57123/api/openchamber/tunnel/status") -TimeoutSec 5
+    Write-Host ("  OK: " + ($c | ConvertTo-Json -Compress)) -ForegroundColor Green
+} catch {
+    Write-Host ("  FAIL: " + $_.Exception.Message) -ForegroundColor Yellow
 }
 
-# 6. Agents custom cargados
-Write-Host "6. Agents custom en disco"
+# 6. e2e MiniMax test
+Write-Host "6. e2e MiniMax test (agent=server-admin)"
+try {
+    $body = '{"title":"[smoke] e2e","agent":"server-admin"}'
+    $sess = Invoke-RestMethod -Uri ("http://" + $vaio + ":4096/session") -Method Post -Body $body -Headers ($headers + @{"Content-Type"="application/json"}) -TimeoutSec 15
+    $msgBody = '{"parts":[{"type":"text","text":"OK"}],"model":{"providerID":"minimax-coding-plan","modelID":"MiniMax-M2.7"}}'
+    $msg = Invoke-RestMethod -Uri ("http://" + $vaio + ":4096/session/" + $sess.id + "/message") -Method Post -Body $msgBody -Headers ($headers + @{"Content-Type"="application/json"}) -TimeoutSec 60
+    $txt = ($msg.parts | Where-Object { $_.type -eq "text" } | Select-Object -First 1).text
+    if ($txt) {
+        Write-Host "  OK: respuesta MiniMax recibida" -ForegroundColor Green
+    } else {
+        Write-Host "  FAIL: sin respuesta" -ForegroundColor Red
+        $failures += "minimax_e2e"
+    }
+} catch {
+    Write-Host ("  FAIL: " + $_.Exception.Message) -ForegroundColor Red
+    $failures += "minimax_e2e"
+}
+
+# 7. Agents custom en disco (PC MAIN)
+Write-Host "7. Agents custom en disco (PC MAIN)"
 $expected = @("server-admin.md", "code-reviewer.md", "project-handler.md")
 $globalDir = "$env:USERPROFILE\.config\opencode\agents"
 $projectDir = ".opencode\agents"
@@ -80,7 +103,7 @@ foreach ($a in $expected) {
     $g = Test-Path (Join-Path $globalDir $a)
     $p = Test-Path (Join-Path $projectDir $a)
     if (-not $g -and -not $p) {
-        Write-Host "  FAIL: $a no existe en global ni proyecto" -ForegroundColor Red
+        Write-Host "  FAIL: $a no existe" -ForegroundColor Red
         $failures += "agent_$a"
     } else {
         $where = if ($g) { "global" } else { "proyecto" }
@@ -88,18 +111,18 @@ foreach ($a in $expected) {
     }
 }
 
-# 7. API key MiniMax
-Write-Host "7. API key MiniMax"
+# 8. API key MiniMax persistida
+Write-Host "8. API key MiniMax (PC MAIN User scope)"
 $apiKey = [System.Environment]::GetEnvironmentVariable("MINIMAX_API_KEY", "User")
 if ($apiKey) {
     Write-Host "  OK: $($apiKey.Length) chars persistidas" -ForegroundColor Green
 } else {
-    Write-Host "  FAIL: MINIMAX_API_KEY no persistida en User scope" -ForegroundColor Red
+    Write-Host "  FAIL: MINIMAX_API_KEY no persistida" -ForegroundColor Red
     $failures += "minimax_api_key"
 }
 
-# 8. Working tree Diligencia
-Write-Host "8. Working tree Diligencia"
+# 9. Working tree Diligencia
+Write-Host "9. Working tree Diligencia (PC MAIN)"
 $wt = git status --short 2>&1
 if (-not $wt) {
     Write-Host "  OK: limpio" -ForegroundColor Green
@@ -111,7 +134,7 @@ if (-not $wt) {
 # Resumen
 Write-Host ""
 if ($failures.Count -eq 0) {
-    Write-Host "=== OK: stack VAIO completamente funcional ===" -ForegroundColor Green
+    Write-Host "=== OK: stack VAIO completamente funcional (Tailscale + opencode + MiniMax) ===" -ForegroundColor Green
     exit 0
 } else {
     Write-Host "=== FAIL: $($failures.Count) checks fallaron ===" -ForegroundColor Red

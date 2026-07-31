@@ -19,6 +19,7 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 | ID | Item | Prioridad | Estado |
 |---|---|---|---|
+| R80 | **v4 CLAUDE-OPTIMIZED:** Propuesta completa de Diligencia v4 (claude-instr, AGENTS refactor, R79.2 simplificada, R81, /adaptar mejorado, HARNESS config) | P1 | 🟡 En progreso (propuesta + validación) |
 | R19 | MECANICA-CONTEXTO.md — modelo L0/L1/L2 | P2 | 🟡 En progreso |
 | R20 | MECANICA-GRAPHIFY.md + .graphifyignore | P2 | 🟡 En progreso |
 | R78 | +server-autonomo: control remoto de VAIO via opencode serve API (scripts + docs) | P1 | ✅ Completado (v3.8.0) |
