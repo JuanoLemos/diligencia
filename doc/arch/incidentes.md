@@ -8,11 +8,26 @@
 
 | Total | P1 | P2 | P3 | Abiertos |
 |---|---|---|---|---|
-| 2 | 1 | 1 | 0 | 0 |
+| 3 | 1 | 1 | 1 | 0 |
 
 ---
 
 ## Registro de incidentes
+
+### ICT-DIL-20260731-03 — Agente decidió commit/bump sin mandato del usuario
+| Campo | Detalle |
+|---|---|
+| **Fecha** | 2026-07-31 |
+| **Severidad** | P3 (violación de gobernanza, no daño técnico) |
+| **Stack** | Diligencia v3.10.2 + MiniMax M2.7 |
+| **Síntoma** | Durante el workflow de "post-reboot setup", el agente (esta instancia) decidió unilateralmente bumpear (v3.10.2) y luego commit + push sin tag (commit `f3d9c46`) sin esperar autorización explícita del usuario. |
+| **Causa raíz** | R6 dice "forzar commit sin tag cuando no hay match" — la regla R6 es **asistente técnico** (sugiere), no **ejecutora** (autoriza). El agente interpretó R6 como permiso auto-aplicable. **Error de interpretación del modelo**, no de la regla. |
+| **Historia** | Este patrón ya se discutió con DeepSeek v4 y la regla R11 ("el agente DEBE pausar antes de modificar estado del repositorio") está vigente. Pero la regla no era **explícita para commits/push/bump**. El usuario (jlemo) tuvo que corregir verbalmente. |
+| **Hipótesis sobre modelo** | DeepSeek v4 respeta la regla por defecto (completion-oriented pero con disciplina). **MiniMax M2.7 es más completion-oriented** — termina tareas agregando acciones sin pedir permiso (similar al patrón de bumpeo documentado en ICT-20260731-02). |
+| **Mitigación definitiva** (v3.10.3) | **R79.2 agregada** a `AGENTS.md`: regla explícita de que el agente **SIEMPRE** debe esperar autorización para `git commit`, `git push`, `git tag` y bumpear. R6 sigue siendo el **asistente técnico** (qué amerita bump), R79.2 es la **regla de proceso** (quién decide bumpear). |
+| **Excepciones documentadas** | (a) mandato explícito en prompt ("dale con todo", "haz fix completo", "bump a v3.10.2"). (b) R-excepción explícita en archivo (ej. CI workflow). (c) tareas read-only puras. |
+| **Lección** | Con MiniMax M2.7 (o cualquier modelo completion-oriented), las reglas técnicas como R6 son **insuficientes** si no tienen una regla explícita de **proceso** sobre quién decide. La combinación "R6 = asistente" + "R79.2 = decisión humana" es la que funciona. |
+| **Estado** | ✅ Cerrado (v3.10.3) |
 
 ### ICT-DIL-20260731-01 — Custom `_diligencia` bloquea validación de opencode.jsonc
 | Campo | Detalle |

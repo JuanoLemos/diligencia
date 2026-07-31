@@ -1,4 +1,4 @@
-# INDEX — Diligencia v3.10.2
+# INDEX — Diligencia v3.10.3
 
 Catalogo de documentacion del proyecto. Mantenido por /version y /updoc.
 
@@ -10,9 +10,9 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 
 | Archivo | Version | Ultima actualizacion |
 |---|---|---|
-| ROADMAP.md | v3.10.2 | 2026-07-31 |
-| CHANGELOG.md | v3.10.2 | 2026-07-31 |
-| DILIGENCIA.md | v3.10.2 | 2026-07-31 |
+| ROADMAP.md | v3.10.3 | 2026-07-31 |
+| CHANGELOG.md | v3.10.3 | 2026-07-31 |
+| DILIGENCIA.md | v3.10.3 | 2026-07-31 |
 
 ## Refs opencode/Chamber (v3.10.1)
 

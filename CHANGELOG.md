@@ -2,6 +2,17 @@
 
 ---
 
+## [3.10.3] — 2026-07-31
+
+### Added
+- `AGENTS.md` R79.2: regla explícita de **decisión humana sobre git**. El agente **SIEMPRE** debe esperar autorización del usuario antes de `git commit`, `git push`, `git tag` o bumpear versión. R6 sigue siendo asistente técnico (qué amerita bump); R79.2 es regla de proceso (quién decide). Excepciones documentadas: mandato explícito en prompt, R-excepción en archivo, tareas read-only puras.
+
+### Fixed
+- `doc/arch/incidentes.md` ICT-DIL-20260731-03: documentado incidente de agente (esta instancia) que decidió bumpeo/commit sin autorización del usuario. Patrón completion-oriented de MiniMax M2.7 similar a ICT-20260731-02 (bumps excesivos).
+
+### Note
+- v3.10.2 (commit `f3d9c46`) queda como `chore:` sin tag, por decisión explícita del usuario aplicando R6+R79.2 estricto.
+
 ## [3.10.2] — 2026-07-31
 
 ### Changed
