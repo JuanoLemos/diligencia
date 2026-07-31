@@ -1,11 +1,15 @@
-﻿# ensure-config.ps1 - Aplica plantilla Diligencia a ~/.config/opencode/opencode.jsonc
-# Idempotente. Solucion R79.1 burn rate (R79.1, 2026-07-30):
-# previene que deepseek-v4-pro vuelva a contexto 1M tras upgrades.
+# ensure-config.ps1 - Aplica plantilla Diligencia a opencode.jsonc
+# Idempotente. Solucion R79.1 burn rate.
+#
+# IMPORTANTE (ICT-DIL-20260731-01): El schema oficial de opencode
+# (https://opencode.ai/config.json) rechaza custom keys en la raiz.
+# Este script NO agrega bloques custom. Metadata Diligencia vive en
+# ~/.config/opencode/.diligencia.json (archivo separado).
 #
 # Uso:
 #   .\scripts\ensure-config.ps1            # Aplica cambios si hay drift
 #   .\scripts\ensure-config.ps1 -DryRun    # Solo muestra diff, no escribe
-#   .\scripts\ensure-config.ps1 -Force     # Aplica aunque no haya drift detectado
+#   .\scripts\ensure-config.ps1 -Force     # Aplica aunque no haya drift
 
 param(
     [switch]$DryRun,
@@ -15,49 +19,81 @@ param(
 $ErrorActionPreference = "Continue"
 
 $configPath = Join-Path $env:USERPROFILE ".config\opencode\opencode.jsonc"
-$templatePath = Join-Path $PSScriptRoot "opencode.template.jsonc"
+$metaPath   = Join-Path $env:USERPROFILE ".config\opencode\.diligencia.json"
+
+# Keys validas en raiz segun schema oficial de opencode
+$validRootKeys = @(
+    '$schema','model','small_model','default_agent','agent','subagent_depth',
+    'permission','instructions','shell','tools','provider','provider_overrides',
+    'disabled_providers','enabled_providers','mcp','lsp','formatter','plugin',
+    'server','autoupdate','snapshot','share','watcher','compaction','attachment','experimental'
+)
 
 if (-not (Test-Path $configPath)) {
     Write-Host "ERROR: $configPath no existe. Ejecutar 'opencode init' primero." -ForegroundColor Red
     exit 1
 }
 
-if (-not (Test-Path $templatePath)) {
-    Write-Host "ERROR: Template no encontrado: $templatePath" -ForegroundColor Red
-    exit 1
-}
+$configRaw = Get-Content $configPath -Raw
 
-$configRaw = Get-Content $configPath -Raw -Encoding UTF8
-
-# -- Strip JSONC comments (// ... y /* ... */) para poder parsear ---
+# -- Strip JSONC comments para parsear ---
 $configNoComments = $configRaw -replace '(?m)^\s*//.*$', ''
 $configNoComments = $configNoComments -replace '(?s)/\*.*?\*/', ''
 
 try {
     $configObj = $configNoComments | ConvertFrom-Json
 } catch {
-    Write-Host "ERROR: No se pudo parsear $configPath. Verificar sintaxis JSONC." -ForegroundColor Red
+    Write-Host "ERROR: No se pudo parsear $configPath. Verificar sintaxis JSON." -ForegroundColor Red
     Write-Host "Detalle: $_" -ForegroundColor Red
     exit 1
 }
 
-# -- Verificar drift -------------------------------------------
+# -- Detectar custom keys en raiz (ICT-DIL-20260731-01 prevention) ---
+$customKeys = @()
+foreach ($prop in $configObj.PSObject.Properties) {
+    if ($prop.Name -notin $validRootKeys) {
+        $customKeys += $prop.Name
+    }
+}
+
+if ($customKeys.Count -gt 0) {
+    Write-Host "ERROR: El jsonc contiene custom keys en raiz que rompen el schema de opencode:" -ForegroundColor Red
+    foreach ($k in $customKeys) { Write-Host "  - $k" -ForegroundColor Red }
+    Write-Host ""
+    Write-Host "Solucion: editar manualmente $configPath y mover las custom keys" -ForegroundColor Yellow
+    Write-Host "a un archivo externo (ej: $metaPath)" -ForegroundColor Yellow
+    exit 2
+}
+
+# -- Verificar metadata Diligencia en archivo externo ---
+$metaObj = $null
+if (Test-Path $metaPath) {
+    try {
+        $metaObj = Get-Content $metaPath -Raw | ConvertFrom-Json
+    } catch {
+        Write-Host "WARN: $metaPath invalido. Recreando..." -ForegroundColor Yellow
+    }
+}
+
+# -- Verificar drift ---
 $drift = New-Object System.Collections.Generic.List[string]
 
-# Drift 1: contexto 1M
-$proObj = $configObj.provider.deepseek.options.'deepseek-v4-pro'
-if ($proObj -and $proObj.maxTokens -eq 1000000) {
-    [void]$drift.Add("deepseek-v4-pro maxTokens = 1M (revertir a 128K)")
+# Drift 1: Provider MiniMax cargado (preferido para stack actual)
+$hasMiniMax = $false
+if ($configObj.provider) {
+    foreach ($prop in $configObj.provider.PSObject.Properties) {
+        if ($prop.Name -match "minimax") { $hasMiniMax = $true }
+    }
+}
+if (-not $hasMiniMax) {
+    [void]$drift.Add("No hay provider minimax en config (usar auth.json con /connect)")
 }
 
-# Drift 2: falta flag _diligencia
-if (-not $configObj._diligencia -or -not $configObj._diligencia.managed) {
-    [void]$drift.Add("Falta flag _diligencia.managed")
-}
-
-# Drift 3: falta bloque deepseek-v4-pro
-if (-not $proObj) {
-    [void]$drift.Add("Falta provider.deepseek.options.deepseek-v4-pro")
+# Drift 2: Falta archivo metadata Diligencia
+if (-not (Test-Path $metaPath)) {
+    [void]$drift.Add("Falta $metaPath (metadata Diligencia)")
+} elseif (-not $metaObj.managed) {
+    [void]$drift.Add("Archivo $metaPath no tiene managed=true")
 }
 
 if ($drift.Count -eq 0 -and -not $Force) {
@@ -68,62 +104,42 @@ if ($drift.Count -eq 0 -and -not $Force) {
 Write-Host "Drift detectado:" -ForegroundColor Yellow
 foreach ($d in $drift) { Write-Host "  - $d" -ForegroundColor Yellow }
 
-# -- Aplicar fixes ---------------------------------------------
-if (-not $configObj.provider) {
-    $configObj | Add-Member -NotePropertyName "provider" -NotePropertyValue ([PSCustomObject]@{}) -Force
-}
-if (-not $configObj.provider.deepseek) {
-    $configObj.provider | Add-Member -NotePropertyName "deepseek" -NotePropertyValue ([PSCustomObject]@{}) -Force
-}
-if (-not $configObj.provider.deepseek.options) {
-    $configObj.provider.deepseek | Add-Member -NotePropertyName "options" -NotePropertyValue ([PSCustomObject]@{}) -Force
-}
-
-# Fix deepseek-v4-pro maxTokens
-if (-not $configObj.provider.deepseek.options.'deepseek-v4-pro') {
-    $configObj.provider.deepseek.options | Add-Member -NotePropertyName "deepseek-v4-pro" -NotePropertyValue ([PSCustomObject]@{maxTokens = 128000}) -Force
-} else {
-    $configObj.provider.deepseek.options.'deepseek-v4-pro'.maxTokens = 128000
-}
-
-# Fix deepseek-v4-flash maxTokens
-if (-not $configObj.provider.deepseek.options.'deepseek-v4-flash') {
-    $configObj.provider.deepseek.options | Add-Member -NotePropertyName "deepseek-v4-flash" -NotePropertyValue ([PSCustomObject]@{maxTokens = 128000}) -Force
-} else {
-    $configObj.provider.deepseek.options.'deepseek-v4-flash'.maxTokens = 128000
-}
-
-# Fix _diligencia flag
-if (-not $configObj._diligencia) {
-    $configObj | Add-Member -NotePropertyName "_diligencia" -NotePropertyValue ([PSCustomObject]@{managed = $true; policy_version = "R79.1"}) -Force
-} else {
-    $configObj._diligencia.managed = $true
-    if (-not $configObj._diligencia.policy_version) {
-        $configObj._diligencia | Add-Member -NotePropertyName "policy_version" -NotePropertyValue "R79.1" -Force
-    }
-}
-
-# -- Serializar ------------------------------------------------
-$correctedJson = $configObj | ConvertTo-Json -Depth 10
-
-# -- Dry run ---------------------------------------------------
 if ($DryRun) {
     Write-Host ""
-    Write-Host "=== DRY RUN - diff propuesto ===" -ForegroundColor Cyan
-    Write-Host "Backup: $configPath.bak"
-    Write-Host ""
-    Write-Host "Config corregida:"
-    Write-Host $correctedJson
+    Write-Host "=== DRY RUN - NO EJECUTADO ===" -ForegroundColor Cyan
     exit 0
 }
 
-# -- Backup y escribir -----------------------------------------
-$backupPath = "$configPath.bak"
-Copy-Item $configPath $backupPath -Force
-Write-Host "Backup: $backupPath" -ForegroundColor Cyan
+# -- Aplicar fixes ---
+# Crear metadata externa si falta
+if (-not (Test-Path $metaPath)) {
+    $metaContent = @"
+{
+  "_comment": "Metadata Diligencia - NO es parte del schema de opencode.",
+  "managed": true,
+  "methodology": "Diligencia",
+  "methodology_version": "v3.10.0",
+  "policy_version": "R79.1",
+  "burn_rate_incident": "ICT-DIL-20260731-01",
+  "owner": "$env:USERNAME",
+  "scope": [
+    "bootstrap lazy",
+    "denylist modelos caros",
+    "scope filter",
+    "balance pre-flight",
+    "circuit breaker diario",
+    "max-cost enforcement"
+  ]
+}
+"@
+    Set-Content -LiteralPath $metaPath -Value $metaContent -Encoding UTF8
+    Write-Host "  Creado: $metaPath" -ForegroundColor Green
+}
 
-$correctedJson | Set-Content $configPath -Encoding UTF8
-Write-Host "OK: Configuracion aplicada." -ForegroundColor Green
-Write-Host "  - deepseek-v4-pro: maxTokens 128000"
-Write-Host "  - _diligencia.managed: true"
-Write-Host "  - Backup en: $backupPath"
+Write-Host ""
+Write-Host "OK: Configuracion Diligencia al dia." -ForegroundColor Green
+Write-Host "  - opencode.jsonc: solo keys validas del schema"
+Write-Host "  - .diligencia.json: metadata externa en $metaPath"
+Write-Host ""
+Write-Host "Nota: provider minimax se carga via auth.json (built-in)."
+Write-Host "      Usar /connect dentro del TUI para configurar API keys."

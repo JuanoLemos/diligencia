@@ -1,4 +1,4 @@
-# ROADMAP — Diligencia v3.9.2
+# ROADMAP — Diligencia v3.10.0
 
 Metodología de estructura estándar para proyectos OpenCode.
 
