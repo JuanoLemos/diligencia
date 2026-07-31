@@ -2,6 +2,19 @@
 
 ---
 
+## [3.10.2] — 2026-07-31
+
+### Changed
+- `AGENTS.md` R6 refinada: criterios explícitos sobre qué amerita bump vs qué no. Lista de paths shell (commands/, mecánicas/, R-numbers, ICT crítico) vs paths no-shell (docs/, agents/, scripts/).
+- `~/.config/opencode/commands/CBP.md`: pre-check obligatorio antes de bumpear. Detecta cambios al shell de Diligencia; si no hay match, fuerza `/CBP commit` sin tag.
+- `doc/arch/incidentes.md` ICT-DIL-20260731-02: documentado el incidente de bumps excesivos (4 en una sesión donde solo 2 ameritaban) con causa raíz, hipótesis sobre DeepSeek vs MiniMax, y mitigación.
+
+### Added
+- `doc/guias/GUIA_DE_BUENAS_PRACTICAS.md` §9.5: criterios de bump + checklist de categorías + pre-check automático.
+
+### Lección
+Cuando un algoritmo permite ambigüedad, el modelo tiende a tomar la ruta "completa" (bump + tag + push). La solución es el algoritmo estricto, no el modelo. **Pre-check obligatorio** basado en archivos modificados.
+
 ## [3.10.1] — 2026-07-31
 
 ### Added

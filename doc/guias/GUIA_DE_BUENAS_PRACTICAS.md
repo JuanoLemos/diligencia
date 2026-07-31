@@ -199,10 +199,56 @@ El workflow `completo` del meta-orquestador sugiere agentes según el estado del
 | Tests en proyecto | `skill("tdd-strict")` + `@sdd-verify` | 2do (después de revisar) |
 | ROADMARK con SDD items | `skill("sdd-workflow")` | Contexto (no ejecuta) |
 
+### Cuándo bumpear (criterios R6)
+
+**Amerita bump** (`/CBP version` con tag + push) — cualquiera de estos:
+- Ediciones a comandos globales en `~/.config/opencode/commands/`
+- Ediciones a mecánicas en `doc/mecanicas/`
+- Cambios a reglas R-numbers en `AGENTS.md`
+- Migraciones de versión entre proyectos adaptados
+- Fixes críticos de seguridad (ej. ICT-DIL-20260731-01)
+
+**NO amerita bump** (`/CBP commit` con push, sin tag):
+- Heartbeats, URLs de túnel, ruido de watchdog
+- Solo docs nuevos (sin cambio al shell)
+- Solo agents custom (del proyecto, no del shell)
+- Solo fixes de infraestructura del server
+- Refactors puramente locales
+- Commits de ruido del VAIO
+
+**Lección aprendida (ICT-DIL-20260731-02):** un agente (en este caso MiniMax M2.7) puede tender a "completar la tarea" agregando un bump por commit. Esto produce versiones infladas. **Pre-check antes de bumpear** — verificar que el cambio toca el shell.
+
+### Pre-check automático (v3.10.2)
+
+`/CBP version` debe ejecutar antes del bump:
+
+```bash
+git diff --name-only <last_release>..HEAD | \
+  grep -E '^(\.opencode/commands/|doc/mecanicas/|AGENTS\.md|\.opencode/agents/)' \
+  | head -1
+# Si vacío → NO bumpear, solo commit + push
+# Si hay match → bumpear (sea minor o patch según commits)
+```
+
+Esto evita bumps innecesarios. Ejemplo real: v3.10.1 solo agregó `doc/refs/` (docs) y `.opencode/agents/` (agents de proyecto) — el pre-check habría detectado "agents" como match (falso positivo), así que se ajusta: agents custom en `~/.config/opencode/agents/` SÍ justifican bump (config global), pero agents en `.opencode/agents/` (proyecto) NO.
+
+```
+BUMP CHECKLIST:
+[ ] Cambios a ~/.config/opencode/commands/ → bump
+[ ] Cambios a doc/mecanicas/ → bump
+[ ] Cambios a AGENTS.md R-numbers → bump
+[ ] Cambios a ~/.config/opencode/agents/ (global) → bump
+[ ] Cambios a .opencode/agents/ (proyecto) → solo commit
+[ ] Cambios a doc/refs/, doc/guias/, etc. (solo docs) → solo commit
+[ ] Cambios a scripts/ (locales al repo) → solo commit
+[ ] Cambios a adaptar.md global → bump (afecta proyectos adaptados)
+```
+
 ### Anti-patrones
 
 - **Ejecutar `/CBP version` cuando debía ser `/CBP updoc`**: gaps documentales se acumulan
 - **Saltar `/doctor` antes de cerrar**: bugs no registrados y tracking desincronizado pasan desapercibidos
+- **Bumpear por cada commit** (ICT-DIL-20260731-02): 4 bumps en 1 sesión = versiones infladas. **Solo bumpear cuando hay cambio real al shell.**
 - **Ejecutar Meta-PLAN en ejecuci�n**: el análisis profundo requiere razonamiento para detectar gaps y stale correctamente
 - **Ejecutar BUILD en razonamiento**: desperdicio de tokens y latencia — BUILD solo ejecuta cambios ya planificados
 - **Confirmar paso a paso en vez de UNA SOLA VEZ**: el Meta-PLAN consolida todo, no necesita confirmaciones intermedias
