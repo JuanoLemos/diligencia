@@ -2,6 +2,11 @@
 
 ---
 
+## [3.9.2] — 2026-07-30
+
+### Changed
+- VAIO: 45 commits automatizados de `watchdog-tunnel` (heartbeats + URL updates via Cloudflare). Sin cambios funcionales.
+
 ## [3.9.1] — 2026-07-30
 
 ### Changed
