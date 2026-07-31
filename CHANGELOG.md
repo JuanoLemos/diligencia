@@ -2,6 +2,14 @@
 
 ---
 
+## [3.10.1] — 2026-07-31
+
+### Added
+- `doc/refs/observability.md` — triggers de monitoreo: alta/media/baja prioridad con comandos de diagnóstico y umbrales de alerta.
+- `doc/refs/opencode-troubleshooting.md` — 10 issues frecuentes + comando universal de diagnóstico en 5 seg.
+- `.opencode/agents/diligencia-ops.md` — agent opencode para monitoreo operacional del stack Diligencia↔opencode↔Chamber. Read-only, delega fixes al usuario.
+- `~/.config/opencode/agents/opencode-expert.md` — agent opencode experto técnico (read-only).
+
 ## [3.10.0] — 2026-07-31
 
 ### Fixed

@@ -1,4 +1,4 @@
-# INDEX — Diligencia v3.10.0
+# INDEX — Diligencia v3.10.1
 
 Catalogo de documentacion del proyecto. Mantenido por /version y /updoc.
 
@@ -10,9 +10,26 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 
 | Archivo | Version | Ultima actualizacion |
 |---|---|---|
-| ROADMAP.md | v3.10.0 | 2026-07-31 |
-| CHANGELOG.md | v3.10.0 | 2026-07-31 |
-| DILIGENCIA.md | v3.10.0 | 2026-07-31 |
+| ROADMAP.md | v3.10.1 | 2026-07-31 |
+| CHANGELOG.md | v3.10.1 | 2026-07-31 |
+| DILIGENCIA.md | v3.10.1 | 2026-07-31 |
+
+## Refs opencode/Chamber (v3.10.1)
+
+| Archivo | Proposito |
+|---|---|
+| doc/refs/opencode-schema.md | Schema oficial completo + variables |
+| doc/refs/openchamber-overview.md | Arquitectura + tunnel system |
+| doc/refs/integration-patterns.md | 7 patrones + 6 anti-patrones |
+| doc/refs/opencode-troubleshooting.md | 10 issues frecuentes |
+| doc/refs/observability.md | Triggers de monitoreo + alertas |
+
+## Agents opencode (v3.10.1)
+
+| Archivo | Modo | Funcion |
+|---|---|---|
+| .opencode/agents/diligencia-ops.md | subagent | Monitoreo operacional stack Diligencia |
+| ~/.config/opencode/agents/opencode-expert.md | subagent | Experto tecnico opencode (global) |
 
 ## Guias
 
