@@ -1,8 +1,8 @@
-# INDEX — Diligencia v3.9.2
+# INDEX — Diligencia v3.10.0
 
 Catalogo de documentacion del proyecto. Mantenido por /version y /updoc.
 
-Ultima actualizacion global: 2026-07-30
+Ultima actualizacion global: 2026-07-31
 
 ## Docs criticos
 
@@ -10,9 +10,9 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 
 | Archivo | Version | Ultima actualizacion |
 |---|---|---|
-| ROADMAP.md | v3.9.2 | 2026-07-30 |
-| CHANGELOG.md | v3.9.2 | 2026-07-30 |
-| DILIGENCIA.md | v3.9.2 | 2026-07-30 |
+| ROADMAP.md | v3.10.0 | 2026-07-31 |
+| CHANGELOG.md | v3.10.0 | 2026-07-31 |
+| DILIGENCIA.md | v3.10.0 | 2026-07-31 |
 
 ## Guias
 

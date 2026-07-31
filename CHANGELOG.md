@@ -2,6 +2,28 @@
 
 ---
 
+## [3.10.0] — 2026-07-31
+
+### Fixed
+- **CRITICO (ICT-DIL-20260731-01):** `scripts/ensure-config.ps1` agregaba bloque `_diligencia` a `~/.config/opencode/opencode.jsonc`. El schema oficial de opencode rechaza custom keys en la raíz → `opencode` CLI/TUI crasheaba. Reescrito para:
+  - NO agregar custom keys a JSONC
+  - Validar schema antes de escribir
+  - Mover metadata Diligencia a archivo separado `~/.config/opencode/.diligencia.json`
+- `~/.config/opencode/.diligencia.json` (nuevo): metadata externa Diligencia (managed, version, scope, owner)
+
+### Added
+- `doc/refs/opencode-schema.md` — referencia completa del schema oficial de opencode (válido desde v3.10.0)
+- `doc/refs/openchamber-overview.md` — arquitectura Chamber + tunnel system + integracion con opencode
+- `doc/refs/integration-patterns.md` — 7 patrones seguros de integracion Diligencia↔opencode/Chamber + 6 anti-patrones
+- `doc/arch/incidentes.md` — entrada `ICT-DIL-20260731-01` con causa raiz y mitigacion
+
+### Stack vivo
+- Tailscale (VAIO `100.120.192.43` ↔ PC `100.125.180.6`)
+- ngrok dual: `https://unthread-spent-hut.ngrok-free.dev` → :4096 (opencode) + :57123 (Chamber)
+- Chamber Electron en :57123
+- opencode serve en :4096 con provider `minimax-coding-plan/MiniMax-M2.7`
+- 3 agents custom: `server-admin`, `code-reviewer`, `project-handler`
+
 ## [3.9.2] — 2026-07-30
 
 ### Changed
