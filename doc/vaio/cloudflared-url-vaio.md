@@ -1,5 +1,5 @@
 ﻿# Chamber Tunnel URL - VAIO (FELRENA)
 
-**URL:** https://assessment-blocked-terrain-actors.trycloudflare.com
-**Actualizada:** 2026-07-31 16:34 UTC
+**URL:** https://scheme-handling-ala-choose.trycloudflare.com
+**Actualizada:** 2026-07-31 16:36 UTC
 **Puerto:** 57125
