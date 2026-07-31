@@ -1,4 +1,4 @@
-# Diligencia v3.9.0 — Estructura estándar de documentación
+# Diligencia v3.9.1 — Estructura estándar de documentación
 
 Sello de metodología para proyectos OpenCode.
 
@@ -35,6 +35,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| v3.9.1 | 2026-07-30 | Deprecacion selectiva: triangularidad muerta eliminada (128 archivos a .old/). /salud fixes: 6 correcciones en tracking (R79.* stale movidos a Completado). Stack nuevo: Tailscale + ngrok + MiniMax (definido en AGENTS R79.1). Ver CHANGELOG.md v3.9.1. |
 | v3.9.0 | 2026-07-30 | Burn rate discipline (R79.1): scripts de gobernanza para VAIO. Anti-hemorragia (register-task.ps1 con denylist, check-tareas pure-PowerShell, watchdog-tunnel sin LLM). Refactor de contexto (bootstrap lazy, scope filter, MaxTokens cap, contexto 1M→128K, ensure-config idempotente). Visibilidad (cost-tracker dashboard R69, circuit breaker diario, balance pre-flight). Governance (model-policy.json por proyecto, MaxCost enforcement). Ver CHANGELOG.md v3.9.0. |
 | v3.8.0 | 2026-07-30 | Server Autónomo — control remoto de VAIO via opencode serve API. Ver CHANGELOG.md v3.8.0. |
 | v2.0.0 | 2026-06-26 | @consejero + @circuito: agentes de decisión e integridad lógica. 2 skills nuevas. 2 mecánicas nuevas. 2 comandos nuevos. 5 comandos mejorados. /doctor +1g +3g. INDEX sincronizado. Licencia AGPL-3.0. MANIFIESTO.md. |

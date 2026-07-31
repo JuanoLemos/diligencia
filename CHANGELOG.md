@@ -2,7 +2,10 @@
 
 ---
 
-## [Unreleased]
+## [3.9.1] — 2026-07-30
+
+### Changed
+- `/salud`: 6 correcciones aplicadas. ROADMAP.md: items R79.1-R79.6 movidos de "Ahora" a "Completado" (estaban stale con status "Completado (v3.9.0)" pero permanecian en seccion Ahora). status-salud.md actualizado a v3.9.0 con datos del diagnostico. Backup #2 creado.
 
 ### Removed
 - **Deprecacion selectiva v3.10.0** (migracion a stack Tailscale + ngrok + MiniMax):
@@ -18,11 +21,9 @@
     `OLA-CHAMBER-MIGRATION.md`, `MECANICA-VAIO-WORKER.md`
   - **Total movido a `.old/deprecated-2026-07-30/`: 128 archivos**
 
-### Changed
 - `AGENTS.md` R79.1: reformulada referencia a scripts deprecados + mencion del nuevo stack.
 - `INDEX.md` seccion runtime actualizada: solo scripts vigentes (10 scripts).
 - `MECANICA-API-COMUNICACION.md`: circuit breakers actualizados — denylist movido de `register-task.ps1` a `invoke-agent-task.ps1` advertencia.
-- `/salud`: 6 correcciones aplicadas. ROADMAP.md: items R79.1-R79.6 movidos de "Ahora" a "Completado" (estaban stale con status "Completado (v3.9.0)" pero permanecian en seccion Ahora). status-salud.md actualizado a v3.9.0 con datos del diagnostico. Backup #2 creado.
 
 ## [3.9.0] — 2026-07-30
 
