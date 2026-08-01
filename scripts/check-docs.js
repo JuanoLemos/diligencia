@@ -1,5 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { homedir } from 'node:os';
 
 const ROOT = resolve(import.meta.dirname, '..');
 let warnings = 0;
@@ -81,15 +82,22 @@ for (const f of ['doc/guias/identidad.md', 'doc/mecanicas/MANDATO.md']) {
   }
 }
 
-// 4. $VARIABLES resolvable from AGENTS.md
-const agentsPath = resolve(ROOT, 'AGENTS.md');
+// 4. $VARIABLES resolvable from CLAUDE.md
+const agentsPath = resolve(ROOT, 'CLAUDE.md');
 try {
   const agents = readFileSync(agentsPath, 'utf-8');
   for (const line of agents.split('\n')) {
     const m = line.match(/^\|\s*\$(\w+)\s*\|\s*(.+?)\s*\|/);
     if (m) {
       const path = m[2].trim().replace(/^`|`$/g, '');
-      const full = resolve(ROOT, path);
+      // Skip non-path values: URLs, numbers, placeholders, multi-value lists
+      if (/^https?:\/\//.test(path)) continue;
+      if (/^\d+$/.test(path)) continue;
+      if (path.startsWith('*(')) continue;
+      if (path.includes(',')) continue;
+      const full = path.startsWith('~/') || path.startsWith('~\\')
+        ? resolve(homedir(), path.slice(2))
+        : resolve(ROOT, path);
       if (!existsSync(full)) {
         warn(`$${m[1]} \u2192 ${path} does not exist`);
       }

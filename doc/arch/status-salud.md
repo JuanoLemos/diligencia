@@ -1,5 +1,6 @@
-﻿# status-salud.md
-**Version:** v3.9.0 | **Fecha:** 2026-07-30
+﻿# Status Salud — Diligencia v4.1.0
+
+**Versión:** v4.1.0 | **Fecha:** 2026-08-01
 
 ## Diagnostico post-version
 

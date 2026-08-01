@@ -1,4 +1,4 @@
-# INDEX — Diligencia v4.0.0
+# INDEX — Diligencia v4.1.0
 
 Catalogo de documentacion del proyecto. Mantenido por /version y /updoc.
 
@@ -10,15 +10,30 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 
 | Archivo | Version | Ultima actualizacion |
 |---|---|---|
-| ROADMAP.md | v3.10.3 | 2026-07-31 |
-| CHANGELOG.md | v4.0.0 | 2026-07-31 |
-| DILIGENCIA.md | v4.0.0 | 2026-07-31 |
+| ROADMAP.md | v4.1.0 | 2026-08-01 |
+| CHANGELOG.md | v4.1.0 | 2026-07-31 |
+| DILIGENCIA.md | v4.1.0 | 2026-07-31 |
+| CLAUDE.md | v4.1.0 | 2026-07-31 |
 
-## Instrucciones Claude (v4.0.0)
+## Claude Code nativo (v4.1.0)
+
+Comandos, skills, agentes y templates viven fuera del repo, a nivel usuario — se aplican
+automáticamente en cualquier proyecto abierto con esta cuenta de Claude Code.
+
+| Recurso | Ruta | Cantidad |
+|---|---|---|
+| Comandos | `~/.claude/commands/` | 32 |
+| Skills | `~/.claude/skills/diligencia-*/` | 5 |
+| Agentes de gobernanza | `~/.claude/agents/` | 7 |
+| Templates (doc-base) | `~/.claude/templates/diligencia-doc-base/` | — |
+
+## Legado OpenCode (v1.0–v4.0.0, no se actualiza más)
 
 | Archivo | Proposito |
 |---|---|
-| .opencode/claude-instructions-v4.md | Instrucciones nativas para Claude Desktop (280 líneas) |
+| `.opencode/` (carpeta completa) | Comandos, agentes, HARNESS.md e instrucciones de la era OpenCode. Congelado. |
+| `.opencode/claude-instructions-v4.md` | Instrucciones nativas para Claude Desktop v4.0.0 (superado por CLAUDE.md) |
+| `AGENTS.md` | Puente histórico — contenido migrado a `CLAUDE.md` |
 
 ## Refs opencode/Chamber (v3.10.1)
 
@@ -62,6 +77,9 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 | GUIA_HOSTING_VPS.md | v1.0 | 2026-07-04 |
 | GUIA_RED_LOCAL.md | v1.0 | 2026-07-04 |
 | GUIA_CONTROL_REMOTO.md | v1.0 | 2026-07-18 |
+| GUIA_CHAMBER.md | v1.0.0 | 2026-06-05 |
+| GUIA_DILIGENCIA_CHAMBER.md | v1.0.0 | 2026-06-05 |
+| GUIA_CHAMBER_INSTALABLE.md | v1.0 | 2026-06-05 |
 
 ## Mecanicas
 
@@ -79,6 +97,8 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 | MECANICA-MEMORY.md | v2.0 | 2026-07-01 |
 | MECANICA-TASK-ROUTER.md | v1.0 | 2026-07-01 |
 | MECANICA-OLAS.md | v1.0 | 2026-07-04 |
+| MECANICA-CIRCUITO.md | v1.0.0 | 2026-06-05 |
+| MECANICA-CONSEJO.md | v1.0.0 | 2026-06-05 |
 | MANDATO.md | v1.17.2 | 2026-06-06 |
 | _template.md | v1.16.4 | 2026-06-06 |
 | meta-escalabilidad.md | v1.16.4 | 2026-06-06 |
@@ -103,7 +123,7 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 
 | Archivo | Version | Ultima actualizacion |
 |---|---|---|
-| status-salud.md | v3.7.0 | 2026-07-29 |
+| status-salud.md | v4.1.0 | 2026-08-01 |
 | bugs.md | v1.0 | 2026-07-01 |
 | incidentes.md | v1.0 | 2026-07-01 |
 | backups.md | v1.0 | 2026-07-01 |

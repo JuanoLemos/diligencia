@@ -2,13 +2,17 @@
 
 ![Status](https://img.shields.io/badge/status-beta-ff69b4?style=flat-square)
 ![License](https://img.shields.io/badge/license-AGPL--3.0-blue?style=flat-square)
-![Version](https://img.shields.io/badge/version-v3.7.0-8A2BE2?style=flat-square)
+![Version](https://img.shields.io/badge/version-v4.1.0--pendiente-8A2BE2?style=flat-square)
 [![Issues](https://img.shields.io/badge/issues-7%20proyectos-181717?style=flat-square)](https://github.com/JuanoLemos/diligencia/issues)
 
-Estructura estándar de documentación para proyectos OpenCode.
-Diligencia existe para que tu proyecto tenga memoria. Cada paso deja constancia, cada decisión se registra, cada sesión cierra en orden. Sin burocracia, sin herramientas complejas, sin depender de un solo proveedor de IA.
+Estructura estándar de documentación y gobernanza para proyectos trabajados con **Claude Code**.
+Diligencia existe para que tu proyecto tenga memoria. Cada paso deja constancia, cada decisión se registra, cada sesión cierra en orden. Sin burocracia, sin herramientas complejas.
 
 Diligencia define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta, cómo se organizan los comandos y cómo mantener la documentación sincronizada con el código.
+
+> **Nota:** Diligencia nació y volvió a Claude. Las versiones v1.0–v4.0.0 apuntaban a OpenCode
+> (`.opencode/`, `AGENTS.md`) — ese soporte queda congelado como legado. Desde v4.1.0, los
+> comandos/skills/agentes son nativos de Claude Code (`~/.claude/`) y `CLAUDE.md` es el SSOT.
 
 ---
 
@@ -57,7 +61,8 @@ Diligencia escala con tu proyecto. No necesitás usarlo todo desde el día uno.
 
 ```
 /
-├── AGENTS.md              — Variables de ruta y comandos del proyecto
+├── CLAUDE.md              — SSOT: variables de ruta, reglas, tabla de comandos (auto-cargado por Claude Code)
+├── AGENTS.md              — Puente histórico (contenido migrado a CLAUDE.md)
 ├── CHANGELOG.md           — Historial versionado (Keep a Changelog)
 ├── DILIGENCIA.md          — Sello de la metodología
 ├── INDEX.md               — Catálogo de documentación
@@ -70,10 +75,12 @@ Diligencia escala con tu proyecto. No necesitás usarlo todo desde el día uno.
 │   ├── arch/              — ADRs, bitácora, reportes de salud
 │   ├── guias/             — Guías de usuario y contribución
 │   └── mecanicas/         — Mecánicas documentales
-└── .opencode/
-    ├── HARNESS.md          — Configuración de test/lint/skills
-    └── commands/           — Comandos locales del proyecto
+└── .opencode/              — Legado era OpenCode (v1.0–v4.0.0), congelado, no se actualiza
 ```
+
+Comandos (32), skills (5) y agentes de gobernanza (7) no viven en este repo — son globales,
+en `~/.claude/commands/`, `~/.claude/skills/diligencia-*/` y `~/.claude/agents/`, y aplican
+automáticamente a cualquier proyecto abierto con Claude Code.
 
 ## Metodología
 

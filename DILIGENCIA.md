@@ -1,6 +1,6 @@
-# Diligencia v4.0.0 — Estructura estándar para Claude Desktop
+# Diligencia v4.1.0 — Estructura estándar para Claude Code
 
-Sello de metodología para proyectos OpenCode.
+Sello de metodología para proyectos trabajados con Claude Code.
 
 ---
 
@@ -35,6 +35,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| v4.1.0 | 2026-07-31 | **Completa la promesa de v4.0.0:** infraestructura Claude Code real — 32 comandos, 5 skills y 7 agentes de gobernanza nativos en `~/.claude/` (reemplaza el archivo de instrucciones estático `claude-instructions-v4.md`). `CLAUDE.md` nuevo SSOT (reemplaza AGENTS.md + HARNESS.md). `/adaptar` reescrito — ya no copia comandos al proyecto target. OpenCode deprecado como target (`.opencode/` congelado). |
 | v4.0.0 | 2026-07-31 | Optimización para Claude Desktop. Sistema de "charla + confirmación" (sin PLAN/BUILD simulados). Reglas reducidas a 7 core (R1-R10, R16-R17, R79.2, R81). Bootstrap comprimido a 20-30K tokens. Instrucciones nativas en claude-instructions-v4.md. ROI: -40% tokens, -45% tiempo adaptación. |
 | v3.11.0 | 2026-07-31 | Transición a Claude Desktop. VAIO + server remoto + Chamber deprecados. Arquitectura simplificada: Claude local → git → proyectos adaptados. Eliminadas reglas R14/R15/R18/R79.1. Creado plan futuro (MIGRACION.md). Ver CHANGELOG.md v3.11.0. |
 | v3.10.3 | 2026-07-31 | Governance: R79.2 — decisión humana sobre git. Incidente ICT-DIL-20260731-03. |

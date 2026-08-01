@@ -1,8 +1,8 @@
-# ROADMAP — Diligencia v3.10.3
+# ROADMAP — Diligencia v4.1.0
 
-Metodología de estructura estándar para proyectos OpenCode.
+Metodología de estructura estándar para proyectos Claude Code.
 
-Última actualización: 2026-07-30
+Última actualización: 2026-08-01
 
 ---
 
@@ -19,7 +19,9 @@ Metodología de estructura estándar para proyectos OpenCode.
 
 | ID | Item | Prioridad | Estado |
 |---|---|---|---|
-| R80 | **v4 CLAUDE-OPTIMIZED:** Propuesta completa de Diligencia v4 (claude-instr, AGENTS refactor, R79.2 simplificada, R81, /adaptar mejorado, HARNESS config) | P1 | 🟡 En progreso (propuesta + validación) |
+| R82 | **v4.1.0 CLAUDE-NATIVO:** Port completo de Diligencia a Claude Code — 32 comandos + 5 skills + 7 agentes de gobernanza a `~/.claude/`, CLAUDE.md como SSOT único, `/adaptar` reescrito, OpenCode deprecado como target | P1 | ✅ Completado (v4.1.0) |
+| R83 | **Propagar v4.1.0** a los 6 proyectos adaptados (+RM, MarketAI, conquisitare, buenobonitobarato, Nemesis, OpenMontage) vía `/adaptar` | P1 | 🔴 Pendiente — depende de R82 |
+| R80 | **v4 CLAUDE-OPTIMIZED:** Propuesta completa de Diligencia v4 (claude-instr, AGENTS refactor, R79.2 simplificada, R81, /adaptar mejorado, HARNESS config) | P1 | ✅ Completado (v4.0.0) — superado por R82 |
 | R19 | MECANICA-CONTEXTO.md — modelo L0/L1/L2 | P2 | 🟡 En progreso |
 | R20 | MECANICA-GRAPHIFY.md + .graphifyignore | P2 | 🟡 En progreso |
 | R78 | +server-autonomo: control remoto de VAIO via opencode serve API (scripts + docs) | P1 | ✅ Completado (v3.8.0) |

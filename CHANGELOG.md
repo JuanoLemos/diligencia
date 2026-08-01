@@ -2,6 +2,27 @@
 
 ---
 
+## [4.1.0] — 2026-07-31
+
+### Added
+- **Diligencia nativo en Claude Code:** 32 comandos, 5 skills y 7 agentes de gobernanza (`consejero`, `circuito`, `documentador`, `sdd-architect`, `sdd-implement`, `sdd-verify`, `sdd-reviewer`) portados a `~/.claude/commands/`, `~/.claude/skills/diligencia-*/` y `~/.claude/agents/` — reemplaza el archivo de instrucciones estático `claude-instructions-v4.md` por infraestructura real de slash-commands/skills/subagentes.
+- `CLAUDE.md` — nuevo SSOT del proyecto, fusiona `AGENTS.md` + `.opencode/claude-instructions-v4.md` + `.opencode/HARNESS.md`. Auto-cargado por Claude Code.
+- `~/.claude/templates/diligencia-doc-base/` — template para proyectos nuevos, portado desde `~/.config/opencode/templates/doc-base/`, sin restos VAIO/Chamber/OpenCode.
+- `/adaptar` reescrito completo (Claude Code nativo): ya no copia comandos al proyecto target (los globales ya aplican) — solo genera estructura de docs + `CLAUDE.md`.
+- `/rm-add` — renombre de `/+rm` (Claude Code no admite `+` en nombres de comando).
+
+### Changed
+- `AGENTS.md` reducido a puente histórico — contenido migrado a `CLAUDE.md`.
+- Comandos reconciliados: se detectó y corrigió drift entre la copia local (`.opencode/commands/`) y la global (`~/.config/opencode/commands/`) — algunos comandos globales todavía referenciaban `/doctor` (renombrado a `/salud` el 2026-06-26) y `$CHECKLIST`/`CHECKLIST.md` (deprecado el 2026-06-28). El port a Claude Code corrige ambos en los 32 comandos.
+- Referencias a skills ya eliminadas en v3.11.0 (`diligencia-consejo`, `diligencia-circuito`) reemplazadas por invocación directa a los agentes `consejero` y `circuito`.
+
+### Note
+- **OpenCode queda deprecado como target.** `.opencode/` (local) y `~/.config/opencode/` (global) quedan congelados como legado — no se actualizan más.
+- v4.1.0 completa la promesa de v4.0.0 ("restaura raíces originales en Claude"), que había quedado en un archivo de instrucciones estático sin infraestructura real.
+- Pendiente: propagar a los 6 proyectos adaptados (`+RM`, MarketAI, conquisitare, buenobonitobarato, Nemesis, OpenMontage) ejecutando `/adaptar` desde cada uno.
+
+---
+
 ## [4.0.0] — 2026-07-31
 
 ### Changed
