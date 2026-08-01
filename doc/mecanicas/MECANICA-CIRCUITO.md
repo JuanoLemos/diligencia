@@ -8,7 +8,7 @@ Revisar la integridad lógica del proyecto: handlers, navegación, rutas, estado
 
 | Componente | Ubicación | Rol |
 |---|---|---|
-| `@circuito` | `~/.config/opencode/agents/circuito.md` | Agente read-only que escanea 8 categorías |
+| `@circuito` | `~/.claude/agents/circuito.md` | Agente read-only que escanea 8 categorías |
 | `diligencia-circuito` | `skills/diligencia-circuito/SKILL.md` | Skill cargable por comandos |
 
 ## Flujo

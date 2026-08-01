@@ -35,23 +35,6 @@ automáticamente en cualquier proyecto abierto con esta cuenta de Claude Code.
 | `.opencode/claude-instructions-v4.md` | Instrucciones nativas para Claude Desktop v4.0.0 (superado por CLAUDE.md) |
 | `AGENTS.md` | Puente histórico — contenido migrado a `CLAUDE.md` |
 
-## Refs opencode/Chamber (v3.10.1)
-
-| Archivo | Proposito |
-|---|---|
-| doc/refs/opencode-schema.md | Schema oficial completo + variables |
-| doc/refs/openchamber-overview.md | Arquitectura + tunnel system |
-| doc/refs/integration-patterns.md | 7 patrones + 6 anti-patrones |
-| doc/refs/opencode-troubleshooting.md | 10 issues frecuentes |
-| doc/refs/observability.md | Triggers de monitoreo + alertas |
-
-## Agents opencode (v3.10.1)
-
-| Archivo | Modo | Funcion |
-|---|---|---|
-| .opencode/agents/diligencia-ops.md | subagent | Monitoreo operacional stack Diligencia |
-| ~/.config/opencode/agents/opencode-expert.md | subagent | Experto tecnico opencode (global) |
-
 ## Guias
 
 | Archivo | Version | Ultima actualizacion |
@@ -77,9 +60,6 @@ automáticamente en cualquier proyecto abierto con esta cuenta de Claude Code.
 | GUIA_HOSTING_VPS.md | v1.0 | 2026-07-04 |
 | GUIA_RED_LOCAL.md | v1.0 | 2026-07-04 |
 | GUIA_CONTROL_REMOTO.md | v1.0 | 2026-07-18 |
-| GUIA_CHAMBER.md | v1.0.0 | 2026-06-05 |
-| GUIA_DILIGENCIA_CHAMBER.md | v1.0.0 | 2026-06-05 |
-| GUIA_CHAMBER_INSTALABLE.md | v1.0 | 2026-06-05 |
 
 ## Mecanicas
 

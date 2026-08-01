@@ -9,9 +9,8 @@ Metodología de estructura estándar para proyectos Claude Code.
 ## Stack
 
 - Metodología documental (sin código runtime)
-- Dependencias: OpenCode, `templates/doc-base/`, 32 comandos fundamentales
+- Dependencias: Claude Code Desktop, `~/.claude/` (comandos, skills, agentes), `templates/doc-base/`
 - Proyectos adaptados: +RM, MarketAI, conquisitare, buenobonitobarato, Nemesis, OpenMontage-main
-- Interface: OpenChamber (pertenece a Diligencia — M6)
 
 ---
 

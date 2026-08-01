@@ -29,11 +29,11 @@ Define cómo interactúan los archivos, variables y comandos del sistema Diligen
 | $BUGS | doc/arch/bugs.md | Bug tracker: P1/P2/P3, severidad, estado |
 | $INCIDENTS | doc/arch/incidentes.md | Incidentes runtime: stack, mitigación |
 | $QA | doc/qa/ | Situaciones a revisar (archivos sueltos) |
-| $HARNESS | .opencode/HARNESS.md | Config test/lint/skills/stack |
+| $CLAUDE | CLAUDE.md | SSOT: Comandos, skills, agentes, variables (v4.1.0+) |
 | $ADR | doc/arch/ | Decisiones de arquitectura (ADR-NNN.md) |
 | $GUIAS | doc/guias/ | Guías de usuario |
 | $MECANICAS | doc/mecanicas/ | Mecánicas documentales |
-| $COMMANDS_DIR | .opencode/commands/ | Comandos locales del proyecto |
+| ~/.claude/commands/ | ~/.claude/commands/ | 32 comandos globales (v4.1.0+) |
 
 ### Flujo documental
 

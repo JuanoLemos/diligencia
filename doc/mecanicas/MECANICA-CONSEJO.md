@@ -8,7 +8,7 @@ Agregar una capa de revisión de decisiones a los comandos Diligencia. El consej
 
 | Componente | Ubicación | Rol |
 |---|---|---|
-| `@consejero` | `~/.config/opencode/agents/consejero.md` | Agente read-only que aplica 6 preguntas |
+| `@consejero` | `~/.claude/agents/consejero.md` | Agente read-only que aplica 6 preguntas |
 | `diligencia-consejo` | `skills/diligencia-consejo/SKILL.md` | Skill cargable por comandos |
 
 ## Flujo
