@@ -72,7 +72,6 @@ No digo "PLAN MODE" ni "BUILD MODE" — solo analizo, propongo, y ejecuto tras c
 | $BACKUPS | `doc/arch/backups.md` | Log de backups |
 | $BACKUP_KEEP | `5` | Cantidad de backups a conservar (pruning automático) |
 | $PROYECTOS | `"C:\xampp\htdocs\+RM","C:\xampp\htdocs\MarketAI","C:\xampp\htdocs\conquisitare","C:\xampp\htdocs\buenobonitobarato","C:\xampp\htdocs\nemesis","C:\Users\jlemo\OneDrive\Desktop\OpenMontage-main"` | 6 proyectos activos adaptados a Diligencia |
-| $CHAMBER | `C:\Users\jlemo\OneDrive\Desktop\openchamber` | OpenChamber — interfaz visual (bajo tutela, no migrada en esta pasada) |
 | $STACK | *(definido por proyecto)* | Stack tecnológico del proyecto |
 | $PROJECT_NAME | *(del header DILIGENCIA.md)* | Nombre del proyecto para reportes |
 | $UX_CHECK | `doc/arch/ux-check.md` | Checklist de validación manual post-implementación |

@@ -35,29 +35,29 @@ Metodología de estructura estándar para proyectos Claude Code.
 | R10 | +mejora: integrar recomendaciones de /estado en flujo /doctor | P3 | 🔴 Pendiente | R03 |
 | R11 | +UX/UI: template UX-CHECKLIST.md como buena práctica heredable | P2 | 🔴 Pendiente | — |
 | R16 | +room: mejora general de cobertura doc de comandos (diagramas, flows en criollo) | P3 | 🔴 Pendiente | R12,R13,R14,R15 |
-| R26 | +openchamber hub: integración con $PROYECTOS para multi-proyecto visual | P2 | 🔴 Pendiente | R25 |
-| R27 | +openchamber hub: dashboard visual de salud de proyectos (status-salud, diff, RM table) | P3 | 🔴 Pendiente | R26 |
-| R28 | +openchamber hub: upstream watch — monitorear repo original (btriapitsyn/openchamber) para mergear mejoras | P2 | 🔴 Pendiente | R25 |
-| R29 | +openchamber hub: skills de Diligencia (workflow, docs, health, commands, adaptation) para Skills Catalog | P2 | 🔴 Pendiente | R25 |
-| R30 | +openchamber hub: portear 8 temas Diligencia al formato de UI de OpenChamber | P2 | 🔴 Pendiente | R25 |
+| R26 | +openchamber hub: integración con $PROYECTOS para multi-proyecto visual | P2 | 🗑️ Deprecado | R25 |
+| R27 | +openchamber hub: dashboard visual de salud de proyectos (status-salud, diff, RM table) | P3 | 🗑️ Deprecado | R26 |
+| R28 | +openchamber hub: upstream watch — monitorear repo original (btriapitsyn/openchamber) para mergear mejoras | P2 | 🗑️ Deprecado | R25 |
+| R29 | +openchamber hub: skills de Diligencia (workflow, docs, health, commands, adaptation) para Skills Catalog | P2 | 🗑️ Deprecado | R25 |
+| R30 | +openchamber hub: portear 8 temas Diligencia al formato de UI de OpenChamber | P2 | 🗑️ Deprecado | R25 |
 | R35 | +portear 8 temas Diligencia al formato Chamber UI (JSON ~180 props) | P1 | 🗑️ Deprecado | — |
-| R36 | +dashboard Diligencia en Chamber React (cards por proyecto: versión, WT, salud, RM %) | P2 | 🔴 Pendiente | R34,R35 |
-| R39 | +upstream watch Chamber (btriapitsyn/openchamber) para detectar nuevas releases | P2 | 🔴 Pendiente | R25 |
-| R41 | +/news multi-proyecto — distribuir novedades a todos los $PROYECTOS desde Chamber | P2 | 🔴 Pendiente | R34 |
-| R42 | +agentes SDD integrados con Chamber Team Mode (4 agentes en paralelo) | P2 | 🔴 Pendiente | R34 |
-| R43 | +auto-discovery de proyectos con DILIGENCIA.md desde Chamber | P3 | 🔴 Pendiente | R36 |
-| R44 | +scheduled health checks automáticos cada N horas vía Chamber | P3 | 🔴 Pendiente | R36 |
+| R36 | +dashboard Diligencia en Chamber React (cards por proyecto: versión, WT, salud, RM %) | P2 | 🗑️ Deprecado | R34,R35 |
+| R39 | +upstream watch Chamber (btriapitsyn/openchamber) para detectar nuevas releases | P2 | 🗑️ Deprecado | R25 |
+| R41 | +/news multi-proyecto — distribuir novedades a todos los $PROYECTOS desde Chamber | P2 | 🗑️ Deprecado | R34 |
+| R42 | +agentes SDD integrados con Chamber Team Mode (4 agentes en paralelo) | P2 | 🗑️ Deprecado | R34 |
+| R43 | +auto-discovery de proyectos con DILIGENCIA.md desde Chamber | P3 | 🗑️ Deprecado | R36 |
+| R44 | +scheduled health checks automáticos cada N horas vía Chamber | P3 | 🗑️ Deprecado | R36 |
 | R48 | +propagar: comando de propagacion entre Diligencia y proyectos | P2 | 🗑️ Deprecado | — |
-| R49 | +ux: panel interactivo de checklist en Chamber por proyecto | P2 | 🔴 Pendiente | R25,R26 |
+| R49 | +ux: panel interactivo de checklist en Chamber por proyecto | P2 | 🗑️ Deprecado | R25,R26 |
 | R50 | +MiniMax: integrar procesamiento multimodal (video, imagen, voz) vía Token Plan Max — testing en OpenMontage | P1 | 🟡 En progreso | R25,R26 |
 | R52 | +estudio: proyectos con potencial hosteo de server para actuarlos en producción + mejor camino para administrar todo | P2 | 🔴 Pendiente | — |
 | R53 | +tray: servidor de bandeja estandarizado en doc-base para que cada proyecto adaptado herede un tray server vía /adaptar | P2 | 🔴 Pendiente | — |
 | R54 | +consejero: agente que explora repos GitHub, docs y similares para proponer mejoras al proyecto actual basado en buenas prácticas externas | P2 | 🟡 En progreso | — |
 | R56 | +consumo: revisión de eficiencia de agentes + skills + comandos. Metodología de buenas prácticas con conciencia de consumo. Ahorro de idas y vueltas, consolidación de tareas, delegación a subagentes. Revisión de repos GitHub. | P2 | 🔴 Pendiente | — |
 | R57 | +mcp: codebase-memory-mcp integrado en todos los $PROYECTOS (+ Diligencia). Indexado 120x más eficiente. Grafo 3D visual. Agentes usan search_graph + trace_path + get_architecture + manage_adr. 4 fases: (1) Diligencia interna, (2) Templates doc-base, (3) Propagar a 6 proyectos, (4) System prompts de agentes. | P1 | 🟡 En progreso | — |
-| R58 | +chamber: multi-chat por proyecto con protocolo MAIN↔AGENTE. El chat MAIN orquesta y BUILDea. Los chats AGENTE exploran, auditan y reportan (read-only). Reglamento de commit: solo MAIN commitea, agentes no modifican archivos. | P1 | 🔴 Pendiente | — |
-| R59 | +orquestador: Gran Orquestador Diligencia — acceso a todos los MAIN de proyectos adaptados. Mejora UNICAMENTE estructura Diligencia propagada. | P1 | 🔴 Pendiente | R58 |
-| R60 | +chamber: botón en DiligenciaCommandBar que abre pestaña browser en ContextPanel con el grafo 3D de codebase-memory-mcp (localhost:9749) | P2 | 🔴 Pendiente | R57 |
+| R58 | +chamber: multi-chat por proyecto con protocolo MAIN↔AGENTE. El chat MAIN orquesta y BUILDea. Los chats AGENTE exploran, auditan y reportan (read-only). Reglamento de commit: solo MAIN commitea, agentes no modifican archivos. | P1 | 🗑️ Deprecado | — |
+| R59 | +orquestador: Gran Orquestador Diligencia — acceso a todos los MAIN de proyectos adaptados. Mejora UNICAMENTE estructura Diligencia propagada. | P1 | 🗑️ Deprecado | R58 |
+| R60 | +chamber: botón en DiligenciaCommandBar que abre pestaña browser en ContextPanel con el grafo 3D de codebase-memory-mcp (localhost:9749) | P2 | 🗑️ Deprecado | R57 |
 | R62 | +doctor-llm: agente @doctor que audita código de proveedores LLM en proyectos adaptados contra estándares Diligencia. | P2 | 🔴 Pendiente | R61 |
 | R63 | +multimodal Nemesis: integrar MiniMax TTS (speech-2.8) para narración por voz en Nemesis. | P2 | 🔴 Pendiente | R61 |
 | R64 | +multimodal Crucix: actualizar MiniMaxProvider de M2.5 a M3 en Crucix-master. | P2 | 🔴 Pendiente | R61,R62 |
@@ -66,7 +66,7 @@ Metodología de estructura estándar para proyectos Claude Code.
 | R69 | +status: dashboard de consumo de APIs en vivo — tokens por proyecto, costo mensual. | P2 | ✅ Completado (v3.9.0) | R61,R68 |
 | R70 | +6 agentes especializados por dominio. Creación: @narrador, @game-designer, @trader, @cartografo, @editor-video. | P1 | 🟡 En progreso | — |
 | R71 | +red-local: conectar PC secundaria a la principal via SSH para desarrollo remoto. VAIO conectada via VS Code Tunnels. | P2 | 🟡 En progreso | — |
-| R77 | +chamber-upgrade: actualizar Chamber v1.13.2 → v1.16.3 (permission auto-accept, remote instance sin OpenCode, SSH nativo). | P2 | 🔴 Pendiente | — |
+| R77 | +chamber-upgrade: actualizar Chamber v1.13.2 → v1.16.3 (permission auto-accept, remote instance sin OpenCode, SSH nativo). | P2 | 🗑️ Deprecado | — |
 
 ## Futuro (Later)
 
@@ -77,9 +77,9 @@ Metodología de estructura estándar para proyectos Claude Code.
 | R22 | +planloop + loop: circuito autónomo de ejecución de ROADMAP (planloop→loop→checkpoint) | P3 | 🔴 Pendiente | — |
 | R23 | +loop-watcher: app externa (PowerShell) para monitoreo de progreso y detección de crash | P3 | 🔴 Pendiente | R22 |
 | R24 | +loop auto-restart: recuperación automática tras crash/desconexión | P3 | 🔴 Pendiente | R22,R23 |
-| R31 | +openchamber hub: base SQLite para snapshots históricos de salud (tendencias, alertas) | P3 | 🔴 Pendiente | R25 |
-| R32 | +openchamber hub: CLI standalone para /diligencia-check sin dependencia de agente IA | P3 | 🔴 Pendiente | R25 |
-| R33 | +openchamber hub: discovery automático de proyectos con DILIGENCIA.md en directorio padre | P3 | 🔴 Pendiente | R25,R26 |
+| R31 | +openchamber hub: base SQLite para snapshots históricos de salud (tendencias, alertas) | P3 | 🗑️ Deprecado | R25 |
+| R32 | +openchamber hub: CLI standalone para /diligencia-check sin dependencia de agente IA | P3 | 🗑️ Deprecado | R25 |
+| R33 | +openchamber hub: discovery automático de proyectos con DILIGENCIA.md en directorio padre | P3 | 🗑️ Deprecado | R25,R26 |
 
 ## Completado
 

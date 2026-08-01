@@ -20,7 +20,7 @@ pipx install graphifyy
 
 ```bash
 # Dentro del proyecto Diligencia
-graphify install --project --platform opencode
+graphify install --project --platform claude
 graphify .
 ```
 
