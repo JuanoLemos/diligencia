@@ -2,6 +2,16 @@
 
 ---
 
+## [4.1.1] — 2026-08-01
+
+### Fixed
+- **`/CBP` — bug de versionado silencioso:** el camino explícito `/CBP commit` saltaba toda detección (incluida la regla "si hay `feat:`, forzar versión completa"), permitiendo acumular releases sin versionar. Detectado en Nemesis: 3 sesiones de `/CBP commit` con 4 commits `feat:` de por medio, sin ningún bump de versión.
+- **`<último-release>` sin definición única:** el placeholder aparecía escrito de 5 formas distintas (`<último-release>`, `<last-version>`, `<last_release>`, `<último chore(release):>`, `<last>`), sin un comando concreto que lo resolviera — cada ejecución podía interpretar "desde el último release" de forma distinta. Ahora resuelve siempre a `git log --grep='^chore(release):' -1 --format=%H` (no depende de tags de git, que pueden faltar — 3 releases de Nemesis no tenían tag).
+
+### Added
+- `/CBP` — nueva sección "Resolución de último release" (fuente única de verdad para el rango de comparación).
+- `/CBP commit` ahora avisa si detecta `feat:`/`BREAKING CHANGE`/deprecaciones sin versionar antes de proceder, en vez de saltarlas en silencio (regla 20 del orquestador).
+
 ## [4.1.0] — 2026-07-31
 
 ### Added

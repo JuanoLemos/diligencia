@@ -1,8 +1,8 @@
-# INDEX — Diligencia v4.1.0
+# INDEX — Diligencia v4.1.1
 
 Catalogo de documentacion del proyecto. Mantenido por /version y /updoc.
 
-Ultima actualizacion global: 2026-07-31
+Ultima actualizacion global: 2026-08-01
 
 ## Docs criticos
 
@@ -11,8 +11,8 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 | Archivo | Version | Ultima actualizacion |
 |---|---|---|
 | ROADMAP.md | v4.1.0 | 2026-08-01 |
-| CHANGELOG.md | v4.1.0 | 2026-07-31 |
-| DILIGENCIA.md | v4.1.0 | 2026-07-31 |
+| CHANGELOG.md | v4.1.1 | 2026-08-01 |
+| DILIGENCIA.md | v4.1.1 | 2026-08-01 |
 | CLAUDE.md | v4.1.0 | 2026-07-31 |
 
 ## Claude Code nativo (v4.1.0)
