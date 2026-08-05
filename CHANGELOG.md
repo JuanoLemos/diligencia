@@ -2,6 +2,14 @@
 
 ---
 
+## [4.1.2] — 2026-08-04
+
+### Fixed
+- **`/CBP` + `/version` — resolución de "último release" fallaba con historia mixta:** el grep único `^chore(release):` no matcheaba commits de release anteriores a la formalización de esa convención. Detectado en Diligencia: el commit `b5d8fd5 release: v4.1.0` (sin el prefijo `chore(`) no era reconocido, y la detección retrocedía hasta `v3.9.2`, arrastrando ~15 commits de más al calcular el rango "desde el último release".
+
+### Added
+- `/CBP` y `/version` ahora resuelven "último release" con grep dual: `git log --grep='^chore(release):' --grep='^release:' -1 --format=%H` (OR — matchea el primero que aparezca).
+
 ## [4.1.1] — 2026-08-01
 
 ### Fixed
