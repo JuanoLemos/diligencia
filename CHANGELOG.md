@@ -2,6 +2,15 @@
 
 ---
 
+## [4.1.3] — 2026-08-04
+
+### Added
+- **`doc/mecanicas/MECANICA-AUDIO.md`** — nueva mecánica canónica para síntesis de voz con ElevenLabs: voz (Maya, `nbcvT3C2tyOd2OsRAtUf`), modelo (`eleven_flash_v2_5`), stability (0.65), método de reproducción obligatorio (`Start-Process`, nunca `mcp__elevenlabs__play_audio` ni `start` a secas), triggers ("leeme"/"dame audio"), regla de prosa natural sin markdown/emojis para TTS.
+- `/adaptar` Fase 2.5 ahora también sincroniza mecánicas canónicas (antes solo guías) — copia desde template si falta, ofrece actualizar si está desactualizada.
+
+### Fixed
+- **Config de audio vivía en memoria de Claude, no en archivos versionados:** cada proyecto (Diligencia, Nemesis) reaprendía la configuración de ElevenLabs por separado en su propia memoria (por-proyecto, no global), generando configuraciones divergentes e inconsistentes (voz distinta, método de reproducción desactualizado en un proyecto tras arreglarse en otro). Ahora la fuente única vive en `doc/mecanicas/MECANICA-AUDIO.md` y se propaga vía `/adaptar`.
+
 ## [4.1.2] — 2026-08-04
 
 ### Fixed

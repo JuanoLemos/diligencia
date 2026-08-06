@@ -1,4 +1,4 @@
-# Diligencia v4.1.2 — Estructura estándar para Claude Code
+# Diligencia v4.1.3 — Estructura estándar para Claude Code
 
 Sello de metodología para proyectos trabajados con Claude Code.
 
@@ -35,6 +35,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| v4.1.3 | 2026-08-04 | Nueva mecánica `MECANICA-AUDIO.md`: síntesis de voz ElevenLabs estandarizada (voz, modelo, reproducción, triggers). Corrige divergencia entre proyectos causada por vivir en memoria de Claude (por-proyecto) en vez de en archivos versionados. `/adaptar` Fase 2.5 extendida para sincronizar mecánicas, no solo guías. |
 | v4.1.2 | 2026-08-04 | Fix `/CBP` + `/version`: resolución de "último release" con grep dual (`chore(release):` + `release:`) — historia mixta (commits de release anteriores a la formalización de la convención) ya no hace retroceder la detección de rango más de lo necesario. Detectado en Diligencia (`b5d8fd5 release: v4.1.0` no matcheaba). |
 | v4.1.1 | 2026-08-01 | Fix `/CBP`: bug de versionado silencioso — `/CBP commit` explícito saltaba la regla "forzar full si hay feat:" sin avisar (detectado en Nemesis: 3 sesiones, 4 commits feat: sin bump). `<último-release>` unificado a un único comando de resolución (antes tenía 5 formas distintas de escribirse, sin definición concreta). |
 | v4.1.0 | 2026-07-31 | **Completa la promesa de v4.0.0:** infraestructura Claude Code real — 32 comandos, 5 skills y 7 agentes de gobernanza nativos en `~/.claude/` (reemplaza el archivo de instrucciones estático `claude-instructions-v4.md`). `CLAUDE.md` nuevo SSOT (reemplaza AGENTS.md + HARNESS.md). `/adaptar` reescrito — ya no copia comandos al proyecto target. OpenCode deprecado como target (`.opencode/` congelado). |
