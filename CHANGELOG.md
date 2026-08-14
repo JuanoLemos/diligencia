@@ -2,6 +2,15 @@
 
 ---
 
+## [4.2.1] — 2026-08-14
+
+### Fixed
+- **`MECANICA-CALIDAD.md` era una referencia colgada en los proyectos.** Nunca estuvo en el template, así que ningún proyecto adaptado la recibía — pero `/adaptar` Fase 2.6 la invocaba por nombre desde antes, y v4.2.0 agravó el problema al poner la Definición de Hecho en su §6 y referenciarla tres veces desde `/CBP` (líneas 527, 533, 559). Resultado: `/CBP` en cualquier proyecto mandaba a leer un archivo inexistente. Detectado al correr `/adaptar` en Nemesis, que la reportó como "sin template y no activada". Ahora es canónica: `/adaptar` la copia y la sincroniza como `MECANICA-AUDIO` y `MECANICA-LOCK`.
+- **`INDEX.md` del template nacía mintiendo.** Las tablas de Mecánicas y Referencias venían vacías, aunque `/adaptar` sí instala mecánicas canónicas, bitácora y plantilla de walkthrough. Ahora vienen pre-cargadas con las 4 mecánicas y los 4 archivos de `doc/arch/`.
+
+### Changed
+- `MECANICA-CALIDAD.md` v1.1 → v1.2: §3 (convenciones de template) marcada como **exclusiva del repo de Diligencia** — en un proyecto adaptado los placeholders ya fueron reemplazados por `/adaptar`. Las otras 5 secciones (estándar de ROADMAP, estándar de documentos, estilo markdown, autocheck y DoD) aplican a todo proyecto, que es la razón por la que corresponde propagarla.
+
 ## [4.2.0] — 2026-08-14
 
 Adopción de tres patrones estudiados de **nsSkeleton** (`nubixcomar/nsskeleton`), traducidos a

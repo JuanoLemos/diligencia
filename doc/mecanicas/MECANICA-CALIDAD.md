@@ -1,4 +1,4 @@
-# MECANICA-CALIDAD — Estándares de calidad documental v1.1
+# MECANICA-CALIDAD — Estándares de calidad documental v1.2
 
 Define el formato, estilo y reglas de calidad para todos los documentos y templates Diligencia.
 
@@ -59,6 +59,11 @@ Define el formato, estilo y reglas de calidad para todos los documentos y templa
 - Toda edición de un documento actualiza su fecha en INDEX.md.
 
 ## 3. Template conventions
+
+> **Solo aplica al repo de Diligencia.** Esta sección describe cómo se escriben los templates
+> de `~/.claude/templates/diligencia-doc-base/`. En un proyecto adaptado no hay nada que hacer
+> con ella: los placeholders ya fueron reemplazados por `/adaptar` durante la adaptación.
+> Las secciones §1, §2, §4, §5 y §6 sí aplican a todo proyecto.
 
 ### Placeholders
 

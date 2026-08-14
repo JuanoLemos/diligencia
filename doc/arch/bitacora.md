@@ -10,6 +10,7 @@ Formato: `| Fecha | Comando | Tema | Walkthrough | Versión |`
 | Fecha | Comando | Tema | Walkthrough | Versión |
 |---|---|---|---|---|
 | 2026-08-14 | `/CBP` | Adopción de 3 patrones de nsSkeleton: lock de sincronización, walkthrough por sesión, Definición de Hecho | [adopcion-patrones-skeleton](walkthrough/2026-08-14_1312_CBP_adopcion-patrones-skeleton.md) | v4.2.0 |
+| 2026-08-14 | `/CBP` | Fix: `MECANICA-CALIDAD.md` era referencia colgada en los proyectos — pasa a canónica | [fix-calidad-referencia-colgada](walkthrough/2026-08-14_1406_CBP_fix-calidad-referencia-colgada.md) | v4.2.1 |
 
 ---
 

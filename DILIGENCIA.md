@@ -1,4 +1,4 @@
-# Diligencia v4.2.0 — Estructura estándar para Claude Code
+# Diligencia v4.2.1 — Estructura estándar para Claude Code
 
 Sello de metodología para proyectos trabajados con Claude Code.
 
@@ -35,6 +35,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| v4.2.1 | 2026-08-14 | Fix: `MECANICA-CALIDAD.md` pasa a ser canónica (estaba referenciada por `/adaptar` Fase 2.6 y por el DoD de `/CBP`, pero nunca se copiaba al proyecto — referencia colgada, detectada al correr `/adaptar` en Nemesis). §3 marcada como exclusiva del repo de Diligencia. `INDEX.md` del template ya no nace con las tablas de Mecánicas y Referencias vacías. |
 | v4.2.0 | 2026-08-14 | Adopción de 3 patrones de **nsSkeleton**: `diligencia-lock.json` (huella SHA-256 por archivo → `/adaptar` distingue override intencional de archivo viejo, comparación de 3 vías), walkthrough por sesión (`doc/arch/walkthrough/` + índice en `bitacora.md`, generado por `/CBP`), y Definición de Hecho explícita (`MECANICA-CALIDAD.md` §6 + estado `🧪 En verificación`). Mecánica nueva: `MECANICA-LOCK.md`. |
 | v4.1.3 | 2026-08-04 | Nueva mecánica `MECANICA-AUDIO.md`: síntesis de voz ElevenLabs estandarizada (voz, modelo, reproducción, triggers). Corrige divergencia entre proyectos causada por vivir en memoria de Claude (por-proyecto) en vez de en archivos versionados. `/adaptar` Fase 2.5 extendida para sincronizar mecánicas, no solo guías. |
 | v4.1.2 | 2026-08-04 | Fix `/CBP` + `/version`: resolución de "último release" con grep dual (`chore(release):` + `release:`) — historia mixta (commits de release anteriores a la formalización de la convención) ya no hace retroceder la detección de rango más de lo necesario. Detectado en Diligencia (`b5d8fd5 release: v4.1.0` no matcheaba). |
