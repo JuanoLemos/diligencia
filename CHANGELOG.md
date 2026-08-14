@@ -2,6 +2,27 @@
 
 ---
 
+## [4.2.0] — 2026-08-14
+
+Adopción de tres patrones estudiados de **nsSkeleton** (`nubixcomar/nsskeleton`), traducidos a
+la arquitectura de Diligencia. Ninguno se copió literal: Skeleton es multi-IA con actualizador
+programático; Diligencia es nativa Claude Code con `/adaptar` conversacional.
+
+### Added
+- **`doc/mecanicas/MECANICA-LOCK.md`** — manifiesto de sincronización. Cada proyecto adaptado lleva un `diligencia-lock.json` con la huella SHA-256 de cada archivo que vino del template. Permite **comparación de 3 vías** (lock / archivo actual / template) y distinguir con certeza "el proyecto customizó esto a propósito" de "quedó viejo" — algo que comparar versiones de header no puede resolver. Solo el caso de conflicto real (ambos lados cambiaron) interrumpe al usuario. Usa `sha256sum` (ya disponible en Git Bash): sin dependencias nuevas, la metodología sigue siendo Markdown puro.
+- **Walkthrough por sesión** — `doc/arch/walkthrough/YYYY-MM-DD_HHMM_<comando>_<tema>.md` con plantilla propia, indexados 1 línea por sesión en `doc/arch/bitacora.md` (append-only). Los genera `/CBP` al cerrar. Reemplaza y activa el `sesion.md` que existía dormido en el template (nadie lo generaba ni lo indexaba).
+- **`MECANICA-CALIDAD.md` §6 — Definición de Hecho (DoD)** — checklist fijo de 7 puntos (base) + 4 adicionales para proyectos con código. Estado nuevo en ROADMAP: `🧪 En verificación`. `/CBP` lo verifica durante Meta-PLAN e **informa sin bloquear** (R79.2): un checklist que frena el trabajo se saltea, uno que informa se usa.
+- Variables de ruta: `$BITACORA`, `$WALKTHROUGH`, `$LOCK` en `CLAUDE.md`.
+- `/CBP` reglas 21 y 22 (cierre con walkthrough; DoD informativo).
+
+### Changed
+- **`/adaptar` Fase 2.5** — pasa de comparar versiones de header a la comparación de 3 vías vía lock. Proyectos adaptados antes de v4.2.0 generan el lock en la primera pasada, tomando su estado actual como base (no sincroniza nada en esa corrida: asume que lo que hay es correcto).
+- `/adaptar` Flujo A — pasos 9b y 9c: crea bitácora + carpeta de walkthroughs, y genera el lock inicial.
+- `MECANICA-CALIDAD.md` §1 — estados del ROADMAP ampliados con `🧪 En verificación` y `🗑️ Deprecado` (este último ya se usaba en la práctica sin estar documentado).
+
+### Removed
+- `sesion.md` del template — superado por `doc/arch/walkthrough/_template.md`, que sí tiene un sistema detrás (generación por `/CBP` + índice en bitácora).
+
 ## [4.1.3] — 2026-08-04
 
 ### Added

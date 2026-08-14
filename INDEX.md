@@ -1,8 +1,8 @@
-# INDEX — Diligencia v4.1.3
+# INDEX — Diligencia v4.2.0
 
 Catalogo de documentacion del proyecto. Mantenido por /version y /updoc.
 
-Ultima actualizacion global: 2026-08-04
+Ultima actualizacion global: 2026-08-14
 
 ## Docs criticos
 
@@ -10,10 +10,10 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 
 | Archivo | Version | Ultima actualizacion |
 |---|---|---|
-| ROADMAP.md | v4.1.0 | 2026-08-01 |
-| CHANGELOG.md | v4.1.3 | 2026-08-04 |
-| DILIGENCIA.md | v4.1.3 | 2026-08-04 |
-| CLAUDE.md | v4.1.0 | 2026-07-31 |
+| ROADMAP.md | v4.2.0 | 2026-08-14 |
+| CHANGELOG.md | v4.2.0 | 2026-08-14 |
+| DILIGENCIA.md | v4.2.0 | 2026-08-14 |
+| CLAUDE.md | v4.2.0 | 2026-08-14 |
 
 ## Claude Code nativo (v4.1.0)
 
@@ -46,7 +46,7 @@ automáticamente en cualquier proyecto abierto con esta cuenta de Claude Code.
 | GUIA_DE_BUENAS_PRACTICAS.md | v1.16.3 | 2026-06-06 |
 | GUIA_ECOSISTEMAS.md | v1.16.2 | 2026-06-05 |
 | ESTANDAR-COMANDOS.md | v1.16.2 | 2026-06-05 |
-| GUIA_DE_REVISION.md | v1.16.2 | 2026-06-05 |
+| GUIA_DE_REVISION.md | v1.17.0 | 2026-08-14 |
 | GUIA_DE_USO.md | v1.16.2 | 2026-06-05 |
 | _template.md | v1.16.2 | 2026-06-05 |
 | GUIA_ONBOARDING.md | v1.16.2 | 2026-06-05 |
@@ -69,7 +69,8 @@ automáticamente en cualquier proyecto abierto con esta cuenta de Claude Code.
 | MECANICA-DOCUMENTAL.md | v1.16.5 | 2026-06-06 |
 | MECANICA-ENFORCEMENT.md | v1.16.5 | 2026-06-06 |
 | MECANICA-WORKTREE.md | v1.16.5 | 2026-06-06 |
-| MECANICA-CALIDAD.md | v1.16.5 | 2026-06-06 |
+| MECANICA-CALIDAD.md | v1.1 | 2026-08-14 |
+| MECANICA-LOCK.md | v1.0.0 | 2026-08-14 |
 | MECANICA-FLUJO.md | v1.0 | 2026-06-06 |
 | MECANICA-CONTEXTO.md | v1.0 | 2026-06-06 |
 | MECANICA-GRAPHIFY.md | v1.0 | 2026-06-06 |
@@ -108,6 +109,8 @@ automáticamente en cualquier proyecto abierto con esta cuenta de Claude Code.
 | bugs.md | v1.0 | 2026-07-01 |
 | incidentes.md | v1.0 | 2026-07-01 |
 | backups.md | v1.0 | 2026-07-01 |
+| bitacora.md | v1.0 | 2026-08-14 |
+| walkthrough/_template.md | v1.0 | 2026-08-14 |
 | verdades.md | v1.0 | 2026-07-29 |
 | LICENSING.md | — | — |
 | PENDING.md | v1.0 | 2026-07-01 |

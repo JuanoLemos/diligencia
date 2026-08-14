@@ -1,4 +1,4 @@
-# MECANICA-CALIDAD — Estándares de calidad documental v1.0
+# MECANICA-CALIDAD — Estándares de calidad documental v1.1
 
 Define el formato, estilo y reglas de calidad para todos los documentos y templates Diligencia.
 
@@ -19,8 +19,9 @@ Define el formato, estilo y reglas de calidad para todos los documentos y templa
 - **Secciones fijas**: `## Ahora (Now)`, `## Siguiente (Next)`, `## Futuro (Later)`, `## Completado`.
 - **Máximo**: 3 items en Ahora. Sin límite en las demás secciones.
 - **Dependencia**: opcional — ID de otro item que bloquea al actual.
-- **Estados**: 🟡 En progreso / 🔴 Pendiente / ❌ Bloqueado / ✅ Completado.
+- **Estados**: 🔴 Pendiente / 🟡 En progreso / 🧪 En verificación / ✅ Completado / ❌ Bloqueado / 🗑️ Deprecado.
 - **Migración**: al completar, mover a Completado con `| Item | vX.Y.Z |`.
+- **🧪 En verificación**: el trabajo está hecho pero falta cerrar la Definición de Hecho (§6). Un item **no pasa a ✅ Completado salteando este estado** si el DoD tiene ítems abiertos.
 
 ### Secciones
 
@@ -102,7 +103,46 @@ Cada documento debería cumplir:
 - [ ] Sin hardcodeo de versiones de metodología (solo versión del documento)
 - [ ] ADAPTAR comments si aplica (templates)
 
+## 6. Definición de Hecho (DoD)
+
+Un item del ROADMAP pasa a ✅ Completado **solo cuando cumple todos los puntos que apliquen**.
+Sin esto, "completado" significa cosas distintas según quién lo marque, y el ROADMAP deja de
+ser confiable como fuente de estado.
+
+### DoD base (todo proyecto Diligencia)
+
+- [ ] Hace lo que dice el item del ROADMAP (no una versión recortada sin avisar)
+- [ ] `CHANGELOG.md` tiene la entrada correspondiente
+- [ ] `INDEX.md` refleja los archivos nuevos/modificados con su versión y fecha
+- [ ] Si tocó el **shell** de la metodología (comandos globales, mecánicas, reglas R-*): versión bumpeada según **R6**
+- [ ] Walkthrough de la sesión en `doc/arch/walkthrough/` + línea en `doc/arch/bitacora.md`
+- [ ] Sin bugs **P1** abiertos en `doc/arch/bugs.md` atribuibles a este item
+- [ ] Estado actualizado en `ROADMAP.md` (y movido a Completado con su versión)
+
+### DoD extendido (proyectos con código)
+
+Los 7 de arriba, más:
+
+- [ ] La feature está **aislada y es desactivable** sin romper otros módulos
+- [ ] Tests del proyecto en verde (`$TESTING`)
+- [ ] Si hubo cambio de esquema de datos: migración versionada y documentada
+- [ ] Verificación manual registrada en `$UX_CHECK` si tocó interfaz
+
+> Diligencia (el proyecto) usa solo el DoD base: es Markdown puro, sin runtime ni tests.
+
+### Cuándo NO aplica
+
+Correcciones triviales sin decisión de diseño: typos, formato, links rotos, sincronización de
+fechas. Estas no pasan por 🧪 ni generan walkthrough — van directo a commit.
+
+### Quién lo verifica
+
+`/CBP` durante Meta-PLAN: al detectar items en 🧪 En verificación, corre el checklist y reporta
+qué falta antes de permitir el pase a ✅. No lo bloquea — lo informa y el usuario decide (R79.2).
+
 ## Archivos relacionados
 - `templates/doc-base/ROADMAP.md` — template estándar de ROADMAP
 - `GUIA_DE_BUENAS_PRACTICAS.md §11` — referencia a calidad documental
 - `MECANICA-DOCUMENTAL.md` — motor documental del sistema
+- `MECANICA-LOCK.md` — manifiesto de sincronización con el template
+- `MECANICA-CBP.md` — orquestador que verifica el DoD y genera walkthroughs

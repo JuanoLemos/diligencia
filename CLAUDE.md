@@ -67,6 +67,9 @@ No digo "PLAN MODE" ni "BUILD MODE" — solo analizo, propongo, y ejecuto tras c
 | $RM | `ROADMAP.md` | Alias de $ROADMAP |
 | $BUGS | `doc/arch/bugs.md` | Bug tracker (P1/P2/P3, severidad, estado) |
 | $INCIDENTS | `doc/arch/incidentes.md` | Incidentes runtime y crashes |
+| $BITACORA | `doc/arch/bitacora.md` | Índice de sesiones (1 línea c/u, append-only) |
+| $WALKTHROUGH | `doc/arch/walkthrough/` | Detalle por sesión (`YYYY-MM-DD_HHMM_<comando>_<tema>.md`) |
+| $LOCK | *(no aplica — Diligencia es la fuente, no consume del template)* | Manifiesto de sincronización (`diligencia-lock.json` en proyectos adaptados) |
 | $TESTING | *(no aplica — proyecto Markdown puro)* | Comando de test del proyecto |
 | $REPO | `https://github.com/JuanoLemos/diligencia.git` | Repositorio GitHub del proyecto |
 | $BACKUPS | `doc/arch/backups.md` | Log de backups |

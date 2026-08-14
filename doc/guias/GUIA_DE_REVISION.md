@@ -1,4 +1,4 @@
-# GUIA DE REVISIÓN — Diligencia v1.16.2
+# GUIA DE REVISIÓN — Diligencia v1.17.0
 
 Plan paso a paso para auditar todos los motores/módulos del sistema Diligencia.
 
@@ -8,9 +8,9 @@ Plan paso a paso para auditar todos los motores/módulos del sistema Diligencia.
 
 | # | Qué verificar | Cómo | Afecta si falla |
 |---|---|---|---|
-| 1.1 | Existen los 14 archivos y directorios del template: .markdownlint.json, AGENTS.md, bugs.md, CHANGELOG.md, CHECKLIST.md, DILIGENCIA.md, HARNESS.md, incidentes.md, INDEX.md, ROADMAP.md, sesion.md, diligencia-check.yml, doc/arch/README.md, doc/arch/adr-template.md | `ls -Recurse` en `~\.config\opencode\templates\doc-base\` | `/adaptar` flujo A no puede copiar el template completo |
-| 1.2 | Template AGENTS.md tiene las 16 `$variables` estándar, 5 comandos globales + 6 locales | Leer AGENTS.md del template | Proyecto nuevo nace sin variables |
-| 1.3 | Template CHECKLIST.md no está vacío y tiene sección "Proyecto nuevo" | Leer CHECKLIST.md del template | Proyecto nuevo nace sin checklist inicial |
+| 1.1 | Existen los archivos raíz del template: CLAUDE.md, DILIGENCIA.md, INDEX.md, ROADMAP.md, CHANGELOG.md, LICENSE, NOTICE, SECURITY.md, bitacora.md, bugs.md, incidentes.md, status-salud.md, ux-check.md, .markdownlint.json, .gitignore | `find` en `~/.claude/templates/diligencia-doc-base/` | `/adaptar` Flujo A no puede copiar el template completo |
+| 1.2 | Existen los subdirectorios: `doc/arch/` (ADR_SUMMARY, README, adr-template, backups, walkthrough/_template), `doc/guias/` (identidad), `doc/mecanicas/` (MANDATO, MECANICA-AUDIO, MECANICA-LOCK), `scripts/` (check-docs.js, tray/) | `find` en el template | Proyecto nuevo nace sin mecánicas canónicas ni bitácora |
+| 1.3 | Template CLAUDE.md tiene el mapeo de rutas completo (incluye `$BITACORA`, `$WALKTHROUGH`, `$LOCK`) | Leer CLAUDE.md del template | Proyecto nuevo nace sin variables — `/adaptar` no puede resolver rutas |
 
 ---
 
