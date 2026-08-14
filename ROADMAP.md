@@ -19,7 +19,7 @@ Metodología de estructura estándar para proyectos Claude Code.
 | ID | Item | Prioridad | Estado |
 |---|---|---|---|
 | R82 | **v4.1.0 CLAUDE-NATIVO:** Port completo de Diligencia a Claude Code — 32 comandos + 5 skills + 7 agentes de gobernanza a `~/.claude/`, CLAUDE.md como SSOT único, `/adaptar` reescrito, OpenCode deprecado como target | P1 | ✅ Completado (v4.1.0) |
-| R83 | **Propagar v4.2.0** a los 6 proyectos adaptados (+RM, MarketAI, conquisitare, buenobonitobarato, Nemesis, OpenMontage) vía `/adaptar`. Cada uno genera su `diligencia-lock.json` en la primera pasada (bootstrap) | P1 | 🔴 Pendiente — depende de R84 |
+| R83 | ~~Propagar v4.2.x a los 6 proyectos como tarea centralizada~~ — el usuario corre `/adaptar` por proyecto, a su propio ritmo. No es un item de ROADMAP, es uso normal del comando | P1 | 🗑️ Deprecado (2026-08-14) |
 | R84 | **v4.2.0 — adopción de patrones nsSkeleton:** `diligencia-lock.json` (comparación de 3 vías), walkthrough por sesión + bitácora, Definición de Hecho explícita | P1 | ✅ Completado (v4.2.0) |
 | R80 | **v4 CLAUDE-OPTIMIZED:** Propuesta completa de Diligencia v4 (claude-instr, AGENTS refactor, R79.2 simplificada, R81, /adaptar mejorado, HARNESS config) | P1 | ✅ Completado (v4.0.0) — superado por R82 |
 | R19 | MECANICA-CONTEXTO.md — modelo L0/L1/L2 | P2 | 🟡 En progreso |
