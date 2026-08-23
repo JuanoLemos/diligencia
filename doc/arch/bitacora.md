@@ -11,6 +11,7 @@ Formato: `| Fecha | Comando | Tema | Walkthrough | Versión |`
 |---|---|---|---|---|
 | 2026-08-14 | `/CBP` | Adopción de 3 patrones de nsSkeleton: lock de sincronización, walkthrough por sesión, Definición de Hecho | [adopcion-patrones-skeleton](walkthrough/2026-08-14_1312_CBP_adopcion-patrones-skeleton.md) | v4.2.0 |
 | 2026-08-14 | `/CBP` | Fix: `MECANICA-CALIDAD.md` era referencia colgada en los proyectos — pasa a canónica | [fix-calidad-referencia-colgada](walkthrough/2026-08-14_1406_CBP_fix-calidad-referencia-colgada.md) | v4.2.1 |
+| 2026-08-23 | `/CBP` | Fix: bootstrap de `diligencia-lock.json` producía falsos positivos destructivos (mutación M2 de Nemesis) — schema de 2 huellas + `origen` | [fix-lock-bootstrap-M2](walkthrough/2026-08-23_2040_CBP_fix-lock-bootstrap-M2.md) | v4.2.2 |
 
 ---
 

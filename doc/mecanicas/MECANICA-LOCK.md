@@ -1,4 +1,4 @@
-# MECANICA-LOCK — Manifiesto de sincronización con el template v1.0.0
+# MECANICA-LOCK — Manifiesto de sincronización con el template v1.1.0
 
 Define cómo un proyecto adaptado sabe, con certeza, si sus copias de mecánicas y guías
 canónicas siguen sincronizadas con el template de Diligencia — y qué hacer cuando no lo están.
@@ -24,28 +24,40 @@ si alguien lo tocó".
 
 ## 2. El archivo `diligencia-lock.json`
 
-Vive en la **raíz de cada proyecto adaptado**. Registra la huella (checksum SHA-256) de cada
-archivo en el momento en que se copió desde el template.
+Vive en la **raíz de cada proyecto adaptado**. Registra, por archivo, **dos** huellas —
+la del archivo del proyecto y la del template en el momento del registro — no una sola.
 
 ```json
 {
-  "diligencia_version": "4.2.0",
-  "generated": "2026-08-14",
+  "diligencia_version": "4.2.2",
+  "generated": "2026-08-23",
   "generator": "/adaptar",
   "files": {
     "doc/mecanicas/MECANICA-AUDIO.md": {
       "sha256": "3f8a2c...",
+      "template_sha256": "3f8a2c...",
+      "origen": "template",
       "template_version": "1.0.0",
       "synced_at": "2026-08-14"
     },
-    "doc/mecanicas/MANDATO.md": {
+    "doc/guias/identidad.md": {
       "sha256": "9b1e40...",
-      "template_version": "1.17.2",
+      "template_sha256": "aa11bb...",
+      "origen": "override",
+      "motivo": "placeholder [Nombre del Sistema] reemplazado por /adaptar Flujo A",
+      "template_version": "1.0",
       "synced_at": "2026-08-14"
     }
   }
 }
 ```
+
+| Campo | Qué guarda |
+|---|---|
+| `sha256` | Huella del archivo **del proyecto** en el momento del registro |
+| `template_sha256` | Huella del archivo **del template** en ese mismo momento — la pieza que faltaba en v1.0.0 |
+| `origen` | `template` (idéntico al template al registrar) u `override` (ya divergía al registrar) |
+| `motivo` | Solo si `origen: override` — por qué divergía (placeholder, customización, versión más nueva…) |
 
 **Regla de propiedad:** lo que está en `files` viene del template y es candidato a sincronizarse.
 **Todo lo demás es del proyecto** y `/adaptar` no lo toca nunca — no hace falta declararlo.
@@ -62,29 +74,44 @@ sha256sum "doc/mecanicas/MECANICA-AUDIO.md" | cut -d' ' -f1
 Disponible en Git Bash sin instalar nada. No requiere Node, Python ni runtime del proyecto —
 la metodología sigue siendo Markdown puro.
 
-## 4. Comparación de tres vías
+## 4. Comparación de cuatro vías
 
-Con tres valores — lo que dice el lock, el archivo actual del proyecto, y el archivo del
-template — se determina el estado real sin ambigüedad:
+> **v1.1.0 — corrige un bug de diseño de v1.0.0.** La versión original comparaba
+> `lock.sha256 vs actual vs template_actual` ("tres vías") y asumía que `lock == actual`
+> significa "nadie tocó el local". Eso es falso en bootstrap (§5): el lock se siembra con el
+> estado *actual* del proyecto, así que `lock == actual` es cierto por construcción, no prueba
+> nada. En un proyecto con `identidad.md`/`MANDATO.md` ya personalizados (placeholder
+> reemplazado por `/adaptar` Flujo A — el caso normal), eso llevaba a proponer "el template
+> avanzó, actualizar" y pisar la personalización. Detectado en Nemesis, 2026-08-23 (mutación
+> M2) — casi revierte `identidad.md`, `MANDATO.md` y una `MECANICA-AUDIO.md` más nueva que la
+> del template.
 
-| Lock vs actual | Lock vs template | Significado | Acción de `/adaptar` |
-|---|---|---|---|
-| = | = | En sync | Nada |
-| = | ≠ | El template avanzó, el local quedó intacto | **Actualizar** (seguro, sin pérdida) |
-| ≠ | = | El proyecto customizó su copia | **Conservar local** (override intencional) |
-| ≠ | ≠ | Ambos cambiaron | ⚠️ **CONFLICTO** — mostrar diff y preguntar |
-| *(sin entrada)* | — | Archivo nuevo en el template | **Copiar** y registrar en el lock |
+Ahora se comparan cuatro valores: el `sha256` del lock, el `sha256` actual del proyecto, el
+`template_sha256` que el lock guardó al registrar, y el `sha256` actual del template:
 
-Solo el último renglón de conflicto interrumpe al usuario. Los otros cuatro se resuelven solos.
+| actual vs lock.sha256 | template actual vs lock.template_sha256 | `origen` | Significado | Acción |
+|---|---|---|---|---|
+| = | = | — | Nada cambió desde el registro | Nada |
+| = | ≠ | `template` | Nadie tocó el local, el template avanzó desde que se registró | **Actualizar** (seguro) |
+| = | ≠ | `override` | Nadie tocó el local (que ya era distinto a propósito), Y el template también avanzó | **Informar**: "el template evolucionó, tu override sigue vigente — revisar si conviene tomar lo nuevo" (no forzar) |
+| ≠ | = | — | El proyecto tocó su copia, el template no cambió | **Conservar local** — actualizar `sha256` y `origen: override` en el lock |
+| ≠ | ≠ | — | Ambos cambiaron | ⚠️ **CONFLICTO** — mostrar diff y preguntar |
+| *(sin entrada)* | — | — | Archivo nuevo en el template | **Copiar** y registrar (`origen: template`) |
+
+`origen` es lo que arregla el bug: distingue "esto siempre fue distinto al template" (bootstrap
+u override legítimo) de "esto era igual al template y el template avanzó" — las dos únicas
+situaciones que antes se confundían bajo `lock ≠ template`.
+
+Solo la fila de conflicto interrumpe al usuario. Las demás se resuelven solas.
 
 ## 5. Ciclo de vida
 
 | Momento | Qué pasa con el lock |
 |---|---|
-| `/adaptar` Flujo A (proyecto nuevo) | Se **crea** con la huella de todo lo copiado |
-| `/adaptar` Flujo C (ya adaptado) | Se **lee** para la comparación de 3 vías, y se **regenera** con las huellas post-sincronización |
-| Proyecto sin lock (adaptado antes de v4.2.0) | Se **genera por primera vez** tomando el estado actual como base — asume que lo que hay es correcto y arranca a trackear desde ahí |
-| Edición manual de una mecánica | El lock queda desactualizado a propósito: es justamente la señal de "esto lo customizó el proyecto" |
+| `/adaptar` Flujo A (proyecto nuevo) | Se **crea**: `sha256 = template_sha256` (recién copiado, sin divergencia) → `origen: template` |
+| `/adaptar` Flujo C (ya adaptado) | Se **lee** para la comparación de 4 vías, y se **regenera** con las huellas post-sincronización |
+| Proyecto sin lock (adaptado antes de v4.2.0) — **bootstrap** | Para cada archivo, calcular `sha256` (actual) y `template_sha256` (template ahora) **por separado**: si coinciden → `origen: template`; si difieren → `origen: override` + `motivo: "diferencia detectada en bootstrap — origen exacto no determinable (placeholder, customización, o versión más nueva); revisar si corresponde"`. **Nunca** se auto-actualiza en la misma pasada del bootstrap — el lock recién nace, no hay base para saber qué cambió desde cuándo |
+| Edición manual de una mecánica | El lock queda desactualizado a propósito — la próxima pasada lo detecta como fila 4 de la tabla (`actual ≠ lock.sha256`) y lo registra como `override` |
 
 **El lock nunca se edita a mano.** Lo genera y actualiza `/adaptar`.
 

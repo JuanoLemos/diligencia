@@ -1,4 +1,4 @@
-# Diligencia v4.2.1 — Estructura estándar para Claude Code
+# Diligencia v4.2.2 — Estructura estándar para Claude Code
 
 Sello de metodología para proyectos trabajados con Claude Code.
 
@@ -35,6 +35,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| v4.2.2 | 2026-08-23 | Fix de bug de diseño en `diligencia-lock.json` (mutación M2 de Nemesis): el bootstrap sembraba el lock con el estado actual del proyecto, haciendo que `lock == actual` fuera trivialmente cierto — no probaba que nadie tocó el local. Llevaba a proponer pisar `identidad.md`/`MANDATO.md` personalizados. Schema nuevo: `sha256` + `template_sha256` + `origen` (comparación de 4 vías, `MECANICA-LOCK.md` v1.1.0). |
 | v4.2.1 | 2026-08-14 | Fix: `MECANICA-CALIDAD.md` pasa a ser canónica (estaba referenciada por `/adaptar` Fase 2.6 y por el DoD de `/CBP`, pero nunca se copiaba al proyecto — referencia colgada, detectada al correr `/adaptar` en Nemesis). §3 marcada como exclusiva del repo de Diligencia. `INDEX.md` del template ya no nace con las tablas de Mecánicas y Referencias vacías. |
 | v4.2.0 | 2026-08-14 | Adopción de 3 patrones de **nsSkeleton**: `diligencia-lock.json` (huella SHA-256 por archivo → `/adaptar` distingue override intencional de archivo viejo, comparación de 3 vías), walkthrough por sesión (`doc/arch/walkthrough/` + índice en `bitacora.md`, generado por `/CBP`), y Definición de Hecho explícita (`MECANICA-CALIDAD.md` §6 + estado `🧪 En verificación`). Mecánica nueva: `MECANICA-LOCK.md`. |
 | v4.1.3 | 2026-08-04 | Nueva mecánica `MECANICA-AUDIO.md`: síntesis de voz ElevenLabs estandarizada (voz, modelo, reproducción, triggers). Corrige divergencia entre proyectos causada por vivir en memoria de Claude (por-proyecto) en vez de en archivos versionados. `/adaptar` Fase 2.5 extendida para sincronizar mecánicas, no solo guías. |

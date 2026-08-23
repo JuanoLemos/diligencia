@@ -2,6 +2,21 @@
 
 ---
 
+## [4.2.2] — 2026-08-23
+
+Fix de un bug de diseño real, reportado por **Némesis** vía `/mutacion` (mutación M2) el mismo
+día en que se detectó — no una auditoría teórica, sino algo que casi rompió datos en producción.
+
+### Fixed
+- **`diligencia-lock.json` — el bootstrap producía falsos positivos destructivos.** La versión v1.0.0 de `MECANICA-LOCK.md` sembraba el lock de un proyecto sin lock previo (adaptado antes de v4.2.0) tomando el `sha256` del **estado actual del proyecto**. Eso hacía que `lock == actual` fuera cierto por construcción en la primera pasada — no probaba que "nadie tocó el local desde que se registró", que es lo que la comparación de 3 vías necesitaba para inferir "el template avanzó, actualizar seguro". En cualquier proyecto con `identidad.md` o `MANDATO.md` ya personalizados (el caso normal: `/adaptar` Flujo A reemplaza `[Nombre del Sistema]` por el nombre real desde el día uno), esa inferencia fallaba y proponía pisar la personalización de vuelta al placeholder. En Nemesis casi revirtió `identidad.md`, `MANDATO.md`, y una `MECANICA-AUDIO.md` que en realidad era más nueva que la del template.
+
+### Changed
+- **`MECANICA-LOCK.md` v1.0.0 → v1.1.0** — schema de lock con 2 huellas por archivo: `sha256` (proyecto) y `template_sha256` (template al momento del registro), más `origen: template|override`. La comparación pasa de 3 a 4 vías: ahora se puede distinguir "esto siempre fue distinto al template" de "esto era igual al template y el template avanzó" — las dos situaciones que antes se confundían bajo un solo criterio (`lock ≠ template`).
+- **`/adaptar` Fase 2.5** — bootstrap ya no asume nada: para cada archivo calcula las dos huellas por separado y clasifica `origen` sin sincronizar nada en esa misma pasada (nunca hay base para inferir "qué cambió desde cuándo" en la primera corrida). La sincronización real ocurre recién en la corrida siguiente, con el lock ya poblado correctamente.
+- `/adaptar` Flujo A (proyecto nuevo) — el lock se crea con `sha256 = template_sha256` (recién copiado, sin divergencia posible) y `origen: template`.
+
+**Acción requerida:** proyectos que ya bootstrapearon su lock bajo v4.2.0/v4.2.1 deben correr `/adaptar` de nuevo — regenera el lock con el schema correcto. Los 5 proyectos que todavía no corrieron `/adaptar` bajo v4.2.x no tienen nada que hacer: nacen directo con el schema nuevo.
+
 ## [4.2.1] — 2026-08-14
 
 ### Fixed
