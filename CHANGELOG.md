@@ -2,6 +2,25 @@
 
 ---
 
+## [4.3.1] — 2026-08-24
+
+Bug encontrado corriendo `/CBP` sobre la propia Diligencia — el mismo comando que se estuvo
+arreglando todo el día reportó un estado que no coincidía con la realidad del repo.
+
+### Fixed
+- **La resolución de `<último-release>` no veía los releases marcados solo con tag.** Buscaba únicamente un commit cuyo mensaje empezara con `chore(release):` o `release:`. Pero los releases v4.2.0 a v4.3.0 se marcaron **con tag sobre el commit de trabajo**, sin crear un commit de release aparte (`version.md` paso 10 documenta hacerlo, la práctica de esta sesión fue otra). Resultado: la resolución retrocedía hasta `v4.1.0` — el último release que sí tenía commit propio — y reportaba **12 commits "sin liberar" que ya estaban todos publicados y tagueados**, además de ensanchar el rango del pre-check de bump (R6) unas 6 versiones. Ahora resuelve a la **más reciente de dos señales independientes**: el último commit de release **o** el commit del último tag, lo que esté más adelante en la historia.
+
+### Nota
+Es el mismo error de razonamiento que la mutación M2 de Némesis (corregida en v4.2.2 esta misma
+sesión): una inferencia correcta bajo un supuesto que en la práctica no se cumple. Allá era "el
+lock se sembró desde el template"; acá, "todo release deja un commit con mensaje de release".
+
+La regla 20 del orquestador sigue vigente y no se contradice: `git describe --tags` **no puede
+ser la única fuente** —Némesis tenía releases sin tag, y ese caso sigue cubierto— pero tampoco
+puede ignorarse. Ninguna de las dos señales es completa por sí sola; el fix es la unión, no el
+reemplazo. Verificado con los 4 escenarios posibles (sin releases, release sin tag, tag sin
+release, release posterior al tag).
+
 ## [4.3.0] — 2026-08-24
 
 Cierra las 3 mutaciones restantes de la tanda de **Némesis** (M3, M4, M5). Con esto quedan
