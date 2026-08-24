@@ -25,12 +25,13 @@ Detalle completo: [`mutaciones-recibidas/2026-08-23-nemesis_mutaciones.md`](muta
 
 | ID | Mutación | Tipo | Dónde | Estado |
 |---|---|---|---|---|
-| M6 | `check-docs.js` no soporta anclas en rutas de variables — `existsSync()` sobre la ruta cruda hace que `ROADMAP.md#tecnico` se reporte inexistente aunque el archivo y la sección existan. Verificado contra el código real: confirmado. | Script del template | `scripts/check-docs.js` | Pendiente |
-| M7 | `extractTableValue()` devuelve `cols[2]` por posición fija — en `\| archivo \| fecha \| versión \|` eso es la fecha; en el layout real del template (`\| archivo \| versión \| fecha \| resumen \|`) cae en `—` o `''` según la fila. Verificado: con el layout del propio template el validador no valida nada. | Script del template | `scripts/check-docs.js` | Pendiente |
-| M8 | El parser de CHANGELOG solo reconoce `## [X.Y.Z]` (Keep-a-Changelog) y avisa *"Could not determine latest version"* sin decir qué formato espera — falla en silencio útil ante cualquier otro formato (ej. Nemesis usa `🔹 vX.Y.Z`). Verificado contra el código real: confirmado. | Script del template | `scripts/check-docs.js` | Pendiente |
+| M6 | ✅ `check-docs.js` no soportaba anclas en rutas de variables — `existsSync()` sobre la ruta cruda hacía que `ROADMAP.md#tecnico` se reportara inexistente. Fix: separar el ancla antes de resolver + validar que el heading exista (slugs con normalización de tildes). | Script del template | `scripts/check-docs.js` | **Aplicado (v4.2.4)** |
+| M7 | ✅ `extractTableValue()` leía `cols[2]` por posición fija — con el layout del propio template no validaba nada. Fix: busca la columna "Versión" por nombre de encabezado. | Script del template | `scripts/check-docs.js` | **Aplicado (v4.2.4)** |
+| M8 | ✅ El parser de CHANGELOG solo reconocía `## [X.Y.Z]` y avisaba sin decir qué esperaba. Fix: acepta 3 patrones (`## [X.Y.Z]`, `## vX.Y.Z`, prefijo + `vX.Y.Z`), mensaje de fallback accionable. | Script del template | `scripts/check-docs.js` | **Aplicado (v4.2.4)** |
 
-Los 3 traen código, caso real y fix sugerido — ver detalle completo. Se aborda en sesión
-separada: requiere mostrar diff propuesto antes de tocar `check-docs.js`.
+Los 3 se verificaron con pruebas de comportamiento real (layout de fábrica, escenario tipo
+Némesis con los 3 problemas combinados, y un caso de versión genuinamente distinta) antes de
+darlos por resueltos — ver `doc/arch/walkthrough/` para el detalle completo de las pruebas.
 
 Detalle completo: [`mutaciones-recibidas/2026-08-24-nemesis_mutaciones.md`](mutaciones-recibidas/2026-08-24-nemesis_mutaciones.md)
 

@@ -2,6 +2,24 @@
 
 ---
 
+## [4.2.4] — 2026-08-24
+
+Fix de 3 bugs reales en `scripts/check-docs.js`, reportados por **Némesis** (mutaciones M6/M7/M8,
+tanda del 2026-08-24 — el origen fue correr el propio validador durante un upgrade y verificar
+cada aviso contra el disco). Los 3 se confirmaron leyendo el código exacto, y se verificaron con
+pruebas de comportamiento reales antes de darlos por resueltos — no solo lectura.
+
+### Fixed
+- **M6 — anclas en `$VARIABLES` tratadas como parte del nombre de archivo.** El validador pasaba la ruta cruda a `existsSync()`, así que `$RM_TX → ROADMAP.md#tecnico` se reportaba inexistente aunque `ROADMAP.md` y la sección `## Técnico` existieran. Ahora separa el ancla antes de resolver el archivo, y además valida que el heading exista (con normalización de tildes — `## Técnico` produce el slug `tecnico`).
+- **M7 — `extractTableValue()` leía la columna equivocada.** Devolvía `cols[2]` por posición fija. Con el layout `\| archivo \| fecha \| versión \|` (el de Némesis) comparaba una fecha contra una versión; con el layout del propio template (`\| archivo \| versión \| fecha \| resumen \|` en unas filas, celda vacía en otras) el chequeo no validaba absolutamente nada. Ahora busca la columna "Versión" por nombre de encabezado, con normalización de tildes/mayúsculas.
+- **M8 — el parser de CHANGELOG imponía Keep-a-Changelog sin decirlo.** Solo reconocía `## [X.Y.Z]`; cualquier otro formato (ej. `🔹 vX.Y.Z` de Némesis) recibía *"Could not determine latest version"* en cada corrida, para siempre, sin decir qué se esperaba. Ahora acepta 3 patrones en orden (`## [X.Y.Z]`, `## vX.Y.Z`, prefijo/bullet + `vX.Y.Z`), y el mensaje de fallback es accionable.
+
+### Verificación
+- 3 pruebas de comportamiento real (no solo inspección de código): layout de fábrica del template (limpio, sin falsos positivos), escenario tipo Némesis con los 3 problemas combinados (0 falsos positivos, sí detecta un ancla genuinamente inexistente), y un caso de versión realmente distinta (confirma que el fix no volvió el chequeo permisivo de más).
+- Sincronizado también en la copia propia de Diligencia (`scripts/check-docs.js`) — corrido contra el propio repo, sin conflictos con M6/M7/M8 (2 avisos preexistentes no relacionados, de la sección de versión de guías/mecánicas, que no aplican a Diligencia como fuente).
+
+**Acción requerida:** proyectos con `scripts/check-docs.js` ya copiado deben correr `/adaptar` — Fase 1 punto 3b ofrece sobrescribir con el template actualizado.
+
 ## [4.2.3] — 2026-08-24
 
 Cierra una deuda de gobernanza de 1 día, reportada por **Némesis** (mutación M1, tanda del
