@@ -1,4 +1,4 @@
-# MECANICA-CALIDAD — Estándares de calidad documental v1.2
+# MECANICA-CALIDAD — Estándares de calidad documental v1.3
 
 Define el formato, estilo y reglas de calidad para todos los documentos y templates Diligencia.
 
@@ -20,7 +20,13 @@ Define el formato, estilo y reglas de calidad para todos los documentos y templa
 - **Máximo**: 3 items en Ahora. Sin límite en las demás secciones.
 - **Dependencia**: opcional — ID de otro item que bloquea al actual.
 - **Estados**: 🔴 Pendiente / 🟡 En progreso / 🧪 En verificación / ✅ Completado / ❌ Bloqueado / 🗑️ Deprecado.
-- **Migración**: al completar, mover a Completado con `| Item | vX.Y.Z |`.
+- **Migración**: al completar, mover a Completado **conservando el ID**: `| ID | Item | vX.Y.Z |`.
+  El ID no se descarta al completar — otros ítems lo citan en su columna "Depende de", y los
+  commits, walkthroughs y ADRs lo referencian. Descartarlo convierte esas referencias en
+  citas colgadas de forma garantizada (detectado en el propio ROADMAP de Diligencia: 9 IDs
+  citados sin fila resoluble, todos por este motivo).
+- **Los IDs no se reciclan.** Un ID pertenece a un ítem para siempre, aunque el ítem se
+  deprecue o se descarte.
 - **🧪 En verificación**: el trabajo está hecho pero falta cerrar la Definición de Hecho (§6). Un item **no pasa a ✅ Completado salteando este estado** si el DoD tiene ítems abiertos.
 
 ### Secciones

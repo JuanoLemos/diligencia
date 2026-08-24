@@ -2,6 +2,23 @@
 
 ---
 
+## [4.3.0] — 2026-08-24
+
+Cierra las 3 mutaciones restantes de la tanda de **Némesis** (M3, M4, M5). Con esto quedan
+absorbidas las 8 mutaciones recibidas en 2 días.
+
+### Added
+- **`~/.claude/shell-lock.json` — manifiesto de huellas del shell global (M3).** `~/.claude/` no es un repositorio git: editar un comando o un agente no deja rastro, no hay `git status` que lo muestre ni diff que lo revele. `PENDING.md` existía para cubrir eso, pero **solo se leía — nadie lo escribía automáticamente**, así que el mecanismo dependía de que alguien se acordara de anotar *y* de leer. Ya había fallado: la mutación M1 estuvo un día aplicada y sin versionar, con la entrada correctamente anotada. Ahora un manifiesto con la huella SHA-256 de los 45 archivos que Diligencia gobierna (33 comandos + 7 agentes + 5 skills `diligencia-*`) permite que `/CBP` paso 0.f **detecte solo** qué cambió desde el último release — desde cualquier proyecto, no solo desde Diligencia. Ver `MECANICA-LOCK.md` §7.
+- **`/salud` chequeo `1h` — integridad de IDs del ROADMAP (M4).** Detecta IDs duplicados (dos features distintas bajo el mismo ID, que rompe toda referencia cruzada), IDs colgados (citados en prosa o en "Depende de" sin fila que los resuelva), y saltos sospechosos de secuencia. Distingue el colgado grave (ID que nunca existió, P2) del benigno (ítem completado que perdió su ID, P3).
+- **`/salud` chequeo `1i` — pendientes sospechosos de estar ya hechos (M5).** Cruza cada ítem 🔴 Pendiente contra el CHANGELOG, contra la existencia de los archivos que menciona, y contra el estado de sus dependencias. Reporta con nivel de confianza y evidencia; **nunca cierra un ítem por su cuenta** (R79.2) — un ítem puede estar parcialmente hecho, o hecho de una forma que no sirve.
+
+### Fixed
+- **`MECANICA-CALIDAD.md` §1 — el estándar del ROADMAP garantizaba referencias colgadas.** Mandaba migrar los ítems completados a `| Item | vX.Y.Z |`, una tabla **sin columna de ID**. Así, al completarse un ítem su ID desaparecía del documento, pero las citas `Depende de: R03` seguían apuntándole. Detectado al probar el chequeo `1h` recién escrito contra el propio ROADMAP de Diligencia: **9 IDs citados sin fila resoluble**, todos por este motivo. El estándar ahora conserva el ID al migrar (`| ID | Item | vX.Y.Z |`) y declara explícitamente que los IDs no se reciclan.
+
+### Changed
+- `/CBP` paso 0.f reescrito: pasa de leer solo `PENDING.md` a combinar **detección automática** (shell-lock) con **contexto declarado** (`PENDING.md`). Un cambio detectado sin entrada en `PENDING.md` es un hallazgo válido — significa "esto cambió y nadie explicó por qué". Desde un proyecto que no sea Diligencia, reporta y sugiere versionar allá; no toca el shell ni el lock.
+- `MECANICA-LOCK.md` v1.1.0 → v1.2.0 — pasa de documentar un manifiesto a documentar dos (el de proyecto y el del shell), que son el mismo instrumento aplicado a problemas distintos.
+
 ## [4.2.4] — 2026-08-24
 
 Fix de 3 bugs reales en `scripts/check-docs.js`, reportados por **Némesis** (mutaciones M6/M7/M8,

@@ -14,6 +14,7 @@ Formato: `| Fecha | Comando | Tema | Walkthrough | Versión |`
 | 2026-08-23 | `/CBP` | Fix: bootstrap de `diligencia-lock.json` producía falsos positivos destructivos (mutación M2 de Nemesis) — schema de 2 huellas + `origen` | [fix-lock-bootstrap-M2](walkthrough/2026-08-23_2040_CBP_fix-lock-bootstrap-M2.md) | v4.2.2 |
 | 2026-08-24 | `/CBP` | Documentar chequeos 4b/4c de `circuito` ya aplicados (mutación M1 de Nemesis) — cierra deuda de `PENDING.md` | [documentar-circuito-4b-4c-M1](walkthrough/2026-08-24_1233_CBP_documentar-circuito-4b-4c-M1.md) | v4.2.3 |
 | 2026-08-24 | `/CBP` | Fix 3 bugs en `check-docs.js` — anclas, columna por nombre, formatos de CHANGELOG (M6/M7/M8 de Nemesis) | [fix-checkdocs-M6-M7-M8](walkthrough/2026-08-24_1251_CBP_fix-checkdocs-M6-M7-M8.md) | v4.2.4 |
+| 2026-08-24 | `/CBP` | Cierre de M3/M4/M5: `shell-lock.json` (detección automática de drift del shell) + chequeos `1h`/`1i` de `/salud` + fix del estándar de IDs del ROADMAP | [cierre-M3-M4-M5](walkthrough/2026-08-24_1307_CBP_cierre-M3-M4-M5.md) | v4.3.0 |
 
 ---
 

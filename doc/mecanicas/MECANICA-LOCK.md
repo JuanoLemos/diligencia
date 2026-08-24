@@ -1,7 +1,15 @@
-# MECANICA-LOCK — Manifiesto de sincronización con el template v1.1.0
+# MECANICA-LOCK — Manifiestos de sincronización por huella v1.2.0
 
-Define cómo un proyecto adaptado sabe, con certeza, si sus copias de mecánicas y guías
-canónicas siguen sincronizadas con el template de Diligencia — y qué hacer cuando no lo están.
+Define cómo se detecta, con certeza y sin depender de la memoria de nadie, que algo se
+desincronizó. Usa el mismo instrumento en dos lugares distintos:
+
+| Manifiesto | Dónde vive | Qué vigila | Sección |
+|---|---|---|---|
+| `diligencia-lock.json` | Raíz de cada proyecto adaptado | Las copias locales de mecánicas y guías canónicas vs. el template | §1–§6 |
+| `shell-lock.json` | `~/.claude/` (global) | Los comandos, agentes y skills de Diligencia vs. la última versión publicada | §7 |
+
+Son el mismo truco — una huella digital tomada en un momento conocido — aplicado a dos
+problemas distintos.
 
 ---
 
@@ -115,13 +123,79 @@ Solo la fila de conflicto interrumpe al usuario. Las demás se resuelven solas.
 
 **El lock nunca se edita a mano.** Lo genera y actualiza `/adaptar`.
 
-## 6. Qué NO cubre
+## 6. Qué NO cubre el lock de proyecto
 
-- **Comandos, skills y agentes globales** (`~/.claude/`): no se copian a los proyectos, por
-  diseño (ver `CLAUDE.md` §Nota de arquitectura). No hay nada que trackear.
+- **Comandos, skills y agentes globales** (`~/.claude/`): no se copian a los proyectos, así que
+  el lock *de proyecto* no los ve. Los vigila el **shell-lock** — ver §7.
 - **Documentos del proyecto** (ROADMAP, CHANGELOG, mecánicas de dominio): son del proyecto
   desde el día uno, nunca vinieron del template.
 - **Detección de por qué cambió**: el lock dice *que* cambió, no *qué* cambió. Para eso, diff.
+
+---
+
+## 7. `shell-lock.json` — el manifiesto del shell global
+
+### El problema que resuelve
+
+Los comandos, agentes y skills de Diligencia viven en `~/.claude/`, que **no es un repositorio
+git**. Editarlos no deja rastro: no hay `git status` que los muestre, no hay diff, no hay
+historial. Si alguien edita `agents/circuito.md` en medio de una sesión y no bumpea la versión
+ahí mismo, ese cambio queda corriendo en los 6 proyectos sin que ninguna versión lo documente.
+
+`PENDING.md` existe para eso — pero **solo se lee, nadie lo escribe automáticamente**. Depende
+de que la persona (o el agente) se acuerde de anotar. Y eso ya falló: la mutación M1 de Nemesis
+(chequeos 4b/4c de `circuito`) estuvo un día aplicada y sin versionar, aun con la entrada
+correctamente anotada en `PENDING.md`, porque nadie corrió el paso que la lee.
+
+**Analogía:** `PENDING.md` es un post-it que hay que acordarse de escribir *y* de leer. El
+shell-lock es el inventario que se compara solo.
+
+### El archivo
+
+```json
+{
+  "diligencia_version": "4.3.0",
+  "generated": "2026-08-24",
+  "generator": "/CBP (proyecto Diligencia)",
+  "scope": ["commands/*.md", "agents/*.md", "skills/diligencia-*/**.md"],
+  "files": {
+    "agents/circuito.md": "c72da8c2a958...",
+    "commands/CBP.md": "7146cee4d8cd..."
+  }
+}
+```
+
+Una sola huella por archivo — acá no hay dualidad template/proyecto como en §2, solo
+"cómo estaba en la última versión publicada" vs. "cómo está ahora".
+
+**Alcance deliberado:** solo lo que Diligencia gobierna. `skills/` tiene cientos de archivos de
+terceros (plugins, skills de Anthropic); trackearlos daría ruido permanente sobre cosas que
+Diligencia no versiona ni controla.
+
+### Cómo se usa
+
+| Momento | Qué pasa |
+|---|---|
+| `/CBP` paso 0.f, **en cualquier proyecto** | Recalcula las huellas de `~/.claude/` y las compara contra el lock. Si difieren → avisa qué archivos globales cambiaron sin versionar |
+| Release de Diligencia (`/CBP` con bump) | Se **regenera** con las huellas post-release y el `diligencia_version` nuevo |
+| Archivo global nuevo (comando/agente/skill) | Aparece como *sin entrada en el lock* → se reporta igual que un cambio |
+
+```bash
+# Recalcular la huella de un archivo global
+sha256sum ~/.claude/commands/CBP.md | cut -d' ' -f1
+```
+
+### Relación con `PENDING.md`
+
+No se reemplazan, se complementan:
+
+| | Qué aporta |
+|---|---|
+| `shell-lock.json` | **Detección** — *qué* cambió. Automático, no se puede olvidar |
+| `PENDING.md` | **Contexto** — *por qué* cambió y qué habría que documentar. Lo escribe quien hace el cambio |
+
+Un cambio detectado por el lock sin entrada en `PENDING.md` es válido: significa "esto cambió y
+nadie explicó por qué" — que es exactamente el aviso que hace falta.
 
 ## Archivos relacionados
 - `MECANICA-DOCUMENTAL.md` — motor documental del sistema

@@ -1,4 +1,4 @@
-# INDEX — Diligencia v4.2.4
+# INDEX — Diligencia v4.3.0
 
 Catalogo de documentacion del proyecto. Mantenido por /version y /updoc.
 
@@ -11,8 +11,8 @@ Gestionados por /version. La version se actualiza al cerrar sesion.
 | Archivo | Version | Ultima actualizacion |
 |---|---|---|
 | ROADMAP.md | v4.2.0 | 2026-08-14 |
-| CHANGELOG.md | v4.2.4 | 2026-08-24 |
-| DILIGENCIA.md | v4.2.4 | 2026-08-24 |
+| CHANGELOG.md | v4.3.0 | 2026-08-24 |
+| DILIGENCIA.md | v4.3.0 | 2026-08-24 |
 | CLAUDE.md | v4.2.0 | 2026-08-14 |
 
 ## Claude Code nativo (v4.1.0)
@@ -69,8 +69,8 @@ automáticamente en cualquier proyecto abierto con esta cuenta de Claude Code.
 | MECANICA-DOCUMENTAL.md | v1.16.5 | 2026-06-06 |
 | MECANICA-ENFORCEMENT.md | v1.16.5 | 2026-06-06 |
 | MECANICA-WORKTREE.md | v1.16.5 | 2026-06-06 |
-| MECANICA-CALIDAD.md | v1.2 | 2026-08-14 |
-| MECANICA-LOCK.md | v1.1.0 | 2026-08-23 |
+| MECANICA-CALIDAD.md | v1.3 | 2026-08-24 |
+| MECANICA-LOCK.md | v1.2.0 | 2026-08-24 |
 | MECANICA-FLUJO.md | v1.0 | 2026-06-06 |
 | MECANICA-CONTEXTO.md | v1.0 | 2026-06-06 |
 | MECANICA-GRAPHIFY.md | v1.0 | 2026-06-06 |

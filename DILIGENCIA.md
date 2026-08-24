@@ -1,4 +1,4 @@
-# Diligencia v4.2.4 — Estructura estándar para Claude Code
+# Diligencia v4.3.0 — Estructura estándar para Claude Code
 
 Sello de metodología para proyectos trabajados con Claude Code.
 
@@ -35,6 +35,7 @@ Define dónde vive cada tipo de archivo, cómo se nombran las variables de ruta,
 
 | Versión | Fecha | Cambios |
 |---|---|---|
+| v4.3.0 | 2026-08-24 | Cierra M3/M4/M5 de Nemesis. **`shell-lock.json`**: manifiesto de huellas de `~/.claude/` (45 archivos) — `/CBP` detecta solo qué cambió del shell sin versionar, sin depender de que alguien lo anote. **`/salud` 1h**: integridad de IDs del ROADMAP. **`/salud` 1i**: pendientes con señal de estar ya hechos. **`MECANICA-CALIDAD` §1**: la tabla Completado conserva el ID — descartarlo garantizaba referencias colgadas. |
 | v4.2.4 | 2026-08-24 | Fix de 3 bugs en `scripts/check-docs.js` (mutaciones M6/M7/M8 de Nemesis): anclas en `$VARIABLES` (`#seccion`) tratadas como parte del nombre de archivo; `extractTableValue()` leía columna por posición fija en vez de por nombre de encabezado — con el layout del propio template no validaba nada; parser de CHANGELOG solo aceptaba Keep-a-Changelog, sin decir qué esperaba. Verificado con pruebas de comportamiento, no solo lectura de código. |
 | v4.2.3 | 2026-08-24 | Documenta 2 chequeos ya aplicados en `agents/circuito.md` (mutación M1 de Nemesis): 4b — permiso incompatible con el llamador, 4c — promesas del prompt sin respaldo en la UI. Cambio aplicado el 2026-08-23, versionado 1 día después — la deuda que `PENDING.md` existe para evitar. |
 | v4.2.2 | 2026-08-23 | Fix de bug de diseño en `diligencia-lock.json` (mutación M2 de Nemesis): el bootstrap sembraba el lock con el estado actual del proyecto, haciendo que `lock == actual` fuera trivialmente cierto — no probaba que nadie tocó el local. Llevaba a proponer pisar `identidad.md`/`MANDATO.md` personalizados. Schema nuevo: `sha256` + `template_sha256` + `origen` (comparación de 4 vías, `MECANICA-LOCK.md` v1.1.0). |
