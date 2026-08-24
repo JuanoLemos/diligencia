@@ -2,6 +2,19 @@
 
 ---
 
+## [4.2.3] — 2026-08-24
+
+Cierra una deuda de gobernanza de 1 día, reportada por **Némesis** (mutación M1, tanda del
+2026-08-23, reconfirmada con más urgencia en la tanda del 2026-08-24).
+
+### Added
+- **`agents/circuito.md` — 2 chequeos nuevos, documentados** (el código ya estaba aplicado desde el 2026-08-23; esta entrada es la versión que faltaba):
+  - **4b — Permiso incompatible con el llamador.** Detecta rutas con middleware de rol donde el llamador se autentica con un rol distinto — el caso que produce un 403 permanente y silencioso si el llamador tiene `.catch(() => {})` o no chequea `res.ok`. El chequeo anterior de "función sin consumidor" no lo ve porque la ruta *sí* tiene consumidor real.
+  - **4c — Promesas del prompt sin respaldo en la UI.** Detecta cuando un system prompt afirma que la interfaz ya resuelve algo ("el frontend ya muestra las opciones...") y por eso suprime su propia alternativa textual, pero la interfaz nunca lo implementó — dejando al usuario sin ninguna de las dos salidas. Solo aplica a proyectos con prompts de IA, pero ahí es de alto valor: el prompt es código ejecutable que nadie compila ni testea.
+
+### Nota de proceso
+- El mecanismo que existe exactamente para evitar este retraso (`PENDING.md` + `/CBP` paso 0.f) funcionó como debía — la entrada estaba registrada desde el día del cambio. La demora de 1 día en consumirla fue no correr el paso 0.f del pre-flight en las sesiones de `/CBP` de por medio, no una falla del mecanismo.
+
 ## [4.2.2] — 2026-08-23
 
 Fix de un bug de diseño real, reportado por **Némesis** vía `/mutacion` (mutación M2) el mismo
